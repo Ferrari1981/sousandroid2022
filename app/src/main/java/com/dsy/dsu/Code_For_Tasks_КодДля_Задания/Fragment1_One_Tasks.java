@@ -22,7 +22,6 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -191,7 +190,7 @@ public class Fragment1_One_Tasks extends Fragment {
         viewДляПервойКнопкиHome_Задания = inflater.inflate(R.layout.activity_main_fragment1_for_tasks, container, false);
 
         // TODO: 12.03.2022
-        Log.d(this.getClass().getName(), " onCreateView  viewДляПервойКнопкиHome_Задания " +
+        Log.d(this.getClass().getName(), " onCreateView  viewДляПервойКнопкиHome_Задания  Fragment1_One_Tasks " +
                 "" + viewДляПервойКнопкиHome_Задания);
     } catch (Exception e) {
         e.printStackTrace();
@@ -216,7 +215,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
         try{
         ///   getResources().getDrawable(this,R.drawable.icon_dsu1_add_organisazio_success
-        Log.d(this.getClass().getName(), " отработоатл new SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи imageView   ");
+        Log.d(this.getClass().getName(), " отработоатл new SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи imageView  Fragment1_One_Tasks ");
 
         // TODO: 10.03.2022 выбратор
         вибратор = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);

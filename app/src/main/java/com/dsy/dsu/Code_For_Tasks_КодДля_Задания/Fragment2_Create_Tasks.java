@@ -1,20 +1,15 @@
 package com.dsy.dsu.Code_For_Tasks_КодДля_Задания;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.work.WorkManager;
 
 import com.dsy.dsu.Class_Generation_Errors;
-import com.dsy.dsu.R;
 
 
 public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
@@ -28,7 +23,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
        super. textViewТекущаяЗадача.setText("Созданные".toUpperCase());
             // TODO: 12.03.2022  
-        Log.d(this.getClass().getName(), "  Fragment1_One_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания);
+        Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания);
 
     } catch (Exception e) {
         e.printStackTrace();
@@ -46,7 +41,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         try{
-        Log.d(this.getClass().getName(), "  Fragment1_One_Tasks  viewДляПервойКнопкиHome_Задания " + viewДляПервойКнопкиHome_Задания);
+        Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания " + viewДляПервойКнопкиHome_Задания);
 
     } catch (Exception e) {
         e.printStackTrace();
@@ -70,7 +65,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         super.onDestroyView();
         try{
             // TODO: 12.03.2022
-        Log.d(this.getClass().getName(), " отработоатл new SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи  ИмяСлужбыСинхронизацииДляЗадачиИзЧата  " +
+        Log.d(this.getClass().getName(), " отработоатл new SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи  ИмяСлужбыСинхронизацииДляЗадачиИзЧата   Fragment2_Create_Tasks " +
                 "" + ИмяСлужбыОдноразоваяСинхронизацииДляЗадачиИзЧата +
                 " ИмяСлужбыСинхронизацииДляЗадачи " + ИмяСлужбыОбщейСинхронизацииДляЗадачи);
 
