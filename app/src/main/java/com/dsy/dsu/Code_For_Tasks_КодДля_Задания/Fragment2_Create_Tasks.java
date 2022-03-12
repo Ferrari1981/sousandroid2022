@@ -28,7 +28,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
        super. textViewТекущаяЗадача.setText("Созданные".toUpperCase());
             // TODO: 12.03.2022  
-        Log.d(this.getClass().getName(), "  Fragment1_One_Tasks  viewДляПервойКнопкиHome_Задания ---" + viewДляПервойКнопкиHome_Задания);
+        Log.d(this.getClass().getName(), "  Fragment1_One_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания);
 
     } catch (Exception e) {
         e.printStackTrace();
