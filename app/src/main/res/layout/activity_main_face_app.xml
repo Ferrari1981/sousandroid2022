@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5FFFA"
+    android:foregroundGravity="center"
+    android:scrollbars="vertical">
+
+    <ImageView
+        android:id="@+id/imageView_ЗначекApp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:foregroundGravity="center"
+        android:scaleType="centerCrop"
+        android:stateListAnimator="@android:animator/fade_in"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/icon_main_tabel_four"
+        tools:src="@tools:sample/avatars" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="3dp"
+        android:background="#00ACC1"
+        android:foregroundGravity="center"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_ЗначекApp"
+        tools:visibility="visible" />
+
+    <ScrollView
+        android:id="@+id/ScrollFaceApp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view">
+
+        <LinearLayout
+            android:id="@+id/LineLayFaceApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/FaceApp_КнопкаТабельныйУчёт"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0"
+                android:backgroundTint="#F5FFFA"
+                android:backgroundTintMode="screen"
+                android:bufferType="spannable"
+                android:capitalize="words"
+                android:gravity="center_vertical"
+                android:insetLeft="10dp"
+                android:insetTop="10dp"
+                android:insetRight="10dp"
+                android:insetBottom="10dp"
+                android:minLines="25"
+                android:text="Табеля"
+
+
+                android:textAlignment="center"
+                android:textColor="#0E0E0E"
+                android:textSize="18sp"
+                android:visibility="visible"
+                app:iconGravity="start"
+                app:iconTintMode="multiply"
+                app:rippleColor="#A9A9A9" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

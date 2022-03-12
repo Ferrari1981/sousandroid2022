@@ -1,0 +1,347 @@
+    implementation 'com.google.android.material:material:1.1.0'
+
+http://80.66.149.58:8888/dsu1.glassfish/index.jsp
+
+http://localhost:8080/dsu1.glassfish/DSU1JsonServlet
+
+https://192.168.254.25:8181/dsu1.glassfish/DSU1JsonServlet
+
+<br><i>http://192.168.254.25:8080/dsu1.glassfish/index.jsp</i>
+        
+         <br><i>http://localhost:8080/dsu1.glassfish/index.jsp</i>
+        
+        http://localhost:8080/dsu1.glassfish/DSU1JsonServlet
+    
+        <br><i>--------------------------------------------------------</i>
+
+        <br> <i>https://192.168.254.25:8181/dsu1.glassfish/DSU1JsonServlet</i>
+        
+         <br> <i>http://192.168.254.25:8080/dsu1.glassfish/DSU1JsonServlet</i>
+
+
+СЕРВЕР 1С 
+
+http://1C.DSU1.RU/dsu1_buh    http://1c.dsu1.ru/dsu_buh
+
+
+
+
+
+ООО "Союз Автодор"
+
+keytool -genkey -keystore dsu1.jks -dname "CN=localhost, OU=dev64, O=dev64-wordpress, L=Unknown, ST=Unknown, C=RU" -storepass storepass -alias dsu1_android -keypass ferrari1981
+
+///// имя и паорль с серверу GLASSFISSH 
+
+
+пароль и консли 
+admin или dsu1
+
+пароль dsu1
+
+
+admin
+
+dsu1
+
+
+
+
+
+
+
+
+ИМЯ И ПАРОЛЬ  SQL SERVER 2014 ДЛЯ БАЗЫ АНДРОЙД
+
+1c проедприятие ПАРОЛЬ
+
+
+
+
+
+gaby
+
+
+
+
+
+//// НОВЫЕ РАСШАРИНФЫЕ ДРЕСА ДЛЯ СЕРВЕРА GLASSFISH
+
+
+80.66.146.58
+
+БЕЛЫЙ адрес glassfish
+
+http://80.66.149.58:8888
+
+
+PING 80.66.149.58
+
+
+// Adress_String = "http://192.168.254.25:8080/dsu1.glassfish/DSU1JsonServlet";///СТРОЧКА УКАЗЫВАЕТ НА КАКОЙ СЕРВЕЛ НА СЕРВЕР МЫ БУДЕМ СТУЧАТЬСЯ /// 80.66.149.58
+                    Adress_String = "http://80.66.149.58:8888/dsu1.glassfish/DSU1JsonServlet";///СТРОЧКА УКАЗЫВАЕТ НА КАКОЙ СЕРВЕЛ НА СЕРВЕР МЫ БУДЕМ СТУЧАТЬСЯ /// 80.66.149.58
+
+
+
+ПодключениеИнтернетДляОтправкиНаСервер[0].setConnectTimeout(100);
+
+
+new КлассСозданиеБазыДанных(getApplication()).ПубличныйАдресGlassFish+"
+
+КлассСозданиеБазыДанных.ПубличныйАдресGlassFish+"
+
+
+
+
+
+
+
+
+
+новый имя и пароль к базе android  ///ДЛЯ СЕРВЕЛА INSERT
+
+dsu1android
+
+superandroiddsu1android
+
+android
+
+--------------------------------------------------------------------------
+
+SQL_DSU1
+
+администатор сервера  в sql sever :
+
+;---------------sa права 
+
+
+
+
+
+
+--системное имя и пароль SQL server
+
+
+
+sa
+
+
+superndroiddsu1
+
+--  конец системное имя и пароль SQL server
+
+
+
+
+
+
+
+////новый пользователь sql server
+
+
+	connString = "jdbc:sqlserver://localhost:1478;databaseName=storage;User=dsu1android;Password=supersupersuper;"; /// ГЛАВНАЯ
+
+dsu1android    ,       dsu1admin
+
+supersupersuper     ,supersupersuper 
+
+
+//// конец новый пользователь sql server
+
+
+
+
+
+
+
+jdbc:sqlserver://localhost:1478;databaseName=test
+
+
+
+jdbc:sqlserver://localhost:1478;databaseName=storage
+
+
+
+dsu1android
+
+superandroiddsu1android
+
+
+--новые 
+;------------------
+
+
+
+
+
+
+
+
+
+
+
+
+dsu1admin
+
+superandroiddsu1admin
+
+jdbc:sqlserver://localhost:1478;databaseName=dsu1
+
+localhost
+
+1478
+
+
+
+dsu1
+
+;
+dsu1users
+
+
+superandroiddsu1admin
+
+
+DSU1
+dsu1
+
+  
+
+
+имя базы данных 
+
+DESKTOP-INT2825\SQL_DSU1
+
+
+
+
+новый пользователь в sql sever :
+ 
+имя и пароль 
+
+android_dsu1
+
+
+superdsuandroid
+
+
+
+
+
+
+
+/////////////////////////////пароль ПАШИ НА НОВЫЙ ДОМЕН НА СВОЕМ КОМПЬЮТОРЕ 
+
+ 
+moraru_pi
+
+Qwerty021981
+
+
+/////ИМЯ И ПАРОЛЬ УДАЛЕНОГО RDP
+
+
+
+ServPasha, логин - администратор, Пароль -  Pasha1234
+
+192.168.254.40
+
+
+
+
+
+172.16.0.56\WINSQL
+
+4321Qwer
+
+
+
+//TODO данные по новому серверу 172.  SQL SERVER
+				
+				
+			//	jdbc:sqlserver://172.16.0.56:1433;databaseName=storage   
+				/// obmen
+				////  4321Qwer
+				
+				
+				
+				connString = "jdbc:sqlserver://172.16.0.56:1433;databaseName=storage;User=obmen;Password=4321Qwer;"; /// ГЛАВНАЯ новый сервер
+
+
+
+
+
+
+
+
+//////адрес новго сервиса glassfisg
+
+
+192.168.254.40
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Добро пожаловать я страница JSP glassfish 4.1
+
+Сегодня 2020-24-09 08:52:43.+0300 
+-------------------------------------------------------- 
+http://192.168.254.25:8080/dsu1.glassfish/index.jsp
+http://localhost:8080/dsu1.glassfish/index.jsp
+-------------------------------------------------------- 
+https://192.168.254.25:8181/dsu1.glassfish/DSU1JsonServlet 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+имя и пароль в сервтивикату для подписи наших .apk
+
+
+C:\Users\moraru_pi\AndroidStudioProjects\DSU\dsu1C:\Users\moraru_pi\AndroidStudioProjects\DSU\dsu1
+
+dsu1_keys.jks
+
+верхний пароль dsu1dsu1up
+
+нижний пароль dsu1dsu1down
+
+Alias  tabels_releases
+
+
+
+
+пароль в дамну с компьютера паши Lambo1981
+
+
+

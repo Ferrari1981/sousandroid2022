@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@android:id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:checkMark="?android:attr/textCheckMark"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:singleLine="false"
+        android:maxLines="20"
+        android:inputType="textMultiLine|textCapSentences"
+        android:textAlignment="gravity"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        android:visibility="visible" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@android:id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:checkMark="?android:attr/textCheckMark"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:paddingRight="5dp"
+        android:textAlignment="gravity"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:textColor="#000000"
+        android:textSize="11sp"
+        android:textStyle="normal"
+        android:visibility="visible" />
+
+
+
+
+
+
+</LinearLayout>
