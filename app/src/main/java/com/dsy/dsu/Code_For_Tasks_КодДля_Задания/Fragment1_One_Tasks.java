@@ -439,6 +439,9 @@ public class Fragment1_One_Tasks extends Fragment {
                                 Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.moveToFirst();
 
                             }
+
+                            МетодИнициализацииRecycleViewДляЗадач();
+
                         }
 
                         @Override
@@ -534,7 +537,6 @@ public class Fragment1_One_Tasks extends Fragment {
                             // TODO: 05.03.2022 change ui nivage buttom
                             // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
 
-                            МетодСозданиеНавигаторКнопок();
 
 
                             Log.d(this.getClass().getName(), "onChanged ");
