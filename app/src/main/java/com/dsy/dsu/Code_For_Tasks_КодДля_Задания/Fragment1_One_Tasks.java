@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteCursor;
 import android.graphics.Color;
@@ -249,21 +250,30 @@ public class Fragment1_One_Tasks extends Fragment {
 
         //todo метод  ИНИЦИАЛИЗАЦИИ RECYCLEVIEW ДЛЯ АКТИВТИ ЗАДАЧИ
 
-        subClassBusinessLogic_бизнесЛогикаДЛяАктивтиЗадачи. new SubClassObsevers_КлассСлушательСобытий(getContext()).  МетодИнициализацииRecycleViewДляЗадач();
+            subClassBusinessLogic_бизнесЛогикаДЛяАктивтиЗадачи.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодИнициализацииRecycleViewДляЗадач();
 
 
+            // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
+            // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
+            subClassBusinessLogic_бизнесЛогикаДЛяАктивтиЗадачи.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСозданиеНавигаторКнопок();
 
-        // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
-        // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
-        subClassBusinessLogic_бизнесЛогикаДЛяАктивтиЗадачи. new SubClassObsevers_КлассСлушательСобытий(getContext()). МетодСозданиеНавигаторКнопок();
+            // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
 
-        // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
+            // TODO: 02.03.2022
+            Integer ПубличныйIDДляФрагмента = new Class_Generations_PUBLIC_CURRENT_ID(getContext()).ПолучениеПубличногоТекущегоПользователяID();
+            // TODO: 02.03.2022
 
-        // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ
-        subClassBusinessLogic_бизнесЛогикаДЛяАктивтиЗадачи. new SubClassObsevers_КлассСлушательСобытий(getContext()). МетодКпопкаСоЗачкомКраснымДополнительныйСтатус();
+            Log.d(this.getClass().getName(), "ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
 
-        Log.d(this.getClass().getName(), " нет данных для отображения " +
-                "отработоатл new SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  МетодКпопкаСоЗачкомКраснымДополнительныйСтатус  "+Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
+            subClassBusinessLogic_бизнесЛогикаДЛяАктивтиЗадачи.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадачТолькоДляКоторыхВРАботе(ПубличныйIDДляФрагмента);
+
+
+            // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ
+            subClassBusinessLogic_бизнесЛогикаДЛяАктивтиЗадачи.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+
+            Log.d(this.getClass().getName(), " нет данных для отображения " +
+                    "отработоатл new SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  МетодКпопкаСоЗачкомКраснымДополнительныйСтатус  " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK +
+                    " Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
 
 
 
@@ -486,6 +496,23 @@ public class Fragment1_One_Tasks extends Fragment {
                             super.onItemRangeMoved(fromPosition, toPosition, itemCount);
                             // TODO: 02.03.2022
                             вибратор.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+
+                            // TODO: 13.03.2022
+                            try {
+                                // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ
+                                МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+
+                                Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+                                /////////////
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                ///метод запись ошибок в таблицу
+                                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            }
+
                             Log.d(this.getClass().getName(), "onItemRangeMoved ");
                         }
                     };
@@ -535,9 +562,31 @@ public class Fragment1_One_Tasks extends Fragment {
                             recyclerView.requestLayout();
 
                             // TODO: 05.03.2022 change ui nivage buttom
-                            // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
 
-                            МетодИнициализацииRecycleViewДляЗадач();
+
+                            // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ
+                            try {
+
+                                // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
+
+                                МетодИнициализацииRecycleViewДляЗадач();
+
+
+                                // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ
+                                МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+
+
+                                Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+
+                                /////////////
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                ///метод запись ошибок в таблицу
+                                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            }
 
 
                             Log.d(this.getClass().getName(), "onChanged ");
@@ -804,7 +853,19 @@ public class Fragment1_One_Tasks extends Fragment {
 
                         recyclerView.setAdapter(myRecycleViewAdapter);
 
+
+                        // TODO: 13.03.2022
+
                         Log.d(this.getClass().getName(), " отработоатл new SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи recyclerView   " + recyclerView);
+
+
+                        // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ когнданет записей  МетодИнициализацииRecycleViewДляЗадачМетодИнициализацииRecycleViewДляЗадач
+                        МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+
+
+                        Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе +
+                                " Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+
 
                         linearLayou.requestLayout();
 
@@ -828,8 +889,6 @@ public class Fragment1_One_Tasks extends Fragment {
                         bottomNavigationViewДляTasks = (BottomNavigationView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.bottomnavigationActiviTask8);
 
 
-
-
                         // TODO: 28.02.2022
                         recyclerView = (RecyclerView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.recycleviewActiviTask);
 
@@ -838,11 +897,12 @@ public class Fragment1_One_Tasks extends Fragment {
                         LinearLayout linearLayou = (LinearLayout) getActivity().findViewById(R.id.activity_main_fisrt_for_tasks);
 
 
-                        bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setVisible(false);//.getOrCreateBadge(R.id.id_taskHome).setVisible(true);
+                        // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ когнданет записей  МетодИнициализацииRecycleViewДляЗадачМетодИнициализацииRecycleViewДляЗадач
+                        МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
 
-                        bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setNumber(Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount());
 
-                        bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setBackgroundColor(Color.MAGENTA);
+                        Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе +
+                                " Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
 
 
                         // TODO: 03.03.2022
@@ -1022,46 +1082,52 @@ public class Fragment1_One_Tasks extends Fragment {
 
             }
 
-            private void МетодКпопкаСоЗачкомКраснымДополнительныйСтатус() throws ExecutionException, InterruptedException {
+            private void МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(@NonNull Cursor cursorДЛяОпределенияНужноПоказыватьЗначеиЛИнЕТ) throws ExecutionException, InterruptedException {
                 // TODO: 02.03.2022
 
                 try {
-                Integer ПубличныйIDДляФрагмента = new Class_Generations_PUBLIC_CURRENT_ID(getContext()).ПолучениеПубличногоТекущегоПользователяID();
-                // TODO: 02.03.2022
+                    Integer ПубличныйIDДляФрагмента = new Class_Generations_PUBLIC_CURRENT_ID(getContext()).ПолучениеПубличногоТекущегоПользователяID();
+                    // TODO: 02.03.2022
 
-                Log.d(this.getClass().getName(), "ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
-
-                subClassBusinessLogic_бизнесЛогикаДЛяАктивтиЗадачи.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадачТолькоДляКоторыхВРАботе(ПубличныйIDДляФрагмента);
-
-                Log.d(this.getClass().getName(), "  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+                    Log.d(this.getClass().getName(), "  cursorДЛяОпределенияНужноПоказыватьЗначеиЛИнЕТ " + cursorДЛяОпределенияНужноПоказыватьЗначеиЛИнЕТ);
 
 
-                if (Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount() > 0) {
-                    // TODO: 06.03.2022
-                    bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setVisible(true);//.getOrCreateBadge(R.id.id_taskHome).setVisible(true);
+                    if (cursorДЛяОпределенияНужноПоказыватьЗначеиЛИнЕТ.getCount() > 0) {
+                        // TODO: 06.03.2022
+                        bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setVisible(true);//.getOrCreateBadge(R.id.id_taskHome).setVisible(true);
 
-                    // TODO: 06.03.2022
+                        // TODO: 06.03.2022
 
-                    bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setNumber(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount());//.getOrCreateBadge(R.id.id_taskHome).setVisible(true);
+                        bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setNumber(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount());//.getOrCreateBadge(R.id.id_taskHome).setVisible(true);
+
+                        //// bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setBackgroundColor(Color.WHITE);
 // TODO: 06.03.2022
 
-                    Log.d(this.getClass().getName(), "  bottomNavigationViewДляTasks " + bottomNavigationViewДляTasks +
-                            "  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount()   " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount());
-                    // TODO: 05.03.2022
-                } else {
+                        Log.d(this.getClass().getName(), "  bottomNavigationViewДляTasks " + bottomNavigationViewДляTasks +
+                                "  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount()   " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount());
+                        // TODO: 05.03.2022
+                    } else {
                     // TODO: 06.03.2022
-                    bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setVisible(false);//.getOrCreateBadge(R.id.id_taskHome).setVisible(true);
-                    // TODO: 09.03.2022
-                    bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setNumber(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount());
-                    // TODO: 10.03.2022
-                    bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setBackgroundColor(Color.MAGENTA);
-                }
+                        bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setVisible(false);//.getOrCreateBadge(R.id.id_taskHome).setVisible(true);
+                        // TODO: 09.03.2022
+                        bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setNumber(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount());
+                        // TODO: 10.03.2022
+                        bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setBackgroundColor(Color.MAGENTA);
+                    }
 
 
-                Log.d(this.getClass().getName(), "  bottomNavigationViewДляTasks " + bottomNavigationViewДляTasks +
-                        "  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount()   " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
-                /////////////
-            } catch (Exception e) {
+                    Log.d(this.getClass().getName(), "  bottomNavigationViewДляTasks " + bottomNavigationViewДляTasks +
+                            "  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount()   " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+
+                    // TODO: 13.03.2022
+
+                    bottomNavigationViewДляTasks.requestLayout();
+
+                    // TODO: 13.03.2022
+
+                    bottomNavigationViewДляTasks.requestApplyInsets();
+                    /////////////
+                } catch (Exception e) {
                 e.printStackTrace();
                 ///метод запись ошибок в таблицу
                 Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
@@ -1478,53 +1544,6 @@ public class Fragment1_One_Tasks extends Fragment {
                     Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + AccessibilityNodeInfoДанныеДляViewCard);
 
 
-
-          /*          holder.materialCardView.setOnCheckedChangeListener(new MaterialCardView.OnCheckedChangeListener() {
-                        @Override
-                        public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
-                            // TODO: 13.03.2022
-                            int ИндексдляНепрочитанный = R.drawable.icon_dsu1_fortasks_cardview_color_geeeey;
-                            // TODO: 13.03.2022
-                            int ИндексПпрочитанные = R.drawable.icon_dsu1_fortasks_cardview_color_geen;
-                            // TODO: 13.03.2022
-
-                            Drawable drawableПпрочитанные
-                                    = getContext().getDrawable(ИндексПпрочитанные);
-                            // TODO: 13.03.2022
-                            Drawable drawableИндексдляНепрочитанный
-                                    = getContext().getDrawable(ИндексдляНепрочитанный);
-                            // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), " card  " + card +
-                                    "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " isChecked " + isChecked);
-
-                            // TODO: 13.03.2022
-
-                            if (isChecked) {
-
-                                card.setCheckedIcon(drawableПпрочитанные);
-                                // TODO: 13.03.2022
-                                card.setCheckedIconResource(ИндексПпрочитанные);
-                                // TODO: 13.03.2022
-                                card.setSelected(true);
-
-                                // TODO: 13.03.2022
-                                Log.d(this.getClass().getName(), "   holder.materialCardView.setOnCheckedChangeListener  isChecked    " + isChecked);
-
-                            } else {
-                                card.setCheckedIcon(drawableИндексдляНепрочитанный);
-                                // TODO: 13.03.2022
-                                card.setCheckedIconResource(ИндексдляНепрочитанный);
-
-                                // TODO: 13.03.2022
-
-                                // TODO: 13.03.2022
-                                Log.d(this.getClass().getName(), "  holder.materialCardView.setOnCheckedChangeListener  isChecked   " + isChecked);
-                            }
-
-                            // TODO: 13.03.2022
-                        }
-                    });*/
-
                     // TODO: 13.03.2022
 
                     if (СамСтатусПрочтенияИлиНет > 0) { //СамСтатусПрочтенияИлиНет  holder.getAdapterPosition()
@@ -1749,6 +1768,8 @@ public class Fragment1_One_Tasks extends Fragment {
                                 // TODO: 13.03.2022
                                 notifyDataSetChanged();
 
+                                Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 0 " + СтатусПрочтеаУжеЗадачаИлиНет);
+
                                 Toast.makeText(getActivity(), " Статус сменили на ознакомленный  #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
 
                             }, 2500);
@@ -1758,6 +1779,7 @@ public class Fragment1_One_Tasks extends Fragment {
                             ///////TODO запускаем смены стануса задачи черезе PendingIntent
                             Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 1  " + СтатусПрочтеаУжеЗадачаИлиНет);
 
+                            Toast.makeText(getActivity(), " Статус ознакомлена !!!   #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
                         }
 
                         // TODO: 03.03.2022 update screewn
