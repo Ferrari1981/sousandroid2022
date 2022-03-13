@@ -8,7 +8,6 @@ import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteCursor;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.VibrationEffect;
@@ -75,26 +74,22 @@ public class Fragment1_One_Tasks extends Fragment {
     private  RecyclerView recyclerView;
     // TODO: 01.03.2022
 
-    private   AccessibilityNodeInfo accessibilityNodeInfo;
+    private   AccessibilityNodeInfo AccessibilityNodeInfoДанныеДляViewCard;
 
-    private  AccessibilityNodeInfo accessibilityNodeInfoДоплнительно;
-
-
+    // TODO: 13.03.2022
     MyRecycleViewAdapter myRecycleViewAdapter;
 
     private   MyViewHolder myViewHolder;
 
     // TODO: 28.02.2022
 
-    private ArrayList<String> arrayListПердаемДанные;
+    private ArrayList<String> arrayListПердаемДанныеДляViewCard;
     // TODO: 04.03.2022
 
-
-    private  ArrayList<String> arrayListПердаемДанныеДополнительные;
     // TODO: 28.02.2022
     // listforrecycleview listforrecycleview;
     // TODO: 28.02.2022
-    private  MaterialCardView materialCardView;
+
 
     // TODO: 02.03.2022
     SQLiteCursor Курсор_ДляПолученияДАнныхДляЗАДАЧTASK = null;
@@ -162,6 +157,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
 
             textViewТекущаяЗадача.setText("Задания".toUpperCase());
+
 
 
             ///   getResources().getDrawable(this,R.drawable.icon_dsu1_add_organisazio_success
@@ -384,14 +380,8 @@ public class Fragment1_One_Tasks extends Fragment {
             // TODO: 02.03.2022
             try {
 
-                arrayListПердаемДанные = new ArrayList();
-                // TODO: 04.03.2022
-
-                arrayListПердаемДанныеДополнительные = new ArrayList<>();
 
                 // TODO: 04.03.2022
-
-
                 // TODO: 02.03.2022
                 Integer ПубличныйIDДляФрагмента = new Class_Generations_PUBLIC_CURRENT_ID(getContext()).ПолучениеПубличногоТекущегоПользователяID();
                 // TODO: 02.03.2022
@@ -1172,6 +1162,10 @@ public class Fragment1_One_Tasks extends Fragment {
     private class MyViewHolder extends RecyclerView.ViewHolder {
         // TODO: 28.02.2022
         TextView textView1, textView2, textView3, textView4,textView5;
+        // TODO: 13.03.2022
+
+        MaterialCardView materialCardView;
+
 
         ImageView imageViewIcon;
 
@@ -1228,10 +1222,10 @@ public class Fragment1_One_Tasks extends Fragment {
                 // TODO: 28.02.2022
                 textView5 = (TextView) itemView.findViewById(R.id.text5_innercardviewtype_tasks);
 
-
-
+                // TODO: 13.03.2022
 
                 Log.d(this.getClass().getName(), " отработоатл new SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи materialCardView  textView2 " + textView4);
+
 
 
                 // TODO: 01.03.2022
@@ -1242,10 +1236,19 @@ public class Fragment1_One_Tasks extends Fragment {
                 // TODO: 01.03.2022*/
 
 
-                materialCardView.setCheckedIcon(getResources().getDrawable(R.drawable.icon_dsu1_add_organisazio_error));
+
+                // TODO: 01.03.2022 уставнока дополнительный данныых
+
+                AccessibilityNodeInfoДанныеДляViewCard = materialCardView.createAccessibilityNodeInfo();
+                // TODO: 13.03.2022
+
+                arrayListПердаемДанныеДляViewCard = new ArrayList();
 
 
-// TODO: 01.03.2022
+
+
+
+// TODO: 01.03.2022 слушатели
 
                 materialCardView.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
@@ -1264,19 +1267,39 @@ public class Fragment1_One_Tasks extends Fragment {
                     public void onClick(View v) {
                         // TODO: 01.03.2022
                         Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   v  " + v);
+
+                        // TODO: 13.03.2022
+                        Object ПозицияЭлментаVIewCard=v.getTag();
+                        // TODO: 13.03.2022
+                        // TODO: 13.03.2022
+                        Object ПозицияЭлментаVIewCardДополнительно=v.getTextAlignment();
+
+
+
+                        // TODO: 13.03.2022
+                        Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   ПозицияЭлментаVIewCard  " + ПозицияЭлментаVIewCard  +
+                                " ПозицияЭлментаVIewCardДополнительно " +ПозицияЭлментаVIewCardДополнительно);
+
+                        // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
+                        Long ПолучаемUUIDТекущйПозицииВRecyreView = AccessibilityNodeInfoДанныеДляViewCard.getAvailableExtraData().stream().map(Long::new)
+                                .distinct().collect(Collectors.toList()).get((Integer) ПозицияЭлментаVIewCardДополнительно).longValue();
+
+                        // TODO: 13.03.2022
+
+                        // TODO: 13.03.2022
+                        Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   ПозицияЭлментаVIewCard  " + ПозицияЭлментаVIewCard  +
+                                " ПозицияЭлментаVIewCardДополнительно " +ПозицияЭлментаVIewCardДополнительно);
+
+
                     }
                 });
-                // TODO: 01.03.2022
 
-                accessibilityNodeInfo = textView1.createAccessibilityNodeInfo();
+
 
                 // TODO: 04.03.2022
 
 
-                accessibilityNodeInfoДоплнительно = textView1.createAccessibilityNodeInfo();
-
-
-                Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи  accessibilityNodeInfoДоплнительно " + accessibilityNodeInfoДоплнительно);
+                Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи  accessibilityNodeInfoДоплнительно " );
 
 
                 ///////
@@ -1372,7 +1395,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
                     // TODO: 03.03.2022
 
-                    Long ПолучаемUUIDЗадачиПокоторойСческнули = Long.valueOf(accessibilityNodeInfo.getAvailableExtraData().stream().collect(Collectors.toList()).get(ПолучаемПозициюЗадачи));
+                    Long ПолучаемUUIDЗадачиПокоторойСческнули = Long.valueOf(AccessibilityNodeInfoДанныеДляViewCard.getAvailableExtraData().stream().collect(Collectors.toList()).get(ПолучаемПозициюЗадачи));
 
                     Log.d(this.getClass().getName(), "  ПолучаемUUIDЗадачиПокоторойСческнули " + ПолучаемUUIDЗадачиПокоторойСческнули);
 
@@ -1435,90 +1458,6 @@ public class Fragment1_One_Tasks extends Fragment {
 
             // TODO: 03.03.2022
 
-
-            myViewHolder.textView1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // TODO: 28.02.2022
-
-                    try {
-
-                        // TODO: 03.03.2022
-                        /////
-                        Vibrator v2 = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
-                        // Vibrate for 500 milliseconds
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            v2.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
-                        } else {
-                            //deprecated in API 26
-                            v2.vibrate(100);
-                        }
-
-                        // TODO: 03.03.2022  получаем отраюотана задача уже или нет
-
-                        String ПолучаемСтатусОтработалаЗаданиеИлиНЕт = ((TextView) v).getTag().toString();
-
-                        // TODO: 03.03.2022
-
-                        // TODO: 03.03.2022
-
-                        Integer ПолучаемПозициюЗадачи = Integer.parseInt(String.valueOf(((TextView) v).getHint()));
-                        // TODO: 03.03.2022
-
-                        Log.d(this.getClass().getName(), "  ПолучаемПозициюЗадачи " + ПолучаемПозициюЗадачи + " myViewHolder.getItemViewType() " + myViewHolder.getItemViewType());
-
-
-                        // TODO: 03.03.2022
-
-
-                        Long ПолучаемUUIDЗадачиПокоторойСческнули = Long.valueOf(accessibilityNodeInfo.getAvailableExtraData().stream().distinct().collect(Collectors.toList()).get(ПолучаемПозициюЗадачи));
-
-                        Log.d(this.getClass().getName(), "  ПолучаемUUIDЗадачиПокоторойСческнули " + ПолучаемUUIDЗадачиПокоторойСческнули);
-
-                        // TODO: 03.03.2022
-
-
-                        // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
-                        String НазваниеЗадачиСамо = accessibilityNodeInfoДоплнительно.getAvailableExtraData().stream().distinct().collect(Collectors.toList()).get(ПолучаемПозициюЗадачи);
-
-                        // TODO: 04.03.2022
-
-                        Log.d(this.getClass().getName(), "  НазваниеЗадачиСамо " + НазваниеЗадачиСамо + " ПолучаемПозициюЗадачи  " + ПолучаемПозициюЗадачи);
-
-
-
-
-
-                        // TODO: 03.03.2022 update screewn
-
-                        Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.deactivate();
-                        // TODO: 03.03.2022
-
-                        Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.requery();
-
-                          /*      myRecycleViewAdapter.notifyDataSetChanged();
-
-                                recyclerView.requestLayout();*/
-
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        ///метод запись ошибок в таблицу
-                        Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                                " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                        new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                                Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                        //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
-                    }
-
-                }
-                // TODO: 03.03.2022
-
-            });
-            // TODO: 02.03.2022
-
-
-// TODO: 01.03.2022
 // TODO: 01.03.2022
         } catch (Exception e) {
             e.printStackTrace();
@@ -1751,35 +1690,29 @@ public class Fragment1_One_Tasks extends Fragment {
                     Log.i(this.getClass().getName(), "  UUIDДЛяЗАДАНИЯКотореВыбрали " + UUIDДЛяЗАДАНИЯКотореВыбрали);
 
 
-                    // TODO: 03.03.2022
-                    holder.textView1.setHint(String.valueOf(position));
-
-
-
-
-                    // TODO: 03.03.2022
-                    arrayListПердаемДанные.add(String.valueOf(UUIDДЛяЗАДАНИЯКотореВыбрали));
-                    // TODO: 03.03.2022
+                    // TODO: 03.03.2022 передаем помер позиции position
+                    holder.materialCardView.setTextAlignment(position);
+                    // TODO: 03.03.2022 передаем помер позиции position
+                    // TODO: 03.03.2022 передаем помер позиции position
+                    holder.materialCardView.getTag(holder.getAdapterPosition());
+                    // TODO: 03.03.2022 передаем помер позиции position
 
                     // TODO: 03.03.2022
-                    accessibilityNodeInfo.setAvailableExtraData(arrayListПердаемДанные);
+                    arrayListПердаемДанныеДляViewCard.add(String.valueOf(UUIDДЛяЗАДАНИЯКотореВыбрали));
+                    // TODO: 03.03.2022
 
-                    Log.i(this.getClass().getName(), "      holder.textView1 accessibilityNodeInfo  " + accessibilityNodeInfo);
+                    // TODO: 03.03.2022
+                    AccessibilityNodeInfoДанныеДляViewCard.setAvailableExtraData(arrayListПердаемДанныеДляViewCard);
+                    // TODO: 13.03.2022
+                    // TODO: 12.03.2022
+                    AccessibilityNodeInfoДанныеДляViewCard.addChild(holder. materialCardView);
+                    // TODO: 13.03.2022
+                    Log.i(this.getClass().getName(), "      holder.textView1 accessibilityNodeInfo  " + AccessibilityNodeInfoДанныеДляViewCard);
 
 
                     // TODO: 04.03.2022
 
-                    arrayListПердаемДанныеДополнительные.add("Задача #" + String.valueOf(IDЗадачиТекущей));
-
-
-                    accessibilityNodeInfoДоплнительно.setAvailableExtraData(arrayListПердаемДанныеДополнительные);
-
-                    // TODO: 06.03.2022
-
-                    /* accessibilityNodeInfoДоплнительно.setO*/
-
-
-                    Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfoДоплнительно " + accessibilityNodeInfoДоплнительно);
+                    Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + AccessibilityNodeInfoДанныеДляViewCard + " arrayListПердаемДанные " + arrayListПердаемДанныеДляViewCard);
 
                     // TODO: 04.03.2022
 
