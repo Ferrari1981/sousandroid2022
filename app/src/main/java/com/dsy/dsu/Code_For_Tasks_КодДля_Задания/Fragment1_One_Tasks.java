@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -1606,8 +1607,6 @@ public class Fragment1_One_Tasks extends Fragment {
                     holder.textView5.setText("тип: "+СамТипЗадания);
 
 
-
-
 // TODO: 03.03.2022
 
                     Integer ИндексUUIDДЛяЗАДАНИЯКотореВыбрали = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("uuid");///"uuid_notifications"
@@ -1617,9 +1616,15 @@ public class Fragment1_One_Tasks extends Fragment {
 
                     Log.i(this.getClass().getName(), "  UUIDДЛяЗАДАНИЯКотореВыбрали " + UUIDДЛяЗАДАНИЯКотореВыбрали);
 
+
+                    // TODO: 13.03.2022  передаем статус задачи
+
                     Integer позиция = holder.getAdapterPosition();
+
                     // TODO: 03.03.2022 передаем помер позиции position
-                    holder.materialCardView.setTag(holder.materialCardView.getId(), позиция);
+                    holder.materialCardView.setTag(holder.materialCardView.getId(), СамСтатусПрочтенияИлиНет);
+
+
                     // TODO: 03.03.2022 передаем помер позиции position
 
 
@@ -1671,9 +1676,6 @@ public class Fragment1_One_Tasks extends Fragment {
                 // TODO: 03.03.2022
                 AccessibilityNodeInfoДанныеДляViewCard.setAvailableExtraData(arrayListПердаемДанныеДляViewCard);
                 // TODO: 13.03.2022
-                // TODO: 12.03.2022
-                AccessibilityNodeInfoДанныеДляViewCard.addChild(holder.materialCardView);
-                // TODO: 13.03.2022
 
                 // TODO: 04.03.2022
                 Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + AccessibilityNodeInfoДанныеДляViewCard + " arrayListПердаемДанные " + arrayListПердаемДанныеДляViewCard);
@@ -1722,6 +1724,8 @@ public class Fragment1_One_Tasks extends Fragment {
                             card.setCheckedIcon(drawableПпрочитанные);
                             // TODO: 13.03.2022
                             card.setCheckedIconResource(ИндексПпрочитанные);
+                            // TODO: 13.03.2022
+                            card.setSelected(true);
 
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), "   holder.materialCardView.setOnCheckedChangeListener  isChecked    " + isChecked);
@@ -1736,6 +1740,10 @@ public class Fragment1_One_Tasks extends Fragment {
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), "  holder.materialCardView.setOnCheckedChangeListener  isChecked   " + isChecked);
                         }
+
+                        // TODO: 13.03.2022
+                        // TODO: 13.03.2022
+                        notifyDataSetChanged();
                     }
                 });
 
@@ -1751,18 +1759,82 @@ public class Fragment1_One_Tasks extends Fragment {
                         Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   ПозицияЭлментаVIewCardДополнительно  " +
                                 " holder.getAdapterPosition() " + holder.getAdapterPosition() + " v.getTag() " + v.getTag(holder.materialCardView.getId()));
 
+                        // TODO: 13.03.2022  статус прочтения ли уде или нет адание
+
+                        Object СтатусПрочтеаУжеЗадачаИлиНет = v.getTag(holder.materialCardView.getId());
+
+
                         // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
                         Long ПолучаемUUIDТекущйПозицииВRecyreView = AccessibilityNodeInfoДанныеДляViewCard.getAvailableExtraData().stream().map(Long::new)
                                 .distinct().collect(Collectors.toList()).get(holder.getAdapterPosition()).longValue();
 
                         // TODO: 13.03.2022
+// TODO: 13.03.2022
+                        Log.d(this.getClass().getName(), "  СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет
+                                + " ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView);
+
+
+                        // TODO: 03.03.2022  запускам сменты статуса
+
+                        if (Integer.parseInt(String.valueOf(СтатусПрочтеаУжеЗадачаИлиНет)) == 0 && ПолучаемUUIDТекущйПозицииВRecyreView != null) {
+
+                            ///
+                            String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForChat";
+
+                            String PROCESS_ID_УведомленияПлановая = "12";
+
+                            // TODO: 03.03.2022
+
+                            SubClass_Starting_chahge_status_public_notificaton subClass_starting_chahge_status_public_notificaton =
+                                    new SubClass_Starting_chahge_status_public_notificaton(getContext());
+
+                            // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи
+                            PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = subClass_starting_chahge_status_public_notificaton.
+                                    МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата, String.valueOf(ПолучаемUUIDТекущйПозицииВRecyreView));
+
+
+                            try {
+
+                                // TODO: 03.03.2022  запускаем службу смены статуса
+                                ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
+
+
+                            } catch (PendingIntent.CanceledException e) {
+                                e.printStackTrace();
+                            }
+                            ///////TODO запускаем смены стануса задачи черезе PendingIntent
+                            Log.d(getContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая " + PROCESS_ID_УведомленияПлановая +
+                                    " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата + " СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
+
+
+                            // TODO: 03.03.2022 update screewn
+                            Handler handlerЗапускаемОтсрочнуюСменуСтатуса = new Handler();
+                            // TODO: 04.03.2022
+                            handlerЗапускаемОтсрочнуюСменуСтатуса.postDelayed(() -> {
+                                // TODO: 04.03.2022
+
+                                Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.deactivate();
+                                // TODO: 03.03.2022
+
+                                Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.requery();
+                                // TODO: 13.03.2022
+                                // TODO: 13.03.2022
+                                notifyDataSetChanged();
+
+                                Toast.makeText(getActivity(), " Статус сменили на ознакомленный  #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
+
+                            }, 2500);
+
+                        }
+
+                        // TODO: 03.03.2022 update screewn
 
                         // TODO: 13.03.2022
                         Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView +
                                 " holder.getAdapterPosition() " + holder.getAdapterPosition());
+
                         // TODO: 13.03.2022
                         notifyDataSetChanged();
-
 
                     }
                 });
