@@ -58,7 +58,7 @@
                 android:visibility="visible" />
 
 
-          <!--  android:src="@drawable/icon_dsu1_add_organisazio_success"-->
+<!--          &lt;!&ndash;  android:src="@drawable/icon_dsu1_add_organisazio_success"&ndash;&gt;
             <ImageView
                 android:id="@+id/imageview_cardviewtask"
                 android:layout_width="25dp"
@@ -71,7 +71,7 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="5dp"
                 android:layout_alignParentEnd="true"
-                app:srcCompat="@drawable/icon_dsu1_add_organisazio_success" />
+                app:srcCompat="@drawable/icon_dsu1_add_organisazio_success" />-->
 
 
             <TextView

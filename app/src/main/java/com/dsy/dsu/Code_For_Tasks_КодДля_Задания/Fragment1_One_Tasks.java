@@ -7,7 +7,6 @@ import android.content.Context;
 import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteCursor;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.VibrationEffect;
@@ -18,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityNodeInfo;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -1167,7 +1165,7 @@ public class Fragment1_One_Tasks extends Fragment {
         MaterialCardView materialCardView;
 
 
-        ImageView imageViewIcon;
+       // ImageView imageViewIcon;
 
         // TODO: 02.03.2022
 
@@ -1204,7 +1202,7 @@ public class Fragment1_One_Tasks extends Fragment {
                 textView1 = (TextView) itemView.findViewById(R.id.text1_innercardview);
                 // TODO: 28.02.2022
 
-                imageViewIcon = (ImageView) itemView.findViewById(R.id.imageview_cardviewtask);
+                //   imageViewIcon = (ImageView) itemView.findViewById(R.id.imageview_cardviewtask);
                 // TODO: 02.03.2022
                 // TODO: 02.03.2022  дополнительный
 
@@ -1566,7 +1564,7 @@ public class Fragment1_One_Tasks extends Fragment {
                     Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
 
 
-                    Drawable drawableПрочитанные = getContext().getDrawable(R.drawable.icon_dsu1_task_grey);
+        /*            Drawable drawableПрочитанные = getContext().getDrawable(R.drawable.icon_dsu1_task_grey);
                     // TODO: 02.03.2022
 
                     Drawable drawableПрочитанныеНЕпрочитанный = getContext().getDrawable(R.drawable.icon_dsu1_add_organisazio_success);
@@ -1580,19 +1578,19 @@ public class Fragment1_One_Tasks extends Fragment {
                     // TODO: 02.03.2022  drawableПрочитанныеНЕпрочитанный
                     drawableПрочитанныеНЕпрочитанный.setBounds(5, 5, 5, 5);
                     // TODO: 02.03.2022
-                    drawableПрочитанные.setBounds(5, 5, 5, 5);
+                    drawableПрочитанные.setBounds(5, 5, 5, 5);*/
 
 
                     // TODO: 02.03.2022  если БОЛЬШЕ НОЛЯ ТО СООБЩЕНИ ПРОЧИТАННО
 
-                    if (СамСтатусПрочтенияИлиНет > 0) {
+         /*           if (СамСтатусПрочтенияИлиНет > 0) {
                         // TODO: 02.03.2022
                         holder.imageViewIcon.setBackgroundDrawable(drawableПрочитанные);
                     } else {
                         // TODO: 02.03.2022
                         holder.imageViewIcon.setBackgroundDrawable(drawableПрочитанныеНЕпрочитанный);
 
-                    }
+                    }*/
 
                     // TODO: 02.03.2022
 
@@ -1637,14 +1635,39 @@ public class Fragment1_One_Tasks extends Fragment {
                     // TODO: 03.03.2022 передаем помер позиции position
                     holder.materialCardView.setTag(holder.materialCardView.getId(), позиция);
                     // TODO: 03.03.2022 передаем помер позиции position
-                    holder.materialCardView.setChecked(true);
-                    // TODO: 13.03.2022
+
+              /*      // TODO: 13.03.2022
                     //Drawable drawableПрочитанные = getContext().getDrawable(R.drawable.icon_dsu1_task_grey);
                     // TODO: 02.03.2022
 
                     Drawable drawableПрочитанныеНЕпрочитанныйДляСистемногозначка = getContext().getDrawable(R.drawable.icon_dsu1_add_organisazio_success);
 
-                    holder.materialCardView.setCheckedIcon(drawableПрочитанныеНЕпрочитанныйДляСистемногозначка);
+
+
+
+
+                    if (СамСтатусПрочтенияИлиНет > 0) {
+                        // TODO: 02.03.2022
+                       // holder.imageViewIcon.setBackgroundDrawable(drawableПрочитанные);
+
+                        Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
+                    } else {
+                        // TODO: 02.03.2022
+                        holder.materialCardView.setCheckedIcon(drawableПрочитанныеНЕпрочитанныйДляСистемногозначка);
+
+                        Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
+
+                    }
+
+
+                //    holder.materialCardView.setCheckedIcon(drawableПрочитанныеНЕпрочитанныйДляСистемногозначка);*/
+
+                    holder.materialCardView.toggle();
+
+                    // TODO: 13.03.2022
+                    holder.materialCardView.setCheckedIcon(getContext().getDrawable(R.drawable.icon_dsu1_fortasks_cardview_color_geen));
+                    // TODO: 13.03.2022
+                    holder.materialCardView.setChecked(true);
 
 
                     // TODO: 03.03.2022 заполянем arraylistt
@@ -1678,20 +1701,8 @@ public class Fragment1_One_Tasks extends Fragment {
                         }
                     });
 
+
 // TODO: 01.03.2022 слушатели
-
-
-                    holder.materialCardView.setOnCheckedChangeListener(new MaterialCardView.OnCheckedChangeListener() {
-                        @Override
-                        public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
-                            // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   ПолучаемUUIDТекущйПозицииВRecyreView " +
-                                    " holder.getAdapterPosition() " + holder.getAdapterPosition());
-                            // TODO: 13.03.2022
-
-                        }
-                    });
-
 
                     holder.materialCardView.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -1711,6 +1722,8 @@ public class Fragment1_One_Tasks extends Fragment {
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView +
                                     " holder.getAdapterPosition() " + holder.getAdapterPosition());
+                            // TODO: 13.03.2022
+                            notifyDataSetChanged();
 
 
                         }
