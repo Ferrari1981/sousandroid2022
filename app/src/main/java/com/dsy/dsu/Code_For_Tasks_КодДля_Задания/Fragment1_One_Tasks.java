@@ -1246,48 +1246,41 @@ public class Fragment1_One_Tasks extends Fragment {
 
 
 
-
-
 // TODO: 01.03.2022 слушатели
-
-                materialCardView.setOnLongClickListener(new View.OnLongClickListener() {
+                materialCardView.setOnCheckedChangeListener(new MaterialCardView.OnCheckedChangeListener() {
                     @Override
-                    public boolean onLongClick(View v) {
-
-                        // TODO: 01.03.2022
-                        Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   v  " + v);
-                        return false;
+                    public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
+                        // TODO: 13.03.2022
+                        // TODO: 13.03.2022
+                        Log.d(this.getClass().getName(), " card  " + card  +
+                                "  myViewHolder.getAdapterPosition() " +myViewHolder.getAdapterPosition());
                     }
                 });
 
-                // TODO: 01.03.2022
-
+// TODO: 01.03.2022 слушатели
                 materialCardView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         // TODO: 01.03.2022
                         Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   v  " + v);
-
                         // TODO: 13.03.2022
-                        Object ПозицияЭлментаVIewCard=v.getTag();
-                        // TODO: 13.03.2022
-                        // TODO: 13.03.2022
-                        Object ПозицияЭлментаVIewCardДополнительно=v.getTextAlignment();
+                        Integer ПозицияЭлментаVIewCardДополнительно=Integer.parseInt((String) v.getTooltipText());
 
 
 
                         // TODO: 13.03.2022
-                        Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   ПозицияЭлментаVIewCard  " + ПозицияЭлментаVIewCard  +
-                                " ПозицияЭлментаVIewCardДополнительно " +ПозицияЭлментаVIewCardДополнительно);
+                        Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   ПозицияЭлментаVIewCardДополнительно  " + ПозицияЭлментаVIewCardДополнительно  +
+                                " ПозицияЭлментаVIewCardДополнительно " +ПозицияЭлментаVIewCardДополнительно+
+                                "  myViewHolder.getAdapterPosition() " +myViewHolder.getAdapterPosition());
 
                         // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
                         Long ПолучаемUUIDТекущйПозицииВRecyreView = AccessibilityNodeInfoДанныеДляViewCard.getAvailableExtraData().stream().map(Long::new)
-                                .distinct().collect(Collectors.toList()).get((Integer) ПозицияЭлментаVIewCardДополнительно).longValue();
+                                .distinct().collect(Collectors.toList()).get(ПозицияЭлментаVIewCardДополнительно).longValue();
 
                         // TODO: 13.03.2022
 
                         // TODO: 13.03.2022
-                        Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   ПозицияЭлментаVIewCard  " + ПозицияЭлментаVIewCard  +
+                        Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   ПозицияЭлментаVIewCardДополнительно  " + ПозицияЭлментаVIewCardДополнительно  +
                                 " ПозицияЭлментаVIewCardДополнительно " +ПозицияЭлментаVIewCardДополнительно);
 
 
@@ -1689,12 +1682,15 @@ public class Fragment1_One_Tasks extends Fragment {
 
                     Log.i(this.getClass().getName(), "  UUIDДЛяЗАДАНИЯКотореВыбрали " + UUIDДЛяЗАДАНИЯКотореВыбрали);
 
-
+                    holder.materialCardView.setTextDirection(position);
+                    // TODO: 13.03.2022
+                    holder.materialCardView.setTooltipText(String.valueOf(position));
                     // TODO: 03.03.2022 передаем помер позиции position
                     holder.materialCardView.setTextAlignment(position);
                     // TODO: 03.03.2022 передаем помер позиции position
+                    Integer позиция=holder.getAdapterPosition();
                     // TODO: 03.03.2022 передаем помер позиции position
-                    holder.materialCardView.getTag(holder.getAdapterPosition());
+                    holder.materialCardView.setTag(holder.materialCardView.getId(),позиция);
                     // TODO: 03.03.2022 передаем помер позиции position
 
                     // TODO: 03.03.2022
