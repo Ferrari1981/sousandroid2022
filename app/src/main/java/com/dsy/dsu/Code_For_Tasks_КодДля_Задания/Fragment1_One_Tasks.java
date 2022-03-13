@@ -1236,7 +1236,6 @@ public class Fragment1_One_Tasks extends Fragment {
                 // TODO: 01.03.2022*/
 
 
-
                 // TODO: 01.03.2022 уставнока дополнительный данныых
 
                 AccessibilityNodeInfoДанныеДляViewCard = materialCardView.createAccessibilityNodeInfo();
@@ -1638,6 +1637,15 @@ public class Fragment1_One_Tasks extends Fragment {
                     // TODO: 03.03.2022 передаем помер позиции position
                     holder.materialCardView.setTag(holder.materialCardView.getId(), позиция);
                     // TODO: 03.03.2022 передаем помер позиции position
+                    holder.materialCardView.setChecked(true);
+                    // TODO: 13.03.2022
+                    //Drawable drawableПрочитанные = getContext().getDrawable(R.drawable.icon_dsu1_task_grey);
+                    // TODO: 02.03.2022
+
+                    Drawable drawableПрочитанныеНЕпрочитанныйДляСистемногозначка = getContext().getDrawable(R.drawable.icon_dsu1_add_organisazio_success);
+
+                    holder.materialCardView.setCheckedIcon(drawableПрочитанныеНЕпрочитанныйДляСистемногозначка);
+
 
                     // TODO: 03.03.2022 заполянем arraylistt
                     if (!arrayListПердаемДанныеДляViewCard.contains(String.valueOf(UUIDДЛяЗАДАНИЯКотореВыбрали))) {
@@ -1671,6 +1679,20 @@ public class Fragment1_One_Tasks extends Fragment {
                     });
 
 // TODO: 01.03.2022 слушатели
+
+
+                    holder.materialCardView.setOnCheckedChangeListener(new MaterialCardView.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
+                            // TODO: 13.03.2022
+                            Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   ПолучаемUUIDТекущйПозицииВRecyreView " +
+                                    " holder.getAdapterPosition() " + holder.getAdapterPosition());
+                            // TODO: 13.03.2022
+
+                        }
+                    });
+
+
                     holder.materialCardView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
