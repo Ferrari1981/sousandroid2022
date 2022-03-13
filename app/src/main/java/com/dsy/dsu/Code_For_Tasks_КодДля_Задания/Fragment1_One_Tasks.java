@@ -1097,6 +1097,8 @@ public class Fragment1_One_Tasks extends Fragment {
 
                         bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setNumber(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount());//.getOrCreateBadge(R.id.id_taskHome).setVisible(true);
 
+
+                        bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setBackgroundColor(Color.RED);
                         //// bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setBackgroundColor(Color.WHITE);
 // TODO: 06.03.2022
 
@@ -1109,7 +1111,7 @@ public class Fragment1_One_Tasks extends Fragment {
                         // TODO: 09.03.2022
                         bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setNumber(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount());
                         // TODO: 10.03.2022
-                        bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setBackgroundColor(Color.MAGENTA);
+                        bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setBackgroundColor(Color.BLACK);
                     }
 
 
@@ -1534,6 +1536,7 @@ public class Fragment1_One_Tasks extends Fragment {
                     // TODO: 03.03.2022 парсинг даты
 
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", new Locale("ru"));
+                    // TODO: 13.03.2022
                     dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", new Locale("ru"));
 
                     /////////
@@ -1632,8 +1635,12 @@ public class Fragment1_One_Tasks extends Fragment {
                         Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет  toggle " + СамСтатусПрочтенияИлиНет);
 
                         holder.materialCardView.toggle();
+
                     } else {
-                        Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
+
+                        Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет  toggle " + СамСтатусПрочтенияИлиНет);
+
+                        holder.materialCardView.toggle();
                     }
 
 
@@ -1746,27 +1753,47 @@ public class Fragment1_One_Tasks extends Fragment {
 
                         // TODO: 13.03.2022
 
-                        if (isChecked) {
+                        // TODO: 02.03.2022#5
 
-                            card.setCheckedIcon(drawableПпрочитанные);
-                            // TODO: 13.03.2022
-                            card.setCheckedIconResource(ИндексПпрочитанные);
-                            // TODO: 13.03.2022
-                            card.setSelected(true);
+                        Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("status_write");
+                        // TODO: 02.03.2022
+
+                        Integer СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексСтатусПрочтенияИлиНЕт);
+
+                        // TODO: 13.03.2022
+                        if (isChecked && СамСтатусПрочтенияИлиНет > 0) {
+
 
                             // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "   holder.materialCardView.setOnCheckedChangeListener  isChecked    " + isChecked);
-
-                        } else {
                             card.setCheckedIcon(drawableИндексдляНепрочитанный);
                             // TODO: 13.03.2022
                             card.setCheckedIconResource(ИндексдляНепрочитанный);
 
                             // TODO: 13.03.2022
-
+                            // TODO: 13.03.2022
+                            card.setSelected(true);
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), "  holder.materialCardView.setOnCheckedChangeListener  isChecked   " + isChecked);
+
+
                         }
+
+                        // TODO: 13.03.2022
+
+                        if (СамСтатусПрочтенияИлиНет == 0) {
+
+                            // TODO: 13.03.2022
+                      /*  card.setCheckedIcon(drawableПпрочитанные);
+                            // TODO: 13.03.2022
+                            card.setCheckedIconResource(ИндексПпрочитанные);
+                            // TODO: 13.03.2022
+                            card.setSelected(true);*/
+
+                            // TODO: 13.03.2022
+                            Log.d(this.getClass().getName(), "   holder.materialCardView.setOnCheckedChangeListener  isChecked    " + isChecked);
+
+                        }
+
 
                         // TODO: 13.03.2022
                     }
