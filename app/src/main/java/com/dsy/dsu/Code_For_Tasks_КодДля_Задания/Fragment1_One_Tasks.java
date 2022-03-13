@@ -440,7 +440,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
                             }
 
-                            МетодИнициализацииRecycleViewДляЗадач();
+
 
                         }
 
@@ -537,6 +537,7 @@ public class Fragment1_One_Tasks extends Fragment {
                             // TODO: 05.03.2022 change ui nivage buttom
                             // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
 
+                            МетодИнициализацииRecycleViewДляЗадач();
 
 
                             Log.d(this.getClass().getName(), "onChanged ");
@@ -867,7 +868,10 @@ public class Fragment1_One_Tasks extends Fragment {
                                 "отработоатл new SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
                     }
 
+                    // TODO: 13.03.2022
 
+
+                    bottomNavigationViewДляTasks.requestLayout();
                     /////////////
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -1465,6 +1469,62 @@ public class Fragment1_One_Tasks extends Fragment {
 
                     Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
 
+
+                    // TODO: 13.03.2022 СЛУШАТЕЛЬ ДЛЯ ДВУХ ВАРИАНТОВ
+
+                    МетодСлушателейДляViewCard(holder);
+
+                    // TODO: 04.03.2022
+                    Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + AccessibilityNodeInfoДанныеДляViewCard);
+
+
+
+          /*          holder.materialCardView.setOnCheckedChangeListener(new MaterialCardView.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
+                            // TODO: 13.03.2022
+                            int ИндексдляНепрочитанный = R.drawable.icon_dsu1_fortasks_cardview_color_geeeey;
+                            // TODO: 13.03.2022
+                            int ИндексПпрочитанные = R.drawable.icon_dsu1_fortasks_cardview_color_geen;
+                            // TODO: 13.03.2022
+
+                            Drawable drawableПпрочитанные
+                                    = getContext().getDrawable(ИндексПпрочитанные);
+                            // TODO: 13.03.2022
+                            Drawable drawableИндексдляНепрочитанный
+                                    = getContext().getDrawable(ИндексдляНепрочитанный);
+                            // TODO: 13.03.2022
+                            Log.d(this.getClass().getName(), " card  " + card +
+                                    "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " isChecked " + isChecked);
+
+                            // TODO: 13.03.2022
+
+                            if (isChecked) {
+
+                                card.setCheckedIcon(drawableПпрочитанные);
+                                // TODO: 13.03.2022
+                                card.setCheckedIconResource(ИндексПпрочитанные);
+                                // TODO: 13.03.2022
+                                card.setSelected(true);
+
+                                // TODO: 13.03.2022
+                                Log.d(this.getClass().getName(), "   holder.materialCardView.setOnCheckedChangeListener  isChecked    " + isChecked);
+
+                            } else {
+                                card.setCheckedIcon(drawableИндексдляНепрочитанный);
+                                // TODO: 13.03.2022
+                                card.setCheckedIconResource(ИндексдляНепрочитанный);
+
+                                // TODO: 13.03.2022
+
+                                // TODO: 13.03.2022
+                                Log.d(this.getClass().getName(), "  holder.materialCardView.setOnCheckedChangeListener  isChecked   " + isChecked);
+                            }
+
+                            // TODO: 13.03.2022
+                        }
+                    });*/
+
                     // TODO: 13.03.2022
 
                     if (СамСтатусПрочтенияИлиНет > 0) { //СамСтатусПрочтенияИлиНет  holder.getAdapterPosition()
@@ -1479,6 +1539,10 @@ public class Fragment1_One_Tasks extends Fragment {
 
                     // TODO: 13.03.2022
                     holder.materialCardView.setChecked(true);
+
+
+                    // TODO: 04.03.2022
+                    Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + AccessibilityNodeInfoДанныеДляViewCard);
 
 
 // TODO: 03.03.2022 добаляем данные на сому кнопку сообщения задания
@@ -1533,17 +1597,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
                     // TODO: 03.03.2022 передаем помер позиции position
 
-
-                    // TODO: 04.03.2022
                     Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + AccessibilityNodeInfoДанныеДляViewCard);
-
-
-                    МетодСлушателейДляViewCard(holder);
-                    // TODO: 04.03.2022
-                    Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + AccessibilityNodeInfoДанныеДляViewCard);
-
-
-                    // TODO: 04.03.2022
 
 
 // TODO: 28.02.2022
@@ -1567,8 +1621,7 @@ public class Fragment1_One_Tasks extends Fragment {
         // TODO: 13.03.2022
 
 
-
-        private void МетодСлушателейДляViewCard(@NonNull MyViewHolder holder) {
+        private void МетодСлушателейДляViewCard(MyViewHolder holder) {
             // TODO: 01.03.2022 слушатели
 
             try {
@@ -1698,14 +1751,20 @@ public class Fragment1_One_Tasks extends Fragment {
 
                                 Toast.makeText(getActivity(), " Статус сменили на ознакомленный  #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
 
-                            }, 5000);
+                            }, 2500);
+
+                        } else {
+
+                            ///////TODO запускаем смены стануса задачи черезе PendingIntent
+                            Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 1  " + СтатусПрочтеаУжеЗадачаИлиНет);
 
                         }
 
                         // TODO: 03.03.2022 update screewn
 
                         // TODO: 13.03.2022
-                        Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView +
+                        Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи" +
+                                "   ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView +
                                 " holder.getAdapterPosition() " + holder.getAdapterPosition());
 
                         // TODO: 13.03.2022
