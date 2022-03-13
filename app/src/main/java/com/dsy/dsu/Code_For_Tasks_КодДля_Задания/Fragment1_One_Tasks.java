@@ -46,12 +46,10 @@ import com.google.android.material.card.MaterialCardView;
 import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ExecutionException;
-import java.util.stream.Collectors;
 
 
 public class Fragment1_One_Tasks extends Fragment {
@@ -81,9 +79,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
     private   MyViewHolder myViewHolder;
 
-    // TODO: 28.02.2022
 
-    private ArrayList<String> arrayListПердаемДанныеДляViewCard;
     // TODO: 04.03.2022
 
     // TODO: 28.02.2022
@@ -1236,13 +1232,6 @@ public class Fragment1_One_Tasks extends Fragment {
                 // TODO: 01.03.2022*/
 
 
-                // TODO: 01.03.2022 уставнока дополнительный данныых
-
-                AccessibilityNodeInfoДанныеДляViewCard = materialCardView.createAccessibilityNodeInfo();
-                // TODO: 13.03.2022
-
-                arrayListПердаемДанныеДляViewCard = new ArrayList();
-
 
                 Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи  accessibilityNodeInfoДоплнительно " );
 
@@ -1304,101 +1293,10 @@ public class Fragment1_One_Tasks extends Fragment {
                 Log.i(this.getClass().getName(), "   viewГлавныйВидДляRecyclleViewДляЗаданий"+viewГлавныйВидДляRecyclleViewДляЗаданий);
 
 
-
-
             // TODO: 28.02.2022
             myViewHolder = new MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
 
 // TODO: 02.03.2022
-
-            myViewHolder.textView1.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-
-                    // TODO: 28.02.2022
-
-                    /////
-                    Vibrator v2 = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
-                    // Vibrate for 500 milliseconds
-                    v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-
-
-                    // TODO: 03.03.2022
-                    // TODO: 03.03.2022  получаем отраюотана задача уже или нет
-
-                    String ПолучаемСтатусОтработалаЗаданиеИлиНЕт = ((TextView) v).getTag().toString();
-
-                    // TODO: 03.03.2022
-
-                    // TODO: 03.03.2022
-
-                    Integer ПолучаемПозициюЗадачи = Integer.parseInt(String.valueOf(((TextView) v).getHint()));
-                    // TODO: 03.03.2022
-
-                    Log.d(this.getClass().getName(), "  ПолучаемПозициюЗадачи " + ПолучаемПозициюЗадачи);
-
-
-                    // TODO: 03.03.2022
-
-                    Long ПолучаемUUIDЗадачиПокоторойСческнули = Long.valueOf(AccessibilityNodeInfoДанныеДляViewCard.getAvailableExtraData().stream().collect(Collectors.toList()).get(ПолучаемПозициюЗадачи));
-
-                    Log.d(this.getClass().getName(), "  ПолучаемUUIDЗадачиПокоторойСческнули " + ПолучаемUUIDЗадачиПокоторойСческнули);
-
-
-                    // TODO: 03.03.2022  запускам сменты статуса
-
-                    if (Integer.parseInt(ПолучаемСтатусОтработалаЗаданиеИлиНЕт) == 0) {
-
-                        ///
-                        String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForChat";
-
-                        String PROCESS_ID_УведомленияПлановая = "12";
-
-                        // TODO: 03.03.2022
-
-                        SubClass_Starting_chahge_status_public_notificaton subClass_starting_chahge_status_public_notificaton =
-                                new SubClass_Starting_chahge_status_public_notificaton(getContext());
-
-                        // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи
-                        PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = subClass_starting_chahge_status_public_notificaton.
-                                МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата, String.valueOf(ПолучаемUUIDЗадачиПокоторойСческнули));
-
-
-                        try {
-
-                            // TODO: 03.03.2022  запускаем службу смены статуса
-                            ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
-
-
-                        } catch (PendingIntent.CanceledException e) {
-                            e.printStackTrace();
-                        }
-                        ///////TODO запускаем смены стануса задачи черезе PendingIntent
-                        Log.d(getContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая " + PROCESS_ID_УведомленияПлановая +
-                                " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата + " ПолучаемUUIDЗадачиПокоторойСческнули " + ПолучаемUUIDЗадачиПокоторойСческнули);
-
-                    }
-
-                    // TODO: 03.03.2022 update screewn
-
-                    // TODO: 03.03.2022 update screewn
-                    Handler handlerЗапускаемОтсрочнуюСменуСтатуса = new Handler();
-                    // TODO: 04.03.2022
-                    handlerЗапускаемОтсрочнуюСменуСтатуса.postDelayed(() -> {
-                        // TODO: 04.03.2022
-
-                        Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.deactivate();
-                        // TODO: 03.03.2022
-
-                        Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.requery();
-
-                    }, 2500);
-
-
-                    ///Toast.makeText(activity, " Поменять статуса прочтения "+myViewHolder.getAdapterPosition() , Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-            });
 
 
             // TODO: 03.03.2022
@@ -1590,7 +1488,9 @@ public class Fragment1_One_Tasks extends Fragment {
 
 
                     // TODO: 10.03.2022
+                    // TODO: 01.03.2022 уставнока дополнительный данныых
 
+                    AccessibilityNodeInfoДанныеДляViewCard = holder.materialCardView.createAccessibilityNodeInfo();
 
 
                     // TODO: 02.03.2022#5 ТИП ЗАДАЧИ
@@ -1616,6 +1516,10 @@ public class Fragment1_One_Tasks extends Fragment {
 
                     Log.i(this.getClass().getName(), "  UUIDДЛяЗАДАНИЯКотореВыбрали " + UUIDДЛяЗАДАНИЯКотореВыбрали);
 
+                    // TODO: 13.03.2022
+                    AccessibilityNodeInfoДанныеДляViewCard.setContentDescription(UUIDДЛяЗАДАНИЯКотореВыбрали.toString());
+
+                    Log.i(this.getClass().getName(), "  AccessibilityNodeInfoДанныеДляViewCard " + AccessibilityNodeInfoДанныеДляViewCard.getContentDescription());
 
                     // TODO: 13.03.2022  передаем статус задачи
 
@@ -1628,14 +1532,13 @@ public class Fragment1_One_Tasks extends Fragment {
                     // TODO: 03.03.2022 передаем помер позиции position
 
 
-                    МетодЗаполенияДаннымиДляCardViewAccessMoteInfo(holder, UUIDДЛяЗАДАНИЯКотореВыбрали);
                     // TODO: 04.03.2022
-                    Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + AccessibilityNodeInfoДанныеДляViewCard + " arrayListПердаемДанные " + arrayListПердаемДанныеДляViewCard);
+                    Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + AccessibilityNodeInfoДанныеДляViewCard);
 
 
                     МетодСлушателейДляViewCard(holder);
                     // TODO: 04.03.2022
-                    Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + AccessibilityNodeInfoДанныеДляViewCard + " arrayListПердаемДанные " + arrayListПердаемДанныеДляViewCard);
+                    Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + AccessibilityNodeInfoДанныеДляViewCard);
 
 
                     // TODO: 04.03.2022
@@ -1661,38 +1564,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
         // TODO: 13.03.2022
 
-        private void МетодЗаполенияДаннымиДляCardViewAccessMoteInfo(@NonNull MyViewHolder holder, Long UUIDДЛяЗАДАНИЯКотореВыбрали) {
-            // TODO: 03.03.2022 заполянем arraylistt
 
-            try {
-
-
-                if (!arrayListПердаемДанныеДляViewCard.contains(String.valueOf(UUIDДЛяЗАДАНИЯКотореВыбрали))) {
-
-                    arrayListПердаемДанныеДляViewCard.add(String.valueOf(UUIDДЛяЗАДАНИЯКотореВыбрали));
-                }
-                // TODO: 03.03.2022
-                Log.i(this.getClass().getName(), "      holder.textView1 arrayListПердаемДанныеДляViewCard  " + arrayListПердаемДанныеДляViewCard.toArray());
-                // TODO: 03.03.2022
-                AccessibilityNodeInfoДанныеДляViewCard.setAvailableExtraData(arrayListПердаемДанныеДляViewCard);
-                // TODO: 13.03.2022
-
-                // TODO: 04.03.2022
-                Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + AccessibilityNodeInfoДанныеДляViewCard + " arrayListПердаемДанные " + arrayListПердаемДанныеДляViewCard);
-
-                // TODO: 04.03.2022
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
-            }
-        }
 
         private void МетодСлушателейДляViewCard(@NonNull MyViewHolder holder) {
             // TODO: 01.03.2022 слушатели
@@ -1742,8 +1614,6 @@ public class Fragment1_One_Tasks extends Fragment {
                         }
 
                         // TODO: 13.03.2022
-                        // TODO: 13.03.2022
-                        notifyDataSetChanged();
                     }
                 });
 
@@ -1765,10 +1635,13 @@ public class Fragment1_One_Tasks extends Fragment {
 
 
                         // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
-                        Long ПолучаемUUIDТекущйПозицииВRecyreView = AccessibilityNodeInfoДанныеДляViewCard.getAvailableExtraData().stream().map(Long::new)
-                                .distinct().collect(Collectors.toList()).get(holder.getAdapterPosition()).longValue();
+                     /*   Long ПолучаемUUIDТекущйПозицииВRecyreView = AccessibilityNodeInfoДанныеДляViewCard.getAvailableExtraData().stream().map(Long::new)
+                                .distinct() .sorted(Collections.reverseOrder()).collect(Collectors.toList()).get(holder.getAdapterPosition()).longValue();*/
 
                         // TODO: 13.03.2022
+                        Long ПолучаемUUIDТекущйПозицииВRecyreView = Long.parseLong(String.valueOf(AccessibilityNodeInfoДанныеДляViewCard.getContentDescription()));
+
+
 // TODO: 13.03.2022
                         Log.d(this.getClass().getName(), "  СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет
                                 + " ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView);
@@ -1823,7 +1696,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
                                 Toast.makeText(getActivity(), " Статус сменили на ознакомленный  #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
 
-                            }, 2500);
+                            }, 5000);
 
                         }
 
@@ -1834,7 +1707,7 @@ public class Fragment1_One_Tasks extends Fragment {
                                 " holder.getAdapterPosition() " + holder.getAdapterPosition());
 
                         // TODO: 13.03.2022
-                        notifyDataSetChanged();
+                        // notifyDataSetChanged();
 
                     }
                 });

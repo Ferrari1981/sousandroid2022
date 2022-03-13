@@ -14,30 +14,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.JobIntentService;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
 import com.dsy.dsu.Code_For_Chats_КодДля_Чата.MainActivity_List_Chats;
-import com.google.android.gms.common.util.MapUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
-import java.util.Spliterator;
 import java.util.concurrent.ExecutionException;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
 
 
 public class Service_Notificatios_Для_Чата extends JobIntentService {////Service
@@ -82,30 +68,25 @@ public class Service_Notificatios_Для_Чата extends JobIntentService {////
         Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА Service_Notificatios_Для_Чата  "
                 + " время: "
                 + new Date());
+
+
 // TODO: 01.01.2022
 
-            PROCESS_ID=intent.getDataString();//PROCESS_ID
+            PROCESS_ID = intent.getDataString();//PROCESS_ID
 
             // TODO: 11.01.2022
 
 
-          //  ИмяСлужбыУведомленияДляЧата = String.valueOf(intent.getComponent());
-
-            FragmentManager fragmentManager = null;
-         List<Fragment> allfragment=   fragmentManager.getFragments();
-            // TODO: 11.01.2022
-
-
-
-
-            Set<String> ИмяСлужбыУведомленияДляЧатамассив=  intent.getCategories();
+            Set<String> ИмяСлужбыУведомленияДляЧатамассив = intent.getCategories();
 
             // TODO: 03.03.2022
+            Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА Service_Notificatios_Для_Чата PROCESS_ID   "
+                    + PROCESS_ID);
 
 
-            Log.i(getApplicationContext().getClass().getName(), "" + " ИмяСлужбыУведомленияДляЧатамассив " +ИмяСлужбыУведомленияДляЧатамассив);
+            Log.i(getApplicationContext().getClass().getName(), "" + " ИмяСлужбыУведомленияДляЧатамассив " + ИмяСлужбыУведомленияДляЧатамассив);
 
-            if (ИмяСлужбыУведомленияДляЧатамассив!=null) {
+            if (ИмяСлужбыУведомленияДляЧатамассив != null) {
                 // TODO: 07.02.2022
 
 
