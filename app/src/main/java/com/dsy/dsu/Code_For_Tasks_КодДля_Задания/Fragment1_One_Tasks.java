@@ -1564,6 +1564,21 @@ public class Fragment1_One_Tasks extends Fragment {
 
                     Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
 
+                    // TODO: 13.03.2022
+
+                    if (СамСтатусПрочтенияИлиНет > 0) { //СамСтатусПрочтенияИлиНет  holder.getAdapterPosition()
+
+                        Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет  toggle " + СамСтатусПрочтенияИлиНет);
+
+                        holder.materialCardView.toggle();
+                    } else {
+                        Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
+                    }
+
+
+                    // TODO: 13.03.2022
+                    holder.materialCardView.setChecked(true);
+
 
 // TODO: 03.03.2022 добаляем данные на сому кнопку сообщения задания
 
@@ -1608,103 +1623,14 @@ public class Fragment1_One_Tasks extends Fragment {
                     // TODO: 03.03.2022 передаем помер позиции position
 
 
-
-
-                    if (holder.getAdapterPosition() > 0) { //СамСтатусПрочтенияИлиНет
-
-                        Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
-
-                        holder.materialCardView.toggle();
-                    } else {
-                        Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
-                    }
-
-
-                    // TODO: 13.03.2022
-                    holder.materialCardView.setChecked(true);
-
-
-                    // TODO: 03.03.2022 заполянем arraylistt
-                    if (!arrayListПердаемДанныеДляViewCard.contains(String.valueOf(UUIDДЛяЗАДАНИЯКотореВыбрали))) {
-
-                        arrayListПердаемДанныеДляViewCard.add(String.valueOf(UUIDДЛяЗАДАНИЯКотореВыбрали));
-                    }
-                    // TODO: 03.03.2022
-                    Log.i(this.getClass().getName(), "      holder.textView1 arrayListПердаемДанныеДляViewCard  " + arrayListПердаемДанныеДляViewCard.toArray());
-                    // TODO: 03.03.2022
-                    AccessibilityNodeInfoДанныеДляViewCard.setAvailableExtraData(arrayListПердаемДанныеДляViewCard);
-                    // TODO: 13.03.2022
-                    // TODO: 12.03.2022
-                    AccessibilityNodeInfoДанныеДляViewCard.addChild(holder.materialCardView);
-                    // TODO: 13.03.2022
-
+                    МетодЗаполенияДаннымиДляCardViewAccessMoteInfo(holder, UUIDДЛяЗАДАНИЯКотореВыбрали);
                     // TODO: 04.03.2022
                     Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + AccessibilityNodeInfoДанныеДляViewCard + " arrayListПердаемДанные " + arrayListПердаемДанныеДляViewCard);
 
+
+                    МетодСлушателейДляViewCard(holder);
                     // TODO: 04.03.2022
-
-
-                    // TODO: 01.03.2022 слушатели
-                    holder.materialCardView.setOnCheckedChangeListener(new MaterialCardView.OnCheckedChangeListener() {
-                        @Override
-                        public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
-                            // TODO: 13.03.2022
-                            int ИндексдляНепрочитанныйх = R.drawable.icon_dsu1_fortasks_cardview_color_geeeey;
-                            // TODO: 13.03.2022
-                            int ИндексДляПрочитанных = R.drawable.icon_dsu1_fortasks_cardview_color_geen;
-                            // TODO: 13.03.2022
-
-                            Drawable drawableДляПрочитанный
-                                    = getContext().getDrawable(ИндексДляПрочитанных);
-                            // TODO: 13.03.2022
-                            Drawable drawableДляНеПрочитанный
-                                    = getContext().getDrawable(ИндексдляНепрочитанныйх);
-                            // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), " card  " + card +
-                                    "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " isChecked " + isChecked);
-
-                            // TODO: 13.03.2022
-
-                            if (isChecked) {
-
-                                card.setCheckedIcon(drawableДляНеПрочитанный);
-                                // TODO: 13.03.2022
-                                card.setCheckedIconResource(ИндексДляПрочитанных);
-                            } else {
-                                card.setCheckedIcon(drawableДляНеПрочитанный);
-                                // TODO: 13.03.2022
-                                card.setCheckedIconResource(ИндексдляНепрочитанныйх);
-                            }
-                        }
-                    });
-
-
-// TODO: 01.03.2022 слушатели
-
-                    holder.materialCardView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            // TODO: 01.03.2022
-
-                            // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   ПозицияЭлментаVIewCardДополнительно  " +
-                                    " holder.getAdapterPosition() " + holder.getAdapterPosition() + " v.getTag() " + v.getTag(holder.materialCardView.getId()));
-
-                            // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
-                            Long ПолучаемUUIDТекущйПозицииВRecyreView = AccessibilityNodeInfoДанныеДляViewCard.getAvailableExtraData().stream().map(Long::new)
-                                    .distinct().collect(Collectors.toList()).get(holder.getAdapterPosition()).longValue();
-
-                            // TODO: 13.03.2022
-
-                            // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView +
-                                    " holder.getAdapterPosition() " + holder.getAdapterPosition());
-                            // TODO: 13.03.2022
-                            notifyDataSetChanged();
-
-
-                        }
-                    });
+                    Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + AccessibilityNodeInfoДанныеДляViewCard + " arrayListПердаемДанные " + arrayListПердаемДанныеДляViewCard);
 
 
                     // TODO: 04.03.2022
@@ -1725,6 +1651,131 @@ public class Fragment1_One_Tasks extends Fragment {
                 //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
             }
 
+        }
+
+
+        // TODO: 13.03.2022
+
+        private void МетодЗаполенияДаннымиДляCardViewAccessMoteInfo(@NonNull MyViewHolder holder, Long UUIDДЛяЗАДАНИЯКотореВыбрали) {
+            // TODO: 03.03.2022 заполянем arraylistt
+
+            try {
+
+
+                if (!arrayListПердаемДанныеДляViewCard.contains(String.valueOf(UUIDДЛяЗАДАНИЯКотореВыбрали))) {
+
+                    arrayListПердаемДанныеДляViewCard.add(String.valueOf(UUIDДЛяЗАДАНИЯКотореВыбрали));
+                }
+                // TODO: 03.03.2022
+                Log.i(this.getClass().getName(), "      holder.textView1 arrayListПердаемДанныеДляViewCard  " + arrayListПердаемДанныеДляViewCard.toArray());
+                // TODO: 03.03.2022
+                AccessibilityNodeInfoДанныеДляViewCard.setAvailableExtraData(arrayListПердаемДанныеДляViewCard);
+                // TODO: 13.03.2022
+                // TODO: 12.03.2022
+                AccessibilityNodeInfoДанныеДляViewCard.addChild(holder.materialCardView);
+                // TODO: 13.03.2022
+
+                // TODO: 04.03.2022
+                Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + AccessibilityNodeInfoДанныеДляViewCard + " arrayListПердаемДанные " + arrayListПердаемДанныеДляViewCard);
+
+                // TODO: 04.03.2022
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                ///метод запись ошибок в таблицу
+                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+            }
+        }
+
+        private void МетодСлушателейДляViewCard(@NonNull MyViewHolder holder) {
+            // TODO: 01.03.2022 слушатели
+
+            try {
+
+                holder.materialCardView.setOnCheckedChangeListener(new MaterialCardView.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
+                        // TODO: 13.03.2022
+                        int ИндексдляНепрочитанный = R.drawable.icon_dsu1_fortasks_cardview_color_geeeey;
+                        // TODO: 13.03.2022
+                        int ИндексПпрочитанные = R.drawable.icon_dsu1_fortasks_cardview_color_geen;
+                        // TODO: 13.03.2022
+
+                        Drawable drawableПпрочитанные
+                                = getContext().getDrawable(ИндексПпрочитанные);
+                        // TODO: 13.03.2022
+                        Drawable drawableИндексдляНепрочитанный
+                                = getContext().getDrawable(ИндексдляНепрочитанный);
+                        // TODO: 13.03.2022
+                        Log.d(this.getClass().getName(), " card  " + card +
+                                "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " isChecked " + isChecked);
+
+                        // TODO: 13.03.2022
+
+                        if (isChecked) {
+
+                            card.setCheckedIcon(drawableПпрочитанные);
+                            // TODO: 13.03.2022
+                            card.setCheckedIconResource(ИндексПпрочитанные);
+
+                            // TODO: 13.03.2022
+                            Log.d(this.getClass().getName(), "   holder.materialCardView.setOnCheckedChangeListener  isChecked    " + isChecked);
+
+                        } else {
+                            card.setCheckedIcon(drawableИндексдляНепрочитанный);
+                            // TODO: 13.03.2022
+                            card.setCheckedIconResource(ИндексдляНепрочитанный);
+
+                            // TODO: 13.03.2022
+
+                            // TODO: 13.03.2022
+                            Log.d(this.getClass().getName(), "  holder.materialCardView.setOnCheckedChangeListener  isChecked   " + isChecked);
+                        }
+                    }
+                });
+
+
+// TODO: 01.03.2022 слушатели
+
+                holder.materialCardView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // TODO: 01.03.2022
+
+                        // TODO: 13.03.2022
+                        Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   ПозицияЭлментаVIewCardДополнительно  " +
+                                " holder.getAdapterPosition() " + holder.getAdapterPosition() + " v.getTag() " + v.getTag(holder.materialCardView.getId()));
+
+                        // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
+                        Long ПолучаемUUIDТекущйПозицииВRecyreView = AccessibilityNodeInfoДанныеДляViewCard.getAvailableExtraData().stream().map(Long::new)
+                                .distinct().collect(Collectors.toList()).get(holder.getAdapterPosition()).longValue();
+
+                        // TODO: 13.03.2022
+
+                        // TODO: 13.03.2022
+                        Log.d(this.getClass().getName(), "  SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView +
+                                " holder.getAdapterPosition() " + holder.getAdapterPosition());
+                        // TODO: 13.03.2022
+                        notifyDataSetChanged();
+
+
+                    }
+                });
+                // TODO: 13.03.2022
+            } catch (Exception e) {
+                e.printStackTrace();
+                ///метод запись ошибок в таблицу
+                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+            }
         }
         // TODO: 04.03.2022
 
