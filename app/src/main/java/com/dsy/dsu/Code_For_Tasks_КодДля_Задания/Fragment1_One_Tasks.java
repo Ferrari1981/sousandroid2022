@@ -7,6 +7,7 @@ import android.content.Context;
 import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteCursor;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.VibrationEffect;
@@ -1636,36 +1637,30 @@ public class Fragment1_One_Tasks extends Fragment {
                     holder.materialCardView.setTag(holder.materialCardView.getId(), позиция);
                     // TODO: 03.03.2022 передаем помер позиции position
 
-              /*      // TODO: 13.03.2022
-                    //Drawable drawableПрочитанные = getContext().getDrawable(R.drawable.icon_dsu1_task_grey);
-                    // TODO: 02.03.2022
 
-                    Drawable drawableПрочитанныеНЕпрочитанныйДляСистемногозначка = getContext().getDrawable(R.drawable.icon_dsu1_add_organisazio_success);
-
-
-
-
+                    Drawable drawableПрочитанныеНЕпрочитанныйДляСистемногозначка;///TODO 13.36
 
                     if (СамСтатусПрочтенияИлиНет > 0) {
-                        // TODO: 02.03.2022
-                       // holder.imageViewIcon.setBackgroundDrawable(drawableПрочитанные);
 
-                        Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
-                    } else {
+
                         // TODO: 02.03.2022
+                        drawableПрочитанныеНЕпрочитанныйДляСистемногозначка = getContext().getDrawable(R.drawable.icon_dsu1_fortasks_cardview_color_geen);
+                        // TODO: 13.03.2022
                         holder.materialCardView.setCheckedIcon(drawableПрочитанныеНЕпрочитанныйДляСистемногозначка);
 
                         Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
 
+                        holder.materialCardView.toggle();
+                    } else {
+                        // TODO: 02.03.2022
+                        drawableПрочитанныеНЕпрочитанныйДляСистемногозначка = getContext().getDrawable(R.drawable.icon_dsu1_fortasks_cardview_color_geeeey);
+
+                        Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
+                        // TODO: 13.03.2022
+                        holder.materialCardView.setCheckedIcon(drawableПрочитанныеНЕпрочитанныйДляСистемногозначка);
                     }
 
 
-                //    holder.materialCardView.setCheckedIcon(drawableПрочитанныеНЕпрочитанныйДляСистемногозначка);*/
-
-                    holder.materialCardView.toggle();
-
-                    // TODO: 13.03.2022
-                    holder.materialCardView.setCheckedIcon(getContext().getDrawable(R.drawable.icon_dsu1_fortasks_cardview_color_geen));
                     // TODO: 13.03.2022
                     holder.materialCardView.setChecked(true);
 
@@ -1698,6 +1693,9 @@ public class Fragment1_One_Tasks extends Fragment {
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), " card  " + card +
                                     "  holder.getAdapterPosition() " + holder.getAdapterPosition());
+
+                            // TODO: 13.03.2022
+                            card.setCheckedIconResource(R.drawable.icon_dsu1_fortasks_cardview_color_geeeey);
                         }
                     });
 
