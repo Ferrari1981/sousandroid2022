@@ -946,7 +946,7 @@ public class Fragment1_One_Tasks extends Fragment {
                                         item.setChecked(true);
                                         // TODO: 10.03.2022
                                         // TODO: 09.03.2022
-                                        fragment_ТекущийФрагмент = new Fragment1_One_Tasks();
+                                        fragment_ТекущийФрагмент = new Fragment2_Create_Tasks();
                                         // TODO: 11.03.2022
                                         fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
                                         // TODO: 10.03.2022
