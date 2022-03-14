@@ -15,13 +15,14 @@ import com.dsy.dsu.Class_Generation_Errors;
 public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
 
+    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогики subClassBuccessLogin_главныйКлассБизнесЛогики;
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        
-        try{
-            // TODO: 14.03.2022 ССЫЛКА НА РОДИТЕЛЬСКОЕ ФРАГМЕНТ
 
+        try {
+            // TODO: 14.03.2022 ССЫЛКА НА РОДИТЕЛЬСКОЕ ФРАГМЕНТ
             // TODO: 14.03.2022
             super.bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.GONE);
             // TODO: 14.03.2022
