@@ -1063,14 +1063,6 @@ public class Fragment1_One_Tasks extends Fragment {
                 // TODO: 14.03.2022
                 if (position <= Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount()) {
 
-
-                    // TODO: 13.03.2022 настройки для carview
-
-                    holder.materialCardView.toggle();
-
-                    // TODO: 13.03.2022
-                    holder.materialCardView.setChecked(true);
-
                     // TODO: 02.03.2022 тут РАЗДАЕМ ДАННЫЕ RECYCLERBIEW
 
                     Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);
@@ -1094,9 +1086,14 @@ public class Fragment1_One_Tasks extends Fragment {
                     МетодБиндингаФИОДляЗадания(holder);
 
 
-                    // TODO: 13.03.2022 СЛУШАТЕЛЬ для отображения чек или не чек значек меняеться или нет
+                    // TODO: 13.03.2022 СЛУШАТЕЛЬ для ДОЛГОВО НАЖАТИЯ СМЕНЫ СТАТУСА
 
                     МетодБиндингаСлушателейДляViewCard(holder);
+
+
+                    // TODO: 13.03.2022 СЛУШАТЕЛЬ СРАБАТЫВАЕТ КОГДА КОМАДА TOGGER И МЕНЯЕМ СТАТУСТ ЧЕК ОЗНАКОМЛЕНЫЙ ЛИ ИНЕТ
+
+                    МетодБиндингаСлушательisChered(holder);
 
 
                     // TODO: 03.03.2022 ПОЛУЧАЕМ СТАТУС ЗАДАНИЯ ПРОЧИТАН ИЛИ НЕТ
@@ -1115,10 +1112,16 @@ public class Fragment1_One_Tasks extends Fragment {
                     Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + BungleДанныеДляViewCard + " СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
 
 
+                    // TODO: 13.03.2022 настройки для carview
+
+                    holder.materialCardView.toggle();
+
+                    // TODO: 13.03.2022
+                    holder.materialCardView.setChecked(true);
+
 // TODO: 28.02.2022
                 }
                 // TODO: 09.03.2022
-
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -1129,7 +1132,6 @@ public class Fragment1_One_Tasks extends Fragment {
                         Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                 //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
             }
-
         }
 
         private void МетодБиндингаЗаполненияДаннымиBungle(@NonNull MyViewHolder holder, Integer СамСтатусПрочтенияИлиНет) {
@@ -1357,63 +1359,6 @@ public class Fragment1_One_Tasks extends Fragment {
 
             try {
 
-                holder.materialCardView.setOnCheckedChangeListener(new MaterialCardView.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
-                        // TODO: 13.03.2022
-                        int ИндексдляНепрочитанный = R.drawable.icon_dsu1_fortasks_cardview_color_geeeey;
-                        // TODO: 13.03.2022
-                        int ИндексПпрочитанные = R.drawable.icon_dsu1_fortasks_cardview_color_geen;
-                        // TODO: 13.03.2022
-
-                        Drawable drawableПпрочитанные
-                                = getContext().getDrawable(ИндексПпрочитанные);
-                        // TODO: 13.03.2022
-                        Drawable drawableИндексдляНепрочитанный
-                                = getContext().getDrawable(ИндексдляНепрочитанный);
-                        // TODO: 13.03.2022
-                        Log.d(this.getClass().getName(), " card  " + card +
-                                "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " isChecked " + isChecked);
-
-                        // TODO: 13.03.2022
-
-                        // TODO: 02.03.2022#5
-
-                        Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("status_write");
-                        // TODO: 02.03.2022
-
-                        Integer СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексСтатусПрочтенияИлиНЕт);
-
-                        // TODO: 13.03.2022
-                        if (isChecked && СамСтатусПрочтенияИлиНет > 0) {
-
-
-                            // TODO: 13.03.2022
-                            card.setCheckedIcon(drawableИндексдляНепрочитанный);
-                            // TODO: 13.03.2022
-                            card.setCheckedIconResource(ИндексдляНепрочитанный);
-
-                            // TODO: 13.03.2022
-                            // TODO: 13.03.2022
-                            card.setSelected(true);
-                            // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  holder.materialCardView.setOnCheckedChangeListener  isChecked   " + isChecked);
-
-
-                        } else {
-                            // TODO: 14.03.2022
-                            // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "   holder.materialCardView.setOnCheckedChangeListener  isChecked    " + isChecked);
-                        }
-
-
-
-
-                        // TODO: 13.03.2022
-                    }
-                });
-
-
 // TODO: 01.03.2022 слушатели
 
                 holder.materialCardView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -1522,6 +1467,74 @@ public class Fragment1_One_Tasks extends Fragment {
 
                         return true;
 
+                    }
+                });
+                // TODO: 13.03.2022
+            } catch (Exception e) {
+                e.printStackTrace();
+                ///метод запись ошибок в таблицу
+                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+            }
+        }
+
+        private void МетодБиндингаСлушательisChered(MyViewHolder holder) {
+            // TODO: 14.03.2022
+
+            try {
+                holder.materialCardView.setOnCheckedChangeListener(new MaterialCardView.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
+                        // TODO: 13.03.2022
+                        int ИндексдляНепрочитанный = R.drawable.icon_dsu1_fortasks_cardview_color_geeeey;
+                        // TODO: 13.03.2022
+                        int ИндексПпрочитанные = R.drawable.icon_dsu1_fortasks_cardview_color_geen;
+                        // TODO: 13.03.2022
+
+                        Drawable drawableПпрочитанные
+                                = getContext().getDrawable(ИндексПпрочитанные);
+                        // TODO: 13.03.2022
+                        Drawable drawableИндексдляНепрочитанный
+                                = getContext().getDrawable(ИндексдляНепрочитанный);
+                        // TODO: 13.03.2022
+                        Log.d(this.getClass().getName(), " card  " + card +
+                                "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " isChecked " + isChecked);
+
+                        // TODO: 13.03.2022
+
+                        // TODO: 02.03.2022#5
+
+                        Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("status_write");
+                        // TODO: 02.03.2022
+
+                        Integer СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексСтатусПрочтенияИлиНЕт);
+
+                        // TODO: 13.03.2022
+                        if (isChecked && СамСтатусПрочтенияИлиНет > 0) {
+
+
+                            // TODO: 13.03.2022
+                            card.setCheckedIcon(drawableИндексдляНепрочитанный);
+                            // TODO: 13.03.2022
+                            card.setCheckedIconResource(ИндексдляНепрочитанный);
+
+                            // TODO: 13.03.2022
+                            // TODO: 13.03.2022
+                            card.setSelected(true);
+                            // TODO: 13.03.2022
+                            Log.d(this.getClass().getName(), "  holder.materialCardView.setOnCheckedChangeListener  isChecked   " + isChecked);
+
+
+                        } else {
+                            // TODO: 14.03.2022
+                            // TODO: 13.03.2022
+                            Log.d(this.getClass().getName(), "   holder.materialCardView.setOnCheckedChangeListener  isChecked    " + isChecked);
+                        }
+
+                        // TODO: 13.03.2022
                     }
                 });
                 // TODO: 13.03.2022
