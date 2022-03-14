@@ -20,7 +20,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -1792,9 +1791,9 @@ public class Fragment1_One_Tasks extends Fragment {
 
 // TODO: 01.03.2022 слушатели
 
-                holder.materialCardView.setOnClickListener(new View.OnClickListener() {
+                holder.materialCardView.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public boolean onLongClick(View v) {
                         // TODO: 01.03.2022
 
                         // TODO: 13.03.2022
@@ -1883,7 +1882,7 @@ public class Fragment1_One_Tasks extends Fragment {
                             ///////TODO запускаем смены стануса задачи черезе PendingIntent
                             Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 1  " + СтатусПрочтеаУжеЗадачаИлиНет);
 
-                            Toast.makeText(getActivity(), " Статус ознакомлена !!!   #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
+                            ///   Toast.makeText(getActivity(), " Статус ознакомлена !!!   #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
                         }
 
                         // TODO: 03.03.2022 update screewn
@@ -1895,6 +1894,8 @@ public class Fragment1_One_Tasks extends Fragment {
 
                         // TODO: 13.03.2022
                         // notifyDataSetChanged();
+
+                        return true;
 
                     }
                 });
