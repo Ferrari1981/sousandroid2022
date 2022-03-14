@@ -20,8 +20,9 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         super.onViewCreated(view, savedInstanceState);
         
         try{
+            // TODO: 14.03.2022 ССЫЛКА НА РОДИТЕЛЬСКОЕ ФРАГМЕНТ 
 
-       super. textViewТекущаяЗадача.setText("Созданные".toUpperCase());
+            super.textViewТекущаяЗадача.setText("Созданные".toUpperCase());////
             // TODO: 12.03.2022  
         Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания);
 
