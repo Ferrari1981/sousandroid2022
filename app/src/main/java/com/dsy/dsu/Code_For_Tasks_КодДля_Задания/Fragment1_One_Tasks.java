@@ -39,6 +39,7 @@ import com.dsy.dsu.Class_Generations_PUBLIC_CURRENT_ID;
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 import com.dsy.dsu.SubClass_Starting_chahge_status_public_notificaton;
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
 
@@ -101,6 +102,11 @@ public class Fragment1_One_Tasks extends Fragment {
     // TODO: 14.03.2022
     protected Fragment fragment_ТекущийФрагмент;
     // TODO: 09.03.2022
+    BottomNavigationItemView bottomNavigationКонкретноКнопкаДобавить;
+    // TODO: 09.03.2022
+    BottomNavigationItemView bottomNavigationКонкретноКнопкаСоздатьСейчас;
+    // TODO: 09.03.2022
+    BottomNavigationItemView bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи;
 
 
     @Override
@@ -137,10 +143,21 @@ public class Fragment1_One_Tasks extends Fragment {
             // TODO: 06.03.2022
             bottomNavigationViewДляTasks = (BottomNavigationView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.bottomnavigationActiviTask8);
 
+            // TODO: 14.03.2022  тут обьявляем три кнопки доьавить контроль и новая задача
+
+            bottomNavigationКонкретноКнопкаДобавить = bottomNavigationViewДляTasks.findViewById(R.id.id_taskCreateNewTasks);
+
+            // TODO: 14.03.2022  тут обьявляем три кнопки доьавить контроль и новая задача
+
+            bottomNavigationКонкретноКнопкаСоздатьСейчас = bottomNavigationViewДляTasks.findViewById(R.id.id_taskCreateNewTasks);
+            // TODO: 14.03.2022  тут обьявляем три кнопки доьавить контроль и новая задача
+
+            bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи = bottomNavigationViewДляTasks.findViewById(R.id.id_taskHome);
             // TODO: 14.03.2022
-            bottomNavigationViewДляTasks.getChildAt(0).setSelected(true);
+            bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.performLongClick();
+
             // TODO: 14.03.2022
-            bottomNavigationViewДляTasks.getChildAt(0).performLongClick();
+            bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.GONE);
 
             Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики imageView  onViewCreated ");
 
@@ -956,6 +973,12 @@ public class Fragment1_One_Tasks extends Fragment {
                                         // TODO: 10.03.2022
                                         вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
                                         // TODO: 09.03.2022
+
+                                        Log.d(this.getClass().getName(), " bottomNavigationViewДляTasks.getChildCount() " + bottomNavigationViewДляTasks.getChildCount());
+
+                                        // TODO: 14.03.2022  дополнительно визуализируем
+
+
                                         break;
 
                                     // TODO: 09.03.2022
