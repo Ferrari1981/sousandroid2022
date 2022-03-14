@@ -1064,6 +1064,13 @@ public class Fragment1_One_Tasks extends Fragment {
                 if (position <= Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount()) {
 
 
+                    // TODO: 13.03.2022 настройки для carview
+
+                    holder.materialCardView.toggle();
+
+                    // TODO: 13.03.2022
+                    holder.materialCardView.setChecked(true);
+
                     // TODO: 02.03.2022 тут РАЗДАЕМ ДАННЫЕ RECYCLERBIEW
 
                     Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);
@@ -1074,110 +1081,36 @@ public class Fragment1_One_Tasks extends Fragment {
                     // TODO: 14.03.2022  метод создания само сообщения
                     МетодБиндингаСозданиеСамоСообщения(holder);
 
+
                     // TODO: 14.03.2022  метод создания номер задания
                     МетодБиндингаНомерЗадания(holder);
 
+
                     // TODO: 14.03.2022  метод создания дата задания
                     МетодБиндингаДатаЗадания(holder);
+
 
                     // TODO: 14.03.2022  метод создания ФИО задания
                     МетодБиндингаФИОДляЗадания(holder);
 
 
-                    // TODO: 02.03.2022#5
+                    // TODO: 13.03.2022 СЛУШАТЕЛЬ для отображения чек или не чек значек меняеться или нет
 
-                    Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("status_write");
-                    // TODO: 02.03.2022
-
-                    Integer СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексСтатусПрочтенияИлиНЕт);
+                    МетодБиндингаСлушателейДляViewCard(holder);
 
 
-                    Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
+                    // TODO: 03.03.2022 ПОЛУЧАЕМ СТАТУС ЗАДАНИЯ ПРОЧИТАН ИЛИ НЕТ
+
+                    Integer СамСтатусПрочтенияИлиНет = МетодБиндингаПолученияСтатусаЗадачи(holder);
 
 
-                    // TODO: 13.03.2022 СЛУШАТЕЛЬ ДЛЯ ДВУХ ВАРИАНТОВ
-
-                    МетодСлушателейДляViewCard(holder);
-
-                    // TODO: 04.03.2022
-                    Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + BungleДанныеДляViewCard);
+                    // TODO: 02.03.2022#5  получаем ТИП ЗАДАЧИ
+                    МетодБиндингПолучаемТипЗадания(holder);
 
 
-                    // TODO: 13.03.2022
+                    // TODO: 02.03.2022#5  заполем ДАННЫМИ BUNGLE САМОЙ ЗАДАЧИ
 
-                    Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет  toggle " + СамСтатусПрочтенияИлиНет);
-
-                    holder.materialCardView.toggle();
-
-
-                    // TODO: 13.03.2022
-                    holder.materialCardView.setChecked(true);
-
-
-                    // TODO: 04.03.2022
-                    Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + BungleДанныеДляViewCard);
-
-
-// TODO: 03.03.2022 добаляем данные на сому кнопку сообщения задания
-
-
-                    // TODO: 03.03.2022
-
-                    holder.textView1.setTag(СамСтатусПрочтенияИлиНет);
-
-
-                    // TODO: 10.03.2022
-                    // TODO: 01.03.2022 уставнока дополнительный данныых
-
-
-
-
-                    // TODO: 02.03.2022#5 ТИП ЗАДАЧИ
-
-
-                    Integer ИндексСтатусТипаЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("type_tasks");
-                    // TODO: 02.03.2022
-
-                    String СамТипЗадания = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getString(ИндексСтатусТипаЗадачи);
-
-
-                    Log.i(this.getClass().getName(), "  СамТипЗадания " + СамТипЗадания);
-
-
-                    holder.textView5.setText("тип: "+СамТипЗадания);
-
-
-// TODO: 03.03.2022
-
-                    Integer ИндексUUIDДЛяЗАДАНИЯКотореВыбрали = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("uuid");///"uuid_notifications"
-                    // TODO: 02.03.2022 получет UUID строчки
-
-                    Long UUIDДЛяЗАДАНИЯКотореВыбрали = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getLong(ИндексUUIDДЛяЗАДАНИЯКотореВыбрали);
-
-                    Log.i(this.getClass().getName(), "  UUIDДЛяЗАДАНИЯКотореВыбрали " + UUIDДЛяЗАДАНИЯКотореВыбрали);
-
-                    // TODO: 13.03.2022
-
-                    Integer позиция = holder.getAdapterPosition();
-
-                    Log.i(this.getClass().getName(), "  позиция " + позиция);
-
-                    if (!BungleДанныеДляViewCard.containsKey(String.valueOf(позиция))) {
-                        // TODO: 14.03.2022
-                        BungleДанныеДляViewCard.putLong(String.valueOf(позиция), UUIDДЛяЗАДАНИЯКотореВыбрали);
-                    }
-
-
-                    Log.i(this.getClass().getName(), "  BungleДанныеДляViewCard   " + BungleДанныеДляViewCard.getBundle(String.valueOf(holder.materialCardView.getId())));
-
-                    // TODO: 13.03.2022  передаем статус задачи
-
-
-                    // TODO: 03.03.2022 передаем помер позиции position
-                    holder.materialCardView.setTag(holder.materialCardView.getId(), СамСтатусПрочтенияИлиНет);
-
-
-                    // TODO: 03.03.2022 передаем помер позиции position
+                    МетодБиндингаЗаполненияДаннымиBungle(holder, СамСтатусПрочтенияИлиНет);
 
                     Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + BungleДанныеДляViewCard + " СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
 
@@ -1198,6 +1131,100 @@ public class Fragment1_One_Tasks extends Fragment {
             }
 
         }
+
+        private void МетодБиндингаЗаполненияДаннымиBungle(@NonNull MyViewHolder holder, Integer СамСтатусПрочтенияИлиНет) {
+            // TODO: 03.03.2022
+            try {
+
+                Integer ИндексUUIDДЛяЗАДАНИЯКотореВыбрали = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("uuid");///"uuid_notifications"
+                // TODO: 02.03.2022 получет UUID строчки
+
+                Long UUIDДЛяЗАДАНИЯКотореВыбрали = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getLong(ИндексUUIDДЛяЗАДАНИЯКотореВыбрали);
+
+                Log.i(this.getClass().getName(), "  UUIDДЛяЗАДАНИЯКотореВыбрали " + UUIDДЛяЗАДАНИЯКотореВыбрали);
+
+                // TODO: 13.03.2022
+
+                Integer позиция = holder.getAdapterPosition();
+
+                Log.i(this.getClass().getName(), "  позиция " + позиция);
+
+                if (!BungleДанныеДляViewCard.containsKey(String.valueOf(позиция))) {
+                    // TODO: 14.03.2022
+                    BungleДанныеДляViewCard.putLong(String.valueOf(позиция), UUIDДЛяЗАДАНИЯКотореВыбрали);
+                }
+
+
+                Log.i(this.getClass().getName(), "  BungleДанныеДляViewCard   " + BungleДанныеДляViewCard.getBundle(String.valueOf(holder.materialCardView.getId())));
+
+                // TODO: 13.03.2022  передаем статус задачи
+
+
+                // TODO: 03.03.2022 передаем помер позиции position
+                holder.materialCardView.setTag(holder.materialCardView.getId(), СамСтатусПрочтенияИлиНет);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                ///метод запись ошибок в таблицу
+                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+            }
+            // TODO: 03.03.2022 передаем помер позиции position
+        }
+
+        private void МетодБиндингПолучаемТипЗадания(@NonNull MyViewHolder holder) {
+
+            try {
+                Integer ИндексСтатусТипаЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("type_tasks");
+                // TODO: 02.03.2022
+
+                String СамТипЗадания = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getString(ИндексСтатусТипаЗадачи);
+
+                Log.i(this.getClass().getName(), "  СамТипЗадания " + СамТипЗадания);
+
+                holder.textView5.setText("тип: " + СамТипЗадания);
+            } catch (Exception e) {
+                e.printStackTrace();
+                ///метод запись ошибок в таблицу
+                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+            }
+        }
+
+        @NonNull
+        private Integer МетодБиндингаПолученияСтатусаЗадачи(@NonNull MyViewHolder holder) {
+            // TODO: 02.03.2022#5
+            Integer СамСтатусПрочтенияИлиНет = 0;
+            try {
+
+                Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("status_write");
+                // TODO: 02.03.2022
+
+                СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексСтатусПрочтенияИлиНЕт);
+                // TODO: 03.03.2022
+
+                holder.textView1.setTag(СамСтатусПрочтенияИлиНет);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                ///метод запись ошибок в таблицу
+                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+            }
+            // TODO: 01.03.2022 уставнока дополнительный данныых
+            return СамСтатусПрочтенияИлиНет;
+        }
+
 
         private void МетодБиндингаФИОДляЗадания(@NonNull MyViewHolder holder) throws ExecutionException, InterruptedException {
             try {
@@ -1325,7 +1352,7 @@ public class Fragment1_One_Tasks extends Fragment {
         // TODO: 13.03.2022
 
 
-        private void МетодСлушателейДляViewCard(MyViewHolder holder) {
+        private void МетодБиндингаСлушателейДляViewCard(MyViewHolder holder) {
             // TODO: 01.03.2022 слушатели
 
             try {
