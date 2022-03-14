@@ -291,66 +291,47 @@ public class Fragment1_One_Tasks extends Fragment {
     class SubClassBuccessLogin_ГлавныйКлассБизнесЛогики {
         // TODO: 28.02.2022
         Context context;
-
+        // TODO: 14.03.2022  
         Activity activity;
-
         public SubClassBuccessLogin_ГлавныйКлассБизнесЛогики(Context context, Activity activity) {
-
+            // TODO: 14.03.2022
             this.context = context;
-
             // TODO: 14.03.2022
             this.activity = activity;
-
             Log.d(this.getClass().getName(), "  public SubClassBuccessLogin_ГлавныйКлассБизнесЛогики(Context context, Activity activity)   " + context);
-
-
         }
 
-
+        // TODO: 14.03.2022
         void МетодПолучениеДанныхДляЗАДАЧ() {
             // TODO: 02.03.2022
             try {
-
-
-                // TODO: 04.03.2022
                 // TODO: 02.03.2022
                 Integer ПубличныйIDДляФрагмента = new Class_Generations_PUBLIC_CURRENT_ID(getContext()).ПолучениеПубличногоТекущегоПользователяID();
                 // TODO: 02.03.2022
-
                 Log.d(this.getClass().getName(), "ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
-
-
+                // TODO: 14.03.2022  
                 Курсор_ДляПолученияДАнныхДляЗАДАЧTASK = МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадач(ПубличныйIDДляФрагмента);
-
                 // TODO: 02.03.2022
                 Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
-
                 // TODO: 02.03.2022
-
             } catch (Exception e) {
                 e.printStackTrace();
                 ///метод запись ошибок в таблицу
                 Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                         " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-
                 // TODO: 01.09.2021 метод вызова
                 new Class_Generation_Errors(context).МетодЗаписиВЖурналНовойОшибки(e.toString(),
                         this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
                         Thread.currentThread().getStackTrace()[2].getLineNumber());
-                ///
-
-
             }
         }
 
         // TODO: 04.03.2022  класс в котором находяться слушатели
         protected class SubClassObsevers_КлассСлушательСобытий {
-
+            // TODO: 14.03.2022
             public SubClassObsevers_КлассСлушательСобытий(Context context) {
             }
-
             void МетодСлушательObserverДляRecycleView() {
-
                 // TODO: 04.03.2022
                 try {
                     // TODO: 02.03.2022
@@ -364,7 +345,6 @@ public class Fragment1_One_Tasks extends Fragment {
                             /// subClassBuccessLoginГлавныйКласс_бизнесЛогики.МетодПолучениеДанныхДляЗАДАЧ();
                             // TODO: 04.03.2022
                             if (Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount() > 0) {
-
                                 // TODO: 04.03.2022
                                 Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.moveToFirst();
                             }
@@ -431,21 +411,17 @@ public class Fragment1_One_Tasks extends Fragment {
                     ///метод запись ошибок в таблицу
                     Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                             " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-
                     // TODO: 01.09.2021 метод вызова
                     new Class_Generation_Errors(context).МетодЗаписиВЖурналНовойОшибки(e.toString(),
                             this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
                             Thread.currentThread().getStackTrace()[2].getLineNumber());
                     ///
-
-
                 }
             }
 
             // TODO: 04.03.2022 второй метод слушатель для курсора
 
             void МетодСлушательObserverДляКурсора() {
-
                 // TODO: 04.03.2022
                 try {
                     // TODO: 02.03.2022
@@ -453,35 +429,19 @@ public class Fragment1_One_Tasks extends Fragment {
                         @Override
                         public void onChanged() {
                             super.onChanged();
-                            // TODO: 02.03.2022
-
-                            //  recyclerView.updateViewLayout(recyclerView, null);
-
-
-                            // TODO: 04.03.2022
-                            recyclerView.getAdapter().notifyDataSetChanged();
-
-                            // TODO: 04.03.2022
-                            recyclerView.getAdapter().notifyItemChanged(0);
-
-
-                            // TODO: 04.03.2022
-                            recyclerView.requestLayout();
-
-                            // TODO: 05.03.2022 change ui nivage buttom
-
-
-                            // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ
+                            // TODO: 14.03.2022
                             try {
-
+                                // TODO: 04.03.2022
+                                recyclerView.getAdapter().notifyDataSetChanged();
+                                // TODO: 04.03.2022
+                                recyclerView.getAdapter().notifyItemChanged(0);
+                                // TODO: 04.03.2022
+                                recyclerView.requestLayout();
                                 // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
-
                                 МетодИнициализацииRecycleViewДляЗадач();
-
 
                                 // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ
                                 МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
-
 
                                 Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
 
@@ -494,8 +454,6 @@ public class Fragment1_One_Tasks extends Fragment {
                                 new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
                                         Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                             }
-
-
                             Log.d(this.getClass().getName(), "onChanged ");
                         }
 
@@ -507,45 +465,33 @@ public class Fragment1_One_Tasks extends Fragment {
                             Log.d(this.getClass().getName(), "onInvalidated ");
                         }
                     };
+                    // TODO: 14.03.2022  подписываемся курссор
 
                     Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.registerDataSetObserver(dataSetObserverДляКурсора);
-
 
                 } catch (Exception e) {
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
                     Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                             " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-
                     // TODO: 01.09.2021 метод вызова
                     new Class_Generation_Errors(context).МетодЗаписиВЖурналНовойОшибки(e.toString(),
                             this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
                             Thread.currentThread().getStackTrace()[2].getLineNumber());
-                    ///
-
-
                 }
             }
 
-            // TODO: 04.03.2022 второй метод слушатель для work manager
+
             // TODO: 18.10.2021  СИНХРОНИАЗЦИЯ ЧАТА ПО РАСПИСАНИЮ ЧАТ
             void МетодСоздаенияСлушателяДляОбщейWorkMAnager() throws ExecutionException, InterruptedException {
                 ///
 // TODO: 11.05.2021 ЗПУСКАЕМ СЛУЖБУ через брдкастер синхронизхации и уведомления
-
                 try {
-
-                    // TODO: 27.10.2021
-
-
                     // TODO: 16.12.2021  --ОДНОРАЗОВАЯ СИНХРОНИАЗЦИЯ СЛУШАТЕЛЬ
-
                     observerОБЩАЯДляWORKMANAGERДляРасписания = new Observer<List<WorkInfo>>() {
                         @Override
                         public void onChanged(List<WorkInfo> workInfoОБШАЯ) {
-
-
-                            // TODO: 23.12.2021
+                            // TODO: 23.2.2021
                             workInfoОБШАЯ.stream()
                                     .filter(СтастусWorkMangerДляФрагментаЧитатьИПисать -> СтастусWorkMangerДляФрагментаЧитатьИПисать != null)
                                     .filter(СтастусWorkMangerДляФрагментаЧитатьИПисать ->
@@ -553,24 +499,13 @@ public class Fragment1_One_Tasks extends Fragment {
                                     .forEachOrdered((СтастусWorkMangerДляФрагментаЧитатьИПисать) -> {
                                         // TODO: 18.02.2022
                                         try {
-
-                                            //
-
                                             // TODO: 14.01.2022
-                                            //
-                                            //
-                                            Log.d(this.getClass().getName(), " workInfoОБШАЯ  CallBaskОтWorkManagerОдноразового observerОдноразоваяДляWORKMANAGERДляРасписания " +
+                                            Log.d(this.getClass().getName(), " workInfoОБШАЯ  CallBaskОтWorkManagerОдноразового observerОдноразоваяДляWORKMANAGERДляРасписания/ " +
                                                     СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().name());
-
                                             // TODO: 04.03.2022
                                             Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.deactivate();
-
                                             // TODO: 04.03.2022 перезапускаем курсор
                                             Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.requery();
-
-                                            // TODO: 18.02.2022
-
-
                                             // TODO: 29.09.2021  конец синхрониазции по раписанию
                                         } catch (Exception e) {
                                             e.printStackTrace();
