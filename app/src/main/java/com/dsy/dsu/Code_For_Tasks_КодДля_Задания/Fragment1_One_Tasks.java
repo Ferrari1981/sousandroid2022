@@ -301,7 +301,7 @@ public class Fragment1_One_Tasks extends Fragment {
             // TODO: 14.03.2022
             this.activity = activity;
 
-            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогики   " + context);
+            Log.d(this.getClass().getName(), "  public SubClassBuccessLogin_ГлавныйКлассБизнесЛогики(Context context, Activity activity)   " + context);
 
 
         }
@@ -353,8 +353,6 @@ public class Fragment1_One_Tasks extends Fragment {
 
                 // TODO: 04.03.2022
                 try {
-
-
                     // TODO: 02.03.2022
                     adapterDataObserverObserverСлушатель = new RecyclerView.AdapterDataObserver() {
                         @Override
@@ -362,9 +360,6 @@ public class Fragment1_One_Tasks extends Fragment {
                             super.onChanged();
                             // TODO: 02.03.2022
                             Log.d(this.getClass().getName(), "onChanged ");
-
-
-                            // TODO: 04.03.2022
                             // TODO: 02.03.2022
                             /// subClassBuccessLoginГлавныйКласс_бизнесЛогики.МетодПолучениеДанныхДляЗАДАЧ();
                             // TODO: 04.03.2022
@@ -372,26 +367,15 @@ public class Fragment1_One_Tasks extends Fragment {
 
                                 // TODO: 04.03.2022
                                 Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.moveToFirst();
-
                             }
-
-
-
                         }
-
                         @Override
                         public void onItemRangeChanged(int positionStart, int itemCount) {
                             super.onItemRangeChanged(positionStart, itemCount);
                             // TODO: 02.03.2022
                             /////
-
-                            // Vibrate for 500 milliseconds
-
-                            //  вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
-
                             Log.d(this.getClass().getName(), "onItemRangeChanged ");
                         }
-
                         @Override
                         public void onItemRangeChanged(int positionStart, int itemCount, @Nullable Object payload) {
                             super.onItemRangeChanged(positionStart, itemCount, payload);
@@ -399,7 +383,6 @@ public class Fragment1_One_Tasks extends Fragment {
                             // вибратор.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
                             Log.d(this.getClass().getName(), "onItemRangeChanged ");
                         }
-
                         @Override
                         public void onItemRangeInserted(int positionStart, int itemCount) {
                             super.onItemRangeInserted(positionStart, itemCount);
@@ -415,7 +398,6 @@ public class Fragment1_One_Tasks extends Fragment {
                             // вибратор.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
                             Log.d(this.getClass().getName(), "onItemRangeRemoved ");
                         }
-
                         @Override
                         public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
                             super.onItemRangeMoved(fromPosition, toPosition, itemCount);
@@ -428,6 +410,7 @@ public class Fragment1_One_Tasks extends Fragment {
                                 МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
 
                                 Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+
                                 /////////////
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -437,7 +420,6 @@ public class Fragment1_One_Tasks extends Fragment {
                                 new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
                                         Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                             }
-
                             Log.d(this.getClass().getName(), "onItemRangeMoved ");
                         }
                     };
