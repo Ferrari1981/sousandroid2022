@@ -156,9 +156,10 @@ public class Fragment1_One_Tasks extends Fragment {
             // TODO: 14.03.2022
             bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.performLongClick();
 
-            // TODO: 14.03.2022
+            // TODO: 14.03.2022 перегрузка фрагмента
             bottomNavigationViewДляTasks.requestLayout();
-            // bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.GONE);
+            // TODO: 14.03.2022
+            linearLayou.requestLayout();
 
             Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики imageView  onViewCreated ");
 
@@ -950,11 +951,10 @@ public class Fragment1_One_Tasks extends Fragment {
                                         Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
                                         // TODO: 10.03.2022
                                         вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
-
-                                        // TODO: 14.03.2022
-                                        bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.GONE);
                                         // TODO: 09.03.2022
                                         bottomNavigationViewДляTasks.requestLayout();
+                                        // TODO: 14.03.2022
+                                        linearLayou.requestLayout();
                                         Log.d(this.getClass().getName(), " bottomNavigationViewДляTasks.getChildCount() " + bottomNavigationViewДляTasks.getChildCount());
                                         break;
 
@@ -977,10 +977,9 @@ public class Fragment1_One_Tasks extends Fragment {
                                         // TODO: 10.03.2022
                                         вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
                                         // TODO: 14.03.2022
-                                        bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.VISIBLE);
-                                        // TODO: 09.03.2022
                                         bottomNavigationViewДляTasks.requestLayout();
-
+                                        // TODO: 14.03.2022
+                                        linearLayou.requestLayout();
                                         Log.d(this.getClass().getName(), " bottomNavigationViewДляTasks.getChildCount() " + bottomNavigationViewДляTasks.getChildCount());
 
                                         // TODO: 14.03.2022  дополнительно визуализируем
@@ -1006,11 +1005,9 @@ public class Fragment1_One_Tasks extends Fragment {
                                         // TODO: 10.03.2022
                                         вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
                                         // TODO: 09.03.2022
-                                        // TODO: 14.03.2022
-                                        bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.setVisibility(View.GONE);
-                                        // TODO: 09.03.2022
                                         bottomNavigationViewДляTasks.requestLayout();
-
+                                        // TODO: 14.03.2022
+                                        linearLayou.requestLayout();
                                         Log.d(this.getClass().getName(), " bottomNavigationViewДляTasks.getChildCount() " + bottomNavigationViewДляTasks.getChildCount());
 
                                         // TODO: 14.03.2022  дополнительно визуализируем

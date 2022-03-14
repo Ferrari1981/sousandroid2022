@@ -20,18 +20,18 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         super.onViewCreated(view, savedInstanceState);
         
         try{
-            // TODO: 14.03.2022 ССЫЛКА НА РОДИТЕЛЬСКОЕ ФРАГМЕНТ 
+            // TODO: 14.03.2022 ССЫЛКА НА РОДИТЕЛЬСКОЕ ФРАГМЕНТ
 
-            super.textViewТекущаяЗадача.setText("Созданные".toUpperCase());////
             // TODO: 14.03.2022
-            super.bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.setVisibility(View.GONE);
+            super.bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.GONE);
             // TODO: 14.03.2022
-            super.bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.VISIBLE);
             // TODO: 14.03.2022
-            // TODO: 09.03.2022
+            super.bottomNavigationКонкретноКнопкаСоздатьСейчас.performLongClick();
+            // TODO: 14.03.2022
             super.bottomNavigationViewДляTasks.requestLayout();
-            // TODO: 12.03.2022
+            // TODO: 14.03.2022
             super.linearLayou.requestLayout();
+            // TODO: 14.03.2022
 
             Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания);
 
