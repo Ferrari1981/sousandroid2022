@@ -91,31 +91,25 @@ public class Fragment1_One_Tasks extends Fragment {
     protected FragmentTransaction fragmentTransactionляЗадачи;
     // TODO: 10.03.2022
     protected TextView textViewТекущаяЗадача;
+    // TODO: 14.03.2022
+    protected Integer ПубличныйIDДляФрагмента;
 
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         try {
-
-            Log.d(this.getClass().getName(), "  onViewCreated  Fragment1_One_Tasks view   "+view);
-
-            // TODO: 28.02.2022
-// Inflate the layout for this fragment
+            Log.d(this.getClass().getName(), "  onViewCreated  Fragment1_One_Tasks view   " + view);
 
             Log.d(this.getClass().getName(), "  Fragment1_One_Tasks  viewДляПервойКнопкиHome_Задания " + viewДляПервойКнопкиHome_Задания);
-
 
             // TODO: 10.03.2022
 
             textViewТекущаяЗадача = (TextView) view.findViewById(R.id.activy_task_fragment1_tasksnameеtextview);
 
-
             Log.d(this.getClass().getName(), "  Fragment1_One_Tasks  textViewТекущаяЗадача " + textViewТекущаяЗадача + " view " + view);
-
-
+            // TODO: 14.03.2022  
             textViewТекущаяЗадача.setText("Задания".toUpperCase());
-
 
             // TODO: 14.03.2022  данные на carvview
             BungleДанныеДляViewCard = new Bundle();
@@ -123,8 +117,12 @@ public class Fragment1_One_Tasks extends Fragment {
             // TODO: 10.03.2022 выбратор
             вибратор = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
 
-            ///   getResources().getDrawable(this,R.drawable.icon_dsu1_add_organisazio_success
-            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики imageView   ");
+
+            // TODO: 10.03.2022 manager fragmenot
+
+            fragmentManagerДляЗадачи = getActivity().getSupportFragmentManager();
+
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики imageView  onViewCreated ");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -135,7 +133,6 @@ public class Fragment1_One_Tasks extends Fragment {
                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
             ///
 
-
         }
     }
 
@@ -145,12 +142,12 @@ public class Fragment1_One_Tasks extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         try{
-
+// TODO: 14.03.2022
         viewДляПервойКнопкиHome_Задания = inflater.inflate(R.layout.activity_main_fragment1_for_tasks, container, false);
 
         // TODO: 12.03.2022
-        Log.d(this.getClass().getName(), " onCreateView  viewДляПервойКнопкиHome_Задания  Fragment1_One_Tasks " +
-                "" + viewДляПервойКнопкиHome_Задания);
+            Log.d(this.getClass().getName(), " onCreateView  viewДляПервойКнопкиHome_Задания  Fragment1_One_Tasks  onCreateView " +
+                    "" + viewДляПервойКнопкиHome_Задания);
     } catch (Exception e) {
         e.printStackTrace();
         ///метод запись ошибок в таблицу
@@ -159,40 +156,29 @@ public class Fragment1_One_Tasks extends Fragment {
         new Class_Generation_Errors(getActivity()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
                 Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
         ///
-
-
     }
 
         return viewДляПервойКнопкиHome_Задания;
     }
 
-    // TODO: 12.03.2022  метод с бизнес логикой
 
+    // TODO: 12.03.2022  метод с бизнес логикой
     @Override
     public void onStart() {
         super.onStart();
 
-        try{
-        ///   getResources().getDrawable(this,R.drawable.icon_dsu1_add_organisazio_success
-            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики imageView  Fragment1_One_Tasks ");
+        try {
+            ///   getResources().getDrawable(this,R.drawable.icon_dsu1_add_organisazio_success
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики imageView  Fragment1_One_Tasks  onStart");
 
-
-
-        // TODO: 10.03.2022 manager fragmenot
-
-
-            fragmentManagerДляЗадачи = getActivity().getSupportFragmentManager();
+            // TODO: 02.03.2022
+            ПубличныйIDДляФрагмента = new Class_Generations_PUBLIC_CURRENT_ID(getContext()).ПолучениеПубличногоТекущегоПользователяID();
 
 
             //TODO код для recycleviews
             subClassBuccessLogin_главныйКлассБизнесЛогики = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики(getContext(), getActivity());
 
             // TODO: 10.03.2022
-
-
-            // TODO: 02.03.2022
-            Integer ПубличныйIDДляФрагмента = new Class_Generations_PUBLIC_CURRENT_ID(getContext()).ПолучениеПубличногоТекущегоПользователяID();
-            // TODO: 02.03.2022
 
             Log.d(this.getClass().getName(), "ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
 
@@ -224,13 +210,8 @@ public class Fragment1_One_Tasks extends Fragment {
 
             subClassBuccessLogin_главныйКлассБизнесЛогики.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодИнициализацииRecycleViewДляЗадач();
 
-
-            // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
             // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
             subClassBuccessLogin_главныйКлассБизнесЛогики.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСозданиеНавигаторКнопок();
-
-            // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
-
 
             // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ
             subClassBuccessLogin_главныйКлассБизнесЛогики.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
@@ -239,13 +220,7 @@ public class Fragment1_One_Tasks extends Fragment {
                     "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  МетодКпопкаСоЗачкомКраснымДополнительныйСтатус  " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK +
                     " Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
 
-
-
-        ///   getResources().getDrawable(this,R.drawable.icon_dsu1_add_organisazio_success
-            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики imageView   ");
-
-
-    } catch (Exception e) {
+        } catch (Exception e) {
         e.printStackTrace();
         ///метод запись ошибок в таблицу
         Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
@@ -258,53 +233,36 @@ public class Fragment1_One_Tasks extends Fragment {
     }
     }
 
-
     // TODO: 10.03.2022 БИЗНЕС-КОД ПЕРЕНЕСЕН ИЗ АКТИВТИ
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         try {
-
-            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики   " +
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики onDestroyView  " +
                     "" + adapterDataObserverObserverСлушатель +
                     " dataSetObserverДляКурсора " + dataSetObserverДляКурсора);
-
-
             // TODO: 04.03.2022 закрываем слушатель  recycreview
-
             if (adapterDataObserverObserverСлушатель != null && myRecycleViewAdapter != null) {
                 // TODO: 04.03.2022
                 myRecycleViewAdapter.unregisterAdapterDataObserver(adapterDataObserverObserverСлушатель);
 // TODO: 04.03.2022 закрываем слушатель  curcor
             }
-
-
+            // TODO: 14.03.2022
             if (dataSetObserverДляКурсора != null && Курсор_ДляПолученияДАнныхДляЗАДАЧTASK != null) {
                 // TODO: 04.03.2022
                 Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.unregisterDataSetObserver(dataSetObserverДляКурсора);
             }
-
-
             Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики   " +
                     "" + adapterDataObserverObserverСлушатель +
                     " dataSetObserverДляКурсора " + dataSetObserverДляКурсора);
 
-
             // TODO: 04.03.2022  закрывам сслушатли work manager общего
-
-
             if (observerОБЩАЯДляWORKMANAGERДляРасписания != null) {
                 // TODO: 04.03.2022
                 WorkManager.getInstance(getContext()).getWorkInfosByTagLiveData(ИмяСлужбыОбщейСинхронизацииДляЗадачи).removeObserver(observerОБЩАЯДляWORKMANAGERДляРасписания);
             }
-
-
             // TODO: 04.03.2022  закрывам сслушатли work manager чата одноразовга
-
-
             if (observerОдноразоваяДляWORKMANAGERДляРасписанияДполнительнаяОтЧата != null) {
-
                 // TODO: 04.03.2022
                 WorkManager.getInstance(getContext()).getWorkInfosByTagLiveData(ИмяСлужбыОдноразоваяСинхронизацииДляЗадачиИзЧата).removeObserver(observerОдноразоваяДляWORKMANAGERДляРасписанияДполнительнаяОтЧата);
             }
@@ -313,8 +271,6 @@ public class Fragment1_One_Tasks extends Fragment {
             Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  ИмяСлужбыСинхронизацииДляЗадачиИзЧата  " +
                     "" + ИмяСлужбыОдноразоваяСинхронизацииДляЗадачиИзЧата +
                     " ИмяСлужбыСинхронизацииДляЗадачи " + ИмяСлужбыОбщейСинхронизацииДляЗадачи);
-
-
             /////////////
         } catch (Exception e) {
             e.printStackTrace();
