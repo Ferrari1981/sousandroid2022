@@ -517,27 +517,15 @@ public class Fragment1_One_Tasks extends Fragment {
                                                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                                         }
                                     });
-
-
                         }
                     };
-
-
-// TODO: 18.02.2022
-
                     // TODO: 20.02.2022
-                    // TODO: 20.02.2022
-                    if (observerОБЩАЯДляWORKMANAGERДляРасписания != null) {// TODO: 04.03.2022
-
+                    if (observerОБЩАЯДляWORKMANAGERДляРасписания != null) {
+                        // TODO: 04.03.2022
                         WorkManager.getInstance(getContext()).getWorkInfosByTagLiveData(ИмяСлужбыОбщейСинхронизацииДляЗадачи).observeForever(observerОБЩАЯДляWORKMANAGERДляРасписания);
                     }
-
                     // TODO: 29.09.2021  конец синхрониазции по раписанию
-
-
                     Log.d(this.getClass().getName(), " WorkInfoИнформацияОЗапущенойСлужбеОдноразовая  СтастусWorkMangerЧата " + " CallBaskОтWorkManagerОдноразового " + ИмяСлужбыОбщейСинхронизацииДляЗадачи);
-
-
                 } catch (Exception e) {
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
@@ -546,28 +534,18 @@ public class Fragment1_One_Tasks extends Fragment {
                     new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
                             Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                 }
-
-
             }
 // TODO: 04.03.2022
 
+
             // TODO: 18.10.2021  СИНХРОНИАЗЦИЯ ЧАТА ПО РАСПИСАНИЮ ЧАТ
             void МетодСоздаенияСлушателяДляЧатаWorkMAnager() throws ExecutionException, InterruptedException {
-                ///
 // TODO: 11.05.2021 ЗПУСКАЕМ СЛУЖБУ через брдкастер синхронизхации и уведомления
-
                 try {
-
-                    // TODO: 27.10.2021
-
-
                     // TODO: 16.12.2021  --ОДНОРАЗОВАЯ СИНХРОНИАЗЦИЯ СЛУШАТЕЛЬ
-
                     observerОдноразоваяДляWORKMANAGERДляРасписанияДполнительнаяОтЧата = new Observer<List<WorkInfo>>() {
                         @Override
                         public void onChanged(List<WorkInfo> workInfosОдноразовая) {
-
-
                             // TODO: 23.12.2021
                             workInfosОдноразовая.stream()
                                     .filter(СтастусWorkMangerДляФрагментаЧитатьИПисать -> СтастусWorkMangerДляФрагментаЧитатьИПисать != null)
@@ -576,22 +554,13 @@ public class Fragment1_One_Tasks extends Fragment {
                                     .forEachOrdered((СтастусWorkMangerДляФрагментаЧитатьИПисать) -> {
                                         // TODO: 18.02.2022
                                         try {
-
-                                            //
-
                                             // TODO: 14.01.2022
-                                            //
                                             Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового observerОдноразоваяДляWORKMANAGERДляРасписанияДполнительнаяОтЧата " +
                                                     СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().name());
-
                                             // TODO: 04.03.2022
                                             Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.deactivate();
-
                                             // TODO: 04.03.2022 перезапускаем курсор
                                             Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.requery();
-                                            // TODO: 18.02.2022
-
-
                                             // TODO: 29.09.2021  конец синхрониазции по раписанию
                                         } catch (Exception e) {
                                             e.printStackTrace();
@@ -603,25 +572,15 @@ public class Fragment1_One_Tasks extends Fragment {
                                                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                                         }
                                     });
-
-
                         }
                     };
-
-
                     // TODO: 20.02.2022
-                    // TODO: 20.02.2022
-                    if (observerОдноразоваяДляWORKMANAGERДляРасписанияДполнительнаяОтЧата != null) {// TODO: 04.03.2022
-
+                    if (observerОдноразоваяДляWORKMANAGERДляРасписанияДполнительнаяОтЧата != null) {
+                        // TODO: 04.03.2022
                         WorkManager.getInstance(getContext()).getWorkInfosByTagLiveData(ИмяСлужбыОдноразоваяСинхронизацииДляЗадачиИзЧата).observeForever(observerОдноразоваяДляWORKMANAGERДляРасписанияДполнительнаяОтЧата);
                     }
-
                     // TODO: 29.09.2021  конец синхрониазции по раписанию
-
-
                     Log.d(this.getClass().getName(), " WorkInfoИнформацияОЗапущенойСлужбеОдноразовая  СтастусWorkMangerЧата " + " ИмяСлужбыСинхронизацииДляЗадачиИзЧата " + ИмяСлужбыОдноразоваяСинхронизацииДляЗадачиИзЧата);
-
-
                 } catch (Exception e) {
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
@@ -630,149 +589,81 @@ public class Fragment1_One_Tasks extends Fragment {
                     new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
                             Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                 }
-
-
             }
 
-            // TODO: 09.03.202 перенесенный метод
 
             // TODO: 04.03.2022 прозвомжность инициализации RecycleView
             void МетодИнициализацииRecycleViewДляЗадач() {
-
-
                 try {
-
-
                     Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
-
-
-// TODO: 02.03.2022
-
-
                     // TODO: 04.03.2022  В ДАННОМ КОДЕ МЫ ОПЕРДЕЛЯЕМ КАКОЙ ЭКОРАН БУДЕМ ЗАГРУЖАТЬ В ЗАВПИСИМОСТИ ЕСЛИ ЛИ ДАННЫЫЕ ЗАДАЧИ
-
                     if (Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount() > 0) {
                         // TODO: 03.03.2022
-
-                        //    setContentView(R.layout.activity_main_history_tasks);
-                        // TODO: 03.03.2022
                         Log.d(this.getClass().getName(), " есть данные для отображения " +
-
                                 "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
-
+                        // TODO: 14.03.2022
                         LinearLayout linearLayou = (LinearLayout) getActivity().findViewById(R.id.activity_main_fisrt_for_tasks);
-
                         // TODO: 06.03.2022
                         bottomNavigationViewДляTasks = (BottomNavigationView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.bottomnavigationActiviTask8);
-
-
                         // TODO: 28.02.2022
                         recyclerView = (RecyclerView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.recycleviewActiviTask);
-
+                        // TODO: 14.03.2022
                         recyclerView.setVisibility(View.VISIBLE);
-
-
+                        // TODO: 14.03.202
                         GridLayoutManager gridLayoutManager;
-
-
+                        // TODO: 14.03.202
                         gridLayoutManager = new GridLayoutManager(getActivity(), 1);
-
                         // TODO: 28.02.2022 создаем наш первый RecyclerView
                         recyclerView.setLayoutManager(gridLayoutManager);//TODO new LinearLayoutManager(getContext()) // TODO: 28.02.2022 создаем наш первый RecyclerView recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-
-                        //    listforrecycleview=    new listforrecycleview();
-
-
                         // TODO: 28.02.2022
                         myRecycleViewAdapter = new MyRecycleViewAdapter(Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
-
-                        // TODO: 09.03.2022
-                        // recyclerView.setHasFixedSize(true);
-
-
                         // TODO: 04.03.2022
-
                         recyclerView.setAdapter(myRecycleViewAdapter);
-
-
                         // TODO: 13.03.2022
-
                         Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики recyclerView   " + recyclerView);
-
-
                         // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ когнданет записей  МетодИнициализацииRecycleViewДляЗадачМетодИнициализацииRecycleViewДляЗадач
                         МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
-
-
+                        // TODO: 14.03.2022
                         Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе +
                                 " Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
-
-
+                        // TODO: 14.03.2022
                         linearLayou.requestLayout();
-
-
-                        // TODO: 01.03.2022
                         // TODO: 04.03.2022 создаем слушатель    третий класс создаем класс слушаителй  ДАННЫЙ КОД ЗАПУСКАЕТЬСЯ ПОСЛЕ СОЗДАЕНИЯ И УСТАНОВКИ АДАПТЕРА RECYCLEVIEW
-
                         subClassBuccessLogin_главныйКлассБизнесЛогики.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСлушательObserverДляRecycleView();
 
-
                     } else {
-
-                        // TODO: 03.03.2022
-
-                        ///    setContentView(R.layout.activity_main_history_tasks_isnull);
-
-
-                        // TODO: 06.03.2022
-
                         // TODO: 06.03.2022
                         bottomNavigationViewДляTasks = (BottomNavigationView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.bottomnavigationActiviTask8);
-
-
                         // TODO: 28.02.2022
                         recyclerView = (RecyclerView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.recycleviewActiviTask);
-
+                        // TODO: 28.02.2022
                         recyclerView.setVisibility(View.GONE);
-
+                        // TODO: 28.02.2022
                         LinearLayout linearLayou = (LinearLayout) getActivity().findViewById(R.id.activity_main_fisrt_for_tasks);
-
-
                         // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ когнданет записей  МетодИнициализацииRecycleViewДляЗадачМетодИнициализацииRecycleViewДляЗадач
                         МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
-
-
+                        // TODO: 28.02.2022
                         Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе +
                                 " Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
-
-
                         // TODO: 03.03.2022
                         TextView textViewisnull = (TextView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.activy_task_nameеtextviewcursornull);
                         //  TextView textViewisnull=new TextView(activity);
                         textViewisnull.setVisibility(View.VISIBLE);
                         // TODO: 03.03.2022
                         textViewisnull.setText("Нет задач !!!".toUpperCase());
-
-
+                        // TODO: 28.02.2022
                         linearLayou.addView(textViewisnull);
                         // TODO: 06.03.2022
-
                         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
+                        // TODO: 28.02.2022
                         linearLayou.setLayoutParams(layoutParams);
-
+                        // TODO: 28.02.2022
                         linearLayou.requestLayout();
-
-                        // TODO: 03.03.2022
-
+                        // TODO: 28.02.2022
                         Log.d(this.getClass().getName(), " нет данных для отображения " +
                                 "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
                     }
-
                     // TODO: 13.03.2022
-
-
                     bottomNavigationViewДляTasks.requestLayout();
                     /////////////
                 } catch (Exception e) {
