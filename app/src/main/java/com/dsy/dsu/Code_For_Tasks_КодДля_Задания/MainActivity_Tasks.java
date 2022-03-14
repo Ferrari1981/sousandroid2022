@@ -102,7 +102,7 @@ public class MainActivity_Tasks extends FragmentActivity {
     private void МетодЗапускФрагментаЗадачиСАктивти() {
 
         try{
-            Log.d(this.getClass().getName(), " отработоатл new SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи   ");
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики   ");
 
             fragmentManagerДляЗадачи = getSupportFragmentManager();
             ///
@@ -110,9 +110,9 @@ public class MainActivity_Tasks extends FragmentActivity {
 
             // TODO: 22.12.2021  запускам втнутерий класс по созданию бизнес логики для даннго активти
 
-            Log.d(this.getClass().getName(), " отработоатл new SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи  fragmentTransactionляЗадачи  " + fragmentTransactionляЗадачи);
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  fragmentTransactionляЗадачи  " + fragmentTransactionляЗадачи);
 
-            Log.d(this.getClass().getName(), " отработоатл new SubClassBusinessLogic_БизнесЛогикаДЛяАктивтиЗадачи imageView   ");
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики imageView   ");
 
             // TODO: 09.03.2022
             fragment_дляЗадачиПерваяКнопка = new Fragment1_One_Tasks();
