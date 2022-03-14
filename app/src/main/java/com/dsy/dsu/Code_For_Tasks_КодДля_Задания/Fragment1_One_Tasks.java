@@ -44,6 +44,7 @@ import com.google.android.material.card.MaterialCardView;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -108,7 +109,7 @@ public class Fragment1_One_Tasks extends Fragment {
             textViewТекущаяЗадача = (TextView) view.findViewById(R.id.activy_task_fragment1_tasksnameеtextview);
 
             Log.d(this.getClass().getName(), "  Fragment1_One_Tasks  textViewТекущаяЗадача " + textViewТекущаяЗадача + " view " + view);
-            // TODO: 14.03.2022  
+            // TODO: 14.03.2022
             textViewТекущаяЗадача.setText("Задания".toUpperCase());
 
             // TODO: 14.03.2022  данные на carvview
@@ -291,7 +292,7 @@ public class Fragment1_One_Tasks extends Fragment {
     class SubClassBuccessLogin_ГлавныйКлассБизнесЛогики {
         // TODO: 28.02.2022
         Context context;
-        // TODO: 14.03.2022  
+        // TODO: 14.03.2022
         Activity activity;
         public SubClassBuccessLogin_ГлавныйКлассБизнесЛогики(Context context, Activity activity) {
             // TODO: 14.03.2022
@@ -309,7 +310,7 @@ public class Fragment1_One_Tasks extends Fragment {
                 Integer ПубличныйIDДляФрагмента = new Class_Generations_PUBLIC_CURRENT_ID(getContext()).ПолучениеПубличногоТекущегоПользователяID();
                 // TODO: 02.03.2022
                 Log.d(this.getClass().getName(), "ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
-                // TODO: 14.03.2022  
+                // TODO: 14.03.2022
                 Курсор_ГлавныйКурсорДляЗадач = МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадач(ПубличныйIDДляФрагмента);
                 // TODO: 02.03.2022
                 Log.d(this.getClass().getName(), "Курсор_ГлавныйКурсорДляЗадач " + Курсор_ГлавныйКурсорДляЗадач);
@@ -817,7 +818,7 @@ public class Fragment1_One_Tasks extends Fragment {
                             try {
                                 // TODO: 09.03.2022
                                  Fragment fragment1_ДляЗадания;
-                                ///
+                                // TODO: 09.03.2022
                                 fragmentTransactionляЗадачи = fragmentManagerДляЗадачи.beginTransaction();
                                 // TODO: 11.03.2022
                                 List<Fragment> fragmentsall=      fragmentManagerДляЗадачи.getFragments();
@@ -961,7 +962,6 @@ public class Fragment1_One_Tasks extends Fragment {
         TextView textView1, textView2, textView3, textView4, textView5;
         // TODO: 13.03.2022
         MaterialCardView materialCardView;
-
         // TODO: 02.03.2022
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -1015,49 +1015,35 @@ public class Fragment1_One_Tasks extends Fragment {
     // TODO: 28.02.2022 ViewHolder
 
     protected class MyRecycleViewAdapter extends RecyclerView.Adapter<MyViewHolder> {
-
+        // TODO: 04.03.2022
         SQLiteCursor Курсор_ДляПолученияДАнныхДляЗАДАЧTASK;
-
         public MyRecycleViewAdapter(@NotNull SQLiteCursor Курсор_ДляПолученияДАнныхДляЗАДАЧTASK) {
             // super();
-
             // TODO: 04.03.2022
             this.Курсор_ДляПолученияДАнныхДляЗАДАЧTASK = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK;
-
             if (Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount() > 0) {
                 // TODO: 04.03.2022
                 Log.i(this.getClass().getName(), "   MyRecycleViewAdapter   Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount()>" + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount());
             }
-
             Log.i(this.getClass().getName(), "     getItemId holder.position ");
         }
 
         @NonNull
         @Override
         public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
             // TODO: 10.03.2022
             View viewГлавныйВидДляRecyclleViewДляЗаданий=null ;
-            try{
-
+            try {
                 // TODO: 28.02.2022
                 viewГлавныйВидДляRecyclleViewДляЗаданий = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_for_takst_cardview1, parent, false);
-            // TODO: 05.03.2022
-                // TODO: 10.03.2022
-
-                Log.i(this.getClass().getName(), "   viewГлавныйВидДляRecyclleViewДляЗаданий"+viewГлавныйВидДляRecyclleViewДляЗаданий);
-
-
-            // TODO: 28.02.2022
-            myViewHolder = new MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
-
-// TODO: 02.03.2022
-
-
-            // TODO: 03.03.2022
-
+                // TODO: 05.03.2022
+                Log.i(this.getClass().getName(), "   viewГлавныйВидДляRecyclleViewДляЗаданий" + viewГлавныйВидДляRecyclleViewДляЗаданий);
+                // TODO: 28.02.2022
+                myViewHolder = new MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
+                // TODO: 01.03.2022
+                Log.i(this.getClass().getName(), "   myViewHolder" + myViewHolder);
 // TODO: 01.03.2022
-        } catch (Exception e) {
+            } catch (Exception e) {
             e.printStackTrace();
             ///метод запись ошибок в таблицу
             Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
@@ -1066,7 +1052,6 @@ public class Fragment1_One_Tasks extends Fragment {
                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
             //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
         }
-
             return myViewHolder;
 
         }
@@ -1074,139 +1059,29 @@ public class Fragment1_One_Tasks extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
             // TODO: 28.02.2022 привазяваем данные из колекции пряме на наш recycreview
-
             try {
-
+                // TODO: 14.03.2022
                 if (position <= Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount()) {
-
-                    // TODO: 05.03.2022
 
 
                     // TODO: 02.03.2022 тут РАЗДАЕМ ДАННЫЕ RECYCLERBIEW
-                    Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);
 
+                    Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);
                     // TODO: 04.03.2022 p==osion
                     Log.i(this.getClass().getName(), "  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition() " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition());
 
-                    // TODO: 04.03.2022
 
-                    // TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1
+                    // TODO: 14.03.2022  метод создания само сообщения
+                    МетодБиндингаСозданиеСамоСообщения(holder);
 
-                    Integer ИндексСамогоСообщенияЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("message");
-                    // TODO: 02.03.2022
+                    // TODO: 14.03.2022  метод создания номер задания
+                    МетодБиндингаНомерЗадания(holder);
 
-                    String СамогоСообщенияЗадачиДляПользователя = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getString(ИндексСамогоСообщенияЗадачи);
-                    // TODO: 02.03.2022
+                    // TODO: 14.03.2022  метод создания дата задания
+                    МетодБиндингаДатаЗадания(holder);
 
-                    Log.i(this.getClass().getName(), "  СамогоСообщенияЗадачиДляПользователя " + СамогоСообщенияЗадачиДляПользователя);
-                    // TODO: 28.02.2022
-
-// TODO: 28.02.2022
-                    holder.textView1.setText(СамогоСообщенияЗадачиДляПользователя);
-
-                    // TODO: 02.03.2022
-
-
-                    // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2
-
-
-                    Integer ИндексПолучаемIDЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("id");
-                    // TODO: 02.03.2022
-
-                    Integer IDЗадачиТекущей = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексПолучаемIDЗадачи);
-                    // TODO: 02.03.2022
-
-                    Log.i(this.getClass().getName(), "  IDЗадачиТекущей " + IDЗадачиТекущей);
-                    // TODO: 28.02.2022
-
-// TODO: 28.02.2022
-                    holder.textView2.setText("#" + String.valueOf(IDЗадачиТекущей));
-
-                    // TODO: 02.03.2022
-
-
-                    // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3
-
-                    Integer ИндексПолучаемДатыЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("date_update");
-                    // TODO: 02.03.2022
-
-                    String СамаДАтаЗадачиТекущей = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getString(ИндексПолучаемДатыЗадачи);
-                    // TODO: 02.03.2022
-
-                    // TODO: 03.03.2022 парсинг даты
-
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", new Locale("ru"));
-                    // TODO: 13.03.2022
-                    dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", new Locale("ru"));
-
-                    /////////
-
-                    Date date = dateFormat.parse(СамаДАтаЗадачиТекущей);
-
-                    SimpleDateFormat simpleDateFormatДва = new SimpleDateFormat("dd MMMM yyyy HH:mm", new Locale("ru"));
-
-                    //   simpleDateFormatДва.applyPattern("dd-MM-yyyy HH:mm");//dd-MM-yyyy//// EEEE yyyy HH:mm  /////  dd MMMM yyyy HH:mm
-
-                    СамаДАтаЗадачиТекущей = simpleDateFormatДва.format(date);
-
-
-                    Log.i(this.getClass().getName(), "  СамаДАтаЗадачиТекущей " + СамаДАтаЗадачиТекущей);
-
-
-                    // TODO: 28.02.2022
-
-// TODO: 28.02.2022
-                    holder.textView4.setText("дата: " + СамаДАтаЗадачиТекущей);
-
-                    // TODO: 02.03.2022
-
-
-                    // TODO: 02.03.2022#4  // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4
-
-                    Integer ИндексКтоНаписалСообщение = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("user_update");
-                    // TODO: 02.03.2022
-
-                    Integer КтоНаписалСообщениеФИОдЛПосика = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексКтоНаписалСообщение);
-                    // TODO: 02.03.2022
-
-                    Log.i(this.getClass().getName(), "  КтоНаписалСообщениеФИОдЛПосика " + КтоНаписалСообщениеФИОдЛПосика);
-
-
-                    // TODO: 02.03.2022
-
-                    // TODO: 02.03.2022
-                    String ФИОКотоНаписал = new String();
-
-                    SQLiteCursor sqLiteCursorПолученимНАстоящийФИО = МетодПолучениеДанныхФИОаОснованииID(КтоНаписалСообщениеФИОдЛПосика);
-
-                    // TODO: 02.03.2022
-                    Log.i(this.getClass().getName(), "  sqLiteCursorПолученимНАстоящийФИО " + sqLiteCursorПолученимНАстоящийФИО);
-                    // TODO: 02.03.2022
-                    if (sqLiteCursorПолученимНАстоящийФИО.getCount() > 0) {
-
-                        // TODO: 02.03.2022
-                        sqLiteCursorПолученимНАстоящийФИО.moveToFirst();
-                        // TODO: 02.03.2022
-
-                        // TODO: 02.03.2022
-                        Integer ИндексПолученогоФИО = sqLiteCursorПолученимНАстоящийФИО.getColumnIndex("name");
-
-                        ФИОКотоНаписал = sqLiteCursorПолученимНАстоящийФИО.getString(ИндексПолученогоФИО);
-
-
-                        // TODO: 02.03.2022
-                        Log.i(this.getClass().getName(), "  ФИОКотоНаписал " + ФИОКотоНаписал);
-                    }
-                    // TODO: 09.03.2022
-                    sqLiteCursorПолученимНАстоящийФИО.close();
-
-
-                    // TODO: 02.03.2022
-                    Log.i(this.getClass().getName(), "  ФИОКотоНаписал " + ФИОКотоНаписал);
-                    // TODO: 28.02.2022
-
-// TODO: 28.02.2022
-                    holder.textView3.setText("от: " + ФИОКотоНаписал.trim());
+                    // TODO: 14.03.2022  метод создания ФИО задания
+                    МетодБиндингаФИОДляЗадания(holder);
 
 
                     // TODO: 02.03.2022#5
@@ -1312,6 +1187,128 @@ public class Fragment1_One_Tasks extends Fragment {
                 // TODO: 09.03.2022
 
 
+            } catch (Exception e) {
+                e.printStackTrace();
+                ///метод запись ошибок в таблицу
+                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+            }
+
+        }
+
+        private void МетодБиндингаФИОДляЗадания(@NonNull MyViewHolder holder) throws ExecutionException, InterruptedException {
+            try {
+                // TODO: 02.03.2022#4  // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4
+                Integer ИндексКтоНаписалСообщение = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("user_update");
+                // TODO: 02.03.2022
+                Integer КтоНаписалСообщениеФИОдЛПосика = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексКтоНаписалСообщение);
+                // TODO: 02.03.2022
+                Log.i(this.getClass().getName(), "  КтоНаписалСообщениеФИОдЛПосика " + КтоНаписалСообщениеФИОдЛПосика);
+                // TODO: 02.03.2022
+                String ФИОКотоНаписал = new String();
+                // TODO: 13.03.2022
+                SQLiteCursor sqLiteCursorПолученимНАстоящийФИО = МетодПолучениеДанныхФИОаОснованииID(КтоНаписалСообщениеФИОдЛПосика);
+                // TODO: 02.03.2022
+                Log.i(this.getClass().getName(), "  sqLiteCursorПолученимНАстоящийФИО " + sqLiteCursorПолученимНАстоящийФИО);
+                // TODO: 02.03.2022
+                if (sqLiteCursorПолученимНАстоящийФИО.getCount() > 0) {
+                    // TODO: 02.03.2022
+                    sqLiteCursorПолученимНАстоящийФИО.moveToFirst();
+                    // TODO: 02.03.2022
+                    Integer ИндексПолученогоФИО = sqLiteCursorПолученимНАстоящийФИО.getColumnIndex("name");
+                    // TODO: 13.03.2022
+                    ФИОКотоНаписал = sqLiteCursorПолученимНАстоящийФИО.getString(ИндексПолученогоФИО);
+                    // TODO: 13.03.2022
+                    // TODO: 02.03.2022
+                    Log.i(this.getClass().getName(), "  ФИОКотоНаписал " + ФИОКотоНаписал);
+                }
+                // TODO: 09.03.2022
+                sqLiteCursorПолученимНАстоящийФИО.close();
+                // TODO: 02.03.2022
+                Log.i(this.getClass().getName(), "  ФИОКотоНаписал " + ФИОКотоНаписал);
+                // TODO: 28.02.2022
+
+// TODO: 28.02.2022
+                holder.textView3.setText("от: " + ФИОКотоНаписал.trim());
+            } catch (Exception e) {
+                e.printStackTrace();
+                ///метод запись ошибок в таблицу
+                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+            }
+        }
+
+        private void МетодБиндингаДатаЗадания(@NonNull MyViewHolder holder) throws ParseException {
+            try {
+                // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3
+                Integer ИндексПолучаемДатыЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("date_update");
+                // TODO: 02.03.2022
+                String СамаДАтаЗадачиТекущей = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getString(ИндексПолучаемДатыЗадачи);
+                // TODO: 03.03.2022 парсинг даты
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", new Locale("ru"));
+                // TODO: 13.03.2022
+                dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", new Locale("ru"));
+                // TODO: 13.03.2022
+                Date date = dateFormat.parse(СамаДАтаЗадачиТекущей);
+                // TODO: 13.03.2022
+                SimpleDateFormat simpleDateFormatДва = new SimpleDateFormat("dd MMMM yyyy HH:mm", new Locale("ru"));
+                // TODO: 13.03.2022
+                //   simpleDateFormatДва.applyPattern("dd-MM-yyyy HH:mm");//dd-MM-yyyy//// EEEE yyyy HH:mm  /////  dd MMMM yyyy HH:mm
+                СамаДАтаЗадачиТекущей = simpleDateFormatДва.format(date);
+                // TODO: 13.03.2022
+                Log.i(this.getClass().getName(), "  СамаДАтаЗадачиТекущей " + СамаДАтаЗадачиТекущей);
+                // TODO: 28.02.2022
+                holder.textView4.setText("дата: " + СамаДАтаЗадачиТекущей);
+            } catch (Exception e) {
+                e.printStackTrace();
+                ///метод запись ошибок в таблицу
+                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+            }
+        }
+
+        private void МетодБиндингаНомерЗадания(@NonNull MyViewHolder holder) {
+            try {
+                // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2
+                Integer ИндексПолучаемIDЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("id");
+                // TODO: 02.03.2022
+                Integer IDЗадачиТекущей = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексПолучаемIDЗадачи);
+                // TODO: 02.03.2022
+                Log.i(this.getClass().getName(), "  IDЗадачиТекущей " + IDЗадачиТекущей);
+                // TODO: 28.02.2022
+                holder.textView2.setText("#" + String.valueOf(IDЗадачиТекущей));
+            } catch (Exception e) {
+                e.printStackTrace();
+                ///метод запись ошибок в таблицу
+                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+            }
+        }
+
+        private void МетодБиндингаСозданиеСамоСообщения(@NonNull MyViewHolder holder) {
+
+            try {
+                // TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1
+                Integer ИндексСамогоСообщенияЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("message");
+                // TODO: 02.03.2022
+                String СамогоСообщенияЗадачиДляПользователя = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getString(ИндексСамогоСообщенияЗадачи);
+                // TODO: 02.03.2022
+                Log.i(this.getClass().getName(), "  СамогоСообщенияЗадачиДляПользователя " + СамогоСообщенияЗадачиДляПользователя);
+                // TODO: 28.02.2022
+                holder.textView1.setText(СамогоСообщенияЗадачиДляПользователя);
+                // TODO: 28.02.2022
             } catch (Exception e) {
                 e.printStackTrace();
                 ///метод запись ошибок в таблицу
