@@ -11,6 +11,7 @@
     <item
         android:id="@+id/id_taskNowCreateNewTask"
         android:title="Новая"
+        android:visible="false"
 
 
         android:icon="@drawable/icon_dsu1_createnow_task_tree_buttom"/>

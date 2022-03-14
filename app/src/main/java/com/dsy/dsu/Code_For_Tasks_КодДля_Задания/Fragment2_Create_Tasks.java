@@ -23,10 +23,19 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
             // TODO: 14.03.2022 ССЫЛКА НА РОДИТЕЛЬСКОЕ ФРАГМЕНТ 
 
             super.textViewТекущаяЗадача.setText("Созданные".toUpperCase());////
-            // TODO: 12.03.2022  
-        Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания);
+            // TODO: 14.03.2022
+            super.bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.setVisibility(View.GONE);
+            // TODO: 14.03.2022
+            super.bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.VISIBLE);
+            // TODO: 14.03.2022
+            // TODO: 09.03.2022
+            super.bottomNavigationViewДляTasks.requestLayout();
+            // TODO: 12.03.2022
+            super.linearLayou.requestLayout();
 
-    } catch (Exception e) {
+            Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания);
+
+        } catch (Exception e) {
         e.printStackTrace();
         ///метод запись ошибок в таблицу
         Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +

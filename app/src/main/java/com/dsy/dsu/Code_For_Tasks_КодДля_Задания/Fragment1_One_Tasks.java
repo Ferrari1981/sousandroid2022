@@ -149,7 +149,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
             // TODO: 14.03.2022  тут обьявляем три кнопки доьавить контроль и новая задача
 
-            bottomNavigationКонкретноКнопкаСоздатьСейчас = bottomNavigationViewДляTasks.findViewById(R.id.id_taskCreateNewTasks);
+            bottomNavigationКонкретноКнопкаСоздатьСейчас = bottomNavigationViewДляTasks.findViewById(R.id.id_taskNowCreateNewTask);
             // TODO: 14.03.2022  тут обьявляем три кнопки доьавить контроль и новая задача
 
             bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи = bottomNavigationViewДляTasks.findViewById(R.id.id_taskHome);
@@ -157,7 +157,8 @@ public class Fragment1_One_Tasks extends Fragment {
             bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.performLongClick();
 
             // TODO: 14.03.2022
-            bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.GONE);
+            bottomNavigationViewДляTasks.requestLayout();
+            // bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.GONE);
 
             Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики imageView  onViewCreated ");
 
@@ -931,6 +932,7 @@ public class Fragment1_One_Tasks extends Fragment {
                                 Log.d(this.getClass().getName(), "  item.getItemId() " + item.getItemId());
                                 // TODO: 09.03.2022
                                 switch (item.getItemId()) {
+                                    // TODO: 14.03.2022
                                     case R.id.id_taskHome:
                                         // TODO: 22.12.2021  запускам втнутерий класс по созданию бизнес логики для даннго активти
                                         Log.d(this.getClass().getName(), " R.id.id_taskHome отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  fragmentTransactionляЗадачи  "
@@ -949,9 +951,11 @@ public class Fragment1_One_Tasks extends Fragment {
                                         // TODO: 10.03.2022
                                         вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
 
-
+                                        // TODO: 14.03.2022
+                                        bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.GONE);
                                         // TODO: 09.03.2022
-
+                                        bottomNavigationViewДляTasks.requestLayout();
+                                        Log.d(this.getClass().getName(), " bottomNavigationViewДляTasks.getChildCount() " + bottomNavigationViewДляTasks.getChildCount());
                                         break;
 
                                     // TODO: 09.03.2022////
@@ -972,7 +976,10 @@ public class Fragment1_One_Tasks extends Fragment {
                                         Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
                                         // TODO: 10.03.2022
                                         вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
+                                        // TODO: 14.03.2022
+                                        bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.VISIBLE);
                                         // TODO: 09.03.2022
+                                        bottomNavigationViewДляTasks.requestLayout();
 
                                         Log.d(this.getClass().getName(), " bottomNavigationViewДляTasks.getChildCount() " + bottomNavigationViewДляTasks.getChildCount());
 
@@ -980,7 +987,36 @@ public class Fragment1_One_Tasks extends Fragment {
 
 
                                         break;
+                                    // TODO: 09.03.2022////
 
+                                    case R.id.id_taskNowCreateNewTask:
+                                        // TODO: 09.03.2022
+                                        Log.d(this.getClass().getName(), " R.id.id_taskCreateNewTasks  item.getItemId() " + item.getItemId());
+                                        // TODO: 10.03.2022
+                                        item.setChecked(true);
+                                        // TODO: 10.03.2022
+                                        // TODO: 09.03.2022
+                                        fragment_ТекущийФрагмент = new Fragment2_Create_Tasks();
+                                        // TODO: 11.03.2022
+                                        fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
+                                        // TODO: 10.03.2022
+                                        fragmentTransactionляЗадачи.show(fragment_ТекущийФрагмент);
+                                        // TODO: 10.03.2022
+                                        Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
+                                        // TODO: 10.03.2022
+                                        вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
+                                        // TODO: 09.03.2022
+                                        // TODO: 14.03.2022
+                                        bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.setVisibility(View.GONE);
+                                        // TODO: 09.03.2022
+                                        bottomNavigationViewДляTasks.requestLayout();
+
+                                        Log.d(this.getClass().getName(), " bottomNavigationViewДляTasks.getChildCount() " + bottomNavigationViewДляTasks.getChildCount());
+
+                                        // TODO: 14.03.2022  дополнительно визуализируем
+
+
+                                        break;
                                     // TODO: 09.03.2022
                                     default:
                                         // TODO: 09.03.2022
