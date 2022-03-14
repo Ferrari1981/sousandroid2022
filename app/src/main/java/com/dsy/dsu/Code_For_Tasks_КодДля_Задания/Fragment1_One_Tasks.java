@@ -98,6 +98,9 @@ public class Fragment1_One_Tasks extends Fragment {
     protected Integer ПубличныйIDДляФрагмента;
     // TODO: 14.03.2022
     protected LinearLayout linearLayou;
+    // TODO: 14.03.2022
+    protected Fragment fragment_ТекущийФрагмент;
+    // TODO: 09.03.2022
 
 
     @Override
@@ -129,6 +132,15 @@ public class Fragment1_One_Tasks extends Fragment {
             // TODO: 14.03.2022
 
             linearLayou = (LinearLayout) getActivity().findViewById(R.id.activity_main_fisrt_for_tasks);
+
+            // TODO: 14.03.2022
+            // TODO: 06.03.2022
+            bottomNavigationViewДляTasks = (BottomNavigationView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.bottomnavigationActiviTask8);
+
+            // TODO: 14.03.2022
+            bottomNavigationViewДляTasks.getChildAt(0).setSelected(true);
+            // TODO: 14.03.2022
+            bottomNavigationViewДляTasks.getChildAt(0).performLongClick();
 
             Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики imageView  onViewCreated ");
 
@@ -804,8 +816,6 @@ public class Fragment1_One_Tasks extends Fragment {
                                 "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач);
                         // TODO: 14.03.2022
                         /*   LinearLayout linearLayou = (LinearLayout) getActivity().findViewById(R.id.activity_main_fisrt_for_tasks);*/
-                        // TODO: 06.03.2022
-                        bottomNavigationViewДляTasks = (BottomNavigationView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.bottomnavigationActiviTask8);
                         // TODO: 28.02.2022
                         recyclerView = (RecyclerView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.recycleviewActiviTask);
                         // TODO: 14.03.2022
@@ -840,7 +850,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
                     } else {
                         // TODO: 06.03.2022
-                        bottomNavigationViewДляTasks = (BottomNavigationView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.bottomnavigationActiviTask8);
+                        //bottomNavigationViewДляTasks = (BottomNavigationView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.bottomnavigationActiviTask8);
                         // TODO: 28.02.2022
                         recyclerView = (RecyclerView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.recycleviewActiviTask);
                         // TODO: 28.02.2022
@@ -894,40 +904,34 @@ public class Fragment1_One_Tasks extends Fragment {
                         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                             // TODO: 09.03.2022
                             try {
-                                // TODO: 09.03.2022
-                                 Fragment fragment1_ДляЗадания;
+
                                 // TODO: 09.03.2022
                                 fragmentTransactionляЗадачи = fragmentManagerДляЗадачи.beginTransaction();
                                 // TODO: 11.03.2022
-                                List<Fragment> fragmentsall=      fragmentManagerДляЗадачи.getFragments();
                                 // TODO: 11.03.2022
-                                Fragment ТекушийФрагмент=    fragmentsall.get(0);
-                                // TODO: 11.03.2022
-                                Log.d(this.getClass().getName(), "  bottomNavigationViewДляTasks " + bottomNavigationViewДляTasks + " ТекушийФрагмент " +ТекушийФрагмент);
+                                Log.d(this.getClass().getName(), "  bottomNavigationViewДляTasks " + bottomNavigationViewДляTasks + " fragment_ТекущийФрагмент " + fragment_ТекущийФрагмент);
                                 // TODO: 09.03.2022 вешаем слушатель на конткеноую кнопку
                                 Log.d(this.getClass().getName(), "  item.getItemId() " + item.getItemId());
                                 // TODO: 09.03.2022
                                 switch (item.getItemId()) {
                                     case R.id.id_taskHome:
-                                        // TODO: 09.03.2022
-                                        Log.d(this.getClass().getName(), " R.id.id_taskHome  item.getItemId() " + item.getItemId());
+                                        // TODO: 22.12.2021  запускам втнутерий класс по созданию бизнес логики для даннго активти
+                                        Log.d(this.getClass().getName(), " R.id.id_taskHome отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  fragmentTransactionляЗадачи  "
+                                                + fragmentTransactionляЗадачи + " R.id.id_taskHome  item.getItemId() " + item.getItemId());
+                                        ///
                                         // TODO: 10.03.2022
                                         item.setChecked(true);
-                                        // TODO: 22.12.2021  запускам втнутерий класс по созданию бизнес логики для даннго активти
-                                        Log.d(this.getClass().getName(), " R.id.id_taskHome отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  fragmentTransactionляЗадачи  " + fragmentTransactionляЗадачи);
                                         // TODO: 09.03.2022
-                                        fragment1_ДляЗадания = new Fragment1_One_Tasks();
-                                        ///
-                                        if (ТекушийФрагмент.isVisible()==false) {
-                                            // TODO: 11.03.2022
-                                            fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment1_ДляЗадания).commit();//.layout.activity_for_fragemtb_history_tasks
-                                            // TODO: 10.03.2022
-                                            fragmentTransactionляЗадачи.show(fragment1_ДляЗадания);
-                                            // TODO: 10.03.2022
-                                            Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
-                                            // TODO: 10.03.2022
-                                            вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
-                                        }
+                                        fragment_ТекущийФрагмент = new Fragment1_One_Tasks();
+                                        // TODO: 11.03.2022
+                                        fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
+                                        // TODO: 10.03.2022
+                                        fragmentTransactionляЗадачи.show(fragment_ТекущийФрагмент);
+                                        // TODO: 10.03.2022
+                                        Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
+                                        // TODO: 10.03.2022
+                                        вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
+
 
                                         // TODO: 09.03.2022
 
@@ -941,14 +945,13 @@ public class Fragment1_One_Tasks extends Fragment {
                                         // TODO: 10.03.2022
                                         item.setChecked(true);
                                         // TODO: 10.03.2022
-                                        Log.d(this.getClass().getName(), " R.id.id_taskCreateNewTasks  отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  fragmentTransactionляЗадачи  " + fragmentTransactionляЗадачи);
                                         // TODO: 09.03.2022
-                                        fragment1_ДляЗадания = new Fragment2_Create_Tasks();
-                                        // TODO: 09.03.2022
-                                        fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment1_ДляЗадания).commit();//.layout.activity_for_fragemtb_history_tasks
+                                        fragment_ТекущийФрагмент = new Fragment1_One_Tasks();
+                                        // TODO: 11.03.2022
+                                        fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
                                         // TODO: 10.03.2022
-                                        fragmentTransactionляЗадачи.show(fragment1_ДляЗадания);
-                                        // TODO: 09.03.2022
+                                        fragmentTransactionляЗадачи.show(fragment_ТекущийФрагмент);
+                                        // TODO: 10.03.2022
                                         Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
                                         // TODO: 10.03.2022
                                         вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
