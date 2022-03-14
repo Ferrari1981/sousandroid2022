@@ -66,7 +66,7 @@ public class Fragment1_One_Tasks extends Fragment {
     // TODO: 14.03.2022
     protected MyViewHolder myViewHolder;
     // TODO: 02.03.2022
-    protected SQLiteCursor Курсор_ДляПолученияДАнныхДляЗАДАЧTASK = null;
+    protected SQLiteCursor Курсор_ГлавныйКурсорДляЗадач;
     // TODO: 02.03.2022
     protected SQLiteCursor Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе = null;
     // TODO: 04.03.2022 Слушатель  recycelview
@@ -190,7 +190,7 @@ public class Fragment1_One_Tasks extends Fragment {
             // TODO: 02.03.2022 получения курсора
             subClassBuccessLogin_главныйКлассБизнесЛогики.МетодПолучениеДанныхДляЗАДАЧ();
 
-            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ГлавныйКурсорДляЗадач);
 
             // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ СЛУШАТЕЛЬ КУРСОРРА
 
@@ -217,7 +217,7 @@ public class Fragment1_One_Tasks extends Fragment {
             subClassBuccessLogin_главныйКлассБизнесЛогики.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
 
             Log.d(this.getClass().getName(), " нет данных для отображения " +
-                    "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  МетодКпопкаСоЗачкомКраснымДополнительныйСтатус  " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK +
+                    "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  МетодКпопкаСоЗачкомКраснымДополнительныйСтатус  " + Курсор_ГлавныйКурсорДляЗадач +
                     " Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
 
         } catch (Exception e) {
@@ -248,9 +248,9 @@ public class Fragment1_One_Tasks extends Fragment {
 // TODO: 04.03.2022 закрываем слушатель  curcor
             }
             // TODO: 14.03.2022
-            if (dataSetObserverДляКурсора != null && Курсор_ДляПолученияДАнныхДляЗАДАЧTASK != null) {
+            if (dataSetObserverДляКурсора != null && Курсор_ГлавныйКурсорДляЗадач != null) {
                 // TODO: 04.03.2022
-                Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.unregisterDataSetObserver(dataSetObserverДляКурсора);
+                Курсор_ГлавныйКурсорДляЗадач.unregisterDataSetObserver(dataSetObserverДляКурсора);
             }
             Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики   " +
                     "" + adapterDataObserverObserverСлушатель +
@@ -310,9 +310,9 @@ public class Fragment1_One_Tasks extends Fragment {
                 // TODO: 02.03.2022
                 Log.d(this.getClass().getName(), "ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
                 // TODO: 14.03.2022  
-                Курсор_ДляПолученияДАнныхДляЗАДАЧTASK = МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадач(ПубличныйIDДляФрагмента);
+                Курсор_ГлавныйКурсорДляЗадач = МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадач(ПубличныйIDДляФрагмента);
                 // TODO: 02.03.2022
-                Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
+                Log.d(this.getClass().getName(), "Курсор_ГлавныйКурсорДляЗадач " + Курсор_ГлавныйКурсорДляЗадач);
                 // TODO: 02.03.2022
             } catch (Exception e) {
                 e.printStackTrace();
@@ -388,7 +388,65 @@ public class Fragment1_One_Tasks extends Fragment {
             return Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе;
         }
 
-        // TODO: 02.03.2022
+        // TODO: 28.02.2022 Под Класс порлучение данных для активти
+        SQLiteCursor МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадач(Integer ПубличноеIDПолученныйИзСервлетаДляUUID)
+                throws ExecutionException, InterruptedException {
+            // TODO: 26.08.2021 НОВЫЙ ВЫЗОВ НОВОГО КЛАСС GRUD - ОПЕРАЦИИ
+            try {
+                ///
+                Class_GRUD_SQL_Operations class_grud_sql_operationsIDпользоввателяДляСлужб = new Class_GRUD_SQL_Operations(getContext());
+                ///
+                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("НазваниеОбрабоатываемойТаблицы", "view_tasks");//old для другой уведомления data_chat
+                ///////
+                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("СтолбцыОбработки", "*");
+                //
+                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика", "   id_user=? " +
+                        " AND message IS NOT NULL  ");
+                // TODO: 02.03.2022
+                ///"_id > ?   AND _id< ?"
+              /*  class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика","status_write=?  AND id_user=? " +
+                        " AND message IS NOT NULL  ");
+                ///"_id > ?   AND _id< ?"
+*/
+/*
+                //////
+                class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска1",1);//todo 0*/
+                //
+                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска1", ПубличноеIDПолученныйИзСервлетаДляUUID);
+                // TODO: 02.03.2022
+                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеСортировки", " status_write, date_update DESC ");//todo "date_update DESC, status_write DESC"
+                ////
+                // class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеЛимита","1");
+                ////
+                //class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеЛимита","1");
+                // TODO: 27.08.2021  ПОЛУЧЕНИЕ ДАННЫХ ОТ КЛАССА GRUD-ОПЕРАЦИИ
+                ///
+                Курсор_ГлавныйКурсорДляЗадач = null;
+                // TODO: 03.03.2022  глаВНЫЙ КУРСОР ДЛЯ ЗАДАЧ
+                Курсор_ГлавныйКурсорДляЗадач = (SQLiteCursor) class_grud_sql_operationsIDпользоввателяДляСлужб.
+                        new GetData(getContext()).getdata(class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций,
+                        new PUBLIC_CONTENT(context).МенеджерПотоков, new CREATE_DATABASE(context).getССылкаНаСозданнуюБазу());
+                // TODO: 02.03.2022
+                if (Курсор_ГлавныйКурсорДляЗадач.getCount() > 0) {
+                    // TODO: 03.03.2022
+                    Log.d(this.getClass().getName(), "Курсор_ГлавныйКурсорДляЗадач " + Курсор_ГлавныйКурсорДляЗадач);
+                    // TODO: 03.03.2022
+                    Курсор_ГлавныйКурсорДляЗадач.moveToFirst();
+                }
+                ////////
+                Log.d(this.getClass().getName(), "Курсор_ГлавныйКурсорДляЗадач " + Курсор_ГлавныйКурсорДляЗадач);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                ///метод запись ошибок в таблицу
+                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+            }
+            return Курсор_ГлавныйКурсорДляЗадач;
+        }
 
         // TODO: 04.03.2022  класс в котором находяться слушатели
         protected class SubClassObsevers_КлассСлушательСобытий {
@@ -409,16 +467,15 @@ public class Fragment1_One_Tasks extends Fragment {
                             // TODO: 02.03.2022
                             /// subClassBuccessLoginГлавныйКласс_бизнесЛогики.МетодПолучениеДанныхДляЗАДАЧ();
                             // TODO: 04.03.2022
-                            if (Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount() > 0) {
+                            if (Курсор_ГлавныйКурсорДляЗадач.getCount() > 0) {
                                 // TODO: 04.03.2022
-                                Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.moveToFirst();
+                                Курсор_ГлавныйКурсорДляЗадач.moveToFirst();
                             }
                         }
                         @Override
                         public void onItemRangeChanged(int positionStart, int itemCount) {
                             super.onItemRangeChanged(positionStart, itemCount);
                             // TODO: 02.03.2022
-                            /////
                             Log.d(this.getClass().getName(), "onItemRangeChanged ");
                         }
                         @Override
@@ -532,7 +589,7 @@ public class Fragment1_One_Tasks extends Fragment {
                     };
                     // TODO: 14.03.2022  подписываемся курссор
 
-                    Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.registerDataSetObserver(dataSetObserverДляКурсора);
+                    Курсор_ГлавныйКурсорДляЗадач.registerDataSetObserver(dataSetObserverДляКурсора);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -568,9 +625,9 @@ public class Fragment1_One_Tasks extends Fragment {
                                             Log.d(this.getClass().getName(), " workInfoОБШАЯ  CallBaskОтWorkManagerОдноразового observerОдноразоваяДляWORKMANAGERДляРасписания/ " +
                                                     СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().name());
                                             // TODO: 04.03.2022
-                                            Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.deactivate();
+                                            Курсор_ГлавныйКурсорДляЗадач.deactivate();
                                             // TODO: 04.03.2022 перезапускаем курсор
-                                            Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.requery();
+                                            Курсор_ГлавныйКурсорДляЗадач.requery();
                                             // TODO: 29.09.2021  конец синхрониазции по раписанию
                                         } catch (Exception e) {
                                             e.printStackTrace();
@@ -623,9 +680,9 @@ public class Fragment1_One_Tasks extends Fragment {
                                             Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового observerОдноразоваяДляWORKMANAGERДляРасписанияДполнительнаяОтЧата " +
                                                     СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().name());
                                             // TODO: 04.03.2022
-                                            Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.deactivate();
+                                            Курсор_ГлавныйКурсорДляЗадач.deactivate();
                                             // TODO: 04.03.2022 перезапускаем курсор
-                                            Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.requery();
+                                            Курсор_ГлавныйКурсорДляЗадач.requery();
                                             // TODO: 29.09.2021  конец синхрониазции по раписанию
                                         } catch (Exception e) {
                                             e.printStackTrace();
@@ -660,12 +717,12 @@ public class Fragment1_One_Tasks extends Fragment {
             // TODO: 04.03.2022 прозвомжность инициализации RecycleView
             void МетодИнициализацииRecycleViewДляЗадач() {
                 try {
-                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
+                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ГлавныйКурсорДляЗадач);
                     // TODO: 04.03.2022  В ДАННОМ КОДЕ МЫ ОПЕРДЕЛЯЕМ КАКОЙ ЭКОРАН БУДЕМ ЗАГРУЖАТЬ В ЗАВПИСИМОСТИ ЕСЛИ ЛИ ДАННЫЫЕ ЗАДАЧИ
-                    if (Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount() > 0) {
+                    if (Курсор_ГлавныйКурсорДляЗадач.getCount() > 0) {
                         // TODO: 03.03.2022
                         Log.d(this.getClass().getName(), " есть данные для отображения " +
-                                "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
+                                "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач);
                         // TODO: 14.03.2022
                         LinearLayout linearLayou = (LinearLayout) getActivity().findViewById(R.id.activity_main_fisrt_for_tasks);
                         // TODO: 06.03.2022
@@ -680,8 +737,14 @@ public class Fragment1_One_Tasks extends Fragment {
                         gridLayoutManager = new GridLayoutManager(getActivity(), 1);
                         // TODO: 28.02.2022 создаем наш первый RecyclerView
                         recyclerView.setLayoutManager(gridLayoutManager);//TODO new LinearLayoutManager(getContext()) // TODO: 28.02.2022 создаем наш первый RecyclerView recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+                        // TODO: 03.03.2022
+                        Log.d(this.getClass().getName(), " есть данные для отображения " +
+                                "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач);
+
+
                         // TODO: 28.02.2022
-                        myRecycleViewAdapter = new MyRecycleViewAdapter(Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
+                        myRecycleViewAdapter = new MyRecycleViewAdapter(Курсор_ГлавныйКурсорДляЗадач);
                         // TODO: 04.03.2022
                         recyclerView.setAdapter(myRecycleViewAdapter);
                         // TODO: 13.03.2022
@@ -709,7 +772,7 @@ public class Fragment1_One_Tasks extends Fragment {
                         МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
                         // TODO: 28.02.2022
                         Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе +
-                                " Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
+                                " Курсор_ГлавныйКурсорДляЗадач " + Курсор_ГлавныйКурсорДляЗадач);
                         // TODO: 03.03.2022
                         TextView textViewisnull = (TextView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.activy_task_nameеtextviewcursornull);
                         //  TextView textViewisnull=new TextView(activity);
@@ -726,7 +789,7 @@ public class Fragment1_One_Tasks extends Fragment {
                         linearLayou.requestLayout();
                         // TODO: 28.02.2022
                         Log.d(this.getClass().getName(), " нет данных для отображения " +
-                                "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
+                                "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач);
                     }
                     // TODO: 13.03.2022
                     bottomNavigationViewДляTasks.requestLayout();
@@ -779,12 +842,11 @@ public class Fragment1_One_Tasks extends Fragment {
                                         if (ТекушийФрагмент.isVisible()==false) {
                                             // TODO: 11.03.2022
                                             fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment1_ДляЗадания).commit();//.layout.activity_for_fragemtb_history_tasks
-
                                             // TODO: 10.03.2022
                                             fragmentTransactionляЗадачи.show(fragment1_ДляЗадания);
-
+                                            // TODO: 10.03.2022
                                             Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
-
+                                            // TODO: 10.03.2022
                                             вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
                                         }
 
@@ -813,6 +875,7 @@ public class Fragment1_One_Tasks extends Fragment {
                                         вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
                                         // TODO: 09.03.2022
                                         break;
+
                                     // TODO: 09.03.2022
                                     default:
                                         // TODO: 09.03.2022
@@ -844,10 +907,12 @@ public class Fragment1_One_Tasks extends Fragment {
                 }
             }
 
-            private void МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(@NonNull Cursor cursorДЛяОпределенияНужноПоказыватьЗначеиЛИнЕТ) throws ExecutionException, InterruptedException {
+            // TODO: 14.03.2022
+
+            private void МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(@NonNull Cursor cursorДЛяОпределенияНужноПоказыватьЗначеиЛИнЕТ)
+                    throws ExecutionException, InterruptedException {
                 // TODO: 02.03.2022
                 try {
-                    Integer ПубличныйIDДляФрагмента = new Class_Generations_PUBLIC_CURRENT_ID(getContext()).ПолучениеПубличногоТекущегоПользователяID();
                     // TODO: 02.03.2022
                     Log.d(this.getClass().getName(), "  cursorДЛяОпределенияНужноПоказыватьЗначеиЛИнЕТ " + cursorДЛяОпределенияНужноПоказыватьЗначеиЛИнЕТ);
                     // TODO: 09.03.2022
@@ -858,7 +923,6 @@ public class Fragment1_One_Tasks extends Fragment {
                         bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setNumber(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount());//.getOrCreateBadge(R.id.id_taskHome).setVisible(true);
                         // TODO: 09.03.2022
                         bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setBackgroundColor(Color.RED);
-                        //// bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setBackgroundColor(Color.WHITE);
                         // TODO: 06.03.2022
                         Log.d(this.getClass().getName(), "  bottomNavigationViewДляTasks " + bottomNavigationViewДляTasks +
                                 "  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount()   " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount());
@@ -889,176 +953,48 @@ public class Fragment1_One_Tasks extends Fragment {
             }
         }
 
-
-        // TODO: 28.02.2022 Под Класс порлучение данных для активти
-
-        // TODO: 02.03.2022
-
-        SQLiteCursor МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадач(Integer ПубличноеIDПолученныйИзСервлетаДляUUID) throws ExecutionException, InterruptedException {
-            // TODO: 26.08.2021 НОВЫЙ ВЫЗОВ НОВОГО КЛАСС GRUD - ОПЕРАЦИИ
-
-            Курсор_ДляПолученияДАнныхДляЗАДАЧTASK = null;
-
-            // TODO: 02.03.2022
-            try {
-
-                ///
-                Class_GRUD_SQL_Operations class_grud_sql_operationsIDпользоввателяДляСлужб = new Class_GRUD_SQL_Operations(getContext());
-
-                ///
-                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("НазваниеОбрабоатываемойТаблицы", "view_tasks");//old для другой уведомления data_chat
-                ///////
-                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("СтолбцыОбработки", "*");
-                //
-                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика", "   id_user=? " +
-                        " AND message IS NOT NULL  ");
-
-                // TODO: 02.03.2022
-                ///"_id > ?   AND _id< ?"
-              /*  class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика","status_write=?  AND id_user=? " +
-                        " AND message IS NOT NULL  ");
-                ///"_id > ?   AND _id< ?"
-*/
-/*
-                //////
-                class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска1",1);//todo 0*/
-                //
-                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска1", ПубличноеIDПолученныйИзСервлетаДляUUID);
-
-
-                // TODO: 02.03.2022
-
-                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеСортировки", " status_write, date_update DESC ");//todo "date_update DESC, status_write DESC"
-                ////
-                // class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеЛимита","1");
-                ////
-                //class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеЛимита","1");
-                // TODO: 27.08.2021  ПОЛУЧЕНИЕ ДАННЫХ ОТ КЛАССА GRUD-ОПЕРАЦИИ
-                ///
-                Курсор_ДляПолученияДАнныхДляЗАДАЧTASK = null;
-
-                // TODO: 03.03.2022  глаВНЫЙ КУРСОР ДЛЯ ЗАДАЧ
-
-
-                Курсор_ДляПолученияДАнныхДляЗАДАЧTASK = (SQLiteCursor) class_grud_sql_operationsIDпользоввателяДляСлужб.
-                        new GetData(getContext()).getdata(class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций,
-                        new PUBLIC_CONTENT(context).МенеджерПотоков, new CREATE_DATABASE(context).getССылкаНаСозданнуюБазу());
-
-                // TODO: 02.03.2022
-
-                if (Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount() > 0) {
-
-                    // TODO: 03.03.2022
-                    Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
-                    // TODO: 03.03.2022
-
-                    Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.moveToFirst();
-                }
-
-
-                ////////
-
-                Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
-            }
-
-
-            return Курсор_ДляПолученияДАнныхДляЗАДАЧTASK;
-        }
-
-
     }
 
-
     // TODO: 28.02.2022 конец класса
-
     private class MyViewHolder extends RecyclerView.ViewHolder {
         // TODO: 28.02.2022
         TextView textView1, textView2, textView3, textView4, textView5;
         // TODO: 13.03.2022
-
         MaterialCardView materialCardView;
 
-
-        // ImageView imageViewIcon;
-
         // TODO: 02.03.2022
-
-
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            // TODO: 02.03.2022
             МетодИнициализацииКомпонетовЗаданияCardView(itemView);
             // TODO: 01.03.2022
-
             Log.d(this.getClass().getName(), "  private class MyViewHolder extends RecyclerView.ViewHolder  itemView   " + itemView);
-
         }
 
 
+        // TODO: 14.03.2022
         private void МетодИнициализацииКомпонетовЗаданияCardView(@NonNull View itemView) {
             // TODO: 28.02.2022
             try {
-
                 // TODO: 01.03.2022 Инициализации компонтов
                 Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики itemView   " + itemView);
-
                 // TODO: 02.03.2022
-/*
-  if (Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount()>0) {
-        // TODO: 09.03.2022
-      Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.moveToFirst();
-    }*/
-
-                // TODO: 02.03.2022
-
                 textView1 = (TextView) itemView.findViewById(R.id.text1_innercardview);
-                // TODO: 28.02.2022
-
-                //   imageViewIcon = (ImageView) itemView.findViewById(R.id.imageview_cardviewtask);
-                // TODO: 02.03.2022
-                // TODO: 02.03.2022  дополнительный
-
+                // TODO: 02.3.2022  дополнительный
                 textView2 = (TextView) itemView.findViewById(R.id.text2_innercardviewtwo);
                 // TODO: 28.02.2022
-
-
                 textView3 = (TextView) itemView.findViewById(R.id.text3_innercardviewtree);
                 // TODO: 28.02.2022
-
-
                 textView4 = (TextView) itemView.findViewById(R.id.text4_innercardviewfour);
                 // TODO: 28.02.2022
-
-                // TODO: 28.02.2022
                 textView5 = (TextView) itemView.findViewById(R.id.text5_innercardviewtype_tasks);
-
                 // TODO: 13.03.2022
-
                 Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики materialCardView  textView2 " + textView4);
-
-
-
-                // TODO: 01.03.2022/
                 // TODO: 01.03.2022
                 materialCardView = (MaterialCardView) itemView.findViewById(R.id.cardviewmatirealtask);
-
+                // TODO: 13.03.2022
                 Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики materialCardView   " + materialCardView);
                 // TODO: 01.03.2022*/
-
-
-                Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  accessibilityNodeInfoДоплнительно ");
-
-
                 ///////
             } catch (Exception e) {
                 //  Block of code to handle errors
@@ -1072,17 +1008,13 @@ public class Fragment1_One_Tasks extends Fragment {
                         Thread.currentThread().getStackTrace()[2].getLineNumber());
             }
             /////
-
         }
-
-
-    }    // TODO: 28.02.2022 конец класса
+    }
 
 
     // TODO: 28.02.2022 ViewHolder
 
     protected class MyRecycleViewAdapter extends RecyclerView.Adapter<MyViewHolder> {
-
 
         SQLiteCursor Курсор_ДляПолученияДАнныхДляЗАДАЧTASK;
 
