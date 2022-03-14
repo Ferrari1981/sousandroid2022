@@ -1630,18 +1630,9 @@ public class Fragment1_One_Tasks extends Fragment {
 
                     // TODO: 13.03.2022
 
-                    if (СамСтатусПрочтенияИлиНет > 0) { //СамСтатусПрочтенияИлиНет  holder.getAdapterPosition()
+                    Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет  toggle " + СамСтатусПрочтенияИлиНет);
 
-                        Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет  toggle " + СамСтатусПрочтенияИлиНет);
-
-                        holder.materialCardView.toggle();
-
-                    } else {
-
-                        Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет  toggle " + СамСтатусПрочтенияИлиНет);
-
-                        holder.materialCardView.toggle();
-                    }
+                    holder.materialCardView.toggle();
 
 
                     // TODO: 13.03.2022
@@ -1776,23 +1767,13 @@ public class Fragment1_One_Tasks extends Fragment {
                             Log.d(this.getClass().getName(), "  holder.materialCardView.setOnCheckedChangeListener  isChecked   " + isChecked);
 
 
-                        }
-
-                        // TODO: 13.03.2022
-
-                        if (СамСтатусПрочтенияИлиНет == 0) {
-
-                            // TODO: 13.03.2022
-                      /*  card.setCheckedIcon(drawableПпрочитанные);
-                            // TODO: 13.03.2022
-                            card.setCheckedIconResource(ИндексПпрочитанные);
-                            // TODO: 13.03.2022
-                            card.setSelected(true);*/
-
+                        } else {
+                            // TODO: 14.03.2022
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), "   holder.materialCardView.setOnCheckedChangeListener  isChecked    " + isChecked);
-
                         }
+
+
 
 
                         // TODO: 13.03.2022
@@ -1874,11 +1855,11 @@ public class Fragment1_One_Tasks extends Fragment {
                                 Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.requery();
                                 // TODO: 13.03.2022
                                 // TODO: 13.03.2022
-                                notifyDataSetChanged();
+                                ///    notifyDataSetChanged();
 
-                                Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 0 " + СтатусПрочтеаУжеЗадачаИлиНет);
+                           /*     Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 0 " + СтатусПрочтеаУжеЗадачаИлиНет);
 
-                                Toast.makeText(getActivity(), " Статус сменили на ознакомленный  #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), " Статус сменили на ознакомленный  #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();*/
 
                             }, 2500);
 
