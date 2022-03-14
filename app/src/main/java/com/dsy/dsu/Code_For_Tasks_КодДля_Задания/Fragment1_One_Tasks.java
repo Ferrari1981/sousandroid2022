@@ -1151,10 +1151,9 @@ public class Fragment1_One_Tasks extends Fragment {
 
                 Log.i(this.getClass().getName(), "  позиция " + позиция);
 
-                if (!BungleДанныеДляViewCard.containsKey(String.valueOf(позиция))) {
-                    // TODO: 14.03.2022
+                    // TODO: 14.03.2022  заполем данными для получение  UUID вышке
                     BungleДанныеДляViewCard.putLong(String.valueOf(позиция), UUIDДЛяЗАДАНИЯКотореВыбрали);
-                }
+
 
 
                 Log.i(this.getClass().getName(), "  BungleДанныеДляViewCard   " + BungleДанныеДляViewCard.getBundle(String.valueOf(holder.materialCardView.getId())));
@@ -1439,7 +1438,7 @@ public class Fragment1_One_Tasks extends Fragment {
                                 Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.requery();
                                 // TODO: 13.03.2022
                                 // TODO: 13.03.2022
-                                ///    notifyDataSetChanged();
+                                notifyDataSetChanged();
 
                            /*     Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 0 " + СтатусПрочтеаУжеЗадачаИлиНет);
 
