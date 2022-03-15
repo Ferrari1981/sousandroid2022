@@ -58,7 +58,7 @@ public class Fragment1_One_Tasks extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     protected View viewДляПервойКнопкиHome_Задания = null;
     // TODO: 10.03.2022
-    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогики subClassBuccessLogin_главныйКлассБизнесЛогики;
+    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогики subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1;
     // TODO: 28.02.2022
     protected RecyclerView recyclerView;
     // TODO: 01.03.2022
@@ -219,49 +219,49 @@ public class Fragment1_One_Tasks extends Fragment {
 
 
             //TODO код для recycleviews
-            subClassBuccessLogin_главныйКлассБизнесЛогики = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики(getContext(), getActivity());
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1 = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики(getContext(), getActivity());
 
             // TODO: 10.03.2022
 
             Log.d(this.getClass().getName(), "ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
 
-            subClassBuccessLogin_главныйКлассБизнесЛогики.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадачТолькоДляКоторыхВРАботе(ПубличныйIDДляФрагмента);
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадачТолькоДляКоторыхВРАботе(ПубличныйIDДляФрагмента);
 
             Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
 
 
             // TODO: 02.03.2022 получения курсора
-            subClassBuccessLogin_главныйКлассБизнесЛогики.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадач(ПубличныйIDДляФрагмента);
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадач(ПубличныйIDДляФрагмента);
 
             Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ГлавныйКурсорДляЗадач);
 
             // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ СЛУШАТЕЛЬ КУРСОРРА
 
-            subClassBuccessLogin_главныйКлассБизнесЛогики.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСлушательObserverДляКурсора();
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСлушательObserverДляКурсора();
 
 
             // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ  второай слушатель только количество данных СЛУШАТЕЛЬ КУРСОРРА
 
-            subClassBuccessLogin_главныйКлассБизнесЛогики.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСлушательObserverДляКурсораТолькоКоличество();
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСлушательObserverДляКурсораТолькоКоличество();
 
             // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ СЛУШАТЕЛЬ КУРСОРРА туту запускам два слушателя дялнаших work manager
 
-            subClassBuccessLogin_главныйКлассБизнесЛогики.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСоздаенияСлушателяДляОбщейWorkMAnager();
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСоздаенияСлушателяДляОбщейWorkMAnager();
 
             // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ СЛУШАТЕЛЬ КУРСОРРА туту запускам два слушателя дялнаших work manager
 
-            subClassBuccessLogin_главныйКлассБизнесЛогики.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСоздаенияСлушателяДляЧатаWorkMAnager();
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСоздаенияСлушателяДляЧатаWorkMAnager();
 
 
         //todo метод  ИНИЦИАЛИЗАЦИИ RECYCLEVIEW ДЛЯ АКТИВТИ ЗАДАЧИ
 
-            subClassBuccessLogin_главныйКлассБизнесЛогики.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодИнициализацииRecycleViewДляЗадач();
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодИнициализацииRecycleViewДляЗадач();
 
             // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
-            subClassBuccessLogin_главныйКлассБизнесЛогики.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСозданиеНавигаторКнопок();
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСозданиеНавигаторКнопок();
 
             // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ
-            subClassBuccessLogin_главныйКлассБизнесЛогики.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
 
             Log.d(this.getClass().getName(), " нет данных для отображения " +
                     "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  МетодКпопкаСоЗачкомКраснымДополнительныйСтатус  " + Курсор_ГлавныйКурсорДляЗадач +
@@ -852,7 +852,7 @@ public class Fragment1_One_Tasks extends Fragment {
                         // TODO: 14.03.2022
                         linearLayou.requestLayout();
                         // TODO: 04.03.2022 создаем слушатель    третий класс создаем класс слушаителй  ДАННЫЙ КОД ЗАПУСКАЕТЬСЯ ПОСЛЕ СОЗДАЕНИЯ И УСТАНОВКИ АДАПТЕРА RECYCLEVIEW
-                        subClassBuccessLogin_главныйКлассБизнесЛогики.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСлушательObserverДляRecycleView();
+                        subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСлушательObserverДляRecycleView();
 
                     } else {
                         // TODO: 06.03.2022

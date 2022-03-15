@@ -33,7 +33,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             // TODO: 14.03.2022
 
             Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания +
-                    " subClassBuccessLogin_главныйКлассБизнесЛогики " + subClassBuccessLogin_главныйКлассБизнесЛогики);
+                    " subClassBuccessLogin_главныйКлассБизнесЛогики " + subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1);
 
         } catch (Exception e) {
             e.printStackTrace();

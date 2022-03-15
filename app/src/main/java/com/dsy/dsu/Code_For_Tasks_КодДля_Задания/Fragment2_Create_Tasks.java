@@ -21,7 +21,7 @@ import java.util.concurrent.ExecutionException;
 public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
     // TODO: 15.03.2022
 
-    subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2;
+  protected SubClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -47,7 +47,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
 
             Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания +
-                    " subClassBuccessLogin_главныйКлассБизнесЛогики " + subClassBuccessLogin_главныйКлассБизнесЛогики);
+                    " subClassBuccessLogin_главныйКлассБизнесЛогики " + subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1);
 
         } catch (Exception e) {
         e.printStackTrace();
@@ -106,23 +106,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         }
     }
 
-    public void МетодПолучениеДанныхДляЗАДАЧ() throws ExecutionException, InterruptedException {
-        subClassBuccessLogin_главныйКлассБизнесЛогики.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадач(ПубличныйIDДляФрагмента);
-    }
-
-    public SQLiteCursor МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадачТолькоДляКоторыхВРАботе(Integer ПубличноеIDПолученныйИзСервлетаДляUUID) throws ExecutionException, InterruptedException {
-
-
-        return subClassBuccessLogin_главныйКлассБизнесЛогики.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадачТолькоДляКоторыхВРАботе(ПубличноеIDПолученныйИзСервлетаДляUUID);
-    }
-
-    public SQLiteCursor МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадач(Integer ПубличноеIDПолученныйИзСервлетаДляUUID) throws ExecutionException, InterruptedException {
-        return subClassBuccessLogin_главныйКлассБизнесЛогики.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадач(ПубличноеIDПолученныйИзСервлетаДляUUID);
-    }
-
     // TODO: 15.03.2022
-
-
     @Override
     public void onStart() {
         super.onStart();
@@ -130,9 +114,15 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         try {
 
             //TODO код для recycleviews
-            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 = new subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2(getContext(), getActivity());
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 = new SubClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2(getContext(), getActivity());
 
-            Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 " + subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2);
+            Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  SubClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 " + subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2);
+
+            // TODO: 15.03.2022
+
+            Log.d(this.getClass().getName(), "ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
+
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадачТолькоДляКоторыхВРАботе(ПубличныйIDДляФрагмента);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -146,12 +136,12 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
 
     // TODO: 15.03.2022 класс унаследовани от класс бизнес логики от ФРАГМЕНТА 1
-    protected class subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 extends SubClassBuccessLogin_ГлавныйКлассБизнесЛогики {
+    protected class SubClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 extends SubClassBuccessLogin_ГлавныйКлассБизнесЛогики {
 
-        public subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2(Context context, Activity activity) {
+        public SubClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2(Context context, Activity activity) {
             super(context, activity);
             // TODO: 15.03.2022
-            Log.d(this.getClass().getName(), "      protected  class subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2  extends  SubClassBuccessLogin_ГлавныйКлассБизнесЛогики"
+            Log.d(this.getClass().getName(), "      protected  class SubClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2  extends  SubClassBuccessLogin_ГлавныйКлассБизнесЛогики"
                     + subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2);
 
         }
