@@ -107,6 +107,7 @@ public class Fragment1_One_Tasks extends Fragment {
     protected BottomNavigationItemView bottomNavigationКонкретноКнопкаСоздатьСейчас;
     // TODO: 09.03.2022
     protected BottomNavigationItemView bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи;
+    // TODO: 15.03.2022
 
 
     @Override
@@ -1163,6 +1164,7 @@ public class Fragment1_One_Tasks extends Fragment {
                 // TODO: 10.03.2022
                 View viewГлавныйВидДляRecyclleViewДляЗаданий=null ;
                 try {
+
                     // TODO: 28.02.2022
                     viewГлавныйВидДляRecyclleViewДляЗаданий = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_for_takst_cardview1, parent, false);
                     // TODO: 05.03.2022
@@ -1247,6 +1249,9 @@ public class Fragment1_One_Tasks extends Fragment {
 
                         // TODO: 13.03.2022
                         holder.materialCardView.setChecked(true);
+
+                        // TODO: 15.03.2022
+                        holder.materialCardView.setCardBackgroundColor(Color.parseColor("#E0FFFF"));
 
 // TODO: 28.02.2022
                     }
