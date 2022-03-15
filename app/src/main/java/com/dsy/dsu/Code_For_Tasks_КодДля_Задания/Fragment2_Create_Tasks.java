@@ -1,6 +1,9 @@
 package com.dsy.dsu.Code_For_Tasks_КодДля_Задания;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
+import android.database.sqlite.SQLiteCursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,9 +15,14 @@ import androidx.annotation.Nullable;
 
 import com.dsy.dsu.Class_Generation_Errors;
 
+import java.util.concurrent.ExecutionException;
+
 
 public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
     // TODO: 15.03.2022
+
+    subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2;
+
     @SuppressLint("RestrictedApi")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -35,10 +43,11 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
             // TODO: 14.03.2022
             super.linearLayou.requestLayout();
             // TODO: 14.03.2022
+            // TODO: 15.03.2022
+
 
             Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания +
                     " subClassBuccessLogin_главныйКлассБизнесЛогики " + subClassBuccessLogin_главныйКлассБизнесЛогики);
-
 
         } catch (Exception e) {
         e.printStackTrace();
@@ -97,7 +106,68 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         }
     }
 
+    public void МетодПолучениеДанныхДляЗАДАЧ() throws ExecutionException, InterruptedException {
+        subClassBuccessLogin_главныйКлассБизнесЛогики.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадач(ПубличныйIDДляФрагмента);
+    }
+
+    public SQLiteCursor МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадачТолькоДляКоторыхВРАботе(Integer ПубличноеIDПолученныйИзСервлетаДляUUID) throws ExecutionException, InterruptedException {
+
+
+        return subClassBuccessLogin_главныйКлассБизнесЛогики.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадачТолькоДляКоторыхВРАботе(ПубличноеIDПолученныйИзСервлетаДляUUID);
+    }
+
+    public SQLiteCursor МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадач(Integer ПубличноеIDПолученныйИзСервлетаДляUUID) throws ExecutionException, InterruptedException {
+        return subClassBuccessLogin_главныйКлассБизнесЛогики.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадач(ПубличноеIDПолученныйИзСервлетаДляUUID);
+    }
+
     // TODO: 15.03.2022
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        try {
+
+            //TODO код для recycleviews
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 = new subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2(getContext(), getActivity());
+
+            Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 " + subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            ///метод запись ошибок в таблицу
+            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+        }
+    }
+
+
+    // TODO: 15.03.2022 класс унаследовани от класс бизнес логики от ФРАГМЕНТА 1
+    protected class subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 extends SubClassBuccessLogin_ГлавныйКлассБизнесЛогики {
+
+        public subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2(Context context, Activity activity) {
+            super(context, activity);
+            // TODO: 15.03.2022
+            Log.d(this.getClass().getName(), "      protected  class subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2  extends  SubClassBuccessLogin_ГлавныйКлассБизнесЛогики"
+                    + subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2);
+
+        }
+
+        // TODO: 15.03.2022
+        SQLiteCursor МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадач(Integer ПубличноеIDПолученныйИзСервлетаДляUUID)
+                throws ExecutionException, InterruptedException {
+            // TODO: 15.03.2022
+            super.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадач(ПубличноеIDПолученныйИзСервлетаДляUUID);
+
+
+            return Курсор_ГлавныйКурсорДляЗадач;
+        }
+
+
+    }
 
 
 }    // TODO: 28.02.2022 конец класса
