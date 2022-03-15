@@ -64,9 +64,9 @@ public class Fragment1_One_Tasks extends Fragment {
     // TODO: 01.03.2022
     protected Bundle BungleДанныеДляViewCard;
     // TODO: 13.03.2022
-    protected MyRecycleViewAdapter myRecycleViewAdapter;
+    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогики.MyRecycleViewAdapter myRecycleViewAdapter;
     // TODO: 14.03.2022
-    protected MyViewHolder myViewHolder;
+    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогики.MyViewHolder myViewHolder;
     // TODO: 02.03.2022
     protected SQLiteCursor Курсор_ГлавныйКурсорДляЗадач;
     // TODO: 02.03.2022
@@ -184,6 +184,7 @@ public class Fragment1_One_Tasks extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         try{
+
 // TODO: 14.03.2022
         viewДляПервойКнопкиHome_Задания = inflater.inflate(R.layout.activity_main_fragment1_for_tasks, container, false);
 
@@ -339,6 +340,7 @@ public class Fragment1_One_Tasks extends Fragment {
         Context context;
         // TODO: 14.03.2022
         Activity activity;
+
         public SubClassBuccessLogin_ГлавныйКлассБизнесЛогики(Context context, Activity activity) {
             // TODO: 14.03.2022
             this.context = context;
@@ -494,6 +496,7 @@ public class Fragment1_One_Tasks extends Fragment {
             return Курсор_ГлавныйКурсорДляЗадач;
         }
 
+
         // TODO: 04.03.2022  класс в котором находяться слушатели
         protected class SubClassObsevers_КлассСлушательСобытий {
             // TODO: 14.03.2022
@@ -518,12 +521,14 @@ public class Fragment1_One_Tasks extends Fragment {
                                 Курсор_ГлавныйКурсорДляЗадач.moveToFirst();
                             }
                         }
+
                         @Override
                         public void onItemRangeChanged(int positionStart, int itemCount) {
                             super.onItemRangeChanged(positionStart, itemCount);
                             // TODO: 02.03.2022
                             Log.d(this.getClass().getName(), "onItemRangeChanged ");
                         }
+
                         @Override
                         public void onItemRangeChanged(int positionStart, int itemCount, @Nullable Object payload) {
                             super.onItemRangeChanged(positionStart, itemCount, payload);
@@ -531,6 +536,7 @@ public class Fragment1_One_Tasks extends Fragment {
                             // вибратор.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
                             Log.d(this.getClass().getName(), "onItemRangeChanged ");
                         }
+
                         @Override
                         public void onItemRangeInserted(int positionStart, int itemCount) {
                             super.onItemRangeInserted(positionStart, itemCount);
@@ -546,6 +552,7 @@ public class Fragment1_One_Tasks extends Fragment {
                             // вибратор.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
                             Log.d(this.getClass().getName(), "onItemRangeRemoved ");
                         }
+
                         @Override
                         public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
                             super.onItemRangeMoved(fromPosition, toPosition, itemCount);
@@ -716,6 +723,7 @@ public class Fragment1_One_Tasks extends Fragment {
                             Thread.currentThread().getStackTrace()[2].getLineNumber());
                 }
             }
+
             // TODO: 18.10.2021  СИНХРОНИАЗЦИЯ ЧАТА ПО РАСПИСАНИЮ ЧАТ
             void МетодСоздаенияСлушателяДляОбщейWorkMAnager() throws ExecutionException, InterruptedException {
                 ///
@@ -1069,7 +1077,7 @@ public class Fragment1_One_Tasks extends Fragment {
                                 "  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount()   " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount());
                         // TODO: 05.03.2022
                     } else {
-                    // TODO: 06.03.2022
+                        // TODO: 06.03.2022
                         bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setVisible(false);//.getOrCreateBadge(R.id.id_taskHome).setVisible(true);
                         // TODO: 09.03.2022
                         bottomNavigationViewДляTasks.getOrCreateBadge(R.id.id_taskHome).setNumber(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount());
@@ -1086,690 +1094,693 @@ public class Fragment1_One_Tasks extends Fragment {
                     linearLayou.requestLayout();
                     /////////////
                 } catch (Exception e) {
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-            }
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                }
             }
         }
 
-    }
-
-    // TODO: 28.02.2022 конец класса
-    private class MyViewHolder extends RecyclerView.ViewHolder {
-        // TODO: 28.02.2022
-        TextView textView1, textView2, textView3, textView4, textView5;
-        // TODO: 13.03.2022
-        MaterialCardView materialCardView;
-        // TODO: 02.03.2022
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-            // TODO: 02.03.2022
-            МетодИнициализацииКомпонетовЗаданияCardView(itemView);
-            // TODO: 01.03.2022
-            Log.d(this.getClass().getName(), "  private class MyViewHolder extends RecyclerView.ViewHolder  itemView   " + itemView);
-        }
-
-
-        // TODO: 14.03.2022
-        private void МетодИнициализацииКомпонетовЗаданияCardView(@NonNull View itemView) {
+        // TODO: 15.03.2022  перенесееный код
+        // TODO: 28.02.2022 начало  MyViewHolder
+        protected class MyViewHolder extends RecyclerView.ViewHolder {// TODO: 28.02.2022 начало  MyViewHolder
             // TODO: 28.02.2022
-            try {
-                // TODO: 01.03.2022 Инициализации компонтов
-                Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики itemView   " + itemView);
+            TextView textView1, textView2, textView3, textView4, textView5;
+            // TODO: 13.03.2022
+            MaterialCardView materialCardView;
+
+            // TODO: 02.03.2022
+            public MyViewHolder(@NonNull View itemView) {
+                super(itemView);
                 // TODO: 02.03.2022
-                textView1 = (TextView) itemView.findViewById(R.id.text1_innercardview);
-                // TODO: 02.3.2022  дополнительный
-                textView2 = (TextView) itemView.findViewById(R.id.text2_innercardviewtwo);
-                // TODO: 28.02.2022
-                textView3 = (TextView) itemView.findViewById(R.id.text3_innercardviewtree);
-                // TODO: 28.02.2022
-                textView4 = (TextView) itemView.findViewById(R.id.text4_innercardviewfour);
-                // TODO: 28.02.2022
-                textView5 = (TextView) itemView.findViewById(R.id.text5_innercardviewtype_tasks);
-                // TODO: 13.03.2022
-                Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики materialCardView  textView2 " + textView4);
+                МетодИнициализацииКомпонетовЗаданияCardView(itemView);
                 // TODO: 01.03.2022
-                materialCardView = (MaterialCardView) itemView.findViewById(R.id.cardviewmatirealtask);
-                // TODO: 13.03.2022
-                Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики materialCardView   " + materialCardView);
-                // TODO: 01.03.2022*/
-                ///////
-            } catch (Exception e) {
-                //  Block of code to handle errors
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
-                        + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                // TODO: 01.09.2021 метод вызова
-                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
-                        this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
-                        Thread.currentThread().getStackTrace()[2].getLineNumber());
+                Log.d(this.getClass().getName(), "  private class MyViewHolder extends RecyclerView.ViewHolder  itemView   " + itemView);
             }
-            /////
-        }
-    }
 
-
-    // TODO: 28.02.2022 ViewHolder
-
-    protected class MyRecycleViewAdapter extends RecyclerView.Adapter<MyViewHolder> {
-        // TODO: 04.03.2022
-        SQLiteCursor Курсор_ДляПолученияДАнныхДляЗАДАЧTASK;
-        public MyRecycleViewAdapter(@NotNull SQLiteCursor Курсор_ДляПолученияДАнныхДляЗАДАЧTASK) {
-            // super();
-            // TODO: 04.03.2022
-            this.Курсор_ДляПолученияДАнныхДляЗАДАЧTASK = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK;
-            if (Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount() > 0) {
-                // TODO: 04.03.2022
-                Log.i(this.getClass().getName(), "   MyRecycleViewAdapter   Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount()>" + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount());
-            }
-            Log.i(this.getClass().getName(), "     getItemId holder.position ");
-        }
-
-        @NonNull
-        @Override
-        public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            // TODO: 10.03.2022
-            View viewГлавныйВидДляRecyclleViewДляЗаданий=null ;
-            try {
+            // TODO: 14.03.2022
+            private void МетодИнициализацииКомпонетовЗаданияCardView(@NonNull View itemView) {
                 // TODO: 28.02.2022
-                viewГлавныйВидДляRecyclleViewДляЗаданий = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_for_takst_cardview1, parent, false);
-                // TODO: 05.03.2022
-                Log.i(this.getClass().getName(), "   viewГлавныйВидДляRecyclleViewДляЗаданий" + viewГлавныйВидДляRecyclleViewДляЗаданий);
-                // TODO: 28.02.2022
-                myViewHolder = new MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
-                // TODO: 01.03.2022
-                Log.i(this.getClass().getName(), "   myViewHolder" + myViewHolder);
-// TODO: 01.03.2022
-            } catch (Exception e) {
-            e.printStackTrace();
-            ///метод запись ошибок в таблицу
-            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-            //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
-        }
-            return myViewHolder;
-
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-            // TODO: 28.02.2022 привазяваем данные из колекции пряме на наш recycreview
-            try {
-                // TODO: 14.03.2022
-                if (position <= Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount()) {
-
-                    // TODO: 02.03.2022 тут РАЗДАЕМ ДАННЫЕ RECYCLERBIEW
-
-                    Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);
-                    // TODO: 04.03.2022 p==osion
-                    Log.i(this.getClass().getName(), "  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition() " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition());
-
-
-                    // TODO: 14.03.2022  метод создания само сообщения
-                    МетодБиндингаСозданиеСамоСообщения(holder);
-
-
-                    // TODO: 14.03.2022  метод создания номер задания
-                    МетодБиндингаНомерЗадания(holder);
-
-
-                    // TODO: 14.03.2022  метод создания дата задания
-                    МетодБиндингаДатаЗадания(holder);
-
-
-                    // TODO: 14.03.2022  метод создания ФИО задания
-                    МетодБиндингаФИОДляЗадания(holder);
-
-
-                    // TODO: 13.03.2022 СЛУШАТЕЛЬ для ДОЛГОВО НАЖАТИЯ СМЕНЫ СТАТУСА
-
-                    МетодБиндингаСлушателейДляViewCard(holder);
-
-
-                    // TODO: 13.03.2022 СЛУШАТЕЛЬ СРАБАТЫВАЕТ КОГДА КОМАДА TOGGER И МЕНЯЕМ СТАТУСТ ЧЕК ОЗНАКОМЛЕНЫЙ ЛИ ИНЕТ
-
-                    МетодБиндингаСлушательisChered(holder);
-
-
-                    // TODO: 03.03.2022 ПОЛУЧАЕМ СТАТУС ЗАДАНИЯ ПРОЧИТАН ИЛИ НЕТ
-
-                    Integer СамСтатусПрочтенияИлиНет = МетодБиндингаПолученияСтатусаЗадачи(holder);
-
-
-                    // TODO: 02.03.2022#5  получаем ТИП ЗАДАЧИ
-                    МетодБиндингПолучаемТипЗадания(holder);
-
-
-                    // TODO: 02.03.2022#5  заполем ДАННЫМИ BUNGLE САМОЙ ЗАДАЧИ//
-
-                    МетодБиндингаЗаполненияДаннымиBungle(holder, СамСтатусПрочтенияИлиНет);
-
-                    Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + BungleДанныеДляViewCard + " СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
-
-
-                    // TODO: 13.03.2022 настройки для carview
-
-                    holder.materialCardView.toggle();
-
+                try {
+                    // TODO: 01.03.2022 Инициализации компонтов
+                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики itemView   " + itemView);
+                    // TODO: 02.03.2022
+                    textView1 = (TextView) itemView.findViewById(R.id.text1_innercardview);
+                    // TODO: 02.3.2022  дополнительный
+                    textView2 = (TextView) itemView.findViewById(R.id.text2_innercardviewtwo);
+                    // TODO: 28.02.2022
+                    textView3 = (TextView) itemView.findViewById(R.id.text3_innercardviewtree);
+                    // TODO: 28.02.2022
+                    textView4 = (TextView) itemView.findViewById(R.id.text4_innercardviewfour);
+                    // TODO: 28.02.2022
+                    textView5 = (TextView) itemView.findViewById(R.id.text5_innercardviewtype_tasks);
                     // TODO: 13.03.2022
-                    holder.materialCardView.setChecked(true);
+                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики materialCardView  textView2 " + textView4);
+                    // TODO: 01.03.2022
+                    materialCardView = (MaterialCardView) itemView.findViewById(R.id.cardviewmatirealtask);
+                    // TODO: 13.03.2022
+                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики materialCardView   " + materialCardView);
+                    // TODO: 01.03.2022*/
+                    ///////
+                } catch (Exception e) {
+                    //  Block of code to handle errors
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                            + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    // TODO: 01.09.2021 метод вызова
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
+                            this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                            Thread.currentThread().getStackTrace()[2].getLineNumber());
+                }
+                /////
+            }
+        } // TODO: 28.02.2022 конец  MyViewHolder
+        // TODO: 28.02.2022 конец  MyViewHolder
+
+
+        // TODO: 28.02.2022 ViewHolder
+
+        class MyRecycleViewAdapter extends RecyclerView.Adapter<MyViewHolder> {
+            // TODO: 04.03.2022
+            SQLiteCursor Курсор_ДляПолученияДАнныхДляЗАДАЧTASK;
+
+            // TODO: 15.03.2022
+
+            public MyRecycleViewAdapter(@NotNull SQLiteCursor Курсор_ДляПолученияДАнныхДляЗАДАЧTASK) {
+                // super();
+                // TODO: 04.03.2022
+                this.Курсор_ДляПолученияДАнныхДляЗАДАЧTASK = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK;
+                if (Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount() > 0) {
+                    // TODO: 04.03.2022
+                    Log.i(this.getClass().getName(), "   MyRecycleViewAdapter   Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount()>" + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount());
+                }
+                Log.i(this.getClass().getName(), "     getItemId holder.position ");
+            }
+
+            @NonNull
+            @Override
+            public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                // TODO: 10.03.2022
+                View viewГлавныйВидДляRecyclleViewДляЗаданий=null ;
+                try {
+                    // TODO: 28.02.2022
+                    viewГлавныйВидДляRecyclleViewДляЗаданий = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_for_takst_cardview1, parent, false);
+                    // TODO: 05.03.2022
+                    Log.i(this.getClass().getName(), "   viewГлавныйВидДляRecyclleViewДляЗаданий" + viewГлавныйВидДляRecyclleViewДляЗаданий);
+                    // TODO: 28.02.2022
+                    myViewHolder = new MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
+                    // TODO: 01.03.2022
+                    Log.i(this.getClass().getName(), "   myViewHolder" + myViewHolder);
+// TODO: 01.03.2022
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+                return myViewHolder;
+
+            }
+
+            @Override
+            public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+                // TODO: 28.02.2022 привазяваем данные из колекции пряме на наш recycreview
+                try {
+                    // TODO: 14.03.2022
+                    if (position <= Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount()) {
+
+                        // TODO: 02.03.2022 тут РАЗДАЕМ ДАННЫЕ RECYCLERBIEW
+
+                        Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);
+                        // TODO: 04.03.2022 p==osion
+                        Log.i(this.getClass().getName(), "  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition() " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition());
+
+
+                        // TODO: 14.03.2022  метод создания само сообщения
+                        МетодБиндингаСозданиеСамоСообщения(holder);
+
+
+                        // TODO: 14.03.2022  метод создания номер задания
+                        МетодБиндингаНомерЗадания(holder);
+
+
+                        // TODO: 14.03.2022  метод создания дата задания
+                        МетодБиндингаДатаЗадания(holder);
+
+
+                        // TODO: 14.03.2022  метод создания ФИО задания
+                        МетодБиндингаФИОДляЗадания(holder);
+
+
+                        // TODO: 13.03.2022 СЛУШАТЕЛЬ для ДОЛГОВО НАЖАТИЯ СМЕНЫ СТАТУСА
+
+                        МетодБиндингаСлушателейДляViewCard(holder);
+
+
+                        // TODO: 13.03.2022 СЛУШАТЕЛЬ СРАБАТЫВАЕТ КОГДА КОМАДА TOGGER И МЕНЯЕМ СТАТУСТ ЧЕК ОЗНАКОМЛЕНЫЙ ЛИ ИНЕТ
+
+                        МетодБиндингаСлушательisChered(holder);
+
+
+                        // TODO: 03.03.2022 ПОЛУЧАЕМ СТАТУС ЗАДАНИЯ ПРОЧИТАН ИЛИ НЕТ
+
+                        Integer СамСтатусПрочтенияИлиНет = МетодБиндингаПолученияСтатусаЗадачи(holder);
+
+
+                        // TODO: 02.03.2022#5  получаем ТИП ЗАДАЧИ
+                        МетодБиндингПолучаемТипЗадания(holder);
+
+
+                        // TODO: 02.03.2022#5  заполем ДАННЫМИ BUNGLE САМОЙ ЗАДАЧИ//
+
+                        МетодБиндингаЗаполненияДаннымиBungle(holder, СамСтатусПрочтенияИлиНет);
+
+                        Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + BungleДанныеДляViewCard + " СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
+
+
+                        // TODO: 13.03.2022 настройки для carview
+
+                        holder.materialCardView.toggle();
+
+                        // TODO: 13.03.2022
+                        holder.materialCardView.setChecked(true);
 
 // TODO: 28.02.2022
+                    }
+                    // TODO: 09.03.2022
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
                 }
-                // TODO: 09.03.2022
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
             }
-        }
 
-        private void МетодБиндингаЗаполненияДаннымиBungle(@NonNull MyViewHolder holder, Integer СамСтатусПрочтенияИлиНет) {
-            // TODO: 03.03.2022
-            try {
+            private void МетодБиндингаЗаполненияДаннымиBungle(@NonNull MyViewHolder holder, Integer СамСтатусПрочтенияИлиНет) {
+                // TODO: 03.03.2022
+                try {
 
-                Integer ИндексUUIDДЛяЗАДАНИЯКотореВыбрали = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("uuid");///"uuid_notifications"
-                // TODO: 02.03.2022 получет UUID строчки
+                    Integer ИндексUUIDДЛяЗАДАНИЯКотореВыбрали = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("uuid");///"uuid_notifications"
+                    // TODO: 02.03.2022 получет UUID строчки
 
-                Long UUIDДЛяЗАДАНИЯКотореВыбрали = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getLong(ИндексUUIDДЛяЗАДАНИЯКотореВыбрали);
+                    Long UUIDДЛяЗАДАНИЯКотореВыбрали = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getLong(ИндексUUIDДЛяЗАДАНИЯКотореВыбрали);
 
-                Log.i(this.getClass().getName(), "  UUIDДЛяЗАДАНИЯКотореВыбрали " + UUIDДЛяЗАДАНИЯКотореВыбрали);
+                    Log.i(this.getClass().getName(), "  UUIDДЛяЗАДАНИЯКотореВыбрали " + UUIDДЛяЗАДАНИЯКотореВыбрали);
 
-                // TODO: 13.03.2022
+                    // TODO: 13.03.2022
 
-                Integer позиция = holder.getAdapterPosition();
+                    Integer позиция = holder.getAdapterPosition();
 
-                Log.i(this.getClass().getName(), "  позиция " + позиция);
+                    Log.i(this.getClass().getName(), "  позиция " + позиция);
 
                     // TODO: 14.03.2022  заполем данными для получение  UUID вышке
                     BungleДанныеДляViewCard.putLong(String.valueOf(позиция), UUIDДЛяЗАДАНИЯКотореВыбрали);
 
 
+                    Log.i(this.getClass().getName(), "  BungleДанныеДляViewCard   " + BungleДанныеДляViewCard.getBundle(String.valueOf(holder.materialCardView.getId())));
 
-                Log.i(this.getClass().getName(), "  BungleДанныеДляViewCard   " + BungleДанныеДляViewCard.getBundle(String.valueOf(holder.materialCardView.getId())));
-
-                // TODO: 13.03.2022  передаем статус задачи
+                    // TODO: 13.03.2022  передаем статус задачи
 
 
+                    // TODO: 03.03.2022 передаем помер позиции position
+                    holder.materialCardView.setTag(holder.materialCardView.getId(), СамСтатусПрочтенияИлиНет);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
                 // TODO: 03.03.2022 передаем помер позиции position
-                holder.materialCardView.setTag(holder.materialCardView.getId(), СамСтатусПрочтенияИлиНет);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
             }
-            // TODO: 03.03.2022 передаем помер позиции position
-        }
 
-        private void МетодБиндингПолучаемТипЗадания(@NonNull MyViewHolder holder) {
+            private void МетодБиндингПолучаемТипЗадания(@NonNull MyViewHolder holder) {
 
-            try {
-                Integer ИндексСтатусТипаЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("type_tasks");
-                // TODO: 02.03.2022
-
-                String СамТипЗадания = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getString(ИндексСтатусТипаЗадачи);
-
-                Log.i(this.getClass().getName(), "  СамТипЗадания " + СамТипЗадания);
-
-                holder.textView5.setText("тип: " + СамТипЗадания);
-            } catch (Exception e) {
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
-            }
-        }
-
-        @NonNull
-        private Integer МетодБиндингаПолученияСтатусаЗадачи(@NonNull MyViewHolder holder) {
-            // TODO: 02.03.2022#5
-            Integer СамСтатусПрочтенияИлиНет = 0;
-            try {
-
-                Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("status_write");
-                // TODO: 02.03.2022
-
-                СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексСтатусПрочтенияИлиНЕт);
-                // TODO: 03.03.2022
-
-                holder.textView1.setTag(СамСтатусПрочтенияИлиНет);
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
-            }
-            // TODO: 01.03.2022 уставнока дополнительный данныых
-            return СамСтатусПрочтенияИлиНет;
-        }
-
-
-        private void МетодБиндингаФИОДляЗадания(@NonNull MyViewHolder holder) throws ExecutionException, InterruptedException {
-            try {
-                // TODO: 02.03.2022#4  // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4
-                Integer ИндексКтоНаписалСообщение = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("user_update");
-                // TODO: 02.03.2022
-                Integer КтоНаписалСообщениеФИОдЛПосика = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексКтоНаписалСообщение);
-                // TODO: 02.03.2022
-                Log.i(this.getClass().getName(), "  КтоНаписалСообщениеФИОдЛПосика " + КтоНаписалСообщениеФИОдЛПосика);
-                // TODO: 02.03.2022
-                String ФИОКотоНаписал = new String();
-                // TODO: 13.03.2022
-                SQLiteCursor sqLiteCursorПолученимНАстоящийФИО = МетодПолучениеДанныхФИОаОснованииID(КтоНаписалСообщениеФИОдЛПосика);
-                // TODO: 02.03.2022
-                Log.i(this.getClass().getName(), "  sqLiteCursorПолученимНАстоящийФИО " + sqLiteCursorПолученимНАстоящийФИО);
-                // TODO: 02.03.2022
-                if (sqLiteCursorПолученимНАстоящийФИО.getCount() > 0) {
+                try {
+                    Integer ИндексСтатусТипаЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("type_tasks");
                     // TODO: 02.03.2022
-                    sqLiteCursorПолученимНАстоящийФИО.moveToFirst();
+
+                    String СамТипЗадания = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getString(ИндексСтатусТипаЗадачи);
+
+                    Log.i(this.getClass().getName(), "  СамТипЗадания " + СамТипЗадания);
+
+                    holder.textView5.setText("тип: " + СамТипЗадания);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+            }
+
+            @NonNull
+            private Integer МетодБиндингаПолученияСтатусаЗадачи(@NonNull MyViewHolder holder) {
+                // TODO: 02.03.2022#5
+                Integer СамСтатусПрочтенияИлиНет = 0;
+                try {
+
+                    Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("status_write");
                     // TODO: 02.03.2022
-                    Integer ИндексПолученогоФИО = sqLiteCursorПолученимНАстоящийФИО.getColumnIndex("name");
+
+                    СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексСтатусПрочтенияИлиНЕт);
+                    // TODO: 03.03.2022
+
+                    holder.textView1.setTag(СамСтатусПрочтенияИлиНет);
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+                // TODO: 01.03.2022 уставнока дополнительный данныых
+                return СамСтатусПрочтенияИлиНет;
+            }
+
+
+            private void МетодБиндингаФИОДляЗадания(@NonNull MyViewHolder holder) throws ExecutionException, InterruptedException {
+                try {
+                    // TODO: 02.03.2022#4  // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4
+                    Integer ИндексКтоНаписалСообщение = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("user_update");
+                    // TODO: 02.03.2022
+                    Integer КтоНаписалСообщениеФИОдЛПосика = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексКтоНаписалСообщение);
+                    // TODO: 02.03.2022
+                    Log.i(this.getClass().getName(), "  КтоНаписалСообщениеФИОдЛПосика " + КтоНаписалСообщениеФИОдЛПосика);
+                    // TODO: 02.03.2022
+                    String ФИОКотоНаписал = new String();
                     // TODO: 13.03.2022
-                    ФИОКотоНаписал = sqLiteCursorПолученимНАстоящийФИО.getString(ИндексПолученогоФИО);
-                    // TODO: 13.03.2022
+                    SQLiteCursor sqLiteCursorПолученимНАстоящийФИО = МетодПолучениеДанныхФИОаОснованииID(КтоНаписалСообщениеФИОдЛПосика);
+                    // TODO: 02.03.2022
+                    Log.i(this.getClass().getName(), "  sqLiteCursorПолученимНАстоящийФИО " + sqLiteCursorПолученимНАстоящийФИО);
+                    // TODO: 02.03.2022
+                    if (sqLiteCursorПолученимНАстоящийФИО.getCount() > 0) {
+                        // TODO: 02.03.2022
+                        sqLiteCursorПолученимНАстоящийФИО.moveToFirst();
+                        // TODO: 02.03.2022
+                        Integer ИндексПолученогоФИО = sqLiteCursorПолученимНАстоящийФИО.getColumnIndex("name");
+                        // TODO: 13.03.2022
+                        ФИОКотоНаписал = sqLiteCursorПолученимНАстоящийФИО.getString(ИндексПолученогоФИО);
+                        // TODO: 13.03.2022
+                        // TODO: 02.03.2022
+                        Log.i(this.getClass().getName(), "  ФИОКотоНаписал " + ФИОКотоНаписал);
+                    }
+                    // TODO: 09.03.2022
+                    sqLiteCursorПолученимНАстоящийФИО.close();
                     // TODO: 02.03.2022
                     Log.i(this.getClass().getName(), "  ФИОКотоНаписал " + ФИОКотоНаписал);
-                }
-                // TODO: 09.03.2022
-                sqLiteCursorПолученимНАстоящийФИО.close();
-                // TODO: 02.03.2022
-                Log.i(this.getClass().getName(), "  ФИОКотоНаписал " + ФИОКотоНаписал);
-                // TODO: 28.02.2022
+                    // TODO: 28.02.2022
 
 // TODO: 28.02.2022
-                holder.textView3.setText("от: " + ФИОКотоНаписал.trim());
-            } catch (Exception e) {
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
-            }
-        }
-
-        private void МетодБиндингаДатаЗадания(@NonNull MyViewHolder holder) throws ParseException {
-            try {
-                // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3
-                Integer ИндексПолучаемДатыЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("date_update");
-                // TODO: 02.03.2022
-                String СамаДАтаЗадачиТекущей = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getString(ИндексПолучаемДатыЗадачи);
-                // TODO: 03.03.2022 парсинг даты
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", new Locale("ru"));
-                // TODO: 13.03.2022
-                dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", new Locale("ru"));
-                // TODO: 13.03.2022
-                Date date = dateFormat.parse(СамаДАтаЗадачиТекущей);
-                // TODO: 13.03.2022
-                SimpleDateFormat simpleDateFormatДва = new SimpleDateFormat("dd MMMM yyyy HH:mm", new Locale("ru"));
-                // TODO: 13.03.2022
-                //   simpleDateFormatДва.applyPattern("dd-MM-yyyy HH:mm");//dd-MM-yyyy//// EEEE yyyy HH:mm  /////  dd MMMM yyyy HH:mm
-                СамаДАтаЗадачиТекущей = simpleDateFormatДва.format(date);
-                // TODO: 13.03.2022
-                Log.i(this.getClass().getName(), "  СамаДАтаЗадачиТекущей " + СамаДАтаЗадачиТекущей);
-                // TODO: 28.02.2022
-                holder.textView4.setText("дата: " + СамаДАтаЗадачиТекущей);
-            } catch (Exception e) {
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
-            }
-        }
-
-        private void МетодБиндингаНомерЗадания(@NonNull MyViewHolder holder) {
-            try {
-                // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2
-                Integer ИндексПолучаемIDЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("id");
-                // TODO: 02.03.2022
-                Integer IDЗадачиТекущей = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексПолучаемIDЗадачи);
-                // TODO: 02.03.2022
-                Log.i(this.getClass().getName(), "  IDЗадачиТекущей " + IDЗадачиТекущей);
-                // TODO: 28.02.2022
-                holder.textView2.setText("#" + String.valueOf(IDЗадачиТекущей));
-            } catch (Exception e) {
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
-            }
-        }
-
-        private void МетодБиндингаСозданиеСамоСообщения(@NonNull MyViewHolder holder) {
-
-            try {
-                // TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1
-                Integer ИндексСамогоСообщенияЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("message");
-                // TODO: 02.03.2022
-                String СамогоСообщенияЗадачиДляПользователя = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getString(ИндексСамогоСообщенияЗадачи);
-                // TODO: 02.03.2022
-                Log.i(this.getClass().getName(), "  СамогоСообщенияЗадачиДляПользователя " + СамогоСообщенияЗадачиДляПользователя);
-                // TODO: 28.02.2022
-                holder.textView1.setText(СамогоСообщенияЗадачиДляПользователя);
-                // TODO: 28.02.2022
-            } catch (Exception e) {
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                    holder.textView3.setText("от: " + ФИОКотоНаписал.trim());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
             }
 
-        }
+            private void МетодБиндингаДатаЗадания(@NonNull MyViewHolder holder) throws ParseException {
+                try {
+                    // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3
+                    Integer ИндексПолучаемДатыЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("date_update");
+                    // TODO: 02.03.2022
+                    String СамаДАтаЗадачиТекущей = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getString(ИндексПолучаемДатыЗадачи);
+                    // TODO: 03.03.2022 парсинг даты
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", new Locale("ru"));
+                    // TODO: 13.03.2022
+                    dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", new Locale("ru"));
+                    // TODO: 13.03.2022
+                    Date date = dateFormat.parse(СамаДАтаЗадачиТекущей);
+                    // TODO: 13.03.2022
+                    SimpleDateFormat simpleDateFormatДва = new SimpleDateFormat("dd MMMM yyyy HH:mm", new Locale("ru"));
+                    // TODO: 13.03.2022
+                    //   simpleDateFormatДва.applyPattern("dd-MM-yyyy HH:mm");//dd-MM-yyyy//// EEEE yyyy HH:mm  /////  dd MMMM yyyy HH:mm
+                    СамаДАтаЗадачиТекущей = simpleDateFormatДва.format(date);
+                    // TODO: 13.03.2022
+                    Log.i(this.getClass().getName(), "  СамаДАтаЗадачиТекущей " + СамаДАтаЗадачиТекущей);
+                    // TODO: 28.02.2022
+                    holder.textView4.setText("дата: " + СамаДАтаЗадачиТекущей);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+            }
+
+            private void МетодБиндингаНомерЗадания(@NonNull MyViewHolder holder) {
+                try {
+                    // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2
+                    Integer ИндексПолучаемIDЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("id");
+                    // TODO: 02.03.2022
+                    Integer IDЗадачиТекущей = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексПолучаемIDЗадачи);
+                    // TODO: 02.03.2022
+                    Log.i(this.getClass().getName(), "  IDЗадачиТекущей " + IDЗадачиТекущей);
+                    // TODO: 28.02.2022
+                    holder.textView2.setText("#" + String.valueOf(IDЗадачиТекущей));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+            }
+
+            private void МетодБиндингаСозданиеСамоСообщения(@NonNull MyViewHolder holder) {
+
+                try {
+                    // TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1
+                    Integer ИндексСамогоСообщенияЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("message");
+                    // TODO: 02.03.2022
+                    String СамогоСообщенияЗадачиДляПользователя = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getString(ИндексСамогоСообщенияЗадачи);
+                    // TODO: 02.03.2022
+                    Log.i(this.getClass().getName(), "  СамогоСообщенияЗадачиДляПользователя " + СамогоСообщенияЗадачиДляПользователя);
+                    // TODO: 28.02.2022
+                    holder.textView1.setText(СамогоСообщенияЗадачиДляПользователя);
+                    // TODO: 28.02.2022
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+
+            }
 
 
-        // TODO: 13.03.2022
+            // TODO: 13.03.2022
 
 
-        private void МетодБиндингаСлушателейДляViewCard(MyViewHolder holder) {
-            // TODO: 01.03.2022 слушатели
+            private void МетодБиндингаСлушателейДляViewCard(MyViewHolder holder) {
+                // TODO: 01.03.2022 слушатели
 
-            try {
+                try {
 
 // TODO: 01.03.2022 слушатели
 
-                holder.materialCardView.setOnLongClickListener(new View.OnLongClickListener() {
-                    @Override
-                    public boolean onLongClick(View v) {
-                        // TODO: 01.03.2022
+                    holder.materialCardView.setOnLongClickListener(new View.OnLongClickListener() {
+                        @Override
+                        public boolean onLongClick(View v) {
+                            // TODO: 01.03.2022
 
-                        // TODO: 10.03.2022
-                        вибратор.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+                            // TODO: 10.03.2022
+                            вибратор.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
 
-                        // TODO: 13.03.2022
-                        Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогики   ПозицияЭлментаVIewCardДополнительно  " +
-                                " holder.getAdapterPosition() " + holder.getAdapterPosition() + " v.getTag() " + v.getTag(holder.materialCardView.getId()));
+                            // TODO: 13.03.2022
+                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогики   ПозицияЭлментаVIewCardДополнительно  " +
+                                    " holder.getAdapterPosition() " + holder.getAdapterPosition() + " v.getTag() " + v.getTag(holder.materialCardView.getId()));
 
-                        // TODO: 13.03.2022  статус прочтения ли уде или нет адание
+                            // TODO: 13.03.2022  статус прочтения ли уде или нет адание
 
-                        Object СтатусПрочтеаУжеЗадачаИлиНет = v.getTag(holder.materialCardView.getId());//TODO holder.materialCardView.getId()
+                            Object СтатусПрочтеаУжеЗадачаИлиНет = v.getTag(holder.materialCardView.getId());//TODO holder.materialCardView.getId()
 
 
-                        // TODO: 13.03.2022
-                        Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогики   ПозицияЭлментаVIewCardДополнительно  СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
-                        // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
+                            // TODO: 13.03.2022
+                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогики   ПозицияЭлментаVIewCardДополнительно  СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
+                            // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
                      /*   Long ПолучаемUUIDТекущйПозицииВRecyreView = AccessibilityNodeInfoДанныеДляViewCard.getAvailableExtraData().stream().map(Long::new)
                                 .distinct() .sorted(Collections.reverseOrder()).collect(Collectors.toList()).get(holder.getAdapterPosition()).longValue();*/
 
-                        // TODO: 13.03.2022
-                        Long ПолучаемUUIDТекущйПозицииВRecyreView = BungleДанныеДляViewCard.getLong((String.valueOf(holder.getAdapterPosition())), 0l);
+                            // TODO: 13.03.2022
+                            Long ПолучаемUUIDТекущйПозицииВRecyreView = BungleДанныеДляViewCard.getLong((String.valueOf(holder.getAdapterPosition())), 0l);
 
 
-                        Log.i(this.getClass().getName(), "  BungleДанныеДляViewCard   " + BungleДанныеДляViewCard.getLong((String.valueOf(holder.getAdapterPosition())), 0l) +
-                                " ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView);
+                            Log.i(this.getClass().getName(), "  BungleДанныеДляViewCard   " + BungleДанныеДляViewCard.getLong((String.valueOf(holder.getAdapterPosition())), 0l) +
+                                    " ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView);
 
 
 // TODO: 13.03.2022
-                        Log.d(this.getClass().getName(), "  СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет
-                                + " ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView);
+                            Log.d(this.getClass().getName(), "  СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет
+                                    + " ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView);
 
 
-                        // TODO: 03.03.2022  запускам сменты статуса
+                            // TODO: 03.03.2022  запускам сменты статуса
 
-                        if (Integer.parseInt(String.valueOf(СтатусПрочтеаУжеЗадачаИлиНет)) == 0 && ПолучаемUUIDТекущйПозицииВRecyreView != null) {
+                            if (Integer.parseInt(String.valueOf(СтатусПрочтеаУжеЗадачаИлиНет)) == 0 && ПолучаемUUIDТекущйПозицииВRecyreView != null) {
 
-                            ///
-                            String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForChat";
+                                ///
+                                String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForChat";
 
-                            String PROCESS_ID_УведомленияПлановая = "12";
+                                String PROCESS_ID_УведомленияПлановая = "12";
 
-                            // TODO: 03.03.2022
-
-                            SubClass_Starting_chahge_status_public_notificaton subClass_starting_chahge_status_public_notificaton =
-                                    new SubClass_Starting_chahge_status_public_notificaton(getContext());
-
-                            // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи
-                            PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = subClass_starting_chahge_status_public_notificaton.
-                                    МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата, String.valueOf(ПолучаемUUIDТекущйПозицииВRecyreView));
-
-
-                            try {
-
-                                // TODO: 03.03.2022  запускаем службу смены статуса
-                                ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
-
-
-                            } catch (PendingIntent.CanceledException e) {
-                                e.printStackTrace();
-                            }
-                            ///////TODO запускаем смены стануса задачи черезе PendingIntent
-                            Log.d(getContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая " + PROCESS_ID_УведомленияПлановая +
-                                    " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата + " СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
-
-
-                            // TODO: 03.03.2022 update screewn
-                            Handler handlerЗапускаемОтсрочнуюСменуСтатуса = new Handler();
-                            // TODO: 04.03.2022
-                            handlerЗапускаемОтсрочнуюСменуСтатуса.postDelayed(() -> {
-                                // TODO: 04.03.2022
-
-                                Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.deactivate();
                                 // TODO: 03.03.2022
 
-                                Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.requery();
-                                // TODO: 13.03.2022
+                                SubClass_Starting_chahge_status_public_notificaton subClass_starting_chahge_status_public_notificaton =
+                                        new SubClass_Starting_chahge_status_public_notificaton(getContext());
 
-                                Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.deactivate();
-                                // TODO: 14.03.2022
-                                Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.requery();
+                                // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи
+                                PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = subClass_starting_chahge_status_public_notificaton.
+                                        МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата, String.valueOf(ПолучаемUUIDТекущйПозицииВRecyreView));
 
-                                // TODO: 13.03.2022
-                                notifyDataSetChanged();
+
+                                try {
+
+                                    // TODO: 03.03.2022  запускаем службу смены статуса
+                                    ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
+
+
+                                } catch (PendingIntent.CanceledException e) {
+                                    e.printStackTrace();
+                                }
+                                ///////TODO запускаем смены стануса задачи черезе PendingIntent
+                                Log.d(getContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая " + PROCESS_ID_УведомленияПлановая +
+                                        " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата + " СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
+
+
+                                // TODO: 03.03.2022 update screewn
+                                Handler handlerЗапускаемОтсрочнуюСменуСтатуса = new Handler();
+                                // TODO: 04.03.2022
+                                handlerЗапускаемОтсрочнуюСменуСтатуса.postDelayed(() -> {
+                                    // TODO: 04.03.2022
+
+                                    Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.deactivate();
+                                    // TODO: 03.03.2022
+
+                                    Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.requery();
+                                    // TODO: 13.03.2022
+
+                                    Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.deactivate();
+                                    // TODO: 14.03.2022
+                                    Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.requery();
+
+                                    // TODO: 13.03.2022
+                                    notifyDataSetChanged();
 
                            /*     Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 0 " + СтатусПрочтеаУжеЗадачаИлиНет);
 
                                 Toast.makeText(getActivity(), " Статус сменили на ознакомленный  #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();*/
 
-                            }, 2500);
+                                }, 2500);
 
-                        } else {
+                            } else {
 
-                            ///////TODO запускаем смены стануса задачи черезе PendingIntent
-                            Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 1  " + СтатусПрочтеаУжеЗадачаИлиНет);
+                                ///////TODO запускаем смены стануса задачи черезе PendingIntent
+                                Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 1  " + СтатусПрочтеаУжеЗадачаИлиНет);
 
-                            ///   Toast.makeText(getActivity(), " Статус ознакомлена !!!   #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
+                                ///   Toast.makeText(getActivity(), " Статус ознакомлена !!!   #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
+                            }
+
+                            // TODO: 03.03.2022 update screewn
+
+                            // TODO: 13.03.2022
+                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогики" +
+                                    "   ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView +
+                                    " holder.getAdapterPosition() " + holder.getAdapterPosition());
+
+                            // TODO: 13.03.2022
+                            // notifyDataSetChanged();
+
+                            return true;
+
                         }
-
-                        // TODO: 03.03.2022 update screewn
-
-                        // TODO: 13.03.2022
-                        Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогики" +
-                                "   ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView +
-                                " holder.getAdapterPosition() " + holder.getAdapterPosition());
-
-                        // TODO: 13.03.2022
-                        // notifyDataSetChanged();
-
-                        return true;
-
-                    }
-                });
-                // TODO: 13.03.2022
-            } catch (Exception e) {
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                    });
+                    // TODO: 13.03.2022
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
             }
-        }
 
-        private void МетодБиндингаСлушательisChered(MyViewHolder holder) {
-            // TODO: 14.03.2022
+            private void МетодБиндингаСлушательisChered(MyViewHolder holder) {
+                // TODO: 14.03.2022
 
-            try {
-                holder.materialCardView.setOnCheckedChangeListener(new MaterialCardView.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
-                        // TODO: 13.03.2022
-                        int ИндексдляНепрочитанный = R.drawable.icon_dsu1_fortasks_cardview_color_geeeey;
-                        // TODO: 13.03.2022
-                        int ИндексПпрочитанные = R.drawable.icon_dsu1_fortasks_cardview_color_geen;
-                        // TODO: 13.03.2022
+                try {
+                    holder.materialCardView.setOnCheckedChangeListener(new MaterialCardView.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
+                            // TODO: 13.03.2022
+                            int ИндексдляНепрочитанный = R.drawable.icon_dsu1_fortasks_cardview_color_geeeey;
+                            // TODO: 13.03.2022
+                            int ИндексПпрочитанные = R.drawable.icon_dsu1_fortasks_cardview_color_geen;
+                            // TODO: 13.03.2022
 
-                        Drawable drawableПпрочитанные
-                                = getContext().getDrawable(ИндексПпрочитанные);
-                        // TODO: 13.03.2022
-                        Drawable drawableИндексдляНепрочитанный
-                                = getContext().getDrawable(ИндексдляНепрочитанный);
-                        // TODO: 13.03.2022
-                        Log.d(this.getClass().getName(), " card  " + card +
-                                "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " isChecked " + isChecked);
-
-                        // TODO: 13.03.2022
-
-                        // TODO: 02.03.2022#5
-
-                        Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("status_write");
-                        // TODO: 02.03.2022
-
-                        Integer СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексСтатусПрочтенияИлиНЕт);
-
-                        // TODO: 13.03.2022
-                        if (isChecked && СамСтатусПрочтенияИлиНет > 0) {
-
+                            Drawable drawableПпрочитанные
+                                    = getContext().getDrawable(ИндексПпрочитанные);
+                            // TODO: 13.03.2022
+                            Drawable drawableИндексдляНепрочитанный
+                                    = getContext().getDrawable(ИндексдляНепрочитанный);
+                            // TODO: 13.03.2022
+                            Log.d(this.getClass().getName(), " card  " + card +
+                                    "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " isChecked " + isChecked);
 
                             // TODO: 13.03.2022
-                            card.setCheckedIcon(drawableИндексдляНепрочитанный);
-                            // TODO: 13.03.2022
-                            card.setCheckedIconResource(ИндексдляНепрочитанный);
+
+                            // TODO: 02.03.2022#5
+
+                            Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("status_write");
+                            // TODO: 02.03.2022
+
+                            Integer СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексСтатусПрочтенияИлиНЕт);
 
                             // TODO: 13.03.2022
-                            // TODO: 13.03.2022
-                            card.setSelected(true);
-                            // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  holder.materialCardView.setOnCheckedChangeListener  isChecked   " + isChecked);
+                            if (isChecked && СамСтатусПрочтенияИлиНет > 0) {
 
 
-                        } else {
-                            // TODO: 14.03.2022
+                                // TODO: 13.03.2022
+                                card.setCheckedIcon(drawableИндексдляНепрочитанный);
+                                // TODO: 13.03.2022
+                                card.setCheckedIconResource(ИндексдляНепрочитанный);
+
+                                // TODO: 13.03.2022
+                                // TODO: 13.03.2022
+                                card.setSelected(true);
+                                // TODO: 13.03.2022
+                                Log.d(this.getClass().getName(), "  holder.materialCardView.setOnCheckedChangeListener  isChecked   " + isChecked);
+
+
+                            } else {
+                                // TODO: 14.03.2022
+                                // TODO: 13.03.2022
+                                Log.d(this.getClass().getName(), "   holder.materialCardView.setOnCheckedChangeListener  isChecked    " + isChecked);
+                            }
+
                             // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "   holder.materialCardView.setOnCheckedChangeListener  isChecked    " + isChecked);
                         }
-
-                        // TODO: 13.03.2022
-                    }
-                });
-                // TODO: 13.03.2022
-            } catch (Exception e) {
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                    });
+                    // TODO: 13.03.2022
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
             }
-        }
-        // TODO: 04.03.2022
-
-
-        @Override
-        public long getItemId(int position) {
             // TODO: 04.03.2022
 
-            Log.i(this.getClass().getName(), "     getItemId holder.position " + position);
 
-            return super.getItemId(position);
+            @Override
+            public long getItemId(int position) {
+                // TODO: 04.03.2022
 
-        }
+                Log.i(this.getClass().getName(), "     getItemId holder.position " + position);
 
-        private SQLiteCursor МетодПолучениеДанныхФИОаОснованииID(Integer КтоНаписалСообщениеФИОдЛПосика) throws ExecutionException, InterruptedException {
-            // TODO: 16.11.2021 find FIO
-            SQLiteCursor Курсор_ДляСлужбыУведомлений_ВычисляемНстоящееФИОКтоНаписал = null;
-            try {
-                ///
-                Class_GRUD_SQL_Operations class_grud_sql_operationsФИОКтоНАсамомДелеНАписал = new Class_GRUD_SQL_Operations(getContext());
+                return super.getItemId(position);
 
-                ///
-                class_grud_sql_operationsФИОКтоНАсамомДелеНАписал.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("НазваниеОбрабоатываемойТаблицы", "chat_users");
-                ///////
-                class_grud_sql_operationsФИОКтоНАсамомДелеНАписал.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("СтолбцыОбработки", "name");
-                //
-                class_grud_sql_operationsФИОКтоНАсамомДелеНАписал.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика", "_id=?   AND name IS NOT NULL ");
-                ///"_id > ?   AND _id< ?"
-                //////
-                class_grud_sql_operationsФИОКтоНАсамомДелеНАписал.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска1", КтоНаписалСообщениеФИОдЛПосика);
+            }
+
+            private SQLiteCursor МетодПолучениеДанныхФИОаОснованииID(Integer КтоНаписалСообщениеФИОдЛПосика) throws ExecutionException, InterruptedException {
+                // TODO: 16.11.2021 find FIO
+                SQLiteCursor Курсор_ДляСлужбыУведомлений_ВычисляемНстоящееФИОКтоНаписал = null;
+                try {
+                    ///
+                    Class_GRUD_SQL_Operations class_grud_sql_operationsФИОКтоНАсамомДелеНАписал = new Class_GRUD_SQL_Operations(getContext());
+
+                    ///
+                    class_grud_sql_operationsФИОКтоНАсамомДелеНАписал.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("НазваниеОбрабоатываемойТаблицы", "chat_users");
+                    ///////
+                    class_grud_sql_operationsФИОКтоНАсамомДелеНАписал.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("СтолбцыОбработки", "name");
+                    //
+                    class_grud_sql_operationsФИОКтоНАсамомДелеНАписал.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика", "_id=?   AND name IS NOT NULL ");
+                    ///"_id > ?   AND _id< ?"
+                    //////
+                    class_grud_sql_operationsФИОКтоНАсамомДелеНАписал.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска1", КтоНаписалСообщениеФИОдЛПосика);
 
     /*            class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеСортировки","date_update DESC");
                 ////
                 class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеЛимита","5");*/
 
-                // TODO: 27.08.2021  ПОЛУЧЕНИЕ ДАННЫХ ОТ КЛАССА GRUD-ОПЕРАЦИИ
-                ///
+                    // TODO: 27.08.2021  ПОЛУЧЕНИЕ ДАННЫХ ОТ КЛАССА GRUD-ОПЕРАЦИИ
+                    ///
 
-                Курсор_ДляСлужбыУведомлений_ВычисляемНстоящееФИОКтоНаписал = (SQLiteCursor) class_grud_sql_operationsФИОКтоНАсамомДелеНАписал.
-                        new GetData(getContext()).getdata(class_grud_sql_operationsФИОКтоНАсамомДелеНАписал.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций,
-                        new PUBLIC_CONTENT(getContext()).МенеджерПотоков, new CREATE_DATABASE(getContext()).getССылкаНаСозданнуюБазу());
+                    Курсор_ДляСлужбыУведомлений_ВычисляемНстоящееФИОКтоНаписал = (SQLiteCursor) class_grud_sql_operationsФИОКтоНАсамомДелеНАписал.
+                            new GetData(getContext()).getdata(class_grud_sql_operationsФИОКтоНАсамомДелеНАписал.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций,
+                            new PUBLIC_CONTENT(getContext()).МенеджерПотоков, new CREATE_DATABASE(getContext()).getССылкаНаСозданнуюБазу());
 
-                ////////
+                    ////////
 
-                Log.d(this.getClass().getName(), "Курсор_ДляСлужбыУведомлений_ВычисляемНстоящееФИОКтоНаписал " + Курсор_ДляСлужбыУведомлений_ВычисляемНстоящееФИОКтоНаписал);
+                    Log.d(this.getClass().getName(), "Курсор_ДляСлужбыУведомлений_ВычисляемНстоящееФИОКтоНаписал " + Курсор_ДляСлужбыУведомлений_ВычисляемНстоящееФИОКтоНаписал);
 
 
-            } catch (Exception e) {
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+
+                // TODO: 02.03.2022
+                return Курсор_ДляСлужбыУведомлений_ВычисляемНстоящееФИОКтоНаписал;
             }
 
-            // TODO: 02.03.2022
-            return Курсор_ДляСлужбыУведомлений_ВычисляемНстоящееФИОКтоНаписал;
-        }
 
+            @Override
+            public int getItemCount() {
 
-        @Override
-        public int getItemCount() {
+                // TODO: 02.03.2022
+                ////////
 
-            // TODO: 02.03.2022
-            ////////
+                Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
+                // TODO: 28.02.2022
+                return Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount();
+            }
+        }//TODO  конец два
 
-            Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
-            // TODO: 28.02.2022
-            return Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount();
-        }
-    }
-
+    }   // TODO: 28.02.2022 конец класса бизнес логики   // TODO: 28.02.2022 конец класса бизнес логики
 
     // TODO: 02.03.2022
 
