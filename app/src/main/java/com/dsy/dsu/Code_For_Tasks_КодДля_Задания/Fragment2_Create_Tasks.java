@@ -2,7 +2,6 @@ package com.dsy.dsu.Code_For_Tasks_КодДля_Задания;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DataSetObserver;
@@ -10,7 +9,6 @@ import android.database.sqlite.SQLiteCursor;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.VibrationEffect;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,7 +31,6 @@ import com.dsy.dsu.Class_GRUD_SQL_Operations;
 import com.dsy.dsu.Class_Generation_Errors;
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
-import com.dsy.dsu.SubClass_Starting_chahge_status_public_notificaton;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
 
@@ -1260,7 +1257,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
             private void МетодБиндингаФИОДляЗадания(@NonNull MyViewHolder holder) throws ExecutionException, InterruptedException {
                 try {
                     // TODO: 02.03.2022#4  // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4
-                    Integer ИндексКтоНаписалСообщение = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("user_update");
+                    Integer ИндексКтоНаписалСообщение = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("id_user");// TODO: 15.03.2022 user_update
                     // TODO: 02.03.2022
                     Integer КтоНаписалСообщениеФИОдЛПосика = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексКтоНаписалСообщение);
                     // TODO: 02.03.2022
@@ -1290,7 +1287,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 28.02.2022
 
 // TODO: 28.02.2022
-                    holder.textView3.setText("от: " + ФИОКотоНаписал.trim());
+                    holder.textView3.setText("кому: " + ФИОКотоНаписал.trim());
                 } catch (Exception e) {
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
@@ -1428,7 +1425,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
                             // TODO: 03.03.2022  запускам сменты статуса
 
-                            if (Integer.parseInt(String.valueOf(СтатусПрочтеаУжеЗадачаИлиНет)) == 0 && ПолучаемUUIDТекущйПозицииВRecyreView != null) {
+                         /*   if (Integer.parseInt(String.valueOf(СтатусПрочтеаУжеЗадачаИлиНет)) == 0 && ПолучаемUUIDТекущйПозицииВRecyreView != null) {
 
                                 ///
                                 String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForChat";
@@ -1478,9 +1475,9 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                     // TODO: 13.03.2022
                                     notifyDataSetChanged();
 
-                           /*     Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 0 " + СтатусПрочтеаУжеЗадачаИлиНет);
+                           *//*     Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 0 " + СтатусПрочтеаУжеЗадачаИлиНет);
 
-                                Toast.makeText(getActivity(), " Статус сменили на ознакомленный  #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();*/
+                                Toast.makeText(getActivity(), " Статус сменили на ознакомленный  #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();*//*
 
                                 }, 2500);
 
@@ -1490,7 +1487,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                 Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 1  " + СтатусПрочтеаУжеЗадачаИлиНет);
 
                                 ///   Toast.makeText(getActivity(), " Статус ознакомлена !!!   #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
-                            }
+                            }*/
 
                             // TODO: 03.03.2022 update screewn
 
