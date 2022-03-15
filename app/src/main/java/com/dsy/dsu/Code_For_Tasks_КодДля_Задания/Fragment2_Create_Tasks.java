@@ -111,7 +111,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         super.onStart();
 
         try {
-
+            // TODO: 15.03.2022
 
             class SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2 extends SubClassBuccessLogin_ГлавныйКлассБизнесЛогики {
 
@@ -133,8 +133,8 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                         ///////
                         class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("СтолбцыОбработки", "*");
                         //
-                        class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика", "   id_user=? AND status_write=? " +
-                                " AND message IS NOT NULL  ");
+                        class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика", "   user_update=? AND status_write=? " +
+                                " AND message IS NOT NULL  ");// TODO: 15.03.2022 id_user
                         // TODO: 02.03.2022
                         ///"_id > ?   AND _id< ?"
               /*  class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика","status_write=?  AND id_user=? " +
@@ -184,13 +184,17 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 }
 
             }
-// TODO: 15.03.2022
+
+
+// TODO: 15.03.2022--ЗАПУСК КЛАСС ДУБЛИРОВАННЫХ
             SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2 subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2(getContext(), getActivity());
             //TODO код для recycleviews
-            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадачТолькоДляКоторыхВРАботе(5);
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадачТолькоДляКоторыхВРАботе(ПубличныйIDДляФрагмента);
 
             // TODO: 03.03.2022
-            Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+            Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
+            // TODO: 15.03.2022
+
         } catch (Exception e) {
             e.printStackTrace();
             ///метод запись ошибок в таблицу
