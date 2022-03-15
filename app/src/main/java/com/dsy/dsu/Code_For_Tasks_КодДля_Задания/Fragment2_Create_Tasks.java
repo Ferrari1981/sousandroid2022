@@ -49,6 +49,10 @@ import java.util.concurrent.ExecutionException;
 
 public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
     // TODO: 15.03.2022
+
+    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2 subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2;
+
+    // TODO: 15.03.2022
     @SuppressLint("RestrictedApi")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -75,16 +79,16 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     " subClassBuccessLogin_главныйКлассБизнесЛогики " + subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1);
 
         } catch (Exception e) {
-        e.printStackTrace();
-        ///метод запись ошибок в таблицу
-        Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-        new Class_Generation_Errors(getActivity()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-        ///
+            e.printStackTrace();
+            ///метод запись ошибок в таблицу
+            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+            new Class_Generation_Errors(getActivity()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+            ///
 
 
-    }
+        }
     }
 
     @Override
@@ -137,15 +141,62 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         super.onStart();
 
         // TODO: 15.03.2022//
-
-        SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2 subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2(getContext(), getActivity());
-        // TODO: 15.03.2022
-
-        Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  ИмяСлужбыСинхронизацииДляЗадачиИзЧата   Fragment2_Create_Tasks " +
-                "" + ИмяСлужбыОдноразоваяСинхронизацииДляЗадачиИзЧата +
-                " ИмяСлужбыСинхронизацииДляЗадачи " + ИмяСлужбыОбщейСинхронизацииДляЗадачи + " subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 " + subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2);
-
         try {
+
+            // TODO: 10.03.2022
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2(getContext(), getActivity());
+
+            // TODO: 15.03.2022
+            Log.d(this.getClass().getName(), "ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
+
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодПолученимТОлькоКоличествоЗадач(ПубличныйIDДляФрагмента);
+
+            Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+
+
+            // TODO: 02.03.2022 получения курсора
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодПолучаемГлавныеДанныеДляЗадач(ПубличныйIDДляФрагмента);
+
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ГлавныйКурсорДляЗадач);
+
+            // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ СЛУШАТЕЛЬ КУРСОРРА
+
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодСлушательObserverДляКурсора();
+
+
+            // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ  второай слушатель только количество данных СЛУШАТЕЛЬ КУРСОРРА
+
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодСлушательObserverДляКурсораТолькоКоличество();
+
+            // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ СЛУШАТЕЛЬ КУРСОРРА туту запускам два слушателя дялнаших work manager
+
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодСоздаенияСлушателяДляОбщейWorkMAnager();
+
+            // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ СЛУШАТЕЛЬ КУРСОРРА туту запускам два слушателя дялнаших work manager
+
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодСоздаенияСлушателяДляЧатаWorkMAnager();
+
+
+            //todo метод  ИНИЦИАЛИЗАЦИИ RECYCLEVIEW ДЛЯ АКТИВТИ ЗАДАЧИ
+
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодИнициализацииRecycleViewДляЗадач();
+
+            // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодСозданиеНавигаторКнопок();
+
+            // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+
+            Log.d(this.getClass().getName(), " нет данных для отображения " +
+                    "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  МетодКпопкаСоЗачкомКраснымДополнительныйСтатус  " + Курсор_ГлавныйКурсорДляЗадач +
+                    " Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+
+
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  ИмяСлужбыСинхронизацииДляЗадачиИзЧата   Fragment2_Create_Tasks " +
+                    "" + ИмяСлужбыОдноразоваяСинхронизацииДляЗадачиИзЧата +
+                    " ИмяСлужбыСинхронизацииДляЗадачи " + ИмяСлужбыОбщейСинхронизацииДляЗадачи + " subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 " + subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2);
+
+
             // TODO: 15.03.2022
             // TODO: 03.03.2022
             Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
@@ -160,6 +211,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
         }
     }
+
 
     // TODO: 15.03.2022 КЛАСС ДЛЯ БИЗНЕС ЛОГИКИ
 
@@ -178,7 +230,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         }
 
         // TODO: 14.03.2022
-
+        @Override
         protected SQLiteCursor МетодПолученимТОлькоКоличествоЗадач(Integer ПубличноеIDПолученныйИзСервлетаДляUUID) throws ExecutionException, InterruptedException {
             // TODO: 26.08.2021 НОВЫЙ ВЫЗОВ НОВОГО КЛАСС GRUD - ОПЕРАЦИИ
             Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе = null;
@@ -191,7 +243,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 ///////
                 class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("СтолбцыОбработки", "*");
                 //
-                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика", "   id_user=? AND status_write=? " +
+                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика", "   user_update=? AND status_write=? " +
                         " AND message IS NOT NULL  ");
                 // TODO: 02.03.2022
                 ///"_id > ?   AND _id< ?"
@@ -253,7 +305,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 ///////
                 class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("СтолбцыОбработки", "*");
                 //
-                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика", "   id_user=? " +
+                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика", "   user_update=? " +
                         " AND message IS NOT NULL  ");
                 // TODO: 02.03.2022
                 ///"_id > ?   AND _id< ?"
@@ -304,7 +356,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
         // TODO: 04.03.2022  класс в котором находяться слушатели
 
-
+        @Override
         void МетодСлушательObserverДляRecycleView() {
             // TODO: 04.03.2022
             try {
@@ -397,7 +449,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         }
 
         // TODO: 04.03.2022 второй метод слушатель для курсора
-
+        @Override
         void МетодСлушательObserverДляКурсора() {
             // TODO: 04.03.2022
             try {
@@ -461,7 +513,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         }
 
         // TODO: 04.03.2022 второй метод слушатель для курсора
-
+        @Override
         void МетодСлушательObserverДляКурсораТолькоКоличество() {
             // TODO: 04.03.2022
             try {
@@ -527,6 +579,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         }
 
         // TODO: 18.10.2021  СИНХРОНИАЗЦИЯ ЧАТА ПО РАСПИСАНИЮ ЧАТ
+        @Override
         void МетодСоздаенияСлушателяДляОбщейWorkMAnager() throws ExecutionException, InterruptedException {
             ///
 // TODO: 11.05.2021 ЗПУСКАЕМ СЛУЖБУ через брдкастер синхронизхации и уведомления
@@ -583,6 +636,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
 
         // TODO: 18.10.2021  СИНХРОНИАЗЦИЯ ЧАТА ПО РАСПИСАНИЮ ЧАТ
+        @Override
         void МетодСоздаенияСлушателяДляЧатаWorkMAnager() throws ExecutionException, InterruptedException {
 // TODO: 11.05.2021 ЗПУСКАЕМ СЛУЖБУ через брдкастер синхронизхации и уведомления
             try {
@@ -637,6 +691,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
 
         // TODO: 04.03.2022 прозвомжность инициализации RecycleView
+        @Override
         void МетодИнициализацииRecycleViewДляЗадач() {
             try {
                 Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ГлавныйКурсорДляЗадач);
@@ -728,6 +783,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         }
 
         // TODO: 05.03.2022 метод создание кнопок снизу навигатор
+        @Override
         void МетодСозданиеНавигаторКнопок() {
             try {
                 // TODO: 05.03.2022
@@ -917,6 +973,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
             MaterialCardView materialCardView;
 
             // TODO: 02.03.2022
+
             public MyViewHolder(@NonNull View itemView) {
                 super(itemView);
                 // TODO: 02.03.2022
@@ -926,6 +983,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
             }
 
             // TODO: 14.03.2022
+
             private void МетодИнициализацииКомпонетовЗаданияCardView(@NonNull View itemView) {
                 // TODO: 28.02.2022
                 try {
@@ -1091,6 +1149,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 }
             }
 
+
             private void МетодБиндингаЗаполненияДаннымиBungle(@NonNull SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyViewHolder holder, Integer СамСтатусПрочтенияИлиНет) {
                 // TODO: 03.03.2022
                 try {
@@ -1155,6 +1214,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
             }
 
             @NonNull
+
             private Integer МетодБиндингаПолученияСтатусаЗадачи(@NonNull SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyViewHolder holder) {
                 // TODO: 02.03.2022#5
                 Integer СамСтатусПрочтенияИлиНет = 0;
@@ -1523,6 +1583,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 return super.getItemId(position);
 
             }
+
 
             private SQLiteCursor МетодПолучениеДанныхФИОаОснованииID(Integer КтоНаписалСообщениеФИОдЛПосика) throws ExecutionException, InterruptedException {
                 // TODO: 16.11.2021 find FIO
