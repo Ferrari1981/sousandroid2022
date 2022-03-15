@@ -1,5 +1,6 @@
 package com.dsy.dsu.Code_For_Tasks_КодДля_Задания;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import com.dsy.dsu.Class_Generation_Errors;
 
 public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
     // TODO: 15.03.2022
+    @SuppressLint("RestrictedApi")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -21,9 +23,13 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         try {
             // TODO: 14.03.2022 ССЫЛКА НА РОДИТЕЛЬСКОЕ ФРАГМЕНТ
             // TODO: 14.03.2022
+            textViewТекущаяЗадача.setText("Созданные".toUpperCase());
+            // TODO: 14.03.2022
             super.bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.VISIBLE);
             // TODO: 14.03.2022
-            super.bottomNavigationКонкретноКнопкаСоздатьСейчас.performLongClick();
+            super.bottomNavigationКонкретноКнопкаСоздатьСейчас.setSelected(true);
+            // TODO: 15.03.2022
+            super.bottomNavigationКонкретноКнопкаСоздатьСейчас.setChecked(true);
             // TODO: 14.03.2022
             super.bottomNavigationViewДляTasks.requestLayout();
             // TODO: 14.03.2022

@@ -154,7 +154,8 @@ public class Fragment1_One_Tasks extends Fragment {
 
             bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи = bottomNavigationViewДляTasks.findViewById(R.id.id_taskHome);
             // TODO: 14.03.2022
-            bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.performLongClick();
+            //  bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.performLongClick();
+            bottomNavigationКонкретноКнопкаСоздатьСейчас.setSelected(true);
             // TODO: 15.03.2022
             bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.GONE);
 
@@ -970,7 +971,6 @@ public class Fragment1_One_Tasks extends Fragment {
                                         Log.d(this.getClass().getName(), " R.id.id_taskCreateNewTasks  item.getItemId() " + item.getItemId());
                                         // TODO: 10.03.2022
                                         item.setChecked(true);
-                                        // TODO: 10.03.2022
                                         // TODO: 09.03.2022
                                         fragment_ТекущийФрагмент = new Fragment2_Create_Tasks();
                                         // TODO: 11.03.2022
@@ -998,9 +998,8 @@ public class Fragment1_One_Tasks extends Fragment {
                                         Log.d(this.getClass().getName(), " R.id.id_taskCreateNewTasks  item.getItemId() " + item.getItemId());
                                         // TODO: 10.03.2022
                                         item.setChecked(true);
-                                        // TODO: 10.03.2022
                                         // TODO: 09.03.2022
-                                        fragment_ТекущийФрагмент = new Fragment2_Create_Tasks();
+                                        fragment_ТекущийФрагмент = new Fragment3_Now_Create_Tasks();
                                         // TODO: 11.03.2022
                                         fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
                                         // TODO: 10.03.2022
