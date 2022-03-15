@@ -113,83 +113,11 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         try {
             // TODO: 15.03.2022
 
-            class SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2 extends SubClassBuccessLogin_ГлавныйКлассБизнесЛогики {
-
-                public SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2(Context context, Activity activity) {
-                    super(context, activity);
-                }
-
-                // TODO: 14.03.2022
-                @Override
-                protected SQLiteCursor МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадачТолькоДляКоторыхВРАботе(Integer ПубличноеIDПолученныйИзСервлетаДляUUID) throws ExecutionException, InterruptedException {
-                    // TODO: 26.08.2021 НОВЫЙ ВЫЗОВ НОВОГО КЛАСС GRUD - ОПЕРАЦИИ
-                    Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе = null;
-                    // TODO: 02.03.2022
-                    try {
-                        ///
-                        Class_GRUD_SQL_Operations class_grud_sql_operationsIDпользоввателяДляСлужб = new Class_GRUD_SQL_Operations(getContext());
-                        ///
-                        class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("НазваниеОбрабоатываемойТаблицы", "view_tasks");//old для другой уведомления data_chat
-                        ///////
-                        class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("СтолбцыОбработки", "*");
-                        //
-                        class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика", "   user_update=? AND status_write=? " +
-                                " AND message IS NOT NULL  ");// TODO: 15.03.2022 id_user
-                        // TODO: 02.03.2022
-                        ///"_id > ?   AND _id< ?"
-              /*  class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика","status_write=?  AND id_user=? " +
-                        " AND message IS NOT NULL  ");
-                ///"_id > ?   AND _id< ?"
-*/
-/*
-                //////
-                class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска1",1);//todo 0*/
-                        //
-                        class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска1", ПубличноеIDПолученныйИзСервлетаДляUUID);
-
-                        class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска2", 0);
-                        // TODO: 02.03.2022
-
-                        class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеСортировки", " status_write, date_update DESC ");//todo "date_update DESC, status_write DESC"
-                        ////
-                        // class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеЛимита","1");
-                        ////
-                        //class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеЛимита","1");
-                        // TODO: 27.08.2021  ПОЛУЧЕНИЕ ДАННЫХ ОТ КЛАССА GRUD-ОПЕРАЦИИ
-                        ///
-                        Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе = null;
-                        // TODO: 03.03.2022  глаВНЫЙ КУРСОР ДЛЯ ЗАДАЧ
-                        Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе = (SQLiteCursor) class_grud_sql_operationsIDпользоввателяДляСлужб.
-                                new GetData(getContext()).getdata(class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций,
-                                new PUBLIC_CONTENT(context).МенеджерПотоков, new CREATE_DATABASE(context).getССылкаНаСозданнуюБазу());
-                        // TODO: 02.03.2022
-                        if (Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount() > 0) {
-                            // TODO: 03.03.2022
-                            Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
-                            // TODO: 03.03.2022
-                            Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.moveToFirst();
-                        }
-                        // TODO: 14.03.2022
-                        Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        ///метод запись ошибок в таблицу
-                        Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                                " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                        new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                                Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                        //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
-                    }
-                    return Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе;
-                }
-
-            }
-
-
-// TODO: 15.03.2022--ЗАПУСК КЛАСС ДУБЛИРОВАННЫХ
+            // TODO: 15.03.2022--ЗАПУСК КЛАСС ДУБЛИРОВАННЫХ
             SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2 subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2(getContext(), getActivity());
             //TODO код для recycleviews
             subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадачТолькоДляКоторыхВРАботе(ПубличныйIDДляФрагмента);
+
 
             // TODO: 03.03.2022
             Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
@@ -205,6 +133,81 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         }
     }
 
+    // TODO: 15.03.2022  Класс бизнес логика два для ВТОРГО ФРАГМЕНТА
+    class SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2 extends SubClassBuccessLogin_ГлавныйКлассБизнесЛогики {
+
+        public SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2(Context context, Activity activity) {
+            super(context, activity);
+
+            // TODO: 03.03.2022
+            Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+        }
+
+        // TODO: 14.03.2022
+        @Override
+        protected SQLiteCursor МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадачТолькоДляКоторыхВРАботе(Integer ПубличноеIDПолученныйИзСервлетаДляUUID) throws ExecutionException, InterruptedException {
+            // TODO: 26.08.2021 НОВЫЙ ВЫЗОВ НОВОГО КЛАСС GRUD - ОПЕРАЦИИ
+            Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе = null;
+            // TODO: 02.03.2022
+            try {
+                ///
+                Class_GRUD_SQL_Operations class_grud_sql_operationsIDпользоввателяДляСлужб = new Class_GRUD_SQL_Operations(getContext());
+                ///
+                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("НазваниеОбрабоатываемойТаблицы", "view_tasks");//old для другой уведомления data_chat
+                ///////
+                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("СтолбцыОбработки", "*");
+                //
+                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика", "   user_update=? AND status_write=? " +
+                        " AND message IS NOT NULL  ");// TODO: 15.03.2022 id_user
+                // TODO: 02.03.2022
+                ///"_id > ?   AND _id< ?"
+              /*  class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика","status_write=?  AND id_user=? " +
+                        " AND message IS NOT NULL  ");
+                ///"_id > ?   AND _id< ?"
+*/
+/*
+                //////
+                class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска1",1);//todo 0*/
+                //
+                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска1", ПубличноеIDПолученныйИзСервлетаДляUUID);
+
+                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска2", 0);
+                // TODO: 02.03.2022
+
+                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеСортировки", " status_write, date_update DESC ");//todo "date_update DESC, status_write DESC"
+                ////
+                // class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеЛимита","1");
+                ////
+                //class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеЛимита","1");
+                // TODO: 27.08.2021  ПОЛУЧЕНИЕ ДАННЫХ ОТ КЛАССА GRUD-ОПЕРАЦИИ
+                ///
+                Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе = null;
+                // TODO: 03.03.2022  глаВНЫЙ КУРСОР ДЛЯ ЗАДАЧ
+                Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе = (SQLiteCursor) class_grud_sql_operationsIDпользоввателяДляСлужб.
+                        new GetData(getContext()).getdata(class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций,
+                        new PUBLIC_CONTENT(context).МенеджерПотоков, new CREATE_DATABASE(context).getССылкаНаСозданнуюБазу());
+                // TODO: 02.03.2022
+                if (Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.getCount() > 0) {
+                    // TODO: 03.03.2022
+                    Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+                    // TODO: 03.03.2022
+                    Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.moveToFirst();
+                }
+                // TODO: 14.03.2022
+                Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+            } catch (Exception e) {
+                e.printStackTrace();
+                ///метод запись ошибок в таблицу
+                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+            }
+            return Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе;
+        }
+
+    }
 }    // TODO: 28.02.2022 конец класса
 
 
