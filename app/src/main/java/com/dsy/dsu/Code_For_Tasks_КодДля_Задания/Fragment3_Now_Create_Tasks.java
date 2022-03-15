@@ -14,6 +14,11 @@ import com.dsy.dsu.Class_Generation_Errors;
 
 public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
     // TODO: 15.03.2022
+
+    // TODO: 15.03.2022
+
+    //private Fragment3_Now_Create_Tasks.SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2 subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2;
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -32,8 +37,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             super.linearLayou.requestLayout();
             // TODO: 14.03.2022
 
-            Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания +
-                    " subClassBuccessLogin_главныйКлассБизнесЛогики " + subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1);
+            Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания);
 
         } catch (Exception e) {
             e.printStackTrace();

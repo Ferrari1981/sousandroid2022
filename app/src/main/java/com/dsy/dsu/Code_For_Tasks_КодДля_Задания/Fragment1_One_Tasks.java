@@ -57,16 +57,16 @@ public class Fragment1_One_Tasks extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     protected View viewДляПервойКнопкиHome_Задания = null;
-    // TODO: 10.03.2022
-    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1;
-    // TODO: 28.02.2022
-    protected RecyclerView recyclerView;
     // TODO: 01.03.2022
     protected Bundle BungleДанныеДляViewCard;
+    // TODO: 28.02.2022
+    protected RecyclerView recyclerView;
     // TODO: 13.03.2022
     protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyRecycleViewAdapter myRecycleViewAdapter;
     // TODO: 14.03.2022
     protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyViewHolder myViewHolder;
+    // TODO: 10.03.2022
+    private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1;
     // TODO: 02.03.2022
     protected SQLiteCursor Курсор_ГлавныйКурсорДляЗадач;
     // TODO: 02.03.2022

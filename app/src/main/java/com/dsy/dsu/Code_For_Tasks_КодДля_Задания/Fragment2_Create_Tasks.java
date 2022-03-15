@@ -50,7 +50,14 @@ import java.util.concurrent.ExecutionException;
 public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
     // TODO: 15.03.2022
 
-    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2 subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2;
+    // TODO: 15.03.2022
+    // TODO: 28.02.2022
+    protected RecyclerView recyclerView;
+    // TODO: 13.03.2022
+    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2.MyRecycleViewAdapter myRecycleViewAdapter;
+    // TODO: 14.03.2022
+    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2.MyViewHolder myViewHolder;
+    private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2 subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2;
 
     // TODO: 15.03.2022
     @SuppressLint("RestrictedApi")
@@ -76,7 +83,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
 
             Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания +
-                    " subClassBuccessLogin_главныйКлассБизнесЛогики " + subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1);
+                    " subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2 " + subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -719,7 +726,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
 
                     // TODO: 28.02.2022
-                    myRecycleViewAdapter = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyRecycleViewAdapter(Курсор_ГлавныйКурсорДляЗадач);
+                    myRecycleViewAdapter = new MyRecycleViewAdapter(Курсор_ГлавныйКурсорДляЗадач);
                     // TODO: 04.03.2022
                     recyclerView.setAdapter(myRecycleViewAdapter);
                     // TODO: 13.03.2022
@@ -734,7 +741,11 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
                     // TODO: 04.03.2022 создаем слушатель    третий класс создаем класс слушаителй  ДАННЫЙ КОД ЗАПУСКАЕТЬСЯ ПОСЛЕ СОЗДАЕНИЯ И УСТАНОВКИ АДАПТЕРА RECYCLEVIEW
 
-                    subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодСлушательObserverДляRecycleView();
+                    subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодСлушательObserverДляRecycleView();
+
+                    // TODO: 14.03.2022
+                    Log.d(this.getClass().getName(), "      subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодСлушательObserverДляRecycleView()  МетодИнициализацииRecycleViewДляЗадач()  ");
+
 
                 } else {
                     // TODO: 06.03.2022
@@ -1026,7 +1037,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
         // TODO: 28.02.2022 ViewHolder
 
-        class MyRecycleViewAdapter extends RecyclerView.Adapter<SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyViewHolder> {
+        class MyRecycleViewAdapter extends RecyclerView.Adapter<MyViewHolder> {
             // TODO: 04.03.2022
             SQLiteCursor Курсор_ДляПолученияДАнныхДляЗАДАЧTASK;
 
@@ -1045,16 +1056,16 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
             @NonNull
             @Override
-            public SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 // TODO: 10.03.2022
                 View viewГлавныйВидДляRecyclleViewДляЗаданий = null;
                 try {
                     // TODO: 28.02.2022
-                    viewГлавныйВидДляRecyclleViewДляЗаданий = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_for_takst_cardview1, parent, false);
+                    viewГлавныйВидДляRecyclleViewДляЗаданий = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_for_takst_cardview2, parent, false);//todo old R.layout.simple_for_takst_cardview1
                     // TODO: 05.03.2022
                     Log.i(this.getClass().getName(), "   viewГлавныйВидДляRecyclleViewДляЗаданий" + viewГлавныйВидДляRecyclleViewДляЗаданий);
                     // TODO: 28.02.2022
-                    myViewHolder = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
+                    myViewHolder = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2.MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
                     // TODO: 01.03.2022
                     Log.i(this.getClass().getName(), "   myViewHolder" + myViewHolder);
 // TODO: 01.03.2022
@@ -1072,7 +1083,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
             }
 
             @Override
-            public void onBindViewHolder(@NonNull SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyViewHolder holder, int position) {
+            public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
                 // TODO: 28.02.2022 привазяваем данные из колекции пряме на наш recycreview
                 try {
                     // TODO: 14.03.2022
@@ -1150,7 +1161,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
             }
 
 
-            private void МетодБиндингаЗаполненияДаннымиBungle(@NonNull SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyViewHolder holder, Integer СамСтатусПрочтенияИлиНет) {
+            private void МетодБиндингаЗаполненияДаннымиBungle(@NonNull MyViewHolder holder, Integer СамСтатусПрочтенияИлиНет) {
                 // TODO: 03.03.2022
                 try {
 
@@ -1191,7 +1202,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 // TODO: 03.03.2022 передаем помер позиции position
             }
 
-            private void МетодБиндингПолучаемТипЗадания(@NonNull SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyViewHolder holder) {
+            private void МетодБиндингПолучаемТипЗадания(@NonNull MyViewHolder holder) {
 
                 try {
                     Integer ИндексСтатусТипаЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("type_tasks");
@@ -1215,7 +1226,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
             @NonNull
 
-            private Integer МетодБиндингаПолученияСтатусаЗадачи(@NonNull SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyViewHolder holder) {
+            private Integer МетодБиндингаПолученияСтатусаЗадачи(@NonNull MyViewHolder holder) {
                 // TODO: 02.03.2022#5
                 Integer СамСтатусПрочтенияИлиНет = 0;
                 try {
@@ -1243,7 +1254,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
             }
 
 
-            private void МетодБиндингаФИОДляЗадания(@NonNull SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyViewHolder holder) throws ExecutionException, InterruptedException {
+            private void МетодБиндингаФИОДляЗадания(@NonNull MyViewHolder holder) throws ExecutionException, InterruptedException {
                 try {
                     // TODO: 02.03.2022#4  // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4
                     Integer ИндексКтоНаписалСообщение = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("user_update");
@@ -1288,7 +1299,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 }
             }
 
-            private void МетодБиндингаДатаЗадания(@NonNull SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyViewHolder holder) throws ParseException {
+            private void МетодБиндингаДатаЗадания(@NonNull MyViewHolder holder) throws ParseException {
                 try {
                     // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3
                     Integer ИндексПолучаемДатыЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("date_update");
@@ -1320,7 +1331,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 }
             }
 
-            private void МетодБиндингаНомерЗадания(@NonNull SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyViewHolder holder) {
+            private void МетодБиндингаНомерЗадания(@NonNull MyViewHolder holder) {
                 try {
                     // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2
                     Integer ИндексПолучаемIDЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("id");
@@ -1341,7 +1352,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 }
             }
 
-            private void МетодБиндингаСозданиеСамоСообщения(@NonNull SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyViewHolder holder) {
+            private void МетодБиндингаСозданиеСамоСообщения(@NonNull MyViewHolder holder) {
 
                 try {
                     // TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1
@@ -1369,7 +1380,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
             // TODO: 13.03.2022
 
 
-            private void МетодБиндингаСлушателейДляViewCard(SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyViewHolder holder) {
+            private void МетодБиндингаСлушателейДляViewCard(MyViewHolder holder) {
                 // TODO: 01.03.2022 слушатели
 
                 try {
@@ -1504,7 +1515,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 }
             }
 
-            private void МетодБиндингаСлушательisChered(SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyViewHolder holder) {
+            private void МетодБиндингаСлушательisChered(MyViewHolder holder) {
                 // TODO: 14.03.2022
 
                 try {
