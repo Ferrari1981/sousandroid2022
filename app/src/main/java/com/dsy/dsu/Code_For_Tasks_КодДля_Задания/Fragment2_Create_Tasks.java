@@ -13,10 +13,7 @@ import com.dsy.dsu.Class_Generation_Errors;
 
 
 public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
-
-
-    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогики subClassBuccessLogin_главныйКлассБизнесЛогики;
-
+    // TODO: 15.03.2022
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -24,8 +21,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         try {
             // TODO: 14.03.2022 ССЫЛКА НА РОДИТЕЛЬСКОЕ ФРАГМЕНТ
             // TODO: 14.03.2022
-            super.bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.GONE);
-            // TODO: 14.03.2022
+            super.bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.VISIBLE);
             // TODO: 14.03.2022
             super.bottomNavigationКонкретноКнопкаСоздатьСейчас.performLongClick();
             // TODO: 14.03.2022
@@ -34,7 +30,8 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
             super.linearLayou.requestLayout();
             // TODO: 14.03.2022
 
-            Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания);
+            Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания +
+                    " subClassBuccessLogin_главныйКлассБизнесЛогики " + subClassBuccessLogin_главныйКлассБизнесЛогики);
 
         } catch (Exception e) {
         e.printStackTrace();

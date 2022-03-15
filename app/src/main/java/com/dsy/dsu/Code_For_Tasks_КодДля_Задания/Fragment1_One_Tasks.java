@@ -91,7 +91,7 @@ public class Fragment1_One_Tasks extends Fragment {
     protected Vibrator вибратор;
     // TODO: 09.03.2022
     protected FragmentManager fragmentManagerДляЗадачи;
-    ///
+    // TODO: 09.03.2022
     protected FragmentTransaction fragmentTransactionляЗадачи;
     // TODO: 10.03.2022
     protected TextView textViewТекущаяЗадача;
@@ -102,11 +102,11 @@ public class Fragment1_One_Tasks extends Fragment {
     // TODO: 14.03.2022
     protected Fragment fragment_ТекущийФрагмент;
     // TODO: 09.03.2022
-    BottomNavigationItemView bottomNavigationКонкретноКнопкаДобавить;
+    protected BottomNavigationItemView bottomNavigationКонкретноКнопкаДобавить;
     // TODO: 09.03.2022
-    BottomNavigationItemView bottomNavigationКонкретноКнопкаСоздатьСейчас;
+    protected BottomNavigationItemView bottomNavigationКонкретноКнопкаСоздатьСейчас;
     // TODO: 09.03.2022
-    BottomNavigationItemView bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи;
+    protected BottomNavigationItemView bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи;
 
 
     @Override
@@ -155,6 +155,8 @@ public class Fragment1_One_Tasks extends Fragment {
             bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи = bottomNavigationViewДляTasks.findViewById(R.id.id_taskHome);
             // TODO: 14.03.2022
             bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.performLongClick();
+            // TODO: 15.03.2022
+            bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.GONE);
 
             // TODO: 14.03.2022 перегрузка фрагмента
             bottomNavigationViewДляTasks.requestLayout();
@@ -951,6 +953,9 @@ public class Fragment1_One_Tasks extends Fragment {
                                         Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
                                         // TODO: 10.03.2022
                                         вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
+                                        // TODO: 15.03.2022
+                                        // TODO: 14.03.2022
+                                        bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.GONE);
                                         // TODO: 09.03.2022
                                         bottomNavigationViewДляTasks.requestLayout();
                                         // TODO: 14.03.2022
