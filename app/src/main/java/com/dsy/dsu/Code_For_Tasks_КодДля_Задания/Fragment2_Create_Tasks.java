@@ -727,8 +727,12 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 04.03.2022
                     recyclerView.setAdapter(myRecycleViewAdapter);
                     // TODO: 13.03.2022
+                    recyclerView.requestLayout();
+
                     Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 recyclerView   " + recyclerView);
+
                     // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ когнданет записей  МетодИнициализацииRecycleViewДляЗадачМетодИнициализацииRecycleViewДляЗадач
+
                     МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
                     // TODO: 14.03.2022
                     Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе +
@@ -1529,7 +1533,6 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 // TODO: 01.03.2022 слушатели
 
                 try {
-
 // TODO: 01.03.2022 слушатели
                     holder.materialCardView.setOnClickListener(new View.OnClickListener() {
                         @Override

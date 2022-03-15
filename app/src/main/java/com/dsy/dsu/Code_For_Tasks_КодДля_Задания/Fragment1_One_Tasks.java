@@ -838,11 +838,19 @@ public class Fragment1_One_Tasks extends Fragment {
 
                         // TODO: 28.02.2022
                         myRecycleViewAdapter = new MyRecycleViewAdapter(Курсор_ГлавныйКурсорДляЗадач);
+
                         // TODO: 04.03.2022
+
                         recyclerView.setAdapter(myRecycleViewAdapter);
+
+                        // TODO: 15.03.2022
+                        recyclerView.requestLayout();
+
                         // TODO: 13.03.2022
                         Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 recyclerView   " + recyclerView);
+
                         // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ когнданет записей  МетодИнициализацииRecycleViewДляЗадачМетодИнициализацииRecycleViewДляЗадач
+
                         МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
                         // TODO: 14.03.2022
                         Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе +
