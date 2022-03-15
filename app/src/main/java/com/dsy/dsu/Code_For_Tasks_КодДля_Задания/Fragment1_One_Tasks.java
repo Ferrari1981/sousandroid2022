@@ -58,15 +58,15 @@ public class Fragment1_One_Tasks extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     protected View viewДляПервойКнопкиHome_Задания = null;
     // TODO: 10.03.2022
-    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогики subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1;
+    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1;
     // TODO: 28.02.2022
     protected RecyclerView recyclerView;
     // TODO: 01.03.2022
     protected Bundle BungleДанныеДляViewCard;
     // TODO: 13.03.2022
-    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогики.MyRecycleViewAdapter myRecycleViewAdapter;
+    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyRecycleViewAdapter myRecycleViewAdapter;
     // TODO: 14.03.2022
-    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогики.MyViewHolder myViewHolder;
+    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyViewHolder myViewHolder;
     // TODO: 02.03.2022
     protected SQLiteCursor Курсор_ГлавныйКурсорДляЗадач;
     // TODO: 02.03.2022
@@ -164,7 +164,7 @@ public class Fragment1_One_Tasks extends Fragment {
             // TODO: 14.03.2022
             linearLayou.requestLayout();
 
-            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики imageView  onViewCreated ");
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 imageView  onViewCreated ");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -212,59 +212,59 @@ public class Fragment1_One_Tasks extends Fragment {
 
         try {
             ///   getResources().getDrawable(this,R.drawable.icon_dsu1_add_organisazio_success
-            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики imageView  Fragment1_One_Tasks  onStart");
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 imageView  Fragment1_One_Tasks  onStart");
 
             // TODO: 02.03.2022
             ПубличныйIDДляФрагмента = new Class_Generations_PUBLIC_CURRENT_ID(getContext()).ПолучениеПубличногоТекущегоПользователяID();
 
 
             //TODO код для recycleviews
-            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1 = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики(getContext(), getActivity());
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1 = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1(getContext(), getActivity());
 
             // TODO: 10.03.2022
 
             Log.d(this.getClass().getName(), "ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
 
-            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадачТолькоДляКоторыхВРАботе(ПубличныйIDДляФрагмента);
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодПолученимТОлькоКоличествоЗадач(ПубличныйIDДляФрагмента);
 
             Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
 
 
             // TODO: 02.03.2022 получения курсора
-            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадач(ПубличныйIDДляФрагмента);
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодПолучаемГлавныеДанныеДляЗадач(ПубличныйIDДляФрагмента);
 
-            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ГлавныйКурсорДляЗадач);
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ГлавныйКурсорДляЗадач);
 
             // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ СЛУШАТЕЛЬ КУРСОРРА
 
-            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСлушательObserverДляКурсора();
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодСлушательObserverДляКурсора();
 
 
             // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ  второай слушатель только количество данных СЛУШАТЕЛЬ КУРСОРРА
 
-            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСлушательObserverДляКурсораТолькоКоличество();
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодСлушательObserverДляКурсораТолькоКоличество();
 
             // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ СЛУШАТЕЛЬ КУРСОРРА туту запускам два слушателя дялнаших work manager
 
-            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСоздаенияСлушателяДляОбщейWorkMAnager();
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодСоздаенияСлушателяДляОбщейWorkMAnager();
 
             // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ СЛУШАТЕЛЬ КУРСОРРА туту запускам два слушателя дялнаших work manager
 
-            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСоздаенияСлушателяДляЧатаWorkMAnager();
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодСоздаенияСлушателяДляЧатаWorkMAnager();
 
 
         //todo метод  ИНИЦИАЛИЗАЦИИ RECYCLEVIEW ДЛЯ АКТИВТИ ЗАДАЧИ
 
-            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодИнициализацииRecycleViewДляЗадач();
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодИнициализацииRecycleViewДляЗадач();
 
             // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
-            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСозданиеНавигаторКнопок();
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодСозданиеНавигаторКнопок();
 
             // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ
-            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
 
             Log.d(this.getClass().getName(), " нет данных для отображения " +
-                    "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  МетодКпопкаСоЗачкомКраснымДополнительныйСтатус  " + Курсор_ГлавныйКурсорДляЗадач +
+                    "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  МетодКпопкаСоЗачкомКраснымДополнительныйСтатус  " + Курсор_ГлавныйКурсорДляЗадач +
                     " Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
 
         } catch (Exception e) {
@@ -285,7 +285,7 @@ public class Fragment1_One_Tasks extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         try {
-            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики onDestroyView  " +
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 onDestroyView  " +
                     "" + adapterDataObserverObserverСлушатель +
                     " dataSetObserverДляКурсора " + dataSetObserverДляКурсора);
             // TODO: 04.03.2022 закрываем слушатель  recycreview
@@ -299,7 +299,7 @@ public class Fragment1_One_Tasks extends Fragment {
                 // TODO: 04.03.2022
                 Курсор_ГлавныйКурсорДляЗадач.unregisterDataSetObserver(dataSetObserverДляКурсора);
             }
-            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики   " +
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   " +
                     "" + adapterDataObserverObserverСлушатель +
                     " dataSetObserverДляКурсора " + dataSetObserverДляКурсора);
 
@@ -315,7 +315,7 @@ public class Fragment1_One_Tasks extends Fragment {
             }
 
 // TODO: 04.03.2022
-            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  ИмяСлужбыСинхронизацииДляЗадачиИзЧата  " +
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  ИмяСлужбыСинхронизацииДляЗадачиИзЧата  " +
                     "" + ИмяСлужбыОдноразоваяСинхронизацииДляЗадачиИзЧата +
                     " ИмяСлужбыСинхронизацииДляЗадачи " + ИмяСлужбыОбщейСинхронизацииДляЗадачи);
             /////////////
@@ -335,23 +335,23 @@ public class Fragment1_One_Tasks extends Fragment {
     // TODO: 28.02.2022 бизнес -логика    для активти
 
 
-    class SubClassBuccessLogin_ГлавныйКлассБизнесЛогики {
+    class SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 {
         // TODO: 28.02.2022
         Context context;
         // TODO: 14.03.2022
         Activity activity;
 
-        public SubClassBuccessLogin_ГлавныйКлассБизнесЛогики(Context context, Activity activity) {
+        public SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1(Context context, Activity activity) {
             // TODO: 14.03.2022
             this.context = context;
             // TODO: 14.03.2022
             this.activity = activity;
-            Log.d(this.getClass().getName(), "  public SubClassBuccessLogin_ГлавныйКлассБизнесЛогики(Context context, Activity activity)   " + context);
+            Log.d(this.getClass().getName(), "  public SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1(Context context, Activity activity)   " + context);
         }
 
         // TODO: 14.03.2022
 
-        protected SQLiteCursor МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадачТолькоДляКоторыхВРАботе(Integer ПубличноеIDПолученныйИзСервлетаДляUUID) throws ExecutionException, InterruptedException {
+        protected SQLiteCursor МетодПолученимТОлькоКоличествоЗадач(Integer ПубличноеIDПолученныйИзСервлетаДляUUID) throws ExecutionException, InterruptedException {
             // TODO: 26.08.2021 НОВЫЙ ВЫЗОВ НОВОГО КЛАСС GRUD - ОПЕРАЦИИ
             Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе = null;
             // TODO: 02.03.2022
@@ -414,7 +414,7 @@ public class Fragment1_One_Tasks extends Fragment {
         }
 
         // TODO: 28.02.2022 Под Класс порлучение данных для активти
-        SQLiteCursor МетодПолучениеТОлЬКоКурсораДЛяПолучнеиеКоличетсовЗадач(Integer ПубличноеIDПолученныйИзСервлетаДляUUID)
+        SQLiteCursor МетодПолучаемГлавныеДанныеДляЗадач(Integer ПубличноеIDПолученныйИзСервлетаДляUUID)
                 throws ExecutionException, InterruptedException {
             // TODO: 26.08.2021 НОВЫЙ ВЫЗОВ НОВОГО КЛАСС GRUD - ОПЕРАЦИИ
             try {
@@ -475,10 +475,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
 
         // TODO: 04.03.2022  класс в котором находяться слушатели
-        protected class SubClassObsevers_КлассСлушательСобытий {
-            // TODO: 14.03.2022
-            public SubClassObsevers_КлассСлушательСобытий(Context context) {
-            }
+
 
             void МетодСлушательObserverДляRecycleView() {
                 // TODO: 04.03.2022
@@ -814,12 +811,12 @@ public class Fragment1_One_Tasks extends Fragment {
             // TODO: 04.03.2022 прозвомжность инициализации RecycleView
             void МетодИнициализацииRecycleViewДляЗадач() {
                 try {
-                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ГлавныйКурсорДляЗадач);
+                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ГлавныйКурсорДляЗадач);
                     // TODO: 04.03.2022  В ДАННОМ КОДЕ МЫ ОПЕРДЕЛЯЕМ КАКОЙ ЭКОРАН БУДЕМ ЗАГРУЖАТЬ В ЗАВПИСИМОСТИ ЕСЛИ ЛИ ДАННЫЫЕ ЗАДАЧИ
                     if (Курсор_ГлавныйКурсорДляЗадач.getCount() > 0) {
                         // TODO: 03.03.2022
                         Log.d(this.getClass().getName(), " есть данные для отображения " +
-                                "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач);
+                                "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач);
                         // TODO: 14.03.2022
                         /*   LinearLayout linearLayou = (LinearLayout) getActivity().findViewById(R.id.activity_main_fisrt_for_tasks);*/
                         // TODO: 28.02.2022
@@ -835,7 +832,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
                         // TODO: 03.03.2022
                         Log.d(this.getClass().getName(), " есть данные для отображения " +
-                                "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач);
+                                "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач);
 
 
                         // TODO: 28.02.2022
@@ -843,7 +840,7 @@ public class Fragment1_One_Tasks extends Fragment {
                         // TODO: 04.03.2022
                         recyclerView.setAdapter(myRecycleViewAdapter);
                         // TODO: 13.03.2022
-                        Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики recyclerView   " + recyclerView);
+                        Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 recyclerView   " + recyclerView);
                         // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ когнданет записей  МетодИнициализацииRecycleViewДляЗадачМетодИнициализацииRecycleViewДляЗадач
                         МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
                         // TODO: 14.03.2022
@@ -851,8 +848,10 @@ public class Fragment1_One_Tasks extends Fragment {
                                 " Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
                         // TODO: 14.03.2022
                         linearLayou.requestLayout();
+
                         // TODO: 04.03.2022 создаем слушатель    третий класс создаем класс слушаителй  ДАННЫЙ КОД ЗАПУСКАЕТЬСЯ ПОСЛЕ СОЗДАЕНИЯ И УСТАНОВКИ АДАПТЕРА RECYCLEVIEW
-                        subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.new SubClassObsevers_КлассСлушательСобытий(getContext()).МетодСлушательObserverДляRecycleView();
+
+                        subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодСлушательObserverДляRecycleView();
 
                     } else {
                         // TODO: 06.03.2022
@@ -884,7 +883,7 @@ public class Fragment1_One_Tasks extends Fragment {
                         linearLayou.requestLayout();
                         // TODO: 28.02.2022
                         Log.d(this.getClass().getName(), " нет данных для отображения " +
-                                "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач);
+                                "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач);
                     }
                     // TODO: 13.03.2022
                     bottomNavigationViewДляTasks.requestLayout();
@@ -923,7 +922,7 @@ public class Fragment1_One_Tasks extends Fragment {
                                     // TODO: 14.03.2022
                                     case R.id.id_taskHome:
                                         // TODO: 22.12.2021  запускам втнутерий класс по созданию бизнес логики для даннго активти
-                                        Log.d(this.getClass().getName(), " R.id.id_taskHome отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  fragmentTransactionляЗадачи  "
+                                        Log.d(this.getClass().getName(), " R.id.id_taskHome отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  fragmentTransactionляЗадачи  "
                                                 + fragmentTransactionляЗадачи + " R.id.id_taskHome  item.getItemId() " + item.getItemId());
                                         ///
                                         // TODO: 10.03.2022
@@ -1079,7 +1078,7 @@ public class Fragment1_One_Tasks extends Fragment {
                             Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                 }
             }
-        }
+
 
         // TODO: 15.03.2022  перенесееный код
         // TODO: 28.02.2022 начало  MyViewHolder
@@ -1103,7 +1102,7 @@ public class Fragment1_One_Tasks extends Fragment {
                 // TODO: 28.02.2022
                 try {
                     // TODO: 01.03.2022 Инициализации компонтов
-                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики itemView   " + itemView);
+                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 itemView   " + itemView);
                     // TODO: 02.03.2022
                     textView1 = (TextView) itemView.findViewById(R.id.text1_innercardview);
                     // TODO: 02.3.2022  дополнительный
@@ -1115,11 +1114,11 @@ public class Fragment1_One_Tasks extends Fragment {
                     // TODO: 28.02.2022
                     textView5 = (TextView) itemView.findViewById(R.id.text5_innercardviewtype_tasks);
                     // TODO: 13.03.2022
-                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики materialCardView  textView2 " + textView4);
+                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 materialCardView  textView2 " + textView4);
                     // TODO: 01.03.2022
                     materialCardView = (MaterialCardView) itemView.findViewById(R.id.cardviewmatirealtask);
                     // TODO: 13.03.2022
-                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики materialCardView   " + materialCardView);
+                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 materialCardView   " + materialCardView);
                     // TODO: 01.03.2022*/
                     ///////
                 } catch (Exception e) {
@@ -1498,7 +1497,7 @@ public class Fragment1_One_Tasks extends Fragment {
                             вибратор.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
 
                             // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогики   ПозицияЭлментаVIewCardДополнительно  " +
+                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  " +
                                     " holder.getAdapterPosition() " + holder.getAdapterPosition() + " v.getTag() " + v.getTag(holder.materialCardView.getId()));
 
                             // TODO: 13.03.2022  статус прочтения ли уде или нет адание
@@ -1507,7 +1506,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
 
                             // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогики   ПозицияЭлментаVIewCardДополнительно  СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
+                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
                             // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
                      /*   Long ПолучаемUUIDТекущйПозицииВRecyreView = AccessibilityNodeInfoДанныеДляViewCard.getAvailableExtraData().stream().map(Long::new)
                                 .distinct() .sorted(Collections.reverseOrder()).collect(Collectors.toList()).get(holder.getAdapterPosition()).longValue();*/
@@ -1594,7 +1593,7 @@ public class Fragment1_One_Tasks extends Fragment {
                             // TODO: 03.03.2022 update screewn
 
                             // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогики" +
+                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1" +
                                     "   ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView +
                                     " holder.getAdapterPosition() " + holder.getAdapterPosition());
 

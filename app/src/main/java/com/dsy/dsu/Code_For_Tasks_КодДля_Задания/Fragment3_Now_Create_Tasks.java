@@ -75,7 +75,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
         super.onDestroyView();
         try {
             // TODO: 12.03.2022
-            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогики  ИмяСлужбыСинхронизацииДляЗадачиИзЧата   Fragment2_Create_Tasks " +
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  ИмяСлужбыСинхронизацииДляЗадачиИзЧата   Fragment2_Create_Tasks " +
                     "" + ИмяСлужбыОдноразоваяСинхронизацииДляЗадачиИзЧата +
                     " ИмяСлужбыСинхронизацииДляЗадачи " + ИмяСлужбыОбщейСинхронизацииДляЗадачи);
 
