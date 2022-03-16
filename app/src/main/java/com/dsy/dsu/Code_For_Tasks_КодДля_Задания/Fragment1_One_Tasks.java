@@ -141,7 +141,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
             // TODO: 14.03.2022
             // TODO: 06.03.2022
-            bottomNavigationViewДляTasks = (BottomNavigationView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.bottomnavigationActiviTask8);
+            bottomNavigationViewДляTasks = (BottomNavigationView) view.findViewById(R.id.bottomnavigationActiviTask8);
 
             // TODO: 14.03.2022  тут обьявляем три кнопки доьавить контроль и новая задача
 
@@ -163,7 +163,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
             // TODO: 14.03.2022 перегрузка фрагмента
             bottomNavigationViewДляTasks.requestLayout();
-            // TODO: 14.03.2022
+            // TODO: 16.03.2022
             linearLayou.requestLayout();
 
             Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 imageView  onViewCreated ");

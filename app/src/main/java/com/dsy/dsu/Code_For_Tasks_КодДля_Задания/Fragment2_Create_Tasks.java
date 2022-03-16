@@ -71,9 +71,9 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
             // TODO: 15.03.2022
             bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.VISIBLE);
             // TODO: 16.03.2022
-
+            // TODO: 14.03.2022
             bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.setTitle("Задачи");
-
+            // TODO: 14.03.2022
             bottomNavigationViewДляTasks.requestLayout();
             // TODO: 14.03.2022
             linearLayou.requestLayout();
