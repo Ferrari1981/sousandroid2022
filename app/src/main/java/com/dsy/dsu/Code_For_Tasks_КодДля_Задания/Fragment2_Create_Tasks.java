@@ -219,12 +219,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
     }
 
 
-    // TODO: 15.03.2022 КЛАСС ДЛЯ БИЗНЕС ЛОГИКИ
-
-
-    // TODO: 02.03.2022
-
-    // TODO: 28.02.2022 бизнес -логика    для активти
+    // TODO: 15.03.2022 КЛАСС ДЛЯ БИЗНЕС ЛОГИКИ  ДЛЯ ВТОРОГО ФРАГМЕНТА 2
 
 
     class SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2 extends SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 {
@@ -300,6 +295,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         }
 
         // TODO: 28.02.2022 Под Класс порлучение данных для активти
+        @Override
         SQLiteCursor МетодПолучаемГлавныеДанныеДляЗадач(Integer ПубличноеIDПолученныйИзСервлетаДляUUID)
                 throws ExecutionException, InterruptedException {
             // TODO: 26.08.2021 НОВЫЙ ВЫЗОВ НОВОГО КЛАСС GRUD - ОПЕРАЦИИ
