@@ -21,7 +21,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
         super.onViewCreated(view, savedInstanceState);
 
         try {
-            // TODO: 14.03.2022 ССЫЛКА НА РОДИТЕЛЬСКОЕ ФРАГМЕНТ
+            // TODO: 14.03.2022 ССЫЛКА НА РОДИТЕЛЬСКОЕ ФРАГМЕНТ/
             textViewТекущаяЗадача.setText("Новое".toUpperCase());
             // TODO: 14.03.202
             // TODO: 15.03.2022 НЕ ПОКАЗЫВАЕМ
