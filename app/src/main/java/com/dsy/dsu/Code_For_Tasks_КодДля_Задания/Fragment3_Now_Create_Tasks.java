@@ -85,7 +85,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             viewДляПервойКнопкиДля_СозданиеНовойЗадачи = inflater.inflate(R.layout.activity_main_fragment3_for_create_new_tasks, container, false);
 
             // TODO: 15.03.2022
-
+            // TODO: 28.02.2022
+            // viewГлавныйВидДляRecyclleViewДляЗаданий = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_for_takst_cardview1, parent, false);
             // TODO: 12.03.2022
             Log.d(this.getClass().getName(), " onCreateView  viewДляПервойКнопкиHome_Задания  Fragment1_One_Tasks  onCreateView " +
                     "" + viewДляПервойКнопкиДля_СозданиеНовойЗадачи);
