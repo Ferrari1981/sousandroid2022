@@ -50,12 +50,14 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
     // TODO: 28.02.2022
     protected RecyclerView recyclerView;
 
-    SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3.MyRecycleViewAdapterДляСозданиеНовойЗадачи myRecycleViewAdapterНоваяЗадача;
+
     // TODO: 16.03.2022
     private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3 subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3ЗаполенияЗадачиДляРедактирования;
     // TODO: 16.03.2022
+    SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3.MyRecycleViewAdapterДляСозданиеНовойЗадачи myRecycleViewAdapterНоваяЗадача;
+    // TODO: 16.03.2022
     // TODO: 13.03.2022
-    private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3.MyRecycleViewAdapter myRecycleViewAdapter;
+    private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3.MyRecycleViewAdapterДляРедактирования myRecycleViewAdapterДляРедактирования;
     // TODO: 14.03.2022
     private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3.MyViewHolder myViewHolder;
     // TODO: 14.03.2022
@@ -375,7 +377,15 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     }
                 };
                 // TODO: 04.03.2022 запускаем слушатель
-                myRecycleViewAdapter.registerAdapterDataObserver(adapterDataObserverObserverСлушатель);
+                if (myRecycleViewAdapterДляРедактирования != null) {
+                    // TODO: 16.03.2022  
+                    myRecycleViewAdapterДляРедактирования.registerAdapterDataObserver(adapterDataObserverObserverСлушатель);
+                }
+                // TODO: 16.03.2022
+                if (myRecycleViewAdapterНоваяЗадача != null) {
+                    // TODO: 16.03.2022  
+                    myRecycleViewAdapterНоваяЗадача.registerAdapterDataObserver(adapterDataObserverObserverСлушатель);
+                }
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -656,13 +666,13 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 03.03.2022
 
                     // TODO: 28.02.2022  переходим в редактирование данных
-                    myRecycleViewAdapter = new MyRecycleViewAdapter(Курсор_ГлавныйКурсорДляЗадач);
+                    myRecycleViewAdapterДляРедактирования = new MyRecycleViewAdapterДляРедактирования(Курсор_ГлавныйКурсорДляЗадач);
                     // TODO: 04.03.2022  В ДАННЫЙ КОД ЗАХОДИМ КОГДА МЫ СОЗДАЕМ НОВУЮ ЗАДАЧУ
                     // TODO: 16.03.2022
-                    recyclerView.setAdapter(myRecycleViewAdapter);
+                    recyclerView.setAdapter(myRecycleViewAdapterДляРедактирования);
 
                     Log.d(this.getClass().getName(), " есть данные для отображения " +
-                            "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач + " myRecycleViewAdapter " + myRecycleViewAdapter);
+                            "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач + " myRecycleViewAdapterДляРедактирования " + myRecycleViewAdapterДляРедактирования);
 
                 } else {
                     // TODO: 04.03.2022  В ДАННЫЙ КОД ЗАХОДИМ КОГДА МЫ СОЗДАЕМ НОВУЮ ЗАДАЧУ
@@ -941,13 +951,13 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
         // TODO: 28.02.2022 ViewHolder
 
-        class MyRecycleViewAdapter extends RecyclerView.Adapter<MyViewHolder> {
+        class MyRecycleViewAdapterДляРедактирования extends RecyclerView.Adapter<MyViewHolder> {
             // TODO: 04.03.2022
             SQLiteCursor Курсор_ДляПолученияДАнныхДляЗАДАЧTASK;
 
             // TODO: 15.03.2022 первыЙ КЛАССС ДЛЯ АДАПТЕРА С ДАННЫМИ ПОДНИМАЕМ ДАННЫЕ ДЛЯ РЕДАКТИРОВАНИЯ
 
-            public MyRecycleViewAdapter(@NotNull SQLiteCursor Курсор_ДляПолученияДАнныхДляЗАДАЧTASK) {
+            public MyRecycleViewAdapterДляРедактирования(@NotNull SQLiteCursor Курсор_ДляПолученияДАнныхДляЗАДАЧTASK) {
                 // super();
                 // TODO: 04.03.2022
                 this.Курсор_ДляПолученияДАнныхДляЗАДАЧTASK = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK;
@@ -1024,12 +1034,12 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                         МетодБиндингаСлушателейДляViewCard(holder);
 
 
-                        // TODO: 13.03.2022 СЛУШАТЕЛЬ СРАБАТЫВАЕТ КОГДА КОМАДА TOGGER И МЕНЯЕМ СТАТУСТ ЧЕК ОЗНАКОМЛЕНЫЙ ЛИ ИНЕТ
+                        // TODO: 13.03.2022 СЛУШАТЕЛЬ СРАБАТЫВАЕТ КОГДА КОМАДА TOGGER И МЕНЯЕМ СТАТУСТ ЧЕК ОЗНАКОМЛЕНЫЙ ЛИ ИНЕТ MyRecycleViewAdapterДляРедактирования
 
                         МетодБиндингаСлушательisChered(holder);
 
 
-                        // TODO: 13.03.2022 СЛУШАТЕЛЬ ТРЕТИТЬ ПРОСТОЙ СЛУШАТИЕЛЬ ПРОСТО КЛИК ПО CARD VIEW
+                        // TODO: 13.03.2022 СЛУШАТЕЛЬ ТРЕТИТЬ ПРОСТОЙ СЛУШАТИЕЛЬ ПРОСТО КЛИК ПО CARD VIEW  MyRecycleViewAdapterДляРедактирования
 
                         МетодБиндингаСлушателейТретьийСлушательПростоКликДляCard(holder);
 
@@ -1436,6 +1446,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
             // TODO: 15.03.2022  третий слушатель просто клик
 
+// TODO: 15.03.2022  третий слушатель просто клик MyRecycleViewAdapterДляРедактированияMyRecycleViewAdapterДляРедактирования  MyRecycleViewAdapterДляРедактирования
+
             private void МетодБиндингаСлушателейТретьийСлушательПростоКликДляCard(MyViewHolder holder) {
                 // TODO: 01.03.2022 слушатели
 
@@ -1479,16 +1491,20 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                         @Override
                         public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
                             // TODO: 13.03.2022
-                            int ИндексдляНепрочитанный = R.drawable.icon_dsu1_fortasks_cardview_color_geeeey;
-                            // TODO: 13.03.2022
-                            int ИндексПпрочитанные = R.drawable.icon_dsu1_fortasks_cardview_color_geen;
+                            /*int ИндексдляНепрочитанный = R.drawable.icon_dsu1_fortasks_cardview_color_geeeey;
                             // TODO: 13.03.2022
 
-                            Drawable drawableПпрочитанные
-                                    = getContext().getDrawable(ИндексПпрочитанные);
                             // TODO: 13.03.2022
                             Drawable drawableИндексдляНепрочитанный
-                                    = getContext().getDrawable(ИндексдляНепрочитанный);
+                                    = getContext().getDrawable(ИндексдляНепрочитанный);*/
+                           /* // TODO: 16.03.2022
+                            int ИндексПпрочитанные = R.drawable.icon_dsu1_fortasks_cardview_color_geen;*/
+                            // TODO: 13.03.2022
+                            // TODO: 16.03.2022
+                            int ИндексПпрочитанные; //R.drawable.icon_dsu1_create_new_tasks;
+                            // TODO: 16.03.2022
+                            Drawable drawableПпрочитанные;
+
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), " card  " + card +
                                     "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " isChecked " + isChecked);
@@ -1497,19 +1513,22 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                             // TODO: 02.03.2022#5
 
-                            Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("status_write");
-                            // TODO: 02.03.2022
-
-                            Integer СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексСтатусПрочтенияИлиНЕт);
 
                             // TODO: 13.03.2022
-                            if (isChecked && СамСтатусПрочтенияИлиНет > 0) {
-
+                            if (isChecked) {
+                                // TODO: 16.03.2022
+                                ИндексПпрочитанные = R.drawable.icon_dsu1_create_new_tasks; //R.drawable.icon_dsu1_create_new_tasks;
+                                drawableПпрочитанные
+                                        = getContext().getDrawable(ИндексПпрочитанные);
 
                                 // TODO: 13.03.2022
-                                card.setCheckedIcon(drawableИндексдляНепрочитанный);
+                                card.setCheckedIcon(drawableПпрочитанные);
                                 // TODO: 13.03.2022
-                                card.setCheckedIconResource(ИндексдляНепрочитанный);
+                                card.setCheckedIconResource(ИндексПпрочитанные);
+                                // TODO: 16.03.2022
+                                card.setCardBackgroundColor(Color.RED);
+                                // TODO: 16.03.2022
+                                card.setCardBackgroundColor(Color.RED);
 
                                 // TODO: 13.03.2022
                                 // TODO: 13.03.2022
@@ -1520,6 +1539,22 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                             } else {
                                 // TODO: 14.03.2022
+                                ИндексПпрочитанные = R.drawable.icon_dsu1_message_add_contact; //R.drawable.icon_dsu1_create_new_tasks;
+                                drawableПпрочитанные
+                                        = getContext().getDrawable(ИндексПпрочитанные);
+
+                                // TODO: 13.03.2022
+                                card.setCheckedIcon(drawableПпрочитанные);
+                                // TODO: 13.03.2022
+                                card.setCheckedIconResource(ИндексПпрочитанные);
+                                // TODO: 16.03.2022
+                                card.setCardBackgroundColor(Color.RED);
+                                // TODO: 16.03.2022
+                                card.setCardBackgroundColor(Color.RED);
+
+                                // TODO: 13.03.2022
+                                // TODO: 13.03.2022
+                                card.setSelected(true);
                                 // TODO: 13.03.2022
                                 Log.d(this.getClass().getName(), "   holder.materialCardView.setOnCheckedChangeListener  isChecked    " + isChecked);
                             }
