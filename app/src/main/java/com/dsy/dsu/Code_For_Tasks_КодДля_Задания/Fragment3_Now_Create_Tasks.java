@@ -50,16 +50,15 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
     // TODO: 28.02.2022
     protected RecyclerView recyclerView;
 
+    SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3.MyRecycleViewAdapterДляСозданиеНовойЗадачи myRecycleViewAdapterНоваяЗадача;
     // TODO: 16.03.2022
-    private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3_ЗаполенияЗадачиДляРедактирования subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3ЗаполенияЗадачиДляРедактирования;
-
+    private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3 subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3ЗаполенияЗадачиДляРедактирования;
+    // TODO: 16.03.2022
     // TODO: 13.03.2022
-    private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3_ЗаполенияЗадачиДляРедактирования.MyRecycleViewAdapter myRecycleViewAdapter;
-    // TODO: 16.03.2022
-
-    SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3_ЗаполенияЗадачиДляРедактирования.MyRecycleViewAdapterДляСозданиеНовойЗадачи myRecycleViewAdapterНоваяЗадача;
+    private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3.MyRecycleViewAdapter myRecycleViewAdapter;
     // TODO: 14.03.2022
-    private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3_ЗаполенияЗадачиДляРедактирования.MyViewHolder myViewHolder;
+    private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3.MyViewHolder myViewHolder;
+    // TODO: 14.03.2022
 
 
     // TODO: 16.03.2022
@@ -70,13 +69,15 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
         try {
             // TODO: 14.03.2022 ССЫЛКА НА РОДИТЕЛЬСКОЕ ФРАГМЕНТ/
-            textViewТекущаяЗадача.setText("Новое".toUpperCase());
+            textViewТекущаяЗадача.setText("Новая".toUpperCase());
             // TODO: 14.03.202
 
 
             bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.setVisibility(View.GONE);
             // TODO: 16.03.2022
             bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.VISIBLE);
+            // TODO: 16.03.2022
+            bottomNavigationКонкретноКнопкаДобавить.setTitle("Добавленные");
 
             // TODO: 15.03.2022 НЕ ПОКАЗЫВАЕМ
             /*   bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.GONE);*/
@@ -153,7 +154,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
         super.onStart();
         try {
             // TODO: 16.03.2022
-            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3ЗаполенияЗадачиДляРедактирования = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3_ЗаполенияЗадачиДляРедактирования(getContext(), getActivity());
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3ЗаполенияЗадачиДляРедактирования = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3(getContext(), getActivity());
 
             // TODO: 12.03.2022
             Log.d(this.getClass().getName(), " отработоатл  subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3ЗаполенияЗадачиДляРедактирования " +
@@ -223,12 +224,12 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
     // TODO: 16.03.2022 бизнес логика для третьего фрагмента созданеи нового задачи    // TODO: 16.03.2022 бизнес логика для третьего фрагмента созданеи нового задачи
     // TODO: 16.03.2022 бизнес логика для третьего фрагмента созданеи нового задачи   // TODO: 16.03.2022 бизнес логика для третьего фрагмента созданеи нового задачи
 
-    class SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3_ЗаполенияЗадачиДляРедактирования extends SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 {
+    class SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3 extends SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 {
         // TODO: 28.02.2022
-        public SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3_ЗаполенияЗадачиДляРедактирования(Context context, Activity activity) {
+        public SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3(Context context, Activity activity) {
             super(context, activity);
             // TODO: 03.03.2022
-            Log.d(this.getClass().getName(), "SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3_ЗаполенияЗадачиДляРедактирования  " + this.context.getClass().getName());
+            Log.d(this.getClass().getName(), "SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3  " + this.context.getClass().getName());
         }
 
         // TODO: 28.02.2022 Под Класс порлучение данных для активти
@@ -256,6 +257,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                 //////
                 class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска1",1);//todo 0*/
                 //
+
+
                 class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска1", 243);//todo old ПубличноеIDПолученныйИзСервлетаДляUUID
                 // TODO: 02.03.2022
                 class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеСортировки", " status_write, date_update DESC ");//todo "date_update DESC, status_write DESC"
@@ -652,7 +655,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                 if (Курсор_ГлавныйКурсорДляЗадач.getCount() > 0) {
                     // TODO: 03.03.2022
 
-                    // TODO: 28.02.2022
+                    // TODO: 28.02.2022  переходим в редактирование данных
                     myRecycleViewAdapter = new MyRecycleViewAdapter(Курсор_ГлавныйКурсорДляЗадач);
                     // TODO: 04.03.2022  В ДАННЫЙ КОД ЗАХОДИМ КОГДА МЫ СОЗДАЕМ НОВУЮ ЗАДАЧУ
                     // TODO: 16.03.2022
@@ -667,7 +670,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 16.03.2022
                     ОчередьДаныеДляСозданиеНовойЗадачи.offer("СоздатьНовуюЗадачу");
 
-                    // TODO: 28.02.2022
+                    // TODO: 28.02.2022 переходим в создание новой задачи
                     myRecycleViewAdapterНоваяЗадача = new MyRecycleViewAdapterДляСозданиеНовойЗадачи(ОчередьДаныеДляСозданиеНовойЗадачи);
                     // TODO: 04.03.2022  В ДАННЫЙ КОД ЗАХОДИМ КОГДА МЫ СОЗДАЕМ НОВУЮ ЗАДАЧУ
                     // TODO: 16.03.2022
@@ -984,6 +987,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
             }
 
+
+            // TODO: 16.03.2022  ДАННЫЙ МЕТОД СОДАН ДЛЯ РЕДАКТИВАРОНИЕ Е ДАННЫХ ДЛЯИЗМЕНЕНИЯ УЖЕ СУЩЕСТВУЮЩЕЙ ЗАДАЧИ
             @Override
             public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
                 // TODO: 28.02.2022 привазяваем данные из колекции пряме на наш recycreview
@@ -1653,6 +1658,11 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
             }
 
+
+            // TODO: 16.03.2022  перегруженный метод ДЛЯ СОЗДАНЕИ НОВОЙ ЗАДАЧИ И ВСЕ !!!!! 
+            // TODO: 16.03.2022  перегруженный метод ДЛЯ СОЗДАНЕИ НОВОЙ ЗАДАЧИ И ВСЕ !!!!! 
+            // TODO: 16.03.2022  перегруженный метод ДЛЯ СОЗДАНЕИ НОВОЙ ЗАДАЧИ И ВСЕ !!!!! 
+
             @Override
             public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
                 // TODO: 28.02.2022 привазяваем данные из колекции пряме на наш recycreview
@@ -1694,6 +1704,10 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 13.03.2022 СЛУШАТЕЛЬ ТРЕТИТЬ ПРОСТОЙ СЛУШАТИЕЛЬ ПРОСТО КЛИК ПО CARD VIEW
 
                     МетодБиндингаСлушателейТретьийСлушательПростоКликДляCard(holder);
+
+
+                    // TODO: 16.03.2022  метод для слушателя для создания данных 
+                    МетодБиндингаСлушательДляКнопкиСоздатьНовуюЗадачу(holder);
 
 
                     // TODO: 03.03.2022 ПОЛУЧАЕМ СТАТУС ЗАДАНИЯ ПРОЧИТАН ИЛИ НЕТ
@@ -2155,8 +2169,36 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
                 }
             }
-            // TODO: 04.03.2022
 
+            // TODO: 04.03.2022 четвертый дополнительный метод СОЗДАНИЕ СЛУШАТЕЛЯ ДЛЯ СОЗДАНИЕ НОВОЙ ЗАДАЧИ
+            private void МетодБиндингаСлушательДляКнопкиСоздатьНовуюЗадачу(MyViewHolder holder) {
+                // TODO: 14.03.2022
+
+                try {
+                    holder.buttonДляСозданиеНовогоЗадания.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO: 16.03.2022
+
+                            // TODO: 01.03.2022
+
+                            // TODO: 10.03.2022
+                            вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
+
+                            Log.d(this.getClass().getName(), "  holder.buttonДляСозданиеНовогоЗадания.setOnClickListener   МетодБиндингаСлушательДляКнопкиСоздатьНовуюЗадачу    ");
+                        }
+                    });
+                    // TODO: 13.03.2022
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+            }
 
             @Override
             public long getItemId(int position) {
