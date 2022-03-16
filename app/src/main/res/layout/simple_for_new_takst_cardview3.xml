@@ -170,8 +170,9 @@
                 android:gravity="center_vertical|center_horizontal" />
 
             <!--   <com.google.android.material.button.MaterialButton-->
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/BottomFor_New_Create_Task"
+                style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_height="35dp"

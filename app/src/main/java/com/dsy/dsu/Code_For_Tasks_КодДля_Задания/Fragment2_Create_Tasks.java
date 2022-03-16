@@ -51,10 +51,15 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
     // TODO: 28.02.2022
     protected RecyclerView recyclerView;
     // TODO: 13.03.2022
-    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2.MyRecycleViewAdapter myRecycleViewAdapter;
-    // TODO: 14.03.2022
-    protected SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2.MyViewHolder myViewHolder;
+
+
     private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2 subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2;
+
+    // TODO: 13.03.2022
+    private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2.MyRecycleViewAdapter myRecycleViewAdapter;
+    // TODO: 14.03.2022
+    private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2.MyViewHolder myViewHolder;
+
 
     // TODO: 15.03.2022
     @SuppressLint("RestrictedApi")
@@ -736,8 +741,6 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе +
                             " Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
                     // TODO: 14.03.2022
-                    linearLayou.requestLayout();
-
                     // TODO: 04.03.2022 создаем слушатель    третий класс создаем класс слушаителй  ДАННЫЙ КОД ЗАПУСКАЕТЬСЯ ПОСЛЕ СОЗДАЕНИЯ И УСТАНОВКИ АДАПТЕРА RECYCLEVIEW
 
                     subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодСлушательObserverДляRecycleView();
@@ -773,13 +776,13 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 28.02.2022
                     linearLayou.setLayoutParams(layoutParams);
                     // TODO: 28.02.2022
-                    linearLayou.requestLayout();
-                    // TODO: 28.02.2022
                     Log.d(this.getClass().getName(), " нет данных для отображения " +
                             "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач);
                 }
                 // TODO: 13.03.2022
                 bottomNavigationViewДляTasks.requestLayout();
+                // TODO: 16.03.2022
+                linearLayou.requestLayout();
                 /////////////
             } catch (Exception e) {
                 e.printStackTrace();
@@ -1035,7 +1038,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 05.03.2022
                     Log.i(this.getClass().getName(), "   viewГлавныйВидДляRecyclleViewДляЗаданий" + viewГлавныйВидДляRecyclleViewДляЗаданий);
                     // TODO: 28.02.2022
-                    myViewHolder = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2.MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
+                    myViewHolder = new MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
                     // TODO: 01.03.2022
                     Log.i(this.getClass().getName(), "   myViewHolder" + myViewHolder);
 // TODO: 01.03.2022

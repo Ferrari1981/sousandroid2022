@@ -22,7 +22,7 @@
         android:textSize="10sp"
         app:cardBackgroundColor="#E0FFFF"
         app:cardCornerRadius="16dp"
-        app:strokeColor="#EBD3C7"
+        app:strokeColor="#F5FFFA"
         app:cardMaxElevation="4dp"
         app:strokeWidth="3dp"
         android:animateLayoutChanges="true"
