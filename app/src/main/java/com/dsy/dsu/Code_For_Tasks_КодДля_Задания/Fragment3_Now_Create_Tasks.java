@@ -143,6 +143,52 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     "" + subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3);
 
 
+            // TODO: 15.03.2022
+            Log.d(this.getClass().getName(), "ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
+
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3.МетодПолученимТОлькоКоличествоЗадач(ПубличныйIDДляФрагмента);
+
+            Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+
+
+            // TODO: 02.03.2022 получения курсора
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3.МетодПолучаемГлавныеДанныеДляЗадач(ПубличныйIDДляФрагмента);
+
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ГлавныйКурсорДляЗадач);
+
+            // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ СЛУШАТЕЛЬ КУРСОРРА
+
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3.МетодСлушательObserverДляКурсора();
+
+
+            // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ  второай слушатель только количество данных СЛУШАТЕЛЬ КУРСОРРА
+
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3.МетодСлушательObserverДляКурсораТолькоКоличество();
+
+            // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ СЛУШАТЕЛЬ КУРСОРРА туту запускам два слушателя дялнаших work manager
+
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3.МетодСоздаенияСлушателяДляОбщейWorkMAnager();
+
+            // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ СЛУШАТЕЛЬ КУРСОРРА туту запускам два слушателя дялнаших work manager
+
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3.МетодСоздаенияСлушателяДляЧатаWorkMAnager();
+
+
+            //todo метод  ИНИЦИАЛИЗАЦИИ RECYCLEVIEW ДЛЯ АКТИВТИ ЗАДАЧИ
+
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3.МетодИнициализацииRecycleViewДляЗадач();
+
+            // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3.МетодСозданиеНавигаторКнопок();
+
+            // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3.МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+
+            Log.d(this.getClass().getName(), " нет данных для отображения " +
+                    "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  МетодКпопкаСоЗачкомКраснымДополнительныйСтатус  " + Курсор_ГлавныйКурсорДляЗадач +
+                    " Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+
+
         } catch (Exception e) {
             e.printStackTrace();
             ///метод запись ошибок в таблицу
@@ -970,7 +1016,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                 View viewГлавныйВидДляRecyclleViewДляЗаданий = null;
                 try {
                     // TODO: 28.02.2022
-                    viewГлавныйВидДляRecyclleViewДляЗаданий = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_for_takst_cardview2, parent, false);//todo old R.layout.simple_for_takst_cardview1
+                    viewГлавныйВидДляRecyclleViewДляЗаданий = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_for_new_takst_cardview3, parent, false);//todo old R.layout.simple_for_takst_cardview1
                     // TODO: 05.03.2022
                     Log.i(this.getClass().getName(), "   viewГлавныйВидДляRecyclleViewДляЗаданий" + viewГлавныйВидДляRecyclleViewДляЗаданий);
                     // TODO: 28.02.2022
