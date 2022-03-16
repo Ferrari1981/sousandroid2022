@@ -66,15 +66,17 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
             // TODO: 14.03.2022
             textViewТекущаяЗадача.setText("Созданные".toUpperCase());
             // TODO: 14.03.2022
-            super.bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.VISIBLE);
-            // TODO: 14.03.2022
-            super.bottomNavigationКонкретноКнопкаСоздатьСейчас.setSelected(true);
+            //  bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.performLongClick();
+            bottomNavigationКонкретноКнопкаДобавить.setSelected(true);
             // TODO: 15.03.2022
-            super.bottomNavigationКонкретноКнопкаСоздатьСейчас.setChecked(true);
+            bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.VISIBLE);
+            // TODO: 16.03.2022
+
+            bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.setTitle("Задачи");
+
+            bottomNavigationViewДляTasks.requestLayout();
             // TODO: 14.03.2022
-            super.bottomNavigationViewДляTasks.requestLayout();
-            // TODO: 14.03.2022
-            super.linearLayou.requestLayout();
+            linearLayou.requestLayout();
             // TODO: 14.03.2022
             // TODO: 15.03.2022
 
@@ -834,8 +836,6 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                     // TODO: 10.03.2022
                                     вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
                                     // TODO: 15.03.2022
-                                    // TODO: 14.03.2022
-                                    bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.GONE);
                                     // TODO: 09.03.2022
                                     bottomNavigationViewДляTasks.requestLayout();
                                     // TODO: 14.03.2022
@@ -851,7 +851,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                     // TODO: 10.03.2022
                                     item.setChecked(true);
                                     // TODO: 09.03.2022
-                                    fragment_ТекущийФрагмент = new Fragment2_Create_Tasks();
+                                    fragment_ТекущийФрагмент = new Fragment3_Now_Create_Tasks();
                                     // TODO: 11.03.2022
                                     fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
                                     // TODO: 10.03.2022
@@ -871,33 +871,6 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
                                     break;
                                 // TODO: 09.03.2022////
-
-                                case R.id.id_taskNowCreateNewTask:
-                                    // TODO: 09.03.2022
-                                    Log.d(this.getClass().getName(), " R.id.id_taskCreateNewTasks  item.getItemId() " + item.getItemId());
-                                    // TODO: 10.03.2022
-                                    item.setChecked(true);
-                                    // TODO: 09.03.2022
-                                    fragment_ТекущийФрагмент = new Fragment3_Now_Create_Tasks();
-                                    // TODO: 11.03.2022
-                                    fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
-                                    // TODO: 10.03.2022
-                                    fragmentTransactionляЗадачи.show(fragment_ТекущийФрагмент);
-                                    // TODO: 10.03.2022
-                                    Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
-                                    // TODO: 10.03.2022
-                                    вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
-                                    // TODO: 09.03.2022
-                                    bottomNavigationViewДляTasks.requestLayout();
-                                    // TODO: 14.03.2022
-                                    linearLayou.requestLayout();
-                                    Log.d(this.getClass().getName(), " bottomNavigationViewДляTasks.getChildCount() " + bottomNavigationViewДляTasks.getChildCount());
-
-                                    // TODO: 14.03.2022  дополнительно визуализируем
-
-
-                                    break;
-                                // TODO: 09.03.2022
                                 default:
                                     // TODO: 09.03.2022
                                     // TODO: 09.03.2022

@@ -6,14 +6,9 @@
     >
     <item
         android:id="@+id/id_taskCreateNewTasks"
-        android:title="Создать"
-        android:icon="@drawable/icon_dsu1_add_tably1"/>
-    <item
-        android:id="@+id/id_taskNowCreateNewTask"
         android:title="Новая"
-
-
         android:icon="@drawable/icon_dsu1_createnow_task_tree_buttom"/>
+
     <item
         android:id="@+id/id_taskHome"
         android:title="Контроль"

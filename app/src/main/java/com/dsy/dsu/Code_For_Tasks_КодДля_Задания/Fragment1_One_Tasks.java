@@ -104,12 +104,11 @@ public class Fragment1_One_Tasks extends Fragment {
     // TODO: 09.03.2022
     protected BottomNavigationItemView bottomNavigationКонкретноКнопкаДобавить;
     // TODO: 09.03.2022
-    protected BottomNavigationItemView bottomNavigationКонкретноКнопкаСоздатьСейчас;
-    // TODO: 09.03.2022
     protected BottomNavigationItemView bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи;
     // TODO: 15.03.2022
 
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -150,15 +149,17 @@ public class Fragment1_One_Tasks extends Fragment {
 
             // TODO: 14.03.2022  тут обьявляем три кнопки доьавить контроль и новая задача
 
-            bottomNavigationКонкретноКнопкаСоздатьСейчас = bottomNavigationViewДляTasks.findViewById(R.id.id_taskNowCreateNewTask);
-            // TODO: 14.03.2022  тут обьявляем три кнопки доьавить контроль и новая задача
-
             bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи = bottomNavigationViewДляTasks.findViewById(R.id.id_taskHome);
             // TODO: 14.03.2022
             //  bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.performLongClick();
-            bottomNavigationКонкретноКнопкаСоздатьСейчас.setSelected(true);
-            // TODO: 15.03.2022
-            bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.GONE);
+            bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.setSelected(true);
+            // TODO: 16.03.2022
+
+            bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.setTitle("Контроль");
+
+
+            // TODO: 15.03.2022 НЕ ПОКАЗЫВАЕМ
+            bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.GONE);
 
             // TODO: 14.03.2022 перегрузка фрагмента
             bottomNavigationViewДляTasks.requestLayout();
@@ -937,7 +938,7 @@ public class Fragment1_One_Tasks extends Fragment {
                                         // TODO: 10.03.2022
                                         item.setChecked(true);
                                         // TODO: 09.03.2022
-                                        fragment_ТекущийФрагмент = new Fragment1_One_Tasks();
+                                        fragment_ТекущийФрагмент = new Fragment2_Create_Tasks();
                                         // TODO: 11.03.2022
                                         fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
                                         // TODO: 10.03.2022
@@ -948,7 +949,7 @@ public class Fragment1_One_Tasks extends Fragment {
                                         вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
                                         // TODO: 15.03.2022
                                         // TODO: 14.03.2022
-                                        bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.GONE);
+                                        //bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.GONE);
                                         // TODO: 09.03.2022
                                         bottomNavigationViewДляTasks.requestLayout();
                                         // TODO: 14.03.2022
@@ -958,59 +959,6 @@ public class Fragment1_One_Tasks extends Fragment {
 
                                     // TODO: 09.03.2022////
 
-                                    case R.id.id_taskCreateNewTasks:
-                                        // TODO: 09.03.2022
-                                        Log.d(this.getClass().getName(), " R.id.id_taskCreateNewTasks  item.getItemId() " + item.getItemId());
-                                        // TODO: 10.03.2022
-                                        item.setChecked(true);
-                                        // TODO: 09.03.2022
-                                        fragment_ТекущийФрагмент = new Fragment2_Create_Tasks();
-                                        // TODO: 11.03.2022
-                                        fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
-                                        // TODO: 10.03.2022
-                                        fragmentTransactionляЗадачи.show(fragment_ТекущийФрагмент);
-                                        // TODO: 10.03.2022
-                                        Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
-                                        // TODO: 10.03.2022
-                                        вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
-                                        // TODO: 14.03.2022
-                                        bottomNavigationViewДляTasks.requestLayout();
-                                        // TODO: 14.03.2022
-                                        linearLayou.requestLayout();
-                                        Log.d(this.getClass().getName(), " bottomNavigationViewДляTasks.getChildCount() " + bottomNavigationViewДляTasks.getChildCount());
-
-                                        // TODO: 14.03.2022  дополнительно визуализируем
-
-
-                                        break;
-                                    // TODO: 09.03.2022////
-
-                                    case R.id.id_taskNowCreateNewTask:
-                                        // TODO: 09.03.2022
-                                        Log.d(this.getClass().getName(), " R.id.id_taskCreateNewTasks  item.getItemId() " + item.getItemId());
-                                        // TODO: 10.03.2022
-                                        item.setChecked(true);
-                                        // TODO: 09.03.2022
-                                        fragment_ТекущийФрагмент = new Fragment3_Now_Create_Tasks();
-                                        // TODO: 11.03.2022
-                                        fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
-                                        // TODO: 10.03.2022
-                                        fragmentTransactionляЗадачи.show(fragment_ТекущийФрагмент);
-                                        // TODO: 10.03.2022
-                                        Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
-                                        // TODO: 10.03.2022
-                                        вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
-                                        // TODO: 09.03.2022
-                                        bottomNavigationViewДляTasks.requestLayout();
-                                        // TODO: 14.03.2022
-                                        linearLayou.requestLayout();
-                                        Log.d(this.getClass().getName(), " bottomNavigationViewДляTasks.getChildCount() " + bottomNavigationViewДляTasks.getChildCount());
-
-                                        // TODO: 14.03.2022  дополнительно визуализируем
-
-
-                                        break;
-                                    // TODO: 09.03.2022
                                     default:
                                         // TODO: 09.03.2022
                                         // TODO: 09.03.2022
