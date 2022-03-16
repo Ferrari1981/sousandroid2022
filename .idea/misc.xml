@@ -7,9 +7,12 @@
         <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/drawable/icon_dsu1_new_create_tabel4.xml" value="0.3675" />
         <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/drawable/icon_dsu1_viewcard_task4.xml" value="0.1935" />
         <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/drawable/icon_for_tastk_fragment_create_tastks.xml" value="0.3675" />
+        <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/drawable/style_for_chat_alien_success_last_send_server.xml" value="0.3675" />
         <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/layout/activity_for_fragemtb_history_tasks.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/layout/activity_main__authentication.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/layout/activity_main__tabel.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/layout/activity_main__tabel_listview.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/layout/activity_main_face_app.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/layout/activity_main_fisrt_for_tasks.xml" value="0.228125" />
         <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/layout/activity_main_fragment1_for_tasks.xml" value="0.25" />
         <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/layout/activity_main_fragment2_for_tasks.xml" value="0.36666666666666664" />
@@ -23,7 +26,7 @@
         <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/layout/simple_for_chats_contact.xml" value="0.25729166666666664" />
         <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/layout/simple_for_chats_messages.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/layout/simple_for_chats_read_write.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/layout/simple_for_new_takst_cardview3.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/layout/simple_for_new_takst_cardview3.xml" value="0.5" />
         <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/layout/simple_for_takst_cardview1.xml" value="0.5" />
         <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/layout/simple_for_takst_cardview2.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/moraru_pi/AndroidStudioProjects/DSU/app/src/main/res/layout/simple_for_takst_cardview_2.xml" value="0.5" />
@@ -36,5 +39,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.5" />
+      </ProjectState>
+    </option>
   </component>
 </project>

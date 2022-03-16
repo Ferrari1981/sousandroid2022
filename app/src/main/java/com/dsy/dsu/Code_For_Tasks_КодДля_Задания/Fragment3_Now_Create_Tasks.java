@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -55,7 +56,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
     // TODO: 16.03.2022
     private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3 subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3;
 
-    // TODO: 15.03.2022
+    // TODO: 16.03.2022
+    @SuppressLint("RestrictedApi")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -64,10 +66,19 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             // TODO: 14.03.2022 ССЫЛКА НА РОДИТЕЛЬСКОЕ ФРАГМЕНТ/
             textViewТекущаяЗадача.setText("Новое".toUpperCase());
             // TODO: 14.03.202
+
+
+            bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.setVisibility(View.GONE);
+            // TODO: 16.03.2022
+            bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.VISIBLE);
+
             // TODO: 15.03.2022 НЕ ПОКАЗЫВАЕМ
-            bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.GONE);
+            /*   bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.GONE);*/
             // TODO: 16.03.2022
             bottomNavigationКонкретноКнопкаДобавить.requestLayout();
+
+            // TODO: 16.03.2022
+
             // TODO: 15.03.2022
             linearLayou.requestLayout();
             // TODO: 14.03.2022
@@ -937,6 +948,9 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             TextView textView1, textView2, textView3, textView4, textView5;
             // TODO: 13.03.2022
             MaterialCardView materialCardView;
+            // TODO: 16.03.2022
+
+            Button buttonДляСозданиеНовогоЗадания;
 
             // TODO: 02.03.2022
 
@@ -970,6 +984,11 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 01.03.2022
                     materialCardView = (MaterialCardView) itemView.findViewById(R.id.cardviewmatirealtask);
                     // TODO: 13.03.2022
+                    buttonДляСозданиеНовогоЗадания = (Button) itemView.findViewById(R.id.BottomFor_New_Create_Task);
+
+                    // TODO: 16.03.2022
+                    buttonДляСозданиеНовогоЗадания.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
+
                     Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 materialCardView   " + materialCardView);
                     // TODO: 01.03.2022*/
                     ///////

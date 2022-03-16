@@ -277,7 +277,7 @@
             android:exported="true"
             android:grantUriPermissions="true"
             android:label="Задания"
-            android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar" >
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
