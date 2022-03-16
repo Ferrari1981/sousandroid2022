@@ -55,6 +55,9 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
     // TODO: 13.03.2022
     private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3_ЗаполенияЗадачиДляРедактирования.MyRecycleViewAdapter myRecycleViewAdapter;
+    // TODO: 16.03.2022
+
+    SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3_ЗаполенияЗадачиДляРедактирования.MyRecycleViewAdapterДляСозданиеНовойЗадачи myRecycleViewAdapterНоваяЗадача;
     // TODO: 14.03.2022
     private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3_ЗаполенияЗадачиДляРедактирования.MyViewHolder myViewHolder;
 
@@ -632,64 +635,66 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             try {
                 Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ГлавныйКурсорДляЗадач);
 
+                Log.d(this.getClass().getName(), " есть данные для отображения " +
+                        "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач);
+                // TODO: 28.02.2022
+                recyclerView = (RecyclerView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.recycleviewActiviTask);
+                // TODO: 14.03.2022
+                recyclerView.setVisibility(View.VISIBLE);
+                // TODO: 14.03.202
+                GridLayoutManager gridLayoutManager;
+                // TODO: 14.03.202
+                gridLayoutManager = new GridLayoutManager(getActivity(), 1);
+                // TODO: 28.02.2022 создаем наш первый RecyclerView
+                recyclerView.setLayoutManager(gridLayoutManager);//TODO new LinearLayoutManager(getContext()) // TODO: 28.02.2022 создаем наш первый RecyclerView recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
                 // TODO: 04.03.2022  В ДАННЫЙ КОД ЗАХОДИМ КОГДА РЕЖИМ РЕДАКТИРОВАНИЯ И МЫ УЖЕ СОЗДАНУЮ АЗАДЧЦ РЕДАКТИРУЕМ
                 if (Курсор_ГлавныйКурсорДляЗадач.getCount() > 0) {
                     // TODO: 03.03.2022
-                    Log.d(this.getClass().getName(), " есть данные для отображения " +
-                            "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач);
-                    // TODO: 14.03.2022
-                    /*   LinearLayout linearLayou = (LinearLayout) getActivity().findViewById(R.id.activity_main_fisrt_for_tasks);*/
-                    // TODO: 28.02.2022
-                    recyclerView = (RecyclerView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.recycleviewActiviTask);
-                    // TODO: 14.03.2022
-                    recyclerView.setVisibility(View.VISIBLE);
-                    // TODO: 14.03.202
-                    GridLayoutManager gridLayoutManager;
-                    // TODO: 14.03.202
-                    gridLayoutManager = new GridLayoutManager(getActivity(), 1);
-                    // TODO: 28.02.2022 создаем наш первый RecyclerView
-                    recyclerView.setLayoutManager(gridLayoutManager);//TODO new LinearLayoutManager(getContext()) // TODO: 28.02.2022 создаем наш первый RecyclerView recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-                    // TODO: 03.03.2022
-                    Log.d(this.getClass().getName(), " есть данные для отображения " +
-                            "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач);
-
 
                     // TODO: 28.02.2022
                     myRecycleViewAdapter = new MyRecycleViewAdapter(Курсор_ГлавныйКурсорДляЗадач);
-                    // TODO: 04.03.2022
-                    recyclerView.setAdapter(myRecycleViewAdapter);
-                    // TODO: 13.03.2022
-                    recyclerView.requestLayout();
-
-                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 recyclerView   " + recyclerView);
-
-                    // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ когнданет записей  МетодИнициализацииRecycleViewДляЗадачМетодИнициализацииRecycleViewДляЗадач
-
-                    МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
-                    // TODO: 14.03.2022
-                    Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе +
-                            " Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
-
-                    // TODO: 04.03.2022 создаем слушатель    третий класс создаем класс слушаителй  ДАННЫЙ КОД ЗАПУСКАЕТЬСЯ ПОСЛЕ СОЗДАЕНИЯ И УСТАНОВКИ АДАПТЕРА RECYCLEVIEW
-
-                    subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3ЗаполенияЗадачиДляРедактирования.МетодСлушательObserverДляRecycleView();
-
-                    // TODO: 14.03.2022
-                    Log.d(this.getClass().getName(), "      subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодСлушательObserverДляRecycleView()  МетодИнициализацииRecycleViewДляЗадач()  " +
-                            " subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3ЗаполенияЗадачиДляРедактирования " + subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3ЗаполенияЗадачиДляРедактирования);
-
-
                     // TODO: 04.03.2022  В ДАННЫЙ КОД ЗАХОДИМ КОГДА МЫ СОЗДАЕМ НОВУЮ ЗАДАЧУ
+
+                    Log.d(this.getClass().getName(), " есть данные для отображения " +
+                            "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач + " myRecycleViewAdapter " + myRecycleViewAdapter);
 
                 } else {
                     // TODO: 04.03.2022  В ДАННЫЙ КОД ЗАХОДИМ КОГДА МЫ СОЗДАЕМ НОВУЮ ЗАДАЧУ
+                    LinkedBlockingQueue ОчередьДаныеДляСозданиеНовойЗадачи = new LinkedBlockingQueue();
+                    // TODO: 16.03.2022
+                    ОчередьДаныеДляСозданиеНовойЗадачи.offer("СоздатьНовуюЗадачу");
+
+                    // TODO: 28.02.2022
+                    myRecycleViewAdapterНоваяЗадача = new MyRecycleViewAdapterДляСозданиеНовойЗадачи(ОчередьДаныеДляСозданиеНовойЗадачи);
+                    // TODO: 04.03.2022  В ДАННЫЙ КОД ЗАХОДИМ КОГДА МЫ СОЗДАЕМ НОВУЮ ЗАДАЧУ
+
                     Log.d(this.getClass().getName(), " есть данные для отображения " +
-                            "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач);
+                            "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач + " myRecycleViewAdapter " + myRecycleViewAdapter);
 
                 }
 
+                // TODO: 16.03.2022
+                recyclerView.setAdapter(myRecycleViewAdapter);
+                // TODO: 13.03.2022
+                recyclerView.requestLayout();
+
+                Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 recyclerView   " + recyclerView);
+
+                // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ когнданет записей  МетодИнициализацииRecycleViewДляЗадачМетодИнициализацииRecycleViewДляЗадач
+
+                МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+                // TODO: 14.03.2022
+                Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе +
+                        " Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+
+                // TODO: 04.03.2022 создаем слушатель    третий класс создаем класс слушаителй  ДАННЫЙ КОД ЗАПУСКАЕТЬСЯ ПОСЛЕ СОЗДАЕНИЯ И УСТАНОВКИ АДАПТЕРА RECYCLEVIEW
+
+                subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3ЗаполенияЗадачиДляРедактирования.МетодСлушательObserverДляRecycleView();
+
+                // TODO: 14.03.2022
+                Log.d(this.getClass().getName(), "      subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодСлушательObserverДляRecycleView()  МетодИнициализацииRecycleViewДляЗадач()  " +
+                        " subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3ЗаполенияЗадачиДляРедактирования " + subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3ЗаполенияЗадачиДляРедактирования);
 
                 // TODO: 13.03.2022
                 bottomNavigationViewДляTasks.requestLayout();
@@ -1039,11 +1044,11 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
 
                         // TODO: 13.03.2022 настройки для carview
-
+/*
                         holder.materialCardView.toggle();
 
                         // TODO: 13.03.2022
-                        holder.materialCardView.setChecked(true);
+                        holder.materialCardView.setChecked(true);*/
                         // TODO: 15.03.2022
                         // TODO: 15.03.2022
                         holder.materialCardView.setCardBackgroundColor(Color.parseColor("#E0F2FF"));
@@ -1759,14 +1764,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             private void МетодБиндингПолучаемТипЗадания(@NonNull MyViewHolder holder) {
 
                 try {
-                    Integer ИндексСтатусТипаЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("type_tasks");
-                    // TODO: 02.03.2022
-
-                    String СамТипЗадания = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getString(ИндексСтатусТипаЗадачи);
-
-                    Log.i(this.getClass().getName(), "  СамТипЗадания " + СамТипЗадания);
-
-                    holder.textView5.setText("тип: " + СамТипЗадания);
+                    holder.textView5.setText("тип: ");
                 } catch (Exception e) {
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
@@ -1784,11 +1782,6 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                 // TODO: 02.03.2022#5
                 Integer СамСтатусПрочтенияИлиНет = 0;
                 try {
-
-                    Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("status_write");
-                    // TODO: 02.03.2022
-
-                    СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексСтатусПрочтенияИлиНЕт);
                     // TODO: 03.03.2022
 
                     holder.textView1.setTag(СамСтатусПрочтенияИлиНет);
@@ -1811,15 +1804,13 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             private void МетодБиндингаФИОДляЗадания(@NonNull MyViewHolder holder) throws ExecutionException, InterruptedException {
                 try {
                     // TODO: 02.03.2022#4  // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4
-                    Integer ИндексКтоНаписалСообщение = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("id_user");// TODO: 15.03.2022 user_update
+
                     // TODO: 02.03.2022
-                    Integer КтоНаписалСообщениеФИОдЛПосика = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексКтоНаписалСообщение);
-                    // TODO: 02.03.2022
-                    Log.i(this.getClass().getName(), "  КтоНаписалСообщениеФИОдЛПосика " + КтоНаписалСообщениеФИОдЛПосика);
+                    Log.i(this.getClass().getName(), "  КтоНаписалСообщениеФИОдЛПосика ");
                     // TODO: 02.03.2022
                     String ФИОКотоНаписал = new String();
                     // TODO: 13.03.2022
-                    SQLiteCursor sqLiteCursorПолученимНАстоящийФИО = МетодПолучениеДанныхФИОаОснованииID(КтоНаписалСообщениеФИОдЛПосика);
+                    SQLiteCursor sqLiteCursorПолученимНАстоящийФИО = МетодПолучениеДанныхФИОаОснованииID(1);//КтоНаписалСообщениеФИОдЛПосика
                     // TODO: 02.03.2022
                     Log.i(this.getClass().getName(), "  sqLiteCursorПолученимНАстоящийФИО " + sqLiteCursorПолученимНАстоящийФИО);
                     // TODO: 02.03.2022
@@ -1856,24 +1847,18 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             private void МетодБиндингаДатаЗадания(@NonNull MyViewHolder holder) throws ParseException {
                 try {
                     // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3
-                    Integer ИндексПолучаемДатыЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("date_update");
-                    // TODO: 02.03.2022
-                    String СамаДАтаЗадачиТекущей = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getString(ИндексПолучаемДатыЗадачи);
+
                     // TODO: 03.03.2022 парсинг даты
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", new Locale("ru"));
                     // TODO: 13.03.2022
                     dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", new Locale("ru"));
+                    Date datwe = new Date();
+                  /*  // TODO: 13.03.2022
+                    Date date = dateFormat.parse(datwe);*/
                     // TODO: 13.03.2022
-                    Date date = dateFormat.parse(СамаДАтаЗадачиТекущей);
-                    // TODO: 13.03.2022
-                    SimpleDateFormat simpleDateFormatДва = new SimpleDateFormat("dd MMMM yyyy HH:mm", new Locale("ru"));
-                    // TODO: 13.03.2022
-                    //   simpleDateFormatДва.applyPattern("dd-MM-yyyy HH:mm");//dd-MM-yyyy//// EEEE yyyy HH:mm  /////  dd MMMM yyyy HH:mm
-                    СамаДАтаЗадачиТекущей = simpleDateFormatДва.format(date);
-                    // TODO: 13.03.2022
-                    Log.i(this.getClass().getName(), "  СамаДАтаЗадачиТекущей " + СамаДАтаЗадачиТекущей);
+
                     // TODO: 28.02.2022
-                    holder.textView4.setText("дата: " + СамаДАтаЗадачиТекущей);
+                    holder.textView4.setText("дата: ");
                 } catch (Exception e) {
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
@@ -1888,13 +1873,11 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             private void МетодБиндингаНомерЗадания(@NonNull MyViewHolder holder) {
                 try {
                     // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2
-                    Integer ИндексПолучаемIDЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("id");
+
                     // TODO: 02.03.2022
-                    Integer IDЗадачиТекущей = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексПолучаемIDЗадачи);
-                    // TODO: 02.03.2022
-                    Log.i(this.getClass().getName(), "  IDЗадачиТекущей " + IDЗадачиТекущей);
+                    Log.i(this.getClass().getName(), "  IDЗадачиТекущей ");
                     // TODO: 28.02.2022
-                    holder.textView2.setText("#" + String.valueOf(IDЗадачиТекущей));
+                    holder.textView2.setText("#" + String.valueOf(1));//IDЗадачиТекущей
                 } catch (Exception e) {
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
@@ -1910,13 +1893,10 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                 try {
                     // TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1
-                    Integer ИндексСамогоСообщенияЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("message");
                     // TODO: 02.03.2022
-                    String СамогоСообщенияЗадачиДляПользователя = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getString(ИндексСамогоСообщенияЗадачи);
-                    // TODO: 02.03.2022
-                    Log.i(this.getClass().getName(), "  СамогоСообщенияЗадачиДляПользователя " + СамогоСообщенияЗадачиДляПользователя);
+                    Log.i(this.getClass().getName(), "  СамогоСообщенияЗадачиДляПользователя ");
                     // TODO: 28.02.2022
-                    holder.textView1.setText(СамогоСообщенияЗадачиДляПользователя);
+                    holder.textView1.setText("");//СамогоСообщенияЗадачиДляПользователя
                     // TODO: 28.02.2022
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -2136,13 +2116,9 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                             // TODO: 02.03.2022#5
 
-                            Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("status_write");
-                            // TODO: 02.03.2022
-
-                            Integer СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексСтатусПрочтенияИлиНЕт);
 
                             // TODO: 13.03.2022
-                            if (isChecked && СамСтатусПрочтенияИлиНет > 0) {
+                            if (isChecked) {
 
 
                                 // TODO: 13.03.2022
@@ -2184,7 +2160,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             public long getItemId(int position) {
                 // TODO: 04.03.2022
 
-                Log.i(this.getClass().getName(), "     getItemId holder.position " + position);
+                Log.i(this.getClass().getName(), "     getItemId holder.position  новая задача " + position);
 
                 return super.getItemId(position);
 
