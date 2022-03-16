@@ -169,15 +169,16 @@
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center_vertical|center_horizontal" />
 
-
-            <com.google.android.material.button.MaterialButton
+            <!--   <com.google.android.material.button.MaterialButton-->
+            <Button
                 android:id="@+id/BottomFor_New_Create_Task"
                 android:layout_width="wrap_content"
+                android:layout_marginTop="15dp"
                 android:layout_height="35dp"
                 android:layout_below="@+id/text2_innercardviewtwo"
                 android:layout_alignParentLeft="false"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
+                android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
                 android:backgroundTintMode="screen"
                 android:clickable="true"
                 android:focusable="auto"
@@ -189,7 +190,6 @@
                 android:textColor="#0E0E0E"
                 android:textStyle="bold"
                 android:textSize="12sp"
-                android:theme="@style/Theme.MaterialComponents.Light.Bridge"
                 android:typeface="normal"
                 android:visibility="visible"
                 tools:visibility="visible" />
