@@ -23,11 +23,11 @@
         android:focusable="true"
         android:singleLine="false"
         android:textSize="10sp"
-        app:cardBackgroundColor="#E2F2FF"
+        app:cardBackgroundColor="#E9F2FF"
         app:cardCornerRadius="16dp"
         app:cardElevation="3dp"
         app:cardMaxElevation="4dp"
-        app:strokeColor="#EBD6C7"
+        app:strokeColor="#F5FFFA"
         app:strokeWidth="3dp">
 
         <RelativeLayout
@@ -170,14 +170,14 @@
                 android:gravity="center_vertical|center_horizontal" />
 
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/BottomFor_New_Create_Task"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
                 android:layout_below="@+id/text2_innercardviewtwo"
                 android:layout_alignParentLeft="false"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="20dp"
                 android:backgroundTintMode="screen"
                 android:clickable="true"
                 android:focusable="auto"
@@ -189,7 +189,7 @@
                 android:textColor="#0E0E0E"
                 android:textStyle="bold"
                 android:textSize="12sp"
-                android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
+                android:theme="@style/Theme.MaterialComponents.Light.Bridge"
                 android:typeface="normal"
                 android:visibility="visible"
                 tools:visibility="visible" />
