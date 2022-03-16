@@ -13,7 +13,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardviewmatirealtask"
         android:layout_width="match_parent"
-        android:layout_height="520dp"
+        android:layout_height="550dp"
         android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
         android:layout_margin="5dp"
         android:layout_weight="2"
@@ -172,10 +172,10 @@
             <!--   <com.google.android.material.button.MaterialButton-->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/BottomFor_New_Create_Task"
-                style="@style/Widget.MaterialComponents.Button"
+                style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
                 android:layout_width="wrap_content"
                 android:layout_marginTop="15dp"
-                android:layout_height="35dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/text2_innercardviewtwo"
                 android:layout_alignParentLeft="false"
                 android:layout_centerHorizontal="true"

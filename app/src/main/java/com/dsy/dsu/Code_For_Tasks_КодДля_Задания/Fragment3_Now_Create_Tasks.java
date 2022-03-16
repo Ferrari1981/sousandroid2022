@@ -655,6 +655,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 28.02.2022
                     myRecycleViewAdapter = new MyRecycleViewAdapter(Курсор_ГлавныйКурсорДляЗадач);
                     // TODO: 04.03.2022  В ДАННЫЙ КОД ЗАХОДИМ КОГДА МЫ СОЗДАЕМ НОВУЮ ЗАДАЧУ
+                    // TODO: 16.03.2022
+                    recyclerView.setAdapter(myRecycleViewAdapter);
 
                     Log.d(this.getClass().getName(), " есть данные для отображения " +
                             "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач + " myRecycleViewAdapter " + myRecycleViewAdapter);
@@ -668,14 +670,14 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 28.02.2022
                     myRecycleViewAdapterНоваяЗадача = new MyRecycleViewAdapterДляСозданиеНовойЗадачи(ОчередьДаныеДляСозданиеНовойЗадачи);
                     // TODO: 04.03.2022  В ДАННЫЙ КОД ЗАХОДИМ КОГДА МЫ СОЗДАЕМ НОВУЮ ЗАДАЧУ
-
+                    // TODO: 16.03.2022
+                    recyclerView.setAdapter(myRecycleViewAdapterНоваяЗадача);
                     Log.d(this.getClass().getName(), " есть данные для отображения " +
-                            "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач + " myRecycleViewAdapter " + myRecycleViewAdapter);
+                            "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач + " myRecycleViewAdapterНоваяЗадача " + myRecycleViewAdapterНоваяЗадача);
 
                 }
 
-                // TODO: 16.03.2022
-                recyclerView.setAdapter(myRecycleViewAdapter);
+
                 // TODO: 13.03.2022
                 recyclerView.requestLayout();
 
@@ -1896,7 +1898,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 02.03.2022
                     Log.i(this.getClass().getName(), "  СамогоСообщенияЗадачиДляПользователя ");
                     // TODO: 28.02.2022
-                    holder.textView1.setText("");//СамогоСообщенияЗадачиДляПользователя
+                    holder.textView1.setText("99999999999999999999");//СамогоСообщенияЗадачиДляПользователя
                     // TODO: 28.02.2022
                 } catch (Exception e) {
                     e.printStackTrace();
