@@ -1062,6 +1062,13 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 14.03.2022
                     if (position <= Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount()) {
 
+                        // TODO: 16.03.2022
+                      /*  int   ИндексПпрочитанные = R.drawable.icon_dsu1_create_new_tasks; //R.drawable.icon_dsu1_create_new_tasks;
+                        Drawable  drawableПпрочитанные
+                                = getContext().getDrawable(ИндексПпрочитанные);
+                        // TODO: 15.03.2022
+                        holder.materialCardView.setBackgroundDrawable(drawableПпрочитанные);*/
+
                         // TODO: 02.03.2022 тут РАЗДАЕМ ДАННЫЕ RECYCLERBIEW
 
                         Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);
@@ -1123,8 +1130,6 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                         // TODO: 13.03.2022
                         holder.materialCardView.setChecked(true);
                         // TODO: 15.03.2022
-                        // TODO: 15.03.2022
-                        holder.materialCardView.setCardBackgroundColor(Color.parseColor("#E0F2FF"));
 
 // TODO: 28.02.2022
                     }
@@ -1544,16 +1549,16 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                         @Override
                         public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
                             // TODO: 13.03.2022
-                            int ИндексдляНепрочитанный = R.drawable.icon_dsu1_fortasks_cardview_color_geeeey;
+                            //int ИндексдляНепрочитанный = R.drawable.icon_dsu1_fortasks_cardview_color_geeeey;
                             // TODO: 13.03.2022
-                            int ИндексПпрочитанные = R.drawable.icon_dsu1_fortasks_cardview_color_geen;
+                            // int ИндексПпрочитанные = R.drawable.icon_dsu1_fortasks_cardview_color_geen;
+                            // TODO: 16.03.2022
+                            int ИндексПпрочитанные;
                             // TODO: 13.03.2022
-
-                            Drawable drawableПпрочитанные
-                                    = getContext().getDrawable(ИндексПпрочитанные);
+                            Drawable drawableПпрочитанные;
                             // TODO: 13.03.2022
-                            Drawable drawableИндексдляНепрочитанный
-                                    = getContext().getDrawable(ИндексдляНепрочитанный);
+                          /*  Drawable drawableИндексдляНепрочитанный
+                                    = getContext().getDrawable(ИндексдляНепрочитанный);*/
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), " card  " + card +
                                     "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " isChecked " + isChecked);
@@ -1570,11 +1575,19 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                             // TODO: 13.03.2022
                             if (isChecked && СамСтатусПрочтенияИлиНет > 0) {
 
+                                // TODO: 16.03.2022
+                                ИндексПпрочитанные = R.drawable.icon_dsu1_message_add_contact;
 
                                 // TODO: 13.03.2022
-                                card.setCheckedIcon(drawableИндексдляНепрочитанный);
+
+                                drawableПпрочитанные
+                                        = getContext().getDrawable(ИндексПпрочитанные);
+
+
                                 // TODO: 13.03.2022
-                                card.setCheckedIconResource(ИндексдляНепрочитанный);
+                                card.setCheckedIcon(drawableПпрочитанные);
+                                // TODO: 13.03.2022
+                                card.setCheckedIconResource(ИндексПпрочитанные);
 
                                 // TODO: 13.03.2022
                                 // TODO: 13.03.2022
@@ -1585,6 +1598,20 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
                             } else {
                                 // TODO: 14.03.2022
+
+                                ИндексПпрочитанные = R.drawable.icon_dsu1_create_new_tasks;
+                                // TODO: 16.03.2022
+
+                                // TODO: 13.03.2022
+
+                                drawableПпрочитанные
+                                        = getContext().getDrawable(ИндексПпрочитанные);
+
+                                // TODO: 13.03.2022
+                                card.setCheckedIcon(drawableПпрочитанные);
+                                // TODO: 13.03.2022
+                                card.setCheckedIconResource(ИндексПпрочитанные);
+                                // TODO: 16.03.2022
                                 // TODO: 13.03.2022
                                 Log.d(this.getClass().getName(), "   holder.materialCardView.setOnCheckedChangeListener  isChecked    " + isChecked);
                             }

@@ -13,7 +13,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardviewmatirealtask"
         android:layout_width="match_parent"
-        android:layout_height="570dp"
+        android:layout_height="580dp"
         android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
         android:layout_margin="5dp"
         android:layout_weight="2"
@@ -33,7 +33,7 @@
         <RelativeLayout
             android:id="@+id/relativelayoutcardviewmatirealtask"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:paddingLeft="2dp"
             android:paddingTop="2dp"
             android:paddingRight="2dp"

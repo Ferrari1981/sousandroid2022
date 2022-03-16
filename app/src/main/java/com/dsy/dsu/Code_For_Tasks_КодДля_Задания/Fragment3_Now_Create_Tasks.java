@@ -2114,16 +2114,20 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                         @Override
                         public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
                             // TODO: 13.03.2022
-                            int ИндексдляНепрочитанный = R.drawable.icon_dsu1_fortasks_cardview_color_geeeey;
-                            // TODO: 13.03.2022
-                            int ИндексПпрочитанные = R.drawable.icon_dsu1_fortasks_cardview_color_geen;
+                            /*int ИндексдляНепрочитанный = R.drawable.icon_dsu1_fortasks_cardview_color_geeeey;
                             // TODO: 13.03.2022
 
-                            Drawable drawableПпрочитанные
-                                    = getContext().getDrawable(ИндексПпрочитанные);
                             // TODO: 13.03.2022
                             Drawable drawableИндексдляНепрочитанный
-                                    = getContext().getDrawable(ИндексдляНепрочитанный);
+                                    = getContext().getDrawable(ИндексдляНепрочитанный);*/
+                           /* // TODO: 16.03.2022
+                            int ИндексПпрочитанные = R.drawable.icon_dsu1_fortasks_cardview_color_geen;*/
+                            // TODO: 13.03.2022
+                            // TODO: 16.03.2022
+                            int ИндексПпрочитанные; //R.drawable.icon_dsu1_create_new_tasks;
+                            // TODO: 16.03.2022  
+                            Drawable drawableПпрочитанные;
+
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), " card  " + card +
                                     "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " isChecked " + isChecked);
@@ -2135,12 +2139,19 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                             // TODO: 13.03.2022
                             if (isChecked) {
-
+                                // TODO: 16.03.2022
+                                ИндексПпрочитанные = R.drawable.icon_dsu1_create_new_tasks; //R.drawable.icon_dsu1_create_new_tasks;
+                                drawableПпрочитанные
+                                        = getContext().getDrawable(ИндексПпрочитанные);
 
                                 // TODO: 13.03.2022
-                                card.setCheckedIcon(drawableИндексдляНепрочитанный);
+                                card.setCheckedIcon(drawableПпрочитанные);
                                 // TODO: 13.03.2022
-                                card.setCheckedIconResource(ИндексдляНепрочитанный);
+                                card.setCheckedIconResource(ИндексПпрочитанные);
+                                // TODO: 16.03.2022
+                                card.setCardBackgroundColor(Color.RED);
+                                // TODO: 16.03.2022
+                                card.setCardBackgroundColor(Color.RED);
 
                                 // TODO: 13.03.2022
                                 // TODO: 13.03.2022
@@ -2151,6 +2162,22 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                             } else {
                                 // TODO: 14.03.2022
+                                ИндексПпрочитанные = R.drawable.icon_dsu1_message_add_contact; //R.drawable.icon_dsu1_create_new_tasks;
+                                drawableПпрочитанные
+                                        = getContext().getDrawable(ИндексПпрочитанные);
+
+                                // TODO: 13.03.2022
+                                card.setCheckedIcon(drawableПпрочитанные);
+                                // TODO: 13.03.2022
+                                card.setCheckedIconResource(ИндексПпрочитанные);
+                                // TODO: 16.03.2022
+                                card.setCardBackgroundColor(Color.RED);
+                                // TODO: 16.03.2022
+                                card.setCardBackgroundColor(Color.RED);
+
+                                // TODO: 13.03.2022
+                                // TODO: 13.03.2022
+                                card.setSelected(true);
                                 // TODO: 13.03.2022
                                 Log.d(this.getClass().getName(), "   holder.materialCardView.setOnCheckedChangeListener  isChecked    " + isChecked);
                             }
