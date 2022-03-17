@@ -41,6 +41,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text1_innercardview"
+                android:inputType="textMultiLine"
+                android:minLines="10"
                 android:layout_width="380dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="10dp"
@@ -52,26 +54,28 @@
                 android:singleLine="false"
                 android:text="шабка нового задание !!! "
                 android:textColor="#000000"
-                android:textSize="14sp"
+                android:textSize="15sp"
                 android:textStyle="normal"
                 android:visibility="visible" />
 
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text3_innercardviewtree"
+                android:layout_below="@+id/text1_innercardview"
+                android:layout_alignParentLeft="true"
                 android:layout_width="380dp"
                 android:layout_height="40dp"
+                android:inputType="textMultiLine"
+                android:minLines="10"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="20dp"
-                android:layout_below="@+id/text1_innercardview"
-                android:layout_alignParentLeft="true"
                 android:gravity="center_vertical|center_horizontal"
                 android:text="само сообщение !!!"
                 android:textAppearance="?android:attr/textAppearanceListItemSmall"
                 android:textColor="#000000"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:textStyle="normal"
                 android:visibility="visible" />
 
@@ -122,11 +126,11 @@
                 android:checkMark="?android:attr/textCheckMark"
                 android:gravity="center_vertical|center_horizontal"
                 android:text="#"
+                android:inputType="textMultiLine"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="20dp"
-                android:gravity="center_vertical|center_horizontal"
                 android:textAlignment="gravity"
                 android:textAppearance="?android:attr/textAppearanceListItemSmall"
                 android:textColor="#000000"
@@ -141,6 +145,7 @@
                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
                 android:layout_width="wrap_content"
                 android:layout_marginTop="15dp"
+                android:minLines="10"
                 android:layout_height="40dp"
                 android:layout_below="@+id/text2_innercardviewtwo"
                 android:layout_alignParentLeft="false"
