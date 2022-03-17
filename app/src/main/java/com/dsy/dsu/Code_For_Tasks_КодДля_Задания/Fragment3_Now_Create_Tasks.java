@@ -794,7 +794,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
         // TODO: 28.02.2022 начало  MyViewHolder
         protected class MyViewHolder extends RecyclerView.ViewHolder {// TODO: 28.02.2022 начало  MyViewHolder
             // TODO: 28.02.2022
-            TextInputEditText textView1, textView3, textView4, textView5;
+            TextInputEditText textView1, textView3, textView5;
             // TODO: 17.03.2022
             // TODO: 28.02.2022
             TextView textView2;
@@ -803,6 +803,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             // TODO: 16.03.202
             Button buttonДляСозданиеНовогоЗадания;
             // TODO: 02.03.2022
+            Spinner spinnerДляСозданиеНовойЗадачи;
 
             public MyViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -826,11 +827,10 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 28.02.2022
                     textView3 = (TextInputEditText) itemView.findViewById(R.id.text3_innercardviewtree);
                     // TODO: 28.02.2022
-                    textView4 = (TextInputEditText) itemView.findViewById(R.id.text4_innercardviewfour);
+                    spinnerДляСозданиеНовойЗадачи = (Spinner) itemView.findViewById(R.id.Spinner_innercardviewfour);
                     // TODO: 28.02.2022
-                    textView5 = (TextInputEditText) itemView.findViewById(R.id.text5_innercardviewtype_tasks);
                     // TODO: 13.03.2022
-                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 materialCardView  textView2 " + textView4);
+                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 materialCardView  textView2 " + spinnerДляСозданиеНовойЗадачи);
                     // TODO: 01.03.2022
                     materialCardView = (MaterialCardView) itemView.findViewById(R.id.cardviewmatirealtask);
                     // TODO: 13.03.2022
@@ -1118,7 +1118,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 13.03.2022
 
                     // TODO: 28.02.2022
-                    holder.textView4.setText("дата: ");
+                    holder.spinnerДляСозданиеНовойЗадачи.setEnabled(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу

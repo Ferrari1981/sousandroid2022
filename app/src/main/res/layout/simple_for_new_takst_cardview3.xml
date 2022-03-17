@@ -106,18 +106,18 @@
                 style="@style/Widget.AppCompat.SeekBar.Discrete"
                 android:layout_width="380dp"
                 android:layout_height="50dp"
+                android:layout_below="@+id/Spinner_innercardviewfour"
+                android:layout_alignParentLeft="true"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="20dp"
                 android:gravity="center_vertical|center_horizontal"
-                android:layout_below="@+id/Spinner_innercardviewfour"
-                android:layout_alignParentLeft="true"
-                android:max="10"
+                android:max="5"
                 android:progress="3" />
 
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/text2_innercardviewtwo"
                 android:layout_width="380dp"
                 android:layout_height="25dp"
