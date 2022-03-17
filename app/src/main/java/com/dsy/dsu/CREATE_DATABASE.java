@@ -17,7 +17,7 @@ import java.util.Date;
 public class CREATE_DATABASE extends SQLiteOpenHelper{ ///SQLiteOpenHelper
 
     /////TODO ВЕРСИЯ ДАННЫХ МЕНЯЕМ И УДАЛЯЕМ ДАННЫЕ И ЗАГРУЖАЕМ НОВЫЕ
-    private static final int VERSION = 734;//ПРИ ЛЮБОМ ИЗМЕНЕНИЕ В СТРУКТУРЕ БАЗЫ ДАННЫХ НУЖНО ДОБАВИТЬ ПЛЮС ОДНУ ЦИФРУ К ВЕРСИИ 1=1+1=2 ИТД.1
+    private static final int VERSION = 735;//ПРИ ЛЮБОМ ИЗМЕНЕНИЕ В СТРУКТУРЕ БАЗЫ ДАННЫХ НУЖНО ДОБАВИТЬ ПЛЮС ОДНУ ЦИФРУ К ВЕРСИИ 1=1+1=2 ИТД.1
 
 
     Context contextСозданиеБАзы;
@@ -578,11 +578,8 @@ public class CREATE_DATABASE extends SQLiteOpenHelper{ ///SQLiteOpenHelper
         ССылкаНаСозданнуюБазу.execSQL("drop table  if exists notifications");//test
         ССылкаНаСозданнуюБазу.execSQL("Create table if not exists    notifications  (" +
                 "id  INTEGER ," +
-                " date_start NUMERIC ," +
-                " clock NUMERIC,"+
                 " date_update NUMERIC,"+
                 " user_update INTEGER ,"+
-                "rights INTEGER   ," +
                 "uuid  NUMERIC UNIQUE ,"+
                 "current_table  NUMERIC DEFAULT 0," +
                 " id_user INTEGER  )");
@@ -1266,16 +1263,16 @@ public class CREATE_DATABASE extends SQLiteOpenHelper{ ///SQLiteOpenHelper
         //принудительное запускаем заново для создание новых таблиц
 
 
-        if (newVersion == 734) {
+        if (newVersion == 735) {
 
             //TODo созадем таблицу сос старами ошибками
 
 
-            МетодСозданиеУведомленийИлиДАТАЗадания(ССылкаНаСозданнуюБазу);
+            МетодСозданиеУведомленийИлиЗадания(ССылкаНаСозданнуюБазу);
 
             // TODO: 10.03.2022
 
-            МетодСозданияВидаЗадания(ССылкаНаСозданнуюБазу);
+            // МетодСозданияВидаЗадания(ССылкаНаСозданнуюБазу);
             
             
       /*      МетодСозданияТаблицаChats(ССылкаНаСозданнуюБазу);
