@@ -612,7 +612,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                 // TODO: 13.03.2022
                 bottomNavigationViewДляTasks.requestLayout();
                 // TODO: 14.03.2022
-                linearLayou.requestLayout();
+                linearLayou.requestLayout();//
 
                 /////////////
             } catch (Exception e) {
