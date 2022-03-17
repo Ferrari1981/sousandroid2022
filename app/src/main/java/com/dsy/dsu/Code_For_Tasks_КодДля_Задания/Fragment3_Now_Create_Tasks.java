@@ -1092,7 +1092,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 28.02.2022
 
 // TODO: 28.02.2022
-                    holder.textView3.setText("кому: " + ФИОКотоНаписал.trim());
+                    holder.textView3.setText("");
                 } catch (Exception e) {
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
@@ -1166,7 +1166,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 02.03.2022
                     Log.i(this.getClass().getName(), "  СамогоСообщенияЗадачиДляПользователя ");
                     // TODO: 28.02.2022
-                    holder.textView1.setText("99999999999999999999");//СамогоСообщенияЗадачиДляПользователя
+                    holder.textView1.setText("");//СамогоСообщенияЗадачиДляПользователя
                     // TODO: 28.02.2022
                 } catch (Exception e) {
                     e.printStackTrace();
