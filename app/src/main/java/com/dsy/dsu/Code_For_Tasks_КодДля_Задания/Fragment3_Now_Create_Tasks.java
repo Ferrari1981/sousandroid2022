@@ -242,7 +242,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                 ///////
                 class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("СтолбцыОбработки", "*");
                 //
-                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика", "   uuid=? " +
+                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика", "   user_update=? " +
                         " AND message IS NOT NULL  ");
                 // TODO: 02.03.2022
                 ///"_id > ?   AND _id< ?"
@@ -256,7 +256,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                 //
 
 
-                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска1", 243);//todo old ПубличноеIDПолученныйИзСервлетаДляUUID
+                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска1", ПубличноеIDПолученныйИзСервлетаДляUUID);//todo old ПубличноеIDПолученныйИзСервлетаДляUUID
                 // TODO: 02.03.2022
                 class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеСортировки", " status_write, date_update DESC ");//todo "date_update DESC, status_write DESC"
                 ////
@@ -1155,8 +1155,18 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                     // TODO: 02.03.2022
                     Log.i(this.getClass().getName(), "  IDЗадачиТекущей ");
-                    // TODO: 28.02.2022
-                    holder.textView2.setText("#" + String.valueOf(1));//IDЗадачиТекущей
+                    // TODO: 17.03.2022
+                    if (Курсор_ГлавныйКурсорДляЗадач.getCount() > 0) {
+                        int результатСколькоЗадачЯУжеСоздал = Курсор_ГлавныйКурсорДляЗадач.getCount();
+                        // TODO: 17.03.2022
+                        результатСколькоЗадачЯУжеСоздал = результатСколькоЗадачЯУжеСоздал + 1;
+                        // TODO: 28.02.2022
+                        holder.textView2.setText("#" + результатСколькоЗадачЯУжеСоздал++);//IDЗадачиТекущей
+                    } else {
+                        // TODO: 28.02.2022
+                        holder.textView2.setText("#" + 1);//IDЗадачиТекущей
+                    }
+
                 } catch (Exception e) {
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
