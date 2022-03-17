@@ -42,82 +42,77 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text1_innercardview"
                 android:layout_width="380dp"
-                android:layout_height="90dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
                 android:foregroundGravity="center"
                 android:gravity="center_horizontal|center_vertical"
                 android:singleLine="false"
                 android:text="шабка нового задание !!! "
                 android:textColor="#000000"
                 android:textSize="14sp"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 android:visibility="visible" />
 
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text3_innercardviewtree"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_width="380dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
                 android:layout_below="@+id/text1_innercardview"
                 android:layout_alignParentLeft="true"
-                android:checkMark="?android:attr/textCheckMark"
                 android:gravity="center_vertical|center_horizontal"
-                android:padding="1dp"
-                android:paddingStart="15dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="3dp"
-                android:text="кто написал"
-                android:textAlignment="gravity"
+                android:text="само сообщение !!!"
                 android:textAppearance="?android:attr/textAppearanceListItemSmall"
                 android:textColor="#000000"
                 android:textSize="13sp"
                 android:textStyle="normal"
                 android:visibility="visible" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/text4_innercardviewfour"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
+            <Spinner
+                android:id="@+id/Spinner_innercardviewfour"
+                style="@android:style/Widget.Holo.Light.Spinner"
+                android:layout_width="380dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:minWidth="50dp"
+                android:prompt="Кому"
+                android:spinnerMode="dropdown"
                 android:layout_below="@+id/text3_innercardviewtree"
                 android:layout_alignParentLeft="true"
-                android:checkMark="?android:attr/textCheckMark"
                 android:gravity="center_vertical|center_horizontal"
-                android:padding="1dp"
-                android:paddingStart="15dp"
-                android:paddingLeft="0dp"
-                android:paddingBottom="3dp"
-                android:text="дата"
                 android:textAlignment="gravity"
-                android:textAppearance="?android:attr/textAppearanceListItemSmall"
                 android:textColor="#000000"
                 android:textSize="13sp"
                 android:textStyle="normal"
                 android:visibility="visible" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/text5_innercardviewtype_tasks"
+
+            <SeekBar
+                android:id="@+id/seekBar_for_tasks_create_new"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_below="@+id/text4_innercardviewfour"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_height="50dp"
+                android:layout_below="@+id/Spinner_innercardviewfour"
                 android:layout_alignParentLeft="true"
-                android:checkMark="?android:attr/textCheckMark"
-                android:gravity="center_vertical|center_horizontal"
-                android:padding="1dp"
-                android:paddingStart="15dp"
-                android:paddingLeft="0dp"
-                android:paddingBottom="3dp"
-                android:text="тип: "
-                android:textAlignment="gravity"
-                android:textAppearance="?android:attr/textAppearanceListItemSmall"
-                android:textColor="#000000"
-                android:textSize="13sp"
-                android:textStyle="normal"
-                android:visibility="visible" />
+                android:max="10"
+                android:progress="3" />
+
 
             <TextView
                 android:id="@+id/text2_innercardviewtwo"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
-                android:layout_below="@+id/text5_innercardviewtype_tasks"
+                android:layout_below="@+id/seekBar_for_tasks_create_new"
                 android:layout_alignParentLeft="true"
                 android:checkMark="?android:attr/textCheckMark"
                 android:gravity="center_vertical|center_horizontal"
@@ -159,6 +154,7 @@
                 android:typeface="normal"
                 android:visibility="visible"
                 tools:visibility="visible" />
+
 
             <!--     android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"-->
         </RelativeLayout>
