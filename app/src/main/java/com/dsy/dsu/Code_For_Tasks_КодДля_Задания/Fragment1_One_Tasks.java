@@ -285,15 +285,25 @@ public class Fragment1_One_Tasks extends Fragment {
     }
 
     // TODO: 10.03.2022 БИЗНЕС-КОД ПЕРЕНЕСЕН ИЗ АКТИВТИ
+
+
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    public void onDestroy() {
+        super.onDestroy();
         try {
             Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 onDestroyView  " +
                     "" + adapterDataObserverObserverСлушатель +
                     " dataSetObserverДляКурсора " + dataSetObserverДляКурсора);
+
+            // TODO: 17.03.2022  прОВЕРЯЕМ ПЕРЕД  СНЯТИЕМ СРЕГИСТАЦИИ НАБЛЮДАЛЕТЯД АБЫЛ ИЛ ВООБЩЕ ОН УСТАНОВЛЕН
+            boolean ФлагКоторыйПоказываетБылзарегистированлСлушатель = myRecycleViewAdapter.hasObservers();
+
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 onDestroyView  " +
+                    "" + adapterDataObserverObserverСлушатель +
+                    " dataSetObserverДляКурсора " + dataSetObserverДляКурсора + " ФлагКоторыйПоказываетБылзарегистированлСлушатель " + ФлагКоторыйПоказываетБылзарегистированлСлушатель);
+
             // TODO: 04.03.2022 закрываем слушатель  recycreview
-            if (adapterDataObserverObserverСлушатель != null && myRecycleViewAdapter != null) {
+            if (adapterDataObserverObserverСлушатель != null && myRecycleViewAdapter != null && ФлагКоторыйПоказываетБылзарегистированлСлушатель == true) {
                 // TODO: 04.03.2022
                 myRecycleViewAdapter.unregisterAdapterDataObserver(adapterDataObserverObserverСлушатель);
 // TODO: 04.03.2022 закрываем слушатель  curcor
@@ -840,7 +850,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
 
                         // TODO: 28.02.2022
-                        myRecycleViewAdapter = new MyRecycleViewAdapter(Курсор_ГлавныйКурсорДляЗадач);
+                        myRecycleViewAdapter = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyRecycleViewAdapter(Курсор_ГлавныйКурсорДляЗадач);
 
                         // TODO: 04.03.2022
 
