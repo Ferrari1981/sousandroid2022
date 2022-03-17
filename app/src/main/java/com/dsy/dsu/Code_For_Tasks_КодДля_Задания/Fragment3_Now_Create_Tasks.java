@@ -15,7 +15,10 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,6 +36,7 @@ import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -57,6 +61,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
     // TODO: 14.03.2022
     private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3.MyViewHolder myViewHolder;
     // TODO: 14.03.2022
+    private Spinner spinnerПоказываемФИОДляКогоЗадание;
 
 
     // TODO: 16.03.2022
@@ -789,13 +794,14 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
         // TODO: 28.02.2022 начало  MyViewHolder
         protected class MyViewHolder extends RecyclerView.ViewHolder {// TODO: 28.02.2022 начало  MyViewHolder
             // TODO: 28.02.2022
-            TextView textView1, textView2, textView3, textView4, textView5;
+            TextInputEditText textView1, textView3, textView4, textView5;
+            // TODO: 17.03.2022
+            // TODO: 28.02.2022
+            TextView textView2;
             // TODO: 13.03.2022
             MaterialCardView materialCardView;
-            // TODO: 16.03.2022
-
+            // TODO: 16.03.202
             Button buttonДляСозданиеНовогоЗадания;
-
             // TODO: 02.03.2022
 
             public MyViewHolder(@NonNull View itemView) {
@@ -814,15 +820,15 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 01.03.2022 Инициализации компонтов
                     Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 itemView   " + itemView);
                     // TODO: 02.03.2022
-                    textView1 = (TextView) itemView.findViewById(R.id.text1_innercardview);
+                    textView1 = (TextInputEditText) itemView.findViewById(R.id.text1_innercardview);
                     // TODO: 02.3.2022  дополнительный
                     textView2 = (TextView) itemView.findViewById(R.id.text2_innercardviewtwo);
                     // TODO: 28.02.2022
-                    textView3 = (TextView) itemView.findViewById(R.id.text3_innercardviewtree);
+                    textView3 = (TextInputEditText) itemView.findViewById(R.id.text3_innercardviewtree);
                     // TODO: 28.02.2022
-                    textView4 = (TextView) itemView.findViewById(R.id.text4_innercardviewfour);
+                    textView4 = (TextInputEditText) itemView.findViewById(R.id.text4_innercardviewfour);
                     // TODO: 28.02.2022
-                    textView5 = (TextView) itemView.findViewById(R.id.text5_innercardviewtype_tasks);
+                    textView5 = (TextInputEditText) itemView.findViewById(R.id.text5_innercardviewtype_tasks);
                     // TODO: 13.03.2022
                     Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 materialCardView  textView2 " + textView4);
                     // TODO: 01.03.2022
@@ -1508,6 +1514,47 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                 return ОчередьДаныеДляСозданиеНовойЗадачи.size();
             }
         }//TODO  конец два
+
+
+        // TODO: 17.03.2022  КЛАСС ДЛЯ СПИНЕРА
+
+
+        private class КлассАдаптерДляСпинера extends BaseAdapter implements SpinnerAdapter {
+            // TODO: 17.03.2022
+            Context context;
+
+            public КлассАдаптерДляСпинера(Context context) {
+                // TODO: 17.03.2022
+                this.context = context;
+            }
+
+            @Override
+            public int getCount() {
+                // TODO: 17.03.2022
+                Log.d(this.getClass().getName(), "getCount ");
+                return 0;
+            }
+
+            @Override
+            public Object getItem(int position) {
+                Log.d(this.getClass().getName(), "getItem ");
+                return null;
+            }
+
+            @Override
+            public long getItemId(int position) {
+                Log.d(this.getClass().getName(), "getItemId ");
+                return 0;
+            }
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                Log.d(this.getClass().getName(), "getView ");
+                return null;
+            }
+        }
+
+
     }   // TODO: 28.02.2022 конец класса бизнес логики   // TODO: 28.02.2022 конец класса бизнес логики
 
     // TODO: 02.03.2022

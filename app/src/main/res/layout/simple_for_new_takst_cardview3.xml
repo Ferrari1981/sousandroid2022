@@ -39,44 +39,24 @@
             android:paddingRight="2dp"
             android:paddingBottom="2dp">
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text1_innercardview"
-                android:layout_width="370dp"
+                android:layout_width="380dp"
                 android:layout_height="90dp"
-                android:checkMark="?android:attr/textCheckMark"
                 android:foregroundGravity="center"
                 android:gravity="center_horizontal|center_vertical"
-                android:minLines="5"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:paddingRight="10dp"
                 android:singleLine="false"
-                android:text="новое  сообщение !!! "
-                android:textAlignment="gravity"
-                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:text="шабка нового задание !!! "
                 android:textColor="#000000"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:visibility="visible" />
 
 
-            <!--          &lt;!&ndash;  android:src="@drawable/icon_dsu1_add_organisazio_success"&ndash;&gt;
-                        <ImageView
-                            android:id="@+id/imageview_cardviewtask"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_below="@+id/text1_innercardview"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentRight="true"
-                            android:paddingLeft="5dp"
-                            android:paddingTop="10dp"
-                            android:paddingRight="10dp"
-                            android:paddingBottom="5dp"
-                            android:layout_alignParentEnd="true"
-                            app:srcCompat="@drawable/icon_dsu1_add_organisazio_success" />-->
-
-
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text3_innercardviewtree"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
@@ -96,7 +76,7 @@
                 android:textStyle="normal"
                 android:visibility="visible" />
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text4_innercardviewfour"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
@@ -116,7 +96,7 @@
                 android:textStyle="normal"
                 android:visibility="visible" />
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text5_innercardviewtype_tasks"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
