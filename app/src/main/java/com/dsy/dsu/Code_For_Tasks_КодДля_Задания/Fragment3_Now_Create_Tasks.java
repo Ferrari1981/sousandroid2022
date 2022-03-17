@@ -1025,11 +1025,6 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     МетодБиндингаСлушательisChered(holder);
 
 
-                    // TODO: 13.03.2022 СЛУШАТЕЛЬ ТРЕТИТЬ ПРОСТОЙ СЛУШАТИЕЛЬ ПРОСТО КЛИК ПО CARD VIEW
-
-                    МетодБиндингаСлушателейТретьийСлушательПростоКликДляCard(holder);
-
-
                     // TODO: 16.03.2022  метод для слушателя для создания данных 
                     МетодБиндингаСлушательДляКнопкиСоздатьНовуюЗадачу(holder);
 
@@ -1391,43 +1386,6 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
 
             // TODO: 15.03.2022
-
-
-            // TODO: 15.03.2022  третий слушатель просто клик
-
-            private void МетодБиндингаСлушателейТретьийСлушательПростоКликДляCard(MyViewHolder holder) {
-                // TODO: 01.03.2022 слушатели
-
-                try {
-// TODO: 01.03.2022 слушатели
-                    holder.materialCardView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            // TODO: 01.03.2022
-
-                            // TODO: 10.03.2022
-                            вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
-
-                            // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  " +
-                                    " holder.getAdapterPosition() " + holder.getAdapterPosition() + " v.getTag() " + v.getTag(holder.materialCardView.getId()));
-
-                            // TODO: 03.03.2022 update screewn
-
-
-                        }
-                    });
-                    // TODO: 13.03.2022
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    ///метод запись ошибок в таблицу
-                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
-                }
-            }
 
 
             private void МетодБиндингаСлушательisChered(MyViewHolder holder) {
