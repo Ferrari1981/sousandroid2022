@@ -61,7 +61,6 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
     // TODO: 14.03.2022
     private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3.MyViewHolder myViewHolder;
     // TODO: 14.03.2022
-    private Spinner spinnerПоказываемФИОДляКогоЗадание;
 
 
     // TODO: 16.03.2022
