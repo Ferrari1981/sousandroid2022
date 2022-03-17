@@ -1123,9 +1123,12 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                             Drawable icon = null;
                             //
 
-                            icon = getResources().getDrawable(R.mipmap.icon_dsu1_tabels_for_find_item);
-                            icon.setBounds(0, 1, 60, 60);
-                            ((TextView) view).setPadding(10, 10, 10, 10);
+                            icon = getResources().getDrawable(R.drawable.icon_dsu1_create_peplefio_tasks);///
+
+                            icon.setBounds(1, 1, 60, 60);
+
+                            ((TextView) view).setPadding(0, 0, 0, 0);
+
                             ((TextView) view).setCompoundDrawables(icon, null, null, null);
 
                             String ФИОДляПОиска = cursor.getString(ИндексФИО);
@@ -1154,7 +1157,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     holder.spinnerДляСозданиеНовойЗадачи.setAdapter(АдаптерДляФИОПриСозданииНовойЗадачи);
                     // TODO: 17.03.2022
 
-                    Log.e(this.getClass().getName(), "АдаптерДляФИОПриСозданииНовойЗадачи  " + АдаптерДляФИОПриСозданииНовойЗадачи.getItem(5));
+                    Log.e(this.getClass().getName(), "АдаптерДляФИОПриСозданииНовойЗадачи  ");
 
                     // TODO: 17.03.2022
                 } catch (Exception e) {
