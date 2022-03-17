@@ -15,12 +15,9 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -1107,34 +1104,59 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             private void МетодБиндингаДатаЗадания(@NonNull MyViewHolder holder) throws ParseException {
                 try {
                     // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3
-
-                    КлассАдаптерДляСпинера классАдаптерДляСпинера = new КлассАдаптерДляСпинера(getContext());
+                    SQLiteCursor sqLiteCursorПолученныйФИОДЛЯSpinnerДляНовойЗадачи = null;
                     // TODO: 17.03.2022
-
-                    SQLiteCursor sqLiteCursorПолученныйФИОДЛЯSpinnerДляНовойЗадачи = классАдаптерДляСпинера.МетодПолучаемГлавныеДанныеДляSpinnerКомуЗадачаФИО();
-
+                    sqLiteCursorПолученныйФИОДЛЯSpinnerДляНовойЗадачи = new КлассАдаптерДляСпинера(getContext()).МетодПолучаемГлавныеДанныеДляSpinnerКомуЗадачаФИО();
 
 ///TODO ГЛАВНЫЙ АДАПТЕР чата
-                    SimpleCursorAdapter АдаптерДляЗаписиЧтенияЧата = new SimpleCursorAdapter(getContext(), android.R.layout.simple_spinner_item, sqLiteCursorПолученныйФИОДЛЯSpinnerДляНовойЗадачи,
-                            new String[]{"user_update", "date_update"},
+                    SimpleCursorAdapter АдаптерДляФИОПриСозданииНовойЗадачи = new SimpleCursorAdapter(getContext(), android.R.layout.simple_spinner_item, sqLiteCursorПолученныйФИОДЛЯSpinnerДляНовойЗадачи,
+                            new String[]{"name"},
                             new int[]{android.R.id.text1}, 0);
-                    // TODO: 28.02.2022
-
 
                     // TODO: 17.03.2022
+                    SimpleCursorAdapter.ViewBinder БиндингДляSpinnerФИОСозданиеНовойЗадачи = new SimpleCursorAdapter.ViewBinder() {
+                        @Override
+                        public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
 
-                    ArrayAdapter adapter = new ArrayAdapter<String>(getContext(),
-                            android.R.layout.simple_spinner_item, (List<String>) классАдаптерДляСпинера);
+                            int ИндексФИО = cursor.getColumnIndex("name");
+                            ////
+                            Drawable icon = null;
+                            //
 
+                            icon = getResources().getDrawable(R.mipmap.icon_dsu1_tabels_for_find_item);
+                            icon.setBounds(0, 1, 60, 60);
+                            ((TextView) view).setPadding(10, 10, 10, 10);
+                            ((TextView) view).setCompoundDrawables(icon, null, null, null);
 
-                    holder.spinnerДляСозданиеНовойЗадачи.setEnabled(true);
+                            String ФИОДляПОиска = cursor.getString(ИндексФИО);
 
+                            Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска);
 
-                    holder.spinnerДляСозданиеНовойЗадачи.setAdapter(АдаптерДляЗаписиЧтенияЧата);
+                            if (ФИОДляПОиска != null) {
+                                // TODO: 17.03.2022
+                                ((TextView) view).setText(ФИОДляПОиска.trim());
+                                // TODO: 17.03.2022
+                                ((TextView) view).setTextSize(14f);
+                                Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска);
+                                return true;
+                            } else {
+                                // TODO: 17.03.2022
+                                Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска);
+                                return false;
+                            }
+                            ///
 
-                    holder.spinnerДляСозданиеНовойЗадачи.setAdapter(adapter);
+                        }
+                    };
+                    // TODO: 17.03.2022
+                    АдаптерДляФИОПриСозданииНовойЗадачи.setViewBinder(БиндингДляSpinnerФИОСозданиеНовойЗадачи);
+                    // TODO: 28.02.2022
+                    holder.spinnerДляСозданиеНовойЗадачи.setAdapter(АдаптерДляФИОПриСозданииНовойЗадачи);
+                    // TODO: 17.03.2022
 
+                    Log.e(this.getClass().getName(), "АдаптерДляФИОПриСозданииНовойЗадачи  " + АдаптерДляФИОПриСозданииНовойЗадачи.getItem(5));
 
+                    // TODO: 17.03.2022
                 } catch (Exception e) {
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
@@ -1535,7 +1557,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
         // TODO: 17.03.2022  КЛАСС ДЛЯ СПИНЕРА
 
 
-        private class КлассАдаптерДляСпинера extends BaseAdapter implements SpinnerAdapter {
+        private class КлассАдаптерДляСпинера {
             // TODO: 17.03.2022
             Context context;
             // TODO: 17.03.2022
@@ -1545,49 +1567,10 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                 // TODO: 17.03.2022
                 this.context = context;
 
-                sqLiteCursorКурсорПолучаемВсеФИоДляНовойЗадачиКому = МетодПолучаемГлавныеДанныеДляSpinnerКомуЗадачаФИО();
-
                 // TODO: 02.03.2022
                 Log.i(this.getClass().getName(), "  sqLiteCursorКурсорПолучаемВсеФИоДляНовойЗадачиКому " + sqLiteCursorКурсорПолучаемВсеФИоДляНовойЗадачиКому);
             }
 
-            @Override
-            public int getCount() {
-                // TODO: 17.03.2022
-                Log.d(this.getClass().getName(), "getCount sqLiteCursorКурсорПолучаемВсеФИоДляНовойЗадачиКому.getCount() " +
-                        " " + sqLiteCursorКурсорПолучаемВсеФИоДляНовойЗадачиКому.getCount());
-                return sqLiteCursorКурсорПолучаемВсеФИоДляНовойЗадачиКому.getCount();
-            }
-
-            @Override
-            public Object getItem(int position) {
-                Log.d(this.getClass().getName(), "getItem ");
-                return sqLiteCursorКурсорПолучаемВсеФИоДляНовойЗадачиКому.move(position);
-            }
-
-            @Override
-            public long getItemId(int position) {
-                Log.d(this.getClass().getName(), "getItemId  position " + position);
-                return position;
-            }
-
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                Log.d(this.getClass().getName(), "getView ");
-                // TODO: 17.03.2022
-                Log.d(this.getClass().getName(), "getDropDownView ");
-                TextView text = new TextView(context);
-                return text;
-            }
-
-            @Override
-            public View getDropDownView(int position, View convertView,
-                                        ViewGroup parent) {
-                // TODO: 17.03.2022
-                Log.d(this.getClass().getName(), "getDropDownView ");
-                TextView text = new TextView(context);
-                return text;
-            }
             // TODO: 17.03.2022  ПЕРЕНЕСЕНЫЙ МЕТОД ДЛЯ КУРСОР ДЛЯ ФИО ДЛЯ СПИНЕРА
 
             // TODO: 28.02.2022 Под Класс порлучение данных для активти
