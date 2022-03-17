@@ -15,8 +15,10 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
@@ -41,10 +43,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import org.jetbrains.annotations.NotNull;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -297,6 +296,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             }
             return Курсор_ГлавныйКурсорДляЗадач;
         }
+// TODO: 17.03.2022 ЕЩЕ КУРСОР ДЛЯ СПИНЕРА фио ДЛЯ КОГО СОЗДАНО ЗАДАНИЕ
 
 
         // TODO: 04.03.2022  класс в котором находяться слушатели
@@ -931,7 +931,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     МетодБиндингаНомерЗадания(holder);
 
 
-                    // TODO: 14.03.2022  метод создания дата задания
+                    // TODO: 14.03.2022  метод создания spinnerДляСозданиеНовойЗадачи
                     МетодБиндингаДатаЗадания(holder);
 
 
@@ -1103,21 +1103,38 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                 }
             }
 
+            // TODO: 17.03.2022  получаем данные для спинера
             private void МетодБиндингаДатаЗадания(@NonNull MyViewHolder holder) throws ParseException {
                 try {
                     // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3
 
-                    // TODO: 03.03.2022 парсинг даты
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", new Locale("ru"));
-                    // TODO: 13.03.2022
-                    dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", new Locale("ru"));
-                    Date datwe = new Date();
-                  /*  // TODO: 13.03.2022
-                    Date date = dateFormat.parse(datwe);*/
-                    // TODO: 13.03.2022
+                    КлассАдаптерДляСпинера классАдаптерДляСпинера = new КлассАдаптерДляСпинера(getContext());
+                    // TODO: 17.03.2022
 
+                    SQLiteCursor sqLiteCursorПолученныйФИОДЛЯSpinnerДляНовойЗадачи = классАдаптерДляСпинера.МетодПолучаемГлавныеДанныеДляSpinnerКомуЗадачаФИО();
+
+
+///TODO ГЛАВНЫЙ АДАПТЕР чата
+                    SimpleCursorAdapter АдаптерДляЗаписиЧтенияЧата = new SimpleCursorAdapter(getContext(), android.R.layout.simple_spinner_item, sqLiteCursorПолученныйФИОДЛЯSpinnerДляНовойЗадачи,
+                            new String[]{"user_update", "date_update"},
+                            new int[]{android.R.id.text1}, 0);
                     // TODO: 28.02.2022
+
+
+                    // TODO: 17.03.2022
+
+                    ArrayAdapter adapter = new ArrayAdapter<String>(getContext(),
+                            android.R.layout.simple_spinner_item, (List<String>) классАдаптерДляСпинера);
+
+
                     holder.spinnerДляСозданиеНовойЗадачи.setEnabled(true);
+
+
+                    holder.spinnerДляСозданиеНовойЗадачи.setAdapter(АдаптерДляЗаписиЧтенияЧата);
+
+                    holder.spinnerДляСозданиеНовойЗадачи.setAdapter(adapter);
+
+
                 } catch (Exception e) {
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
@@ -1521,36 +1538,122 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
         private class КлассАдаптерДляСпинера extends BaseAdapter implements SpinnerAdapter {
             // TODO: 17.03.2022
             Context context;
+            // TODO: 17.03.2022
+            SQLiteCursor sqLiteCursorКурсорПолучаемВсеФИоДляНовойЗадачиКому;
 
-            public КлассАдаптерДляСпинера(Context context) {
+            public КлассАдаптерДляСпинера(Context context) throws ExecutionException, InterruptedException {
                 // TODO: 17.03.2022
                 this.context = context;
+
+                sqLiteCursorКурсорПолучаемВсеФИоДляНовойЗадачиКому = МетодПолучаемГлавныеДанныеДляSpinnerКомуЗадачаФИО();
+
+                // TODO: 02.03.2022
+                Log.i(this.getClass().getName(), "  sqLiteCursorКурсорПолучаемВсеФИоДляНовойЗадачиКому " + sqLiteCursorКурсорПолучаемВсеФИоДляНовойЗадачиКому);
             }
 
             @Override
             public int getCount() {
                 // TODO: 17.03.2022
-                Log.d(this.getClass().getName(), "getCount ");
-                return 0;
+                Log.d(this.getClass().getName(), "getCount sqLiteCursorКурсорПолучаемВсеФИоДляНовойЗадачиКому.getCount() " +
+                        " " + sqLiteCursorКурсорПолучаемВсеФИоДляНовойЗадачиКому.getCount());
+                return sqLiteCursorКурсорПолучаемВсеФИоДляНовойЗадачиКому.getCount();
             }
 
             @Override
             public Object getItem(int position) {
                 Log.d(this.getClass().getName(), "getItem ");
-                return null;
+                return sqLiteCursorКурсорПолучаемВсеФИоДляНовойЗадачиКому.move(position);
             }
 
             @Override
             public long getItemId(int position) {
-                Log.d(this.getClass().getName(), "getItemId ");
-                return 0;
+                Log.d(this.getClass().getName(), "getItemId  position " + position);
+                return position;
             }
 
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 Log.d(this.getClass().getName(), "getView ");
-                return null;
+                // TODO: 17.03.2022
+                Log.d(this.getClass().getName(), "getDropDownView ");
+                TextView text = new TextView(context);
+                return text;
             }
+
+            @Override
+            public View getDropDownView(int position, View convertView,
+                                        ViewGroup parent) {
+                // TODO: 17.03.2022
+                Log.d(this.getClass().getName(), "getDropDownView ");
+                TextView text = new TextView(context);
+                return text;
+            }
+            // TODO: 17.03.2022  ПЕРЕНЕСЕНЫЙ МЕТОД ДЛЯ КУРСОР ДЛЯ ФИО ДЛЯ СПИНЕРА
+
+            // TODO: 28.02.2022 Под Класс порлучение данных для активти
+            SQLiteCursor МетодПолучаемГлавныеДанныеДляSpinnerКомуЗадачаФИО() throws ExecutionException, InterruptedException {
+                // TODO: 26.08.2021 НОВЫЙ ВЫЗОВ НОВОГО КЛАСС GRUD - ОПЕРАЦИИ
+                SQLiteCursor sqLiteCursorКурсорВсеФИОДЛяSpinneraДляКогоЗадание = null;
+                try {
+                    ///
+                    Class_GRUD_SQL_Operations class_grud_sql_operationsIDпользоввателяДляСлужб = new Class_GRUD_SQL_Operations(getContext());
+                    ///
+                    class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("НазваниеОбрабоатываемойТаблицы", "chat_users");//old для другой уведомления data_chat
+                    ///////
+                    class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("СтолбцыОбработки", "*");
+                    //
+/*                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика", "   user_update=? " +
+                        " AND message IS NOT NULL  ");
+                // TODO: 02.03.2022
+                ///"_id > ?   AND _id< ?"
+              *//*  class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика","status_write=?  AND id_user=? " +
+                        " AND message IS NOT NULL  ");
+                ///"_id > ?   AND _id< ?"
+*//*
+                     *//*
+                //////
+                class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска1",1);//todo 0*//*
+                //
+
+
+                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска1", ПубличноеIDПолученныйИзСервлетаДляUUID);//todo old ПубличноеIDПолученныйИзСервлетаДляUUID
+                // TODO: 02.03.2022
+                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеСортировки", " status_write, date_update DESC ");//todo "date_update DESC, status_write DESC"*/
+                    ////
+                    // class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеЛимита","1");
+                    ////
+                    //class_grud_sql_operationsIDпользоввателяДляСлужб. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеЛимита","1");
+                    // TODO: 27.08.2021  ПОЛУЧЕНИЕ ДАННЫХ ОТ КЛАССА GRUD-ОПЕРАЦИИ
+                    ///
+                    sqLiteCursorКурсорВсеФИОДЛяSpinneraДляКогоЗадание = null;
+                    // TODO: 03.03.2022  глаВНЫЙ КУРСОР ДЛЯ ЗАДАЧ
+                    sqLiteCursorКурсорВсеФИОДЛяSpinneraДляКогоЗадание = (SQLiteCursor) class_grud_sql_operationsIDпользоввателяДляСлужб.
+                            new GetData(getContext()).getdata(class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций,
+                            new PUBLIC_CONTENT(context).МенеджерПотоков, new CREATE_DATABASE(context).getССылкаНаСозданнуюБазу());
+                    // TODO: 02.03.2022
+                    if (sqLiteCursorКурсорВсеФИОДЛяSpinneraДляКогоЗадание.getCount() > 0) {
+                        // TODO: 03.03.2022
+                        Log.d(this.getClass().getName(), "Курсор_ГлавныйКурсорДляЗадач " + sqLiteCursorКурсорВсеФИОДЛяSpinneraДляКогоЗадание);
+                        // TODO: 03.03.2022
+                        sqLiteCursorКурсорВсеФИОДЛяSpinneraДляКогоЗадание.moveToFirst();
+                    }
+                    ////////
+                    Log.d(this.getClass().getName(), "Курсор_ГлавныйКурсорДляЗадач " + sqLiteCursorКурсорВсеФИОДЛяSpinneraДляКогоЗадание);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+                return sqLiteCursorКурсорВсеФИОДЛяSpinneraДляКогоЗадание;
+            }
+
+
+/////////////////////////////////////////////
         }
 
 
