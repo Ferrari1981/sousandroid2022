@@ -1254,7 +1254,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                 ((TextView) parent.getChildAt(0)).setHint("Кому задание ?");
                                 // TODO: 18.03.2022
                             } else {
-                                ((TextView) parent.getChildAt(0)).setTextSize(16f);
+                                ((TextView) parent.getChildAt(0)).setTextSize(15f);
                             }
 
                         }
