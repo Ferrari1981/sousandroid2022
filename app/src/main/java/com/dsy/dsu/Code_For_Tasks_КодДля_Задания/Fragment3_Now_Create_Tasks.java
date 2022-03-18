@@ -11,11 +11,14 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CursorAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -929,6 +932,9 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
 
                     // TODO: 14.03.2022  метод создания spinnerДляСозданиеНовойЗадачи
+                    МетодБиндингаДелаемСлушательДляSpinnerЗадания(holder);
+
+                    // TODO: 14.03.2022  метод создания spinnerДляСозданиеНовойЗадачи
                     МетодБиндингаДатаЗадания(holder);
 
 
@@ -1060,7 +1066,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             private void МетодБиндингаФИОДляЗадания(@NonNull MyViewHolder holder) throws ExecutionException, InterruptedException {
                 try {
                     // TODO: 02.03.2022#4  // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4
-
+                    Integer ПозицияДанныхВSpinner = 0;
                     // TODO: 02.03.2022
                     Log.i(this.getClass().getName(), "  КтоНаписалСообщениеФИОдЛПосика ");
                     // TODO: 02.03.2022
@@ -1100,10 +1106,18 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                 }
             }
 
+
+            @Override
+            public void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull List<Object> payloads) {
+                super.onBindViewHolder(holder, position, payloads);
+            }
+
             // TODO: 17.03.2022  получаем данные для спинера
             private void МетодБиндингаДатаЗадания(@NonNull MyViewHolder holder) throws ParseException {
                 try {
                     // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3
+
+
                     SQLiteCursor sqLiteCursorПолученныйФИОДЛЯSpinnerДляНовойЗадачи = null;
                     // TODO: 17.03.2022
                     sqLiteCursorПолученныйФИОДЛЯSpinnerДляНовойЗадачи = new КлассАдаптерДляСпинера(getContext()).МетодПолучаемГлавныеДанныеДляSpinnerКомуЗадачаФИО();
@@ -1111,7 +1125,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 ///TODO ГЛАВНЫЙ АДАПТЕР чата
                     SimpleCursorAdapter АдаптерДляФИОПриСозданииНовойЗадачи = new SimpleCursorAdapter(getContext(), android.R.layout.simple_spinner_item, sqLiteCursorПолученныйФИОДЛЯSpinnerДляНовойЗадачи,
                             new String[]{"name"},
-                            new int[]{android.R.id.text1}, 0);
+                            new int[]{android.R.id.text1}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 
                     // TODO: 17.03.2022
                     SimpleCursorAdapter.ViewBinder БиндингДляSpinnerФИОСозданиеНовойЗадачи = new SimpleCursorAdapter.ViewBinder() {
@@ -1145,35 +1159,52 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                             ((TextView) view).setCompoundDrawables(icon, null, null, null);
 
+                            Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска +
+                                    "    ((TextView) view).getHint() " + ((TextView) view).getHint() + "         View bb =holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0); " +
+                                    holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0));
+                            // TODO: 18.03.2022  сам слушатель
 
 
-                            Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска);
+                            ((TextView) view).setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
 
-                            if (ФИОДляПОиска != null) {
-                                // TODO: 17.03.2022
+
+                            if (ФИОДляПОиска.isEmpty()) {
+                                // TODO: 18.03.2022
+                                ((TextView) view).setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
+                                // TODO: 17.03.2022 ЗАПОЯЕМ ЗАДАЧУ фио и id на каждого
                                 ((TextView) view).setText(ФИОДляПОиска.trim());
                                 // TODO: 17.03.2022
                                 ((TextView) view).setTextSize(15f);
                                 // TODO: 18.03.2022
                                 ((TextView) view).setTag(ПубличныIdДляВыбранныхФИО);
-
-                                Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска + " ПубличныIdДляВыбранныхФИО " + ПубличныIdДляВыбранныхФИО + " view " + view.getTag());
+                                // TODO: 18.03.2022
+                                // TODO: 18.03.2022
+                                ((TextView) view).setId(Math.toIntExact(ПубличныIdДляВыбранныхФИО));
+                                // TODO: 18.03.2022
+                                Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска + " ПубличныIdДляВыбранныхФИО " + ПубличныIdДляВыбранныхФИО + " view " + view.getTag() +
+                                        " АдаптерДляФИОПриСозданииНовойЗадачи " + "     holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition() " + holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition());
+                                Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска + " ПубличныIdДляВыбранныхФИО " + ПубличныIdДляВыбранныхФИО + " view " + view.getTag() +
+                                        " АдаптерДляФИОПриСозданииНовойЗадачи " + "     holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition() " + holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition());
                                 return true;
+
+
                             } else {
-                                // TODO: 17.03.2022
-                                Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска);
+                                // TODO: 18.03.2022
                                 return false;
                             }
-                            ///
+                            // TODO: 18.03.2022
 
                         }
+
+                        // TODO: 18.03.2022  перенессыц код
+
+
                     };
                     // TODO: 17.03.2022
                     АдаптерДляФИОПриСозданииНовойЗадачи.setViewBinder(БиндингДляSpinnerФИОСозданиеНовойЗадачи);
                     // TODO: 28.02.2022
                     holder.spinnerДляСозданиеНовойЗадачи.setAdapter(АдаптерДляФИОПриСозданииНовойЗадачи);
                     // TODO: 17.03.2022
-
                     Log.e(this.getClass().getName(), "АдаптерДляФИОПриСозданииНовойЗадачи  ");
 
                     // TODO: 17.03.2022
@@ -1187,6 +1218,57 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
                 }
             }
+
+
+            // TODO: 18.03.2022  метод делаем слушатель на spinner
+
+            void МетодБиндингаДелаемСлушательДляSpinnerЗадания(@NonNull MyViewHolder holder) throws ParseException {
+                try {
+                    // TODO: 18.03.2022
+                    Log.e(this.getClass().getName(), "МетодБиндингаДелаемСлушательДляSpinnerЗадания  ");
+                    //
+                    holder.spinnerДляСозданиеНовойЗадачи.setHorizontalScrollBarEnabled(true);
+
+                    // TODO: 18.03.2022  сам слушатель
+                    holder.spinnerДляСозданиеНовойЗадачи.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            // TODO: 18.03.2022
+                            view.setSelected(true);
+
+                            ((TextView) parent.getChildAt(0)).setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
+                            // TODO: 18.03.2022
+
+                            // TODO: 18.03.2022
+
+                            if (position == 0) {
+                                ((TextView) parent.getChildAt(0)).setText("");
+                                // TODO: 18.03.2022
+                                ((TextView) parent.getChildAt(0)).setHint("Ктооо?");
+                                // TODO: 18.03.2022
+                            } else {
+                            }
+
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+                            Log.e(this.getClass().getName(), "АдаптерДляФИОПриСозданииНовойЗадачи  ");
+                        }
+                    });
+                    // TODO: 18.03.2022
+                    // TODO: 17.03.2022
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+            }
+
 
             private void МетодБиндингаНомерЗадания(@NonNull MyViewHolder holder) {
                 try {
