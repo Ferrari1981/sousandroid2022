@@ -1118,8 +1118,22 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                         @Override
                         public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
 
+                            // TODO: 18.03.2022  получаем ФИО людей для кого задание
+
                             int ИндексФИО = cursor.getColumnIndex("name");
+
+                            String ФИОДляПОиска = cursor.getString(ИндексФИО);
                             ////
+                            Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска);
+
+                            // TODO: 18.03.2022  получаем ПУБЛИЧНЫЙ ID длявыбранных ФИО
+
+                            int ИндексПубличныIdДляВыбранныхФИО = cursor.getColumnIndex("_id");
+
+                            Long ПубличныIdДляВыбранныхФИО = cursor.getLong(ИндексПубличныIdДляВыбранныхФИО);
+                            ////
+                            Log.d(this.getClass().getName(), " ПубличныIdДляВыбранныхФИО  " + ПубличныIdДляВыбранныхФИО);
+
                             Drawable icon = null;
                             //
 
@@ -1131,7 +1145,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                             ((TextView) view).setCompoundDrawables(icon, null, null, null);
 
-                            String ФИОДляПОиска = cursor.getString(ИндексФИО);
+
 
                             Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска);
 
@@ -1139,8 +1153,11 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                 // TODO: 17.03.2022
                                 ((TextView) view).setText(ФИОДляПОиска.trim());
                                 // TODO: 17.03.2022
-                                ((TextView) view).setTextSize(14f);
-                                Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска);
+                                ((TextView) view).setTextSize(15f);
+                                // TODO: 18.03.2022
+                                ((TextView) view).setTag(ПубличныIdДляВыбранныхФИО);
+
+                                Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска + " ПубличныIdДляВыбранныхФИО " + ПубличныIdДляВыбранныхФИО + " view " + view.getTag());
                                 return true;
                             } else {
                                 // TODO: 17.03.2022
