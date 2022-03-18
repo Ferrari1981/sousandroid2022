@@ -1180,7 +1180,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                 // TODO: 17.03.2022 ЗАПОЯЕМ ЗАДАЧУ фио и id на каждого
                                 ((TextView) view).setText(ФИОДляПОиска.trim());
                                 // TODO: 17.03.2022
-                                ((TextView) view).setTextSize(15f);
+                                ((TextView) view).setTextSize(14f);
                                 // TODO: 18.03.2022
                                 ((TextView) view).setTag(ПубличныIdДляВыбранныхФИО);
                                 // TODO: 18.03.2022
@@ -1199,6 +1199,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                 ((TextView) view).setText("");
                                 // TODO: 18.03.2022
                                 ((TextView) view).setHint("Кому задание ?");
+                                ((TextView) view).setTextSize(15f);
                             }
                             // TODO: 18.03.2022
                             return true;
@@ -1253,8 +1254,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                 // TODO: 18.03.2022
                                 ((TextView) parent.getChildAt(0)).setHint("Кому задание ?");
                                 // TODO: 18.03.2022
-                            } else {
                                 ((TextView) parent.getChildAt(0)).setTextSize(15f);
+                                // TODO: 18.03.2022
                             }
 
                         }
