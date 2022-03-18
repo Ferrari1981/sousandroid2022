@@ -1769,6 +1769,11 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     ///////
                     class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("СтолбцыОбработки", "*");
                     //
+                    //  class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеСортировки", " name ");//todo "date_update DESC, status_write DESC"*/
+                    //
+                    class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФлагНепотораяемостиСтрок", true);//todo "date_update DESC, status_write DESC"*/
+
+
 /*                class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика", "   user_update=? " +
                         " AND message IS NOT NULL  ");
                 // TODO: 02.03.2022
