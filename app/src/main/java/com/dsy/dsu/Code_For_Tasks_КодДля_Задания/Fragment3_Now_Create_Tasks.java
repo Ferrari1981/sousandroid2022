@@ -1108,8 +1108,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
 
             @Override
-            public void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull List<Object> payloads) {
-                super.onBindViewHolder(holder, position, payloads);
+            public int getItemViewType(int position) {
+                return super.getItemViewType(position);
             }
 
             // TODO: 17.03.2022  получаем данные для спинера
@@ -1160,16 +1160,22 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                             ((TextView) view).setCompoundDrawables(icon, null, null, null);
 
                             Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска +
-                                    "    ((TextView) view).getHint() " + ((TextView) view).getHint() + "         View bb =holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0); " +
-                                    holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0));
+                                    "    ((TextView) view).getHint() " + ((TextView) view).getHint());
                             // TODO: 18.03.2022  сам слушатель
 
 
                             ((TextView) view).setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
 
 
-                            if (ФИОДляПОиска.isEmpty()) {
+                            if (holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0) != null) {
                                 // TODO: 18.03.2022
+
+                                // TODO: 18.03.2022
+                                Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска +
+                                        "    ((TextView) view).getHint() " + ((TextView) view).getHint() + "         View bb =holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0); " +
+                                        holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0).isSelected() + " holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0).isContextClickable() "
+                                        + holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0).isPressed() + " position " + holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0).isFocused());
+
                                 ((TextView) view).setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
                                 // TODO: 17.03.2022 ЗАПОЯЕМ ЗАДАЧУ фио и id на каждого
                                 ((TextView) view).setText(ФИОДляПОиска.trim());
@@ -1180,20 +1186,22 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                 // TODO: 18.03.2022
                                 // TODO: 18.03.2022
                                 ((TextView) view).setId(Math.toIntExact(ПубличныIdДляВыбранныхФИО));
+
                                 // TODO: 18.03.2022
                                 Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска + " ПубличныIdДляВыбранныхФИО " + ПубличныIdДляВыбранныхФИО + " view " + view.getTag() +
                                         " АдаптерДляФИОПриСозданииНовойЗадачи " + "     holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition() " + holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition());
                                 Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска + " ПубличныIdДляВыбранныхФИО " + ПубличныIdДляВыбранныхФИО + " view " + view.getTag() +
                                         " АдаптерДляФИОПриСозданииНовойЗадачи " + "     holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition() " + holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition());
-                                return true;
 
 
                             } else {
                                 // TODO: 18.03.2022
-                                return false;
+                                ((TextView) view).setText("");
+                                // TODO: 18.03.2022
+                                ((TextView) view).setHint("Кому задание ?");
                             }
                             // TODO: 18.03.2022
-
+                            return true;
                         }
 
                         // TODO: 18.03.2022  перенессыц код
@@ -1228,7 +1236,6 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     Log.e(this.getClass().getName(), "МетодБиндингаДелаемСлушательДляSpinnerЗадания  ");
                     //
                     holder.spinnerДляСозданиеНовойЗадачи.setHorizontalScrollBarEnabled(true);
-
                     // TODO: 18.03.2022  сам слушатель
                     holder.spinnerДляСозданиеНовойЗадачи.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
@@ -1244,9 +1251,10 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                             if (position == 0) {
                                 ((TextView) parent.getChildAt(0)).setText("");
                                 // TODO: 18.03.2022
-                                ((TextView) parent.getChildAt(0)).setHint("Ктооо?");
+                                ((TextView) parent.getChildAt(0)).setHint("Кому задание ?");
                                 // TODO: 18.03.2022
                             } else {
+                                ((TextView) parent.getChildAt(0)).setTextSize(16f);
                             }
 
                         }
