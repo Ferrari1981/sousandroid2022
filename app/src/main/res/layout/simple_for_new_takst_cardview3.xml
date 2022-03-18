@@ -108,6 +108,10 @@
             <SeekBar
                 android:id="@+id/seekBar_for_tasks_create_new"
                 style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:stepSize="1"
+                android:tickMark="@drawable/tasksseek_style"
+                android:valueFrom="0"
+                android:valueTo="5"
                 android:layout_width="380dp"
                 android:layout_height="40dp"
                 android:layout_below="@+id/Spinner_innercardviewfour"

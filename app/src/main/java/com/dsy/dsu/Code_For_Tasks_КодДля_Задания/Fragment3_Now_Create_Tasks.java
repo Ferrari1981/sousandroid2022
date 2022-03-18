@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CursorAdapter;
+import android.widget.SeekBar;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -803,6 +804,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             Button buttonДляСозданиеНовогоЗадания;
             // TODO: 02.03.2022
             Spinner spinnerДляСозданиеНовойЗадачи;
+            // TODO: 18.03.2022
+            SeekBar seekBarДляВЫбораКакаяЗадачаВыполяется;
 
             public MyViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -837,6 +840,9 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                     // TODO: 16.03.2022
                     buttonДляСозданиеНовогоЗадания.setBackgroundResource(R.drawable.style_for_task_new_create_save);
+                    // TODO: 18.03.2022
+
+                    seekBarДляВЫбораКакаяЗадачаВыполяется = (SeekBar) itemView.findViewById(R.id.seekBar_for_tasks_create_new);
 
                     Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 materialCardView   " + materialCardView);
                     // TODO: 01.03.2022*/
@@ -972,7 +978,12 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + BungleДанныеДляViewCard + " СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
 
 
-                    // TODO: 13.03.2022 настройки для carview
+                    МетодБиндингаДелаемСлушательДляSeedBars(holder);
+
+                    Log.i(this.getClass().getName(), "      МетодБиндингаДелаемСлушательДляSeedBars  holder.seekBarДляВЫбораКакаяЗадачаВыполяется  " + holder.seekBarДляВЫбораКакаяЗадачаВыполяется);
+
+
+                    // TODO: 13.03.2022 настройки для carview КОНЕЦ ВЫЗЫВАЕМЫХ МЕТОДОВ
 
                     holder.materialCardView.toggle();
 
@@ -1196,7 +1207,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                             } else {
                                 // TODO: 18.03.2022
-                                ((TextView) view).setText("");
+                                //((TextView) view).setText("");
                                 // TODO: 18.03.2022
                                 ((TextView) view).setHint("Кому задание ?");
                                 ((TextView) view).setTextSize(15f);
@@ -1250,19 +1261,29 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                             // TODO: 18.03.2022
 
                             if (position == 0) {
-                                ((TextView) parent.getChildAt(0)).setText("");
+                                //((TextView) parent.getChildAt(0)).setText("");
                                 // TODO: 18.03.2022
                                 ((TextView) parent.getChildAt(0)).setHint("Кому задание ?");
                                 // TODO: 18.03.2022
                                 ((TextView) parent.getChildAt(0)).setTextSize(15f);
                                 // TODO: 18.03.2022
+                                // TODO: 17.03.2022
+                                Log.w(this.getClass().getName(), "АдаптерДляФИОПриСозданииНовойЗадачи position  " + position + " id " + id + " view " + view);
+                            } else {
+
+                                view.setSelected(true);
+                                // TODO: 18.03.2022
+                                Object string = holder.spinnerДляСозданиеНовойЗадачи.getItemAtPosition(position);
+
+                                // TODO: 17.03.2022
+                                Log.w(this.getClass().getName(), "АдаптерДляФИОПриСозданииНовойЗадачи  " + string + "  position " + position + " id " + id + " view " + view);
                             }
 
                         }
 
                         @Override
                         public void onNothingSelected(AdapterView<?> parent) {
-                            Log.e(this.getClass().getName(), "АдаптерДляФИОПриСозданииНовойЗадачи  ");
+                            Log.w(this.getClass().getName(), "АдаптерДляФИОПриСозданииНовойЗадачи  ");
                         }
                     });
                     // TODO: 18.03.2022
@@ -1277,7 +1298,54 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
                 }
             }
+            // TODO: 18.03.2022  метод СОДАЕМ СЛУШАТЕЛЬ ДЛЯ ВЫБОРА ПЕРИОДА ЗАДАЧА SEELBAR
 
+            void МетодБиндингаДелаемСлушательДляSeedBars(@NonNull MyViewHolder holder) throws ParseException {
+                try {
+                    // TODO: 18.03.2022
+                    Log.e(this.getClass().getName(), "МетодБиндингаДелаемСлушательДляSeedBars  ");
+                    //
+
+                    // TODO: 18.03.2022  сам слушатель  SeekBar
+
+                    holder.seekBarДляВЫбораКакаяЗадачаВыполяется.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                        @Override
+                        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                            Log.w(this.getClass().getName(), "setOnSeekBarChangeListener  ");
+                        }
+
+                        @Override
+                        public void onStartTrackingTouch(SeekBar seekBar) {
+                            Log.w(this.getClass().getName(), "onStartTrackingTouch  ");
+                        }
+
+                        @Override
+                        public void onStopTrackingTouch(SeekBar seekBar) {
+                            Log.w(this.getClass().getName(), "onStopTrackingTouch  ");
+                        }
+                    });
+                    // TODO: 18.03.2022  второй слушатель
+
+                    holder.seekBarДляВЫбораКакаяЗадачаВыполяется.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                        @Override
+                        public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                            Log.w(this.getClass().getName(), "onScrollChange  ");
+                        }
+                    });
+
+
+                    // TODO: 18.03.2022
+                    // TODO: 17.03.2022
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+            }
 
             private void МетодБиндингаНомерЗадания(@NonNull MyViewHolder holder) {
                 try {
