@@ -1260,7 +1260,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                             // TODO: 18.03.2022
 
-                            if (position == 0) {
+               /*             if (position == 0) {
                                 //((TextView) parent.getChildAt(0)).setText("");
                                 // TODO: 18.03.2022
                                 ((TextView) parent.getChildAt(0)).setHint("Кому задание ?");
@@ -1277,7 +1277,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                                 // TODO: 17.03.2022
                                 Log.w(this.getClass().getName(), "АдаптерДляФИОПриСозданииНовойЗадачи  " + string + "  position " + position + " id " + id + " view " + view);
-                            }
+                            }*/
 
                         }
 
