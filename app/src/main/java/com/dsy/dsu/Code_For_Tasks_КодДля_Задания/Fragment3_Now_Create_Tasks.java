@@ -1312,6 +1312,10 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                         @Override
                         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                             Log.w(this.getClass().getName(), "setOnSeekBarChangeListener  ");
+                            // TODO: 18.03.2022
+                            // TODO: 10.03.2022
+                            вибратор.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+
                         }
 
                         @Override
@@ -1330,6 +1334,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                         @Override
                         public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                             Log.w(this.getClass().getName(), "onScrollChange  ");
+
                         }
                     });
 
