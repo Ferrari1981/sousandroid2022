@@ -1322,8 +1322,10 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                             вибратор.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
                             // TODO: 18.03.2022
                             seekBar.incrementSecondaryProgressBy(progress);
+                            // TODO: 18.03.2022
+                            seekBar.setIndeterminate(true);
 
-                            String[] string = new String[]{"Одноразовая", "Раз в час", "Раз в сутки", "Раз в неделю", "Раз в месяц"};
+                            String[] ЗадачиДЛяВЫбора = new String[]{"Одноразовая", "Раз в час", "Раз в сутки", "Раз в неделю", "Раз в месяц"};
 
                             // TODO: 18.03.2022
 
@@ -1333,39 +1335,49 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                     // TODO: 18.03.2022
                                     holder.textView7.setText("выберете тип задачи");
                                     // TODO: 18.03.2022
-                                    Log.w(this.getClass().getName(), "string[0]   " + string[0]);
-
+                                    Log.w(this.getClass().getName(), "string[0]   " + ЗадачиДЛяВЫбора[0].trim());
+// TODO: 18.03.2022
+                                    seekBar.setIndeterminate(false);
                                     break;
                                 case 1:
                                     // TODO: 18.03.2022
-                                    holder.textView7.setText(string[0]);
+                                    holder.textView7.setText(ЗадачиДЛяВЫбора[0]);
                                     // TODO: 18.03.2022
-                                    Log.w(this.getClass().getName(), "string[0]   " + string[0]);
-
+                                    Log.w(this.getClass().getName(), "string[0]   " + ЗадачиДЛяВЫбора[0].trim());
+// TODO: 18.03.2022
+                                    seekBar.setIndeterminate(false);
                                     break;
                                 case 2:
                                     // TODO: 18.03.2022
-                                    holder.textView7.setText(string[1]);
+                                    holder.textView7.setText(ЗадачиДЛяВЫбора[1]);
                                     // TODO: 18.03.2022
-                                    Log.w(this.getClass().getName(), "string[1]   " + string[1]);
+                                    Log.w(this.getClass().getName(), "string[1]   " + ЗадачиДЛяВЫбора[1].trim());
+                                    // TODO: 18.03.2022
+                                    seekBar.setIndeterminate(false);
                                     break;
                                 case 3:
                                     // TODO: 18.03.2022
-                                    holder.textView7.setText(string[2]);
+                                    holder.textView7.setText(ЗадачиДЛяВЫбора[2]);
                                     // TODO: 18.03.2022
-                                    Log.w(this.getClass().getName(), "string[2]   " + string[2]);
+                                    Log.w(this.getClass().getName(), "string[2]   " + ЗадачиДЛяВЫбора[2].trim());
+                                    // TODO: 18.03.2022
+                                    seekBar.setIndeterminate(false);
                                     break;
                                 case 4:
                                     // TODO: 18.03.2022
-                                    holder.textView7.setText(string[3]);
+                                    holder.textView7.setText(ЗадачиДЛяВЫбора[3]);
                                     // TODO: 18.03.2022
-                                    Log.w(this.getClass().getName(), "string[3]   " + string[3]);
+                                    Log.w(this.getClass().getName(), "string[3]   " + ЗадачиДЛяВЫбора[3].trim());
+                                    // TODO: 18.03.2022
+                                    seekBar.setIndeterminate(false);
                                     break;
                                 case 5:
                                     // TODO: 18.03.2022
-                                    holder.textView7.setText(string[4]);
+                                    holder.textView7.setText(ЗадачиДЛяВЫбора[4]);
                                     // TODO: 18.03.2022
-                                    Log.w(this.getClass().getName(), "string[4]   " + string[4]);
+                                    Log.w(this.getClass().getName(), "string[4]   " + ЗадачиДЛяВЫбора[4].trim());
+                                    // TODO: 18.03.2022
+                                    seekBar.setIndeterminate(false);
                                     break;
                                 // TODO: 18.03.2022
                                 default:
