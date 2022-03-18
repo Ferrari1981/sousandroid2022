@@ -806,6 +806,10 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             Spinner spinnerДляСозданиеНовойЗадачи;
             // TODO: 18.03.2022
             SeekBar seekBarДляВЫбораКакаяЗадачаВыполяется;
+            // TODO: 18.03.2022
+            TextView textView7;
+
+            // TODO: 18.03.2022
 
             public MyViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -843,6 +847,9 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 18.03.2022
 
                     seekBarДляВЫбораКакаяЗадачаВыполяется = (SeekBar) itemView.findViewById(R.id.seekBar_for_tasks_create_new);
+                    // TODO: 18.03.2022
+                    textView7 = (TextView) itemView.findViewById(R.id.text2_innercardviewtwoSettasksType);
+
 
                     Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 materialCardView   " + materialCardView);
                     // TODO: 01.03.2022*/
@@ -1313,6 +1320,58 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                             // TODO: 18.03.2022
                             // TODO: 10.03.2022
                             вибратор.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+                            // TODO: 18.03.2022
+                            seekBar.incrementSecondaryProgressBy(progress);
+
+                            String[] string = new String[]{"Одноразовая", "Раз в час", "Раз в сутки", "Раз в неделю", "Раз в месяц"};
+
+                            // TODO: 18.03.2022
+
+                            switch (progress) {
+                                // TODO: 18.03.2022
+                                case 0:
+                                    // TODO: 18.03.2022
+                                    holder.textView7.setText("выберете тип задачи");
+                                    // TODO: 18.03.2022
+                                    Log.w(this.getClass().getName(), "string[0]   " + string[0]);
+
+                                    break;
+                                case 1:
+                                    // TODO: 18.03.2022
+                                    holder.textView7.setText(string[0]);
+                                    // TODO: 18.03.2022
+                                    Log.w(this.getClass().getName(), "string[0]   " + string[0]);
+
+                                    break;
+                                case 2:
+                                    // TODO: 18.03.2022
+                                    holder.textView7.setText(string[1]);
+                                    // TODO: 18.03.2022
+                                    Log.w(this.getClass().getName(), "string[1]   " + string[1]);
+                                    break;
+                                case 3:
+                                    // TODO: 18.03.2022
+                                    holder.textView7.setText(string[2]);
+                                    // TODO: 18.03.2022
+                                    Log.w(this.getClass().getName(), "string[2]   " + string[2]);
+                                    break;
+                                case 4:
+                                    // TODO: 18.03.2022
+                                    holder.textView7.setText(string[3]);
+                                    // TODO: 18.03.2022
+                                    Log.w(this.getClass().getName(), "string[3]   " + string[3]);
+                                    break;
+                                case 5:
+                                    // TODO: 18.03.2022
+                                    holder.textView7.setText(string[4]);
+                                    // TODO: 18.03.2022
+                                    Log.w(this.getClass().getName(), "string[4]   " + string[4]);
+                                    break;
+                                // TODO: 18.03.2022
+                                default:
+                                    break;
+                            }
+
 
                         }
 
