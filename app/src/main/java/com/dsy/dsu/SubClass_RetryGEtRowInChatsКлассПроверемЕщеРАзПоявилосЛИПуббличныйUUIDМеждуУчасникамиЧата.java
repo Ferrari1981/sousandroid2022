@@ -77,8 +77,8 @@ public class SubClass_RetryGEtRowInChatsКлассПроверемЕщеРАзП
                     new GetаFreeData(context)
                     .getfreedata(class_grud_sql_operations_ДляПовторногоПоискаПуцбличногоUUIDМеждуУчасникамиперпискиЧатаТекущего
                                     .concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций,
-                            public_content.МенеджерПотоков,
-                            create_database.getССылкаНаСозданнуюБазу());
+                            completionServiceНОваяЗадача,
+                            sqLiteDatabaseНоваяЗадача);
 
 
             if (КурсорДанныеИщемНЕПоявильсяЛиПубличныйUUIDМеджуУчасникамиПереписки.getCount() > 0) {
