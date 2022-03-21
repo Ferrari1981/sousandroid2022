@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CursorAdapter;
@@ -66,7 +67,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
     // TODO: 14.03.2022
     private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3.MyViewHolder myViewHolder;
     // TODO: 14.03.2022
-
+    AccessibilityNodeInfo accessibilityNodeInfoДополнительныеДанные;
 
     // TODO: 16.03.2022
     @SuppressLint("RestrictedApi")
@@ -815,8 +816,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             TextView textView7;
             // TODO: 21.03.2022
             Bundle bundleЗначенияДляНовойЗадачи;
+            // TODO: 21.03.2022
 
-            // TODO: 18.03.2022
 
             public MyViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -1215,12 +1216,18 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                 // TODO: 18.03.2022
                                 ((TextView) view).setTag(ПубличныIdДляВыбранныхФИО);
                                 // TODO: 18.03.2022
+                                accessibilityNodeInfoДополнительныеДанные = view.createAccessibilityNodeInfo();
+
+                                // TODO: 21.03.2022
+
                                 // TODO: 18.03.2022
+                                accessibilityNodeInfoДополнительныеДанные.setContentDescription(String.valueOf(ПубличныIdДляВыбранныхФИО));
                                 // TODO: 18.03.2022
                                 Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска + " ПубличныIdДляВыбранныхФИО " + ПубличныIdДляВыбранныхФИО + " view " + view.getTag() +
                                         " АдаптерДляФИОПриСозданииНовойЗадачи " + "     holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition() " + holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition());
                                 Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска + " ПубличныIdДляВыбранныхФИО " + ПубличныIdДляВыбранныхФИО + " view " + view.getTag() +
-                                        " АдаптерДляФИОПриСозданииНовойЗадачи " + "     holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition() " + holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition());
+                                        " АдаптерДляФИОПриСозданииНовойЗадачи " + "     holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition() " + holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition() +
+                                        " accessibilityNodeInfoДополнительныеДанные " + accessibilityNodeInfoДополнительныеДанные);
 
 
                             } else {
@@ -1511,7 +1518,6 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                             Object СтатусПрочтеаУжеЗадачаИлиНет = v.getTag(holder.materialCardView.getId());//TODO holder.materialCardView.getId()
 
-
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
                             // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
@@ -1784,11 +1790,21 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                                 if (!holder.textView7.getText().toString().equalsIgnoreCase("выберете тип задачи")) {
                                                     // TODO: 21.03.2022  Класс для Создание Нового Задича ПОСЛЕН ПОЛУЧЕНИЯ ДАННЫХ ЧЕРЕЗ bUNGLE
 
+                                                    // TODO: 21.03.2022
+                                                    Long ПубличныйIDДляЗаданияКомуПисать = Long.parseLong(ПолучаемФИОКомуЗадачаПредназначена.getTag().toString());
+
+                                                    // TODO: 21.03.2022
+                                                    ;
+
+                                                    Log.d(this.getClass().getName(), "  ПубличныйIDДляЗаданияКомуПисать" + ПубличныйIDДляЗаданияКомуПисать +
+                                                            " accessibilityNodeInfoДополнительныеДанные.getContentDescription() " + accessibilityNodeInfoДополнительныеДанные.getContentDescription());
+
+
                                                     SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи subClass_createNewTasksКлассДляСозданияНовойЗадачи
                                                             = new SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи(getContext(), holder.bundleЗначенияДляНовойЗадачи);
                                                     // TODO: 21.03.2022
 
-                                                    Integer ОперациСозданияНовойЗадания = subClass_createNewTasksКлассДляСозданияНовойЗадачи.МетодЗаписиНовойЗадачи();
+                                                    Integer ОперациСозданияНовойЗадания = subClass_createNewTasksКлассДляСозданияНовойЗадачи.МетодЗаписиНовойЗадачи(ПубличныйIDДляЗаданияКомуПисать);
 
                                                     Log.d(this.getClass().getName(), "  ОперациСозданияНовойЗадания" + ОперациСозданияНовойЗадания);
 
@@ -2063,7 +2079,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             }
 
             // TODO: 21.03.2022  --метод записи новой задачи
-            Integer МетодЗаписиНовойЗадачи() {
+            Integer МетодЗаписиНовойЗадачи(Long ПубличныйIDДляЗаданияКомуПисать) {
 
                 // TODO: 21.03.2022
 
@@ -2085,15 +2101,15 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 21.03.2022  вычисляем данные между двумя публичный я и меня кому задания
 
 
-                    Long ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата
+                    Long ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем
                             = new SubClass_RetryGEtRowInChatsКлассПроверемЕщеРАзПоявилосЛИПуббличныйUUIDМеждуУчасникамиЧата()
                             .МетодПовторноПроверетНеПовилосьЛиМеждеУчаникамиперепискиПубличныйUUID(getContext(),
-                                    ПолученыйIDДляЧата,
+                                    ПубличныйIDДляЗаданияКомуПисать,
                                     ПубличныйIDДляФрагмента
-                                    , new PUBLIC_CONTENT(getContext()).МенеджерПотоков,
-                                    new CREATE_DATABASE(getContext()).getССылкаНаСозданнуюБазу());
+                                    , new PUBLIC_CONTENT(getContext()),
+                                    new CREATE_DATABASE(getContext()));
 
-                    Log.d(this.getClass().getName(), " повторно ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата " + ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата + "\n");
+                    Log.d(this.getClass().getName(), " повторно ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем " + ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем + "\n");
 
 
                     // TODO: 21.03.2022 #1
