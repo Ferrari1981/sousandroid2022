@@ -39,6 +39,7 @@ import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.jetbrains.annotations.NotNull;
@@ -1156,11 +1157,15 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                             // TODO: 18.03.2022  получаем ФИО людей для кого задание
 
-                            int ИндексФИО = cursor.getColumnIndex("name");
+                            String ФИОДляПОиска = null;
+                            if (columnIndex == cursor.getColumnIndex("name")) {
+                                // TODO: 21.03.2022
+                                int ИндексФИО = cursor.getColumnIndex("name");
 
-                            String ФИОДляПОиска = cursor.getString(ИндексФИО);
-                            ////
-                            Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска);
+                                ФИОДляПОиска = cursor.getString(ИндексФИО);
+                                ////
+                                Log.d(this.getClass().getName(), " ФИОДляПОиска  " + ФИОДляПОиска);
+                            }
 
                             // TODO: 18.03.2022  получаем ПУБЛИЧНЫЙ ID длявыбранных ФИО
 
@@ -1728,41 +1733,98 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
 
                             // TODO: 21.03.2022 аписываем данные первую строчки шабка задачи
-                            if (holder.textView1.getText().toString().isEmpty()) {
+                            if (!holder.textView1.getText().toString().isEmpty()) {
                                 // TODO: 21.03.2022
                                 holder.bundleЗначенияДляНовойЗадачи.putString("ШабкаНовойЗадачи", holder.textView1.getText().toString());
+
+                                // TODO: 21.03.2022  ПЕРЕНЕСЕННЫЙ КОД ДЛЯ ЗАПИСИ ЗАДАЧИ В БАЗУ
+                                // TODO: 21.03.2022 аписываем данные вторая Сама Задача
+                                if (!holder.textView3.getText().toString().isEmpty()) {
+                                    // TODO: 21.03.2022
+                                    holder.bundleЗначенияДляНовойЗадачи.putString("СообщениеНовойЗадачи", holder.textView3.getText().toString());
+
+                                    // TODO: 21.03.2022  перенесеный код третией
+
+                                    // TODO: 21.03.2022 аписываем данные третья  ФИО
+                                    if (!holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0).isPressed()) {
+
+
+                                        // TODO: 21.03.2022
+                                        TextView ПолучаемФИОКомуЗадачаПредназначена = (TextView) holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0);
+                                        // TODO: 21.03.2022
+
+                                        // TODO: 21.03.2022
+                                        Log.d(this.getClass().getName(), "  holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition() " + holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition() +
+                                                "  " + holder.spinnerДляСозданиеНовойЗадачи.getSelectedItem().toString() +
+                                                "  holder.spinnerДляСозданиеНовойЗадачи " + holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0).toString() +
+                                                " holder.spinnerДляСозданиеНовойЗадачи " + holder.spinnerДляСозданиеНовойЗадачи.getItemAtPosition(0) +
+                                                " textView " + ПолучаемФИОКомуЗадачаПредназначена.getText().toString());
+
+                                        // TODO: 21.03.2022
+                                        holder.bundleЗначенияДляНовойЗадачи.putString("КомуСообщениеФИО", ПолучаемФИОКомуЗадачаПредназначена.getText().toString());
+
+
+                                        // TODO: 21.03.2022 перенесенный четвертыйц код
+
+
+                                        // TODO: 21.03.2022 аписываем данные  четвертая Выбор какая Задача Одноразовая Или По расписания
+                                        if (!holder.textView7.getText().toString().isEmpty()) {
+                                            // TODO: 21.03.2022
+
+                                            holder.bundleЗначенияДляНовойЗадачи.putString("ЗадачиКакаяЗадачиОдноразоваяИлиНет", holder.textView7.getText().toString());
+
+                                            // TODO: 21.03.2022   перенсенный ятий шаг для создаени задачи
+
+                                            // TODO: 21.03.2022  запускаем создаени задачи только если пользователь выбрал задачу
+
+                                            if (!holder.textView7.getText().toString().equalsIgnoreCase("выберете тип задачи")) {
+                                                // TODO: 21.03.2022  Класс для Создание Нового Задича ПОСЛЕН ПОЛУЧЕНИЯ ДАННЫХ ЧЕРЕЗ bUNGLE
+
+                                                SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи subClass_createNewTasksКлассДляСозданияНовойЗадачи
+                                                        = new SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи(getContext(), holder.bundleЗначенияДляНовойЗадачи);
+                                                // TODO: 21.03.2022
+                                            } else {
+                                                // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
+                                                Snackbar.make(v, "Вы не выбрали тип задачи !!!  ", Snackbar.LENGTH_LONG).show();
+
+                                            }
+
+
+                                        } else {
+                                            // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
+                                            Snackbar.make(v, "Вы не выбрали тип задачи !!!  ", Snackbar.LENGTH_LONG).show();
+
+                                        }
+
+                                        // TODO: 21.03.2022  запускапм класс с данными BUngle
+
+                                        Log.d(this.getClass().getName(), "  holder.buttonДляСозданиеНовогоЗадания.setOnClickListener   МетодБиндингаСлушательДляКнопкиСоздатьНовуюЗадачу    " +
+                                                " holder.bundleЗначенияДляНовойЗадачи " + holder.bundleЗначенияДляНовойЗадачи.toString());
+
+
+                                    } else {
+                                        // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
+                                        Snackbar.make(v, "Вы не выбрали ФИО  для кого задача !!!  ", Snackbar.LENGTH_LONG).show();
+
+                                    }
+
+
+                                } else {
+                                    // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
+                                    Snackbar.make(v, "Нет самой задачи !!!  ", Snackbar.LENGTH_LONG).show();
+
+                                }
+
+
+                                // TODO: 21.03.2022  перенсенный код из задачи
+
+                            } else {
+                                // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
+                                Snackbar.make(v, "Нет загаловка задачи !!!  ", Snackbar.LENGTH_LONG).show();
+
                             }
 
 
-                            // TODO: 21.03.2022 аписываем данные вторая Сама Задача
-                            if (holder.textView3.getText().toString().isEmpty()) {
-                                // TODO: 21.03.2022
-                                holder.bundleЗначенияДляНовойЗадачи.putString("СообщениеНовойЗадачи", holder.textView3.getText().toString());
-                            }
-
-                            // TODO: 21.03.2022 аписываем данные третья  ФИО
-                            if (holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0).isPressed()) {
-                                // TODO: 21.03.2022
-                                holder.bundleЗначенияДляНовойЗадачи.putString("КомуСообщениеФИО", holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0).toString());
-                            }
-
-                            // TODO: 21.03.2022 аписываем данные  четвертая Выбор какая Задача Одноразовая Или По расписания
-                            if (holder.textView7.getText().toString().isEmpty()) {
-                                // TODO: 21.03.2022
-                                holder.bundleЗначенияДляНовойЗадачи.putString("ЗадачиКакаяЗадачиОдноразоваяИлиНет", holder.textView7.getText().toString());
-                            }
-
-                            // TODO: 21.03.2022  запускапм класс с данными BUngle
-
-                            Log.d(this.getClass().getName(), "  holder.buttonДляСозданиеНовогоЗадания.setOnClickListener   МетодБиндингаСлушательДляКнопкиСоздатьНовуюЗадачу    " +
-                                    " holder.bundleЗначенияДляНовойЗадачи " + holder.bundleЗначенияДляНовойЗадачи.toString());
-
-
-                            // TODO: 21.03.2022  Класс для Создание Нового Задича ПОСЛЕН ПОЛУЧЕНИЯ ДАННЫХ ЧЕРЕЗ bUNGLE
-
-                            SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи subClass_createNewTasksКлассДляСозданияНовойЗадачи
-                                    = new SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи(getContext(), holder.bundleЗначенияДляНовойЗадачи);
-                            // TODO: 21.03.2022
 
 
                             Log.d(this.getClass().getName(), "  holder.buttonДляСозданиеНовогоЗадания.setOnClickListener   МетодБиндингаСлушательДляКнопкиСоздатьНовуюЗадачу    " +
@@ -1919,14 +1981,16 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                             new GetData(getContext()).getdata(class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций,
                             new PUBLIC_CONTENT(context).МенеджерПотоков, new CREATE_DATABASE(context).getССылкаНаСозданнуюБазу());
                     // TODO: 02.03.2022
-                    if (sqLiteCursorКурсорВсеФИОДЛяSpinneraДляКогоЗадание.getCount() > 0) {
+              /*      if (sqLiteCursorКурсорВсеФИОДЛяSpinneraДляКогоЗадание.getCount() > 0) {
                         // TODO: 03.03.2022
                         Log.d(this.getClass().getName(), "Курсор_ГлавныйКурсорДляЗадач " + sqLiteCursorКурсорВсеФИОДЛяSpinneraДляКогоЗадание);
                         // TODO: 03.03.2022
                         sqLiteCursorКурсорВсеФИОДЛяSpinneraДляКогоЗадание.moveToFirst();
-                    }
+                    }*/
                     ////////
                     Log.d(this.getClass().getName(), "Курсор_ГлавныйКурсорДляЗадач " + sqLiteCursorКурсорВсеФИОДЛяSpinneraДляКогоЗадание);
+
+                    // TODO: 21.03.2022
 
                 } catch (Exception e) {
                     e.printStackTrace();
