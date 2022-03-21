@@ -37,6 +37,7 @@ import androidx.work.WorkManager;
 
 import com.dsy.dsu.CREATE_DATABASE;
 import com.dsy.dsu.Class_GRUD_SQL_Operations;
+import com.dsy.dsu.Class_Generation_Data;
 import com.dsy.dsu.Class_Generation_Errors;
 import com.dsy.dsu.Class_Generation_UUID;
 import com.dsy.dsu.PUBLIC_CONTENT;
@@ -2182,13 +2183,34 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                             contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("uuid", ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое);
 
 
-                            // TODO: 21.03.2022  обоаботка второй таюлицы
+                            ////TODO ДАТА
+                            String СгенерированованныйДатаДляДаннойОперации = new Class_Generation_Data(getContext()).ГлавнаяДатаИВремяОперацийСБазойДанных();
+
+                            /////////
+                            contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("date_update", СгенерированованныйДатаДляДаннойОперации);
+
+                            Log.d(this.getClass().getName(), "   СгенерированованныйДатаДляДаннойОперации " + СгенерированованныйДатаДляДаннойОперации);
+
+                            ///////// вставляем ПУБЛИЧНЫЙ ID текущего пользователя
+                            contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("user_update", ПубличныйIDДляФрагмента);
+
+                            Log.d(this.getClass().getName(), "   ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
+
+
+                            // TODO: 21.03.2022 выбираем какую точно нужно обработать
 
                             switch (ТаблицаОбработки) {
                                 // TODO: 21.03.2022
 
                                 case "notifications":
                                     // TODO: 21.03.2022
+
+
+                                    ///////// вставляем id_user
+                                    contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("id_user", ПубличныйIDДляЗаданияКомуПисать);
+
+                                    Log.d(this.getClass().getName(), "   ПубличныйIDДляЗаданияКомуПисать " + ПубличныйIDДляЗаданияКомуПисать);
+
 
                                     // TODO: 21.03.2022
                                     Log.d(this.getClass().getName(),
@@ -2208,7 +2230,17 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                     // TODO: 21.03.2022
                                     Log.d(this.getClass().getName(),
                                             " ТаблицаОбработки " + ТаблицаОбработки + " ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое " + ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое
-                                                    + " bundleПолученныйеДанныеДляСозданияЗадачи " + bundleПолученныйеДанныеДляСозданияЗадачи);
+                                                    + " bundleПолученныйеДанныеДляСозданияЗадачи " + bundleПолученныйеДанныеДляСозданияЗадачи +
+                                                    " bundleПолученныйеДанныеДляСозданияЗадачи.getString(\"ШабкаНовойЗадачи\") " + bundleПолученныйеДанныеДляСозданияЗадачи.getString("ШабкаНовойЗадачи"));
+
+
+// TODO: 21.03.2022   add headr new task
+                                    contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("head_message", bundleПолученныйеДанныеДляСозданияЗадачи.getString("ШабкаНовойЗадачи"));
+// TODO: 21.03.2022   add message  new task
+                                    contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("message", bundleПолученныйеДанныеДляСозданияЗадачи.getString("СообщениеНовойЗадачи"));
+// TODO: 21.03.2022   type  message  new task
+                                    contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("type_tasks", bundleПолученныйеДанныеДляСозданияЗадачи.getString("ЗадачиКакаяЗадачиОдноразоваяИлиНет"));
+                                    // TODO: 21.03.2022
                                     break;
 
 
