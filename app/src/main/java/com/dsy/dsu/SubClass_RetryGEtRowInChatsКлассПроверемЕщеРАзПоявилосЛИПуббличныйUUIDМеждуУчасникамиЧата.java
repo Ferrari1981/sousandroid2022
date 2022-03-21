@@ -2,14 +2,17 @@ package com.dsy.dsu;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteCursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import java.util.concurrent.CompletionService;
 
 // TODO: 10.02.2022  данный по д класс ПОВТОРНО ПРОВЕРЯЕТ НЕ ПОЯВИЛЬСЯ ЛИ МЕЖДУ УЧАСНИКАМИ ЧАТА ПУБЛИЧНЫЙ UUID ПРОЦЕСЕ ПЕРЕПИСКИ
 public class SubClass_RetryGEtRowInChatsКлассПроверемЕщеРАзПоявилосЛИПуббличныйUUIDМеждуУчасникамиЧата {
 
 
     public Long МетодПовторноПроверетНеПовилосьЛиМеждеУчаникамиперепискиПубличныйUUID(Context context
-            , Long ПолученыйIDДляЧата, Integer ПубличныйIDДляФрагмента, PUBLIC_CONTENT public_content, CREATE_DATABASE create_database) {
+            , Long ПолученыйIDДляЧата, Integer ПубличныйIDДляФрагмента, CompletionService completionServiceНОваяЗадача, SQLiteDatabase sqLiteDatabaseНоваяЗадача) {
 
         Long РезультатПроверикПолучлиЛИUUIDМеждуУчасникамиПереписки = 0l;
 

@@ -52,6 +52,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.text.ParseException;
 import java.util.List;
+import java.util.concurrent.CompletionService;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -2080,21 +2081,22 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             }
 
             // TODO: 21.03.2022  --метод записи новой задачи
-            Integer МетодЗаписиНовойЗадачи(Long ПубличныйIDДляЗаданияКомуПисать) {
+            Integer МетодЗаписиНовойЗадачи(@NonNull Long ПубличныйIDДляЗаданияКомуПисать) {
 
+                CompletionService completionServiceНоваяЗадача;
                 // TODO: 21.03.2022
 
-                // TODO: 21.03.2022
                 Class_GRUD_SQL_Operations classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи;
+
                 // TODO: 21.03.2022
                 SQLiteDatabase sqLiteDatabaseДляНовгоЗадания;
+
                 try {
-                    // TODO: 21.03.2022
-                    ContentValues contentValuesДляСозданияНовойЗадачиДляпервойТаблицы = new ContentValues();
-                    // TODO: 21.03.2022  для второй таблицы
-                    ContentValues contentValuesДляСозданияНовойЗадачиДляВторойТаблицы = new ContentValues();
 
                     // TODO: 30.08.2021    КОД ОБНОВЛЕНИЕ   ДАННЫХ   ЧЕРЕЗ
+
+                    // TODO: 21.03.2022
+                    completionServiceНоваяЗадача = new PUBLIC_CONTENT(getContext()).МенеджерПотоков;
                     //////
                     classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи = new Class_GRUD_SQL_Operations(getContext());
                     //TODO заполение КОНТЕНЕР для локального обновления--дАТА оПЕРАЦИИ
@@ -2109,51 +2111,147 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                             .МетодПовторноПроверетНеПовилосьЛиМеждеУчаникамиперепискиПубличныйUUID(getContext(),
                                     ПубличныйIDДляЗаданияКомуПисать,
                                     ПубличныйIDДляФрагмента
-                                    , new PUBLIC_CONTENT(getContext()),
-                                    new CREATE_DATABASE(getContext()));
+                                    , completionServiceНоваяЗадача,
+                                    sqLiteDatabaseДляНовгоЗадания);
 
                     Log.d(this.getClass().getName(), " повторно ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем " + ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем + "\n");
 
 
-                    // TODO: 21.03.2022 #1
-                    String СгенерированованныйДатаДляВставки = new Class_Generation_Data(getContext()).ГлавнаяДатаИВремяОперацийСБазойДанных();
+                    // TODO: 21.03.2022  если UUID есть значит между текущий пользователь и пользователь кому пишут  НОВОЕ ЗАДАНИЕ
+                    if (ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем > 0) {
 
-                    contentValuesДляСозданияНовойЗадачиДляпервойТаблицы.put("date_update", СгенерированованныйДатаДляВставки);
+                        // TODO: 21.03.2022  если UUID есть значит между текущий пользователь и пользователь кому пишут  НОВОЕ ЗАДАНИЕ
+                        String ТаблицаВтораяДЛяОбработки = "data_notification";
 
-                    // TODO: 21.03.2022 #2
 
-                    Long РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника =
-                            classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.new ChangesVesionData(getContext()).
-                                    МетодПолученияУвеличинойВесрииДанныхДляТекущейВнутренейтаблицы_ПоПолю_current_table_ПоПолю_current_table(
-                                            "data_tabels", "localversionandroid_version",
-                                            getContext()
-                                            , sqLiteDatabaseДляНовгоЗадания);///  current_table    ///  localversionandroid_version
+                        // TODO: 21.03.2022  для второй таблицы
+                        ContentValues contentValuesДляСозданияНовойЗадачиДляВторойТаблицы = new ContentValues();
 
-                    Log.d(this.getClass().getName(), "  РезультатУвеличинаяВерсияДАныхЧата " + РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника);
+
+                        Log.d(this.getClass().getName(), " повторно ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем "
+                                + ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем + "\n");
+
+                        // TODO: 21.03.2022
+
+                        // TODO: 21.03.2022 #2 ВЕРСИЯ ПОВЫШАЕМ
+
+                        Long РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника =
+                                classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.new ChangesVesionData(getContext()).
+                                        МетодПолученияУвеличинойВесрииДанныхДляТекущейВнутренейтаблицы_ПоПолю_current_table_ПоПолю_current_table(
+                                                ТаблицаВтораяДЛяОбработки, "localversionandroid_version",
+                                                getContext()
+                                                , sqLiteDatabaseДляНовгоЗадания);///  current_table    ///  localversionandroid_version
+
+                        Log.d(this.getClass().getName(), "  РезультатУвеличинаяВерсияДАныхЧата " + РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника);
+
+
+                        // TODO: 21.03.2022 #1
+                        String СгенерированованныйДатаДляВставки = new Class_Generation_Data(getContext()).ГлавнаяДатаИВремяОперацийСБазойДанных();
+
+                        contentValuesДляСозданияНовойЗадачиДляВторойТаблицы.put("date_update", СгенерированованныйДатаДляВставки);
 
 // TODO: 08.10.2021 повышаем версию
 
-                    contentValuesДляСозданияНовойЗадачиДляпервойТаблицы.put("current_table", РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника);
+                        contentValuesДляСозданияНовойЗадачиДляВторойТаблицы.put("current_table", РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника);
+                        // TODO: 21.03.2022
+
+                        // TODO: 21.03.2022  повышая версия для второй  таблицы  data_notification
+
+                        МетодПослеУспешнойЗаписиЗначенияВТаблицуПоднимаемВерсиюДанных(classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи,
+                                sqLiteDatabaseДляНовгоЗадания,
+                                РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника, ТаблицаВтораяДЛяОбработки);
 
 
-                    // TODO: 22.12.2021 НовыйUUIDДляТаблицыДатаЧат  для таблицы дата_чат
-                    ////
-                    Long ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое = (Long) new Class_Generation_UUID(getContext()).МетодГенерацииUUID(getContext());
-                    //
-
-                    Log.d(this.getClass().getName(),
-                            " ЛокальныйUUIDДляТаблицыДатаЧатВтораяТаблица " + ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое);
-                    ////
-                    contentValuesДляСозданияНовойЗадачиДляпервойТаблицы.put("uuid", ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое);
+                        ////
 
 
-                    // TODO: 21.03.2022  после успешной вставки задачи в таблицу данный код
+                    } else {
+                        // TODO: 21.03.2022  если UUID есть значит НОВОЕ СООБЩЕНИЕ ПЕРВОЕ
+
+                        Log.d(this.getClass().getName(), " повторно ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем " + ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем + "\n");
+
+                        // TODO: 21.03.2022
+                        ContentValues contentValuesДляСозданияНовойЗадачиДляпервойТаблицы = new ContentValues();
+                        // TODO: 21.03.2022
+                        // TODO: 21.03.2022  для второй таблицы
+                        ContentValues contentValuesДляСозданияНовойЗадачиДляВторойТаблицы = new ContentValues();
+
+                        String ТаблицаВтораяДЛяОбработки = "data_notification";
+                        // TODO: 21.03.2022
+                        String ТаблицаПерваяДЛяОбработки = "notifications";
 
 
-                    МетодПослеУспешнойЗаписиЗначенияВТаблицуПоднимаемВерсиюДанных(classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи,
-                            sqLiteDatabaseДляНовгоЗадания,
-                            РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника, "data_notification");
-                    ////
+                        // TODO: 21.03.2022 #1 для первой таблицы
+
+                        Long РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудникаПервая =
+                                classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.new ChangesVesionData(getContext()).
+                                        МетодПолученияУвеличинойВесрииДанныхДляТекущейВнутренейтаблицы_ПоПолю_current_table_ПоПолю_current_table(
+                                                ТаблицаПерваяДЛяОбработки, "localversionandroid_version",
+                                                getContext()
+                                                , sqLiteDatabaseДляНовгоЗадания);///  current_table    ///  localversionandroid_version
+
+                        Log.d(this.getClass().getName(), "  РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудникаПервая " + РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудникаПервая);
+
+                        // TODO: 08.10.2021 повышаем версию
+
+                        contentValuesДляСозданияНовойЗадачиДляпервойТаблицы.put("current_table", РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудникаПервая);
+
+                        // TODO: 21.03.2022 #2 для вторая  таблицы
+
+                        Long РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудникаВторая =
+                                classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.new ChangesVesionData(getContext()).
+                                        МетодПолученияУвеличинойВесрииДанныхДляТекущейВнутренейтаблицы_ПоПолю_current_table_ПоПолю_current_table(
+                                                ТаблицаВтораяДЛяОбработки, "localversionandroid_version",
+                                                getContext()
+                                                , sqLiteDatabaseДляНовгоЗадания);///  current_table    ///  localversionandroid_version
+
+                        Log.d(this.getClass().getName(), "  РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудникаВторая " + РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудникаВторая);
+
+
+                        // TODO: 21.03.2022
+                        contentValuesДляСозданияНовойЗадачиДляВторойТаблицы.put("current_table", РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудникаВторая);
+
+                        // TODO: 21.03.2022 UUID
+
+
+                        // TODO: 22.12.2021 НовыйUUIDДляТаблицыДатаЧат  для таблицы дата_чат
+                        ////
+                        Long ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое = (Long) new Class_Generation_UUID(getContext()).МетодГенерацииUUID(getContext());
+                        //
+
+                        Log.d(this.getClass().getName(),
+                                " ЛокальныйUUIDДляТаблицыДатаЧатВтораяТаблица " + ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое);
+
+
+                        ////todo # 1 первой таблицы
+                        contentValuesДляСозданияНовойЗадачиДляпервойТаблицы.put("uuid", ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое);
+
+
+                        ////todo # 2 первой таблицы
+                        contentValuesДляСозданияНовойЗадачиДляВторойТаблицы.put("uuid", ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое);
+
+                        // TODO: 21.03.2022
+
+
+                        // TODO: 21.03.2022  повышая версия для первой таблицы  notifications
+
+                        МетодПослеУспешнойЗаписиЗначенияВТаблицуПоднимаемВерсиюДанных(classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи,
+                                sqLiteDatabaseДляНовгоЗадания,
+                                РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника, "notifications");
+                        ////
+
+                        // TODO: 21.03.2022  повышая версия для второй  таблицы  data_notification
+
+                        МетодПослеУспешнойЗаписиЗначенияВТаблицуПоднимаемВерсиюДанных(classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи,
+                                sqLiteDatabaseДляНовгоЗадания,
+                                РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника, "data_notification");
+                        ////
+
+                        // TODO: 21.03.2022
+
+                        Log.d(this.getClass().getName(), " РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника " + РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника);
+                    }
+
 
                     // TODO: 21.03.2022
                 } catch (Exception e) {
