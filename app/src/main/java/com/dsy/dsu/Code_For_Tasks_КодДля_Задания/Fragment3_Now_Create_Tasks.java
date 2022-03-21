@@ -1799,7 +1799,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                                         } else {
                                             // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
-                                            Snackbar.make(v, "Вы не выбрали ФИО  для кого задача !!!  ", Snackbar.LENGTH_LONG).show();
+                                            Snackbar.make(v, "Вы не выбрали ФИО  !!!  ", Snackbar.LENGTH_LONG).show();
 
                                         }
 
@@ -1817,7 +1817,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                                     } else {
                                         // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
-                                        Snackbar.make(v, "Нет  ФИО   !!!  ", Snackbar.LENGTH_LONG).show();
+                                        Snackbar.make(v, "Не заполнено   ФИО   !!!  ", Snackbar.LENGTH_LONG).show();
 
                                     }
 
