@@ -808,6 +808,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             SeekBar seekBarДляВЫбораКакаяЗадачаВыполяется;
             // TODO: 18.03.2022
             TextView textView7;
+            // TODO: 21.03.2022
+            Bundle bundleЗначенияДляНовойЗадачи;
 
             // TODO: 18.03.2022
 
@@ -849,6 +851,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     seekBarДляВЫбораКакаяЗадачаВыполяется = (SeekBar) itemView.findViewById(R.id.seekBar_for_tasks_create_new);
                     // TODO: 18.03.2022
                     textView7 = (TextView) itemView.findViewById(R.id.text2_innercardviewtwoSettasksType);
+                    // TODO: 21.03.2022
+                    bundleЗначенияДляНовойЗадачи = new Bundle();
 
 
                     Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 materialCardView   " + materialCardView);
@@ -990,7 +994,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     Log.i(this.getClass().getName(), "      МетодБиндингаДелаемСлушательДляSeedBars  holder.seekBarДляВЫбораКакаяЗадачаВыполяется  " + holder.seekBarДляВЫбораКакаяЗадачаВыполяется);
 
 
-                    // TODO: 13.03.2022 настройки для carview КОНЕЦ ВЫЗЫВАЕМЫХ МЕТОДОВ
+                    // TODO: 13.03.2022 настройки для carview КОНЕЦ ВЫЗЫВАЕМЫХ МЕТОДОВ вызывает событие клика на самой cardview 
 
                     holder.materialCardView.toggle();
 
@@ -1720,7 +1724,50 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                             // TODO: 10.03.2022
                             вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
 
-                            Log.d(this.getClass().getName(), "  holder.buttonДляСозданиеНовогоЗадания.setOnClickListener   МетодБиндингаСлушательДляКнопкиСоздатьНовуюЗадачу    ");
+                            // TODO: 21.03.2022  созлаени данных для записи в базу
+
+
+                            // TODO: 21.03.2022 аписываем данные первую строчки шабка задачи
+                            if (holder.textView1.getText().toString().isEmpty()) {
+                                // TODO: 21.03.2022
+                                holder.bundleЗначенияДляНовойЗадачи.putString("ШабкаНовойЗадачи", holder.textView1.getText().toString());
+                            }
+
+
+                            // TODO: 21.03.2022 аписываем данные вторая Сама Задача
+                            if (holder.textView3.getText().toString().isEmpty()) {
+                                // TODO: 21.03.2022
+                                holder.bundleЗначенияДляНовойЗадачи.putString("СообщениеНовойЗадачи", holder.textView3.getText().toString());
+                            }
+
+                            // TODO: 21.03.2022 аписываем данные третья  ФИО
+                            if (holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0).isPressed()) {
+                                // TODO: 21.03.2022
+                                holder.bundleЗначенияДляНовойЗадачи.putString("КомуСообщениеФИО", holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0).toString());
+                            }
+
+                            // TODO: 21.03.2022 аписываем данные  четвертая Выбор какая Задача Одноразовая Или По расписания
+                            if (holder.textView7.getText().toString().isEmpty()) {
+                                // TODO: 21.03.2022
+                                holder.bundleЗначенияДляНовойЗадачи.putString("ЗадачиКакаяЗадачиОдноразоваяИлиНет", holder.textView7.getText().toString());
+                            }
+
+                            // TODO: 21.03.2022  запускапм класс с данными BUngle
+
+                            Log.d(this.getClass().getName(), "  holder.buttonДляСозданиеНовогоЗадания.setOnClickListener   МетодБиндингаСлушательДляКнопкиСоздатьНовуюЗадачу    " +
+                                    " holder.bundleЗначенияДляНовойЗадачи " + holder.bundleЗначенияДляНовойЗадачи.toString());
+
+
+                            // TODO: 21.03.2022  Класс для Создание Нового Задича ПОСЛЕН ПОЛУЧЕНИЯ ДАННЫХ ЧЕРЕЗ bUNGLE
+
+                            SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи subClass_createNewTasksКлассДляСозданияНовойЗадачи
+                                    = new SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи(getContext(), holder.bundleЗначенияДляНовойЗадачи);
+                            // TODO: 21.03.2022
+
+
+                            Log.d(this.getClass().getName(), "  holder.buttonДляСозданиеНовогоЗадания.setOnClickListener   МетодБиндингаСлушательДляКнопкиСоздатьНовуюЗадачу    " +
+                                    " holder.bundleЗначенияДляНовойЗадачи " + holder.bundleЗначенияДляНовойЗадачи.toString());
+
                         }
                     });
                     // TODO: 13.03.2022
@@ -1895,6 +1942,33 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
 
 /////////////////////////////////////////////
+        }
+
+
+        // TODO: 21.03.2022  класс создаения класс после получения данных из  Bungle
+
+        private class SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи {
+            // TODO: 21.03.2022
+            public SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи(@NonNull Context context, @NonNull Bundle bundleПолученныйеДанныеДляСозданияЗадачи) {
+
+                try {
+                    ////////
+                    Log.d(this.getClass().getName(), "bundleПолученныйеДанныеДляСозданияЗадачи " + bundleПолученныйеДанныеДляСозданияЗадачи);
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+
+            }
+
+
         }
 
 
