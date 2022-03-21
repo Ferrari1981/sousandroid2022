@@ -2240,6 +2240,12 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                     contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("message", bundleПолученныйеДанныеДляСозданияЗадачи.getString("СообщениеНовойЗадачи"));
 // TODO: 21.03.2022   type  message  new task
                                     contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("type_tasks", bundleПолученныйеДанныеДляСозданияЗадачи.getString("ЗадачиКакаяЗадачиОдноразоваяИлиНет"));
+
+
+                                    // TODO: 21.03.2022
+                                    Log.d(this.getClass().getName(),
+                                            " ТаблицаОбработки " + ТаблицаОбработки + " contentValuesДляСозданияНовойЗадачиДляДвухТаблиц " + contentValuesДляСозданияНовойЗадачиДляДвухТаблиц);
+
                                     // TODO: 21.03.2022
                                     break;
 
