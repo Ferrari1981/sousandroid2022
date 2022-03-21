@@ -1,95 +1,29 @@
 package com.dsy.dsu;
 
-import android.app.Activity;
-import android.content.AsyncQueryHandler;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQueryBuilder   ;
-import android.database.sqlite.SQLiteTransactionListener;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.BoringLayout;
 import android.util.Log;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.loader.content.AsyncTaskLoader;
-import androidx.work.Constraints;
-import androidx.work.ExistingPeriodicWorkPolicy;
-import androidx.work.ExistingWorkPolicy;
-import androidx.work.NetworkType;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.PeriodicWorkRequest;
-import androidx.work.WorkManager;
-
-import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
-import java.text.DateFormat;
-import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
-import java.util.TimeZone;
 import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionService;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor    ;
-import java.util.concurrent.ExecutorCompletionService;
-import java.util.concurrent.ExecutorService  ;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.LinkedTransferQueue;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.function.ToDoubleBiFunction;
 import java.util.stream.Stream;
 
 
@@ -1870,22 +1804,18 @@ public class Class_GRUD_SQL_Operations extends CREATE_DATABASE {
         }
 
 
-
-
-
         // TODO: 27.08.2021 МЕТОД  ИЗМЕНЕНИЯ ПОВЫШЕНИЯ ВЕРСИИ ДЛЯ  ТЕКУЩЕЙ ТАБЛИЦЫ ТАБЛИЦЫ
-        Object changesvesiondata(Map<String,Object> concurrentHashMap ,
-                                 CompletionService  МенеджерПотоков,
-                                 SQLiteDatabase getБазаДанныхДЛяОперацийВнутри) throws ExecutionException, InterruptedException {
+        public Object changesvesiondata(Map<String, Object> concurrentHashMap,
+                                        CompletionService МенеджерПотоков,
+                                        SQLiteDatabase getБазаДанныхДЛяОперацийВнутри) throws ExecutionException, InterruptedException {
             ///////
-            Object Changesvesiondata=null;
+            Object Changesvesiondata = null;
             //////// TODO запуск менеджера потоков
-
 
 
             try {
                 ///TODO тело самого кода List    ////
-               ЛистДляGRUDопераций=new Callable<Object>() {
+                ЛистДляGRUDопераций = new Callable<Object>() {
                     @Override
                     public Object call() throws Exception {
                         /////
