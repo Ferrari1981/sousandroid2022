@@ -624,7 +624,7 @@ public class Class_GRUD_SQL_Operations extends CREATE_DATABASE {
 
 
     //TODO КЛАСС Вставки ДАННЫХ
-    class  InsertData extends Class_GRUD_SQL_Operations {
+    public class InsertData extends Class_GRUD_SQL_Operations {
 
         public InsertData(@NotNull Context context) {
             super(context);
@@ -632,7 +632,7 @@ public class Class_GRUD_SQL_Operations extends CREATE_DATABASE {
              *
              * @param context
              */
-           /// Create_Database_СсылкаНАБазовыйКласс=new CREATE_DATABASE(contextClass_GRUD_SQL_Operations);
+            /// Create_Database_СсылкаНАБазовыйКласс=new CREATE_DATABASE(contextClass_GRUD_SQL_Operations);
 
             /**
              *
@@ -644,18 +644,17 @@ public class Class_GRUD_SQL_Operations extends CREATE_DATABASE {
         }
 
 
-
         // TODO: 27.08.2021 МЕТОД  ВСТАВКИ ДАННЫХ
-        Object insertdata(Map<String,Object> concurrentHashMap, ContentValues contentValuesВставкаДанных ,
-                          CompletionService МенеджерПотоков,
-                          SQLiteDatabase getБазаДанныхДЛяОперацийВнутри) throws ExecutionException, InterruptedException {
+        public Object insertdata(Map<String, Object> concurrentHashMap, ContentValues contentValuesВставкаДанных,
+                                 CompletionService МенеджерПотоков,
+                                 SQLiteDatabase getБазаДанныхДЛяОперацийВнутри) throws ExecutionException, InterruptedException {
             ///////
-            Object InsertData=null;
+            Object InsertData = null;
             //////// TODO запуск менеджера потоков
 
             try {
                 ///TODO тело самого кода List    ////
-          ЛистДляGRUDопераций = new Callable<Object>() {
+                ЛистДляGRUDопераций = new Callable<Object>() {
                     @Override
                     public Object call() throws Exception {
                         /////
