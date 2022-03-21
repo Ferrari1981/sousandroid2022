@@ -119,7 +119,11 @@ public class SubClass_RetryGEtRowInChatsКлассПроверемЕщеРАзП
 
 
     public Long МетодПовторноПроверетНеПовилосьДЛЯЗАДАЧПубличныйUUID(Context context
-            , Long ПолученыйIDДляЧата, Integer ПубличныйIDДляФрагмента, CompletionService completionServiceНОваяЗадача, SQLiteDatabase sqLiteDatabaseНоваяЗадача) {
+
+            , Long ПолученыйIDДляЧата,
+                                                                     Integer ПубличныйIDДляФрагмента,
+                                                                     CompletionService completionServiceНОваяЗадача,
+                                                                     SQLiteDatabase sqLiteDatabaseНоваяЗадача) {
 
         Long РезультатПроверикПолучлиЛИUUIDМеждуУчасникамиПереписки = 0l;
 

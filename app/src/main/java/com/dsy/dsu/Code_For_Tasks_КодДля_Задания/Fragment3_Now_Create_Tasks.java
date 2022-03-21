@@ -2248,12 +2248,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                                     " ТаблицаОбработки " + ТаблицаОбработки);
 
                                     ////
-                                    // TODO: 06.09.2021 ПАРАМЕТРЫ ДЛЯ ВСТАВКИ ДАННЫХ ЧАТА
 
-                                    classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("НазваниеОбрабоатываемойТаблицы", ТаблицаОбработки);
-
-                                    // TODO: 06.09.2021 КОНТЕЙНЕР ДЛЯ ВСТАВКИ ДАННЫХ ЧАТА
-                                    classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.contentValuesДляSQLBuilder_Для_GRUD_Операций.putAll(contentValuesДляСозданияНовойЗадачиДляДвухТаблиц);
 
                                     // TODO: 12.10.2021  Ссылка Менеджер Потоков
                                     // TODO: 21.03.2022
@@ -2265,7 +2260,16 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                     break;
                             }
 
+                            // TODO: 21.03.2022
 
+                            ///
+
+                            // TODO: 06.09.2021 ПАРАМЕТРЫ ДЛЯ ВСТАВКИ ДАННЫХ ЧАТА
+
+                            classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("НазваниеОбрабоатываемойТаблицы", ТаблицаОбработки);
+
+                            // TODO: 06.09.2021 КОНТЕЙНЕР ДЛЯ ВСТАВКИ ДАННЫХ ЧАТА
+                            classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.contentValuesДляSQLBuilder_Для_GRUD_Операций.putAll(contentValuesДляСозданияНовойЗадачиДляДвухТаблиц);
                             ///TODO РЕЗУЛЬТА вставка ДАННЫХ НОВАЯ ЗАДАЧА
 
                             Long Результат_ВставкиДанныхПриСозданииНовойЗадачи = (Long) classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.
