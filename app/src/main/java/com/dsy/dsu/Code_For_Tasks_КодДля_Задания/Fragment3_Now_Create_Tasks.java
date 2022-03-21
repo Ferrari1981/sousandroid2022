@@ -39,6 +39,7 @@ import com.dsy.dsu.CREATE_DATABASE;
 import com.dsy.dsu.Class_GRUD_SQL_Operations;
 import com.dsy.dsu.Class_Generation_Data;
 import com.dsy.dsu.Class_Generation_Errors;
+import com.dsy.dsu.Class_Generation_UUID;
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 import com.dsy.dsu.SubClass_RetryGEtRowInChatsКлассПроверемЕщеРАзПоявилосЛИПуббличныйUUIDМеждуУчасникамиЧата;
@@ -2089,7 +2090,9 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                 SQLiteDatabase sqLiteDatabaseДляНовгоЗадания;
                 try {
                     // TODO: 21.03.2022
-                    ContentValues contentValuesДляСозданияНовойЗадачи = new ContentValues();
+                    ContentValues contentValuesДляСозданияНовойЗадачиДляпервойТаблицы = new ContentValues();
+                    // TODO: 21.03.2022  для второй таблицы
+                    ContentValues contentValuesДляСозданияНовойЗадачиДляВторойТаблицы = new ContentValues();
 
                     // TODO: 30.08.2021    КОД ОБНОВЛЕНИЕ   ДАННЫХ   ЧЕРЕЗ
                     //////
@@ -2115,7 +2118,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 21.03.2022 #1
                     String СгенерированованныйДатаДляВставки = new Class_Generation_Data(getContext()).ГлавнаяДатаИВремяОперацийСБазойДанных();
 
-                    contentValuesДляСозданияНовойЗадачи.put("date_update", СгенерированованныйДатаДляВставки);
+                    contentValuesДляСозданияНовойЗадачиДляпервойТаблицы.put("date_update", СгенерированованныйДатаДляВставки);
 
                     // TODO: 21.03.2022 #2
 
@@ -2130,35 +2133,26 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
 // TODO: 08.10.2021 повышаем версию
 
-                    contentValuesДляСозданияНовойЗадачи.put("current_table", РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника);
-
-                    // TODO: 21.03.2022
+                    contentValuesДляСозданияНовойЗадачиДляпервойТаблицы.put("current_table", РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника);
 
 
-                    classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.
-                            concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("НазваниеОбрабоатываемойТаблицы", "data_tabels");
-                    ///
-                    classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.
-                            concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФлагТипИзменениеВерсииДанныхЛокальнаяСервернаяИлиОба", "Локальное");///  "ЛокальныйСерверныйОба"    ПОСЛЕ КАК ПРИШЛИ ВНЕШНИЕ ДАННЫЕ
-                    ///
-                    ///
-                    classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.
-                            concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put(" " +
-                            "ПередоваемоеЗначенияДляТаблицы_MODIFITATION_Client_КотороеНадоЗаписать", РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника);///  "ЛокальныйСерверныйОба"    ПОСЛЕ КАК ПРИШЛИ ВНЕШНИЕ ДАННЫЕ
-                    ///
+                    // TODO: 22.12.2021 НовыйUUIDДляТаблицыДатаЧат  для таблицы дата_чат
+                    ////
+                    Long ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое = (Long) new Class_Generation_UUID(getContext()).МетодГенерацииUUID(getContext());
+                    //
+
+                    Log.d(this.getClass().getName(),
+                            " ЛокальныйUUIDДляТаблицыДатаЧатВтораяТаблица " + ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое);
+                    ////
+                    contentValuesДляСозданияНовойЗадачиДляпервойТаблицы.put("uuid", ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое);
 
 
-                    ///TODO РЕЗУЛЬТА изменения версии данных
-                    Integer Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы =
-                            (Integer) classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.
-                                    new ChangesVesionData(getContext()).
-                                    changesvesiondata(classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.
-                                                    concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций,
-                                            new PUBLIC_CONTENT(getContext()).МенеджерПотоков
-                                            , sqLiteDatabaseДляНовгоЗадания);
-//
-                    Log.d(getContext().getClass().getName(), "Результат_ПриписиИзменнийВерсииДанныхВФонеПриСменеОрганизации "
-                            + Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы);
+                    // TODO: 21.03.2022  после успешной вставки задачи в таблицу данный код
+
+
+                    МетодПослеУспешнойЗаписиЗначенияВТаблицуПоднимаемВерсиюДанных(classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи,
+                            sqLiteDatabaseДляНовгоЗадания,
+                            РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника, "data_notification");
                     ////
 
                     // TODO: 21.03.2022
@@ -2173,6 +2167,64 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                 }
                 // TODO: 21.03.2022
                 return null;
+            }
+
+            private Integer МетодПослеУспешнойЗаписиЗначенияВТаблицуПоднимаемВерсиюДанных
+                    (Class_GRUD_SQL_Operations classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи,
+                     SQLiteDatabase sqLiteDatabaseДляНовгоЗадания,
+                     Long РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника, String таблицаОбработкиПослеУспешнойВсатвкиНовойЗадачи) throws ExecutionException, InterruptedException {
+
+                // TODO: 21.03.2022
+                Integer Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы = 0;
+
+
+                // TODO: 21.03.2022
+                try {
+                    Log.d(getContext().getClass().getName(), "таблицаОбработкиПослеУспешнойВсатвкиНовойЗадачи "
+                            + таблицаОбработкиПослеУспешнойВсатвкиНовойЗадачи);
+
+
+                    classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.
+                            concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("НазваниеОбрабоатываемойТаблицы",
+                            таблицаОбработкиПослеУспешнойВсатвкиНовойЗадачи);
+                    ///
+                    classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.
+                            concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФлагТипИзменениеВерсииДанныхЛокальнаяСервернаяИлиОба",
+                            "Локальное");///  "ЛокальныйСерверныйОба"    ПОСЛЕ КАК ПРИШЛИ ВНЕШНИЕ ДАННЫЕ
+                    ///
+                    ///
+                    classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.
+                            concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put(" " +
+                                    "ПередоваемоеЗначенияДляТаблицы_MODIFITATION_Client_КотороеНадоЗаписать",
+                            РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника);///  "ЛокальныйСерверныйОба"    ПОСЛЕ КАК ПРИШЛИ ВНЕШНИЕ ДАННЫЕ
+                    ///
+
+
+                    ///TODO РЕЗУЛЬТА изменения версии данных
+                    Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы =
+                            (Integer) classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.
+                                    new ChangesVesionData(getContext()).
+                                    changesvesiondata(classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.
+                                                    concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций,
+                                            new PUBLIC_CONTENT(getContext()).МенеджерПотоков
+                                            , sqLiteDatabaseДляНовгоЗадания);
+//
+                    Log.d(getContext().getClass().getName(), "Результат_ПриписиИзменнийВерсииДанныхВФонеПриСменеОрганизации "
+                            + Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы);
+
+                    // TODO: 21.03.2022
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+
+                // TODO: 21.03.2022
+                return Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы;
             }
 
         }
