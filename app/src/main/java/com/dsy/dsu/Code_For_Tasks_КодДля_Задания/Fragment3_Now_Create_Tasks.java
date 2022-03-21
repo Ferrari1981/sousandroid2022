@@ -2192,7 +2192,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                                     // TODO: 21.03.2022
                                     Log.d(this.getClass().getName(),
-                                            " ТаблицаОбработки " + ТаблицаОбработки);
+                                            " ТаблицаОбработки " + ТаблицаОбработки + " bundleПолученныйеДанныеДляСозданияЗадачи " + bundleПолученныйеДанныеДляСозданияЗадачи);
 
                                     break;
 
@@ -2207,7 +2207,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                                     // TODO: 21.03.2022
                                     Log.d(this.getClass().getName(),
-                                            " ТаблицаОбработки " + ТаблицаОбработки + " ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое " + ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое);
+                                            " ТаблицаОбработки " + ТаблицаОбработки + " ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое " + ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое
+                                                    + " bundleПолученныйеДанныеДляСозданияЗадачи " + bundleПолученныйеДанныеДляСозданияЗадачи);
                                     break;
 
 
@@ -2223,6 +2224,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                     sqLiteDatabaseДляНовгоЗадания,
                                     РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудникаПервая, ТаблицаОбработки);
                             // TODO: 21.03.2022
+
 
                             // TODO: 21.03.2022
                         } catch (Exception e) {
