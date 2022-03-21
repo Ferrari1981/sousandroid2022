@@ -1753,36 +1753,43 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                         TextView ПолучаемФИОКомуЗадачаПредназначена = (TextView) holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0);
                                         // TODO: 21.03.2022
 
-                                        // TODO: 21.03.2022
-                                        Log.d(this.getClass().getName(), "  holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition() " + holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition() +
-                                                "  " + holder.spinnerДляСозданиеНовойЗадачи.getSelectedItem().toString() +
-                                                "  holder.spinnerДляСозданиеНовойЗадачи " + holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0).toString() +
-                                                " holder.spinnerДляСозданиеНовойЗадачи " + holder.spinnerДляСозданиеНовойЗадачи.getItemAtPosition(0) +
-                                                " textView " + ПолучаемФИОКомуЗадачаПредназначена.getText().toString());
-
-                                        // TODO: 21.03.2022
-                                        holder.bundleЗначенияДляНовойЗадачи.putString("КомуСообщениеФИО", ПолучаемФИОКомуЗадачаПредназначена.getText().toString());
-
-
-                                        // TODO: 21.03.2022 перенесенный четвертыйц код
-
-
-                                        // TODO: 21.03.2022 аписываем данные  четвертая Выбор какая Задача Одноразовая Или По расписания
-                                        if (!holder.textView7.getText().toString().isEmpty()) {
+                                        if (!ПолучаемФИОКомуЗадачаПредназначена.getText().toString().isEmpty()) {
                                             // TODO: 21.03.2022
+                                            Log.d(this.getClass().getName(), "  holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition() " + holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition() +
+                                                    "  " + holder.spinnerДляСозданиеНовойЗадачи.getSelectedItem().toString() +
+                                                    "  holder.spinnerДляСозданиеНовойЗадачи " + holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0).toString() +
+                                                    " holder.spinnerДляСозданиеНовойЗадачи " + holder.spinnerДляСозданиеНовойЗадачи.getItemAtPosition(0) +
+                                                    " textView " + ПолучаемФИОКомуЗадачаПредназначена.getText().toString());
 
-                                            holder.bundleЗначенияДляНовойЗадачи.putString("ЗадачиКакаяЗадачиОдноразоваяИлиНет", holder.textView7.getText().toString());
+                                            // TODO: 21.03.2022
+                                            holder.bundleЗначенияДляНовойЗадачи.putString("КомуСообщениеФИО", ПолучаемФИОКомуЗадачаПредназначена.getText().toString());
 
-                                            // TODO: 21.03.2022   перенсенный ятий шаг для создаени задачи
 
-                                            // TODO: 21.03.2022  запускаем создаени задачи только если пользователь выбрал задачу
+                                            // TODO: 21.03.2022   шестой переннос
 
-                                            if (!holder.textView7.getText().toString().equalsIgnoreCase("выберете тип задачи")) {
-                                                // TODO: 21.03.2022  Класс для Создание Нового Задича ПОСЛЕН ПОЛУЧЕНИЯ ДАННЫХ ЧЕРЕЗ bUNGLE
-
-                                                SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи subClass_createNewTasksКлассДляСозданияНовойЗадачи
-                                                        = new SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи(getContext(), holder.bundleЗначенияДляНовойЗадачи);
+                                            // TODO: 21.03.2022 аписываем данные  четвертая Выбор какая Задача Одноразовая Или По расписания
+                                            if (!holder.textView7.getText().toString().isEmpty()) {
                                                 // TODO: 21.03.2022
+
+                                                holder.bundleЗначенияДляНовойЗадачи.putString("ЗадачиКакаяЗадачиОдноразоваяИлиНет", holder.textView7.getText().toString());
+
+                                                // TODO: 21.03.2022   перенсенный ятий шаг для создаени задачи
+
+                                                // TODO: 21.03.2022  запускаем создаени задачи только если пользователь выбрал задачу
+
+                                                if (!holder.textView7.getText().toString().equalsIgnoreCase("выберете тип задачи")) {
+                                                    // TODO: 21.03.2022  Класс для Создание Нового Задича ПОСЛЕН ПОЛУЧЕНИЯ ДАННЫХ ЧЕРЕЗ bUNGLE
+
+                                                    SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи subClass_createNewTasksКлассДляСозданияНовойЗадачи
+                                                            = new SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи(getContext(), holder.bundleЗначенияДляНовойЗадачи);
+                                                    // TODO: 21.03.2022
+                                                } else {
+                                                    // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
+                                                    Snackbar.make(v, "Вы не выбрали тип задачи !!!  ", Snackbar.LENGTH_LONG).show();
+
+                                                }
+
+
                                             } else {
                                                 // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
                                                 Snackbar.make(v, "Вы не выбрали тип задачи !!!  ", Snackbar.LENGTH_LONG).show();
@@ -1792,9 +1799,15 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                                         } else {
                                             // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
-                                            Snackbar.make(v, "Вы не выбрали тип задачи !!!  ", Snackbar.LENGTH_LONG).show();
+                                            Snackbar.make(v, "Вы не выбрали ФИО  для кого задача !!!  ", Snackbar.LENGTH_LONG).show();
 
                                         }
+
+
+                                        // TODO: 21.03.2022 перенесенный четвертыйц код
+
+
+
 
                                         // TODO: 21.03.2022  запускапм класс с данными BUngle
 
@@ -1804,7 +1817,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                                     } else {
                                         // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
-                                        Snackbar.make(v, "Вы не выбрали ФИО  для кого задача !!!  ", Snackbar.LENGTH_LONG).show();
+                                        Snackbar.make(v, "Нет  ФИО   !!!  ", Snackbar.LENGTH_LONG).show();
 
                                     }
 

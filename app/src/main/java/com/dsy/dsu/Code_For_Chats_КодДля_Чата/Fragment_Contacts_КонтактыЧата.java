@@ -8,14 +8,6 @@ import android.database.sqlite.SQLiteCursor;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
@@ -24,9 +16,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.dsy.dsu.CREATE_DATABASE;
 import com.dsy.dsu.Class_GRUD_SQL_Operations;
@@ -175,11 +175,11 @@ public class Fragment_Contacts_КонтактыЧата extends Fragment    {
 
 
                         /////
-                        АдаптерДляКонтактовЧата =
-                                new SimpleCursorAdapter(getContext(),
-                                        R.layout.simple_for_chats_contact,КурсорДанныеДляКонтактовЧата,
-                                        new String[]{"name"},
-                                        new int[]{android.R.id.text1},0);
+                АдаптерДляКонтактовЧата =
+                        new SimpleCursorAdapter(getContext(),
+                                R.layout.simple_for_chats_contact, КурсорДанныеДляКонтактовЧата,
+                                new String[]{"name"},
+                                new int[]{android.R.id.text1}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 
 
 

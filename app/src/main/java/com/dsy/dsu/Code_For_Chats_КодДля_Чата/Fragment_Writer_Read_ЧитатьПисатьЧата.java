@@ -24,6 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -44,9 +45,9 @@ import com.dsy.dsu.Class_Engine_SQL;
 import com.dsy.dsu.Class_GRUD_SQL_Operations;
 import com.dsy.dsu.Class_Generation_Data;
 import com.dsy.dsu.Class_Generation_Errors;
-import com.dsy.dsu.Code_For_Firebase_AndOneSignal_Здесь_КодДЛяСлужбыУведомленияFirebase.Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal;
 import com.dsy.dsu.Class_Generation_UUID;
 import com.dsy.dsu.Class_Generations_PUBLIC_CURRENT_ID;
+import com.dsy.dsu.Code_For_Firebase_AndOneSignal_Здесь_КодДЛяСлужбыУведомленияFirebase.Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal;
 import com.dsy.dsu.MODEL_synchronized;
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
@@ -73,10 +74,8 @@ import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import java.util.function.ToDoubleBiFunction;
 
 import javax.crypto.NoSuchPaddingException;
 import javax.net.ssl.KeyManagerFactory;
@@ -1062,7 +1061,7 @@ try{
                 ///TODO ГЛАВНЫЙ АДАПТЕР чата
                 АдаптерДляЗаписиЧтенияЧата = new SimpleCursorAdapter(getContext(), R.layout.simple_for_chats_read_write, КурсорДанныеДлязаписиичтнияЧата,
                         new String[]{"user_update", "date_update"},
-                        new int[]{android.R.id.text1, android.R.id.text2}, 0);
+                        new int[]{android.R.id.text1, android.R.id.text2}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 
 
                 // TODO: 05.07.2021 set FIO

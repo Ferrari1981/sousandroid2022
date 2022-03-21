@@ -11,12 +11,6 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.work.WorkInfo;
-import androidx.work.WorkManager;
-
 import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -28,15 +22,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.AdapterView;
+import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
+
 import com.dsy.dsu.CREATE_DATABASE;
 import com.dsy.dsu.Class_GRUD_SQL_Operations;
 import com.dsy.dsu.Class_Generation_Errors;
-import com.dsy.dsu.Code_For_Firebase_AndOneSignal_Здесь_КодДЛяСлужбыУведомленияFirebase.Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal;
 import com.dsy.dsu.Class_Generations_PUBLIC_CURRENT_ID;
+import com.dsy.dsu.Code_For_Firebase_AndOneSignal_Здесь_КодДЛяСлужбыУведомленияFirebase.Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal;
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 import com.dsy.dsu.SubClassGET_FIO;
@@ -439,7 +439,7 @@ public class Fragment_Messages_СообщенияЧата extends Fragment {
 
                 АдаптерДляСообщенийДляФрагментаСообщенияОтРазныхЛюдей = new SimpleCursorAdapter(getContext(), R.layout.simple_for_chats_messages, КурсорДанныеДляСообщенийЧата,
                         new String[]{"user_update", "uuid"}, ///
-                        new int[]{android.R.id.text1, android.R.id.text2}, 0);
+                        new int[]{android.R.id.text1, android.R.id.text2}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 
                 // TODO: 21.12.2021
 
