@@ -2237,6 +2237,15 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                             //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
                         }
 
+
+                        // TODO: 21.03.2022
+
+                        Object objectТекущаяТалицаДляНовойЗадачи = linkedBlockingQueueДвеТаблицыСозданиеНовойЗадачи.poll();
+                        // TODO: 21.03.2022
+
+                        Log.d(this.getClass().getName(), " linkedBlockingQueueДвеТаблицыСозданиеНовойЗадачи " + linkedBlockingQueueДвеТаблицыСозданиеНовойЗадачи +
+                                " objectТекущаяТалицаДляНовойЗадачи " + objectТекущаяТалицаДляНовойЗадачи);
+
                     });
 
                     Log.d(this.getClass().getName(), " linkedBlockingQueueДвеТаблицыСозданиеНовойЗадачи " + linkedBlockingQueueДвеТаблицыСозданиеНовойЗадачи);
