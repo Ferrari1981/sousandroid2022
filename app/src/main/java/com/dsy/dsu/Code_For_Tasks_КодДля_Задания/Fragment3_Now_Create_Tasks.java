@@ -52,6 +52,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.text.ParseException;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.CompletionService;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -2202,7 +2203,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                         // TODO: 21.03.2022
                         String ТаблицаПерваяДЛяОбработки = "notifications";
 
-                        String ТаблицаВтораяДЛяОбработки = "data_notification";
+                        String ТаблицаДЛяВтораяОбработки = "data_notification";
 
 
                         // TODO: 21.03.2022 #1 для первой таблицы
@@ -2225,7 +2226,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                         Long РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудникаВторая =
                                 classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.new ChangesVesionData(getContext()).
                                         МетодПолученияУвеличинойВесрииДанныхДляТекущейВнутренейтаблицы_ПоПолю_current_table_ПоПолю_current_table(
-                                                ТаблицаВтораяДЛяОбработки, "localversionandroid_version",
+                                                ТаблицаДЛяВтораяОбработки, "localversionandroid_version",
                                                 getContext()
                                                 , sqLiteDatabaseДляНовгоЗадания);///  current_table    ///  localversionandroid_version
 
@@ -2250,9 +2251,20 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                         ////todo # 1 первой таблицы
                         contentValuesДляСозданияНовойЗадачиДляпервойТаблицы.put("uuid", ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое);
 
+                        ////todo # 2 первой таблицы
+                        contentValuesДляСозданияНовойЗадачиДляВторойТаблицы.put("uuid_notifications", ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое);
 
+
+                        ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое = (Long) new Class_Generation_UUID(getContext()).МетодГенерацииUUID(getContext()) + new Random(1).nextLong();
+
+
+                        Log.d(this.getClass().getName(),
+                                " ЛокальныйUUIDДляТаблицыДатаЧатВтораяТаблица " + ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое);
                         ////todo # 2 первой таблицы
                         contentValuesДляСозданияНовойЗадачиДляВторойТаблицы.put("uuid", ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое);
+
+                        // TODO: 21.03.2022
+
 
                         // TODO: 21.03.2022
 
@@ -2268,7 +2280,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                         МетодПослеУспешнойЗаписиЗначенияВТаблицуПоднимаемВерсиюДанных(classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи,
                                 sqLiteDatabaseДляНовгоЗадания,
-                                РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудникаВторая, ТаблицаВтораяДЛяОбработки);
+                                РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудникаВторая, ТаблицаДЛяВтораяОбработки);
                         ////
 
                         // TODO: 21.03.2022
