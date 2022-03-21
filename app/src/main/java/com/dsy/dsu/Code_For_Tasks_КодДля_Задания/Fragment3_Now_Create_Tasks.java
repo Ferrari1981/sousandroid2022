@@ -1783,6 +1783,12 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                                     SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи subClass_createNewTasksКлассДляСозданияНовойЗадачи
                                                             = new SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи(getContext(), holder.bundleЗначенияДляНовойЗадачи);
                                                     // TODO: 21.03.2022
+
+                                                    Integer ОперациСозданияНовойЗадания = subClass_createNewTasksКлассДляСозданияНовойЗадачи.МетодЗаписиНовойЗадачи();
+
+                                                    Log.d(this.getClass().getName(), "  ОперациСозданияНовойЗадания" + ОперациСозданияНовойЗадания);
+
+
                                                 } else {
                                                     // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
                                                     Snackbar.make(v, "Вы не выбрали тип задачи !!!  ", Snackbar.LENGTH_LONG).show();
@@ -2026,13 +2032,19 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
         private class SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи {
             // TODO: 21.03.2022
+            Bundle bundleПолученныйеДанныеДляСозданияЗадачи;
+
+            // TODO: 21.03.2022
             public SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи(@NonNull Context context, @NonNull Bundle bundleПолученныйеДанныеДляСозданияЗадачи) {
 
                 try {
+                    // TODO: 21.03.2022
+                    this.bundleПолученныйеДанныеДляСозданияЗадачи = bundleПолученныйеДанныеДляСозданияЗадачи;
                     ////////
                     Log.d(this.getClass().getName(), "bundleПолученныйеДанныеДляСозданияЗадачи " + bundleПолученныйеДанныеДляСозданияЗадачи);
 
 
+                    // TODO: 21.03.2022
                 } catch (Exception e) {
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
@@ -2043,8 +2055,28 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
                 }
 
+
             }
 
+            // TODO: 21.03.2022  --метод записи новой задачи
+            Integer МетодЗаписиНовойЗадачи() {
+                try {
+                    // TODO: 21.03.2022
+
+
+                    // TODO: 21.03.2022
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+                // TODO: 21.03.2022
+                return null;
+            }
 
         }
 
