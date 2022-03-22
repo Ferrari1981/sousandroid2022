@@ -1807,7 +1807,23 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                                             = new SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи(getContext(), holder.bundleЗначенияДляНовойЗадачи);
                                                     // TODO: 21.03.2022
 
-                                                    Integer ОперациСозданияНовойЗадания = subClass_createNewTasksКлассДляСозданияНовойЗадачи.МетодЗаписиНовойЗадачи(ПубличныйIDДляЗаданияКомуПисать);
+                                                    Long ОперациСозданияНовойЗадания = subClass_createNewTasksКлассДляСозданияНовойЗадачи.МетодЗаписиНовойЗадачи(ПубличныйIDДляЗаданияКомуПисать);
+
+
+                                                    Log.d(this.getClass().getName(), "  ОперациСозданияНовойЗадания" + ОперациСозданияНовойЗадания);
+
+                                                    // TODO: 22.03.2022  результат вставки новой задачи успешно или нет
+
+
+                                                    if (ОперациСозданияНовойЗадания <= 0) {
+
+                                                        // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
+                                                        Snackbar.make(v, " Ошибка новая задача не создалась !!! ", Snackbar.LENGTH_LONG).show();
+                                                        // TODO: 22.03.2022
+
+                                                        Log.e(this.getClass().getName(), "  Ошибка новая задача не создалась !!!" + ОперациСозданияНовойЗадания);
+                                                    }
+
 
                                                     Log.d(this.getClass().getName(), "  ОперациСозданияНовойЗадания" + ОперациСозданияНовойЗадания);
 
@@ -2082,12 +2098,11 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             }
 
             // TODO: 21.03.2022  --метод записи новой задачи
-            Integer МетодЗаписиНовойЗадачи(@NonNull Long ПубличныйIDДляЗаданияКомуПисать) {
+            Long МетодЗаписиНовойЗадачи(@NonNull Long ПубличныйIDДляЗаданияКомуПисать) {
 
                 CompletionService completionServiceНоваяЗадача;
                 // TODO: 21.03.2022
-
-                Class_GRUD_SQL_Operations classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи;
+                Long[] Результат_ВставкиДанныхПриСозданииНовойЗадачи = {0l};
 
                 // TODO: 21.03.2022
                 SQLiteDatabase sqLiteDatabaseДляНовгоЗадания;
@@ -2098,8 +2113,6 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                     // TODO: 21.03.2022
                     completionServiceНоваяЗадача = new PUBLIC_CONTENT(getContext()).МенеджерПотоков;
-                    //////
-                    classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи = new Class_GRUD_SQL_Operations(getContext());
                     //TODO заполение КОНТЕНЕР для локального обновления--дАТА оПЕРАЦИИ
                     sqLiteDatabaseДляНовгоЗадания = new CREATE_DATABASE(getContext()).getССылкаНаСозданнуюБазу();
 
@@ -2135,7 +2148,9 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                     }
 
-
+                    // TODO: 22.12.2021 НовыйUUIDДляТаблицыДатаЧат  для таблицы дата_чат
+                    ////
+                    Long ЛокальныйUUIDДляОбоихТаблиц = (Long) new Class_Generation_UUID(getContext()).МетодГенерацииUUID(getContext()) + new Random(1).nextInt();
                     // TODO: 21.03.2022  если UUID есть значит НОВОЕ СООБЩЕНИЕ ПЕРВОЕ
 
                     Log.d(this.getClass().getName(), " повторно ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем " + ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем + "\n");
@@ -2148,6 +2163,9 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                         // TODO: 21.03.2022
 
                         try {
+                            // TODO: 22.03.2022
+                            //////
+                            Class_GRUD_SQL_Operations classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи = new Class_GRUD_SQL_Operations(getContext());
 
                             Log.d(this.getClass().getName(), "  ТаблицаОбработки " + ТаблицаОбработки);
 
@@ -2169,19 +2187,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                             // TODO: 21.03.2022
 
-
-                            // TODO: 22.12.2021 НовыйUUIDДляТаблицыДатаЧат  для таблицы дата_чат
-                            ////
-                            Long ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое = (Long) new Class_Generation_UUID(getContext()).МетодГенерацииUUID(getContext());
-                            //
-
                             Log.d(this.getClass().getName(),
-                                    " ЛокальныйUUIDДляТаблицыДатаЧатВтораяТаблица " + ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое);
-
-
-                            ////todo # 1 первой таблицы
-                            contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("uuid", ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое);
-
+                                    " ЛокальныйUUIDДляТаблицыДатаЧатВтораяТаблица " + ЛокальныйUUIDДляОбоихТаблиц);
 
                             ////TODO ДАТА
                             String СгенерированованныйДатаДляДаннойОперации = new Class_Generation_Data(getContext()).ГлавнаяДатаИВремяОперацийСБазойДанных();
@@ -2191,10 +2198,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                             Log.d(this.getClass().getName(), "   СгенерированованныйДатаДляДаннойОперации " + СгенерированованныйДатаДляДаннойОперации);
 
-                            ///////// вставляем ПУБЛИЧНЫЙ ID текущего пользователя
-                            contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("user_update", ПубличныйIDДляФрагмента);
 
-                            Log.d(this.getClass().getName(), "   ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
 
 
                             // TODO: 21.03.2022 выбираем какую точно нужно обработать
@@ -2206,15 +2210,26 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                     // TODO: 21.03.2022
 
 
+                                    ///////// вставляем ПУБЛИЧНЫЙ ID текущего пользователя
+                                    contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("user_update", ПубличныйIDДляФрагмента);
+
+                                    Log.d(this.getClass().getName(), "   ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
+
+
                                     ///////// вставляем id_user
                                     contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("id_user", ПубличныйIDДляЗаданияКомуПисать);
 
                                     Log.d(this.getClass().getName(), "   ПубличныйIDДляЗаданияКомуПисать " + ПубличныйIDДляЗаданияКомуПисать);
 
 
+                                    ////todo # 1 первой таблицы
+                                    contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("uuid", ЛокальныйUUIDДляОбоихТаблиц);
+
                                     // TODO: 21.03.2022
                                     Log.d(this.getClass().getName(),
-                                            " ТаблицаОбработки " + ТаблицаОбработки + " bundleПолученныйеДанныеДляСозданияЗадачи " + bundleПолученныйеДанныеДляСозданияЗадачи);
+                                            " ТаблицаОбработки " + ТаблицаОбработки + " bundleПолученныйеДанныеДляСозданияЗадачи " + bundleПолученныйеДанныеДляСозданияЗадачи +
+                                                    "  ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем  +ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем" +
+                                                    " ЛокальныйUUIDДляОбоихТаблиц " + ЛокальныйUUIDДляОбоихТаблиц);
 
                                     break;
 
@@ -2222,14 +2237,25 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                     // TODO: 21.03.2022
 
                                     ////todo # 2 первой таблицы
-                                    contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("uuid_notifications", ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое);
+                                    if (ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем > 0) {
+                                        // TODO: 21.03.2022
+                                        contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("uuid_notifications", ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем);
+                                    } else {
+                                        // TODO: 21.03.2022
+                                        contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("uuid_notifications", ЛокальныйUUIDДляОбоихТаблиц);
 
-                                    // TODO: 21.03.2022
-                                    ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое = (Long) new Class_Generation_UUID(getContext()).МетодГенерацииUUID(getContext()) + new Random(1).nextLong();
+                                    }
+
+                                    // TODO: 22.03.2022
+                                    ////
+                                    Long ЛокальныйUUIDДляТолькоДляВторойТаблицы = (Long) new Class_Generation_UUID(getContext()).МетодГенерацииUUID(getContext()) + new Random(1).nextInt();
+                                    ////todo # 2 первой таблицы
+                                    contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("uuid", ЛокальныйUUIDДляТолькоДляВторойТаблицы);
 
                                     // TODO: 21.03.2022
                                     Log.d(this.getClass().getName(),
-                                            " ТаблицаОбработки " + ТаблицаОбработки + " ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое " + ЛокальныйUUIDДляОбоихТаблицЗаданияКогдаПервое
+                                            " ТаблицаОбработки " + ТаблицаОбработки + " ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем" +
+                                                    " " + ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем
                                                     + " bundleПолученныйеДанныеДляСозданияЗадачи " + bundleПолученныйеДанныеДляСозданияЗадачи +
                                                     " bundleПолученныйеДанныеДляСозданияЗадачи.getString(\"ШабкаНовойЗадачи\") " + bundleПолученныйеДанныеДляСозданияЗадачи.getString("ШабкаНовойЗадачи"));
 
@@ -2272,7 +2298,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                             classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.contentValuesДляSQLBuilder_Для_GRUD_Операций.putAll(contentValuesДляСозданияНовойЗадачиДляДвухТаблиц);
                             ///TODO РЕЗУЛЬТА вставка ДАННЫХ НОВАЯ ЗАДАЧА
 
-                            Long Результат_ВставкиДанныхПриСозданииНовойЗадачи = (Long) classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.
+                            // TODO: 22.03.2022 сама вставка новой задачи
+                            Результат_ВставкиДанныхПриСозданииНовойЗадачи[0] = (Long) classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.
                                     new InsertData(context).insertdata(classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций,
                                     classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи.contentValuesДляSQLBuilder_Для_GRUD_Операций,
                                     completionServiceНоваяЗадача,
@@ -2281,13 +2308,13 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                             // TODO: 21.03.2022
                             Log.d(this.getClass().getName(),
-                                    " ТаблицаОбработки " + ТаблицаОбработки + " Результат_ВставкиДанныхПриСозданииНовойЗадачи " + Результат_ВставкиДанныхПриСозданииНовойЗадачи);
+                                    " ТаблицаОбработки " + ТаблицаОбработки + " Результат_ВставкиДанныхПриСозданииНовойЗадачи " + Результат_ВставкиДанныхПриСозданииНовойЗадачи[0]);
 
 
                             ///TODO РЕЗУЛЬТА вставка ДАННЫХ  ПОСЛЕ ВСТВКИ НОВОЙ ЗАДАЧИ УВЕЛИЧИВАЕМ ВЕРИСЮ ДАННФЫХ
 
 
-                            if (Результат_ВставкиДанныхПриСозданииНовойЗадачи > 0) {
+                            if (Результат_ВставкиДанныхПриСозданииНовойЗадачи[0] > 0) {
 
                                 Integer РезультатПослеВставкиДанныхУвеличиваемВерсиюДанных =
                                         МетодПослеУспешнойЗаписиЗначенияВТаблицуПоднимаемВерсиюДанных(classGrudSqlOperationsДляОперацииСозданеиНовойЗадачи,
@@ -2298,6 +2325,9 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                 Log.d(this.getClass().getName(),
                                         " ТаблицаОбработки " + ТаблицаОбработки + " РезультатПослеВставкиДанныхУвеличиваемВерсиюДанных " + РезультатПослеВставкиДанныхУвеличиваемВерсиюДанных);
                             }
+// TODO: 22.03.2022
+
+                            contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.clear();
 
 
                             // TODO: 21.03.2022
@@ -2336,7 +2366,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
                 }
                 // TODO: 21.03.2022
-                return null;
+                return Результат_ВставкиДанныхПриСозданииНовойЗадачи[0];
             }
 
 
