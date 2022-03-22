@@ -923,7 +923,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 28.02.2022
 
                     // TODO: 22.03.2022
-                        myViewHolder = new MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
+                        myViewHolder = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3.MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
 
                     // TODO: 01.03.2022
                     Log.i(this.getClass().getName(), "   myViewHolder" + myViewHolder);
@@ -1833,7 +1833,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                                         Log.e(this.getClass().getName(), "  Ошибка новая задача не создалась !!!" + ОперациСозданияНовойЗадания);
                                                     } else {
                                                         // TODO: 22.03.2022
-
+                                                        вибратор.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
                                                         Log.w(this.getClass().getName(), "   Успешное Создаение Задачи !!!" + ОперациСозданияНовойЗадания);
                                                         // TODO: 22.03.2022
                                                         // TODO: 09.03.2022
@@ -1849,13 +1849,13 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                                         // TODO: 10.03.2022
                                                         Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
                                                         // TODO: 10.03.2022
-                                                        вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
                                                         // TODO: 14.03.2022
                                                         bottomNavigationViewДляTasks.requestLayout();
                                                         // TODO: 22.03.2022
                                                         recyclerView.requestLayout();
                                                         // TODO: 14.03.2022
                                                         linearLayou.requestLayout();
+                                                        // TODO: 22.03.2022
 
                                                     }
 

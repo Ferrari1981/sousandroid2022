@@ -333,12 +333,13 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                         new GetData(getContext()).getdata(class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций,
                         new PUBLIC_CONTENT(context).МенеджерПотоков, new CREATE_DATABASE(context).getССылкаНаСозданнуюБазу());
                 // TODO: 02.03.2022
-                if (Курсор_ГлавныйКурсорДляЗадач.getCount() > 0) {
-                    // TODO: 03.03.2022
-                    Log.d(this.getClass().getName(), "Курсор_ГлавныйКурсорДляЗадач " + Курсор_ГлавныйКурсорДляЗадач);
-                    // TODO: 03.03.2022
-                    Курсор_ГлавныйКурсорДляЗадач.moveToFirst();
-                }
+            if (Курсор_ГлавныйКурсорДляЗадач.isBeforeFirst()) {
+                // TODO: 03.03.2022
+                Log.d(this.getClass().getName(), "Курсор_ГлавныйКурсорДляЗадач " + Курсор_ГлавныйКурсорДляЗадач);
+                // TODO: 03.03.2022
+                // TODO: 04.03.2022
+                Курсор_ГлавныйКурсорДляЗадач.moveToFirst();
+            }
                 ////////
                 Log.d(this.getClass().getName(), "Курсор_ГлавныйКурсорДляЗадач " + Курсор_ГлавныйКурсорДляЗадач);
 
@@ -360,11 +361,11 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
         // TODO: 04.03.2022  класс в котором находяться слушатели
 
-        @Override
+/*        @Override
         void МетодСлушательObserverДляRecycleView() {
             // TODO: 04.03.2022
             try {
-                // TODO: 02.03.2022
+            *//*    // TODO: 02.03.2022
                 adapterDataObserverObserverСлушатель = new RecyclerView.AdapterDataObserver() {
                     @Override
                     public void onChanged() {
@@ -374,7 +375,10 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                         // TODO: 02.03.2022
                         /// subClassBuccessLoginГлавныйКласс_бизнесЛогики.МетодПолучениеДанныхДляЗАДАЧ();
                         // TODO: 04.03.2022
-                        if (Курсор_ГлавныйКурсорДляЗадач.getCount() > 0) {
+                        if (Курсор_ГлавныйКурсорДляЗадач.isBeforeFirst()) {
+                            // TODO: 03.03.2022
+                            Log.d(this.getClass().getName(), "Курсор_ГлавныйКурсорДляЗадач " + Курсор_ГлавныйКурсорДляЗадач);
+                            // TODO: 03.03.2022
                             // TODO: 04.03.2022
                             Курсор_ГлавныйКурсорДляЗадач.moveToFirst();
                         }
@@ -435,7 +439,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                         }
                         Log.d(this.getClass().getName(), "onItemRangeMoved ");
                     }
-                };
+                };*//*
                 // TODO: 04.03.2022 запускаем слушатель
                 myRecycleViewAdapter.registerAdapterDataObserver(adapterDataObserverObserverСлушатель);
 
@@ -450,7 +454,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                         Thread.currentThread().getStackTrace()[2].getLineNumber());
                 ///
             }
-        }
+        }*/
 
         // TODO: 04.03.2022 второй метод слушатель для курсора
         @Override
@@ -1040,7 +1044,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     Log.i(this.getClass().getName(), "   viewГлавныйВидДляRecyclleViewДляЗаданий" + viewГлавныйВидДляRecyclleViewДляЗаданий);
                     // TODO: 28.02.2022
                         // TODO: 22.03.2022
-                        myViewHolder = new MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
+                    myViewHolder = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2.MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
 
                     // TODO: 01.03.2022
                     Log.i(this.getClass().getName(), "   myViewHolder" + myViewHolder);
@@ -1074,7 +1078,10 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
                         // TODO: 02.03.2022 тут РАЗДАЕМ ДАННЫЕ RECYCLERBIEW
 
+
+                        // TODO: 22.03.2022
                         Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);
+
                         // TODO: 04.03.2022 p==osion
                         Log.i(this.getClass().getName(), "  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition() " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition());
 
@@ -1642,7 +1649,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
                 Log.i(this.getClass().getName(), "     getItemId holder.position " + position);
 
-                return super.getItemId(position);
+                return recyclerView.getAdapter().getItemId(position);//super.getItemId(position)
 
             }
 

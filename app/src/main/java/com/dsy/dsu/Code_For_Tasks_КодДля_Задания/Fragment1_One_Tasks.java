@@ -1150,10 +1150,10 @@ public class Fragment1_One_Tasks extends Fragment {
                     // TODO: 05.03.2022
                     Log.i(this.getClass().getName(), "   viewГлавныйВидДляRecyclleViewДляЗаданий" + viewГлавныйВидДляRecyclleViewДляЗаданий);
                     // TODO: 28.02.2022
-                    if (myViewHolder == null) {
-                        // TODO: 22.03.2022
-                        myViewHolder = new MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
-                    }
+
+                    // TODO: 22.03.2022
+                    myViewHolder = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1.MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
+
                     // TODO: 01.03.2022
                     Log.i(this.getClass().getName(), "   myViewHolder" + myViewHolder);
 // TODO: 01.03.2022
