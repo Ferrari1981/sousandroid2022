@@ -610,15 +610,7 @@ public class Fragment1_One_Tasks extends Fragment {
                                 // TODO: 05.03.2022  ДЛЯ ИНИЗАЛИЗАЦИИ НИЖНИХ КНОПОК
                                 МетодИнициализацииRecycleViewДляЗадач();
 
-                                // TODO: 04.03.2022
-                                recyclerView.getAdapter().notifyDataSetChanged();
-                                // TODO: 04.03.2022
-                                recyclerView.getAdapter().notifyItemChanged(0);
-                                // TODO: 04.03.2022
-                                recyclerView.requestLayout();
 
-                                // TODO: 28.02.2022
-                                linearLayou.requestLayout();
 
                                 Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
 
@@ -887,6 +879,13 @@ public class Fragment1_One_Tasks extends Fragment {
 
                         subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодСлушательObserverДляRecycleView();
 
+
+                        // TODO: 04.03.2022
+                        recyclerView.getAdapter().notifyDataSetChanged();
+                        // TODO: 04.03.2022
+                        recyclerView.getAdapter().notifyItemChanged(0);
+                        // TODO: 04.03.2022
+
                     } else {
                         // TODO: 06.03.2022
                         //bottomNavigationViewДляTasks = (BottomNavigationView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.bottomnavigationActiviTask8);
@@ -914,13 +913,17 @@ public class Fragment1_One_Tasks extends Fragment {
                         // TODO: 28.02.2022
                         linearLayou.setLayoutParams(layoutParams);
                         // TODO: 28.02.2022
-                        linearLayou.requestLayout();
                         // TODO: 28.02.2022
                         Log.d(this.getClass().getName(), " нет данных для отображения " +
                                 "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач);
                     }
                     // TODO: 13.03.2022
                     bottomNavigationViewДляTasks.requestLayout();
+
+                    recyclerView.requestLayout();
+
+                    // TODO: 28.02.2022
+                    linearLayou.requestLayout();
                     /////////////
                 } catch (Exception e) {
                     e.printStackTrace();
