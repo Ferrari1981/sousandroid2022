@@ -161,6 +161,10 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
             subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодСлушательObserverДляКурсораТолькоКоличество();
 
+            // TODO: 22.03.2022
+            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодСлушательObserverДляRecycleView();
+
+
             // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ СЛУШАТЕЛЬ КУРСОРРА туту запускам два слушателя дялнаших work manager
 
             subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодСоздаенияСлушателяДляОбщейWorkMAnager();
@@ -373,7 +377,26 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
         // TODO: 04.03.2022  класс в котором находяться слушатели
 
+        @Override
+        void МетодСлушательObserverДляRecycleView() {
+            // TODO: 04.03.2022
+            try {
+                // TODO: 04.03.2022 запускаем слушатель
+                // TODO: 16.03.2022
+                myRecycleViewAdapter.registerAdapterDataObserver(adapterDataObserverObserverСлушатель);
 
+            } catch (Exception e) {
+                e.printStackTrace();
+                ///метод запись ошибок в таблицу
+                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                // TODO: 01.09.2021 метод вызова
+                new Class_Generation_Errors(context).МетодЗаписиВЖурналНовойОшибки(e.toString(),
+                        this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                        Thread.currentThread().getStackTrace()[2].getLineNumber());
+                ///
+            }
+        }
         // TODO: 04.03.2022  класс в котором находяться слушатели
 
 
