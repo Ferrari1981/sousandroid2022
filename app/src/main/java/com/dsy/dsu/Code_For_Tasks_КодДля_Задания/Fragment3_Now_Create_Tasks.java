@@ -914,10 +914,10 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 05.03.2022
                     Log.i(this.getClass().getName(), "   viewГлавныйВидДляRecyclleViewДляЗаданий" + viewГлавныйВидДляRecyclleViewДляЗаданий);
                     // TODO: 28.02.2022
-                    if (myViewHolder == null) {
-                        // TODO: 22.03.2022  
+
+                    // TODO: 22.03.2022
                         myViewHolder = new MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
-                    }
+
                     // TODO: 01.03.2022
                     Log.i(this.getClass().getName(), "   myViewHolder" + myViewHolder);
 // TODO: 01.03.2022

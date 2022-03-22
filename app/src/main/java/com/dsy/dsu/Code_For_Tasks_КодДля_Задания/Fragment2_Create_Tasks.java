@@ -963,18 +963,15 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 View viewГлавныйВидДляRecyclleViewДляЗаданий = null;
                 try {
                     // TODO: 28.02.2022
-                    if (viewГлавныйВидДляRecyclleViewДляЗаданий == null) {
                         // TODO: 22.03.2022
                         viewГлавныйВидДляRecyclleViewДляЗаданий = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_for_takst_cardview2, parent, false);//todo old R.layout.simple_for_takst_cardview1
-                    }
+
                     // TODO: 05.03.2022
                     Log.i(this.getClass().getName(), "   viewГлавныйВидДляRecyclleViewДляЗаданий" + viewГлавныйВидДляRecyclleViewДляЗаданий);
                     // TODO: 28.02.2022
-                    if (myViewHolder == null) {
                         // TODO: 22.03.2022
-
                         myViewHolder = new MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
-                    }
+
                     // TODO: 01.03.2022
                     Log.i(this.getClass().getName(), "   myViewHolder" + myViewHolder);
 // TODO: 01.03.2022
