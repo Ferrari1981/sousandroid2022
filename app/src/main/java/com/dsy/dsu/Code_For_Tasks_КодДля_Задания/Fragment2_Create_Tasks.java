@@ -391,7 +391,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                             new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
                                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                         }
-                        Log.d(this.getClass().getName(), "onChanged ");
+                        Log.d(this.getClass().getName(), "onChanged ");//
                     }
 
                     @Override
