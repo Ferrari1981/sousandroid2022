@@ -92,13 +92,6 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             // TODO: 15.03.2022 НЕ ПОКАЗЫВАЕМ
             /*   bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.GONE);*/
             // TODO: 16.03.2022
-            bottomNavigationКонкретноКнопкаДобавить.requestLayout();
-
-            // TODO: 16.03.2022
-
-            // TODO: 15.03.2022
-            linearLayou.requestLayout();
-            // TODO: 14.03.2022
 
             Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания + " recyclerViewДляСозданиеНовойЗадачи");
 
@@ -118,9 +111,16 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         try {
-            Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания " + viewДляПервойКнопкиHome_Задания);
+            Log.d(this.getClass().getName(), "  Fragment3_Create_Tasks  viewДляПервойКнопкиHome_Задания " + viewДляПервойКнопкиHome_Задания);
             // TODO: 14.03.2022
             Log.d(this.getClass().getName(), " onCreateView  viewДляПервойКнопкиHome_Задания  Fragment1_One_Tasks  onCreateView ");
+
+            // TODO: 14.03.2022
+            viewДляПервойКнопкиHome_Задания = inflater.inflate(R.layout.activity_main_fragment1_for_tasks, container, false);
+
+            // TODO: 12.03.2022
+            Log.d(this.getClass().getName(), " onCreateView  viewДляПервойКнопкиHome_Задания  Fragment1_One_Tasks  onCreateView " +
+                    "" + viewДляПервойКнопкиHome_Задания);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -131,7 +131,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
             ///
         }
-        return super.onCreateView(inflater, container, savedInstanceState);//todo  super.onCreateView(inflater, container, savedInstanceState);
+        return viewДляПервойКнопкиHome_Задания;//  super.onCreateView(inflater, container, savedInstanceState)            todo  super.onCreateView(inflater, container, savedInstanceState);
     }
 
     // TODO: 12.03.2022
@@ -158,8 +158,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
         try {
             // TODO: 16.03.2022
             subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3ЗаполенияЗадачиДляСозданияНовойЗадачи = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3(getContext(), getActivity());
@@ -216,6 +216,16 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             Log.d(this.getClass().getName(), " нет данных для отображения " +
                     "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  МетодКпопкаСоЗачкомКраснымДополнительныйСтатус  " + Курсор_ГлавныйКурсорДляЗадач +
                     " Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+
+
+            // TODO: 22.03.2022
+            // TODO: 13.03.2022
+            bottomNavigationViewДляTasks.requestLayout();
+            // TODO: 13.03.202
+            recyclerView.requestLayout();
+
+            // TODO: 14.03.2022
+            linearLayou.requestLayout();//
 
 
         } catch (Exception e) {
@@ -606,18 +616,21 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                 ОчередьДаныеДляСозданиеНовойЗадачи.offer("СоздатьНовуюЗадачу");
 
-                    // TODO: 28.02.2022 переходим в создание новой задачи
+                // TODO: 28.02.2022 переходим в создание новой задачи
                 myRecycleViewAdapter = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент3.MyRecycleViewAdapter(ОчередьДаныеДляСозданиеНовойЗадачи);
 
                 // TODO: 04.03.2022  В ДАННЫЙ КОД ЗАХОДИМ КОГДА МЫ СОЗДАЕМ НОВУЮ ЗАДАЧУ
 
                 recyclerView.setAdapter(myRecycleViewAdapter);
+                // TODO: 22.03.2022
+                // TODO: 04.03.2022
+                recyclerView.getAdapter().notifyDataSetChanged();
+                // TODO: 04.03.2022
+                recyclerView.getAdapter().notifyItemChanged(0);
 
                 Log.d(this.getClass().getName(), " есть данные для отображения " +
                         "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач + " myRecycleViewAdapterНоваяЗадача " + myRecycleViewAdapter);
 
-                // TODO: 13.03.202
-                recyclerView.requestLayout();
 
                 Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 recyclerView   " + recyclerView);
 
@@ -635,10 +648,6 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                 Log.d(this.getClass().getName(), "      subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодСлушательObserverДляRecycleView()  МетодИнициализацииRecycleViewДляЗадач()  " +
                         " subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3ЗаполенияЗадачиДляРедактирования " + subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент3ЗаполенияЗадачиДляСозданияНовойЗадачи);
 
-                // TODO: 13.03.2022
-                bottomNavigationViewДляTasks.requestLayout();
-                // TODO: 14.03.2022
-                linearLayou.requestLayout();//
 
                 /////////////
             } catch (Exception e) {

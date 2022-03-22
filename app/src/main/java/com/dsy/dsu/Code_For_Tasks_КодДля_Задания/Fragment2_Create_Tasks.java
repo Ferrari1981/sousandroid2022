@@ -651,26 +651,30 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 04.03.2022
                     recyclerView.setAdapter(myRecycleViewAdapter);
                     // TODO: 13.03.2022
-                    recyclerView.requestLayout();
+
+                    // TODO: 22.03.2022
+                    recyclerView.getAdapter().notifyDataSetChanged();
+                    // TODO: 04.03.2022
+                    recyclerView.getAdapter().notifyItemChanged(0);
+
 
                     Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 recyclerView   " + recyclerView);
 
                     // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ когнданет записей  МетодИнициализацииRecycleViewДляЗадачМетодИнициализацииRecycleViewДляЗадач
 
                     МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+
+
                     // TODO: 14.03.2022
+
                     Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе +
                             " Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
                     // TODO: 14.03.2022
 
+
                     // TODO: 14.03.2022
                     Log.d(this.getClass().getName(), "      subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодСлушательObserverДляRecycleView()  МетодИнициализацииRecycleViewДляЗадач()  ");
                     // TODO: 04.03.2022
-                    recyclerView.getAdapter().notifyDataSetChanged();
-                    // TODO: 04.03.2022
-                    recyclerView.getAdapter().notifyItemChanged(0);
-                    // TODO: 04.03.2022
-
                 } else {
                     // TODO: 06.03.2022
                     //bottomNavigationViewДляTasks = (BottomNavigationView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.bottomnavigationActiviTask8);
@@ -699,7 +703,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
                 // TODO: 13.03.2022
                 bottomNavigationViewДляTasks.requestLayout();
-                // TODO: 22.03.2022
+                // TODO: 04.03.2022
                 recyclerView.requestLayout();
                 // TODO: 16.03.2022
                 linearLayou.requestLayout();
@@ -996,7 +1000,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
 
                         // TODO: 22.03.2022
-                        Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.moveToPosition(position);
+                        Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.moveToPosition(position);//todo old  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);
 
                         // TODO: 04.03.2022 p==osion
                         Log.i(this.getClass().getName(), "  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition() " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition());

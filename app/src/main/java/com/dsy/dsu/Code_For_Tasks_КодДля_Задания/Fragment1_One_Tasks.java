@@ -856,10 +856,12 @@ public class Fragment1_One_Tasks extends Fragment {
 
                         recyclerView.setAdapter(myRecycleViewAdapter);
 
-                        // TODO: 15.03.2022
-                        recyclerView.requestLayout();
-
                         // TODO: 13.03.2022
+                        // TODO: 04.03.2022
+                        recyclerView.getAdapter().notifyDataSetChanged();
+                        // TODO: 04.03.2022
+                        recyclerView.getAdapter().notifyItemChanged(0);
+
                         Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 recyclerView   " + recyclerView);
 
                         // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ когнданет записей  МетодИнициализацииRecycleViewДляЗадачМетодИнициализацииRecycleViewДляЗадач
@@ -876,10 +878,7 @@ public class Fragment1_One_Tasks extends Fragment {
                         subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодСлушательObserverДляRecycleView();
 
 
-                        // TODO: 04.03.2022
-                        recyclerView.getAdapter().notifyDataSetChanged();
-                        // TODO: 04.03.2022
-                        recyclerView.getAdapter().notifyItemChanged(0);
+
                         // TODO: 04.03.2022
 
                     } else {
@@ -1178,7 +1177,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
                         // TODO: 02.03.2022 тут РАЗДАЕМ ДАННЫЕ RECYCLERBIEW
 
-                        Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);
+                        Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.moveToPosition(position);//todo old  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);
                         // TODO: 04.03.2022 p==osion
                         Log.i(this.getClass().getName(), "  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition() " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition());
 
