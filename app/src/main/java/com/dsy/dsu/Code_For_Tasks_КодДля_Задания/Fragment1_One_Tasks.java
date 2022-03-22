@@ -296,7 +296,11 @@ public class Fragment1_One_Tasks extends Fragment {
                     " dataSetObserverДляКурсора " + dataSetObserverДляКурсора);
 
             // TODO: 17.03.2022  прОВЕРЯЕМ ПЕРЕД  СНЯТИЕМ СРЕГИСТАЦИИ НАБЛЮДАЛЕТЯД АБЫЛ ИЛ ВООБЩЕ ОН УСТАНОВЛЕН
-            boolean ФлагКоторыйПоказываетБылзарегистированлСлушатель = myRecycleViewAdapter.hasObservers();
+            boolean ФлагКоторыйПоказываетБылзарегистированлСлушатель = false;
+            if (myRecycleViewAdapter != null) {
+                // TODO: 22.03.2022
+                ФлагКоторыйПоказываетБылзарегистированлСлушатель = myRecycleViewAdapter.hasObservers();
+            }
 
             Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 onDestroyView  " +
                     "" + adapterDataObserverObserverСлушатель +

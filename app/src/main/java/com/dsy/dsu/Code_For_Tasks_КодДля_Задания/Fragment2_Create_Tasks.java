@@ -649,6 +649,11 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                             "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач);
 
 
+                    TextView textViewisnull = (TextView) viewДляПервойКнопкиHome_Задания.findViewById(R.id.activy_task_nameеtextviewcursornull);
+                    //  TextView textViewisnull=new TextView(activity);
+                    textViewisnull.setVisibility(View.GONE);
+
+
                     // TODO: 28.02.2022
                     myRecycleViewAdapter = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2.MyRecycleViewAdapter(Курсор_ГлавныйКурсорДляЗадач);
                     // TODO: 04.03.2022
