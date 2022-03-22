@@ -40,6 +40,7 @@ import com.dsy.dsu.Class_GRUD_SQL_Operations;
 import com.dsy.dsu.Class_Generation_Data;
 import com.dsy.dsu.Class_Generation_Errors;
 import com.dsy.dsu.Class_Generation_UUID;
+import com.dsy.dsu.Code_For_Firebase_AndOneSignal_Здесь_КодДЛяСлужбыУведомленияFirebase.Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal;
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 import com.dsy.dsu.SubClass_RetryGEtRowInChatsКлассПроверемЕщеРАзПоявилосЛИПуббличныйUUIDМеждуУчасникамиЧата;
@@ -1869,6 +1870,22 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                                         // TODO: 14.03.2022
                                                         linearLayou.requestLayout();
                                                         // TODO: 22.03.2022
+
+                                                        // TODO: 22.03.2022  ПОСЛЕ УСПЕШНОГО СОЗДАНЕИ ОВГО ЗАДАНИЯ ЗАПУСКАЕМ СИНХРОНИАЗЦИЮ
+
+
+                                                        // TODO: 13.01.2022  ЗАПУСК СИХРОНИЗВАЦИИ В ХОЛОСТУЮ ХОД
+
+                                                        new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getContext()).
+                                                                МетодПовторногоЗапускаВсехWorkManager__ОДНОРАЗОВОЙСинхрониазцииданных(ПубличныйIDДляФрагмента, getContext());
+
+                                                        // TODO: 22.03.2022
+
+                                                        // TODO: 24.12.2021
+
+                                                        Log.d(this.getClass().getName(), "после СОЗДАНИЕЯ НОВОЙ ЗАДАЧИ ..... ПОСЛЕ ЗУПАСУКА СИНХРОНИАЗЦИИ" +
+                                                                "  ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
+
 
                                                     }
 
