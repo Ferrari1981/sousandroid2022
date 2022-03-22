@@ -17,7 +17,7 @@ import java.util.Date;
 public class CREATE_DATABASE extends SQLiteOpenHelper{ ///SQLiteOpenHelper
 
     /////TODO ВЕРСИЯ ДАННЫХ МЕНЯЕМ И УДАЛЯЕМ ДАННЫЕ И ЗАГРУЖАЕМ НОВЫЕ
-    private static final int VERSION = 735;//ПРИ ЛЮБОМ ИЗМЕНЕНИЕ В СТРУКТУРЕ БАЗЫ ДАННЫХ НУЖНО ДОБАВИТЬ ПЛЮС ОДНУ ЦИФРУ К ВЕРСИИ 1=1+1=2 ИТД.1
+    private static final int VERSION = 736;//ПРИ ЛЮБОМ ИЗМЕНЕНИЕ В СТРУКТУРЕ БАЗЫ ДАННЫХ НУЖНО ДОБАВИТЬ ПЛЮС ОДНУ ЦИФРУ К ВЕРСИИ 1=1+1=2 ИТД.1
 
 
     Context contextСозданиеБАзы;
@@ -600,7 +600,6 @@ public class CREATE_DATABASE extends SQLiteOpenHelper{ ///SQLiteOpenHelper
                 " date_start NUMERIC ," +
                 " clock NUMERIC," +
                 " date_update NUMERIC," +
-                " user_update INTEGER ," +
                 "rights INTEGER   ," +
                 "uuid  NUMERIC UNIQUE ," +
                 "current_table  NUMERIC DEFAULT 0," +
@@ -809,17 +808,19 @@ public class CREATE_DATABASE extends SQLiteOpenHelper{ ///SQLiteOpenHelper
         // TODO: 09.02.2022  view
         ССылкаНаСозданнуюБазу.execSQL("drop view  if exists view_tasks");//test
         //ВИД View_TABEL
-        ССылкаНаСозданнуюБазу.execSQL("CREATE VIEW if not exists view_tasks AS  SELECT         data_notification.id, " +
-                " data_notification.uuid_notifications,  data_notification.current_table," +
-                "  data_notification.uuid,  data_notification.rights," +
-                "  data_notification.date_update,  data_notification.clock, \n" +
-                "                          data_notification.date_start," +
-                "  data_notification.message,  notifications.id_user," +
+        ССылкаНаСозданнуюБазу.execSQL("CREATE VIEW if not exists view_tasks AS  SELECT     " +
+                "    data_notification.id,  data_notification.uuid_notifications," +
+                "  data_notification.current_table,  data_notification.uuid, " +
+                " data_notification.rights,  data_notification.date_update," +
+                "  data_notification.clock, \n" +
+                "                          data_notification.date_start, " +
+                " data_notification.message,  notifications.id_user," +
                 "  data_notification.status_write,  notifications.user_update," +
                 "  data_notification.type_tasks, \n" +
                 "                          data_notification.head_message\n" +
                 "FROM             notifications LEFT OUTER JOIN\n" +
-                "                          data_notification ON  notifications.uuid =  data_notification.uuid_notifications\n" +
+                "                          data_notification" +
+                " ON  notifications.uuid =  data_notification.uuid_notifications\n" +
                 "WHERE        ( data_notification.message IS NOT NULL)");
         ////
         Log.d(this.getClass().getName(), " сработала ...  создание вид  view_tasks");
@@ -1263,12 +1264,14 @@ public class CREATE_DATABASE extends SQLiteOpenHelper{ ///SQLiteOpenHelper
         //принудительное запускаем заново для создание новых таблиц
 
 
-        if (newVersion == 735) {
+        if (newVersion == 736) {
 
             //TODo созадем таблицу сос старами ошибками
 
+            МетодСозданиеУведомленийИлиДАТАЗадания(ССылкаНаСозданнуюБазу);
 
-            МетодСозданиеУведомленийИлиЗадания(ССылкаНаСозданнуюБазу);
+            МетодСозданияВидаЗадания(ССылкаНаСозданнуюБазу);
+
 
             // TODO: 10.03.2022
 
