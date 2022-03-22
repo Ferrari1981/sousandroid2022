@@ -898,7 +898,7 @@ public class Fragment1_One_Tasks extends Fragment {
                         //  TextView textViewisnull=new TextView(activity);
                         textViewisnull.setVisibility(View.VISIBLE);
                         // TODO: 03.03.2022
-                        textViewisnull.setText("Нет задач !!!".toUpperCase());
+                        textViewisnull.setText("Нет контролируемых задач !!!".toUpperCase());
                         // TODO: 28.02.2022
                         linearLayou.addView(textViewisnull);
                         // TODO: 06.03.2022
@@ -1142,7 +1142,10 @@ public class Fragment1_One_Tasks extends Fragment {
                     // TODO: 05.03.2022
                     Log.i(this.getClass().getName(), "   viewГлавныйВидДляRecyclleViewДляЗаданий" + viewГлавныйВидДляRecyclleViewДляЗаданий);
                     // TODO: 28.02.2022
-                    myViewHolder = new MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
+                    if (myViewHolder == null) {
+                        // TODO: 22.03.2022
+                        myViewHolder = new MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
+                    }
                     // TODO: 01.03.2022
                     Log.i(this.getClass().getName(), "   myViewHolder" + myViewHolder);
 // TODO: 01.03.2022
