@@ -1,9 +1,6 @@
 package com.dsy.dsu;
 
-import static android.content.Context.ACTIVITY_SERVICE;
-
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
@@ -18,16 +15,11 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import com.j256.ormlite.stmt.query.In;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -45,38 +37,28 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
 import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.concurrent.CompletionService;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeoutException;
-import java.util.function.BiConsumer;
-import java.util.function.ToDoubleBiFunction;
-import java.util.stream.LongStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
-import java.util.zip.Inflater;
 
 import javax.crypto.Cipher;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
-;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.internal.operators.single.SingleFlatMap;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Observable;
-import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.functions.Action;
 import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.functions.Function;
 import io.reactivex.rxjava3.functions.Predicate;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+
+;
 
 
 //////-------TODO  ЭТО ПЕРВЫЙ КОНТРОЛЛЕР КОТОРЫЙ ВИЗУАЛИЗИРУЕТ СИНХРОНИЗАЦИЮ С ПРОГРАССБАРОМ---------------------------------------------------------------
@@ -6494,12 +6476,16 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
                         " ГенерацияJSONполейФинал.length() " + ГенерацияJSONполейФинал.length());
 
 
-
                 //TODO ЗАКРЫВАЕМ КУРСОР
-                РезультатОтветаОтСервреУспешнаяВставкаИлиОбновления=0;
+                РезультатОтветаОтСервреУспешнаяВставкаИлиОбновления = 0;
                 ///todo МЫ СОЗДАЛИ ФАЙЛ JSON  И ПОСЫЛАЕМ ЕГО НА СЕРВЕР
-                РезультатОтветаОтСервреУспешнаяВставкаИлиОбновления=
-                        МетодПосылаетНаСерверСозданныйJSONФайлвФоне(ГенерацияJSONполейФинал, имяТаблицыОтАндройда_локальноая,МенеджерПотоковВнутрений); ////СГЕНЕРИРОВАНЫЙ JSON ФАЙЛ ЕСЛИ БОЛЬШЕ 2 ССИМВОЛОМ В НЕМ ТО ОТПРАВЛЯЕМ
+
+
+                SubClass_Klacc_Otprabki_класс_ОтправкиДанных subClass_klacc_otprabki_класс_отправкиДанных = new SubClass_Klacc_Otprabki_класс_ОтправкиДанных(contextСозданиеБАзы);
+
+
+                РезультатОтветаОтСервреУспешнаяВставкаИлиОбновления =
+                        subClass_klacc_otprabki_класс_отправкиДанных.МетодПосылаетНаСерверСозданныйJSONФайлвФоне(ГенерацияJSONполейФинал, имяТаблицыОтАндройда_локальноая, МенеджерПотоковВнутрений); ////СГЕНЕРИРОВАНЫЙ JSON ФАЙЛ ЕСЛИ БОЛЬШЕ 2 ССИМВОЛОМ В НЕМ ТО ОТПРАВЛЯЕМ
                 //
 
                 Log.d(this.getClass().getName(), " РезультатОтветаОтСервреУспешнаяВставкаИлиОбновления  " + РезультатОтветаОтСервреУспешнаяВставкаИлиОбновления);
@@ -6535,192 +6521,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
     }
 
 
-
-
-
-
-
-
-
-
-    //////todo МЕТОД НЕПОСТРЕДСТВЕННО ОТПРАВЛЯЕМ ДАННЫЕ НА СЕРВЕР МЕТОД POST
-    Integer МетодПосылаетНаСерверСозданныйJSONФайлвФоне(@NonNull JSONObject ГенерацияJSONполейФиналДляОтправкиНаСеврерОтАндройда, @NonNull String имяТаблицыОтАндройда_локальноая,
-                                                        CompletionService МенеджерПотоковВнутрений) {
-        /////
-        Integer РезультатУспешнойВставкиИлиОбновлениеCallBacksОтСервера=0;
-
-        String ДанныеПришёлВОтветОтМетодаPOST = new String();
-        ///
-
-        StringBuffer БуферОтправкаДанныхвФоне = new StringBuffer();
-        //
-
-
-
-        Class_GRUD_SQL_Operations class_grud_sql_operations;
-        ///
-        class_grud_sql_operations=new Class_GRUD_SQL_Operations(contextСозданиеБАзы);
-
-
-        try {
-            Log.d(this.getClass().getName(), "  МЕТОД НЕПОСТРЕДСТВЕННО ОТПРАВЛЯЕМ ДАННЫЕ НА СЕРВЕР МЕТОД POST ");
-
-            // TODO: 15.06.2021 проверяем если таблица табель то еси в нутри потока отпралеемого хоть один день d1,d2,d3 защита от пустого траыфика\
-            Log.d(this.getClass().getName(), " ГенерацияJSONполейФиналДляОтправкиНаСеврерОтАндройда.toString() "
-                    + ГенерацияJSONполейФиналДляОтправкиНаСеврерОтАндройда.toString() +
-                    " ГенерацияJSONполейФиналДляОтправкиНаСеврерОтАндройда.toString().toCharArray().length  "
-                    + ГенерацияJSONполейФиналДляОтправкиНаСеврерОтАндройда.toString().toCharArray().length +
-                    " имяТаблицыОтАндройда_локальноая " + имяТаблицыОтАндройда_локальноая);
-///todo
-
-
-
-
-            try {
-                // TODO: 28.01.2022
-                String НазваниеПорта="tabel.dsu1.ru";
-                // TODO: 16.02.2022
-                Integer СамПорт=8888;
-
-     /*       // TODO: 28.01.2022
-            String НазваниеПорта="192.168.254.40";
-            Integer СамПорт=8080;
-            ///*/
-
-                //////todo МЕТОД НЕПОСТРЕДСТВЕННО ОТПРАВЛЯЕМ ДАННЫЕ НА СЕРВЕР МЕТОД POST
-                БуферОтправкаДанныхвФоне = УниверсальныйБуферОтправкиДанныхНаСервера(ГенерацияJSONполейФиналДляОтправкиНаСеврерОтАндройда,
-                        ПубличноеIDПолученныйИзСервлетаДляUUID, имяТаблицыОтАндройда_локальноая,
-                        "Получение JSON файла от Андройда",60000,НазваниеПорта, СамПорт); ///БУФЕР ОТПРАВКИ ДАННЫХ НА СЕРВЕР  //TODO original "tabel.dsu1.ru", 8888        //TODO "192.168.254.40", 8080
-
-                Log.d(this.getClass().getName(), "  СЛУЖБА ВЕРНУЛЬСЯ ОТВЕТ ОТ СЕРВЕРА ОБРАТНО АНДРОЙДУ  БуферОтправкаДанных.toString() " + БуферОтправкаДанныхвФоне.toString());
-
-
-                if (БуферОтправкаДанныхвФоне==null) {
-
-                    БуферОтправкаДанныхвФоне = new StringBuffer();
-
-                }
-
-
-
-                if (БуферОтправкаДанныхвФоне.length()>0 ) {
-
-                    ПубличныйРезультатОтветаОтСерврераУспешно=0;
-                    ////
-                    ПубличныйРезультатОтветаОтСерврераУспешно=БуферОтправкаДанныхвФоне.length();
-                }
-
-                Log.d(this.getClass().getName(), "БуферОтправкаДанныхвФоне.length() " + БуферОтправкаДанныхвФоне.length()+
-                        " БуферОтправкаДанныхвФоне " +БуферОтправкаДанныхвФоне.toString());
-
-
-
-
-                ////
-            } catch (Exception e) {
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                // TODO: 01.09.2021 метод вызова
-                new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                ////// начало запись в файл
-            }
-
-            // TODO: 18.10.2021
-
-
-// TODO: 18.10.2021 exit iwait
-
-            ////TODO  ОТВЕТ ОТ СЕРВЕРА ПОСЛЕ ОТПРАВКИ ДАННЫХ НА СЕРВЕР
-            if (БуферОтправкаДанныхвФоне != null) {
-                ///
-
-
-                if (БуферОтправкаДанныхвФоне.length() > 0) {
-
-                    Log.d(this.getClass().getName(), "  БуферОтправкаДанныхвФоне.toString()  " + БуферОтправкаДанныхвФоне.toString());
-                    do {
-                        ДанныеПришёлВОтветОтМетодаPOST = БуферОтправкаДанныхвФоне.toString();
-
-                        Log.d(this.getClass().getName(), "  ДанныеПришёлВОтветОтМетодаPOST  " + ДанныеПришёлВОтветОтМетодаPOST);
-
-                        //
-                        if (ДанныеПришёлВОтветОтМетодаPOST != null) {
-                            //
-                            break;
-                        }
-
-                    } while (ДанныеПришёлВОтветОтМетодаPOST == null);/////конец for # количество респонсев
-                }
-
-
-                ////TODO ответ от сервера РЕЗУЛЬТАТ
-                Log.d(this.getClass().getName(), "Успешный Ответ от сервера ДанныеПришёлВОтветОтМетодаPOST в фоне " + ДанныеПришёлВОтветОтМетодаPOST);
-                ///
-                if (ДанныеПришёлВОтветОтМетодаPOST.length() > 5) {
-                    ///
-                    //
-                    //// TimeUnit.MILLISECONDS.sleep(500);
-                    //
-                    РезультатУспешнойВставкиИлиОбновлениеCallBacksОтСервера=           ДанныеПришёлВОтветОтМетодаPOST.length();
-
-                    Log.d(this.getClass().getName(), " СЛУЖБА УСПЕШНЫЙ ОТВКЕТ ОТ СЕРВЕРА ОТВЕТ CALBACKS  ДанныеПришёлВОтветОтМетодаPOST.length()  "
-                            +  ДанныеПришёлВОтветОтМетодаPOST.length()+ " ДанныеПришёлВОтветОтМетодаPOST " +ДанныеПришёлВОтветОтМетодаPOST.toString() );
-                }else{
-                    Log.d(this.getClass().getName(), " NULL НОЛЬ ОБНОВЛЕНИЙ ИЛИ ВСТАВОК С СЕРВЕРА  СЛУЖБА УСПЕШНЫЙ ОТВКЕТ ОТ СЕРВЕРА ОТВЕТ CALBACKS  ДанныеПришёлВОтветОтМетодаPOST.length() ");
-                }
-
-
-                // TODO: 15.07.2021  только для таблиц указываем ответ от сервер успешно лдии ывставли или обновли данные
-
-
-                /////УДАЛЯЕМ ИЗ ПАМЯТИ  ОТРАБОТАННЫЙ АСИНАТСК
-                /////////
-            } else {////ОШИБКА В ПОЛУЧЕНИИ С СЕРВЕРА ТАБЛИУЦЫ МОДИФИКАЦИИ ДАННЫХ СЕРВЕРА
-
-
-                Log.d(this.getClass().getName(), " Данных нет c сервера  БуферОтправкаДанных.length() в фоне " + БуферОтправкаДанныхвФоне.length());
-            }
-
-            Log.d(this.getClass().getName(), " ДанныеПришёлВОтветОтМетодаPOST " + ДанныеПришёлВОтветОтМетодаPOST);
-
-            if (ДанныеПришёлВОтветОтМетодаPOST.length() > 0) {
-
-                /////// данные код анализирует успешные и/ил обновление данных на серврер кторые ему присла пользователь
-                МетодАнализаОтветаОтСервераУспешныеВставкиИлиОбновлениевФоне(ДанныеПришёлВОтветОтМетодаPOST, имяТаблицыОтАндройда_локальноая,МенеджерПотоковВнутрений);
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            ///метод запись ошибок в таблицу
-            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            // TODO: 01.09.2021 метод вызова
-            new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-            ////// начало запись в файл
-        }
-        return  РезультатУспешнойВставкиИлиОбновлениеCallBacksОтСервера;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ///TODO ОТТВЕТ ОТ СЕРВЕРАР ОТ МЕТОДА POST() С РЕЗУЛЬТАТАМИ ВСТАВКИ И ЛИ ОБНОВЛЕНЕИ ДАННЫХ
+     ///TODO ОТТВЕТ ОТ СЕРВЕРАР ОТ МЕТОДА POST() С РЕЗУЛЬТАТАМИ ВСТАВКИ И ЛИ ОБНОВЛЕНЕИ ДАННЫХ
 
 
     /////// данные код анализирует успешные и/ил обновление данных на серврер кторые ему присла пользователь
@@ -7924,500 +7725,434 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 //todo  ПОД КЛАСС  С ГЛАВНМ ЦИКЛОМ ОБМЕНА ДАННЫМИ ТАБЛИЦЫ
 
-   private class Class_Engine_SQL_SubClassMainLoopAsyncTables_КлассСГлавнымЦикломСинхрониазцииТАблиц extends Class_Engine_SQL {
+     private class Class_Engine_SQL_SubClassMainLoopAsyncTables_КлассСГлавнымЦикломСинхрониазцииТАблиц extends Class_Engine_SQL {
 
 
+         SQLiteDatabase  Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы=null;
 
-        SQLiteDatabase  Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы=null;
+         PUBLIC_CONTENT  public_contentДатыДляГлавныхТаблицСинхронизации;
 
-        PUBLIC_CONTENT  public_contentДатыДляГлавныхТаблицСинхронизации;
+         Integer ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером;
 
-        Integer ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером;
+         Activity ActivityДляСинхронизацииОбмена;
 
-        Activity ActivityДляСинхронизацииОбмена;
+         public Class_Engine_SQL_SubClassMainLoopAsyncTables_КлассСГлавнымЦикломСинхрониазцииТАблиц(@NotNull Context context,
+                                                                                                    SQLiteDatabase Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы
+                 , PUBLIC_CONTENT  public_contentДатыДляГлавныхТаблицСинхронизации,
+                                                                                                    Integer ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером
+                 , Activity ActivityДляСинхронизацииОбмена)
+                 throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException {
+             super(context);
 
-        public Class_Engine_SQL_SubClassMainLoopAsyncTables_КлассСГлавнымЦикломСинхрониазцииТАблиц(@NotNull Context context,
-                                                                                                         SQLiteDatabase Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы
-                ,PUBLIC_CONTENT  public_contentДатыДляГлавныхТаблицСинхронизации,
-                                                                                                         Integer ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером
-        ,Activity ActivityДляСинхронизацииОбмена)
-                throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException {
-            super(context);
+             this.Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы=Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы;
 
-            this.Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы=Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы;
+             // TODO: 23.01.2022
+             this.public_contentДатыДляГлавныхТаблицСинхронизации= public_contentДатыДляГлавныхТаблицСинхронизации;
 
-            // TODO: 23.01.2022
-            this.public_contentДатыДляГлавныхТаблицСинхронизации= public_contentДатыДляГлавныхТаблицСинхронизации;
-
-            this.ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером = ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером;
-
+             this.ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером = ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером;
 
 
-
-            this.ActivityДляСинхронизацииОбмена=ActivityДляСинхронизацииОбмена;
-
-
-            /// ТУТ МЫ ЗАПУСКАЕМ ЦИКЛ С ПОЛУЧЕНЫМИ ДО  ЭТГО ТАБЛИЦАП КОНКРЕТНО ДЛЯ  ЭТОГО ПОДЛЬЗОВАТЛЯ
-            Log.i(this.getClass().getName(), " Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы " + Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы
-                    + " public_contentДатыДляГлавныхТаблицСинхронизации= "
-                    + public_contentДатыДляГлавныхТаблицСинхронизации.ИменаТаблицыОтАндройда+
-                    " СколькоСтрочекJSON " + ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером +" ActivityДляСинхронизацииОбмена" +ActivityДляСинхронизацииОбмена);
-
-        }
-
-        Integer МетодГлавныхЦиклТаблицДляСинхронизации(String ДанныеПришёлЛиIDДЛяГенерацииUUID,
-                                                       String КакойРежимСинхрониазцииПерваяСинхронизациИлиПовторная) throws ExecutionException, InterruptedException {//КонтекстСинхроДляКонтроллера
-
-            final Integer[] РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри = {0};
+             this.ActivityДляСинхронизацииОбмена=ActivityДляСинхронизацииОбмена;
 
 
-            try {
+             /// ТУТ МЫ ЗАПУСКАЕМ ЦИКЛ С ПОЛУЧЕНЫМИ ДО  ЭТГО ТАБЛИЦАП КОНКРЕТНО ДЛЯ  ЭТОГО ПОДЛЬЗОВАТЛЯ
+             Log.i(this.getClass().getName(), " Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы " + Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы
+                     + " public_contentДатыДляГлавныхТаблицСинхронизации= "
+                     + public_contentДатыДляГлавныхТаблицСинхронизации.ИменаТаблицыОтАндройда+
+                     " СколькоСтрочекJSON " + ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером +" ActivityДляСинхронизацииОбмена" +ActivityДляСинхронизацииОбмена);
 
-                /// ТУТ МЫ ЗАПУСКАЕМ ЦИКЛ С ПОЛУЧЕНЫМИ ДО  ЭТГО ТАБЛИЦАП КОНКРЕТНО ДЛЯ  ЭТОГО ПОДЛЬЗОВАТЛЯ
-                Log.i(this.getClass().getName(), " ИменаТаблицыОтАндройда " + public_contentДатыДляГлавныхТаблицСинхронизации.ИменаТаблицыОтАндройда.toString()
-                        + " ДатыТаблицыВерсииДанныхОтСервера "
-                        + public_contentДатыДляГлавныхТаблицСинхронизации.ДатыТаблицыВерсииДанныхОтСервера.toString()
-                        + " СколькоСтрочекJSON " + ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером);
-                ////TODO настройки поо расширению количесво потоков в момент выполенния
-                ////TODO текущая ТАБЛИЦА ПРИ ОБРАБОТКИ СИНХРОНИЗАЦИИ КОТОРАЯ УВЕЛИЧИВАЕТЬСЯ В ЦИКДЕ ПРИ ОБМЕНЕН
-                //////TODO выводими обратно в UI вставка
+         }
 
-                /////todo КОНЕЦ цикла фор
-                ////////
+         Integer МетодГлавныхЦиклТаблицДляСинхронизации(String ДанныеПришёлЛиIDДЛяГенерацииUUID,
+                                                        String КакойРежимСинхрониазцииПерваяСинхронизациИлиПовторная) throws ExecutionException, InterruptedException {//КонтекстСинхроДляКонтроллера
 
-
-                Log.i(this.getClass().getName(), "  Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы " + Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы);
+             final Integer[] РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри = {0};
 
 
-                //ВСЕГДА СНАРУЖИ
-                final Integer[] КоличествоТаблицВОбработке = {1};//
+             try {
 
-                ПубличныйРезультатОтветаОтСерврераУспешно = 0;
+                 /// ТУТ МЫ ЗАПУСКАЕМ ЦИКЛ С ПОЛУЧЕНЫМИ ДО  ЭТГО ТАБЛИЦАП КОНКРЕТНО ДЛЯ  ЭТОГО ПОДЛЬЗОВАТЛЯ
+                 Log.i(this.getClass().getName(), " ИменаТаблицыОтАндройда " + public_contentДатыДляГлавныхТаблицСинхронизации.ИменаТаблицыОтАндройда.toString()
+                         + " ДатыТаблицыВерсииДанныхОтСервера "
+                         + public_contentДатыДляГлавныхТаблицСинхронизации.ДатыТаблицыВерсииДанныхОтСервера.toString()
+                         + " СколькоСтрочекJSON " + ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером);
+                 ////TODO настройки поо расширению количесво потоков в момент выполенния
+                 ////TODO текущая ТАБЛИЦА ПРИ ОБРАБОТКИ СИНХРОНИЗАЦИИ КОТОРАЯ УВЕЛИЧИВАЕТЬСЯ В ЦИКДЕ ПРИ ОБМЕНЕН
+                 //////TODO выводими обратно в UI вставка
 
-
-                // TODO: 14.10.2021  НАЧИНАЕМ ОБРАБОТКУ ТАБЛИЦ  ГОАВНЫЙ ЦЫКЛ ПРОЕКТА ОБРАБОТКА ВСЕХ ТАБЛИЦ ДЛЯ СИНХРОНИАЗЦИИ
-                // TODO: 14.10.2021  НАЧИНАЕМ ОБРАБОТКУ ТАБЛИЦ  ГОАВНЫЙ ЦЫКЛ ПРОЕКТА ОБРАБОТКА ВСЕХ ТАБЛИЦ ДЛЯ СИНХРОНИАЗЦИИ
-                // TODO: 14.10.2021  НАЧИНАЕМ ОБРАБОТКУ ТАБЛИЦ  ГОАВНЫЙ ЦЫКЛ ПРОЕКТА ОБРАБОТКА ВСЕХ ТАБЛИЦ ДЛЯ СИНХРОНИАЗЦИИ
-                // TODO: 14.10.2021  НАЧИНАЕМ ОБРАБОТКУ ТАБЛИЦ  ГОАВНЫЙ ЦЫКЛ ПРОЕКТА ОБРАБОТКА ВСЕХ ТАБЛИЦ ДЛЯ СИНХРОНИАЗЦИИ
-
-                // TODO: 14.10.2021  НАЧИНАЕМ ОБРАБОТКУ ТАБЛИЦ  ГОАВНЫЙ ЦЫКЛ ПРОЕКТА ОБРАБОТКА ВСЕХ ТАБЛИЦ ДЛЯ СИНХРОНИАЗЦИИ
-
-
-                Observable observableГлавныйЦиклСинхрониазацииПрограммыТабельныйУчёт = Observable.fromIterable(public_contentДатыДляГлавныхТаблицСинхронизации.ИменаТаблицыОтАндройда)
-                        .subscribeOn(Schedulers.computation())
-                        .flatMapStream(new Function<String, Stream<?>>() {
-                            @Override
-                            public Stream<?> apply(String ТекущаяТаблицаИзПотока) throws Throwable {
-                                // TODO: 13.01.2022 start test code
-                                Log.i(this.getClass().getName(), " public_contentМенеджерПотоковВнутрений.МенеджерПотоков " + public_contentДатыДляГлавныхТаблицСинхронизации.МенеджерПотоков + "\n" +
-                                        " ТекущаяТаблицаИзПотока " + ТекущаяТаблицаИзПотока);
-
-                                // TODO: 22.11.2021 НАЧАЛО ГЛАВНОГО КОДА ЦИКЛА
+                 /////todo КОНЕЦ цикла фор
+                 ////////
 
 
-                                // TODO: 05.11.2021 ВНУТРИ ВСЕГДА
-                                ИндексТекущейОперацииРеальногРезультатОбработкиАтблицы = 0;
+                 Log.i(this.getClass().getName(), "  Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы " + Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы);
 
 
-                                //////todo ДВИГАЕМСЯ ПО ТАБЛИЦАМ
+                 //ВСЕГДА СНАРУЖИ
+                 final Integer[] КоличествоТаблицВОбработке = {1};//
+
+                 ПубличныйРезультатОтветаОтСерврераУспешно = 0;
 
 
-                                Log.w(this.getClass().getName(), " ПЕРЕД ОБРАБОТКЙОЙ ВСЕХ ТАБЛИЦ ДОЛЖНА БЫТЬ ОТКРЫТОЙ ОБРАБОТКИ ВСЕХ ТАБЛИЦ Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы.isOpen() "
-                                        + Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы.isOpen());
+                 // TODO: 14.10.2021  НАЧИНАЕМ ОБРАБОТКУ ТАБЛИЦ  ГОАВНЫЙ ЦЫКЛ ПРОЕКТА ОБРАБОТКА ВСЕХ ТАБЛИЦ ДЛЯ СИНХРОНИАЗЦИИ
+                 // TODO: 14.10.2021  НАЧИНАЕМ ОБРАБОТКУ ТАБЛИЦ  ГОАВНЫЙ ЦЫКЛ ПРОЕКТА ОБРАБОТКА ВСЕХ ТАБЛИЦ ДЛЯ СИНХРОНИАЗЦИИ
+                 // TODO: 14.10.2021  НАЧИНАЕМ ОБРАБОТКУ ТАБЛИЦ  ГОАВНЫЙ ЦЫКЛ ПРОЕКТА ОБРАБОТКА ВСЕХ ТАБЛИЦ ДЛЯ СИНХРОНИАЗЦИИ
+                 // TODO: 14.10.2021  НАЧИНАЕМ ОБРАБОТКУ ТАБЛИЦ  ГОАВНЫЙ ЦЫКЛ ПРОЕКТА ОБРАБОТКА ВСЕХ ТАБЛИЦ ДЛЯ СИНХРОНИАЗЦИИ
+
+                 // TODO: 14.10.2021  НАЧИНАЕМ ОБРАБОТКУ ТАБЛИЦ  ГОАВНЫЙ ЦЫКЛ ПРОЕКТА ОБРАБОТКА ВСЕХ ТАБЛИЦ ДЛЯ СИНХРОНИАЗЦИИ
 
 
-                                // TODO: 24.12.2021  САМЫЙ ГЛАВНЫЙ ЦИКЛ ОБРАБОТКИ ТАБЛИЦ СИНХРОНИАЗЦИИ         // TODO: 24.12.2021  САМЫЙ ГЛАВНЫЙ ЦИКЛ ОБРАБОТКИ ТАБЛИЦ СИНХРОНИАЗЦИИ
+                 Observable observableГлавныйЦиклСинхрониазацииПрограммыТабельныйУчёт = Observable.fromIterable(public_contentДатыДляГлавныхТаблицСинхронизации.ИменаТаблицыОтАндройда)
+                         .subscribeOn(Schedulers.computation())
+                         .flatMapStream(new Function<String, Stream<?>>() {
+                             @Override
+                             public Stream<?> apply(String ТекущаяТаблицаИзПотока) throws Throwable {
+                                 // TODO: 13.01.2022 start test code
+                                 Log.i(this.getClass().getName(), " public_contentМенеджерПотоковВнутрений.МенеджерПотоков " + public_contentДатыДляГлавныхТаблицСинхронизации.МенеджерПотоков + "\n" +
+                                         " ТекущаяТаблицаИзПотока " + ТекущаяТаблицаИзПотока);
+
+                                 // TODO: 22.11.2021 НАЧАЛО ГЛАВНОГО КОДА ЦИКЛА
 
 
-                                try {
-
-                                    ////// TODO ГЛАВНЫЙ ПЕРВЫЙ ЦИКЛ ОБМЕНА ДАННЫХ в фоне         //////ГЛАВНЫЙ ПЕРВЫЙ ЦИКЛ ОБМЕНА ДАННЫХ         //////ГЛАВНЫЙ ПЕРВЫЙ ЦИКЛ ОБМЕНА ДАННЫХ
-                                    //////
-                                    // TODO: 30.03.2021 синхронизация в фоне
+                                 // TODO: 05.11.2021 ВНУТРИ ВСЕГДА
+                                 ИндексТекущейОперацииРеальногРезультатОбработкиАтблицы = 0;
 
 
-                                    Log.d(this.getClass().getName(), " ИменаТаблицыОтАндройда " + public_contentДатыДляГлавныхТаблицСинхронизации.ИменаТаблицыОтАндройда.size() +
-                                            " ТекущаяТаблицаИзПотока " + ТекущаяТаблицаИзПотока + " СколькоСтрочекJSON  " + ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером);
-                                    //////
-
-                                    String ТекущаяТаблицаДляОБменаДанными = (String) ТекущаяТаблицаИзПотока;
+                                 //////todo ДВИГАЕМСЯ ПО ТАБЛИЦАМ
 
 
-                                    Log.d(this.getClass().getName(), " ТекущаяТаблицаДляОБменаДанными главный цикл " + ТекущаяТаблицаДляОБменаДанными + "\n" +
-                                            " ФлагКакуюЧастьСинхронизацииЗапускаем " + ФлагКакуюЧастьСинхронизацииЗапускаем + "\n" +
-                                            "\n" + " Thread.currentThread().getName() " + Thread.currentThread().getName() + "\n" + "############################################################" + "\n");
-
-                                    // TODO: 24.01.2022
-                                    if(ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером ==null){
-                                        ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером =0;
-                                    }
-                                    // TODO: 27.10.2021  запуск синхрониазции только по условию  ВСЕ ДРУГИЕ ТАБЛИЦЫ КРОМЕ ТАБЛИЧ ЧАТА
+                                 Log.w(this.getClass().getName(), " ПЕРЕД ОБРАБОТКЙОЙ ВСЕХ ТАБЛИЦ ДОЛЖНА БЫТЬ ОТКРЫТОЙ ОБРАБОТКИ ВСЕХ ТАБЛИЦ Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы.isOpen() "
+                                         + Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы.isOpen());
 
 
-                                    // TODO: 27.10.2021  запуск синхрониазции только по условию
-                                    РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри[0] = МетодЗапускаСинхрониазцииПоАТблицам(ДанныеПришёлЛиIDДЛяГенерацииUUID,
-                                            ТекущаяТаблицаДляОБменаДанными, КакойРежимСинхрониазцииПерваяСинхронизациИлиПовторная,
-                                            public_contentДатыДляГлавныхТаблицСинхронизации.МенеджерПотоков,
-                                            ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером,public_contentДатыДляГлавныхТаблицСинхронизации
-                                    ,ActivityДляСинхронизацииОбмена);
+                                 // TODO: 24.12.2021  САМЫЙ ГЛАВНЫЙ ЦИКЛ ОБРАБОТКИ ТАБЛИЦ СИНХРОНИАЗЦИИ         // TODO: 24.12.2021  САМЫЙ ГЛАВНЫЙ ЦИКЛ ОБРАБОТКИ ТАБЛИЦ СИНХРОНИАЗЦИИ
 
 
-                                    Log.d(this.getClass().getName(), " ТекущаяТаблицаДляОБменаДанными " + ТекущаяТаблицаДляОБменаДанными +
-                                            "  ЗАКОНЧИЛИ ОБРАБОТКУ ОТДЕЛЬНОЙ ТАЛИЦЫ  ФлагУказываетЧтоТОлькоОбработкаТаблицДляЧАТА " +
-                                            ТекущаяТаблицаДляОБменаДанными + " ФлагУказываетЧтоТОлькоОбработкаТаблицДляЧАТА "
-                                            + ФлагУказываетЧтоТОлькоОбработкаТаблицДляЧАТА + "  РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри "
-                                            + РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри[0] + " СколькоСтрочекJSON " + ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером);
+                                 try {
+
+                                     ////// TODO ГЛАВНЫЙ ПЕРВЫЙ ЦИКЛ ОБМЕНА ДАННЫХ в фоне         //////ГЛАВНЫЙ ПЕРВЫЙ ЦИКЛ ОБМЕНА ДАННЫХ         //////ГЛАВНЫЙ ПЕРВЫЙ ЦИКЛ ОБМЕНА ДАННЫХ
+                                     //////
+                                     // TODO: 30.03.2021 синхронизация в фоне
 
 
-                                    // TODO: 05.10.2021  вторая часть после успешной обработки таблицы увеличиваем версию данных если сешно вставка или обовление
+                                     Log.d(this.getClass().getName(), " ИменаТаблицыОтАндройда " + public_contentДатыДляГлавныхТаблицСинхронизации.ИменаТаблицыОтАндройда.size() +
+                                             " ТекущаяТаблицаИзПотока " + ТекущаяТаблицаИзПотока + " СколькоСтрочекJSON  " + ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером);
+                                     //////
+
+                                     String ТекущаяТаблицаДляОБменаДанными = (String) ТекущаяТаблицаИзПотока;
+
+
+                                     Log.d(this.getClass().getName(), " ТекущаяТаблицаДляОБменаДанными главный цикл " + ТекущаяТаблицаДляОБменаДанными + "\n" +
+                                             " ФлагКакуюЧастьСинхронизацииЗапускаем " + ФлагКакуюЧастьСинхронизацииЗапускаем + "\n" +
+                                             "\n" + " Thread.currentThread().getName() " + Thread.currentThread().getName() + "\n" + "############################################################" + "\n");
+
+                                     // TODO: 24.01.2022
+                                     if(ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером ==null){
+                                         ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером =0;
+                                     }
+                                     // TODO: 27.10.2021  запуск синхрониазции только по условию  ВСЕ ДРУГИЕ ТАБЛИЦЫ КРОМЕ ТАБЛИЧ ЧАТА
+
+
+                                     // TODO: 27.10.2021  запуск синхрониазции только по условию
+                                     РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри[0] = МетодЗапускаСинхрониазцииПоАТблицам(ДанныеПришёлЛиIDДЛяГенерацииUUID,
+                                             ТекущаяТаблицаДляОБменаДанными, КакойРежимСинхрониазцииПерваяСинхронизациИлиПовторная,
+                                             public_contentДатыДляГлавныхТаблицСинхронизации.МенеджерПотоков,
+                                             ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером,public_contentДатыДляГлавныхТаблицСинхронизации
+                                             ,ActivityДляСинхронизацииОбмена);
+
+
+                                     Log.d(this.getClass().getName(), " ТекущаяТаблицаДляОБменаДанными " + ТекущаяТаблицаДляОБменаДанными +
+                                             "  ЗАКОНЧИЛИ ОБРАБОТКУ ОТДЕЛЬНОЙ ТАЛИЦЫ  ФлагУказываетЧтоТОлькоОбработкаТаблицДляЧАТА " +
+                                             ТекущаяТаблицаДляОБменаДанными + " ФлагУказываетЧтоТОлькоОбработкаТаблицДляЧАТА "
+                                             + ФлагУказываетЧтоТОлькоОбработкаТаблицДляЧАТА + "  РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри "
+                                             + РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри[0] + " СколькоСтрочекJSON " + ГлавноеКоличествоОбрабоатываемыхТаблицОбменаССервером);
+
+
+                                     // TODO: 05.10.2021  вторая часть после успешной обработки таблицы увеличиваем версию данных если сешно вставка или обовление
 
 
 // TODO: 10.09.2021 выкидываем из ПАМЯТИ ОТРАБОТАННУЮ ТАБЛИЦУ
 
-                                    Log.i(this.getClass().getName(), "  PUBLIC_CONTENT.ИменаТаблицыОтАндройда.size()   " + public_contentДатыДляГлавныхТаблицСинхронизации.ИменаТаблицыОтАндройда.size() +
-                                            " РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри " + РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри[0]);
+                                     Log.i(this.getClass().getName(), "  PUBLIC_CONTENT.ИменаТаблицыОтАндройда.size()   " + public_contentДатыДляГлавныхТаблицСинхронизации.ИменаТаблицыОтАндройда.size() +
+                                             " РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри " + РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри[0]);
 
-                                    ///////
-
-
-                                    ПубличныйРезультатОтветаОтСерврераУспешно = РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри[0];
+                                     ///////
 
 
-                                    Log.d(this.getClass().getName(), " Не допушена к Обработке РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри "
-                                            + РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри[0] +
-                                            " ПубличныйРезультатОтветаОтСерврераУспешно " + ПубличныйРезультатОтветаОтСерврераУспешно);
-
-                                    РезультатВерсииДанныхЧатаНаСервере = 0l;
+                                     ПубличныйРезультатОтветаОтСерврераУспешно = РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри[0];
 
 
-                                    // TODO: 06.10.2021  таблицы не допущенны к обработке
+                                     Log.d(this.getClass().getName(), " Не допушена к Обработке РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри "
+                                             + РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри[0] +
+                                             " ПубличныйРезультатОтветаОтСерврераУспешно " + ПубличныйРезультатОтветаОтСерврераУспешно);
+
+                                     РезультатВерсииДанныхЧатаНаСервере = 0l;
 
 
-                                    // TODO: 10.10.2021 clear from queueu
-
-                                    Log.d(this.getClass().getName(), " public_contentДатыДляГлавныхТаблицСинхронизации.ИменаТаблицыОтАндройда "
-                                            + public_contentДатыДляГлавныхТаблицСинхронизации.ИменаТаблицыОтАндройда);
+                                     // TODO: 06.10.2021  таблицы не допущенны к обработке
 
 
-                                } catch (Exception e) {
-                                    //  Block of code to handle errors
-                                    e.printStackTrace();
-                                    ///метод запись ошибок в таблицу
-                                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
-                                            + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                                    // TODO: 01.09.2021 метод вызова
-                                    new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(),
-                                            this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
-                                            Thread.currentThread().getStackTrace()[2].getLineNumber());
-                                }
+                                     // TODO: 10.10.2021 clear from queueu
+
+                                     Log.d(this.getClass().getName(), " public_contentДатыДляГлавныхТаблицСинхронизации.ИменаТаблицыОтАндройда "
+                                             + public_contentДатыДляГлавныхТаблицСинхронизации.ИменаТаблицыОтАндройда);
 
 
-                                // TODO: 13.01.2022 end test code
-
-                                return  Observable.fromArray(ТекущаяТаблицаИзПотока).blockingStream().peek(РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри
-                                        ->System.out.println(РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри));
-                            }
-                        })
-                        .doOnError(new Consumer<Throwable>() {
-                            @Override
-                            public void accept(Throwable throwable) throws Throwable {
-                                Log.e(this.getClass().getName(), "   doOnError  ОШИБКА В ГЛАВНОМ ЦИКЛЕ ПО ТАБЛИЦАМ В ОБМЕНЕ .111!!!!!!!!!throwable "
-                                        + throwable.getStackTrace().toString());
-                            }
-                        })
-
-                        .doOnComplete(new Action() {
-                            @Override
-                            public void run() throws Throwable {
-                                Log.i(this.getClass().getName(), " doOnTerminate  CLOSE ЗАКРЫВАЕМ БАЗУ ПОСЛЕ ОБРАБОТКИ ВСЕХ ТАБЛИЦ Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы.isOpen() "
-                                        + Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы.isOpen());
-                                /// todo после обработки
-
-                                if (Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы.isOpen()) {
-
-                                    Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы.close();
-
-                                    Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы = null;
-                                }
-
-                            }
-                        })
-                        .onErrorComplete(new Predicate<Throwable>() {
-                            @Override
-                            public boolean test(Throwable throwable) throws Throwable {
-                                Log.e(this.getClass().getName(), "   onErrorComplete  ОШИБКА В ГЛАВНОМ ЦИКЛЕ ПО ТАБЛИЦАМ В ОБМЕНЕ .111!!!!!!!!!throwable "
-                                        + throwable.getStackTrace().toString());
-                                return false;
-                            }
-                        });
+                                 } catch (Exception e) {
+                                     //  Block of code to handle errors
+                                     e.printStackTrace();
+                                     ///метод запись ошибок в таблицу
+                                     Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                                             + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                     // TODO: 01.09.2021 метод вызова
+                                     new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(),
+                                             this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                                             Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                 }
 
 
-                Log.w(this.getClass().getName(), " doOnTerminate ОБРАБОТКА ВСЕХ ТАБЛИЦ ЗАВЫЕРШИЛАСЬ В ГЛАВНОМ ЦИКЛЕ ПО ТАБЛИЦАМ В ОБМЕНЕ ");
+                                 // TODO: 13.01.2022 end test code
+
+                                 return  Observable.fromArray(ТекущаяТаблицаИзПотока).blockingStream().peek(РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри
+                                         ->System.out.println(РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри));
+                             }
+                         })
+                         .doOnError(new Consumer<Throwable>() {
+                             @Override
+                             public void accept(Throwable throwable) throws Throwable {
+                                 Log.e(this.getClass().getName(), "   doOnError  ОШИБКА В ГЛАВНОМ ЦИКЛЕ ПО ТАБЛИЦАМ В ОБМЕНЕ .111!!!!!!!!!throwable "
+                                         + throwable.getStackTrace().toString());
+                             }
+                         })
+
+                         .doOnComplete(new Action() {
+                             @Override
+                             public void run() throws Throwable {
+                                 Log.i(this.getClass().getName(), " doOnTerminate  CLOSE ЗАКРЫВАЕМ БАЗУ ПОСЛЕ ОБРАБОТКИ ВСЕХ ТАБЛИЦ Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы.isOpen() "
+                                         + Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы.isOpen());
+                                 /// todo после обработки
+
+                                 if (Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы.isOpen()) {
+
+                                     Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы.close();
+
+                                     Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы = null;
+                                 }
+
+                             }
+                         })
+                         .onErrorComplete(new Predicate<Throwable>() {
+                             @Override
+                             public boolean test(Throwable throwable) throws Throwable {
+                                 Log.e(this.getClass().getName(), "   onErrorComplete  ОШИБКА В ГЛАВНОМ ЦИКЛЕ ПО ТАБЛИЦАМ В ОБМЕНЕ .111!!!!!!!!!throwable "
+                                         + throwable.getStackTrace().toString());
+                                 return false;
+                             }
+                         });
 
 
-
+                 Log.w(this.getClass().getName(), " doOnTerminate ОБРАБОТКА ВСЕХ ТАБЛИЦ ЗАВЫЕРШИЛАСЬ В ГЛАВНОМ ЦИКЛЕ ПО ТАБЛИЦАМ В ОБМЕНЕ ");
 
 
 // TODO: 14.01.2022 подписка на данные гланого цикла
 
-                observableГлавныйЦиклСинхрониазацииПрограммыТабельныйУчёт.blockingSubscribe(System.out::println);
+                 observableГлавныйЦиклСинхрониазацииПрограммыТабельныйУчёт.blockingSubscribe(System.out::println);
 
 
-                Log.w(this.getClass().getName(), " doOnTerminate ОБРАБОТКА ВСЕХ ТАБЛИЦ ЗАВЫЕРШИЛАСЬ В ГЛАВНОМ ЦИКЛЕ ПО ТАБЛИЦАМ В ОБМЕНЕ ");
+                 Log.w(this.getClass().getName(), " doOnTerminate ОБРАБОТКА ВСЕХ ТАБЛИЦ ЗАВЫЕРШИЛАСЬ В ГЛАВНОМ ЦИКЛЕ ПО ТАБЛИЦАМ В ОБМЕНЕ ");
 
 
-                //TODO отписаться
+                 //TODO отписаться
 
-                observableГлавныйЦиклСинхрониазацииПрограммыТабельныйУчёт.unsubscribeOn(Schedulers.computation());
+                 observableГлавныйЦиклСинхрониазацииПрограммыТабельныйУчёт.unsubscribeOn(Schedulers.computation());
 
-                // TODO: 26.12.2021
-            } catch (Exception e) {
-                //  Block of code to handle errors
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
-                        + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                // TODO: 01.09.2021 метод вызова
-                new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(),
-                        this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
-                        Thread.currentThread().getStackTrace()[2].getLineNumber());
-            }
+                 // TODO: 26.12.2021
+             } catch (Exception e) {
+                 //  Block of code to handle errors
+                 e.printStackTrace();
+                 ///метод запись ошибок в таблицу
+                 Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                         + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                 // TODO: 01.09.2021 метод вызова
+                 new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(),
+                         this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                         Thread.currentThread().getStackTrace()[2].getLineNumber());
+             }
 
-            // TODO: 28.10.2021
-            Log.d(this.getClass().getName(), " РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри[0] "
-                    + РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри[0]);
+             // TODO: 28.10.2021
+             Log.d(this.getClass().getName(), " РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри[0] "
+                     + РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри[0]);
 
 
-            return РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри[0];
-        }
-    }
+             return РезультатОбработкиТекущейтаблицыСинхрониазцииВнутриЦиклаВнутри[0];
+         }
 
 
+     }
 
 
+     // TODO: 22.03.2022  ДЛЯ ОТПРАВКИ ДАННЫХ НА СЕРВЕР
 
 
+     private class SubClass_Klacc_Otprabki_класс_ОтправкиДанных extends Class_Engine_SQL {
+         public SubClass_Klacc_Otprabki_класс_ОтправкиДанных(@NotNull Context context) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException {
+             super(context);
+         }
+         // TODO: 22.03.2022
 
+         //////todo МЕТОД НЕПОСТРЕДСТВЕННО ОТПРАВЛЯЕМ ДАННЫЕ НА СЕРВЕР МЕТОД POST
+         Integer МетодПосылаетНаСерверСозданныйJSONФайлвФоне(@NonNull JSONObject ГенерацияJSONполейФиналДляОтправкиНаСеврерОтАндройда, @NonNull String имяТаблицыОтАндройда_локальноая,
+                                                             CompletionService МенеджерПотоковВнутрений) {
+             /////
+             Integer РезультатУспешнойВставкиИлиОбновлениеCallBacksОтСервера = 0;
 
+             String ДанныеПришёлВОтветОтМетодаPOST = new String();
+             ///
 
+             StringBuffer БуферОтправкаДанныхвФоне = new StringBuffer();
+             //
 
 
+             Class_GRUD_SQL_Operations class_grud_sql_operations;
+             ///
+             class_grud_sql_operations = new Class_GRUD_SQL_Operations(contextСозданиеБАзы);
 
 
+             try {
+                 Log.d(this.getClass().getName(), "  МЕТОД НЕПОСТРЕДСТВЕННО ОТПРАВЛЯЕМ ДАННЫЕ НА СЕРВЕР МЕТОД POST ");
 
+                 // TODO: 15.06.2021 проверяем если таблица табель то еси в нутри потока отпралеемого хоть один день d1,d2,d3 защита от пустого траыфика\
+                 Log.d(this.getClass().getName(), " ГенерацияJSONполейФиналДляОтправкиНаСеврерОтАндройда.toString() "
+                         + ГенерацияJSONполейФиналДляОтправкиНаСеврерОтАндройда.toString() +
+                         " ГенерацияJSONполейФиналДляОтправкиНаСеврерОтАндройда.toString().toCharArray().length  "
+                         + ГенерацияJSONполейФиналДляОтправкиНаСеврерОтАндройда.toString().toCharArray().length +
+                         " имяТаблицыОтАндройда_локальноая " + имяТаблицыОтАндройда_локальноая);
+                 ///todo
 
 
+                 try {
+                     // TODO: 28.01.2022
+                     String НазваниеПорта = "tabel.dsu1.ru";
+                     // TODO: 16.02.2022
+                     Integer СамПорт = 8888;
 
+        /*       // TODO: 28.01.2022
+               String НазваниеПорта="192.168.254.40";
+               Integer СамПорт=8080;
+               ///*/
 
+                     //////todo МЕТОД НЕПОСТРЕДСТВЕННО ОТПРАВЛЯЕМ ДАННЫЕ НА СЕРВЕР МЕТОД POST
+                     БуферОтправкаДанныхвФоне = УниверсальныйБуферОтправкиДанныхНаСервера(ГенерацияJSONполейФиналДляОтправкиНаСеврерОтАндройда,
+                             ПубличноеIDПолученныйИзСервлетаДляUUID, имяТаблицыОтАндройда_локальноая,
+                             "Получение JSON файла от Андройда", 60000, НазваниеПорта, СамПорт); ///БУФЕР ОТПРАВКИ ДАННЫХ НА СЕРВЕР  //TODO original "tabel.dsu1.ru", 8888        //TODO "192.168.254.40", 8080
 
+                     Log.d(this.getClass().getName(), "  СЛУЖБА ВЕРНУЛЬСЯ ОТВЕТ ОТ СЕРВЕРА ОБРАТНО АНДРОЙДУ  БуферОтправкаДанных.toString() " + БуферОтправкаДанныхвФоне.toString());
 
 
+                     if (БуферОтправкаДанныхвФоне == null) {
 
+                         БуферОтправкаДанныхвФоне = new StringBuffer();
 
+                     }
 
 
+                     if (БуферОтправкаДанныхвФоне.length() > 0) {
 
+                         ПубличныйРезультатОтветаОтСерврераУспешно = 0;
+                         ////
+                         ПубличныйРезультатОтветаОтСерврераУспешно = БуферОтправкаДанныхвФоне.length();
+                     }
 
+                     Log.d(this.getClass().getName(), "БуферОтправкаДанныхвФоне.length() " + БуферОтправкаДанныхвФоне.length() +
+                             " БуферОтправкаДанныхвФоне " + БуферОтправкаДанныхвФоне.toString());
 
 
+                     ////
+                 } catch (Exception e) {
+                     e.printStackTrace();
+                     ///метод запись ошибок в таблицу
+                     Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                             " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                     // TODO: 01.09.2021 метод вызова
+                     new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                             Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                     ////// начало запись в файл
+                 }
 
+                 // TODO: 18.10.2021
 
 
+                 // TODO: 18.10.2021 exit iwait
 
+                 ////TODO  ОТВЕТ ОТ СЕРВЕРА ПОСЛЕ ОТПРАВКИ ДАННЫХ НА СЕРВЕР
+                 if (БуферОтправкаДанныхвФоне != null) {
+                     ///
 
 
+                     if (БуферОтправкаДанныхвФоне.length() > 0) {
 
+                         Log.d(this.getClass().getName(), "  БуферОтправкаДанныхвФоне.toString()  " + БуферОтправкаДанныхвФоне.toString());
+                         do {
+                             ДанныеПришёлВОтветОтМетодаPOST = БуферОтправкаДанныхвФоне.toString();
 
-/*//todo  ПОД КЛАСС  ПОЛУЕНИЕ И ЗАПИСИ ПУБЛИЧНОГО КЛЮЧА В БАЗУ
-    public  class SubClass_Anync_МетодПолученияССервераПубличногоIDИЗАписьЕгоВБАзу extends Class_Engine_SQL {
+                             Log.d(this.getClass().getName(), "  ДанныеПришёлВОтветОтМетодаPOST  " + ДанныеПришёлВОтветОтМетодаPOST);
 
-        Context contextClassGettingPublicUserID;
+                             //
+                             if (ДанныеПришёлВОтветОтМетодаPOST != null) {
+                                 //
+                                 break;
+                             }
 
-        public SubClass_Anync_МетодПолученияССервераПубличногоIDИЗАписьЕгоВБАзу(@NotNull Context context) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException {
-            super(context);
+                         } while (ДанныеПришёлВОтветОтМетодаPOST == null);/////конец for # количество респонсев
+                     }
 
-            contextClassGettingPublicUserID=context;
-            //
 
+                     ////TODO ответ от сервера РЕЗУЛЬТАТ
+                     Log.d(this.getClass().getName(), "Успешный Ответ от сервера ДанныеПришёлВОтветОтМетодаPOST в фоне " + ДанныеПришёлВОтветОтМетодаPOST);
+                     ///
+                     if (ДанныеПришёлВОтветОтМетодаPOST.length() > 5) {
+                         ///
+                         //
+                         //// TimeUnit.MILLISECONDS.sleep(500);
+                         //
+                         РезультатУспешнойВставкиИлиОбновлениеCallBacksОтСервера = ДанныеПришёлВОтветОтМетодаPOST.length();
 
+                         Log.d(this.getClass().getName(), " СЛУЖБА УСПЕШНЫЙ ОТВКЕТ ОТ СЕРВЕРА ОТВЕТ CALBACKS  ДанныеПришёлВОтветОтМетодаPOST.length()  "
+                                 + ДанныеПришёлВОтветОтМетодаPOST.length() + " ДанныеПришёлВОтветОтМетодаPOST " + ДанныеПришёлВОтветОтМетодаPOST.toString());
+                     } else {
+                         Log.d(this.getClass().getName(), " NULL НОЛЬ ОБНОВЛЕНИЙ ИЛИ ВСТАВОК С СЕРВЕРА  СЛУЖБА УСПЕШНЫЙ ОТВКЕТ ОТ СЕРВЕРА ОТВЕТ CALBACKS  ДанныеПришёлВОтветОтМетодаPOST.length() ");
+                     }
 
-            ////// TODO созданеи шифрование
-            if (ГлавныйКлючДляШифрованиеИРасшифровки == null) {
-                //TODO ключ для шифрование и расщифровки
-                byte[] CipherKey = "[C@3841f624[B@6415a86b[B@143c678".getBytes();
-                ГлавныйКлючДляШифрованиеИРасшифровки =
-                        new SecretKeySpec(CipherKey,
-                                "AES");
-                ПолитикаШифрование = Cipher.getInstance("AES");
-                ПолитикаШифрование.init(Cipher.ENCRYPT_MODE, ГлавныйКлючДляШифрованиеИРасшифровки);
-                ///////
-                ПолитикаРасшифровки = Cipher.getInstance("AES");
-                ПолитикаРасшифровки.init(Cipher.DECRYPT_MODE, ГлавныйКлючДляШифрованиеИРасшифровки);
-                ///// конец шифрование
-            }
-            ////// конец  TODO созданеи шифрование
 
+                     // TODO: 15.07.2021  только для таблиц указываем ответ от сервер успешно лдии ывставли или обновли данные
 
-        }
 
+                     /////УДАЛЯЕМ ИЗ ПАМЯТИ  ОТРАБОТАННЫЙ АСИНАТСК
+                     /////////
+                 } else {////ОШИБКА В ПОЛУЧЕНИИ С СЕРВЕРА ТАБЛИУЦЫ МОДИФИКАЦИИ ДАННЫХ СЕРВЕРА
 
-        Integer МетодПолучениеОтСервераПубличногоID(CompletionService МенеджерПотоковВнутрений) {
 
-            /////
-            Integer ReceivedPublicID = 0;
+                     Log.d(this.getClass().getName(), " Данных нет c сервера  БуферОтправкаДанных.length() в фоне " + БуферОтправкаДанныхвФоне.length());
+                 }
 
-            ////САМАЯ ПЕРВАЯ КОМАНДА НАЧАЛА ОБМНЕНА ДАННЫМИ
+                 Log.d(this.getClass().getName(), " ДанныеПришёлВОтветОтМетодаPOST " + ДанныеПришёлВОтветОтМетодаPOST);
 
-            StringBuffer БуферПолучениеДанных = new StringBuffer();
-            ///
-            Class_GRUD_SQL_Operations class_grud_sql_operations;
+                 if (ДанныеПришёлВОтветОтМетодаPOST.length() > 0) {
 
-            try {
+                     /////// данные код анализирует успешные и/ил обновление данных на серврер кторые ему присла пользователь
+                     МетодАнализаОтветаОтСервераУспешныеВставкиИлиОбновлениевФоне(ДанныеПришёлВОтветОтМетодаPOST, имяТаблицыОтАндройда_локальноая, МенеджерПотоковВнутрений);
 
-                ///
-                // TODO: 03.09.2021
-
-                //////САМ МЕТОД КОТОРЫМ ЗАПУСКАЕМ ПРОЦЕССС ОБМЕНА ДАННЫХ
-                try {
-                    БуферПолучениеДанных =
-                            УниверсальныйБуферПолучениеДанныхсСервера("", "", "", "application/text", "Хотим Получить ID для Генерации  UUID", 0l, "",10000,null,0l,"tabel.dsu1.ru", 8888); //// БуферПолученнниеДанныхОтМетодаGET.mark(1000); // save the data we are about to readБуферПолученнниеДанныхОтМетодаGET.reset(); // jump back to the marked position
-                    //////////
-
-
-                    Log.d(this.getClass().getName(), "БуферПолучениеДанных " + БуферПолучениеДанных.toString());
-
-                } catch (Exception e) {
-                    //  Block of code to handle errors
-                    e.printStackTrace();
-                    ///метод запись ошибок в таблицу
-                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
-                            + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                    // TODO: 01.09.2021 метод вызова
-                    new   Class_Generation_Errors(КонтекстСинхроДляКонтроллераВФоне).МетодЗаписиВЖурналНовойОшибки(e.toString(),
-                            this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
-                            Thread.currentThread().getStackTrace()[2].getLineNumber());
-                }
-                ///
-
-                ///
-                if (БуферПолучениеДанных.length() > 0) {
-
-
-                    ///////
-                    ПубличноеIDПолученныйИзСервлетаДляUUID = Integer.parseInt(БуферПолучениеДанных.toString());
-                    //
-
-                    Log.d(this.getClass().getName(), " ПубличноеIDПолученныйИзСервлетаДляUUID  " + ПубличноеIDПолученныйИзСервлетаДляUUID);
-                    //
-
-                    ReceivedPublicID=Integer.parseInt( БуферПолучениеДанных.toString());
-
-
-                    // TODO: 15.08.2021 записываем полученный Публчного ID
-
-                    //////
-
-                    Long РезультатЗаписиНовгоIDБАзу=              new MODEL_synchronized(contextClassGettingPublicUserID).  МетодЗАписиПолученогоОтСервреаIDПубличного(    ReceivedPublicID );
-
-
-
-
-                    ///
-                    Log.d(this.getClass().getName(), "РезультатЗаписиНовгоIDБАзу  " + РезультатЗаписиНовгоIDБАзу);
-
-
-                } else {
-
-                    ///
-
-                    SQLiteCursor Курсор_ВычисляемПУбличныйID = null;
-
-                    // TODO: 05.07.2021  получаем публичный ID
-
-                    //  Курсор_ВычисляемПУбличныйID = new MODEL_synchronized(contextClassGettingPublicUserID).КурсорУниверсальныйБазыДанных("SELECT id FROM SuccessLogin LIMIT 1 ");
-
-
-                    // TODO: 03.09.2021  новый код движка полчение данных
-
-
-                    // TODO: 26.08.2021 НОВЫЙ ВЫЗОВ НОВОГО КЛАСС GRUD - ОПЕРАЦИИ
-
-                    //
-                    ///
-                    class_grud_sql_operations=new Class_GRUD_SQL_Operations(КонтекстСинхроДляКонтроллераВФоне);
-
-                    ///
-                    class_grud_sql_operations. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("НазваниеОбрабоатываемойТаблицы","SuccessLogin");
-                    ///////
-                    class_grud_sql_operations. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("СтолбцыОбработки","id");
-                    //
-            *//*        class_grud_sql_operations. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ФорматПосика","uuid=?    AND status_send !=? AND month_tabels=? AND  year_tabels =? AND fio IS NOT NULL ");
-                    ///"_id > ?   AND _id< ?"
-                    //////
-                    class_grud_sql_operations. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска1",finalПолученныйUUID);
-                    ///
-                    class_grud_sql_operations. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска2","Удаленная");
-                    ///
-                    class_grud_sql_operations. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска3",МЕсяцДляКурсораТабелей);
-                    //
-                    class_grud_sql_operations. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеПоиска4",ГодДляКурсораТабелей);////УсловиеПоискаv4,........УсловиеПоискаv5 .......
-*//*
-                    ////TODO другие поля
-
-                    ///classGrudSqlOperations. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ПоляГрупировки",null);
-                    ////
-                    //class_grud_sql_operations. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеГрупировки",null);
-                    ////
-                    //class_grud_sql_operations. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеСортировки","date_update DESC");
-                    ////
-                    class_grud_sql_operations. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("УсловиеЛимита","1");
-                    ////
-
-                    // TODO: 27.08.2021  ПОЛУЧЕНИЕ ДАННЫХ ОТ КЛАССА GRUD-ОПЕРАЦИИ
-
-                    Курсор_ВычисляемПУбличныйID= (SQLiteCursor)  new Class_GRUD_SQL_Operations(КонтекстСинхроДляКонтроллераВФоне).
-                            new GetData(КонтекстСинхроДляКонтроллераВФоне).getdata(class_grud_sql_operations. concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций,МенеджерПотоковВнутрений,Create_Database_СамаБАзаSQLite_КЛОННастоящейБазы);
-
-                    Log.d(this.getClass().getName(), "GetData "+Курсор_ВычисляемПУбличныйID  );
-
-
-
-
-                    /////
-                    if (Курсор_ВычисляемПУбличныйID.getCount() > 0) {
-                        //////////
-                        Курсор_ВычисляемПУбличныйID.moveToFirst();
-                        //////////////
-                        ПубличноеIDПолученныйИзСервлетаДляUUID = Курсор_ВычисляемПУбличныйID.getInt(0);
-                        //////
-
-
-                    }
-
-                }
-
-
-                ///
-            } catch (Exception e) {
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                // TODO: 01.09.2021 метод вызова
-                new   Class_Generation_Errors(КонтекстСинхроДляКонтроллераВФоне).МетодЗаписиВЖурналНовойОшибки(e.toString(),
-                        this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
-                        Thread.currentThread().getStackTrace()[2].getLineNumber());
-                ///
-
-
-            }
-
-
-            return  ReceivedPublicID;
-        }
-
-
-    }*/
-
-
-}
+                 }
+             } catch (Exception e) {
+                 e.printStackTrace();
+                 ///метод запись ошибок в таблицу
+                 Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                         " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                 // TODO: 01.09.2021 метод вызова
+                 new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                         Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                 ////// начало запись в файл
+             }
+             return РезультатУспешнойВставкиИлиОбновлениеCallBacksОтСервера;
+         }
+     }
+ }
