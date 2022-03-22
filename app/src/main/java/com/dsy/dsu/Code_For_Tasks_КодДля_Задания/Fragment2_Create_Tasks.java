@@ -78,11 +78,9 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
             // TODO: 14.03.2022
             bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.setTitle("Задачи");
             // TODO: 14.03.2022
-            bottomNavigationViewДляTasks.requestLayout();
+
+
             // TODO: 14.03.2022
-            linearLayou.requestLayout();
-            // TODO: 14.03.2022
-            // TODO: 15.03.2022
 
 
             Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания +
@@ -116,7 +114,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         ///
 
 
-    }
+        }
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -124,27 +122,10 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        try {
-            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 onDestroyView  " +
-                    "" + adapterDataObserverObserverСлушатель +
-                    " dataSetObserverДляКурсора " + dataSetObserverДляКурсора);
-        } catch (Exception e) {
-            e.printStackTrace();
-            ///метод запись ошибок в таблицу
-            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-        }
-    }
+    public void onResume() {
+        super.onResume();
 
-    // TODO: 15.03.2022
-    @Override
-    public void onStart() {
-        super.onStart();
-
+        // TODO: 22.03.2022
         // TODO: 15.03.2022//
         try {
 
@@ -207,6 +188,14 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
             Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
             // TODO: 15.03.2022
 
+            bottomNavigationViewДляTasks.requestLayout();
+            // TODO: 22.03.2022
+            recyclerView.requestLayout();
+            // TODO: 14.03.2022
+            linearLayou.requestLayout();
+
+            // TODO: 15.03.2022
+
         } catch (Exception e) {
             e.printStackTrace();
             ///метод запись ошибок в таблицу
@@ -216,6 +205,25 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
         }
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        try {
+            Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 onDestroyView  " +
+                    "" + adapterDataObserverObserverСлушатель +
+                    " dataSetObserverДляКурсора " + dataSetObserverДляКурсора);
+        } catch (Exception e) {
+            e.printStackTrace();
+            ///метод запись ошибок в таблицу
+            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+        }
+    }
+
+
 
 
     // TODO: 15.03.2022 КЛАСС ДЛЯ БИЗНЕС ЛОГИКИ  ДЛЯ ВТОРОГО ФРАГМЕНТА 2
@@ -925,10 +933,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 // super();
                 // TODO: 04.03.2022
                 this.Курсор_ДляПолученияДАнныхДляЗАДАЧTASK = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK;
-                if (Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount() > 0) {
-                    // TODO: 04.03.2022
-                    Log.i(this.getClass().getName(), "   MyRecycleViewAdapter   Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount()>" + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount());
-                }
+
                 Log.i(this.getClass().getName(), "     getItemId holder.position ");
             }
 
@@ -939,14 +944,16 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 View viewГлавныйВидДляRecyclleViewДляЗаданий = null;
                 try {
                     // TODO: 28.02.2022
-                        // TODO: 22.03.2022
-                        viewГлавныйВидДляRecyclleViewДляЗаданий = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_for_takst_cardview2, parent, false);//todo old R.layout.simple_for_takst_cardview1
+                    // TODO: 22.03.2022
+                    viewГлавныйВидДляRecyclleViewДляЗаданий = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_for_takst_cardview2, parent, false);//todo old R.layout.simple_for_takst_cardview1
 
                     // TODO: 05.03.2022
                     Log.i(this.getClass().getName(), "   viewГлавныйВидДляRecyclleViewДляЗаданий" + viewГлавныйВидДляRecyclleViewДляЗаданий);
                     // TODO: 28.02.2022
-                        // TODO: 22.03.2022
-                    myViewHolder = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2.MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
+                    // TODO: 22.03.2022
+
+                    myViewHolder = new MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
+
 
                     // TODO: 01.03.2022
                     Log.i(this.getClass().getName(), "   myViewHolder" + myViewHolder);
@@ -1618,7 +1625,6 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
     }   // TODO: 28.02.2022 конец класса бизнес логики   // TODO: 28.02.2022 конец класса бизнес логики
 
-    // TODO: 02.03.2022
 
 
     // TODO: 28.02.2022 бизнес -логика    для активти

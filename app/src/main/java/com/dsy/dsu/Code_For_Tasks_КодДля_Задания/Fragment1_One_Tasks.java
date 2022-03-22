@@ -163,18 +163,6 @@ public class Fragment1_One_Tasks extends Fragment {
             // TODO: 15.03.2022 НЕ ПОКАЗЫВАЕМ
             bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.GONE);
 
-            // TODO: 14.03.2022 перегрузка фрагмента
-            bottomNavigationViewДляTasks.requestLayout();
-
-            // TODO: 22.03.2022
-
-            try {
-                linearLayou.removeAllViews();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            // TODO: 16.03.2022
-            linearLayou.requestLayout();
 
             Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 imageView  onViewCreated ");
 
@@ -219,8 +207,8 @@ public class Fragment1_One_Tasks extends Fragment {
 
     // TODO: 12.03.2022  метод с бизнес логикой
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
 
         try {
             ///   getResources().getDrawable(this,R.drawable.icon_dsu1_add_organisazio_success
@@ -278,6 +266,14 @@ public class Fragment1_One_Tasks extends Fragment {
             Log.d(this.getClass().getName(), " нет данных для отображения " +
                     "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  МетодКпопкаСоЗачкомКраснымДополнительныйСтатус  " + Курсор_ГлавныйКурсорДляЗадач +
                     " Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
+
+            // TODO: 22.03.2022
+
+            bottomNavigationViewДляTasks.requestLayout();
+            // TODO: 22.03.2022
+            recyclerView.requestLayout();
+            // TODO: 14.03.2022
+            linearLayou.requestLayout();
 
         } catch (Exception e) {
         e.printStackTrace();
