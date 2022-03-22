@@ -1842,6 +1842,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                                         вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
                                                         // TODO: 14.03.2022
                                                         bottomNavigationViewДляTasks.requestLayout();
+                                                        // TODO: 22.03.2022
+                                                        recyclerView.requestLayout();
                                                         // TODO: 14.03.2022
                                                         linearLayou.requestLayout();
 
