@@ -1825,7 +1825,25 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                                         // TODO: 22.03.2022
 
                                                         Log.w(this.getClass().getName(), "   Успешное Создаение Задачи !!!" + ОперациСозданияНовойЗадания);
+                                                        // TODO: 22.03.2022
+                                                        // TODO: 09.03.2022
+                                                        fragmentTransactionляЗадачи = fragmentManagerДляЗадачи.beginTransaction();
 
+                                                        Log.d(this.getClass().getName(), "  fragmentTransactionляЗадачи" + fragmentTransactionляЗадачи);
+
+                                                        fragment_ТекущийФрагмент = new Fragment2_Create_Tasks();
+                                                        // TODO: 11.03.2022
+                                                        fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
+                                                        // TODO: 10.03.2022
+                                                        fragmentTransactionляЗадачи.show(fragment_ТекущийФрагмент);
+                                                        // TODO: 10.03.2022
+                                                        Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
+                                                        // TODO: 10.03.2022
+                                                        вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
+                                                        // TODO: 14.03.2022
+                                                        bottomNavigationViewДляTasks.requestLayout();
+                                                        // TODO: 14.03.2022
+                                                        linearLayou.requestLayout();
 
                                                     }
 
