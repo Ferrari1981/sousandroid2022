@@ -102,9 +102,16 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         try{
-        Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания " + viewДляПервойКнопкиHome_Задания);
+            Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания " + viewДляПервойКнопкиHome_Задания);
 
-    } catch (Exception e) {
+            // TODO: 14.03.2022
+            viewДляПервойКнопкиHome_Задания = inflater.inflate(R.layout.activity_main_fragment1_for_tasks, container, false);
+
+            // TODO: 12.03.2022
+            Log.d(this.getClass().getName(), " onCreateView  viewДляПервойКнопкиHome_Задания  Fragment1_One_Tasks  onCreateView " +
+                    "" + viewДляПервойКнопкиHome_Задания);
+
+        } catch (Exception e) {
         e.printStackTrace();
         ///метод запись ошибок в таблицу
         Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
@@ -115,7 +122,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
 
         }
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return viewДляПервойКнопкиHome_Задания;//super.onCreateView(inflater, container, savedInstanceState)
     }
 
     // TODO: 12.03.2022
@@ -989,7 +996,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
 
                         // TODO: 22.03.2022
-                        Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);
+                        Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.moveToPosition(position);
 
                         // TODO: 04.03.2022 p==osion
                         Log.i(this.getClass().getName(), "  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition() " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition());
