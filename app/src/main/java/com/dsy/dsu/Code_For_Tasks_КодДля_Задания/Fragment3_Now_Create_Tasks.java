@@ -420,6 +420,13 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                             Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
 
+
+                            // TODO: 22.03.2022
+                            try {
+                                linearLayou.removeAllViews();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             // TODO: 28.02.2022
                             linearLayou.requestLayout();
                             /////////////

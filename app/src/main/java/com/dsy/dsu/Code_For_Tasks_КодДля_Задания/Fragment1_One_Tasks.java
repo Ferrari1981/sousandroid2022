@@ -165,6 +165,14 @@ public class Fragment1_One_Tasks extends Fragment {
 
             // TODO: 14.03.2022 перегрузка фрагмента
             bottomNavigationViewДляTasks.requestLayout();
+
+            // TODO: 22.03.2022
+
+            try {
+                linearLayou.removeAllViews();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             // TODO: 16.03.2022
             linearLayou.requestLayout();
 

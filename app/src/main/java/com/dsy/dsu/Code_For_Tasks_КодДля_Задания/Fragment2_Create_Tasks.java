@@ -15,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -627,6 +626,8 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
             try {
                 Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK  " + Курсор_ГлавныйКурсорДляЗадач);
                 // TODO: 04.03.2022  В ДАННОМ КОДЕ МЫ ОПЕРДЕЛЯЕМ КАКОЙ ЭКОРАН БУДЕМ ЗАГРУЖАТЬ В ЗАВПИСИМОСТИ ЕСЛИ ЛИ ДАННЫЫЕ ЗАДАЧИ
+
+
                 if (Курсор_ГлавныйКурсорДляЗадач.getCount() > 0) {
                     // TODO: 03.03.2022
                     Log.d(this.getClass().getName(), " есть данные для отображения " +
@@ -698,12 +699,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     textViewisnull.setVisibility(View.VISIBLE);
                     // TODO: 03.03.2022
                     textViewisnull.setText("Нет созданных задач !!!".toUpperCase());
-                    // TODO: 28.02.2022
-                    linearLayou.addView(textViewisnull);
-                    // TODO: 06.03.2022
-                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    // TODO: 28.02.2022
-                    linearLayou.setLayoutParams(layoutParams);
+                    // TODO: 22.03.2022
                     // TODO: 28.02.2022
                     Log.d(this.getClass().getName(), " нет данных для отображения " +
                             "отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1  Курсор_ГлавныйКурсорДляЗадач  " + Курсор_ГлавныйКурсорДляЗадач);
