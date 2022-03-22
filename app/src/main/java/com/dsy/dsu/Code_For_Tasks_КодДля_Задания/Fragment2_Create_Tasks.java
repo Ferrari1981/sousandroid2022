@@ -857,7 +857,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 // TODO: 13.03.2022
                 bottomNavigationViewДляTasks.requestLayout();
                 // TODO: 13.03.2022
-                bottomNavigationViewДляTasks.requestApplyInsets();
+                recyclerView.requestLayout();
                 // TODO: 14.03.2022
                 linearLayou.requestLayout();
                 /////////////
