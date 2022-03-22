@@ -52,7 +52,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.text.ParseException;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.CompletionService;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -1822,6 +1821,12 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                                         // TODO: 22.03.2022
 
                                                         Log.e(this.getClass().getName(), "  Ошибка новая задача не создалась !!!" + ОперациСозданияНовойЗадания);
+                                                    } else {
+                                                        // TODO: 22.03.2022
+
+                                                        Log.w(this.getClass().getName(), "   Успешное Создаение Задачи !!!" + ОперациСозданияНовойЗадания);
+
+
                                                     }
 
 
@@ -2150,7 +2155,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                     // TODO: 22.12.2021 НовыйUUIDДляТаблицыДатаЧат  для таблицы дата_чат
                     ////
-                    Long ЛокальныйUUIDДляОбоихТаблиц = (Long) new Class_Generation_UUID(getContext()).МетодГенерацииUUID(getContext()) + new Random(1).nextInt();
+                    Long ЛокальныйUUIDДляОбоихТаблиц = (Long) new Class_Generation_UUID(getContext()).МетодГенерацииUUID(getContext());
                     // TODO: 21.03.2022  если UUID есть значит НОВОЕ СООБЩЕНИЕ ПЕРВОЕ
 
                     Log.d(this.getClass().getName(), " повторно ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем " + ПолученыйUUIDУУжеЕслиСуществуетЗаданияТекущегоПользователясКомуПишем + "\n");
@@ -2248,7 +2253,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                                     // TODO: 22.03.2022
                                     ////
-                                    Long ЛокальныйUUIDДляТолькоДляВторойТаблицы = (Long) new Class_Generation_UUID(getContext()).МетодГенерацииUUID(getContext()) + new Random(1).nextInt();
+                                    Long ЛокальныйUUIDДляТолькоДляВторойТаблицы = (Long) new Class_Generation_UUID(getContext()).МетодГенерацииUUID(getContext());
                                     ////todo # 2 первой таблицы
                                     contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("uuid", ЛокальныйUUIDДляТолькоДляВторойТаблицы);
 
