@@ -12,12 +12,10 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteCursor;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -1656,7 +1654,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
 
 
 
-              Integer ИНдексПРочитаногоСообщения= Курсор_ДляСлужбыУведомлений_ТолькоДляЧата.getColumnIndex("date_start");
+              Integer ИНдексПРочитаногоСообщения = Курсор_ДляСлужбыУведомлений_ТолькоДляЧата.getColumnIndex("date_update");//TODO OLD date_start
 
                 String ВремНеПРочитаногоСообщения= Курсор_ДляСлужбыУведомлений_ТолькоДляЧата.getString(ИНдексПРочитаногоСообщения);
 
