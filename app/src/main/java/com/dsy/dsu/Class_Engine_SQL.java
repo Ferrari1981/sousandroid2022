@@ -11,8 +11,6 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
 import android.util.Log;
 import android.view.Gravity;
 import android.widget.ProgressBar;
@@ -519,19 +517,12 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 
 
-                                        Vibrator v3 = (Vibrator) ActivityДляСинхронизацииОбменаВнутри.getSystemService(Context.VIBRATOR_SERVICE);
                                         //
                                         if (РезультатЗапускВизуальнойСинхронизации[0] ==0) {
 
 
                                             // TODO: 31.10.2021
-                                            // Vibrate for 500 milliseconds
-                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                                v3.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-                                            } else {
-                                                //deprecated in API 26
-                                                v3.vibrate(200);
-                                            }
+
                                         }
 
 

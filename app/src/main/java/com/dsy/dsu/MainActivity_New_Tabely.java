@@ -1,6 +1,5 @@
 package com.dsy.dsu;
 
-import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +9,6 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -32,7 +29,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import java.text.DateFormat;
+import org.jetbrains.annotations.NotNull;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -43,15 +41,9 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.TimeZone;
 import java.util.concurrent.CompletionService;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
-
-
-import static java.util.Calendar.getInstance;
-
-import org.jetbrains.annotations.NotNull;
 
 //класс активити MainActivity_New_Tabely
 public class MainActivity_New_Tabely extends AppCompatActivity {
@@ -299,15 +291,7 @@ protected         int ПУБЛИЧНЫЙIDИЗТАБЛИЦЫСпинераЦФО
             КнопкаНазадПриСозданииНовогоТабеля.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                    Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-// Vibrate for 500 milliseconds
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-                    } else {
-                        //deprecated in API 26
-                        v2.vibrate(200);
-                    }
 
                     Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии  ");
 
@@ -1661,15 +1645,7 @@ while(iterator.hasNext()){
             КнопкаСозданиеТабеля.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-// Vibrate for 500 milliseconds
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        v2.vibrate(VibrationEffect.createOneShot(150, VibrationEffect.DEFAULT_AMPLITUDE));
-                    } else {
-                        //deprecated in API 26
-                        v2.vibrate(150);
-                    }
                     /////TODO после выбора цфо и подразделение создаем табель
                     int ТекущаяПозицияСпинераЦФО=СпинерВыборЦФО.getSelectedItemPosition();
 

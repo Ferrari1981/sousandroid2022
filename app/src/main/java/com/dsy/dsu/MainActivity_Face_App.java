@@ -14,8 +14,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
@@ -283,25 +281,37 @@ public class MainActivity_Face_App extends AppCompatActivity {
         super.onStart();
 
         // TODO: 23.03.2022
+        try {
 
-        // TODO: 23.03.2022
+            // TODO: 23.03.2022
 
-        КнопкаЧат.setBackgroundColor(Color.parseColor("#F0FFFF"));
-
-
-        КнопкаТабель.setBackgroundColor(Color.parseColor("#F0FFFF"));
-
-        КнопкаЗадачи.setBackgroundColor(Color.parseColor("#F0FFFF"));
-
-        // TODO: 23.03.2022
-
-        progressBarTask.setVisibility(View.INVISIBLE);
-
-        progressBarTabel.setVisibility(View.INVISIBLE);
-
-        progressBarChat.setVisibility(View.INVISIBLE);
+            КнопкаЧат.setBackgroundColor(Color.parseColor("#F0FFFF"));
 
 
+            КнопкаТабель.setBackgroundColor(Color.parseColor("#F0FFFF"));
+
+            КнопкаЗадачи.setBackgroundColor(Color.parseColor("#F0FFFF"));
+
+            // TODO: 23.03.2022
+
+            progressBarTask.setVisibility(View.INVISIBLE);
+
+            progressBarTabel.setVisibility(View.INVISIBLE);
+
+            progressBarChat.setVisibility(View.INVISIBLE);
+
+            // TODO: 27.02.2022
+
+        } catch (Exception e) {
+            //  Block of code to handle errors
+            e.printStackTrace();
+            ///метод запись ошибок в таблицу
+            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                    + Thread.currentThread().getStackTrace()[2].getLineNumber());
+            new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                    Thread.currentThread().getStackTrace()[2].getLineNumber());
+
+        }
     }
 
     private void МетодПовторныйЗапускОбщейСинхронизацииИзFaceApp() {
@@ -577,13 +587,6 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
 
                         // TODO: 28.12.2021
-                        Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-                        } else {
-                            //deprecated in API 26
-                            v2.vibrate(200);
-                        }
 
 
                         // TODO: 28.12.2021 НЕПОСТРЕДВСТВЕННО ПОДНИМАЕМ ПОЛЬЗОВАТЮ СКАЧАТ ФАЙЛ УСТАНОВКИХ НОВГОЙ ВЕРСИИ по таБЕЛЬНЫЙ уЧЁТ
@@ -947,14 +950,6 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
 
                 /////
-                Vibrator v2 = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
-                // Vibrate for 500 milliseconds
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    v2.vibrate(VibrationEffect.createOneShot(150, VibrationEffect.DEFAULT_AMPLITUDE));
-                } else {
-                    //deprecated in API 26
-                    v2.vibrate(150);
-                }
 
 
                 Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии  ");
@@ -1511,13 +1506,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
                                         // TODO: 31.10.2021
                                         if (CallBaskОтWorkManagerОдноразового>0) {
                                             // Vibrate for 500 milliseconds
-                                            Vibrator v3 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                                v3.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-                                            } else {
-                                                //deprecated in API 26
-                                                v3.vibrate(200);
-                                            }
+
 
                                         }
                                         //

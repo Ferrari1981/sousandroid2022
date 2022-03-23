@@ -6,12 +6,10 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
-import android.app.FragmentManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -22,34 +20,18 @@ import android.graphics.drawable.Drawable;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.VibrationEffect;
-import android.os.Vibrator;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.Person;
 import androidx.core.graphics.drawable.IconCompat;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.work.Data;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
-
-import com.dsy.dsu.Code_For_Chats_КодДля_Чата.Fragment_Writer_Read_ЧитатьПисатьЧата;
-import com.dsy.dsu.Code_For_Chats_КодДля_Чата.MainActivity_List_Chats;
-import com.google.android.gms.dynamic.SupportFragmentWrapper;
-import com.google.common.util.concurrent.ListenableFuture;
 
 import org.jetbrains.annotations.Nullable;
 

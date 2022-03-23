@@ -28,18 +28,13 @@ import androidx.core.app.ActivityCompat;
 import androidx.loader.content.AsyncTaskLoader;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.j256.ormlite.stmt.query.In;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Locale;
@@ -47,9 +42,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import java.util.function.ToDoubleBiFunction;
 import java.util.zip.GZIPInputStream;
-
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;

@@ -25,6 +25,7 @@
         app:strokeColor="#F5FFFA"
         app:cardMaxElevation="4dp"
         app:strokeWidth="3dp"
+        android:translationZ="10dp"
         android:animateLayoutChanges="true"
         app:cardElevation="3dp">
 

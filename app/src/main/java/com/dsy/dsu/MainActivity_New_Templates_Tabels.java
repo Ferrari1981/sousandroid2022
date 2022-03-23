@@ -1,5 +1,7 @@
 package com.dsy.dsu;
 
+import static java.util.Locale.setDefault;
+
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -15,8 +17,6 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -55,9 +55,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-
-import static java.util.Locale.setDefault;
 
 public class MainActivity_New_Templates_Tabels extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     protected Spinner СпинерВыборДату;/////спинеры для создание табеляСпинерТабельДепратамент
@@ -212,15 +209,7 @@ public class MainActivity_New_Templates_Tabels extends AppCompatActivity impleme
         КруглаяКнопкаСозданиеНовогоТабеля.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-// Vibrate for 500 milliseconds
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-                } else {
-                    //deprecated in API 26
-                    v2.vibrate(150);
-                }
 
                 Log.d(this.getClass().getName(), "МетодСозданияНовогоШАблона()   КруглаяКнопкаСозданиеНовогоТабеля  СОЗДАНИЕ НОВГО ШАБЛОНА" +
                         "  " + ПолученнаяUUIDНазванияОрганизации);
@@ -259,14 +248,7 @@ public class MainActivity_New_Templates_Tabels extends AppCompatActivity impleme
                 ///todo код которыц возврящет предыдущий актвитики кнопка back
 
 
-                    Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-                    } else {
-                        //deprecated in API 26
-                        v2.vibrate(200);
-                    }
 
 
               /*      Интент_BackВозвращаемАктивти.setClass(getApplicationContext(), MainActivity_List_Employees_Current_Tabel.class); // Т*/
@@ -505,16 +487,6 @@ public class MainActivity_New_Templates_Tabels extends AppCompatActivity impleme
             public boolean onLongClick(View v) {
                 try {
                     ////todo
-
-
-                    // Vibrate for 500 milliseconds
-                    Vibrator v3 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        v3.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-                    } else {
-                        //deprecated in API 26
-                        v3.vibrate(200);
-                    }
 
 
                     //МыУжеВКодеУденияСотрудника=true;
@@ -1578,13 +1550,7 @@ public class MainActivity_New_Templates_Tabels extends AppCompatActivity impleme
                             try {
 
                                 // Vibrate for 500 milliseconds
-                                Vibrator v3 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    v3.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-                                } else {
-                                    //deprecated in API 26
-                                    v3.vibrate(200);
-                                }
+
                                 ////
 
                                 /// ((TextView) v).setBackgroundColor(Color.RED);

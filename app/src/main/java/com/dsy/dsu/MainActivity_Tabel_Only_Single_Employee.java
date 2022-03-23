@@ -16,8 +16,6 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -49,6 +47,9 @@ import androidx.annotation.UiThread;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.lifecycle.Observer;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
@@ -83,14 +84,6 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 import javax.crypto.NoSuchPaddingException;
-import androidx.lifecycle.Observer;
-import androidx.work.WorkInfo;
-import androidx.work.WorkManager;
-
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.core.Observable;
-import io.reactivex.rxjava3.functions.Action;
-import io.reactivex.rxjava3.schedulers.Schedulers;
 
 
 public class MainActivity_Tabel_Only_Single_Employee extends AppCompatActivity  {
@@ -1863,15 +1856,7 @@ private GestureDetector gestureDetectorКлассДляЖестов;
                 public void onClick(View v) {
 
                     Log.d(this.getClass().getName(), "  onDestroyView");
-                    Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-// Vibrate for 500 milliseconds
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-                    } else {
-                        //deprecated in API 26
-                        v2.vibrate(200);
-                    }
                     ///////
                     МетодЗапускаетСотрудниковПослеУспешногоУдалениеСотрудника();
                     ////
@@ -4104,13 +4089,6 @@ private GestureDetector gestureDetectorКлассДляЖестов;
 
                                                 // TODO: 08.09.2021  ПОСЛЕ УСПЕШНОЙ  ВСТАВКИ  ДЕЛАЕМ ВИБРАЦИЮ
 
-                                                Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-                                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                                    v2.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
-                                                } else {
-                                                    //deprecated in API 26
-                                                    v2.vibrate(100);
-                                                }
 
                                                 // TODO: 01.07.2021  после локальной обнолвения поробуем вотрунть синхронизацию локальную  в фоне и порстмортрим что будет
 
@@ -5271,14 +5249,7 @@ private GestureDetector gestureDetectorКлассДляЖестов;
 
 
             /////
-            Vibrator v2 = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
-            // Vibrate for 500 milliseconds
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                v2.vibrate(VibrationEffect.createOneShot(150, VibrationEffect.DEFAULT_AMPLITUDE));
-            } else {
-                //deprecated in API 26
-                v2.vibrate(150);
-            }
+
 
             Log.d(this.getClass().getName(), "  ХэшЛовимUUIDIDНазваниеСтолбикаЛокальныйСловоВставитьТабель " +ХэшЛовимUUIDIDНазваниеСтолбикаЛокальныйСловоВставитьТабель.values());
 

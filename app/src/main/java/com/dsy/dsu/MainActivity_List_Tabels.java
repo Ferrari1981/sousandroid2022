@@ -1,12 +1,12 @@
 package com.dsy.dsu;
 
-import android.annotation.SuppressLint;
+import static java.util.Locale.setDefault;
+
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
@@ -15,12 +15,8 @@ import android.database.sqlite.SQLiteCursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -28,7 +24,6 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -41,14 +36,10 @@ import androidx.annotation.UiThread;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.datepicker.MaterialStyledDatePickerDialog;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -60,19 +51,11 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Locale;
-import java.util.Spliterator;
-import java.util.TimeZone;
 import java.util.concurrent.BrokenBarrierException;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-
-import static java.util.Locale.setDefault;
-
-import javax.crypto.NoSuchPaddingException;
 
 public class MainActivity_List_Tabels extends AppCompatActivity  {
 
@@ -317,15 +300,6 @@ TextView textViewКоличествоТабелей;
           */
 
 
-                Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-// Vibrate for 500 milliseconds
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-                } else {
-                    //deprecated in API 26
-                    v2.vibrate(150);
-                }
 
 
 
@@ -377,15 +351,7 @@ TextView textViewКоличествоТабелей;
 
 
 
-                    Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-// Vibrate for 500 milliseconds
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-                    } else {
-                        //deprecated in API 26
-                        v2.vibrate(200);
-                    }
 
 
                     Intent Интент_BackВозвращаемАктивти = new Intent();
@@ -2099,14 +2065,7 @@ if (СамСтатусАтбеля>0){ ///"пр"
                                     //////СПИНЕРА
 
                                     /////
-                                    Vibrator v2 = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
-                                    // Vibrate for 500 milliseconds
-                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                        v2.vibrate(VibrationEffect.createOneShot(150, VibrationEffect.DEFAULT_AMPLITUDE));
-                                    } else {
-                                        //deprecated in API 26
-                                        v2.vibrate(150);
-                                    }
+
 
                                     //  Toast.makeText(getApplicationContext(), "Тест на Клик по Табелю  MainActivity_CreateTableTHREE.class !!! "  , Toast.LENGTH_SHORT).show();
                                     /////СОБИТИЕ ПРИ НАЖАТИИ НА КОНРКУ СОЗДАННОГО ТАБЕЛЯ
@@ -3913,15 +3872,7 @@ Cursor Курсор_ЗагружаетАрайдистЗначенийНовог
 
 
 
-                        Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-// Vibrate for 500 milliseconds
 
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-                        } else {
-                            //deprecated in API 26
-                            v2.vibrate(200);
-                        }
 
 
                         ////todo
@@ -4023,15 +3974,7 @@ Cursor Курсор_ЗагружаетАрайдистЗначенийНовог
         try{
 
 
-            Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-// Vibrate for 500 milliseconds
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-            } else {
-                //deprecated in API 26
-                v2.vibrate(200);
-            }
 
 
 
