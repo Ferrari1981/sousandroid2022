@@ -272,8 +272,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
 
             subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодСлушательObserverДляКурсораТолькоКоличество();
-            // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ  второай слушатель только количество данных СЛУШАТЕЛЬ КУРСОРРА
-            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодСлушательObserverДляRecycleView();
+
 
             // TODO: 22.03.2022
 
@@ -341,7 +340,8 @@ public class Fragment1_One_Tasks extends Fragment {
             // TODO: 04.03.2022  закрывам сслушатли work manager чата одноразовга
             if (observerОдноразоваяДляWORKMANAGERДляРасписанияДполнительнаяОтЧата != null) {
                 // TODO: 04.03.2022
-                WorkManager.getInstance(getContext()).getWorkInfosByTagLiveData(ИмяСлужбыОдноразоваяСинхронизацииДляЗадачиИзЧата).removeObserver(observerОдноразоваяДляWORKMANAGERДляРасписанияДполнительнаяОтЧата);
+                WorkManager.getInstance(getContext()).getWorkInfosByTagLiveData(ИмяСлужбыОдноразоваяСинхронизацииДляЗадачиИзЧата)
+                        .removeObserver(observerОдноразоваяДляWORKMANAGERДляРасписанияДполнительнаяОтЧата);
             }
 
 // TODO: 04.03.2022
@@ -582,7 +582,8 @@ public class Fragment1_One_Tasks extends Fragment {
                             Log.d(this.getClass().getName(), "onItemRangeMoved ");
                         }
                     };
-                    // TODO: 04.03.2022 запускаем слушатель
+                    // TODO: 04.03.2022 запускаем слушатель;
+                    // TODO: 23.03.2022
                     myRecycleViewAdapter.registerAdapterDataObserver(adapterDataObserverObserverСлушатель);
 
                 } catch (Exception e) {
@@ -882,7 +883,8 @@ public class Fragment1_One_Tasks extends Fragment {
                         linearLayou.requestLayout();
 
 
-
+                        // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ  второай слушатель только количество данных СЛУШАТЕЛЬ КУРСОРРА
+                        subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент1.МетодСлушательObserverДляRecycleView();
 
 
                         // TODO: 04.03.2022

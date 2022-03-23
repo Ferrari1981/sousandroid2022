@@ -330,8 +330,11 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
             // TODO: 04.03.2022
             try {
                 // TODO: 04.03.2022 запускаем слушатель
-                    // TODO: 16.03.2022  
-                myRecycleViewAdapter.registerAdapterDataObserver(adapterDataObserverObserverСлушатель);
+
+                // TODO: 04.03.2022 запускаем слушатель
+                super.МетодСлушательObserverДляRecycleView();
+                // TODO: 16.03.2022
+                /*     myRecycleViewAdapter.registerAdapterDataObserver(adapterDataObserverObserverСлушатель);*/
 
             } catch (Exception e) {
                 e.printStackTrace();

@@ -190,10 +190,6 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
             subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодСлушательObserverДляКурсораТолькоКоличество();
 
-            // TODO: 22.03.2022
-            subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодСлушательObserverДляRecycleView();
-
-
             // TODO: 15.03.2022
             // TODO: 03.03.2022
             Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
@@ -380,82 +376,13 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         @Override
         void МетодСлушательObserverДляRecycleView() {
             // TODO: 04.03.2022
+
+
             try {
                 // TODO: 04.03.2022 запускаем слушатель
-                // TODO: 02.03.2022
-                adapterDataObserverObserverСлушатель = new RecyclerView.AdapterDataObserver() {
-                    @Override
-                    public void onChanged() {
-                        super.onChanged();
-                        // TODO: 02.03.2022
-                        Log.d(this.getClass().getName(), "onChanged ");
-                        // TODO: 02.03.2022
-                        /// subClassBuccessLoginГлавныйКласс_бизнесЛогики.МетодПолучениеДанныхДляЗАДАЧ();
-                        // TODO: 04.03.2022
-                        if (Курсор_ГлавныйКурсорДляЗадач.getCount() > 0) {
-                            // TODO: 04.03.2022
-                            Курсор_ГлавныйКурсорДляЗадач.moveToFirst();
-                        }
-                    }
-
-                    @Override
-                    public void onItemRangeChanged(int positionStart, int itemCount) {
-                        super.onItemRangeChanged(positionStart, itemCount);
-                        // TODO: 02.03.2022
-                        Log.d(this.getClass().getName(), "onItemRangeChanged ");
-                    }
-
-                    @Override
-                    public void onItemRangeChanged(int positionStart, int itemCount, @Nullable Object payload) {
-                        super.onItemRangeChanged(positionStart, itemCount, payload);
-                        // TODO: 02.03.2022
-                        // вибратор.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
-                        Log.d(this.getClass().getName(), "onItemRangeChanged ");
-                    }
-
-                    @Override
-                    public void onItemRangeInserted(int positionStart, int itemCount) {
-                        super.onItemRangeInserted(positionStart, itemCount);
-                        // TODO: 02.03.2022
-                        //   вибратор.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
-                        Log.d(this.getClass().getName(), "onItemRangeInserted ");
-                    }
-
-                    @Override
-                    public void onItemRangeRemoved(int positionStart, int itemCount) {
-                        super.onItemRangeRemoved(positionStart, itemCount);
-                        // TODO: 02.03.2022
-                        // вибратор.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
-                        Log.d(this.getClass().getName(), "onItemRangeRemoved ");
-                    }
-
-                    @Override
-                    public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
-                        super.onItemRangeMoved(fromPosition, toPosition, itemCount);
-                        // TODO: 02.03.2022
-                        вибратор.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
-
-                        // TODO: 13.03.2022
-                        try {
-                            // TODO: 05.03.2022  СТАТУС ЗНАЧКА С ДОПОЛНИТЕЛЬНЫЙ СТАТУСОМ
-                            МетодКпопкаСоЗачкомКраснымДополнительныйСтатус(Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
-
-                            Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
-
-                            /////////////
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            ///метод запись ошибок в таблицу
-                            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                        }
-                        Log.d(this.getClass().getName(), "onItemRangeMoved ");
-                    }
-                };
-                // TODO: 16.03.2022
-                myRecycleViewAdapter.registerAdapterDataObserver(adapterDataObserverObserverСлушатель);
+                super.МетодСлушательObserverДляRecycleView();
+                // TODO: 04.03.2022 запускаем слушатель
+                /*myRecycleViewAdapter.registerAdapterDataObserver(adapterDataObserverObserverСлушатель);*/
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -765,6 +692,9 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе +
                             " Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
                     // TODO: 14.03.2022
+
+                    // TODO: 04.03.2022 создаем слушатель    третий класс создаем ЗАПУСКАЕМ  второай слушатель только количество данных СЛУШАТЕЛЬ КУРСОРРА
+                    subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент2.МетодСлушательObserverДляRecycleView();
 
 
                     // TODO: 14.03.2022
