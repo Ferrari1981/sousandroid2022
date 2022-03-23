@@ -1147,7 +1147,7 @@ public class Fragment1_One_Tasks extends Fragment {
                 try {
 
                     // TODO: 28.02.2022
-                    viewГлавныйВидДляRecyclleViewДляЗаданий = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_for_takst_cardview1, parent, false);
+                    viewГлавныйВидДляRecyclleViewДляЗаданий = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_for_takst_cardview1, parent, false);//todo old simple_for_takst_cardview1
                     // TODO: 05.03.2022
                     Log.i(this.getClass().getName(), "   viewГлавныйВидДляRecyclleViewДляЗаданий" + viewГлавныйВидДляRecyclleViewДляЗаданий);
                     // TODO: 28.02.2022
@@ -1625,8 +1625,29 @@ public class Fragment1_One_Tasks extends Fragment {
 
 
                             // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  " +
+                            Log.d(this.getClass().getName(), "   Fragment4_Now_Views_Task_For_Complete SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  " +
                                     " holder.getAdapterPosition() " + holder.getAdapterPosition() + " v.getTag() " + v.getTag(holder.materialCardView.getId()));
+                            // TODO: 09.03.2022
+                            fragmentTransactionляЗадачи = fragmentManagerДляЗадачи.beginTransaction();
+
+                            // TODO: 23.03.2022  переходим на фрагмент для редактирования Fragment4_Now_Views_Task_For_Complete
+
+                            fragment_ТекущийФрагмент = new Fragment4_Now_Views_Task_For_Complete();
+                            // TODO: 11.03.2022
+                            fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
+                            // TODO: 10.03.2022
+                            fragmentTransactionляЗадачи.show(fragment_ТекущийФрагмент);
+                            // TODO: 10.03.2022
+                            Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
+                            // TODO: 10.03.2022
+
+                            // TODO: 15.03.2022
+                            // TODO: 14.03.2022
+                            //bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.GONE);
+                            // TODO: 09.03.2022
+                            bottomNavigationViewДляTasks.requestLayout();
+                            // TODO: 14.03.2022
+                            linearLayou.requestLayout();
 
                             // TODO: 03.03.2022 update screewn
 
