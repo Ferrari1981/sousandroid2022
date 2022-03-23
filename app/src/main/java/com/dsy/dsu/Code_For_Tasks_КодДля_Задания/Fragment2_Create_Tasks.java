@@ -998,7 +998,8 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 28.02.2022
                     // TODO: 22.03.2022
 
-                    myViewHolder = new MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
+
+                    myViewHolder = new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2.MyViewHolder(viewГлавныйВидДляRecyclleViewДляЗаданий);
 
 
                     // TODO: 01.03.2022
@@ -1314,6 +1315,29 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     Log.i(this.getClass().getName(), "  СамогоСообщенияЗадачиДляПользователя " + СамогоСообщенияЗадачиДляПользователя);
                     // TODO: 28.02.2022
                     holder.textView1.setText(СамогоСообщенияЗадачиДляПользователя);
+
+                    // TODO: 23.03.2022  если отказ генерирем для текущего значния ошибку
+
+
+                    Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("status_write");
+                    // TODO: 02.03.2022
+
+                    Integer СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексСтатусПрочтенияИлиНЕт);
+
+                    // TODO: 23.03.2022  сама ошибка
+
+                    // TODO: 02.03.2022
+                    Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
+
+                    if (СамСтатусПрочтенияИлиНет == 2) {
+
+                        // TODO: 23.03.2022
+                        holder.textView1.setError("Задача пришел Отказ !!!");
+
+
+                    }
+
+
                     // TODO: 28.02.2022
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -1537,8 +1561,9 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
                             Integer СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексСтатусПрочтенияИлиНЕт);
 
-                            // TODO: 13.03.2022
-                            if (isChecked && СамСтатусПрочтенияИлиНет > 0) {
+
+                            // TODO: 13.03.2022  СТАТУС КОГДА ЗАДАЧА ВЫПОЛНЕНА  ЗАДАЧА
+                            if (isChecked && СамСтатусПрочтенияИлиНет == 1) {
 
                                 // TODO: 16.03.2022
                                 ИндексПпрочитанные = R.drawable.icon_dsu1_message_add_contact;
@@ -1561,7 +1586,12 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                 Log.d(this.getClass().getName(), "  holder.materialCardView.setOnCheckedChangeListener  isChecked   " + isChecked);
 
 
-                            } else {
+                            }
+
+                            // TODO: 13.03.2022  СТАТУС КОГДА НЕ ОЗНАКОМЛЕННА ЗАДАЧА
+                            Log.d(this.getClass().getName(), " card  " + card +
+                                    "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " isChecked " + isChecked);
+                            if (isChecked && СамСтатусПрочтенияИлиНет == 0) {
                                 // TODO: 14.03.2022
 
                                 ИндексПпрочитанные = R.drawable.icon_dsu1_create_new_tasks;
@@ -1580,6 +1610,33 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                 // TODO: 13.03.2022
                                 Log.d(this.getClass().getName(), "   holder.materialCardView.setOnCheckedChangeListener  isChecked    " + isChecked);
                             }
+
+                            // TODO: 13.03.2022  СТАТУС  ТРЕТИЙ  КОГДА ЗАДАЧА ОТКАЗ
+                            Log.d(this.getClass().getName(), " card  " + card +
+                                    "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " isChecked " + isChecked);
+                            if (isChecked && СамСтатусПрочтенияИлиНет == 2) {
+                                // TODO: 14.03.2022
+
+                                ИндексПпрочитанные = R.drawable.icon_dsu1_for_tasks_desible_task;
+                                // TODO: 16.03.2022
+
+                                // TODO: 13.03.2022
+
+                                drawableПпрочитанные
+                                        = getContext().getDrawable(ИндексПпрочитанные);
+
+                                // TODO: 23.03.2022 error generater
+
+
+                                // TODO: 13.03.2022
+                                card.setCheckedIcon(drawableПпрочитанные);
+                                // TODO: 13.03.2022
+                                card.setCheckedIconResource(ИндексПпрочитанные);
+                                // TODO: 16.03.2022
+                                // TODO: 13.03.2022
+                                Log.d(this.getClass().getName(), "   holder.materialCardView.setOnCheckedChangeListener  isChecked    " + isChecked);
+                            }
+
 
                             // TODO: 13.03.2022
                         }

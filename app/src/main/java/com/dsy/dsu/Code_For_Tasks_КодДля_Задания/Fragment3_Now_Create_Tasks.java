@@ -1001,7 +1001,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                 View viewГлавныйВидДляRecyclleViewДляЗаданий = null;
                 try {
                     // TODO: 28.02.2022
-                    viewГлавныйВидДляRecyclleViewДляЗаданий = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_for_apply_takst_cardview4, parent, false);//todo old simple_for_new_takst_cardview3       R.layout.simple_for_takst_cardview1
+                    viewГлавныйВидДляRecyclleViewДляЗаданий = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_for_new_takst_cardview3, parent, false);//todo old simple_for_new_takst_cardview3       R.layout.simple_for_takst_cardview1
                     // TODO: 05.03.2022
                     Log.i(this.getClass().getName(), "   viewГлавныйВидДляRecyclleViewДляЗаданий" + viewГлавныйВидДляRecyclleViewДляЗаданий);
                     // TODO: 28.02.2022
