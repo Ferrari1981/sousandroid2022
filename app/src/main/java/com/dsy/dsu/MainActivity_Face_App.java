@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -46,6 +45,7 @@ import androidx.work.WorkManager;
 import com.dsy.dsu.Code_For_Chats_КодДля_Чата.MainActivity_List_Chats;
 import com.dsy.dsu.Code_For_Firebase_AndOneSignal_Здесь_КодДЛяСлужбыУведомленияFirebase.Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal;
 import com.dsy.dsu.Code_For_Tasks_КодДля_Задания.MainActivity_Tasks;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.jetbrains.annotations.NotNull;
@@ -68,21 +68,21 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 /////////////////////////////////////////////////////////////////////////
 public class MainActivity_Face_App extends AppCompatActivity {
-    //////////
-    protected Button     КнопкаТабельныйУчёт;
+    //////////todo
 
-
-    ImageView  imageView_ЗначекApp;
+    // TODO: 23.03.2022
+    ImageView imageView_ЗначекApp;
+    private MaterialCardView КнопкаЗадачи, КнопкаТабель, КнопкаЧат;
 
     ///////TODO
-    CREATE_DATABASE   Create_Database_СсылкаНАБазовыйКласс;
+    CREATE_DATABASE Create_Database_СсылкаНАБазовыйКласс;
     protected Button ТекстПриложения;
     //protected  Class_Engine_SQL УниверсальныйОбмен;
     protected ScrollView ScrollFaceAppСкорол;
 
     Observer observerОдноразоваяFACEAPP;
 
-Activity activity;
+    Activity activity;
 
     protected LinearLayout LinearLayoutFaceApp;
 
@@ -119,9 +119,6 @@ Activity activity;
 //////////////// TODO FACE APP
 
     SUBClassBISNESSLOGICA_ForActivityFaceApp bisnesslogicaForActivityFaceApp;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -184,10 +181,19 @@ Activity activity;
 // TODO: 28.04.2021 разрешаем широковещатльнй приемник
 
 
-            //////////TODO  иниализивуем кнопки
-            КнопкаТабельныйУчёт = (Button) findViewById(R.id.FaceApp_КнопкаТабельныйУчёт); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
+            //////////TODO  КНОПКА ЗАДАЧА
+            КнопкаЗадачи = (MaterialCardView) findViewById(R.id.cardview1_For_MainActivity); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
 
+            //////////TODO  КНОПКА ЗАДАЧА
+            КнопкаТабель = (MaterialCardView) findViewById(R.id.cardview2_For_MainActivity); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
 
+            //////////TODO  КНОПКА ЗАДАЧА
+            КнопкаЧат = (MaterialCardView) findViewById(R.id.cardview3_For_MainActivity); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
+
+            // TODO: 23.03.2022
+
+            ///
+            Log.d(this.getClass().getName(), "КнопкаЧат " + КнопкаЧат + " КнопкаЗадачи " + КнопкаЗадачи + " КнопкаТабель " + КнопкаТабель);
             ////
             imageView_ЗначекApp = (ImageView) findViewById(R.id.imageView_ЗначекApp); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
 
@@ -195,13 +201,8 @@ Activity activity;
 
             LinearLayoutFaceApp = (LinearLayout) findViewById(R.id.LineLayFaceApp); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
 
-            КнопкаТабельныйУчёт.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
 
 
-            Drawable icon = getResources().getDrawable(R.mipmap.icon_faceapp_tabels);
-            icon.setBounds(0, 1, 150, 150);
-            // КнопкаТабельныйУчёт.   setPadding(100,100,10,100);
-            КнопкаТабельныйУчёт.setCompoundDrawables(icon, null, null, null);
 
 
 // TODO: 04.04.2021 test
