@@ -116,9 +116,11 @@
                         android:id="@+id/imageview_cardview_for_tabel_1"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
+                        android:layout_centerHorizontal="true"
+                        android:paddingLeft="5dp"
                         android:layout_alignLeft="@+id/text1_inner_ardview_forMainActivity"
                         android:layout_centerVertical="true"
-                        app:srcCompat="@drawable/icon_dsu1_add_organisazio_success" />
+                        app:srcCompat="@drawable/icon_dsu1_for_mainactivity_tasks1" />
 
 
                 </RelativeLayout>
@@ -180,9 +182,11 @@
                         android:id="@+id/imageview_cardview_for_tabel_2"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
+                        android:layout_centerHorizontal="true"
+                        android:paddingLeft="5dp"
                         android:layout_alignLeft="@+id/text2_inner_ardview_forMainActivity"
                         android:layout_centerVertical="true"
-                        app:srcCompat="@drawable/icon_dsu1_add_organisazio_success" />
+                        app:srcCompat="@drawable/icon_dsu1_for_mainactivity_tabel2" />
 
 
                 </RelativeLayout>
@@ -244,9 +248,11 @@
                         android:id="@+id/imageview_cardview_for_tabel_3"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
+                        android:layout_centerHorizontal="true"
                         android:layout_alignLeft="@+id/text3_inner_ardview_forMainActivity"
                         android:layout_centerVertical="true"
-                        app:srcCompat="@drawable/icon_dsu1_add_organisazio_success" />
+                        android:paddingLeft="5dp"
+                        app:srcCompat="@drawable/icon_dsu1_for_mainactivity_chats3" />
 
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
