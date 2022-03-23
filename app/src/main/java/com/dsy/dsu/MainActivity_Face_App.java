@@ -28,6 +28,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -96,6 +97,8 @@ public class MainActivity_Face_App extends AppCompatActivity {
     String КлючДляFirebaseNotification = "2a1819db-60c8-4ca3-a752-1b6cd9cadfa1";
     // TODO: 23.03.2022
     private MaterialCardView КнопкаЗадачи, КнопкаТабель, КнопкаЧат;
+
+    private ProgressBar progressBarTask, progressBarTabel, progressBarChat;
 
     // TODO: 22.12.2021
     String ИмяСлужбыСинхронизацииОдноразовая = "WorkManager Synchronizasiy_Data Disposable";//"WorkManager Synchronizasiy_Data";//  "WorkManager Synchronizasiy_Data"; ///"WorkManager Synchronizasiy_Data";
@@ -182,7 +185,20 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
             //todo тест код
 
-            bisnesslogicaForActivityFaceApp=new SUBClassBISNESSLOGICA_ForActivityFaceApp(getApplicationContext(),activity);
+            bisnesslogicaForActivityFaceApp = new SUBClassBISNESSLOGICA_ForActivityFaceApp(getApplicationContext(), activity);
+
+
+            // TODO: 23.03.2022
+
+
+            progressBarTask = (ProgressBar) findViewById(R.id.prograessbarTask_inner_ardview_forMainActivity); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
+            // TODO: 23.03.2022
+            progressBarTabel = (ProgressBar) findViewById(R.id.prograessbarTabel_inner_ardview_forMainActivity); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
+            // TODO: 23.03.2022
+            progressBarChat = (ProgressBar) findViewById(R.id.prograessbarChats_inner_ardview_forMainActivity); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
+
+
+            Log.w(getPackageName().getClass().getName(), "progressBarChat    " + progressBarChat);
 
 
 // TODO: 06.06.2021 ЗАПУСК ТРЕХ СЛУЖБ
@@ -261,15 +277,42 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // TODO: 23.03.2022
+
+        // TODO: 23.03.2022
+
+        КнопкаЧат.setBackgroundColor(Color.parseColor("#F0FFFF"));
+
+
+        КнопкаТабель.setBackgroundColor(Color.parseColor("#F0FFFF"));
+
+        КнопкаЗадачи.setBackgroundColor(Color.parseColor("#F0FFFF"));
+
+        // TODO: 23.03.2022
+
+        progressBarTask.setVisibility(View.INVISIBLE);
+
+        progressBarTabel.setVisibility(View.INVISIBLE);
+
+        progressBarChat.setVisibility(View.INVISIBLE);
+
+
+    }
+
     private void МетодПовторныйЗапускОбщейСинхронизацииИзFaceApp() {
         // TODO: 27.02.2022  
-        
-        try{
+
+        try {
 
             // TODO: 27.02.2022
-        Integer ПубличныйIDДляФрагмента = new SubClass_Connection_BroadcastReceiver_Sous_Asyns_Glassfish().МетодПолучениеяПубличногоID(getApplicationContext());
+            Integer ПубличныйIDДляФрагмента = new SubClass_Connection_BroadcastReceiver_Sous_Asyns_Glassfish().МетодПолучениеяПубличногоID(getApplicationContext());
 
-        Log.i(this.getClass().getName(), " ВЫХОД ИЗ МЕТОДА     МетодЗапускаСинхоронизацииИзШироковещательногоПриёмника(context); " +
+            Log.i(this.getClass().getName(), " ВЫХОД ИЗ МЕТОДА     МетодЗапускаСинхоронизацииИзШироковещательногоПриёмника(context); " +
                 " BroadcastReceiver_Sous_Asyns_Glassfish (intent.getAction()   СЛУЖБА кто ЗАПУСТИЛ САМ bRODCAST ? :::" +"\n"+
                 " Build.BRAND.toString() Название Телефона " +Build.BRAND.toString());
 
@@ -959,6 +1002,9 @@ public class MainActivity_Face_App extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     try {
+                        // TODO: 23.03.2022
+
+                        progressBarTask.setVisibility(View.VISIBLE);
 
                         КнопкаЗадачи.setBackgroundColor(Color.GRAY);
 
@@ -999,6 +1045,9 @@ public class MainActivity_Face_App extends AppCompatActivity {
                 public void onClick(View v) {
                     try {
 
+                        // TODO: 23.03.2022
+                        progressBarTabel.setVisibility(View.VISIBLE);
+                        // TODO: 23.03.2022
                         КнопкаТабель.setBackgroundColor(Color.GRAY);
 
                         //todo запускаем  получент ПУБЛИЧНЫЙ ID ИЛИ ИЗ БАЗЫ ЛИБО С ИНТРЕНТА
@@ -1042,7 +1091,10 @@ public class MainActivity_Face_App extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     try {
+                        // TODO: 23.03.2022
+                        progressBarChat.setVisibility(View.VISIBLE);
 
+                        // TODO: 23.03.2022
                         КнопкаЧат.setBackgroundColor(Color.GRAY);
 
                         //todo запускаем  получент ПУБЛИЧНЫЙ ID ИЛИ ИЗ БАЗЫ ЛИБО С ИНТРЕНТА
