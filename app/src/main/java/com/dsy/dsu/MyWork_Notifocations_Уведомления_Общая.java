@@ -18,6 +18,7 @@ import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.os.Build;
 import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
 

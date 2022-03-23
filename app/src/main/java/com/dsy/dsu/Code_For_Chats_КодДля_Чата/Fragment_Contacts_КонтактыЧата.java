@@ -1,14 +1,11 @@
 package com.dsy.dsu.Code_For_Chats_КодДля_Чата;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteCursor;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.VibrationEffect;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -465,15 +462,7 @@ public class Fragment_Contacts_КонтактыЧата extends Fragment    {
 
                 //
 
-                Vibrator v2 = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
-// Vibrate for 500 milliseconds
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-                } else {
-                    //deprecated in API 26
-                    v2.vibrate(200);
-                }
 
                 textViewВытаскиваемIDДляЧатаНАкогоНажали.setBackgroundResource(R.drawable.style_for_chat_for_fragmaent_contact_for_click);
 

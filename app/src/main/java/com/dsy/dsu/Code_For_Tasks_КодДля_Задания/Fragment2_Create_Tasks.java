@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteCursor;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.VibrationEffect;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -782,7 +781,6 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                     // TODO: 10.03.2022
                                     Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
                                     // TODO: 10.03.2022
-                                    вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
                                     // TODO: 15.03.2022
                                     // TODO: 09.03.2022
                                     bottomNavigationViewДляTasks.requestLayout();
@@ -807,7 +805,6 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                     // TODO: 10.03.2022
                                     Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
                                     // TODO: 10.03.2022
-                                    вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
                                     // TODO: 14.03.2022
                                     bottomNavigationViewДляTasks.requestLayout();
                                     // TODO: 14.03.2022
@@ -1367,8 +1364,6 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                         public boolean onLongClick(View v) {
                             // TODO: 01.03.2022
 
-                            // TODO: 10.03.2022
-                            вибратор.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
 
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  " +
@@ -1505,8 +1500,6 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                         public void onClick(View v) {
                             // TODO: 01.03.2022
 
-                            // TODO: 10.03.2022
-                            вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
 
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  " +

@@ -11,7 +11,6 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.VibrationEffect;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -89,8 +88,6 @@ public class Fragment1_One_Tasks extends Fragment {
     // TODO: 05.03.2022
     protected BottomNavigationView bottomNavigationViewДляTasks;
     // TODO: 09.03.2022
-    protected Vibrator вибратор;
-    // TODO: 09.03.2022
     protected FragmentManager fragmentManagerДляЗадачи;
     // TODO: 09.03.2022
     protected FragmentTransaction fragmentTransactionляЗадачи;
@@ -130,7 +127,6 @@ public class Fragment1_One_Tasks extends Fragment {
             BungleДанныеДляViewCard = new Bundle();
 
             // TODO: 10.03.2022 выбратор
-            вибратор = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
 
 
             // TODO: 10.03.2022 manager fragmenot
@@ -560,7 +556,7 @@ public class Fragment1_One_Tasks extends Fragment {
                         public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
                             super.onItemRangeMoved(fromPosition, toPosition, itemCount);
                             // TODO: 02.03.2022
-                            вибратор.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+
 
                             // TODO: 13.03.2022
                             try {
@@ -975,7 +971,7 @@ public class Fragment1_One_Tasks extends Fragment {
                                         // TODO: 10.03.2022
                                         Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
                                         // TODO: 10.03.2022
-                                        вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
+
                                         // TODO: 15.03.2022
                                         // TODO: 14.03.2022
                                         //bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.GONE);
@@ -1492,7 +1488,7 @@ public class Fragment1_One_Tasks extends Fragment {
                             // TODO: 01.03.2022
 
                             // TODO: 10.03.2022
-                            вибратор.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+
 
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  " +
@@ -1627,8 +1623,6 @@ public class Fragment1_One_Tasks extends Fragment {
                         public void onClick(View v) {
                             // TODO: 01.03.2022
 
-                            // TODO: 10.03.2022
-                            вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
 
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  " +

@@ -21,6 +21,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
 

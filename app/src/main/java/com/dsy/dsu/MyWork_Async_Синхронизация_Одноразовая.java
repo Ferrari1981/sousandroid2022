@@ -7,6 +7,7 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.Log;
 
 import androidx.annotation.NonNull;

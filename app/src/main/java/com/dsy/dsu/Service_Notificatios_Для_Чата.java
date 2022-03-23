@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.Log;
 import android.widget.Toast;
 

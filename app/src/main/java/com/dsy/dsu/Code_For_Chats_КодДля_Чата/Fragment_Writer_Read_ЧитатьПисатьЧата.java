@@ -12,9 +12,7 @@ import android.database.sqlite.SQLiteCursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.VibrationEffect;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -2282,14 +2280,6 @@ try{
 
 
                 /////
-                Vibrator v2 = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
-                // Vibrate for 500 milliseconds
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    v2.vibrate(VibrationEffect.createOneShot(150, VibrationEffect.DEFAULT_AMPLITUDE));
-                } else {
-                    //deprecated in API 26
-                    v2.vibrate(150);
-                }
 
 
 ///
@@ -2880,14 +2870,6 @@ try{
 // TODO: 26.07.2021  холостой ход
 
 
-                Vibrator v2 = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
-                // Vibrate for 500 milliseconds
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.EFFECT_DOUBLE_CLICK));
-                } else {
-                    //deprecated in API 26
-                    v2.vibrate(200);
-                }
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -2962,14 +2944,7 @@ try{
                         // TODO: 30.09.2021
                         if (РезультатЗапускаХолостогоХода >= 1) {
 
-                            Vibrator v2 = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
-                            // Vibrate for 500 milliseconds
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                v2.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
-                            } else {
-                                //deprecated in API 26
-                                v2.vibrate(100);
-                            }
+
                         }
 
                         ///todo когда данных не для встаки тогда запускаем синхронизация для чата

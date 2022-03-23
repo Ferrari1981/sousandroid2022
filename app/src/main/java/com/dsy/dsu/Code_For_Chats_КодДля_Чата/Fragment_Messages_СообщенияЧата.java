@@ -9,10 +9,8 @@ import android.database.sqlite.SQLiteCursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.VibrationEffect;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -1383,13 +1381,6 @@ try {
 
 
                 //  Snackbar.make(v, "Here",Snackbar.LENGTH_LONG).setAction("Action",null).show();
-                Vibrator v2 = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    v2.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
-                } else {
-                    //deprecated in API 26
-                    v2.vibrate(100);
-                }
 
 
 ///
@@ -1545,13 +1536,7 @@ try {
                     floatingActionButtonФрагментСообщение.setImageResource(R.drawable.icon_dsu1_message_add_kontact);
 
                     //  Snackbar.make(v, "Here",Snackbar.LENGTH_LONG).setAction("Action",null).show();
-                    Vibrator v2 = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        v2.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
-                    } else {
-                        //deprecated in API 26
-                        v2.vibrate(100);
-                    }
+
 
                     Handler handler = new Handler();
                     /////
@@ -1562,15 +1547,6 @@ try {
                             floatingActionButtonФрагментСообщение.setImageResource(R.drawable.icon_dsu1_message_add_toback_fragment);
 
 
-                            Vibrator v2 = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
-// Vibrate for 500 milliseconds
-
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-                            } else {
-                                //deprecated in API 26
-                                v2.vibrate(200);
-                            }
 
 
 

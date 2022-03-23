@@ -11,7 +11,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.VibrationEffect;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -707,7 +706,6 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                     // TODO: 10.03.2022
                                     Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
                                     // TODO: 10.03.2022
-                                    вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
                                     // TODO: 15.03.2022
                                     // TODO: 09.03.2022
                                     bottomNavigationViewДляTasks.requestLayout();
@@ -732,7 +730,6 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                     // TODO: 10.03.2022
                                     Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
                                     // TODO: 10.03.2022
-                                    вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
                                     // TODO: 14.03.2022
                                     bottomNavigationViewДляTasks.requestLayout();
                                     // TODO: 14.03.2022
@@ -1435,7 +1432,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                             Log.w(this.getClass().getName(), "setOnSeekBarChangeListener  ");
                             // TODO: 18.03.2022
                             // TODO: 10.03.2022
-                            вибратор.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+
                             // TODO: 18.03.2022
                             seekBar.incrementSecondaryProgressBy(progress);
                             // TODO: 18.03.2022
@@ -1602,10 +1599,6 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                         @Override
                         public boolean onLongClick(View v) {
                             // TODO: 01.03.2022
-
-                            // TODO: 10.03.2022
-                            вибратор.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  " +
                                     " holder.getAdapterPosition() " + holder.getAdapterPosition() + " v.getTag() " + v.getTag(holder.materialCardView.getId()));
@@ -1832,8 +1825,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                             // TODO: 01.03.2022
 
-                            // TODO: 10.03.2022
-                            вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
+                      /*      // TODO: 10.03.2022
+                            вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));*/
 
                             // TODO: 21.03.2022  созлаени данных для записи в базу
 
@@ -1917,7 +1910,6 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                                         Log.e(this.getClass().getName(), "  Ошибка новая задача не создалась !!!" + ОперациСозданияНовойЗадания);
                                                     } else {
                                                         // TODO: 22.03.2022
-                                                        вибратор.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
                                                         Log.w(this.getClass().getName(), "   Успешное Создаение Задачи !!!" + ОперациСозданияНовойЗадания);
                                                         // TODO: 22.03.2022
                                                         // TODO: 09.03.2022
