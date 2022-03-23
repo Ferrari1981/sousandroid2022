@@ -17,7 +17,6 @@ import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.provider.Settings;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -53,7 +52,6 @@ import org.json.JSONException;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -72,49 +70,35 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
     // TODO: 23.03.2022
     ImageView imageView_ЗначекApp;
-    private MaterialCardView КнопкаЗадачи, КнопкаТабель, КнопкаЧат;
+    // TODO: 23.03.2022
+    protected Button ТекстПриложения;
 
     ///////TODO
     CREATE_DATABASE Create_Database_СсылкаНАБазовыйКласс;
-    protected Button ТекстПриложения;
+    // TODO: 23.03.2022
+    protected LinearLayout LinearLayoutFaceApp;
     //protected  Class_Engine_SQL УниверсальныйОбмен;
     protected ScrollView ScrollFaceAppСкорол;
-
+    // TODO: 23.03.2022
     Observer observerОдноразоваяFACEAPP;
-
+    // TODO: 23.03.2022
     Activity activity;
-
-    protected LinearLayout LinearLayoutFaceApp;
+    // TODO: 23.03.2022
+    PUBLIC_CONTENT Class_Engine_SQLГдеНаходитьсяМенеджерПотоков = null;
 
     //////////////////////
     boolean РежимыПросмотраДанныхЭкрана;
-
-    PUBLIC_CONTENT Class_Engine_SQLГдеНаходитьсяМенеджерПотоков =null;
-
-
-     Context КонтекстFaceAppВнешний;
-
+    // TODO: 23.03.2022
+    Context КонтекстFaceAppВнешний;
+    // TODO: 23.03.2022
     Context КонтекстFaceApp;
-    ///
-    String КлючДляFirebaseNotification="2a1819db-60c8-4ca3-a752-1b6cd9cadfa1";
-
-    ///
-
-
-    Class_GRUD_SQL_Operations classGrudSqlOperations;
-
-    /*    Context КонтекстДляСинхронизацииОбмена;*/
-
-
-
-
+    ///    // TODO: 23.03.2022
+    String КлючДляFirebaseNotification = "2a1819db-60c8-4ca3-a752-1b6cd9cadfa1";
+    // TODO: 23.03.2022
+    private MaterialCardView КнопкаЗадачи, КнопкаТабель, КнопкаЧат;
 
     // TODO: 22.12.2021
     String ИмяСлужбыСинхронизацииОдноразовая = "WorkManager Synchronizasiy_Data Disposable";//"WorkManager Synchronizasiy_Data";//  "WorkManager Synchronizasiy_Data"; ///"WorkManager Synchronizasiy_Data";
-
-
-
-
 
 //////////////// TODO FACE APP
 
@@ -133,12 +117,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
             Log.w(getPackageName().getClass().getName(), " уникальный идентификатор устройства " +УникальныйИндификаторУстройства );
 
 
-
-
-
             //todo  конец тест код
-
-
 
             ////todo ДАННОЕ АКТИВИТИ ПЕРЕДАЕМ НА ВСЮ СИНХРОНИЗАЦИЮ
             КонтекстFaceApp = this;
@@ -152,9 +131,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
             ((Activity) КонтекстFaceApp).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-
 /////////TODO локальная весрия данных для АНАЛИЗА ПО
-
 
             setContentView(R.layout.activity_main_face_app);
 
@@ -170,7 +147,6 @@ public class MainActivity_Face_App extends AppCompatActivity {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
             getSupportActionBar().hide(); ///скрывать тул бар
-
 
 // TODO: 28.04.2021 Убиваем все службы
 
@@ -202,51 +178,6 @@ public class MainActivity_Face_App extends AppCompatActivity {
             LinearLayoutFaceApp = (LinearLayout) findViewById(R.id.LineLayFaceApp); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
 
 
-
-
-
-// TODO: 04.04.2021 test
-
-
-            DisplayMetrics met = new DisplayMetrics();
-            this.getWindowManager().getDefaultDisplay().getMetrics(met);// get display metrics object
-            String strSize =
-                    new DecimalFormat("##.##").format(Math.sqrt(((met.widthPixels / met.xdpi) *
-                            (met.widthPixels / met.xdpi)) +
-                            ((met.heightPixels / met.ydpi) * (met.heightPixels / met.ydpi))));
-
-            ///
-            Log.d(this.getClass().getName(), "strSize " + strSize);
-
-            StringBuffer диагональ = new StringBuffer(strSize);
-
-            диагональ.substring(0, 1);
-            Log.d(this.getClass().getName(), "  диагональ.substring(0,1) " + диагональ.substring(0, 1));
-
-            Integer ДиагональЭкранаФинал = Integer.parseInt(диагональ.substring(0, 1));
-
-            switch (ДиагональЭкранаФинал) {
-                case 5:
-
-                    КнопкаТабельныйУчёт.setMinLines(24);
-                    break;
-
-                case 6:
-                    КнопкаТабельныйУчёт.setMinLines(27);
-                    break;
-                case 4:
-                    КнопкаТабельныйУчёт.setMinLines(21);
-                    break;
-                case 7:
-                    КнопкаТабельныйУчёт.setMinLines(30);
-                    break;
-
-                case 8:
-                    КнопкаТабельныйУчёт.setMinLines(32);
-                    break;
-
-            }
-
 // TODO: 23.02.2022
 
             //todo тест код
@@ -254,33 +185,13 @@ public class MainActivity_Face_App extends AppCompatActivity {
             bisnesslogicaForActivityFaceApp=new SUBClassBISNESSLOGICA_ForActivityFaceApp(getApplicationContext(),activity);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // TODO: 06.06.2021 ЗАПУСК ТРЕХ СЛУЖБ
 
 
-            МетодЗапускаАктивити();
+            МетодFaceApp_СлушательПриНажатииНаКнопки();
             // TODO: 06.06.2021 ЗАПУСК ТРЕХ СЛУЖБ
 
             МетодНажатиеЗначекAPP();
-
-
-
-
-
 
 
 
@@ -297,9 +208,6 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
 
 
-
-
-
             Log.i(this.getClass().getName(), "ПОВТОРНЫЙ ЗАПУСК ONESINGLE КОЛУЧЕНЕИ КЛЮЯА FIREBASE ");
 
 
@@ -309,32 +217,18 @@ public class MainActivity_Face_App extends AppCompatActivity {
             // TODO: 28.12.2021
 
 
-
             Log.i(this.getClass().getName(), "ПОВТОРНЫЙ ЗАПУСК ONESINGLE КОЛУЧЕНЕИ КЛЮЯА FIREBASE ");
 
 
-
-
-
-
-
-
-
+            // TODO: 28.12.2021
 
 
             МетодПовторногоЗапускаУведомленияОБщихДляЧатаиДАнных();
 
-            Log.w(getPackageName().getClass().getName(), "  FAceAPP повторный запуск Уведломления Одноразового  МетодПовторногоЗапускаУведомленияОБщихДляЧатаиДАнных() " );
-// TODO: 06.06.2021 ЗАПУСК ТРЕХ СЛУЖБ*/
+            Log.w(getPackageName().getClass().getName(), "  FAceAPP повторный запуск Уведломления Одноразового  МетодПовторногоЗапускаУведомленияОБщихДляЧатаиДАнных() ");
 
 
-
-
-
-
-
-
-
+            // TODO: 06.06.2021 ЗАПУСК ТРЕХ СЛУЖБ*/
 
 
             // TODO: 28.12.2021   Метод  ДАННЫЙ МЕТОД ВСЕГДА ПОСЛЕДНИЙ  если пришло Новоое Обновление По табельный УЧЁТ ПО ЗАПУСКАЕМ ЕГО ВСТАВКИ ПОКАЗЫВАЕМ ПОЛЬЗОВАТЕЛЮ
@@ -343,58 +237,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
             МетодЗапускПослеНажатияНАНовойФормеНАКнопкуУстановитьПослеУспешнойЗагрузкиНовогоПОТабельныйУчётПоказываемЕгоПользователю();
 
 
-
-
-
-
-
-//new КЛАСС_ДЛЯТЕСТИРОВАНИЯRXJAVA3(getApplicationContext());
-
-            // TODO: 28.12.2021  test
-
-            //  Uri uri=Uri.parse("content://com.dsy.dsu.providerdatabase/tabel");
-
-
-/*            Uri uri = Uri.parse("content://com.dsy.dsu.providerdatabase/fio");////organization ///data_tabels
-
-            Log.w(getApplicationContext().getClass().getName(), " uri  " + uri);/////
-
-            // TODO: 28.12.2021
-            Uri contactUri = ContactsContract.Data.CONTENT_URI;
-
-
-
-
-            ContentResolver contentResolver;
-            // TODO: 17.11.2021
-
-                // TODO: 17.11.2021
-                contentResolver = getApplicationContext().getContentResolver();*/
-
-
-
-       /*     //        Cursor cursor = mContentResolver.query(uri, projection, null, null, null);
-            AsyncQueryHandler asyncQueryHandler=      new AsyncQueryHandler(contentResolver) {
-
-                @Override
-                public void startQuery(int token, Object cookie, Uri uri, String[] projection, String selection, String[] selectionArgs, String orderBy) {
-                    super.startQuery(token, cookie, uri, projection, selection, selectionArgs, orderBy);
-                    Log.w(getApplicationContext().getClass().getName(), " uri  " + uri+ " sqLiteCursor " +Thread.currentThread().getName());/////
-
-               Cursor cursor=contentResolver.query(uri,null,null,null,null);
-                    Log.w(getApplicationContext().getClass().getName(), " uri  " + uri+ " sqLiteCursor " +Thread.currentThread().getName());/////
-                }
-
-                @Override
-                protected void onQueryComplete(int token, Object cookie, Cursor cursor) {
-
-                    // TODO: 28.12.2021
-                    Log.w(getApplicationContext().getClass().getName(), " uri  " + uri+ " sqLiteCursor " +cursor+Thread.currentThread().getName());/////
-                }
-            };
-            asyncQueryHandler.startQuery(1,null,uri,null,null,null,null);
-*/
-
+            // TODO: 28.12.2021   Метод  ДАННЫЙ МЕТОД ВСЕГДА ПОСЛЕДНИЙ  если пришло Новоое Обновление По табельный УЧЁТ ПО ЗАПУСКАЕМ ЕГО ВСТАВКИ ПОКАЗЫВАЕМ ПОЛЬЗОВАТЕЛЮ
 
             МетодПовторныйЗапускОбщейСинхронизацииИзFaceApp();
 
@@ -499,52 +342,6 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
         }
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-
-try{
-        ///
-/*
-
-        МетодПовторногоЗапускаУведомленияОБщихДляЧатаиДАнных();
-
-    Log.w(getPackageName().getClass().getName(), "  FAceAPP повторный запуск Уведломления Одноразового " );
-// TODO: 06.06.2021 ЗАПУСК ТРЕХ СЛУЖБ
-*/
-
-
-
-    } catch (Exception e) {
-        //  Block of code to handle errors
-        e.printStackTrace();
-        ///метод запись ошибок в таблицу
-        Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
-                + Thread.currentThread().getStackTrace()[2].getLineNumber());
-        new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
-                Thread.currentThread().getStackTrace()[2].getLineNumber());
-
-        // TODO: 11.05.2021 запись ошибок
-
-
-    }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1151,57 +948,39 @@ try{
     }
 
 
-
-
-
     //todo  ТАБЕЛЬНЫЙ УЧЁТ
     //// TODO  ЗАПУСКАЕМ ПО НОЖАТИЕ НА КНОППКУ ТАБЕЛЬНЫЙ УЧЁТ НА АКТИВИТИ FACE_APP МЕТОД СРАБОАТЫВАЕТ КОГДА НАЖИМАЕМ НА КНОППКУ ТАБЕЛЬНЫЙ УЧЕТ И ПЕРЕРХОДИМ НА СОЗДАНИЕ ТАБЕЛЯ
-    void МетодЗапускаАктивити() {
-        try{
+    void МетодFaceApp_СлушательПриНажатииНаКнопки() {
+        try {
 
-            ////TODO
+            ////TODO  слушатель первый для ЗАдач
 
-            КнопкаТабельныйУчёт.setOnClickListener(new View.OnClickListener() {
+            КнопкаЗадачи.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    try{
+                    try {
 
-                        КнопкаТабельныйУчёт.setBackgroundColor(Color.GRAY);
+                        КнопкаЗадачи.setBackgroundColor(Color.GRAY);
 
-                        /////
-                        Vibrator v2 = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
-                        // Vibrate for 500 milliseconds
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            v2.vibrate(VibrationEffect.createOneShot(150, VibrationEffect.DEFAULT_AMPLITUDE));
-                        } else {
-                            //deprecated in API 26
-                            v2.vibrate(150);
-                        }
-
-
-
-
-                        //todo запускаем если получент ПУБЛИЧНЫЙ ID ИЛИ ИЗ БАЗЫ ЛИБО С ИНТРЕНТА
-                        Intent Интент_ЗапускТабельногоУчётаПервыйШаг=new Intent();
+                        //todo запускаем  получент ПУБЛИЧНЫЙ ID ИЛИ ИЗ БАЗЫ ЛИБО С ИНТРЕНТА
+                        Intent Интент_ЗапускТабельногоУчётаПервыйШаг = new Intent();
                         /////
                         // Интент_ЗапускТабельногоУчётаПервыйШаг.setClass(getApplication(),  MainActivity_List_Tabels.class); // ТУТ ЗАПВСКАЕТЬСЯ ВЫБОР ПРИЛОЖЕНИЯ КОТОРЫЕ ЕСТЬ FACE APP НА ДАННЫЙ МОМЕТНТ РАЗРАБОТНАО ТАБЕЛЬНЫЙ УЧЁТ
 
-                        Интент_ЗапускТабельногоУчётаПервыйШаг.setClass(getApplication(),  MainActivity_List_Tabels.class); //  ТЕСТ КОД КОТОРЫЙ ЗАПУСКАЕТ ACTIVITY VIEWDATA  ПРОВЕРИТЬ ОБМЕН
+                        Интент_ЗапускТабельногоУчётаПервыйШаг.setClass(getApplication(), MainActivity_List_Tabels.class); //  ТЕСТ КОД КОТОРЫЙ ЗАПУСКАЕТ ACTIVITY VIEWDATA  ПРОВЕРИТЬ ОБМЕН
 
                         Интент_ЗапускТабельногоУчётаПервыйШаг.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-
-                        ////
+                        ///
                         ///////TODO ОСТАНАВЛИВАЕМ СЛУЖБУ ЧЕРЕЗ 20 СЕКУНД
                         Log.d(this.getClass().getName(), "" +
                                 "    КнопкаТабельныйУчёт.setOnClickListener(new View.OnClickListener() {");
-
                         //////
                         startActivity(Интент_ЗапускТабельногоУчётаПервыйШаг);
                         //////
                         ///finish();
 
-                        КонтекстFaceAppВнешний=null;
+                        КонтекстFaceAppВнешний = null;
 
                         //////
                     } catch (Exception e) {
@@ -1210,34 +989,102 @@ try{
                         ///метод запись ошибок в таблицу
                         Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
                                 + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                        new   Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                        new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
                                 Thread.currentThread().getStackTrace()[2].getLineNumber());
                     }
                 }
 
 
+            });
+            ////TODO  слушатель второй для Табель
+
+            КнопкаТабель.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+
+                        КнопкаТабель.setBackgroundColor(Color.GRAY);
+
+                        //todo запускаем  получент ПУБЛИЧНЫЙ ID ИЛИ ИЗ БАЗЫ ЛИБО С ИНТРЕНТА
+                        Intent Интент_ЗапускТабельногоУчётаПервыйШаг = new Intent();
+                        /////
+                        // Интент_ЗапускТабельногоУчётаПервыйШаг.setClass(getApplication(),  MainActivity_List_Tabels.class); // ТУТ ЗАПВСКАЕТЬСЯ ВЫБОР ПРИЛОЖЕНИЯ КОТОРЫЕ ЕСТЬ FACE APP НА ДАННЫЙ МОМЕТНТ РАЗРАБОТНАО ТАБЕЛЬНЫЙ УЧЁТ
+
+                        Интент_ЗапускТабельногоУчётаПервыйШаг.setClass(getApplication(), MainActivity_List_Tabels.class); //  ТЕСТ КОД КОТОРЫЙ ЗАПУСКАЕТ ACTIVITY VIEWDATA  ПРОВЕРИТЬ ОБМЕН
+
+                        Интент_ЗапускТабельногоУчётаПервыйШаг.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                        ///
+                        ///////TODO ОСТАНАВЛИВАЕМ СЛУЖБУ ЧЕРЕЗ 20 СЕКУНД
+                        Log.d(this.getClass().getName(), "" +
+                                "    КнопкаТабельныйУчёт.setOnClickListener(new View.OnClickListener() {");
+                        //////
+                        startActivity(Интент_ЗапускТабельногоУчётаПервыйШаг);
+                        //////
+                        ///finish();
+
+                        КонтекстFaceAppВнешний = null;
+
+                        //////
+                    } catch (Exception e) {
+                        //  Block of code to handle errors
+                        e.printStackTrace();
+                        ///метод запись ошибок в таблицу
+                        Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                                + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                        new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                                Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    }
+                }
+
+
+            });
+            ///////КнопкаЧатКнопкаЧат
+            ////TODO  слушатель второй  для Чат
+
+            КнопкаЧат.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+
+                        КнопкаЧат.setBackgroundColor(Color.GRAY);
+
+                        //todo запускаем  получент ПУБЛИЧНЫЙ ID ИЛИ ИЗ БАЗЫ ЛИБО С ИНТРЕНТА
+                        Intent Интент_ЗапускТабельногоУчётаПервыйШаг = new Intent();
+                        /////
+                        // Интент_ЗапускТабельногоУчётаПервыйШаг.setClass(getApplication(),  MainActivity_List_Tabels.class); // ТУТ ЗАПВСКАЕТЬСЯ ВЫБОР ПРИЛОЖЕНИЯ КОТОРЫЕ ЕСТЬ FACE APP НА ДАННЫЙ МОМЕТНТ РАЗРАБОТНАО ТАБЕЛЬНЫЙ УЧЁТ
+
+                        Интент_ЗапускТабельногоУчётаПервыйШаг.setClass(getApplication(), MainActivity_List_Tabels.class); //  ТЕСТ КОД КОТОРЫЙ ЗАПУСКАЕТ ACTIVITY VIEWDATA  ПРОВЕРИТЬ ОБМЕН
+
+                        Интент_ЗапускТабельногоУчётаПервыйШаг.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                        ///
+                        ///////TODO ОСТАНАВЛИВАЕМ СЛУЖБУ ЧЕРЕЗ 20 СЕКУНД
+                        Log.d(this.getClass().getName(), "" +
+                                "    КнопкаТабельныйУчёт.setOnClickListener(new View.OnClickListener() {");
+                        //////
+                        startActivity(Интент_ЗапускТабельногоУчётаПервыйШаг);
+                        //////
+                        ///finish();
+
+                        КонтекстFaceAppВнешний = null;
+
+                        //////
+                    } catch (Exception e) {
+                        //  Block of code to handle errors
+                        e.printStackTrace();
+                        ///метод запись ошибок в таблицу
+                        Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                                + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                        new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                                Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    }
+                }
+
 
             });
 
 
-            /////TODO вторая кнопка настройки
-
-
-
-//TODO кнопка настроки
-
-
-
-
-
-
-
-
-
-
-
-
-            ///////
         } catch (Exception e) {
             //  Block of code to handle errors
             e.printStackTrace();

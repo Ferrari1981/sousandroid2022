@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#F5FFFA"
     android:foregroundGravity="center"
     android:scrollbars="vertical">
@@ -41,21 +41,19 @@
 
     <ScrollView
         android:id="@+id/ScrollFaceApp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view">
+        app:layout_constraintTop_toTopOf="@id/view">
 
         <LinearLayout
             android:id="@+id/LineLayFaceApp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
             android:visibility="visible">
@@ -63,7 +61,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardview1_For_MainActivity"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="170dp"
                 android:layout_margin="10dp"
                 android:layout_weight="2"
                 android:animateLayoutChanges="true"
@@ -116,10 +114,10 @@
                         android:id="@+id/imageview_cardview_for_tabel_1"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_centerHorizontal="true"
-                        android:paddingLeft="5dp"
                         android:layout_alignLeft="@+id/text1_inner_ardview_forMainActivity"
+                        android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
+                        android:paddingLeft="5dp"
                         app:srcCompat="@drawable/icon_dsu1_for_mainactivity_tasks1" />
 
 
@@ -130,7 +128,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardview2_For_MainActivity"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="170dp"
                 android:layout_margin="10dp"
                 android:layout_weight="2"
                 android:animateLayoutChanges="true"
@@ -182,10 +180,10 @@
                         android:id="@+id/imageview_cardview_for_tabel_2"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_centerHorizontal="true"
-                        android:paddingLeft="5dp"
                         android:layout_alignLeft="@+id/text2_inner_ardview_forMainActivity"
+                        android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
+                        android:paddingLeft="5dp"
                         app:srcCompat="@drawable/icon_dsu1_for_mainactivity_tabel2" />
 
 
@@ -196,7 +194,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardview3_For_MainActivity"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="170dp"
                 android:layout_margin="10dp"
                 android:layout_weight="2"
                 android:animateLayoutChanges="true"
@@ -248,8 +246,8 @@
                         android:id="@+id/imageview_cardview_for_tabel_3"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_centerHorizontal="true"
                         android:layout_alignLeft="@+id/text3_inner_ardview_forMainActivity"
+                        android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:paddingLeft="5dp"
                         app:srcCompat="@drawable/icon_dsu1_for_mainactivity_chats3" />
