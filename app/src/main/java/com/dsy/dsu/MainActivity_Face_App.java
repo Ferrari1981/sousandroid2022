@@ -963,21 +963,17 @@ public class MainActivity_Face_App extends AppCompatActivity {
                         КнопкаЗадачи.setBackgroundColor(Color.GRAY);
 
                         //todo запускаем  получент ПУБЛИЧНЫЙ ID ИЛИ ИЗ БАЗЫ ЛИБО С ИНТРЕНТА
-                        Intent Интент_ЗапускТабельногоУчётаПервыйШаг = new Intent();
-                        /////
-                        // Интент_ЗапускТабельногоУчётаПервыйШаг.setClass(getApplication(),  MainActivity_List_Tabels.class); // ТУТ ЗАПВСКАЕТЬСЯ ВЫБОР ПРИЛОЖЕНИЯ КОТОРЫЕ ЕСТЬ FACE APP НА ДАННЫЙ МОМЕТНТ РАЗРАБОТНАО ТАБЕЛЬНЫЙ УЧЁТ
+                        // TODO: 23.04.2021 запуск чата
+                        Log.d(this.getClass().getName(), "Запускает Чат из меню   ");
 
-                        Интент_ЗапускТабельногоУчётаПервыйШаг.setClass(getApplication(), MainActivity_List_Tabels.class); //  ТЕСТ КОД КОТОРЫЙ ЗАПУСКАЕТ ACTIVITY VIEWDATA  ПРОВЕРИТЬ ОБМЕН
-
-                        Интент_ЗапускТабельногоУчётаПервыйШаг.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                        ///
-                        ///////TODO ОСТАНАВЛИВАЕМ СЛУЖБУ ЧЕРЕЗ 20 СЕКУНД
-                        Log.d(this.getClass().getName(), "" +
-                                "    КнопкаТабельныйУчёт.setOnClickListener(new View.OnClickListener() {");
+                        Intent intentЗапускЗаданияВ_Faceapp = new Intent();
                         //////
-                        startActivity(Интент_ЗапускТабельногоУчётаПервыйШаг);
-                        //////
+
+                        intentЗапускЗаданияВ_Faceapp.setClass(getApplicationContext(), MainActivity_Tasks.class);//рабочий
+
+                        intentЗапускЗаданияВ_Faceapp.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                        startActivity(intentЗапускЗаданияВ_Faceapp);
                         ///finish();
 
                         КонтекстFaceAppВнешний = null;
@@ -1050,20 +1046,18 @@ public class MainActivity_Face_App extends AppCompatActivity {
                         КнопкаЧат.setBackgroundColor(Color.GRAY);
 
                         //todo запускаем  получент ПУБЛИЧНЫЙ ID ИЛИ ИЗ БАЗЫ ЛИБО С ИНТРЕНТА
-                        Intent Интент_ЗапускТабельногоУчётаПервыйШаг = new Intent();
-                        /////
-                        // Интент_ЗапускТабельногоУчётаПервыйШаг.setClass(getApplication(),  MainActivity_List_Tabels.class); // ТУТ ЗАПВСКАЕТЬСЯ ВЫБОР ПРИЛОЖЕНИЯ КОТОРЫЕ ЕСТЬ FACE APP НА ДАННЫЙ МОМЕТНТ РАЗРАБОТНАО ТАБЕЛЬНЫЙ УЧЁТ
 
-                        Интент_ЗапускТабельногоУчётаПервыйШаг.setClass(getApplication(), MainActivity_List_Tabels.class); //  ТЕСТ КОД КОТОРЫЙ ЗАПУСКАЕТ ACTIVITY VIEWDATA  ПРОВЕРИТЬ ОБМЕН
+                        Log.d(this.getClass().getName(), "Запускает Чат из меню   ");
 
-                        Интент_ЗапускТабельногоУчётаПервыйШаг.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                        ///
-                        ///////TODO ОСТАНАВЛИВАЕМ СЛУЖБУ ЧЕРЕЗ 20 СЕКУНД
-                        Log.d(this.getClass().getName(), "" +
-                                "    КнопкаТабельныйУчёт.setOnClickListener(new View.OnClickListener() {");
+                        Intent intentЗапускЧатаВнутри_FaceApp = new Intent();
                         //////
-                        startActivity(Интент_ЗапускТабельногоУчётаПервыйШаг);
+                        // intentЗапускЧата.setClass(getApplicationContext(), MainActivity_history_chat_test.class);
+
+                        intentЗапускЧатаВнутри_FaceApp.setClass(getApplicationContext(), MainActivity_List_Chats.class);//рабочий
+
+                        intentЗапускЧатаВнутри_FaceApp.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                        startActivity(intentЗапускЧатаВнутри_FaceApp);
                         //////
                         ///finish();
 
@@ -1369,73 +1363,6 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
                     /// МетодДиалогаДляМеню(" Вид Просмотра Данных", "Просмотр во весь экран ?");
                     return true;
-
-
-
-
-
-
-
-
-
-
-                // TODO: 17.03.2021 ДАННЫЙ ПУЕКТ В МЕНЮ ЗАПУСКАЕТ ЧАТ
-                case R.id.ПунктМенюВосьмой:
-                    ///
-                case 7:
-                    Log.d(this.getClass().getName(), "Запускает Чат из меню   ");
-
-
-
-          /*          Toast.makeText(getApplicationContext(),
-                            "Запускаем Чат !!! "    , Toast.LENGTH_SHORT).show();*/
-
-// TODO: 23.04.2021 запуск чата
-                        Log.d(this.getClass().getName(), "Запускает Чат из меню   ");
-
-                        Intent intentЗапускЧата=new Intent();
-                            //////
-                           // intentЗапускЧата.setClass(getApplicationContext(), MainActivity_history_chat_test.class);
-
-                              intentЗапускЧата.setClass(getApplicationContext(), MainActivity_List_Chats.class);//рабочий
-
-                        intentЗапускЧата.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                        startActivity(intentЗапускЧата);
-
-                    // TODO: 17.03.2021 ДАННЫЙ ПУЕКТ В МЕНЮ ЗАПУСКАЕТ ЧАТ
-                    return true;
-
-
-                // TODO: 17.03.2021 ДАННЫЙ ПУЕКТ В МЕНЮ ЗАПУСКАЕТ ЧАТ
-                case R.id.ПунктМенюДевятый:
-                    ///
-                case 8:
-                    Log.d(this.getClass().getName(), "Запускает Задание   из меню   ");
-
-                /*    Toast.makeText(getApplicationContext(),
-                            "Запускам Задания -> !!!  "    , Toast.LENGTH_SHORT).show();*/
-
-
-
-// TODO: 23.04.2021 запуск чата
-                    Log.d(this.getClass().getName(), "Запускает Чат из меню   ");
-
-                    Intent intentЗапускЗадания=new Intent();
-                    //////
-                    // intentЗапускЧата.setClass(getApplicationContext(), MainActivity_history_chat_test.class);
-
-                    intentЗапускЗадания.setClass(getApplicationContext(), MainActivity_Tasks.class);//рабочий
-
-                    intentЗапускЗадания.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                    startActivity(intentЗапускЗадания);
-
-
-
-                    // TODO: 17.03.2021 ДАННЫЙ ПУЕКТ В МЕНЮ ЗАПУСКАЕТ задания
-                    return true;
-
 
 
 

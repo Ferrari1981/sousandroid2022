@@ -53,17 +53,6 @@
                 android:title="Обновление ПО" />
 
 
-            <item
-                android:id="@+id/ПунктМенюВосьмой"
-                android:checkableBehavior="single"
-                android:icon="@drawable/icon_dsu1_chat2"
-                android:title="Чат" />
-            <item
-                android:id="@+id/ПунктМенюДевятый"
-                android:checkableBehavior="single"
-                android:icon="@drawable/icon_dsu1_sadaniy_ismenu"
-                android:title="Задания" />
-
         </menu>
 
 
