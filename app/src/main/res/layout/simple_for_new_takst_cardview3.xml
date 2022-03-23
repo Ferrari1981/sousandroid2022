@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
-        android:layout_margin="5dp"
+        android:layout_margin="1dp"
         android:layout_weight="2"
         android:animateLayoutChanges="true"
         android:checkable="true"
