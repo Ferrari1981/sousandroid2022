@@ -83,11 +83,11 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
             // TODO: 14.03.202
 
 
-            bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.setVisibility(View.GONE);
+            bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.GONE);
             // TODO: 16.03.2022
-            bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.VISIBLE);
+            bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.setVisibility(View.VISIBLE);
             // TODO: 16.03.2022
-            bottomNavigationКонкретноКнопкаДобавить.setTitle("Добавленные");
+            bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.setTitle("Контроль");
 
             // TODO: 15.03.2022 НЕ ПОКАЗЫВАЕМ
             /*   bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.GONE);*/
