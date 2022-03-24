@@ -65,6 +65,9 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
     protected RecyclerView recyclerView;
     // TODO: 14.03.2022
     AccessibilityNodeInfo accessibilityNodeInfoДополнительныеДанные;
+
+    // TODO: 14.03.2022
+    AccessibilityNodeInfo accessibilityNodeInfoДляПередачиДанных;
     // TODO: 16.03.2022
     private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент4 subClassBuccessLogin_главныйКлассБизнесЛогикиФрагмент4ЗаполенияЗадачиДляСозданияНовойЗадачи;
     // TODO: 16.03.2022
@@ -896,7 +899,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
         // TODO: 28.02.2022 начало  MyViewHolder
         protected class MyViewHolder extends RecyclerView.ViewHolder {// TODO: 28.02.2022 начало  MyViewHolder
             // TODO: 28.02.2022
-            TextInputEditText textView1, textView3, textView5;
+            TextInputEditText textView1, textView3, textView5, textView10ПримечанияОтКлиентаCallsBalck;
             // TODO: 17.03.2022
             // TODO: 28.02.2022
             TextView textView2;
@@ -965,9 +968,19 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                     // TODO: 21.03.2022
                     bundleЗначенияДляНовойЗадачи = new Bundle();
 
+                    // TODO: 21.03.2022
+                    accessibilityNodeInfoДляПередачиДанных = materialCardView.createAccessibilityNodeInfo();
+                    // TODO: 24.03.2022
+                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 materialCardView   " + materialCardView +
+                            " accessibilityNodeInfoДляПередачиДанных " + accessibilityNodeInfoДляПередачиДанных);
 
-                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 materialCardView   " + materialCardView);
-                    // TODO: 01.03.2022*/
+                    // TODO: 24.03.2022
+
+                    textView10ПримечанияОтКлиентаCallsBalck = (TextInputEditText) itemView.findViewById(R.id.text2_callsBack_current_task);
+
+                    Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 textView10ПримечанияОтКлиентаCallsBalck   " + textView10ПримечанияОтКлиентаCallsBalck);
+
+
                     ///////
                 } catch (Exception e) {
                     //  Block of code to handle errors
@@ -1146,6 +1159,14 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
 
                     // TODO: 03.03.2022 передаем помер позиции position
                     holder.materialCardView.setTag(holder.materialCardView.getId(), СамСтатусПрочтенияИлиНет);
+
+                    // TODO: 24.03.2022
+
+                    // TODO: 01.03.2022*/
+                    Bundle bundle = accessibilityNodeInfoДляПередачиДанных.getExtras();
+                    // TODO: 24.03.2022  bundlebundle
+                    bundle.putInt("accessibilityNodeInfoДляПередачиДанных", СамСтатусПрочтенияИлиНет);
+
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -1834,12 +1855,14 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                 String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForChat";
 
                 String PROCESS_ID_УведомленияПлановая = "12";
+
+
                 try {
                     // TODO: 24.03.2022  ПОЛОЖИТЕЛЬНЫЙ РЕЗУЛЬТАТ
                     holder.buttonДляПоложительныйРезультатВыполенойЗадачи.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-
+                            String ПримечанниееОтКлиентаПоЗадаTasks;
 
                             // TODO: 16.03.2022
                             Log.d(this.getClass().getName(), "  holder.buttonДляПоложительныйРезультатВыполенойЗадачи.setOnClickListener   МетодБиндингаСлушательДляКнопкиСоздатьНовуюЗадачу    " +
@@ -1862,10 +1885,17 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                             Log.i(this.getClass().getName(), "  ПолучаемUUIDТекущйПозицииВRecyreView   " + ПолучаемUUIDТекущйПозицииВRecyreView);
 
 
+                            // TODO: 24.03.2022
+
+                            ПримечанниееОтКлиентаПоЗадаTasks = holder.textView10ПримечанияОтКлиентаCallsBalck.getText().toString().trim();
+
+
                             Log.i(this.getClass().getName(), "  PROCESS_ID_УведомленияПлановая   " + PROCESS_ID_УведомленияПлановая +
                                     "  ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата +
                                     " ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView +
-                                    " СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
+                                    " СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет +
+                                    "  ПримечанниееОтКлиентаПоЗадаTasks " + ПримечанниееОтКлиентаПоЗадаTasks);
+
 
                             // TODO: 03.03.2022  запускам сменты статуса
 
@@ -1881,7 +1911,8 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                                         МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая,
                                                 ИмяСлужбыУведомленияДляЧата,
                                                 ПолучаемUUIDТекущйПозицииВRecyreView,
-                                                СтатусПрочтеаУжеЗадачаИлиНет);
+                                                СтатусПрочтеаУжеЗадачаИлиНет,
+                                                ПримечанниееОтКлиентаПоЗадаTasks);
 
 
                                 try {

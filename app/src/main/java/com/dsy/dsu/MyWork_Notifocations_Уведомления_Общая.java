@@ -844,7 +844,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
             PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = new SubClass_Starting_chahge_status_public_notificaton(getApplicationContext()).
                     МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата,
                             Long.parseLong(person.build().getUri()),
-                            0);
+                            0, "");
 
 
 
