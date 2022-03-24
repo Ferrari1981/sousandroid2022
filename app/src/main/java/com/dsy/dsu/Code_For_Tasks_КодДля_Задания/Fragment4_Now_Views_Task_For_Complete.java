@@ -1575,20 +1575,15 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
             private void МетодБиндингаНомерЗадания(@NonNull MyViewHolder holder) {
                 try {
                     // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2
-
+                    Integer номерЗадачиКотораяПришла = bundleПередачаДанныхЧерезФрагменты.getInt("НомерЗадачиДляПередачи", 0);
                     // TODO: 02.03.2022
-                    Log.i(this.getClass().getName(), "  IDЗадачиТекущей ");
+                    Log.i(this.getClass().getName(), "  номерЗадачиКотораяПришла " + номерЗадачиКотораяПришла);
                     // TODO: 17.03.2022
-                    if (Курсор_ГлавныйКурсорДляЗадач.getCount() > 0) {
-                        int результатСколькоЗадачЯУжеСоздал = Курсор_ГлавныйКурсорДляЗадач.getCount();
-                        // TODO: 17.03.2022
-                        результатСколькоЗадачЯУжеСоздал = результатСколькоЗадачЯУжеСоздал + 1;
-                        // TODO: 28.02.2022
-                        holder.textView2.setText("#" + результатСколькоЗадачЯУжеСоздал++);//IDЗадачиТекущей
-                    } else {
-                        // TODO: 28.02.2022
-                        holder.textView2.setText("#" + 1);//IDЗадачиТекущей
-                    }
+
+
+                    // TODO: 28.02.2022
+                    holder.textView2.setText("#" + номерЗадачиКотораяПришла);//IDЗадачиТекущей
+
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -1609,6 +1604,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                     Log.i(this.getClass().getName(), "  СамогоСообщенияЗадачиДляПользователя ");
                     // TODO: 28.02.2022
                     holder.textView1.setText("");//СамогоСообщенияЗадачиДляПользователя
+
                     // TODO: 28.02.2022
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -1633,7 +1629,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
 
 // TODO: 01.03.2022 слушатели
 
-                    holder.materialCardView.setOnLongClickListener(new View.OnLongClickListener() {
+           /*         holder.materialCardView.setOnLongClickListener(new View.OnLongClickListener() {
                         @Override
                         public boolean onLongClick(View v) {
                             // TODO: 01.03.2022
@@ -1648,8 +1644,8 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
                             // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
-                     /*   Long ПолучаемUUIDТекущйПозицииВRecyreView = AccessibilityNodeInfoДанныеДляViewCard.getAvailableExtraData().stream().map(Long::new)
-                                .distinct() .sorted(Collections.reverseOrder()).collect(Collectors.toList()).get(holder.getAdapterPosition()).longValue();*/
+                     *//*   Long ПолучаемUUIDТекущйПозицииВRecyreView = AccessibilityNodeInfoДанныеДляViewCard.getAvailableExtraData().stream().map(Long::new)
+                                .distinct() .sorted(Collections.reverseOrder()).collect(Collectors.toList()).get(holder.getAdapterPosition()).longValue();*//*
 
                             // TODO: 13.03.2022
                             Long ПолучаемUUIDТекущйПозицииВRecyreView = BungleДанныеДляViewCard.getLong((String.valueOf(holder.getAdapterPosition())), 0l);
@@ -1666,7 +1662,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
 
                             // TODO: 03.03.2022  запускам сменты статуса
 
-                         /*   if (Integer.parseInt(String.valueOf(СтатусПрочтеаУжеЗадачаИлиНет)) == 0 && ПолучаемUUIDТекущйПозицииВRecyreView != null) {
+                         *//*   if (Integer.parseInt(String.valueOf(СтатусПрочтеаУжеЗадачаИлиНет)) == 0 && ПолучаемUUIDТекущйПозицииВRecyreView != null) {
 
                                 ///
                                 String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForChat";
@@ -1716,9 +1712,9 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                                     // TODO: 13.03.2022
                                     notifyDataSetChanged();
 
-                           *//*     Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 0 " + СтатусПрочтеаУжеЗадачаИлиНет);
+                           *//**//*     Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 0 " + СтатусПрочтеаУжеЗадачаИлиНет);
 
-                                Toast.makeText(getActivity(), " Статус сменили на ознакомленный  #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();*//*
+                                Toast.makeText(getActivity(), " Статус сменили на ознакомленный  #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();*//**//*
 
                                 }, 2500);
 
@@ -1728,7 +1724,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                                 Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 1  " + СтатусПрочтеаУжеЗадачаИлиНет);
 
                                 ///   Toast.makeText(getActivity(), " Статус ознакомлена !!!   #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
-                            }*/
+                            }*//*
 
                             // TODO: 03.03.2022 update screewn
 
@@ -1743,7 +1739,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                             return true;
 
                         }
-                    });
+                    });*/
                     // TODO: 13.03.2022
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -1966,6 +1962,8 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
 
                     ПримечанниееОтКлиентаПоЗадаTasks = holder.textView10ПримечанияОтКлиентаCallsBalck.getText().toString().trim();
 
+                    // TODO: 24.03.2022
+
 
                     Log.i(this.getClass().getName(), "  PROCESS_ID_УведомленияПлановая   " + PROCESS_ID_УведомленияПлановая +
                             "  ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата +
@@ -2032,6 +2030,10 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
 
                                 // TODO: 13.03.2022
                                 notifyDataSetChanged();
+
+                                // TODO: 24.03.2022
+
+                                bundleПередачаДанныхЧерезФрагменты.clear();
 
 
                             }, 2500);

@@ -87,7 +87,7 @@ public class Service_Notificatios_Для_Чата extends JobIntentService {////
                     bundleДляПришлиВСлужбу);
 
 
-            if (bundleДляПришлиВСлужбу.isEmpty()) {
+            if (!bundleДляПришлиВСлужбу.isEmpty()) {
                 // TODO: 07.02.2022
 
                 // TODO: 24.03.2022

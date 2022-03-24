@@ -48,7 +48,7 @@ public class SubClass_Starting_chahge_status_public_notificaton {
 
 
             // TODO: 24.03.2022
-            Bundle bundleДляПередачиВСлужбу = notificationIntentДляУведомленийЗапускСогласования.getExtras();
+            Bundle bundleДляПередачиВСлужбу = new Bundle();
             // TODO: 24.03.2022
             bundleДляПередачиВСлужбу.putString("PROCESS_ID_УведомленияПлановая", PROCESS_ID_УведомленияПлановая);
             // TODO: 24.03.2022
@@ -64,7 +64,8 @@ public class SubClass_Starting_chahge_status_public_notificaton {
             ///////todo
 // TODO: 24.03.2022
             bundleДляПередачиВСлужбу.putString("ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу", ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу);
-
+            // TODO: 24.03.2022
+            notificationIntentДляУведомленийЗапускСогласования.putExtras(bundleДляПередачиВСлужбу);
 
             Log.d(context.getClass().getName(), "ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу "
                     + ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу);
