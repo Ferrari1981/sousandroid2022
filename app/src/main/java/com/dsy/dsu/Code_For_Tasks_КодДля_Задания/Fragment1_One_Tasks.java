@@ -2,7 +2,6 @@ package com.dsy.dsu.Code_For_Tasks_КодДля_Задания;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DataSetObserver;
@@ -10,7 +9,6 @@ import android.database.sqlite.SQLiteCursor;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -36,7 +34,6 @@ import com.dsy.dsu.Class_Generation_Errors;
 import com.dsy.dsu.Class_Generations_PUBLIC_CURRENT_ID;
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
-import com.dsy.dsu.SubClass_Starting_chahge_status_public_notificaton;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
@@ -1480,7 +1477,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
 // TODO: 01.03.2022 слушатели
 
-                    holder.materialCardView.setOnLongClickListener(new View.OnLongClickListener() {
+    /*                holder.materialCardView.setOnLongClickListener(new View.OnLongClickListener() {
                         @Override
                         public boolean onLongClick(View v) {
                             // TODO: 01.03.2022
@@ -1500,8 +1497,8 @@ public class Fragment1_One_Tasks extends Fragment {
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
                             // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
-                     /*   Long ПолучаемUUIDТекущйПозицииВRecyreView = AccessibilityNodeInfoДанныеДляViewCard.getAvailableExtraData().stream().map(Long::new)
-                                .distinct() .sorted(Collections.reverseOrder()).collect(Collectors.toList()).get(holder.getAdapterPosition()).longValue();*/
+                     *//*   Long ПолучаемUUIDТекущйПозицииВRecyreView = AccessibilityNodeInfoДанныеДляViewCard.getAvailableExtraData().stream().map(Long::new)
+                                .distinct() .sorted(Collections.reverseOrder()).collect(Collectors.toList()).get(holder.getAdapterPosition()).longValue();*//*
 
                             // TODO: 13.03.2022
                             Long ПолучаемUUIDТекущйПозицииВRecyreView = BungleДанныеДляViewCard.getLong((String.valueOf(holder.getAdapterPosition())), 0l);
@@ -1568,9 +1565,9 @@ public class Fragment1_One_Tasks extends Fragment {
                                     // TODO: 13.03.2022
                                     notifyDataSetChanged();
 
-                           /*     Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 0 " + СтатусПрочтеаУжеЗадачаИлиНет);
+                           *//*     Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 0 " + СтатусПрочтеаУжеЗадачаИлиНет);
 
-                                Toast.makeText(getActivity(), " Статус сменили на ознакомленный  #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();*/
+                                Toast.makeText(getActivity(), " Статус сменили на ознакомленный  #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();*//*
 
                                 }, 2500);
 
@@ -1595,7 +1592,7 @@ public class Fragment1_One_Tasks extends Fragment {
                             return true;
 
                         }
-                    });
+                    });*/
                     // TODO: 13.03.2022
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -1620,7 +1617,7 @@ public class Fragment1_One_Tasks extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO: 01.03.2022
-
+                            Bundle bundleПередачаПараметровФрагментов = new Bundle();
 
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), "   Fragment4_Now_Views_Task_For_Complete SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  " +
@@ -1635,8 +1632,28 @@ public class Fragment1_One_Tasks extends Fragment {
                             fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
                             // TODO: 10.03.2022
                             fragmentTransactionляЗадачи.show(fragment_ТекущийФрагмент);
+
+
                             // TODO: 10.03.2022
-                            Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
+                            Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи +
+                                    " bundleПередачаПараметровФрагментов " + bundleПередачаПараметровФрагментов);
+
+
+                            // TODO: 13.03.2022
+                            Long ПолучаемUUIDТекущйПозицииВRecyreViewДляПередачиВЧетвртыйФрагмент
+                                    = BungleДанныеДляViewCard.getLong((String.valueOf(holder.getAdapterPosition())), 0l);
+
+                            // TODO: 24.03.2022
+
+                            bundleПередачаПараметровФрагментов.putLong("ПередаемВЧетвертыйФрагмендляСменыСтатуса", ПолучаемUUIDТекущйПозицииВRecyreViewДляПередачиВЧетвртыйФрагмент);
+
+                            // TODO: 10.03.2022
+                            Log.d(this.getClass().getName(), " bundleПередачаПараметровФрагментов " + bundleПередачаПараметровФрагментов +
+                                    "   ПолучаемUUIDТекущйПозицииВRecyreViewДляПередачиВЧетвртыйФрагмент " + ПолучаемUUIDТекущйПозицииВRecyreViewДляПередачиВЧетвртыйФрагмент);
+
+
+                            // TODO: 24.03.2022   передча данных друговвова фрагмента
+                            fragment_ТекущийФрагмент.setArguments(bundleПередачаПараметровФрагментов);
                             // TODO: 10.03.2022
 
                             // TODO: 15.03.2022
@@ -1644,6 +1661,8 @@ public class Fragment1_One_Tasks extends Fragment {
                             //bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.GONE);
                             // TODO: 09.03.2022
                             bottomNavigationViewДляTasks.requestLayout();
+                            // TODO: 24.03.2022
+                            recyclerView.requestLayout();
                             // TODO: 14.03.2022
                             linearLayou.requestLayout();
 

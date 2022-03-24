@@ -2,6 +2,7 @@ package com.dsy.dsu.Code_For_Tasks_КодДля_Задания;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -11,6 +12,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,7 +21,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.SeekBar;
 import android.widget.SimpleCursorAdapter;
@@ -42,7 +43,9 @@ import com.dsy.dsu.Class_Generation_UUID;
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 import com.dsy.dsu.SubClass_RetryGEtRowInChatsКлассПроверемЕщеРАзПоявилосЛИПуббличныйUUIDМеждуУчасникамиЧата;
+import com.dsy.dsu.SubClass_Starting_chahge_status_public_notificaton;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -894,7 +897,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
             // TODO: 13.03.2022
             MaterialCardView materialCardView;
             // TODO: 16.03.202
-            Button buttonДляПоложительныйРезультатВыполенойЗадачи, buttonДляРезультатНеВыполенаЗадачи;
+            MaterialButton buttonДляПоложительныйРезультатВыполенойЗадачи, buttonДляРезультатНеВыполенаЗадачи;
             // TODO: 02.03.2022
             Spinner spinnerДляСозданиеНовойЗадачи;
             // TODO: 18.03.2022
@@ -937,13 +940,13 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
 
 
                     // TODO: 13.03.2022 положительный резуолат выполения задачи
-                    buttonДляПоложительныйРезультатВыполенойЗадачи = (Button) itemView.findViewById(R.id.BottomFor_task_deseble_result_task);
+                    buttonДляПоложительныйРезультатВыполенойЗадачи = (MaterialButton) itemView.findViewById(R.id.BottomFor_task_complete_result_task);
 
                     // TODO: 16.03.2022
                     buttonДляПоложительныйРезультатВыполенойЗадачи.setBackgroundResource(R.drawable.style_for_task_new_create_save);
 
                     // TODO: 13.03.2022  НЕ ВЫПОЛНЕНИЯ ЗАДАЧИ
-                    buttonДляРезультатНеВыполенаЗадачи = (Button) itemView.findViewById(R.id.BottomFor_task_complete_result_task);
+                    buttonДляРезультатНеВыполенаЗадачи = (MaterialButton) itemView.findViewById(R.id.BottomFor_task_deseble_result_task);
 
                     // TODO: 16.03.2022
                     buttonДляРезультатНеВыполенаЗадачи.setBackgroundResource(R.drawable.style_for_task_new_create_save);
@@ -1429,7 +1432,6 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                     // TODO: 18.03.2022
                     Log.e(this.getClass().getName(), "МетодБиндингаДелаемСлушательДляSeedBars  ");
                     //
-
                     // TODO: 18.03.2022  сам слушатель  SeekBar
 
                     holder.seekBarДляВЫбораКакаяЗадачаВыполяется.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -1831,6 +1833,102 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                             // TODO: 16.03.2022
                             Log.d(this.getClass().getName(), "  holder.buttonДляПоложительныйРезультатВыполенойЗадачи.setOnClickListener   МетодБиндингаСлушательДляКнопкиСоздатьНовуюЗадачу    " +
                                     " holder.bundleЗначенияДляНовойЗадачи " + holder.buttonДляПоложительныйРезультатВыполенойЗадачи.toString());
+
+                            // TODO: 13.03.2022
+                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  " +
+                                    " holder.getAdapterPosition() " + holder.getAdapterPosition() + " v.getTag() " + v.getTag(holder.materialCardView.getId()));
+
+                            // TODO: 13.03.2022  статус прочтения ли уде или нет адание
+
+                            Object СтатусПрочтеаУжеЗадачаИлиНет = v.getTag(holder.materialCardView.getId());//TODO holder.materialCardView.getId()
+
+
+                            // TODO: 13.03.2022
+                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
+                            // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
+                     /*   Long ПолучаемUUIDТекущйПозицииВRecyreView = AccessibilityNodeInfoДанныеДляViewCard.getAvailableExtraData().stream().map(Long::new)
+                                .distinct() .sorted(Collections.reverseOrder()).collect(Collectors.toList()).get(holder.getAdapterPosition()).longValue();*/
+
+                            // TODO: 13.03.2022
+                            Long ПолучаемUUIDТекущйПозицииВRecyreView = BungleДанныеДляViewCard.getLong((String.valueOf(holder.getAdapterPosition())), 0l);
+
+
+                            Log.i(this.getClass().getName(), "  BungleДанныеДляViewCard   "
+                                    + BungleДанныеДляViewCard.getLong((String.valueOf(holder.getAdapterPosition())), 0l) +
+                                    " ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView);
+
+
+// TODO: 13.03.2022
+                            Log.d(this.getClass().getName(), "  СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет
+                                    + " ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView);
+
+
+                            // TODO: 03.03.2022  запускам сменты статуса
+
+                            if (Integer.parseInt(String.valueOf(СтатусПрочтеаУжеЗадачаИлиНет)) == 0 && ПолучаемUUIDТекущйПозицииВRecyreView != null) {
+
+                                ///
+                                String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForChat";
+
+                                String PROCESS_ID_УведомленияПлановая = "12";
+
+                                // TODO: 03.03.2022
+
+                                SubClass_Starting_chahge_status_public_notificaton subClass_starting_chahge_status_public_notificaton =
+                                        new SubClass_Starting_chahge_status_public_notificaton(getContext());
+
+                                // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи
+                                PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = subClass_starting_chahge_status_public_notificaton.
+                                        МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата, String.valueOf(ПолучаемUUIDТекущйПозицииВRecyreView));
+
+
+                                try {
+
+                                    // TODO: 03.03.2022  запускаем службу смены статуса
+                                    ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
+
+
+                                } catch (PendingIntent.CanceledException e) {
+                                    e.printStackTrace();
+                                }
+                                ///////TODO запускаем смены стануса задачи черезе PendingIntent
+                                Log.d(getContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая " + PROCESS_ID_УведомленияПлановая +
+                                        " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата + " СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
+
+
+                                // TODO: 03.03.2022 update screewn
+                                Handler handlerЗапускаемОтсрочнуюСменуСтатуса = new Handler();
+                                // TODO: 04.03.2022
+                                handlerЗапускаемОтсрочнуюСменуСтатуса.postDelayed(() -> {
+                                    // TODO: 04.03.2022
+
+                                    Курсор_ГлавныйКурсорДляЗадач.deactivate();
+                                    // TODO: 03.03.2022
+
+                                    Курсор_ГлавныйКурсорДляЗадач.requery();
+                                    // TODO: 13.03.2022
+
+                                    Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.deactivate();
+                                    // TODO: 14.03.2022
+                                    Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.requery();
+
+                                    // TODO: 13.03.2022
+                                    notifyDataSetChanged();
+
+                           /*     Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 0 " + СтатусПрочтеаУжеЗадачаИлиНет);
+
+                                Toast.makeText(getActivity(), " Статус сменили на ознакомленный  #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();*/
+
+                                }, 2500);
+
+                            } else {
+
+                                ///////TODO запускаем смены стануса задачи черезе PendingIntent
+                                Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 1  " + СтатусПрочтеаУжеЗадачаИлиНет);
+
+                                ///   Toast.makeText(getActivity(), " Статус ознакомлена !!!   #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
+                            }
+
 
                         }
                     });
