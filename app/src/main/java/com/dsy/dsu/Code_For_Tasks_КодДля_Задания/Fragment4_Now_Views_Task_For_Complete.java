@@ -71,6 +71,8 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
     // TODO: 16.03.2022
     // TODO: 14.03.2022
     private SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент4.MyViewHolder myViewHolder;
+    // TODO: 24.03.2022
+    Bundle bundleПередачаДанныхЧерезФрагменты;
 
     // TODO: 16.03.2022
     @SuppressLint("RestrictedApi")
@@ -91,10 +93,13 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
             bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.setTitle("Контроль");
 
             // TODO: 15.03.2022 НЕ ПОКАЗЫВАЕМ
+
+            bundleПередачаДанныхЧерезФрагменты = this.getArguments();
             /*   bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.GONE);*/
             // TODO: 16.03.2022
 
-            Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания + " recyclerViewДляСозданиеНовойЗадачи");
+            Log.d(this.getClass().getName(), "  Fragment2_Create_Tasks  viewДляПервойКнопкиHome_Задания ---/" + viewДляПервойКнопкиHome_Задания + " recyclerViewДляСозданиеНовойЗадачи" +
+                    " bundleПередачаДанныхЧерезФрагменты " + bundleПередачаДанныхЧерезФрагменты);
 
         } catch (Exception e) {
             e.printStackTrace();
