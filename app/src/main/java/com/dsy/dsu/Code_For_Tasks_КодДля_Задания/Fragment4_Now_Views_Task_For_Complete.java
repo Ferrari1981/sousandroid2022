@@ -39,13 +39,11 @@ import com.dsy.dsu.Class_GRUD_SQL_Operations;
 import com.dsy.dsu.Class_Generation_Data;
 import com.dsy.dsu.Class_Generation_Errors;
 import com.dsy.dsu.Class_Generation_UUID;
-import com.dsy.dsu.Code_For_Firebase_AndOneSignal_Здесь_КодДЛяСлужбыУведомленияFirebase.Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal;
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 import com.dsy.dsu.SubClass_RetryGEtRowInChatsКлассПроверемЕщеРАзПоявилосЛИПуббличныйUUIDМеждуУчасникамиЧата;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.jetbrains.annotations.NotNull;
@@ -896,7 +894,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
             // TODO: 13.03.2022
             MaterialCardView materialCardView;
             // TODO: 16.03.202
-            Button buttonДляСозданиеНовогоЗадания;
+            Button buttonДляПоложительныйРезультатВыполенойЗадачи, buttonДляРезультатНеВыполенаЗадачи;
             // TODO: 02.03.2022
             Spinner spinnerДляСозданиеНовойЗадачи;
             // TODO: 18.03.2022
@@ -936,11 +934,20 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                     Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 materialCardView  textView2 " + spinnerДляСозданиеНовойЗадачи);
                     // TODO: 01.03.2022
                     materialCardView = (MaterialCardView) itemView.findViewById(R.id.cardviewmatirealtask);
-                    // TODO: 13.03.2022
-                    buttonДляСозданиеНовогоЗадания = (Button) itemView.findViewById(R.id.BottomFor_New_Create_Task);
+
+
+                    // TODO: 13.03.2022 положительный резуолат выполения задачи
+                    buttonДляПоложительныйРезультатВыполенойЗадачи = (Button) itemView.findViewById(R.id.BottomFor_task_deseble_result_task);
 
                     // TODO: 16.03.2022
-                    buttonДляСозданиеНовогоЗадания.setBackgroundResource(R.drawable.style_for_task_new_create_save);
+                    buttonДляПоложительныйРезультатВыполенойЗадачи.setBackgroundResource(R.drawable.style_for_task_new_create_save);
+
+                    // TODO: 13.03.2022  НЕ ВЫПОЛНЕНИЯ ЗАДАЧИ
+                    buttonДляРезультатНеВыполенаЗадачи = (Button) itemView.findViewById(R.id.BottomFor_task_complete_result_task);
+
+                    // TODO: 16.03.2022
+                    buttonДляРезультатНеВыполенаЗадачи.setBackgroundResource(R.drawable.style_for_task_new_create_save);
+
                     // TODO: 18.03.2022
 
                     seekBarДляВЫбораКакаяЗадачаВыполяется = (SeekBar) itemView.findViewById(R.id.seekBar_for_tasks_create_new);
@@ -1817,201 +1824,32 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                 // TODO: 14.03.2022
 
                 try {
-                    holder.buttonДляСозданиеНовогоЗадания.setOnClickListener(new View.OnClickListener() {
+                    // TODO: 24.03.2022  ПОЛОЖИТЕЛЬНЫЙ РЕЗУЛЬТАТ
+                    holder.buttonДляПоложительныйРезультатВыполенойЗадачи.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             // TODO: 16.03.2022
-
-                            // TODO: 01.03.2022
-
-                      /*      // TODO: 10.03.2022
-                            вибратор.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));*/
-
-                            // TODO: 21.03.2022  созлаени данных для записи в базу
-
-
-                            // TODO: 21.03.2022 аписываем данные первую строчки шабка задачи
-                            if (!holder.textView1.getText().toString().isEmpty()) {
-                                // TODO: 21.03.2022
-                                holder.bundleЗначенияДляНовойЗадачи.putString("ШабкаНовойЗадачи", holder.textView1.getText().toString());
-
-                                // TODO: 21.03.2022  ПЕРЕНЕСЕННЫЙ КОД ДЛЯ ЗАПИСИ ЗАДАЧИ В БАЗУ
-                                // TODO: 21.03.2022 аписываем данные вторая Сама Задача
-                                if (!holder.textView3.getText().toString().isEmpty()) {
-                                    // TODO: 21.03.2022
-                                    holder.bundleЗначенияДляНовойЗадачи.putString("СообщениеНовойЗадачи", holder.textView3.getText().toString());
-
-                                    // TODO: 21.03.2022  перенесеный код третией
-
-                                    // TODO: 21.03.2022 аписываем данные третья  ФИО
-                                    if (!holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0).isPressed()) {
-
-
-                                        // TODO: 21.03.2022
-                                        TextView ПолучаемФИОКомуЗадачаПредназначена = (TextView) holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0);
-                                        // TODO: 21.03.2022
-
-                                        if (!ПолучаемФИОКомуЗадачаПредназначена.getText().toString().isEmpty()) {
-                                            // TODO: 21.03.2022
-                                            Log.d(this.getClass().getName(), "  holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition() " + holder.spinnerДляСозданиеНовойЗадачи.getSelectedItemPosition() +
-                                                    "  " + holder.spinnerДляСозданиеНовойЗадачи.getSelectedItem().toString() +
-                                                    "  holder.spinnerДляСозданиеНовойЗадачи " + holder.spinnerДляСозданиеНовойЗадачи.getChildAt(0).toString() +
-                                                    " holder.spinnerДляСозданиеНовойЗадачи " + holder.spinnerДляСозданиеНовойЗадачи.getItemAtPosition(0) +
-                                                    " textView " + ПолучаемФИОКомуЗадачаПредназначена.getText().toString());
-
-                                            // TODO: 21.03.2022
-                                            holder.bundleЗначенияДляНовойЗадачи.putString("КомуСообщениеФИО", ПолучаемФИОКомуЗадачаПредназначена.getText().toString());
-
-
-                                            // TODO: 21.03.2022   шестой переннос
-
-                                            // TODO: 21.03.2022 аписываем данные  четвертая Выбор какая Задача Одноразовая Или По расписания
-                                            if (!holder.textView7.getText().toString().isEmpty()) {
-                                                // TODO: 21.03.2022
-
-                                                holder.bundleЗначенияДляНовойЗадачи.putString("ЗадачиКакаяЗадачиОдноразоваяИлиНет", holder.textView7.getText().toString());
-
-                                                // TODO: 21.03.2022   перенсенный ятий шаг для создаени задачи
-
-                                                // TODO: 21.03.2022  запускаем создаени задачи только если пользователь выбрал задачу
-
-                                                if (!holder.textView7.getText().toString().equalsIgnoreCase("выберете тип задачи")) {
-                                                    // TODO: 21.03.2022  Класс для Создание Нового Задича ПОСЛЕН ПОЛУЧЕНИЯ ДАННЫХ ЧЕРЕЗ bUNGLE
-
-                                                    // TODO: 21.03.2022
-                                                    Long ПубличныйIDДляЗаданияКомуПисать = Long.parseLong(ПолучаемФИОКомуЗадачаПредназначена.getTag().toString());
-
-                                                    // TODO: 21.03.2022
-                                                    ;
-
-                                                    Log.d(this.getClass().getName(), "  ПубличныйIDДляЗаданияКомуПисать" + ПубличныйIDДляЗаданияКомуПисать +
-                                                            " accessibilityNodeInfoДополнительныеДанные.getContentDescription() " + accessibilityNodeInfoДополнительныеДанные.getContentDescription());
-
-
-                                                    SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи subClass_createNewTasksКлассДляСозданияНовойЗадачи
-                                                            = new SubClass_CreateNewTasks_КлассДляСозданияНовойЗадачи(getContext(), holder.bundleЗначенияДляНовойЗадачи);
-                                                    // TODO: 21.03.2022
-
-                                                    Long ОперациСозданияНовойЗадания = subClass_createNewTasksКлассДляСозданияНовойЗадачи.МетодЗаписиНовойЗадачи(ПубличныйIDДляЗаданияКомуПисать);
-
-
-                                                    Log.d(this.getClass().getName(), "  ОперациСозданияНовойЗадания" + ОперациСозданияНовойЗадания);
-
-                                                    // TODO: 22.03.2022  результат вставки новой задачи успешно или нет
-
-
-                                                    if (ОперациСозданияНовойЗадания <= 0) {
-
-                                                        // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
-                                                        Snackbar.make(v, " Ошибка новая задача не создалась !!! ", Snackbar.LENGTH_LONG).show();
-                                                        // TODO: 22.03.2022
-
-                                                        Log.e(this.getClass().getName(), "  Ошибка новая задача не создалась !!!" + ОперациСозданияНовойЗадания);
-                                                    } else {
-                                                        // TODO: 22.03.2022
-                                                        Log.w(this.getClass().getName(), "   Успешное Создаение Задачи !!!" + ОперациСозданияНовойЗадания);
-                                                        // TODO: 22.03.2022
-                                                        // TODO: 09.03.2022
-                                                        fragmentTransactionляЗадачи = fragmentManagerДляЗадачи.beginTransaction();
-
-                                                        Log.d(this.getClass().getName(), "  fragmentTransactionляЗадачи" + fragmentTransactionляЗадачи);
-
-                                                        fragment_ТекущийФрагмент = new Fragment2_Create_Tasks();
-                                                        // TODO: 11.03.2022
-                                                        fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
-                                                        // TODO: 10.03.2022
-                                                        fragmentTransactionляЗадачи.show(fragment_ТекущийФрагмент);
-                                                        // TODO: 10.03.2022
-                                                        Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
-                                                        // TODO: 10.03.2022
-                                                        // TODO: 14.03.2022
-                                                        bottomNavigationViewДляTasks.requestLayout();
-                                                        // TODO: 22.03.2022
-                                                        recyclerView.requestLayout();
-                                                        // TODO: 14.03.2022
-                                                        linearLayou.requestLayout();
-                                                        // TODO: 22.03.2022
-
-                                                        // TODO: 22.03.2022  ПОСЛЕ УСПЕШНОГО СОЗДАНЕИ ОВГО ЗАДАНИЯ ЗАПУСКАЕМ СИНХРОНИАЗЦИЮ
-
-
-                                                        // TODO: 13.01.2022  ЗАПУСК СИХРОНИЗВАЦИИ В ХОЛОСТУЮ ХОД
-
-                                                        new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getContext()).
-                                                                МетодПовторногоЗапускаВсехWorkManager__ОДНОРАЗОВОЙСинхрониазцииданных(ПубличныйIDДляФрагмента, getContext());
-
-                                                        // TODO: 22.03.2022
-
-                                                        // TODO: 24.12.2021
-
-                                                        Log.d(this.getClass().getName(), "после СОЗДАНИЕЯ НОВОЙ ЗАДАЧИ ..... ПОСЛЕ ЗУПАСУКА СИНХРОНИАЗЦИИ" +
-                                                                "  ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
-
-
-                                                    }
-
-
-                                                    Log.d(this.getClass().getName(), "  ОперациСозданияНовойЗадания" + ОперациСозданияНовойЗадания);
-
-
-                                                } else {
-                                                    // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
-                                                    Snackbar.make(v, "Вы не выбрали тип задачи !!!  ", Snackbar.LENGTH_LONG).show();
-
-                                                }
-
-
-                                            } else {
-                                                // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
-                                                Snackbar.make(v, "Вы не выбрали тип задачи !!!  ", Snackbar.LENGTH_LONG).show();
-
-                                            }
-
-
-                                        } else {
-                                            // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
-                                            Snackbar.make(v, "Вы не выбрали ФИО  !!!  ", Snackbar.LENGTH_LONG).show();
-
-                                        }
-
-
-                                        // TODO: 21.03.2022 перенесенный четвертыйц код
-
-
-                                        // TODO: 21.03.2022  запускапм класс с данными BUngle
-
-                                        Log.d(this.getClass().getName(), "  holder.buttonДляСозданиеНовогоЗадания.setOnClickListener   МетодБиндингаСлушательДляКнопкиСоздатьНовуюЗадачу    " +
-                                                " holder.bundleЗначенияДляНовойЗадачи " + holder.bundleЗначенияДляНовойЗадачи.toString());
-
-
-                                    } else {
-                                        // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
-                                        Snackbar.make(v, "Не заполнено   ФИО   !!!  ", Snackbar.LENGTH_LONG).show();
-
-                                    }
-
-
-                                } else {
-                                    // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
-                                    Snackbar.make(v, "Нет самой задачи !!!  ", Snackbar.LENGTH_LONG).show();
-
-                                }
-
-
-                                // TODO: 21.03.2022  перенсенный код из задачи
-
-                            } else {
-                                // TODO: 21.03.2022 ЗАДАЧА НЕ ВЫЬББРАНА
-                                Snackbar.make(v, "Нет загаловка задачи !!!  ", Snackbar.LENGTH_LONG).show();
-
-                            }
-
-
-                            Log.d(this.getClass().getName(), "  holder.buttonДляСозданиеНовогоЗадания.setOnClickListener   МетодБиндингаСлушательДляКнопкиСоздатьНовуюЗадачу    " +
-                                    " holder.bundleЗначенияДляНовойЗадачи " + holder.bundleЗначенияДляНовойЗадачи.toString());
+                            Log.d(this.getClass().getName(), "  holder.buttonДляПоложительныйРезультатВыполенойЗадачи.setOnClickListener   МетодБиндингаСлушательДляКнопкиСоздатьНовуюЗадачу    " +
+                                    " holder.bundleЗначенияДляНовойЗадачи " + holder.buttonДляПоложительныйРезультатВыполенойЗадачи.toString());
 
                         }
                     });
+                    // TODO: 24.03.2022
+
+
+                    // TODO: 24.03.2022  ПОЛОЖИТЕЛЬНЫЙ РЕЗУЛЬТАТ
+                    holder.buttonДляРезультатНеВыполенаЗадачи.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO: 16.03.2022
+                            Log.d(this.getClass().getName(), "  holder.buttonДляРезультатНеВыполенаЗадачи.setOnClickListener   МетодБиндингаСлушательДляКнопкиСоздатьНовуюЗадачу    " +
+                                    " holder.bundleЗначенияДляНовойЗадачи " + holder.buttonДляРезультатНеВыполенаЗадачи.toString());
+
+                        }
+                    });
+                    // TODO: 24.03.2022
+
+
                     // TODO: 13.03.2022
                 } catch (Exception e) {
                     e.printStackTrace();
