@@ -1167,7 +1167,10 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                     // TODO: 24.03.2022  bundlebundle
                     bundle.putInt("accessibilityNodeInfoДляПередачиДанных", СамСтатусПрочтенияИлиНет);
 
+                    Log.i(this.getClass().getName(), "  bundle   " + bundle)
 
+
+                    ;
                 } catch (Exception e) {
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
@@ -1857,6 +1860,9 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                 String PROCESS_ID_УведомленияПлановая = "12";
 
 
+                Integer ВставляемСтатусКогдаВыВЫполнилиЗадание = 1;
+
+
                 try {
                     // TODO: 24.03.2022  ПОЛОЖИТЕЛЬНЫЙ РЕЗУЛЬТАТ
                     holder.buttonДляПоложительныйРезультатВыполенойЗадачи.setOnClickListener(new View.OnClickListener() {
@@ -1913,7 +1919,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                                             МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая,
                                                     ИмяСлужбыУведомленияДляЧата,
                                                     ПолучаемUUIDТекущйПозицииВRecyreView,
-                                                    СтатусПрочтеаУжеЗадачаИлиНет,
+                                                    ВставляемСтатусКогдаВыВЫполнилиЗадание,
                                                     ПримечанниееОтКлиентаПоЗадаTasks);
 
 
@@ -1965,7 +1971,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                                     Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет  Напишите примечание !!! " + СтатусПрочтеаУжеЗадачаИлиНет);
 
 
-                                    Snackbar.make(v, " Напишите примечание !!! " + holder.getAdapterPosition(), Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                                    Snackbar.make(v, " Напишите примечание !!! ", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                                 }
 
 
