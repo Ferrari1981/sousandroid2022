@@ -1899,66 +1899,75 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
 
                             // TODO: 03.03.2022  запускам сменты статуса
 
-                            if (Integer.parseInt(String.valueOf(СтатусПрочтеаУжеЗадачаИлиНет)) == 0 && ПолучаемUUIDТекущйПозицииВRecyreView != null) {
+                            if (Integer.parseInt(String.valueOf(СтатусПрочтеаУжеЗадачаИлиНет)) == 0) {
 
                                 // TODO: 03.03.2022
 
-                                SubClass_Starting_chahge_status_public_notificaton subClass_starting_chahge_status_public_notificaton =
-                                        new SubClass_Starting_chahge_status_public_notificaton(getContext());
+                                if (!ПримечанниееОтКлиентаПоЗадаTasks.isEmpty()) {
+                                    // TODO: 24.03.2022
+                                    SubClass_Starting_chahge_status_public_notificaton subClass_starting_chahge_status_public_notificaton =
+                                            new SubClass_Starting_chahge_status_public_notificaton(getContext());
 
-                                // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи
-                                PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = subClass_starting_chahge_status_public_notificaton.
-                                        МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая,
-                                                ИмяСлужбыУведомленияДляЧата,
-                                                ПолучаемUUIDТекущйПозицииВRecyreView,
-                                                СтатусПрочтеаУжеЗадачаИлиНет,
-                                                ПримечанниееОтКлиентаПоЗадаTasks);
-
-
-                                try {
-
-                                    // TODO: 03.03.2022  запускаем службу смены статуса
-                                    ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
+                                    // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи
+                                    PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = subClass_starting_chahge_status_public_notificaton.
+                                            МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая,
+                                                    ИмяСлужбыУведомленияДляЧата,
+                                                    ПолучаемUUIDТекущйПозицииВRecyreView,
+                                                    СтатусПрочтеаУжеЗадачаИлиНет,
+                                                    ПримечанниееОтКлиентаПоЗадаTasks);
 
 
-                                } catch (PendingIntent.CanceledException e) {
-                                    e.printStackTrace();
-                                }
-                                ///////TODO запускаем смены стануса задачи черезе PendingIntent
-                                Log.d(getContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая " + PROCESS_ID_УведомленияПлановая +
-                                        " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата + " СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
+                                    try {
+
+                                        // TODO: 03.03.2022  запускаем службу смены статуса
+                                        ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
 
 
-                                // TODO: 03.03.2022 update screewn
-                                Handler handlerЗапускаемОтсрочнуюСменуСтатуса = new Handler();
-                                // TODO: 04.03.2022
-                                handlerЗапускаемОтсрочнуюСменуСтатуса.postDelayed(() -> {
+                                    } catch (PendingIntent.CanceledException e) {
+                                        e.printStackTrace();
+                                    }
+                                    ///////TODO запускаем смены стануса задачи черезе PendingIntent
+                                    Log.d(getContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая " + PROCESS_ID_УведомленияПлановая +
+                                            " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата + " СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
+
+
+                                    // TODO: 03.03.2022 update screewn
+                                    Handler handlerЗапускаемОтсрочнуюСменуСтатуса = new Handler();
                                     // TODO: 04.03.2022
+                                    handlerЗапускаемОтсрочнуюСменуСтатуса.postDelayed(() -> {
+                                        // TODO: 04.03.2022
 
-                                    // TODO: 09.03.2022
-                                    fragmentTransactionляЗадачи = fragmentManagerДляЗадачи.beginTransaction();
+                                        // TODO: 09.03.2022
+                                        fragmentTransactionляЗадачи = fragmentManagerДляЗадачи.beginTransaction();
 
-                                    // TODO: 23.03.2022  переходим на фрагмент для редактирования Fragment4_Now_Views_Task_For_Complete
+                                        // TODO: 23.03.2022  переходим на фрагмент для редактирования Fragment4_Now_Views_Task_For_Complete
 
-                                    fragment_ТекущийФрагмент = new Fragment1_One_Tasks();
-                                    // TODO: 11.03.2022
-                                    fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
-                                    // TODO: 10.03.2022
-                                    fragmentTransactionляЗадачи.show(fragment_ТекущийФрагмент);
+                                        fragment_ТекущийФрагмент = new Fragment1_One_Tasks();
+                                        // TODO: 11.03.2022
+                                        fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
+                                        // TODO: 10.03.2022
+                                        fragmentTransactionляЗадачи.show(fragment_ТекущийФрагмент);
 
 
-                                    // TODO: 10.03.2022
-                                    Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи +
-                                            " fragment_ТекущийФрагмент " + fragment_ТекущийФрагмент);
+                                        // TODO: 10.03.2022
+                                        Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи +
+                                                " fragment_ТекущийФрагмент " + fragment_ТекущийФрагмент);
 
-                                    // TODO: 13.03.2022
-                                    notifyDataSetChanged();
+                                        // TODO: 13.03.2022
+                                        notifyDataSetChanged();
 
-                           /*     Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 0 " + СтатусПрочтеаУжеЗадачаИлиНет);
 
-                                Toast.makeText(getActivity(), " Статус сменили на ознакомленный  #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();*/
+                                    }, 2500);
+                                } else {
 
-                                }, 2500);
+
+                                    ///////TODO запускаем смены стануса задачи черезе PendingIntent
+                                    Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет  Напишите примечание !!! " + СтатусПрочтеаУжеЗадачаИлиНет);
+
+
+                                    Snackbar.make(v, " Напишите примечание !!! " + holder.getAdapterPosition(), Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                                }
+
 
                             } else {
 
