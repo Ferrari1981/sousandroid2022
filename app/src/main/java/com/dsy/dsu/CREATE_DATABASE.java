@@ -17,7 +17,7 @@ import java.util.Date;
 public class CREATE_DATABASE extends SQLiteOpenHelper{ ///SQLiteOpenHelper
 
     /////TODO ВЕРСИЯ ДАННЫХ МЕНЯЕМ И УДАЛЯЕМ ДАННЫЕ И ЗАГРУЖАЕМ НОВЫЕ
-    private static final int VERSION = 738;//ПРИ ЛЮБОМ ИЗМЕНЕНИЕ В СТРУКТУРЕ БАЗЫ ДАННЫХ НУЖНО ДОБАВИТЬ ПЛЮС ОДНУ ЦИФРУ К ВЕРСИИ 1=1+1=2 ИТД.1
+    private static final int VERSION = 780;//ПРИ ЛЮБОМ ИЗМЕНЕНИЕ В СТРУКТУРЕ БАЗЫ ДАННЫХ НУЖНО ДОБАВИТЬ ПЛЮС ОДНУ ЦИФРУ К ВЕРСИИ 1=1+1=2 ИТД.1
 
 
     Context contextСозданиеБАзы;
@@ -606,7 +606,8 @@ public class CREATE_DATABASE extends SQLiteOpenHelper{ ///SQLiteOpenHelper
                 " status_write INTEGER DEFAULT 0 ," +
                 " uuid_notifications NUMERIC , " +
                 " type_tasks TEXT ," +
-                " head_message  TEXT )");
+                " head_message  TEXT," +
+                " callsback_note_task  TEXT )");
 
         /////todo встака данных по умолчанию
 
@@ -817,7 +818,7 @@ public class CREATE_DATABASE extends SQLiteOpenHelper{ ///SQLiteOpenHelper
                 " data_notification.message,  notifications.id_user," +
                 "  data_notification.status_write,  notifications.user_update," +
                 "  data_notification.type_tasks, \n" +
-                "                          data_notification.head_message\n" +
+                "                          data_notification.head_message , data_notification.callsback_note_task \n" +
                 "FROM             notifications LEFT OUTER JOIN\n" +
                 "                          data_notification" +
                 " ON  notifications.uuid =  data_notification.uuid_notifications\n" +
@@ -1264,17 +1265,17 @@ public class CREATE_DATABASE extends SQLiteOpenHelper{ ///SQLiteOpenHelper
         //принудительное запускаем заново для создание новых таблиц
 
 
-        if (newVersion == 735) {
+        if (newVersion == 780) {
 
             //TODo созадем таблицу сос старами ошибками
 
             МетодСозданиеУведомленийИлиДАТАЗадания(ССылкаНаСозданнуюБазу);
             // TODO: 22.03.2022  
 
-            МетодСозданиеУведомленийИлиЗадания(ССылкаНаСозданнуюБазу);
+            //  МетодСозданиеУведомленийИлиЗадания(ССылкаНаСозданнуюБазу);
 
 
-            //  МетодСозданияВидаЗадания(ССылкаНаСозданнуюБазу);
+            МетодСозданияВидаЗадания(ССылкаНаСозданнуюБазу);
 
 
             // TODO: 10.03.2022
