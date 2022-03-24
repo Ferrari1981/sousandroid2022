@@ -841,8 +841,10 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
 
 
             // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи
-            PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием =new SubClass_Starting_chahge_status_public_notificaton(getApplicationContext()).
-                    МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая,ИмяСлужбыУведомленияДляЧата,person.build().getUri());
+            PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = new SubClass_Starting_chahge_status_public_notificaton(getApplicationContext()).
+                    МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата,
+                            Long.parseLong(person.build().getUri()),
+                            0);
 
 
 

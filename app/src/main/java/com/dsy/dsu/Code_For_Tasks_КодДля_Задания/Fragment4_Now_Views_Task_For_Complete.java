@@ -47,6 +47,7 @@ import com.dsy.dsu.SubClass_Starting_chahge_status_public_notificaton;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.jetbrains.annotations.NotNull;
@@ -1829,7 +1830,10 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
             // TODO: 04.03.2022 четвертый дополнительный метод СОЗДАНИЕ СЛУШАТЕЛЯ ДЛЯ СОЗДАНИЕ НОВОЙ ЗАДАЧИ
             private void МетодБиндингаСлушательДляКнопкиСоздатьНовуюЗадачу(MyViewHolder holder) {
                 // TODO: 14.03.2022
+                ///
+                String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForChat";
 
+                String PROCESS_ID_УведомленияПлановая = "12";
                 try {
                     // TODO: 24.03.2022  ПОЛОЖИТЕЛЬНЫЙ РЕЗУЛЬТАТ
                     holder.buttonДляПоложительныйРезультатВыполенойЗадачи.setOnClickListener(new View.OnClickListener() {
@@ -1844,7 +1848,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
 
                             // TODO: 13.03.2022  статус прочтения ли уде или нет адание
 
-                            Object СтатусПрочтеаУжеЗадачаИлиНет = bundleПередачаДанныхЧерезФрагменты.getInt("СтатусПрочтеаУжеЗадачаИлиНет");//TODO holder.materialCardView.getId()
+                            Integer СтатусПрочтеаУжеЗадачаИлиНет = bundleПередачаДанныхЧерезФрагменты.getInt("СтатусПрочтеаУжеЗадачаИлиНет");//TODO holder.materialCardView.getId()
 
 
                             // TODO: 13.03.2022
@@ -1858,16 +1862,14 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                             Log.i(this.getClass().getName(), "  ПолучаемUUIDТекущйПозицииВRecyreView   " + ПолучаемUUIDТекущйПозицииВRecyreView);
 
 
-
+                            Log.i(this.getClass().getName(), "  PROCESS_ID_УведомленияПлановая   " + PROCESS_ID_УведомленияПлановая +
+                                    "  ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата +
+                                    " ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView +
+                                    " СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
 
                             // TODO: 03.03.2022  запускам сменты статуса
 
                             if (Integer.parseInt(String.valueOf(СтатусПрочтеаУжеЗадачаИлиНет)) == 0 && ПолучаемUUIDТекущйПозицииВRecyreView != null) {
-
-                                ///
-                                String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForChat";
-
-                                String PROCESS_ID_УведомленияПлановая = "12";
 
                                 // TODO: 03.03.2022
 
@@ -1876,7 +1878,10 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
 
                                 // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи
                                 PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = subClass_starting_chahge_status_public_notificaton.
-                                        МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата, String.valueOf(ПолучаемUUIDТекущйПозицииВRecyreView));
+                                        МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая,
+                                                ИмяСлужбыУведомленияДляЧата,
+                                                ПолучаемUUIDТекущйПозицииВRecyreView,
+                                                СтатусПрочтеаУжеЗадачаИлиНет);
 
 
                                 try {
@@ -1929,7 +1934,10 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                                 ///////TODO запускаем смены стануса задачи черезе PendingIntent
                                 Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 1  " + СтатусПрочтеаУжеЗадачаИлиНет);
 
-                                ///   Toast.makeText(getActivity(), " Статус ознакомлена !!!   #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
+
+                                Snackbar.make(v, " Статус уже изменём !!! (задачи #)" + holder.getAdapterPosition(), Snackbar.LENGTH_LONG).setAction("Action", null).show();
+
+                                /*        Toast.makeText(getActivity(), " Статус уже изменём !!! (задачи #)" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();*/
                             }
 
 

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
@@ -21,8 +22,6 @@ import com.dsy.dsu.Code_For_Chats_КодДля_Чата.MainActivity_List_Chats;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Objects;
-import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
 
@@ -42,84 +41,87 @@ public class Service_Notificatios_Для_Чата extends JobIntentService {////
     String ИмяСлужбыУведомленияДляЧата;
     // TODO: 07.02.2022
 
-    HashMap<String,String> hashMapХэшДляЗапоминиялUUID=new HashMap();
+    HashMap<String, String> hashMapХэшДляЗапоминиялUUID = new HashMap();
     // TODO: 12.10.2021  Ссылка Менеджер Потоков
 
-    PUBLIC_CONTENT Class_Engine_SQLГдеНаходитьсяМенеджерПотоков =null;
+    PUBLIC_CONTENT Class_Engine_SQLГдеНаходитьсяМенеджерПотоков = null;
 
     // TODO: 07.02.2022
 
     Long UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ;
 
+    // TODO: 07.02.2022
+
+    Integer ПередаемСтатусзадачи;
+
+    // TODO: 24.03.2022
+    Bundle bundleДляПришлиВСлужбу;
+
+
+    // TODO: 24.03.2022
+    String ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу;
+
     @Override
     public void onCreate() {
         super.onCreate();
         Log.d(getApplicationContext().getClass().getName(), " onCreate СЛУЖБА Service_Notificatios_Для_Чата  "
-                +" время: "
-                +new Date());
+                + " время: "
+                + new Date());
 
     }
 
     @Override
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
 
-        try{
+        try {
 
-        Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА Service_Notificatios_Для_Чата  "
-                + " время: "
-                + new Date());
-
-
-// TODO: 01.01.2022
-
-            PROCESS_ID = intent.getDataString();//PROCESS_ID
-
-            // TODO: 11.01.2022
+            Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА Service_Notificatios_Для_Чата  "
+                    + " время: "
+                    + new Date());
 
 
-            Set<String> ИмяСлужбыУведомленияДляЧатамассив = intent.getCategories();
+            // TODO: 24.03.2022
+            bundleДляПришлиВСлужбу = intent.getExtras();
 
-            // TODO: 03.03.2022
-            Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА Service_Notificatios_Для_Чата PROCESS_ID   "
-                    + PROCESS_ID);
+            Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА bundleДляПришлиВСлужбу  " +
+                    bundleДляПришлиВСлужбу);
 
 
-            Log.i(getApplicationContext().getClass().getName(), "" + " ИмяСлужбыУведомленияДляЧатамассив " + ИмяСлужбыУведомленияДляЧатамассив);
-
-            if (ИмяСлужбыУведомленияДляЧатамассив != null) {
+            if (bundleДляПришлиВСлужбу.isEmpty()) {
                 // TODO: 07.02.2022
 
+                // TODO: 24.03.2022
+                PROCESS_ID = bundleДляПришлиВСлужбу.getString("PROCESS_ID_УведомленияПлановая");
+
+                Log.i(getApplicationContext().getClass().getName(), "" + " PROCESS_ID" + PROCESS_ID);
+                // TODO: 24.03.2022
 
 
-                ИмяСлужбыУведомленияДляЧата=       ИмяСлужбыУведомленияДляЧатамассив.stream()
-                        .filter(elem -> elem!=null)
-                        .limit(1)
-                        .map(String::new )
-                        .filter(Objects::nonNull).findFirst().orElse("");
-                // TODO: 03.03.2022
-                Log.i(getApplicationContext().getClass().getName(), "" + " ИмяСлужбыУведомленияДляЧата" +ИмяСлужбыУведомленияДляЧата);
+                // TODO: 24.03.2022
+                ИмяСлужбыУведомленияДляЧата = bundleДляПришлиВСлужбу.getString("ИмяСлужбыУведомленияДляЧата");
 
 
+                Log.i(getApplicationContext().getClass().getName(), "" + " ИмяСлужбыУведомленияДляЧата" + ИмяСлужбыУведомленияДляЧата);
 
 
-                // TODO: 07.02.2022
-
-                UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ=ИмяСлужбыУведомленияДляЧатамассив.stream()
-                        .skip(1)
-                        .map(Long::new)
-                        .filter(Objects::nonNull).findFirst().orElse(0l);
-
-                Log.i(getApplicationContext().getClass().getName(), "" + " UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ " +UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ);
+                // TODO: 24.03.2022
+                UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ = bundleДляПришлиВСлужбу.getLong("UUIDПолучениейЗадачи", 0l);  // TODO: 24.03.2022
 
 
+                Log.i(getApplicationContext().getClass().getName(), "" + " UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ " + UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ);
 
-                // TODO: 07.02.2022
 
-             /*   UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ= Long.valueOf(ИмяСлужбыУведомленияДляЧатамассив.stream()
-                        .map(elem -> new String(elem)).skip(1).findFirst().get());*/
+                // TODO: 24.03.2022
+                ПередаемСтатусзадачи = bundleДляПришлиВСлужбу.getInt("ПередаемСтатусзадачи", 0);  // TODO: 24.03.2022
 
-                Log.i(getApplicationContext().getClass().getName(), "" + " UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ " +UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ);
 
+                Log.i(getApplicationContext().getClass().getName(), "" + " ПередаемСтатусзадачи " + ПередаемСтатусзадачи);
+
+                // TODO: 24.03.2022
+                ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу = bundleДляПришлиВСлужбу.getString("ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу");
+
+
+                Log.i(getApplicationContext().getClass().getName(), "" + " ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу" + ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу);
 
 
             }
@@ -304,16 +306,18 @@ public class Service_Notificatios_Для_Чата extends JobIntentService {////
 
 
             //TODO метоД СМЕНЫ СТАТУСА ПОЛЬЗОВАТЕЛЕМ КАК ОЗНАКОМЛЕННЫЙ
-        Boolean РезультатСменыСтатусаНаОзнакомленный=
-                new  SubClass_ДляСменыСтатусаНаОзнаколенный().
-                        МетодСменыСтатусаНаОзкомленныйЗадениеСамимПользователем(getApplicationContext(),UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ);
-
-
+            Boolean РезультатСменыСтатусаНаОзнакомленный =
+                    new SubClass_ДляСменыСтатусаНаОзнаколенный().
+                            МетодСменыСтатусаНаОзкомленныйЗадениеСамимПользователем(getApplicationContext(),
+                                    UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ
+                                    , ПередаемСтатусзадачи,
+                                    ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу);
 
 
             Log.w(getApplicationContext().getClass().getName(), " конец обоработки статсуса ознакомленый  РезультатСменыСтатусаНаОзнакомленный " +
-                    "" +(РезультатСменыСтатусаНаОзнакомленный+
-                    " \n"+  " UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ " +UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ));
+                    "" + (РезультатСменыСтатусаНаОзнакомленный +
+                    " \n" + " UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ " + UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ + "ПередаемСтатусзадачи " + ПередаемСтатусзадачи +
+                    "  ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу " + ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу));
 
 
             if (РезультатСменыСтатусаНаОзнакомленный==true) {
@@ -459,30 +463,38 @@ public class Service_Notificatios_Для_Чата extends JobIntentService {////
 
 
         // TODO: 07.02.2022
-      Boolean МетодСменыСтатусаНаОзкомленныйЗадениеСамимПользователем(@NonNull Context context,
-                                                                   @NonNull Long UUID_ПоКоторомуМыИИщменимСтатусОзнакомлнныйВТаблицыУведомления) {
+        Boolean МетодСменыСтатусаНаОзкомленныйЗадениеСамимПользователем(@NonNull Context context,
+                                                                        @NonNull Long UUID_ПоКоторомуМыИИщменимСтатусОзнакомлнныйВТаблицыУведомления,
+                                                                        @NonNull Integer ПередаемСтатусзадачи
+                , String ПримечанияОтКлинетаВыполнилИлиНетЗадачу) {
 
-          // TODO: 07.02.2022
-          Boolean РезультатСменыСтатусаНАОзнакомленый=false;
+            // TODO: 07.02.2022
+            Boolean РезультатСменыСтатусаНАОзнакомленый = false;
 
-          try{
-              SQLiteDatabase sqLiteDatabase_КлонКонкретноДляДАннойОперации=new CREATE_DATABASE(context).getССылкаНаСозданнуюБазу();
+            try {
 
-             Long РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника=0l;
-
-              Class_GRUD_SQL_Operations        class_grud_sql_operationsПовышаемВерсиюДляЛокальногоОбволенияТабеля=new Class_GRUD_SQL_Operations(getApplicationContext());
+                Log.d(getApplicationContext().getClass().getName(), "ПримечанияОтКлинетаВыполнилИлиНетЗадачу "
+                        + ПримечанияОтКлинетаВыполнилИлиНетЗадачу);
 
 
-       ContentValues contentValuesДляОбновленияСтатусаОзнакомлненый=new ContentValues();
-              // TODO: 07.02.2022
+                SQLiteDatabase sqLiteDatabase_КлонКонкретноДляДАннойОперации = new CREATE_DATABASE(context).getССылкаНаСозданнуюБазу();
+
+                Long РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника = 0l;
+
+                Class_GRUD_SQL_Operations class_grud_sql_operationsПовышаемВерсиюДляЛокальногоОбволенияТабеля = new Class_GRUD_SQL_Operations(getApplicationContext());
+
+
+                ContentValues contentValuesДляОбновленияСтатусаОзнакомлненый = new ContentValues();
+                // TODO: 07.02.2022
               String НазваниеТаблицыобработки="data_notification";////notifications
 
 // TODO: 07.02.2022  увеличиваем верисю данных
               РезультатУвеличинаяВерсияВнутриСамогоТабелСтрудника=
-                      class_grud_sql_operationsПовышаемВерсиюДляЛокальногоОбволенияТабеля. new ChangesVesionData(getApplicationContext()).
-                              МетодПолученияУвеличинойВесрииДанныхДляТекущейВнутренейтаблицы_ПоПолю_current_table_ПоПолю_current_table(НазваниеТаблицыобработки,"localversionandroid_version",
+                      class_grud_sql_operationsПовышаемВерсиюДляЛокальногоОбволенияТабеля.new ChangesVesionData(getApplicationContext()).
+                              МетодПолученияУвеличинойВесрииДанныхДляТекущейВнутренейтаблицы_ПоПолю_current_table_ПоПолю_current_table(НазваниеТаблицыобработки,
+                                      "localversionandroid_version",
                                       getApplicationContext()
-                                      ,sqLiteDatabase_КлонКонкретноДляДАннойОперации);///  current_table    ///  localversionandroid_version
+                                      , sqLiteDatabase_КлонКонкретноДляДАннойОперации);///  current_table    ///  localversionandroid_version
 
 
               //TODO  конец курант ча
@@ -500,22 +512,24 @@ public class Service_Notificatios_Для_Чата extends JobIntentService {////
               String СгенерированованныйДатаДляВставки=     new Class_Generation_Data(getApplicationContext()).ГлавнаяДатаИВремяОперацийСБазойДанных();
 
 
-              contentValuesДляОбновленияСтатусаОзнакомлненый.put("date_update", СгенерированованныйДатаДляВставки);
+                contentValuesДляОбновленияСтатусаОзнакомлненый.put("date_update", СгенерированованныйДатаДляВставки);
 
 
 // TODO: 07.02.2022  само заполение смены статуса
 
-              contentValuesДляОбновленияСтатусаОзнакомлненый.put("status_write", 1);
+                contentValuesДляОбновленияСтатусаОзнакомлненый.put("status_write", ПередаемСтатусзадачи);
 
 
+                // TODO: 07.02.2022  само заполение примечания от КЛИЕНТ
+
+                contentValuesДляОбновленияСтатусаОзнакомлненый.put("callsback_note_task", ПримечанияОтКлинетаВыполнилИлиНетЗадачу);
 
 
-
-              ///TODO ТОЛЬКО ЛОКАЛЬНОЕ ОБНОВЛЕНИЕ НА ТАБЕЛЕ В АКТИВИТИ
-           Long   РезультатЛокальногоОбновления_ОбновлениеСтатусОЗНАКОМЛЕННЫЙ = new Class_Engine_SQL(getApplicationContext()).
-                      МетодЛокальноеОбновлениеВТабеле(contentValuesДляОбновленияСтатусаОзнакомлненый,
-                             String.valueOf( UUID_ПоКоторомуМыИИщменимСтатусОзнакомлнныйВТаблицыУведомления),
-                              getApplicationContext(),НазваниеТаблицыобработки);
+                ///TODO ТОЛЬКО ЛОКАЛЬНОЕ ОБНОВЛЕНИЕ НА ТАБЕЛЕ В АКТИВИТИ
+                Long РезультатЛокальногоОбновления_ОбновлениеСтатусОЗНАКОМЛЕННЫЙ = new Class_Engine_SQL(getApplicationContext()).
+                        МетодЛокальноеОбновлениеВТабеле(contentValuesДляОбновленияСтатусаОзнакомлненый,
+                                String.valueOf(UUID_ПоКоторомуМыИИщменимСтатусОзнакомлнныйВТаблицыУведомления),
+                                getApplicationContext(), НазваниеТаблицыобработки);
 
 
               Log.d(this.getClass().getName(), "  РезультатЛокальногоОбновления_ОбновлениеСтатусОЗНАКОМЛЕННЫЙ " + РезультатЛокальногоОбновления_ОбновлениеСтатусОЗНАКОМЛЕННЫЙ);
