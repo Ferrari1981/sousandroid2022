@@ -92,7 +92,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
             // TODO: 16.03.2022
             bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи.setTitle("Контроль");
 
-            // TODO: 15.03.2022 НЕ ПОКАЗЫВАЕМ
+            // TODO: 15.03.2022 ПРИШЛИ ПРАМЕНТЫ ОТ ДРУГОВА ФРАГМЕНТА
 
             bundleПередачаДанныхЧерезФрагменты = this.getArguments();
             /*   bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.GONE);*/
@@ -1835,37 +1835,29 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                     holder.buttonДляПоложительныйРезультатВыполенойЗадачи.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+
+
                             // TODO: 16.03.2022
                             Log.d(this.getClass().getName(), "  holder.buttonДляПоложительныйРезультатВыполенойЗадачи.setOnClickListener   МетодБиндингаСлушательДляКнопкиСоздатьНовуюЗадачу    " +
                                     " holder.bundleЗначенияДляНовойЗадачи " + holder.buttonДляПоложительныйРезультатВыполенойЗадачи.toString());
 
-                            // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  " +
-                                    " holder.getAdapterPosition() " + holder.getAdapterPosition() + " v.getTag() " + v.getTag(holder.materialCardView.getId()));
 
                             // TODO: 13.03.2022  статус прочтения ли уде или нет адание
 
-                            Object СтатусПрочтеаУжеЗадачаИлиНет = v.getTag(holder.materialCardView.getId());//TODO holder.materialCardView.getId()
+                            Object СтатусПрочтеаУжеЗадачаИлиНет = bundleПередачаДанныхЧерезФрагменты.getInt("СтатусПрочтеаУжеЗадачаИлиНет");//TODO holder.materialCardView.getId()
 
 
                             // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
-                            // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
-                     /*   Long ПолучаемUUIDТекущйПозицииВRecyreView = AccessibilityNodeInfoДанныеДляViewCard.getAvailableExtraData().stream().map(Long::new)
-                                .distinct() .sorted(Collections.reverseOrder()).collect(Collectors.toList()).get(holder.getAdapterPosition()).longValue();*/
+                            Log.d(this.getClass().getName(), "  СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
+
 
                             // TODO: 13.03.2022
-                            Long ПолучаемUUIDТекущйПозицииВRecyreView = BungleДанныеДляViewCard.getLong((String.valueOf(holder.getAdapterPosition())), 0l);
+                            Long ПолучаемUUIDТекущйПозицииВRecyreView = bundleПередачаДанныхЧерезФрагменты.getLong("ПередаемВЧетвертыйФрагмендляСменыСтатуса", 0l);
 
 
-                            Log.i(this.getClass().getName(), "  BungleДанныеДляViewCard   "
-                                    + BungleДанныеДляViewCard.getLong((String.valueOf(holder.getAdapterPosition())), 0l) +
-                                    " ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView);
+                            Log.i(this.getClass().getName(), "  ПолучаемUUIDТекущйПозицииВRecyreView   " + ПолучаемUUIDТекущйПозицииВRecyreView);
 
 
-// TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет
-                                    + " ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView);
 
 
                             // TODO: 03.03.2022  запускам сменты статуса
@@ -1907,15 +1899,21 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                                 handlerЗапускаемОтсрочнуюСменуСтатуса.postDelayed(() -> {
                                     // TODO: 04.03.2022
 
-                                    Курсор_ГлавныйКурсорДляЗадач.deactivate();
-                                    // TODO: 03.03.2022
+                                    // TODO: 09.03.2022
+                                    fragmentTransactionляЗадачи = fragmentManagerДляЗадачи.beginTransaction();
 
-                                    Курсор_ГлавныйКурсорДляЗадач.requery();
-                                    // TODO: 13.03.2022
+                                    // TODO: 23.03.2022  переходим на фрагмент для редактирования Fragment4_Now_Views_Task_For_Complete
 
-                                    Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.deactivate();
-                                    // TODO: 14.03.2022
-                                    Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.requery();
+                                    fragment_ТекущийФрагмент = new Fragment1_One_Tasks();
+                                    // TODO: 11.03.2022
+                                    fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
+                                    // TODO: 10.03.2022
+                                    fragmentTransactionляЗадачи.show(fragment_ТекущийФрагмент);
+
+
+                                    // TODO: 10.03.2022
+                                    Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи +
+                                            " fragment_ТекущийФрагмент " + fragment_ТекущийФрагмент);
 
                                     // TODO: 13.03.2022
                                     notifyDataSetChanged();
