@@ -1239,8 +1239,6 @@ public class Fragment1_One_Tasks extends Fragment {
                         // TODO: 13.03.2022
                         holder.materialCardView.setChecked(true);
 
-                        // TODO: 15.03.2022
-                        holder.materialCardView.setCardBackgroundColor(Color.parseColor("#E0FFFF"));
 
 // TODO: 28.02.2022
                     }
