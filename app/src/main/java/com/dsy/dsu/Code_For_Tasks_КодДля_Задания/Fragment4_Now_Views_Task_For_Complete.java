@@ -1074,6 +1074,10 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                     // TODO: 14.03.2022  метод создания номер задания
                     МетодБиндингаНомерЗадания(holder);
 
+                    // TODO: 24.03.2022
+                    // TODO: 14.03.2022  проверяем статус Примеания Отработано она или нет
+                    МетодБиндингаПримечанияЗадания(holder);
+
 
                     // TODO: 14.03.2022  метод создания spinnerДляСозданиеНовойЗадачи
                     МетодБиндингаДелаемСлушательДляSpinnerЗадания(holder);
@@ -1596,6 +1600,43 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                 }
             }
 
+            // TODO: 24.03.2022  для примечания
+
+
+            private void МетодБиндингаПримечанияЗадания(@NonNull MyViewHolder holder) {
+                try {
+                    // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2
+                    Integer СтатусЗадачиДляСтатусаПримечания = bundleПередачаДанныхЧерезФрагменты.getInt("СтатусПрочтеаУжеЗадачаИлиНет", 0);
+                    // TODO: 02.03.2022
+                    Log.i(this.getClass().getName(), "  СтатусЗадачиДляСтатусаПримечания " + СтатусЗадачиДляСтатусаПримечания);
+                    // TODO: 17.03.2022
+
+                    switch (СтатусЗадачиДляСтатусаПримечания) {
+
+                        case 1:
+                        case 2:
+                            // TODO: 24.03.2022
+                            // TODO: 28.02.2022
+
+                            holder.textView10ПримечанияОтКлиентаCallsBalck.setHint("Задача уже имеет статус !!! ");//IDЗадачиТекущей
+                            break;
+
+
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+            }
+
+
             private void МетодБиндингаСозданиеСамоСообщения(@NonNull MyViewHolder holder) {
 
                 try {
@@ -2054,7 +2095,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                         Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 1  " + СтатусПрочтеаУжеЗадачаИлиНет);
 
 
-                        Snackbar.make(v, " Статус уже изменём !!! (задачи #)" + holder.getAdapterPosition(), Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                        Snackbar.make(v, " У задачи уже есть статус !!! ", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
                         /*        Toast.makeText(getActivity(), " Статус уже изменём !!! (задачи #)" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();*/
                     }

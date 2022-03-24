@@ -338,7 +338,7 @@ public class Service_Notificatios_Для_Чата extends JobIntentService {////
 
 
 
-                Toast.makeText(getApplicationContext(), " Статус изменился на ознакомленый  !!!" , Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), " Статус изменен  !!!", Toast.LENGTH_LONG).show();
             }else {
 
                 Toast.makeText(getApplicationContext(), " Статус осталься прежним ? " , Toast.LENGTH_LONG).show();
