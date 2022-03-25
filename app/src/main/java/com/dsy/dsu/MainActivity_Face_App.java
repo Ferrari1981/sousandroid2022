@@ -32,6 +32,7 @@ import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.UiThread;
 import androidx.appcompat.app.AlertDialog;
@@ -631,12 +632,10 @@ public class MainActivity_Face_App extends AppCompatActivity {
     }
 
 
-
-
-
     //todo Финальный метод в ОБНОВЛЕНИИ ПО УСТАВНКА НЕПОСРЕДСВЕННО ФАЙЛА НА АКТИВТИ ПОЛЬЗОВАТЛЕМ
 
-    private void МетодУстановкиНовойВерсииПОТабельныйУчётПоднимаетЕгоНаActrivity(Integer СервернаяВерсияПОВнутри, File ЗагрузкиФайлаОбновенияПОДополнительный) {
+    private void МетодУстановкиНовойВерсииПОТабельныйУчётПоднимаетЕгоНаActrivity(@NonNull Integer СервернаяВерсияПОВнутри,
+                                                                                 @NonNull File ЗагрузкиФайлаОбновенияПОДополнительный) {
 
         try {
 
@@ -648,8 +647,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
                             + "\n" + "ПО Табельный учёт ,"
                             + "\n" + "новая версия. " + СервернаяВерсияПОВнутри + ","
                             + "\n" + "реализовано:"
-                            +"\n"+" Система обновления;"+"\n"+
-                            "Чат"
+                            + "\n" + "Задачи" + "\n"
                             + "\n")
                     .setPositiveButton("Установить", null)
                     .setNegativeButton("Позже", null)
@@ -695,8 +693,11 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
                     Uri URIПутиДляЗагрузкиФайловЧерезПровайдер = FileProvider.getUriForFile(getApplicationContext(),
                             getApplicationContext().getPackageName() + ".provider",
-                            new File(ФинальныйПутьДляЗагрузкиФайлаОбновения));
+                            ЗагрузкиФайлаОбновенияПОДополнительный);
 
+             /*       Uri URIПутиДляЗагрузкиФайловЧерезПровайдер = FileProvider.getUriForFile(getApplicationContext(),
+                            getApplicationContext().getPackageName() + ".provider",
+                            new File(ФинальныйПутьДляЗагрузкиФайлаОбновения));*/
 
                     // TODO: 25.03.2022
 
