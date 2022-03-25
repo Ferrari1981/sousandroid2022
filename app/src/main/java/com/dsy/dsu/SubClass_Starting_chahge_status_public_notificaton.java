@@ -21,11 +21,15 @@ public class SubClass_Starting_chahge_status_public_notificaton {
 
     public PendingIntent МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(String PROCESS_ID_УведомленияПлановая,
                                                                           String ИмяСлужбыУведомленияДляЧата
-            , Long UUIDПолучениейЗадачи, Integer ПередаемСтатусзадачи, String ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу) {
+            , Object UUIDПолучениейЗадачиОбьект, Integer ПередаемСтатусзадачи, String ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу) {
         ///
         PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = null;
 
         try {
+
+            Long UUIDПолучениейЗадачи = Long.parseLong(String.valueOf(UUIDПолучениейЗадачиОбьект));
+
+
             ///////TODO запускаем смены стануса задачи черезе PendingIntent
             Log.d(context.getClass().getName(), "PROCESS_ID_УведомленияПлановая " + PROCESS_ID_УведомленияПлановая +
                     " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата + "  UUIDПолучениейЗадачи " + UUIDПолучениейЗадачи +

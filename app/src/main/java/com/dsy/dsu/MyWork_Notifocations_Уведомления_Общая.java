@@ -843,7 +843,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
             // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи
             PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = new SubClass_Starting_chahge_status_public_notificaton(getApplicationContext()).
                     МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата,
-                            Long.parseLong(person.build().getUri()),
+                            person.build().getUri(),
                             0, "");
 
 
@@ -1846,25 +1846,26 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
         person.setName(КтоНаписалСообщениеФИО);
         // TODO: 07.02.2022 \
         // person.setIcon( IconCompat.createWithResource(Контекст, R.drawable.icon_dsu1_for_fragment1_chat2));
-        // TODO: 07.02.2022
+            // TODO: 07.02.2022
 
-        person.setIcon( IconCompat.createWithResource(Контекст, R.drawable.icon_dsu1_for_fragment1_chat2_for_public));
+            person.setIcon(IconCompat.createWithResource(Контекст, R.drawable.icon_dsu1_for_fragment1_chat2_for_public));
 
-        // TODO: 07.02.2022устанавливаем записываем текущий UUID для того чтобы потом перердатьего для Озванкомления
+            // TODO: 07.02.2022устанавливаем записываем текущий UUID для того чтобы потом перердатьего для Озванкомления
 
-        HashMap<Integer,Long> hashMapХэшДляЗапоминиялUUID=new HashMap();
-        // TODO: 07.02.2022
-        hashMapХэшДляЗапоминиялUUID.put(new Random().nextInt(), UUIDРочитаногоЗаданиеДляКотрогоДалееБудетПроизведенаСменаСтсусаНАОзнакомленный)      ;
+            HashMap<Integer, Long> hashMapХэшДляЗапоминиялUUID = new HashMap();
+            // TODO: 07.02.2022
+            hashMapХэшДляЗапоминиялUUID.put(new Random().nextInt(), UUIDРочитаногоЗаданиеДляКотрогоДалееБудетПроизведенаСменаСтсусаНАОзнакомленный);
 
-        person .setUri(String.valueOf(hashMapХэшДляЗапоминиялUUID));
-        // TODO: 07.02.2022  person
-        person.build();
+            person.setUri(String.valueOf(UUIDРочитаногоЗаданиеДляКотрогоДалееБудетПроизведенаСменаСтсусаНАОзнакомленный));
+            //  person .setUri(String.valueOf(hashMapХэшДляЗапоминиялUUID));
+            // TODO: 07.02.2022  person
+            person.build();
 
 
-        // TODO: 03.02.2022  УВЕДОМЛЕНИЯ ДЛЯ ОБШЕЙ СИНХРОНИАЗЦИИ
-        messagingStyleДля_ОбщихУведомлений.addMessage(person.build().getKey(), System.currentTimeMillis(), "от:"+ person.build().getName()
-                +" +" +
-                "("+ОбщееКоличествоНЕпрочитанныхСтрок+")");
+            // TODO: 03.02.2022  УВЕДОМЛЕНИЯ ДЛЯ ОБШЕЙ СИНХРОНИАЗЦИИ
+            messagingStyleДля_ОбщихУведомлений.addMessage(person.build().getKey(), System.currentTimeMillis(), "от:" + person.build().getName()
+                    + " +" +
+                    "(" + ОбщееКоличествоНЕпрочитанныхСтрок + ")");
 
 
         Log.d(this.getClass().getName(), "СамиУведомленияВЧатеНеПрочитанный "
