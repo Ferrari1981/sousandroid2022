@@ -1446,7 +1446,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                 // TODO: 03.03.2022 update screewn
                                 Handler HandlerЗапускаемОтсрочнуюСменуСтатуса = new Handler(callback);
                                 // TODO: 25.03.2022
-                                HandlerЗапускаемОтсрочнуюСменуСтатуса.sendEmptyMessageDelayed(РезультатУдаленияСозданныйЗадач, 1000);
+                                HandlerЗапускаемОтсрочнуюСменуСтатуса.sendEmptyMessageDelayed(РезультатУдаленияСозданныйЗадач, 500);
                                 // TODO: 04.03.2022
                                 HandlerЗапускаемОтсрочнуюСменуСтатуса.postDelayed(() -> {
                                     // TODO: 04.03.2022
