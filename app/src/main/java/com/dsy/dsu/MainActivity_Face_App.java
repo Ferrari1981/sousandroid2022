@@ -4,8 +4,10 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -37,6 +39,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 import androidx.lifecycle.Observer;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
@@ -106,6 +109,11 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
     SUBClassBISNESSLOGICA_ForActivityFaceApp bisnesslogicaForActivityFaceApp;
 
+    private LocalBroadcastManager localBroadcastManagerДляФинальнойУстановкиПОТабельныйУчёт;
+
+
+    private BroadcastReceiver broadcastReceiverУстановкаПО;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
@@ -114,7 +122,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
             super.onCreate(savedInstanceState);
 
 ////////////////////
-          String УникальныйИндификаторУстройства = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+            String УникальныйИндификаторУстройства = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
 
             Log.w(getPackageName().getClass().getName(), " уникальный идентификатор устройства " +УникальныйИндификаторУстройства );
 
@@ -245,16 +253,15 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
             // TODO: 06.06.2021 ЗАПУСК ТРЕХ СЛУЖБ*/
 
-
-            // TODO: 28.12.2021   Метод  ДАННЫЙ МЕТОД ВСЕГДА ПОСЛЕДНИЙ  если пришло Новоое Обновление По табельный УЧЁТ ПО ЗАПУСКАЕМ ЕГО ВСТАВКИ ПОКАЗЫВАЕМ ПОЛЬЗОВАТЕЛЮ
-
-
-            МетодЗапускПослеНажатияНАНовойФормеНАКнопкуУстановитьПослеУспешнойЗагрузкиНовогоПОТабельныйУчётПоказываемЕгоПользователю();
-
-
             // TODO: 28.12.2021   Метод  ДАННЫЙ МЕТОД ВСЕГДА ПОСЛЕДНИЙ  если пришло Новоое Обновление По табельный УЧЁТ ПО ЗАПУСКАЕМ ЕГО ВСТАВКИ ПОКАЗЫВАЕМ ПОЛЬЗОВАТЕЛЮ
 
             МетодПовторныйЗапускОбщейСинхронизацииИзFaceApp();
+
+
+            // TODO: 28.12.2021   Метод  ДАННЫЙ МЕТОД ВСЕГДА ПОСЛЕДНИЙ  если пришло Новоое Обновление По табельный УЧЁТ ПО ЗАПУСКАЕМ ЕГО ВСТАВКИ ПОКАЗЫВАЕМ ПОЛЬЗОВАТЕЛЮ
+
+
+            МетодВActivityFaveApp_УстанавливаетПрограммноеОбеспечениеПОТабельныйУчёт();
 
 
         } catch (Exception e) {
@@ -548,47 +555,49 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
     // TODO: 28.12.2021  метоД КОТРЙ ПОКАЗЫВАЕМ ЧТО ЗАГРУЗИЛОСЬ НОВОЕ ПО ТАБЕЛЬНЫЙ УЧЁТ СКАЧАЛОСЬ ИНАДО ПРИНЯТЬ РЕШЕНИЕ ОБНОВЛЕНМ ИЛИ НЕТ
 
-    private void МетодЗапускПослеНажатияНАНовойФормеНАКнопкуУстановитьПослеУспешнойЗагрузкиНовогоПОТабельныйУчётПоказываемЕгоПользователю() {
+    private void МетодВActivityFaveApp_УстанавливаетПрограммноеОбеспечениеПОТабельныйУчёт() {
 
         try {
 
             Log.d(this.getClass().getName(), "  МетодЗапускПослеНажатияНАНовойФормеНАКнопкуУстановитьПослеУспешнойЗагрузкиНовогоПОТабельныйУчётПоказываемЕгоПользователю");
 
 
+            // TODO: 25.03.2022 Создание Локального БродКстаера
+
+            localBroadcastManagerДляФинальнойУстановкиПОТабельныйУчёт = LocalBroadcastManager.getInstance(getApplicationContext());
+            // TODO: 25.03.2022
+            broadcastReceiverУстановкаПО = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+
+                    Log.d(this.getClass().getName(), " localBroadcastManagerДляФинальнойУстановкиПОТабельныйУчёт  intent " + intent);
+
+                    // TODO: 25.03.2022
+
+                    Bundle bundle = intent.getExtras();
+
+                    Log.d(this.getClass().getName(), " localBroadcastManagerДляФинальнойУстановкиПОТабельныйУчёт  bundle " + bundle);
+
+                }
+            };
+
+            // TODO: 25.03.2022
+            IntentFilter intentFilterУстановка = new IntentFilter();
+            // TODO: 25.03.2022
+            intentFilterУстановка.addAction("CompletePO");
+            localBroadcastManagerДляФинальнойУстановкиПОТабельныйУчёт.registerReceiver(broadcastReceiverУстановкаПО, intentFilterУстановка);
+
+
             Intent intentПроверяемЗагрузиласьЛиНоваяВесрияПО = getIntent();
+            // TODO: 25.03.2022
 
-            Integer ЗагрузиласьНоваяВерисяПОПровремяем = null;
-
-
-            if (intentПроверяемЗагрузиласьЛиНоваяВесрияПО.getAction() != null) {
-                // TODO: 28.12.2021
-                if (intentПроверяемЗагрузиласьЛиНоваяВесрияПО.getAction().equalsIgnoreCase("ПослеУспешнойЗагрузкиAPKПоказываемПользователю")) {
-
-                    ЗагрузиласьНоваяВерисяПОПровремяем = intentПроверяемЗагрузиласьЛиНоваяВесрияПО.getIntExtra("СервернаяВерсияПОВнутри", 0);
+            Integer ЗагрузиласьНоваяВерисяПОПровремяем = intentПроверяемЗагрузиласьЛиНоваяВесрияПО.getIntExtra("СервернаяВерсияПОВнутри", 0);
 
 
-                    Log.d(this.getClass().getName(), "  МетодПослеУспешнойЗагрузкиНовогоПОТабельныйУчётПоказываемЕгоПользователю  ЗагрузиласьНоваяВерисяПОПровремяем" + "\n"
-                            + ЗагрузиласьНоваяВерисяПОПровремяем +
+            Log.d(this.getClass().getName(), "  МетодПослеУспешнойЗагрузкиНовогоПОТабельныйУчётПоказываемЕгоПользователю  ЗагрузиласьНоваяВерисяПОПровремяем" + "\n"
+                    + ЗагрузиласьНоваяВерисяПОПровремяем +
                             "\n" +
                             "  intentПроверяемЗагрузиласьЛиНоваяВесрияПО.getAction() " + intentПроверяемЗагрузиласьЛиНоваяВесрияПО.getAction());
-
-
-                    if (ЗагрузиласьНоваяВерисяПОПровремяем > 0) {
-
-                        // TODO: 28.12.2021
-
-                        Log.d(this.getClass().getName(), "  МетодПослеУспешнойЗагрузкиНовогоПОТабельныйУчётПоказываемЕгоПользователю  ЗагрузиласьНоваяВерисяПОПровремяем" + "\n"
-                                + ЗагрузиласьНоваяВерисяПОПровремяем +
-                                "\n" +
-                                "  intentПроверяемЗагрузиласьЛиНоваяВесрияПО.getAction() " + intentПроверяемЗагрузиласьЛиНоваяВесрияПО.getAction());
-
-/*
-                        Toast.makeText(getApplicationContext(), "Готова к установке" + "\n" +
-                                "ПО Таб.учёт в." + ЗагрузиласьНоваяВерисяПОПровремяем, Toast.LENGTH_SHORT).show();*/
-
-
-                        // TODO: 28.12.2021
-
 
                         // TODO: 28.12.2021 НЕПОСТРЕДВСТВЕННО ПОДНИМАЕМ ПОЛЬЗОВАТЮ СКАЧАТ ФАЙЛ УСТАНОВКИХ НОВГОЙ ВЕРСИИ по таБЕЛЬНЫЙ уЧЁТ
 
@@ -597,15 +606,9 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
 
 
-
-
                         Log.d(this.getClass().getName(), " ФИНАЛ ОБНОВЛЕНИ ПО МетодУстановкиНовойВерсииПОТабельныйУчётПоднимаетЕгоНаActrivity новая версия " + "\n"
                                 + ЗагрузиласьНоваяВерисяПОПровремяем );
 
-
-                    }
-                }
-            }
 
 
         } catch (Exception e) {
@@ -735,47 +738,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
                         Log.w(this.getClass().getName(), " ура !!!! УРА !!!!  уСПЕШНАЫЙ ЗАПУСК СКАЧЕННОГО ОБНОВЛЕНЕИ ПО " +
                                 "МетодУстановкиНовойВерсииПОТабельныйУчётПоднимаетЕгоНаActrivity  ");
 
-                 /*       ActivityManager am = (ActivityManager) getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
-                        List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
-
-
-                        taskInfo.stream().spliterator().forEachRemaining((ТекущаяАктивти)-> {
-
-                            String НазваниеТекущейАктивти =ТекущаяАктивти.baseActivity.getClassName().toString();// "com.dsy.dsu.MainActivity_Face_App";//
-                            // taskInfo.get(0).topActivity.getClassName().toString();///"MainActivity_Face_App"
-
-                            Class<?> myClass = null;
-                            try {
-                                myClass = Class.forName(НазваниеТекущейАктивти);
-                            } catch (ClassNotFoundException e) {
-                                e.printStackTrace();
-                            }
-
-                            Activity activity = null;
-                            try {
-                                activity = (Activity) myClass.newInstance();
-                                activity.finishAndRemoveTask();
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            } catch (InstantiationException e) {
-                                e.printStackTrace();
-                            }
-
-                        });*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        ///TODO УСТАНАВЛИВАЕМ ФЛАГ ЧТО МУ УЖЕ СКАЧИВАЛИ ЭТО ПРИЛОЖЕНИЕ
+                        ///TODO УСТАНАВЛИВАЕМ ФЛАГ ЧТО МУ УЖЕ СКАЧИВАЛИ ЭТО ПРИЖЕНИЕ
 
 
                     } else {
@@ -783,7 +746,6 @@ public class MainActivity_Face_App extends AppCompatActivity {
                         Log.d(this.getClass().getName(), "Ошибка файл .APK не устнаовлен ОШИБКА СЛУЖБА ОБНОВЛЕНИЯ ...  "
                                 + new Date() + " МеханизмПроверкиЗапуститьсяНашИнтентИлиНЕт " + МеханизмПроверкиЗапуститьсяНашИнтентИлиНЕт);
                     }
-
 
                     ///////////
 
@@ -830,13 +792,30 @@ public class MainActivity_Face_App extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
-        ////TODO запуск службы справочкиа FIO
-       bisnesslogicaForActivityFaceApp.new  SubClass_Closeo_bserverОдноразоваяFACEAPP_to_MainActivity_Face_App().
-                МетодОдписыОТСлушателяРезультатПринудительноСинхрониазцииЗапущенойСFACEAPP(getApplicationContext(),observerОдноразоваяFACEAPP,ИмяСлужбыСинхронизацииОдноразовая);
-
-        ///TODO ЗАПУСК СЛУЖБЫ СПРАВОЧНИКА ФИО
+        try {
 
 
+            ////TODO запуск службы справочкиа FIO
+            bisnesslogicaForActivityFaceApp.new SubClass_Closeo_bserverОдноразоваяFACEAPP_to_MainActivity_Face_App().
+                    МетодОдписыОТСлушателяРезультатПринудительноСинхрониазцииЗапущенойСFACEAPP(getApplicationContext(), observerОдноразоваяFACEAPP, ИмяСлужбыСинхронизацииОдноразовая);
+
+            ///TODO ЗАПУСК СЛУЖБЫ СПРАВОЧНИКА ФИО
+
+            localBroadcastManagerДляФинальнойУстановкиПОТабельныйУчёт.unregisterReceiver(broadcastReceiverУстановкаПО);
+
+
+        } catch (Exception e) {
+            //  Block of code to handle errors
+            e.printStackTrace();
+            ///метод запись ошибок в таблицу
+            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                    + Thread.currentThread().getStackTrace()[2].getLineNumber());
+            new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                    Thread.currentThread().getStackTrace()[2].getLineNumber());
+
+            // TODO: 11.05.2021 запись ошибок
+
+        }
 
     }
 
@@ -1830,12 +1809,6 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
 
                                     // TODO: 12.11.2021  ПЕРВАЯ ОПЕРАЦИЯ УДАЛЕНИЕ ЛЮБОЙ УЖЕ СУЩЕСТВУЮЩЩИЙ ЛОКАЛЬНОЙ ВЕРИСИЙ ПРОГРАММЫ
-
-           /*             Integer результатУдаления=        МетодДополнительногоУдалениеФайлов();
-
-                        Log.d(getApplicationContext().getClass().getName(), " результатУдаления " + "--" + результатУдаления);/////
-*/
-                                    // TODO: 21.10.2021  # 2
 
 
                                     МетодЗапускДляАнализаОбновленияПО(activity);

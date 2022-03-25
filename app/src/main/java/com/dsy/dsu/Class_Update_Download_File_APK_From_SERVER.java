@@ -505,7 +505,13 @@ Context context;
 
                         // TODO: 20.12.2021
 
+                        //TODO ПЕРЕД СОЗДАНИЕМ НОВОГО СООБЕЩНИЯ ОБНУЛЯЕМ ПРДЫДУЩЕЕ
 
+                        String PROCESS_ID_UpdateSoft = "19";
+                        NotificationManager notificationManager = (NotificationManager)
+                                context.getSystemService(NOTIFICATION_SERVICE);
+
+                        notificationManager.cancel(Integer.parseInt(PROCESS_ID_UpdateSoft));
                         /////todo NOtofication
                         Vibrator v2 = (Vibrator) context.getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
 

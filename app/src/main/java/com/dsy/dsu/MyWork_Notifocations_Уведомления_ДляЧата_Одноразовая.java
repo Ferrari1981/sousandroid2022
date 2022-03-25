@@ -950,7 +950,15 @@ try{
                         " СтатустУведомленияДляУведомленияЧАТА" + СтатустУведомленияДляУведомленияЧАТА[0]);
 
 
+                Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+// Vibrate for 500 milliseconds
 
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    v2.vibrate(VibrationEffect.createOneShot(600, VibrationEffect.DEFAULT_AMPLITUDE));
+                } else {
+                    //deprecated in API 26
+                    v2.vibrate(600);
+                }
 
                 //TODO ПЕРЕД СОЗДАНИЕМ НОВОГО СООБЕЩНИЯ ОБНУЛЯЕМ ПРДЫДУЩЕЕ
 
@@ -961,19 +969,9 @@ try{
                 ///notificationManager.cancelAll();
 
 
-
                 onStopped();
 
 
-                Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-// Vibrate for 500 milliseconds
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    v2.vibrate(VibrationEffect.createOneShot(600, VibrationEffect.DEFAULT_AMPLITUDE));
-                } else {
-                    //deprecated in API 26
-                    v2.vibrate(600);
-                }
 
 
 
