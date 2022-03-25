@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteCursor;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -27,6 +29,7 @@ import androidx.work.WorkManager;
 import com.dsy.dsu.CREATE_DATABASE;
 import com.dsy.dsu.Class_GRUD_SQL_Operations;
 import com.dsy.dsu.Class_Generation_Errors;
+import com.dsy.dsu.MODEL_synchronized;
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -1357,73 +1360,68 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
                 try {
 
-// TODO: 01.03.2022 слушатели
+                    // TODO: 01.03.2022 слушатели УДАЛЯЕМ ВЫБРАНУЮ ЗАДЧУ СОЗДАНУЮ МНОЙ
 
                     holder.materialCardView.setOnLongClickListener(new View.OnLongClickListener() {
                         @Override
                         public boolean onLongClick(View v) {
                             // TODO: 01.03.2022
 
+                            Handler.Callback callback = new PUBLIC_CONTENT(getContext()).callback;
+
+                            callback = new Handler.Callback() {
+                                @Override
+                                public boolean handleMessage(@NonNull Message msg) {
+                                    // TODO: 13.03.2022
+                                    Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  СтатусПрочтеаУжеЗадачаИлиНет " +
+                                            msg);
+                                    // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
+
+                                    return true;
+                                }
+                            };
+                            // TODO: 25.03.2022
+                            Handler handler = new Handler(callback);
+                            // TODO: 25.03.2022
+                            handler.sendEmptyMessageDelayed(1111, 1000);
+
 
                             // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  " +
-                                    " holder.getAdapterPosition() " + holder.getAdapterPosition() + " v.getTag() " + v.getTag(holder.materialCardView.getId()));
-
-                            // TODO: 13.03.2022  статус прочтения ли уде или нет адание
-
-                            Object СтатусПрочтеаУжеЗадачаИлиНет = v.getTag(holder.materialCardView.getId());//TODO holder.materialCardView.getId()
-
-
-                            // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
+                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  СтатусПрочтеаУжеЗадачаИлиНет ");
                             // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
-                     /*   Long ПолучаемUUIDТекущйПозицииВRecyreView = AccessibilityNodeInfoДанныеДляViewCard.getAvailableExtraData().stream().map(Long::new)
-                                .distinct() .sorted(Collections.reverseOrder()).collect(Collectors.toList()).get(holder.getAdapterPosition()).longValue();*/
+
 
                             // TODO: 13.03.2022
                             Long ПолучаемUUIDТекущйПозицииВRecyreView = BungleДанныеДляViewCard.getLong((String.valueOf(holder.getAdapterPosition())), 0l);
 
 
-                            Log.i(this.getClass().getName(), "  BungleДанныеДляViewCard   " + BungleДанныеДляViewCard.getLong((String.valueOf(holder.getAdapterPosition())), 0l) +
-                                    " ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView);
+                            Integer РезультатУдаленияСозданныйЗадач = null;
+                            try {
+                                РезультатУдаленияСозданныйЗадач = new MODEL_synchronized(getContext())
+                                        .УдалениеДанныхЧерезКонтейнерУниверсальная("data_notification",
+                                                "uuid",
+                                                String.valueOf(ПолучаемUUIDТекущйПозицииВRecyreView),
+                                                0l);
+
+                                // TODO: 25.03.2022
+                                // TODO: 13.03.2022
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                ///метод запись ошибок в таблицу
+                                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                            }
+
+                            /////////TODO КОНТЕЙНЕР УДАЛЕНИЕ СОТРУДНИКА ИЗ ТАБЕЛЯ  ДАННЫХ УНИВЕРСАЛЬНЫЙ
+
+                            // TODO: 13.03.2022
+                            Log.d(this.getClass().getName(), " РезультатУдаленияСозданныйЗадач МетодБиндингаСлушателейДляViewCard   " + РезультатУдаленияСозданныйЗадач);
 
 
-// TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет
-                                    + " ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView);
-
-
-                            // TODO: 03.03.2022  запускам сменты статуса
-
-                         /*   if (Integer.parseInt(String.valueOf(СтатусПрочтеаУжеЗадачаИлиНет)) == 0 && ПолучаемUUIDТекущйПозицииВRecyreView != null) {
-
-                                ///
-                                String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForChat";
-
-                                String PROCESS_ID_УведомленияПлановая = "12";
-
-                                // TODO: 03.03.2022
-
-                                SubClass_Starting_chahge_status_public_notificaton subClass_starting_chahge_status_public_notificaton =
-                                        new SubClass_Starting_chahge_status_public_notificaton(getContext());
-
-                                // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи
-                                PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = subClass_starting_chahge_status_public_notificaton.
-                                        МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата, String.valueOf(ПолучаемUUIDТекущйПозицииВRecyreView));
-
-
-                                try {
-
-                                    // TODO: 03.03.2022  запускаем службу смены статуса
-                                    ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
-
-
-                                } catch (PendingIntent.CanceledException e) {
-                                    e.printStackTrace();
-                                }
-                                ///////TODO запускаем смены стануса задачи черезе PendingIntent
-                                Log.d(getContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая " + PROCESS_ID_УведомленияПлановая +
-                                        " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата + " СтатусПрочтеаУжеЗадачаИлиНет " + СтатусПрочтеаУжеЗадачаИлиНет);
+                            if (РезультатУдаленияСозданныйЗадач > 0) {
 
 
                                 // TODO: 03.03.2022 update screewn
@@ -1445,29 +1443,11 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                     // TODO: 13.03.2022
                                     notifyDataSetChanged();
 
-                           *//*     Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 0 " + СтатусПрочтеаУжеЗадачаИлиНет);
-
-                                Toast.makeText(getActivity(), " Статус сменили на ознакомленный  #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();*//*
-
                                 }, 2500);
+                            }
 
-                            } else {
+                            // TODO: 25.03.2022 \
 
-                                ///////TODO запускаем смены стануса задачи черезе PendingIntent
-                                Log.i(getContext().getClass().getName(), "СтатусПрочтеаУжеЗадачаИлиНет Статус Уже Изменен на 1  " + СтатусПрочтеаУжеЗадачаИлиНет);
-
-                                ///   Toast.makeText(getActivity(), " Статус ознакомлена !!!   #" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
-                            }*/
-
-                            // TODO: 03.03.2022 update screewn
-
-                            // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1" +
-                                    "   ПолучаемUUIDТекущйПозицииВRecyreView " + ПолучаемUUIDТекущйПозицииВRecyreView +
-                                    " holder.getAdapterPosition() " + holder.getAdapterPosition());
-
-                            // TODO: 13.03.2022
-                            // notifyDataSetChanged();
 
                             return true;
 
