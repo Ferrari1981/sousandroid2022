@@ -40,6 +40,7 @@ import com.dsy.dsu.Class_GRUD_SQL_Operations;
 import com.dsy.dsu.Class_Generation_Data;
 import com.dsy.dsu.Class_Generation_Errors;
 import com.dsy.dsu.Class_Generation_UUID;
+import com.dsy.dsu.Code_For_Firebase_AndOneSignal_Здесь_КодДЛяСлужбыУведомленияFirebase.Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal;
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 import com.dsy.dsu.SubClass_RetryGEtRowInChatsКлассПроверемЕщеРАзПоявилосЛИПуббличныйUUIDМеждуУчасникамиЧата;
@@ -2101,6 +2102,12 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                                 // TODO: 24.03.2022
 
                                 bundleПередачаДанныхЧерезФрагменты.clear();
+
+
+                                // TODO: 13.01.2022  ЗАПУСК СИХРОНИЗВАЦИИ В ХОЛОСТУЮ ХОД
+
+                                new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getContext()).
+                                        МетодПовторногоЗапускаВсехWorkManager__ОДНОРАЗОВОЙСинхрониазцииданных(ПубличныйIDДляФрагмента, getContext());
 
 
                             }, 2500);
