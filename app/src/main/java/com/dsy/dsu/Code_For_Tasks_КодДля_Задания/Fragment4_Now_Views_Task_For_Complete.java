@@ -1614,11 +1614,38 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                     switch (СтатусЗадачиДляСтатусаПримечания) {
 
                         case 1:
+                            // TODO: 28.02.2022
+                            // TODO: 02.03.2022
+                            Log.i(this.getClass().getName(), "  СтатусЗадачиДляСтатусаПримечания  Выполнить  " + СтатусЗадачиДляСтатусаПримечания);
+
+                            holder.textView10ПримечанияОтКлиентаCallsBalck.setHint("Уже имеет статус (Выполнил) ");//IDЗадачиТекущей
+                            // TODO: 25.03.2022
+                            holder.textView10ПримечанияОтКлиентаCallsBalck.setSelected(false);
+                            // TODO: 25.03.2022
+                            holder.textView10ПримечанияОтКлиентаCallsBalck.setFocusable(false);
+                            // TODO: 25.03.2022
+                            holder.textView10ПримечанияОтКлиентаCallsBalck.setClickable(false);
+                            // TODO: 25.03.2022
+                            break;
+
+
                         case 2:
                             // TODO: 24.03.2022
+                            // TODO: 02.03.2022
+                            Log.i(this.getClass().getName(), "  СтатусЗадачиДляСтатусаПримечания  Отказ  " + СтатусЗадачиДляСтатусаПримечания);
                             // TODO: 28.02.2022
 
-                            holder.textView10ПримечанияОтКлиентаCallsBalck.setHint("Задача уже имеет статус !!! ");//IDЗадачиТекущей
+                            holder.textView10ПримечанияОтКлиентаCallsBalck.setHint("Уже имеет статус (Отказ) ");//IDЗадачиТекущей
+
+                            // TODO: 25.03.2022
+                            holder.textView10ПримечанияОтКлиентаCallsBalck.setSelected(false);
+                            // TODO: 25.03.2022
+                            holder.textView10ПримечанияОтКлиентаCallsBalck.setFocusable(false);
+                            // TODO: 25.03.2022
+                            holder.textView10ПримечанияОтКлиентаCallsBalck.setClickable(false);
+                            // TODO: 25.03.2022
+
+
                             break;
 
 
