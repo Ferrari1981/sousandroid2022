@@ -1964,13 +1964,14 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                                                             // TODO: 25.03.2022
                                                             Курсор_ГлавныйКурсорДляЗадач.requery();
 
-                                                            // TODO: 25.03.2022
-                                                            Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.deactivate();
-                                                            // TODO: 25.03.2022
-                                                            Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.requery();
-
                                                             // TODO: 13.03.2022
                                                             notifyDataSetChanged();
+
+                                                            bottomNavigationViewДляTasks.requestLayout();
+                                                            // TODO: 22.03.2022
+                                                            recyclerView.requestLayout();
+                                                            // TODO: 14.03.2022
+                                                            linearLayou.requestLayout();
 
                                                         }, 5000);
 
