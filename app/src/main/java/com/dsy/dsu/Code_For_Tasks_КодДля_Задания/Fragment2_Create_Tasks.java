@@ -1361,24 +1361,26 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 // TODO: 01.03.2022 слушатели
 
                 try {
+// TODO: 25.03.2022
 
                     // TODO: 01.03.2022 слушатели УДАЛЯЕМ ВЫБРАНУЮ ЗАДЧУ СОЗДАНУЮ МНОЙ
 
                     holder.materialCardView.setOnLongClickListener(new View.OnLongClickListener() {
                         @Override
                         public boolean onLongClick(View v) {
-                            // TODO: 01.03.2022
-
+                            // TODO: 25.03.2022
                             Handler.Callback callback = new PUBLIC_CONTENT(getContext()).callback;
-
+                            // TODO: 01.03.2022
                             callback = new Handler.Callback() {
+                                // TODO: 01.03.2022
                                 @Override
                                 public boolean handleMessage(@NonNull Message msg) {
                                     // TODO: 13.03.2022
                                     Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  СтатусПрочтеаУжеЗадачаИлиНет " +
-                                            msg);
-                                    // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
-
+                                            msg + " msg.getWhen() " + msg.getWhen());
+                                    // TODO: 25.03.2022
+                                    msg.getTarget().removeMessages(1);
+                                    // TODO: 25.03.2022
                                     return true;
                                 }
                             };
@@ -1422,13 +1424,11 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                             if (РезультатУдаленияСозданныйЗадач > 0) {
 
                                 // TODO: 03.03.2022 update screewn
-                                Handler handlerЗапускаемОтсрочнуюСменуСтатуса = new Handler(callback);
-
+                                Handler HandlerЗапускаемОтсрочнуюСменуСтатуса = new Handler(callback);
                                 // TODO: 25.03.2022
-                                // TODO: 25.03.2022
-                                handlerЗапускаемОтсрочнуюСменуСтатуса.sendEmptyMessage(РезультатУдаленияСозданныйЗадач);
+                                HandlerЗапускаемОтсрочнуюСменуСтатуса.sendEmptyMessage(РезультатУдаленияСозданныйЗадач);
                                 // TODO: 04.03.2022
-                                handlerЗапускаемОтсрочнуюСменуСтатуса.postDelayed(() -> {
+                                HandlerЗапускаемОтсрочнуюСменуСтатуса.postDelayed(() -> {
                                     // TODO: 04.03.2022
 
                                     Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.deactivate();
