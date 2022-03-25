@@ -43,7 +43,7 @@ public class SubClass_Starting_chahge_status_public_notificaton {
 
             Intent notificationIntentДляУведомленийЗапускСогласования;
             // TODO: 17.11.2021
-            notificationIntentДляУведомленийЗапускСогласования = new Intent(context, Service_Notificatios_Для_Чата.class);
+            notificationIntentДляУведомленийЗапускСогласования = new Intent(context, Service_Notifocations_Для_Чата.class);
             // TODO: 24.03.2022
             // TODO: 03.03.2022
             notificationIntentДляУведомленийЗапускСогласования.setAction("ЗапускСогласованияПришедшегоЗАДАНИЕ");
@@ -81,7 +81,7 @@ public class SubClass_Starting_chahge_status_public_notificaton {
                         10, notificationIntentДляУведомленийЗапускСогласования,
                         PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
-                // Service_Notificatios_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускПаузы);
+                // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускПаузы);
 
                 // TODO: 03.03.2022
 

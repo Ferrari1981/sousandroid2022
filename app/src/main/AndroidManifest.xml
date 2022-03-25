@@ -323,7 +323,7 @@
 
         <!-- android:permission="android.intent.action.BOOT_COMPLETED" -->
         <service
-            android:name=".Service_Notificatios_Для_Чата"
+            android:name=".Service_Notifocations_Для_Чата"
             android:enabled="true"
             android:exported="true"
             android:foregroundServiceType="dataSync"

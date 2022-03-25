@@ -46,16 +46,15 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 
-public class MyWork_Notifocations_Уведомления_ДляЧата_Одноразовая extends Worker {
+public class MyWork_Notifocations_Уведомления_Для_Чата extends Worker {
     ///
     Context Контекст;
-    String ИмяСлужбыУведомленияДляЧатаОдноразовая="WorkManager NOtofocationForChat DISTOY";
-
+    String ИмяСлужбыУведомленияДляЧатаОдноразовая = "WorkManager NOtofocationForChat DISTOY";
 
 
     WorkerParameters workerParams;
 
-    NotificationManager mNotificationManagerДляЧАТА=null;
+    NotificationManager mNotificationManagerДляЧАТА = null;
 
     WorkInfo ИнформацияОЗапущенойСлужбе_Уведомления_ДляЧатаОдноразовое;
 
@@ -104,24 +103,17 @@ public class MyWork_Notifocations_Уведомления_ДляЧата_Одно
     NotificationCompat.MessagingStyle messagingStyleДляОдноразовыеУведомления;
 
 
-
-
-
-
-
-
-
-    public MyWork_Notifocations_Уведомления_ДляЧата_Одноразовая(@NonNull Context context, @NonNull WorkerParameters workerParamsвнутри) {
+    public MyWork_Notifocations_Уведомления_Для_Чата(@NonNull Context context, @NonNull WorkerParameters workerParamsвнутри) {
         super(context, workerParamsвнутри);
 
 
-        Контекст=context;
+        Контекст = context;
 
-        workerParams=workerParamsвнутри;
+        workerParams = workerParamsвнутри;
 
-        Class_Engine_SQLГдеНаходитьсяМенеджерПотоков =new     PUBLIC_CONTENT(Контекст);
+        Class_Engine_SQLГдеНаходитьсяМенеджерПотоков = new PUBLIC_CONTENT(Контекст);
         ////
-        class_grud_sql_operationsIDпользоввателяДляСлужб=new Class_GRUD_SQL_Operations(Контекст);
+        class_grud_sql_operationsIDпользоввателяДляСлужб = new Class_GRUD_SQL_Operations(Контекст);
         //TODO
 
         Create_Database_СсылкаНАБазовыйКласс=new CREATE_DATABASE(Контекст);
@@ -138,20 +130,20 @@ public class MyWork_Notifocations_Уведомления_ДляЧата_Одно
     }
 
 
-    public MyWork_Notifocations_Уведомления_ДляЧата_Одноразовая(@NonNull Context context, @NonNull WorkerParameters workerParams, @Nullable Activity activity) {
+    public MyWork_Notifocations_Уведомления_Для_Чата(@NonNull Context context, @NonNull WorkerParameters workerParams, @Nullable Activity activity) {
         super(context, workerParams);
 
 
-        Контекст=context;
-        Class_Engine_SQLГдеНаходитьсяМенеджерПотоков =new     PUBLIC_CONTENT(Контекст);
+        Контекст = context;
+        Class_Engine_SQLГдеНаходитьсяМенеджерПотоков = new PUBLIC_CONTENT(Контекст);
         ////
-        class_grud_sql_operationsIDпользоввателяДляСлужб=new Class_GRUD_SQL_Operations(Контекст);
+        class_grud_sql_operationsIDпользоввателяДляСлужб = new Class_GRUD_SQL_Operations(Контекст);
         //TODO
 
-        Create_Database_СсылкаНАБазовыйКласс=new CREATE_DATABASE(Контекст);
+        Create_Database_СсылкаНАБазовыйКласс = new CREATE_DATABASE(Контекст);
 
         Log.i(Контекст.getClass().getName(),
-                " public MyWork_Notifocations_Уведомления_Общая(@NonNull Context context, @NonNull WorkerParameters workerParams,@Nullable Activity activity) {  Контекст "+"\n"+ Контекст);
+                " public MyWork_Notifocations_Уведомления_Для_Задачи(@NonNull Context context, @NonNull WorkerParameters workerParams,@Nullable Activity activity) {  Контекст " + "\n" + Контекст);
 
 
 
@@ -351,7 +343,7 @@ public class MyWork_Notifocations_Уведомления_ДляЧата_Одно
 
             if (ИнформацияОЗапущенойСлужбе_Уведомления_ДляЧатаОдноразовое!=null ) {
 
-                Log.w(Контекст.getClass().getName(), " Внутри метода public Result doWork()   MyWork_Notifocations_Уведомления_Общая оДНОРАЗОАПЯ  ИнформацияОЗапущенойСлужбе_Уведомления_ДляЧатаОдноразовое" +
+                Log.w(Контекст.getClass().getName(), " Внутри метода public Result doWork()   MyWork_Notifocations_Уведомления_Для_Задачи оДНОРАЗОАПЯ  ИнформацияОЗапущенойСлужбе_Уведомления_ДляЧатаОдноразовое" +
                         "" + ИмяСлужбыУведомленияДляЧатаОдноразовая + "\n"
                         + " getState  " +
                         ИнформацияОЗапущенойСлужбе_Уведомления_ДляЧатаОдноразовое.getState().name() + "\n" +
@@ -377,7 +369,7 @@ public class MyWork_Notifocations_Уведомления_ДляЧата_Одно
                     Thread.currentThread().getStackTrace()[2].getLineNumber());
 
             Log.e(Контекст.getClass().getName(), " Стоп СЛУЖБА Service_Notificatios_Уведомления_ОбновлениеПО  ДЛЯ ЧАТА " +
-                    "MyWork_Notifocations_Уведомления_Общая ошибка  Exception e в классе MyWork_Notifocations_Уведомления_Общая " + e.toString() );
+                    "MyWork_Notifocations_Уведомления_Для_Задачи ошибка  Exception e в классе MyWork_Notifocations_Уведомления_Для_Задачи " + e.toString());
 
             //TODO ПЕРЕД СОЗДАНИЕМ НОВОГО СООБЕЩНИЯ ОБНУЛЯЕМ ПРДЫДУЩЕЕ
             //  builder=null;
@@ -399,22 +391,20 @@ public class MyWork_Notifocations_Уведомления_ДляЧата_Одно
         // TODO: 24.11.2021
         if (РезультатНужноЗапускатьУведомленияИлиНет==true) {
 
-            Log.i(Контекст.getClass().getName(), "     return     return     return     return     return"+"\n"+"   MyWork_Notifocations_Уведомления_ДляЧата_Одноразовая " +
+            Log.i(Контекст.getClass().getName(), "     return     return     return     return     return" + "\n" + "   MyWork_Notifocations_Уведомления_Для_Чата " +
                     " РезультатНужноЗапускатьУведомленияИлиНет  Result.success()   " + РезультатНужноЗапускатьУведомленияИлиНет);
 
             return Result.success();
 
         } else {
-            Log.i(Контекст.getClass().getName(), "    return     return     return     return     return" +"\n"+
-                    "  MyWork_Notifocations_Уведомления_ДляЧата_Одноразовая " +
+            Log.i(Контекст.getClass().getName(), "    return     return     return     return     return" + "\n" +
+                    "  MyWork_Notifocations_Уведомления_Для_Чата " +
                     " РезультатНужноЗапускатьУведомленияИлиНет Result.failure()   " + РезультатНужноЗапускатьУведомленияИлиНет);
 
 
-
-
-                Log.i(Контекст.getClass().getName(), "     return     return     return     return     return"+"\n"+"   MyWork_Notifocations_Уведомления_ДляЧата_Одноразовая " +
-                        " РезультатНужноЗапускатьУведомленияИлиНет  Result.failure() " + РезультатНужноЗапускатьУведомленияИлиНет+"\n"+
-                        " ИнформацияОЗапущенойСлужбе_Уведомления_ДляЧатаОдноразовое.getRunAttemptCount() " +ИнформацияОЗапущенойСлужбе_Уведомления_ДляЧатаОдноразовое.getRunAttemptCount());
+            Log.i(Контекст.getClass().getName(), "     return     return     return     return     return" + "\n" + "   MyWork_Notifocations_Уведомления_Для_Чата " +
+                    " РезультатНужноЗапускатьУведомленияИлиНет  Result.failure() " + РезультатНужноЗапускатьУведомленияИлиНет + "\n" +
+                    " ИнформацияОЗапущенойСлужбе_Уведомления_ДляЧатаОдноразовое.getRunAttemptCount() " + ИнформацияОЗапущенойСлужбе_Уведомления_ДляЧатаОдноразовое.getRunAttemptCount());
                 return Result.failure();
 
 
@@ -769,7 +759,7 @@ try{
 
             Intent notificationIntentДляУведомленийЗапускПаузы ;
             // TODO: 17.11.2021
-            notificationIntentДляУведомленийЗапускПаузы = new Intent(getApplicationContext(), Service_Notificatios_Для_Чата.class);
+            notificationIntentДляУведомленийЗапускПаузы = new Intent(getApplicationContext(), Service_Notifocations_Для_Чата.class);
             notificationIntentДляУведомленийЗапускПаузы.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             //notificationIntentЗакрыть.addCategory(Intent.CATEGORY_LAUNCHER);
             Uri uri = Uri.parse(PROCESS_ID_УведомленияОдноразовые);
@@ -785,7 +775,7 @@ try{
                         60,notificationIntentДляУведомленийЗапускПаузы,
                         PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
-                // Service_Notificatios_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускПаузы);
+                // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускПаузы);
             }
 ///TODO
             ///////TODO ЗАкрыкть
@@ -794,7 +784,7 @@ try{
 ////TODO
             Intent notificationIntentДляУведомленийЗакрываем ;
             // TODO: 17.11.2021
-            notificationIntentДляУведомленийЗакрываем = new Intent(getApplicationContext(), Service_Notificatios_Для_Чата.class);
+            notificationIntentДляУведомленийЗакрываем = new Intent(getApplicationContext(), Service_Notifocations_Для_Чата.class);
             notificationIntentДляУведомленийЗакрываем.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             //notificationIntentЗакрыть.addCategory(Intent.CATEGORY_LAUNCHER);
             uri = Uri.parse(PROCESS_ID_УведомленияОдноразовые);
@@ -813,14 +803,14 @@ try{
                         PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 Log.i(getApplicationContext().getClass().getName(), " Закрываем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" );
-                // Service_Notificatios_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗакрываем);
+                // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗакрываем);
             }
 ///TODO
 
 
             Intent notificationIntentДляУведомленийЗапускИзУведомления ;
             // TODO: 17.11.2021
-            notificationIntentДляУведомленийЗапускИзУведомления = new Intent(getApplicationContext(), Service_Notificatios_Для_Чата.class);
+            notificationIntentДляУведомленийЗапускИзУведомления = new Intent(getApplicationContext(), Service_Notifocations_Для_Чата.class);
             notificationIntentДляУведомленийЗапускИзУведомления.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             //   notificationIntent.addCategory(Intent.CATEGORY_LAUNCHER);
             uri = Uri.parse(PROCESS_ID_УведомленияОдноразовые);
@@ -837,13 +827,12 @@ try{
                         62, notificationIntentДляУведомленийЗапускИзУведомления,
                         PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
-                //  Service_Notificatios_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускИзУведомления);
+                //  Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускИзУведомления);
             }
 
 
-
-            Log.i(Контекст.getClass().getName(), "ЗАПУСК MyWork_Notifocations_Уведомления_Общая  СЛУЖБА     " +
-                    "           Service_Notificatios_Для_Чата.enqueueWork(getApplicationContext(),intentСлужбаУведомленийДЛЯЧата);;");
+            Log.i(Контекст.getClass().getName(), "ЗАПУСК MyWork_Notifocations_Уведомления_Для_Задачи  СЛУЖБА     " +
+                    "           Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),intentСлужбаУведомленийДЛЯЧата);;");
 
 
 

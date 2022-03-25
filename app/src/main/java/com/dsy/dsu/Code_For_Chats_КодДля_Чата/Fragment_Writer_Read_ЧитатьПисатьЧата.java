@@ -2027,9 +2027,6 @@ try{
                 };
 
 
-
-
-
                 ////
                 АдаптерДляЗаписиЧтенияЧата.setViewBinder(БиндингДляСообщенийЧата);
                 ///
@@ -2038,10 +2035,9 @@ try{
                 ЛистВьюДляСообщенийЧата.setAdapter(АдаптерДляЗаписиЧтенияЧата);
                 // TODO: 01.02.2022
                 ЛистВьюДляСообщенийЧата.requestLayout();
-///////
-   /*             АдаптерДляЗаписиЧтенияЧата.notifyDataSetChanged();
-                ////
-                ЛистВьюДляСообщенийЧата.setSelection(ЛистВьюДляСообщенийЧата.getCount() - 1);*/
+
+                // TODO: 25.03.2022
+
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -2139,7 +2135,7 @@ try{
 
                                 ((TextView) view).getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
                                 /////
-
+                                ((TextView) view).setSelected(true);
                                 ////////
 
                                 ((TextView) view).getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;

@@ -46,15 +46,15 @@ import java.util.TimeZone;
 import java.util.concurrent.ExecutionException;
 
 
-public class MyWork_Notifocations_Уведомления_Общая extends Worker {
+public class MyWork_Notifocations_Уведомления_Для_Задачи extends Worker {
     Context Контекст;
     ///
-    String ИмяСлужбыУведомленияДляЧата="WorkManager NOtofocationForChat";
+    String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForChat";
 
 
     WorkerParameters workerParams;
 
- NotificationManager mNotificationManagerДляЧАТА=null;
+    NotificationManager mNotificationManagerДляЧАТА = null;
 
 
     WorkInfo ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая;
@@ -108,18 +108,17 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
     Person.Builder person;
 
 
-
-    public MyWork_Notifocations_Уведомления_Общая(@NonNull Context context, @NonNull WorkerParameters workerParamsвнутри) {
+    public MyWork_Notifocations_Уведомления_Для_Задачи(@NonNull Context context, @NonNull WorkerParameters workerParamsвнутри) {
         super(context, workerParamsвнутри);
 
 
-            Контекст=context;
+        Контекст = context;
 
-        workerParams=workerParamsвнутри;
+        workerParams = workerParamsвнутри;
 
-        Class_Engine_SQLГдеНаходитьсяМенеджерПотоков =new     PUBLIC_CONTENT(Контекст);
+        Class_Engine_SQLГдеНаходитьсяМенеджерПотоков = new PUBLIC_CONTENT(Контекст);
         ////
-        class_grud_sql_operationsIDпользоввателяДляСлужб=new Class_GRUD_SQL_Operations(Контекст);
+        class_grud_sql_operationsIDпользоввателяДляСлужб = new Class_GRUD_SQL_Operations(Контекст);
         //TODO
 
         Create_Database_СсылкаНАБазовыйКласс=new CREATE_DATABASE(Контекст);
@@ -133,20 +132,20 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
     }
 
 
-    public MyWork_Notifocations_Уведомления_Общая(@NonNull Context context, @NonNull WorkerParameters workerParams, @Nullable Activity activity) {
+    public MyWork_Notifocations_Уведомления_Для_Задачи(@NonNull Context context, @NonNull WorkerParameters workerParams, @Nullable Activity activity) {
         super(context, workerParams);
 
 
-        Контекст=context;
-        Class_Engine_SQLГдеНаходитьсяМенеджерПотоков =new     PUBLIC_CONTENT(Контекст);
+        Контекст = context;
+        Class_Engine_SQLГдеНаходитьсяМенеджерПотоков = new PUBLIC_CONTENT(Контекст);
         ////
-        class_grud_sql_operationsIDпользоввателяДляСлужб=new Class_GRUD_SQL_Operations(Контекст);
+        class_grud_sql_operationsIDпользоввателяДляСлужб = new Class_GRUD_SQL_Operations(Контекст);
         //TODO
 
-        Create_Database_СсылкаНАБазовыйКласс=new CREATE_DATABASE(Контекст);
+        Create_Database_СсылкаНАБазовыйКласс = new CREATE_DATABASE(Контекст);
 
         Log.i(Контекст.getClass().getName(),
-                " public MyWork_Notifocations_Уведомления_Общая(@NonNull Context context, @NonNull WorkerParameters workerParams,@Nullable Activity activity) {  Контекст "+"\n"+ Контекст);
+                " public MyWork_Notifocations_Уведомления_Для_Задачи(@NonNull Context context, @NonNull WorkerParameters workerParams,@Nullable Activity activity) {  Контекст " + "\n" + Контекст);
 
     }
 
@@ -316,16 +315,16 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
             ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая= WorkManager.getInstance(Контекст.getApplicationContext()).getWorkInfosByTag(ИмяСлужбыУведомленияДляЧата).get().get(0);
                 // TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата         // TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата
 
-                Log.w(Контекст.getClass().getName(), " Внутри метода public Result doWork()   MyWork_Notifocations_Уведомления_Общая  ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая " + ИмяСлужбыУведомленияДляЧата + "\n"
-                        + " getState  " +
-                        ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getState().name() + "\n" +
-                        "getTags " +
-                        ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getTags() + "\n" +
-                        "getRunAttemptCount " +
-                        ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount() + "\n" +
-                        "getProgress " +
-                        ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getProgress().toString() + "\n" +
-                        " время : " + new Date());
+            Log.w(Контекст.getClass().getName(), " Внутри метода public Result doWork()   MyWork_Notifocations_Уведомления_Для_Задачи  ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая " + ИмяСлужбыУведомленияДляЧата + "\n"
+                    + " getState  " +
+                    ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getState().name() + "\n" +
+                    "getTags " +
+                    ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getTags() + "\n" +
+                    "getRunAttemptCount " +
+                    ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount() + "\n" +
+                    "getProgress " +
+                    ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getProgress().toString() + "\n" +
+                    " время : " + new Date());
 
             //////////
         } catch (Exception e) {
@@ -339,7 +338,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
                     Thread.currentThread().getStackTrace()[2].getLineNumber());
 
             Log.e(Контекст.getClass().getName(), " Стоп СЛУЖБА Service_Notificatios_Уведомления_ОбновлениеПО  ДЛЯ ЧАТА " +
-                    "MyWork_Notifocations_Уведомления_Общая ошибка  Exception e в классе MyWork_Notifocations_Уведомления_Общая " + e.toString() + "\n" +
+                    "MyWork_Notifocations_Уведомления_Для_Задачи ошибка  Exception e в классе MyWork_Notifocations_Уведомления_Для_Задачи " + e.toString() + "\n" +
                     " ФинальныйФлагЛюбогоЗапущеногоАктивти " + ФинальныйФлагЛюбогоЗапущеногоАктивти);
 
             //TODO ПЕРЕД СОЗДАНИЕМ НОВОГО СООБЕЩНИЯ ОБНУЛЯЕМ ПРДЫДУЩЕЕ
@@ -365,7 +364,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
                 "ПОПЫТОК СРАБОТКИ WORKMANGER (ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount()):: "
                 +ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount()+
                 "  РЕЗУЛЬТАТ ОБЩЕЙ СИНХРОНИАЗЦИИ" +
-                "Result.retry() РЕЗУЛЬТАТ MyWork_Notifocations_Уведомления_Общая  внутри WORK MANAGER   РезультатЗапускаФоновойСинхронизацииСтрогоВФОне    "
+                "Result.retry() РЕЗУЛЬТАТ MyWork_Notifocations_Уведомления_Для_Задачи  внутри WORK MANAGER   РезультатЗапускаФоновойСинхронизацииСтрогоВФОне    "
                 +РезультатНужноЗапускатьУведомленияИлиНет+ " ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount() " +ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount() );
 
         // TODO: 25.02.2022 send datas
@@ -382,10 +381,10 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
 
             // TODO: 03.01.2022
             Log.w(Контекст.getClass().getName(), " return return return Result.success()  " +"\n"+
-                    "  ПОПЫТОК СРАБОТКИ WORKMANGER   MyWork_Notifocations_Уведомления_Общая  (ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount()):: "
+                    "  ПОПЫТОК СРАБОТКИ WORKMANGER   MyWork_Notifocations_Уведомления_Для_Задачи  (ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount()):: "
                     +ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount()+
                     "  РЕЗУЛЬТАТ ОБЩЕЙ СИНХРОНИАЗЦИИ" +
-                    "Result.retry() РЕЗУЛЬТАТ MyWork_Notifocations_Уведомления_Общая  внутри WORK MANAGER   РезультатЗапускаФоновойСинхронизацииСтрогоВФОне    "
+                    "Result.retry() РЕЗУЛЬТАТ MyWork_Notifocations_Уведомления_Для_Задачи  внутри WORK MANAGER   РезультатЗапускаФоновойСинхронизацииСтрогоВФОне    "
                     +РезультатНужноЗапускатьУведомленияИлиНет + " ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount() "
                     +ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount() );
 
@@ -406,12 +405,12 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
             if (ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount()>1000) {
                 // TODO: 25.02.2022
                 Log.w(Контекст.getClass().getName(), "   return return return   BACKOFF ПОВТОРЕНИЕ СЛУЖБЫ ОБЩЕГО УВЕДОМЛЕНИЯ  ПОСЛЕ 0 количество   Result.failure()   " +"\n"+
-                        "ПОПЫТОК СРАБОТКИ WORKMANGER  MyWork_Notifocations_Уведомления_Общая (ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount()):: "
+                        "ПОПЫТОК СРАБОТКИ WORKMANGER  MyWork_Notifocations_Уведомления_Для_Задачи (ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount()):: "
                         +ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount()+
                         "  РЕЗУЛЬТАТ ОБЩЕЙ УВЕДОМЕЛЕНИЯ " +
-                        "Result.failure()  РЕЗУЛЬТАТ MyWork_Notifocations_Уведомления_Общая  внутри WORK MANAGER   РезультатЗапускаФоновойСинхронизацииСтрогоВФОне    "
+                        "Result.failure()  РЕЗУЛЬТАТ MyWork_Notifocations_Уведомления_Для_Задачи  внутри WORK MANAGER   РезультатЗапускаФоновойСинхронизацииСтрогоВФОне    "
                         +РезультатНужноЗапускатьУведомленияИлиНет
-                        +"\n"+  "  MyWork_Notifocations_Уведомления_Общая  ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount() "
+                        +"\n"+  "  MyWork_Notifocations_Уведомления_Для_Задачи  ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount() "
                         +ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount()  );
 
                 // TODO: 24.11.2021
@@ -424,12 +423,12 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
             } else {
                 // TODO: 25.02.2022
                 Log.w(Контекст.getClass().getName(), "   return return return   BACKOFF ПОВТОРЕНИЕ СЛУЖБЫ ОБЩЕГО УВЕДОМЛЕНИЯ  ПОСЛЕ 0 количество   Result.failure()   " +"\n"+
-                        "ПОПЫТОК СРАБОТКИ WORKMANGER  MyWork_Notifocations_Уведомления_Общая (ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount()):: "
+                        "ПОПЫТОК СРАБОТКИ WORKMANGER  MyWork_Notifocations_Уведомления_Для_Задачи (ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount()):: "
                         +ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount()+
                         "  РЕЗУЛЬТАТ ОБЩЕЙ УВЕДОМЕЛЕНИЯ " +
-                        "Result.retry() РЕЗУЛЬТАТ MyWork_Notifocations_Уведомления_Общая  внутри WORK MANAGER   РезультатЗапускаФоновойСинхронизацииСтрогоВФОне    "
+                        "Result.retry() РЕЗУЛЬТАТ MyWork_Notifocations_Уведомления_Для_Задачи  внутри WORK MANAGER   РезультатЗапускаФоновойСинхронизацииСтрогоВФОне    "
                         +РезультатНужноЗапускатьУведомленияИлиНет
-                        +"\n"+  "  MyWork_Notifocations_Уведомления_Общая  ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount() "
+                        +"\n"+  "  MyWork_Notifocations_Уведомления_Для_Задачи  ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount() "
                         +ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount() );
 
                 // TODO: 24.11.2021
@@ -437,14 +436,14 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
 
             }*/
             // TODO: 25.02.2022
-            Log.w(Контекст.getClass().getName(), "   return return return   BACKOFF ПОВТОРЕНИЕ СЛУЖБЫ ОБЩЕГО УВЕДОМЛЕНИЯ  ПОСЛЕ 0 количество   Result.failure()   " +"\n"+
-                    "ПОПЫТОК СРАБОТКИ WORKMANGER  MyWork_Notifocations_Уведомления_Общая (ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount()):: "
-                    +ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount()+
+            Log.w(Контекст.getClass().getName(), "   return return return   BACKOFF ПОВТОРЕНИЕ СЛУЖБЫ ОБЩЕГО УВЕДОМЛЕНИЯ  ПОСЛЕ 0 количество   Result.failure()   " + "\n" +
+                    "ПОПЫТОК СРАБОТКИ WORKMANGER  MyWork_Notifocations_Уведомления_Для_Задачи (ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount()):: "
+                    + ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount() +
                     "  РЕЗУЛЬТАТ ОБЩЕЙ УВЕДОМЕЛЕНИЯ " +
-                    "Result.retry() РЕЗУЛЬТАТ MyWork_Notifocations_Уведомления_Общая  внутри WORK MANAGER   РезультатЗапускаФоновойСинхронизацииСтрогоВФОне    "
-                    +РезультатНужноЗапускатьУведомленияИлиНет
-                    +"\n"+  "  MyWork_Notifocations_Уведомления_Общая  ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount() "
-                    +ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount() );
+                    "Result.retry() РЕЗУЛЬТАТ MyWork_Notifocations_Уведомления_Для_Задачи  внутри WORK MANAGER   РезультатЗапускаФоновойСинхронизацииСтрогоВФОне    "
+                    + РезультатНужноЗапускатьУведомленияИлиНет
+                    + "\n" + "  MyWork_Notifocations_Уведомления_Для_Задачи  ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount() "
+                    + ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getRunAttemptCount() );
 
             // TODO: 24.11.2021
             return Result.retry();
@@ -512,7 +511,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
                               Thread.currentThread().getStackTrace()[2].getLineNumber());
 
                       Log.e(Контекст.getClass().getName(), " Стоп СЛУЖБА Service_Notificatios_Уведомления_ОбновлениеПО  ДЛЯ ЧАТА " +
-                              "MyWork_Notifocations_Уведомления_Общая ошибка  Exception e в классе MyWork_Notifocations_Уведомления_Общая " + e.toString() + "\n" +
+                              "MyWork_Notifocations_Уведомления_Для_Задачи ошибка  Exception e в классе MyWork_Notifocations_Уведомления_Для_Задачи " + e.toString() + "\n" +
                               " ФинальныйФлагЛюбогоЗапущеногоАктивти " + ФинальныйФлагЛюбогоЗапущеногоАктивти);
                       Log.e(getApplicationContext().getClass().getName(), " Ошибка  MyWork_Notifocations_Уведомления ЧАТ   public Result doWork()    ДЛЯ ЧАТА ");
                   }
@@ -856,7 +855,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
 ////TODO
             Intent notificationIntentДляУведомленийЗакрываем ;
             // TODO: 17.11.2021
-            notificationIntentДляУведомленийЗакрываем = new Intent(getApplicationContext(), Service_Notificatios_Для_Чата.class);
+            notificationIntentДляУведомленийЗакрываем = new Intent(getApplicationContext(), Service_Notifocations_Для_Чата.class);
             notificationIntentДляУведомленийЗакрываем.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             //notificationIntentЗакрыть.addCategory(Intent.CATEGORY_LAUNCHER);
             uri = Uri.parse(PROCESS_ID_УведомленияПлановая);
@@ -875,14 +874,14 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
                         PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 Log.i(getApplicationContext().getClass().getName(), " Закрываем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" );
-               // Service_Notificatios_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗакрываем);
+               // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗакрываем);
             }
 ///TODO
 
 
             Intent notificationIntentДляУведомленийЗапускИзУведомления ;
             // TODO: 17.11.2021
-            notificationIntentДляУведомленийЗапускИзУведомления = new Intent(getApplicationContext(), Service_Notificatios_Для_Чата.class);
+            notificationIntentДляУведомленийЗапускИзУведомления = new Intent(getApplicationContext(), Service_Notifocations_Для_Чата.class);
             notificationIntentДляУведомленийЗапускИзУведомления.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             //   notificationIntent.addCategory(Intent.CATEGORY_LAUNCHER);
            // notificationIntentДляУведомленийЗапускИзУведомления.putExtra("PROCESS_ID_УведомленияПлановая",16);
@@ -898,13 +897,13 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
                        12, notificationIntentДляУведомленийЗапускИзУведомления,
                         PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
-              //  Service_Notificatios_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускИзУведомления);
+              //  Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускИзУведомления);
             }
 
 
 
-            Log.i(Контекст.getClass().getName(), "ЗАПУСК MyWork_Notifocations_Уведомления_Общая  СЛУЖБА     " +
-                    "           Service_Notificatios_Для_Чата.enqueueWork(getApplicationContext(),intentСлужбаУведомленийДЛЯЧата);;");
+            Log.i(Контекст.getClass().getName(), "ЗАПУСК MyWork_Notifocations_Уведомления_Для_Задачи  СЛУЖБА     " +
+                    "           Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),intentСлужбаУведомленийДЛЯЧата);;");
 */
 
 

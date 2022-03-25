@@ -18,7 +18,7 @@ import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
 import com.dsy.dsu.Class_Generation_Errors;
-import com.dsy.dsu.MyWork_Notifocations_Уведомления_Общая;
+import com.dsy.dsu.MyWork_Notifocations_Уведомления_Для_Задачи;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -128,12 +128,12 @@ public class BroadcastReceiver_Sous_Notificatioons extends BroadcastReceiver {
 ///
 
 
-            PeriodicWorkRequest periodicWorkRequestУведомленияДляЧата=new PeriodicWorkRequest.Builder(MyWork_Notifocations_Уведомления_Общая.class,
+            PeriodicWorkRequest periodicWorkRequestУведомленияДляЧата = new PeriodicWorkRequest.Builder(MyWork_Notifocations_Уведомления_Для_Задачи.class,
 
                     PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS, TimeUnit.MILLISECONDS)//MIN_PERIODIC_FLEX_MILLIS
                     .setConstraints(constraintsУведомленияДляЧата)
                     .addTag(ИмяСлужбыУведомленияДляЧата)
-                    .setInitialDelay(2,TimeUnit.SECONDS)
+                    .setInitialDelay(2, TimeUnit.SECONDS)
                     .setBackoffCriteria(
                             BackoffPolicy.LINEAR,
                             10,

@@ -1040,16 +1040,13 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
                         PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 Log.i(getApplicationContext().getClass().getName(), " Закрываем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" );
-                // Service_Notificatios_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗакрываем);
+                // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗакрываем);
             }
 ///TODO
 
 
-
-
-
             Log.i(Контекст.getClass().getName(), "ЗАПУСК MyWork_Notifocations_Уведомления_ДляОбновлнение ПО  СЛУЖБА     " +
-                    "           Service_Notificatios_Для_Чата.enqueueWork(getApplicationContext(),intentСлужбаУведомленийДЛЯЧата);;");
+                    "           Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),intentСлужбаУведомленийДЛЯЧата);;");
 
 
 

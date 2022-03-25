@@ -41,20 +41,30 @@ public class Service_Notificatios_Для_ОбновлениеПО extends JobInt
     public void onCreate() {
         super.onCreate();
         Log.d(getApplicationContext().getClass().getName(), " onCreate СЛУЖБА Service_Notificatios_Для_ОбновлениеПО  "
-                +" время: "
-                +new Date());
+                + " время: "
+                + new Date());
 
     }
+
+    public static void enqueueWork(Context context, Intent intent) {
+        enqueueWork(context, Service_Notificatios_Для_ОбновлениеПО.class, 41, intent);
+
+        Log.d(context.getClass().getName(), " enqueueWork СЛУЖБА Service_Notifocations_Для_Чата  "
+                + " время: "
+                + new Date());
+
+    }
+// TODO: 16.11.2021
 
     @Override
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
 
-        try{
+        try {
 
-        СервернаяВерсияПОВнутри=  intent.getIntExtra("НоваяВерсияСерверногоПОПОслеУспешнойЗагрузки",0);
+            СервернаяВерсияПОВнутри = intent.getIntExtra("НоваяВерсияСерверногоПОПОслеУспешнойЗагрузки", 0);
 
-        Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА Service_Notificatios_Для_ОбновлениеПО "
-                + " время: "
+            Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА Service_Notificatios_Для_ОбновлениеПО "
+                    + " время: "
                 + new Date()+"\n"+
                 "  СервернаяВерсияПОВнутри " +СервернаяВерсияПОВнутри);
 
@@ -154,11 +164,8 @@ public class Service_Notificatios_Для_ОбновлениеПО extends JobInt
 // TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата         // TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата
 
 
-
-
-
             Log.i(getApplicationContext().getClass().getName(), " Закрываем   внутри служы ПОЛЬЗОВАТЛЬ НАДАЛ НАКПОКУ ЗАКРЫТЬ" +
-                    "Service_Notificatios_Для_Чата (intent.getAction()   СЛУЖБА" +(intent.getAction().toString())+" время запуска  " +new Date());
+                    "Service_Notifocations_Для_Чата (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date());
 
 
             // TODO: 28.12.2021 НЕ ПОСРЕДСТВЕНО ЗАГРУЗКА по ПОЛЬЗОВАТЕЛЮ
@@ -168,7 +175,7 @@ public class Service_Notificatios_Для_ОбновлениеПО extends JobInt
 
 
             Log.i(getApplicationContext().getClass().getName(), " ЗАГРУЖАЕМ ПО ПОЛЬЗОВАТЕЛЬ НАЖАЛ НА КОНОПКУ ЗАГУРДИТЬ   " +
-                    "Service_Notificatios_Для_Чата (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date() +
+                    "Service_Notifocations_Для_Чата (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date() +
                     "  СервернаяВерсияПОВнутри " + СервернаяВерсияПОВнутри);
             String PROCESS_ID_UpdateSoft = "19";
 
@@ -183,7 +190,7 @@ public class Service_Notificatios_Для_ОбновлениеПО extends JobInt
 
 
             Log.i(getApplicationContext().getClass().getName(), " УЖЕ ЗАГРУзили ПО ПОЛЬЗОВАТЕЛЬ НАЖАЛ НА КОНОПКУ ЗАГУРДИТЬ   " +
-                    "Service_Notificatios_Для_Чата (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date());
+                    "Service_Notifocations_Для_Чата (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date());
         }
     } catch (Exception e) {
         e.printStackTrace();
@@ -199,31 +206,13 @@ public class Service_Notificatios_Для_ОбновлениеПО extends JobInt
 
         return super.onStartCommand(intent, flags, startId);
     }
-// TODO: 16.11.2021
-
-
-
-
-
-
-
-
-
-    public static void enqueueWork(Context context, Intent intent) {
-        enqueueWork(context, Service_Notificatios_Для_ОбновлениеПО.class, 41, intent);
-
-        Log.d(context.getClass().getName(), " enqueueWork СЛУЖБА Service_Notificatios_Для_Чата  "
-                +" время: "
-                +new Date());
-
-    }
 
     @Override
     public boolean onStopCurrentWork() {
 
-        Log.d(getApplicationContext().getClass().getName(), " enqueueWork СЛУЖБА Service_Notificatios_Для_Чата  "
-                +" время: "
-                +new Date());
+        Log.d(getApplicationContext().getClass().getName(), " enqueueWork СЛУЖБА Service_Notifocations_Для_Чата  "
+                + " время: "
+                + new Date());
         return super.onStopCurrentWork();
     }
 

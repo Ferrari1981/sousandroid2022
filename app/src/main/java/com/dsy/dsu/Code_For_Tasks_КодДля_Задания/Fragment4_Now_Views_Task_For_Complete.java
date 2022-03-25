@@ -1386,6 +1386,8 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                     АдаптерДляФИОПриСозданииНовойЗадачи.setViewBinder(БиндингДляSpinnerФИОСозданиеНовойЗадачи);
                     // TODO: 28.02.2022
                     holder.spinnerДляСозданиеНовойЗадачи.setAdapter(АдаптерДляФИОПриСозданииНовойЗадачи);
+
+
                     // TODO: 17.03.2022
                     Log.e(this.getClass().getName(), "АдаптерДляФИОПриСозданииНовойЗадачи  ");
 

@@ -13,13 +13,12 @@ import androidx.work.Constraints;
 import androidx.work.ExistingWorkPolicy;
 import androidx.work.NetworkType;
 import androidx.work.OneTimeWorkRequest;
-import androidx.work.OutOfQuotaPolicy;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
 import com.dsy.dsu.Class_Generation_Errors;
-import com.dsy.dsu.MyWork_Notifocations_Уведомления_ДляЧата_Одноразовая;
+import com.dsy.dsu.MyWork_Notifocations_Уведомления_Для_Чата;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -149,7 +148,7 @@ public class BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУ�
 ///
 
 
-            OneTimeWorkRequest periodicWorkRequestУведомленияДляЧатаОдноразовая=new OneTimeWorkRequest.Builder(MyWork_Notifocations_Уведомления_ДляЧата_Одноразовая.class)///  PeriodicWorkRequest.MIN_BACKOFF_MILLIS
+            OneTimeWorkRequest periodicWorkRequestУведомленияДляЧатаОдноразовая = new OneTimeWorkRequest.Builder(MyWork_Notifocations_Уведомления_Для_Чата.class)///  PeriodicWorkRequest.MIN_BACKOFF_MILLIS
                     .setConstraints(constraintsУведомленияДляЧата)
                     .addTag(ИмяСлужбыУведомленияДляЧатаОдноразовая)
                     .setBackoffCriteria(
@@ -212,7 +211,7 @@ public class BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУ�
                     this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
                     Thread.currentThread().getStackTrace()[2].getLineNumber());;
 
-            Log.e(context.getClass().getName(), "ОШИБКА CATCH  из BroadcastReceiver  СЛУЖБА УВЕДОМЛЕНИЯ для ЧАТА в BroadCasrReciver    private void MyWork_Notifocations_Уведомления_ДляЧата_Одноразовая"+e.toString());
+            Log.e(context.getClass().getName(), "ОШИБКА CATCH  из BroadcastReceiver  СЛУЖБА УВЕДОМЛЕНИЯ для ЧАТА в BroadCasrReciver    private void MyWork_Notifocations_Уведомления_Для_Чата" + e.toString());
 
 
         }

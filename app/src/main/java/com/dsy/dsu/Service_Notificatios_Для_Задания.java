@@ -25,14 +25,12 @@ import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
 
-public class Service_Notificatios_Для_Чата extends JobIntentService {////Service
+public class Service_Notificatios_Для_Задания extends JobIntentService {////Service
 
 
-
-    private static final String НазваниеСлужбы=".Service_Notificatios_Для_Чата";
+    private static final String НазваниеСлужбы = ".Service_Notifocations_Для_Чата";
     ////
     //TODO
-
 
 
     ////////
@@ -61,21 +59,31 @@ public class Service_Notificatios_Для_Чата extends JobIntentService {////
     // TODO: 24.03.2022
     String ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        Log.d(getApplicationContext().getClass().getName(), " onCreate СЛУЖБА Service_Notificatios_Для_Чата  "
+    public static void enqueueWork(Context context, Intent intent) {
+        enqueueWork(context, Service_Notificatios_Для_Задания.class, 25, intent);
+
+        Log.d(context.getClass().getName(), " enqueueWork СЛУЖБА Service_Notifocations_Для_Чата  "
                 + " время: "
                 + new Date());
 
     }
 
     @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.d(getApplicationContext().getClass().getName(), " onCreate СЛУЖБА Service_Notifocations_Для_Чата  "
+                + " время: "
+                + new Date());
+
+    }
+// TODO: 16.11.2021
+
+    @Override
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
 
         try {
 
-            Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА Service_Notificatios_Для_Чата  "
+            Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА Service_Notifocations_Для_Чата  "
                     + " время: "
                     + new Date());
 
@@ -177,7 +185,7 @@ public class Service_Notificatios_Для_Чата extends JobIntentService {////
 
 
             // TODO: 11.05.2021 ЗПУСКАЕМ СЛУЖБУ через брдкастер синхронизхации и уведомления
-            WorkInfo ИнформацияОЗапущенойСлужбе= null;
+            WorkInfo ИнформацияОЗапущенойСлужбе = null;
             try {
                 ИнформацияОЗапущенойСлужбе = WorkManager.getInstance(getApplicationContext().getApplicationContext()).getWorkInfosByTag(ИмяСлужбыУведомленияДляЧата.toString()).get().get(0);
             } catch (ExecutionException e) {
@@ -187,8 +195,8 @@ public class Service_Notificatios_Для_Чата extends JobIntentService {////
             }
             // TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата         // TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата
 
-            Log.w(getApplicationContext().getClass().getName(), " После НАЖАТИЕ НА КНОПКУ ЗАКРЫТЬ  Выкючение в Service_Notificatios_Для_Чата Внутри СЛУЖБЫ " +
-                    " MyWork_Notifocations_Уведомления_Общая " + ИмяСлужбыУведомленияДляЧата + "\n"
+            Log.w(getApplicationContext().getClass().getName(), " После НАЖАТИЕ НА КНОПКУ ЗАКРЫТЬ  Выкючение в Service_Notifocations_Для_Чата Внутри СЛУЖБЫ " +
+                    " MyWork_Notifocations_Уведомления_Для_Задачи " + ИмяСлужбыУведомленияДляЧата + "\n"
                     + " getState  " +
                     ИнформацияОЗапущенойСлужбе.getState().name() + "\n" +
                     " isFinished  " +
@@ -220,7 +228,7 @@ public class Service_Notificatios_Для_Чата extends JobIntentService {////
                 e.printStackTrace();
             }
 
-            Log.w(getApplicationContext().getClass().getName(), " После НАЖАТИЕ НА КНОПКУ ЗАКРЫТЬ  Выкючение в Service_Notificatios_Для_Чата     Внутри СЛУЖБЫ " + "\n"+
+            Log.w(getApplicationContext().getClass().getName(), " После НАЖАТИЕ НА КНОПКУ ЗАКРЫТЬ  Выкючение в Service_Notifocations_Для_Чата     Внутри СЛУЖБЫ " + "\n"+
                     " MyWork_Async_Синхронизация_Общая " + ИмяСлужбыСинхронизации + "\n"
                     + " getState  " +
                     ИнформацияОЗапущенойСлужбе.getState().name() + "\n" +
@@ -235,14 +243,8 @@ public class Service_Notificatios_Для_Чата extends JobIntentService {////
                     " время : " + new Date());*/
 
 
-
-
-
-
-
-
             Log.i(getApplicationContext().getClass().getName(), " Закрываем   внутри служы ПОЛЬЗОВАТЛЬ НАДАЛ НАКПОКУ ЗАКРЫТЬ" +
-                    "Service_Notificatios_Для_Чата (intent.getAction()   СЛУЖБА" +(intent.getAction().toString())+" время запуска  " +new Date());
+                    "Service_Notifocations_Для_Чата (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date());
 
 
 
@@ -285,19 +287,16 @@ public class Service_Notificatios_Для_Чата extends JobIntentService {////
 
 
             // TODO: 07.02.2022 задание НА СОГЛАСОВАНИЕ ЧТО ПОЛЬЗОВАТЕЛЬ ОЗНАКОМЛЕН С ЗАДАНИЕМ
-        }else if (intent.getAction().equals("ЗапускСогласованияПришедшегоЗАДАНИЕ") ){
-            // TODO: 07.02.2022  
-            
-            
+        }else if (intent.getAction().equals("ЗапускСогласованияПришедшегоЗАДАНИЕ") ) {
+            // TODO: 07.02.2022
+
+
             Log.i(getApplicationContext().getClass().getName(), "ЗапускСогласованияПришедшегоЗАДАНИЕ   " +
-                    "........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" +(intent.getAction().toString())+" время запуска  " +new Date()+ "\n"+
-                    "  intent.getAction() " +intent.getAction());
-            
-            
+                    "........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date() + "\n" +
+                    "  intent.getAction() " + intent.getAction());
 
 
-
-            Log.i(getApplicationContext().getClass().getName(), " ЗапускПаузы ........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" +(intent.getAction().toString())+" время запуска  " +new Date()+ "\n"+
+            Log.i(getApplicationContext().getClass().getName(), " ЗапускПаузы ........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date() + "\n" +
                     "  intent.getAction() " +intent.getAction()+
                     " \n"+  " UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ " +UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ);
 
@@ -369,31 +368,13 @@ public class Service_Notificatios_Для_Чата extends JobIntentService {////
 
         return super.onStartCommand(intent, flags, startId);
     }
-// TODO: 16.11.2021
-
-
-
-
-
-
-
-
-
-    public static void enqueueWork(Context context, Intent intent) {
-        enqueueWork(context, Service_Notificatios_Для_Чата.class, 25, intent);
-
-        Log.d(context.getClass().getName(), " enqueueWork СЛУЖБА Service_Notificatios_Для_Чата  "
-                +" время: "
-                +new Date());
-
-    }
 
     @Override
     public boolean onStopCurrentWork() {
 
-        Log.d(getApplicationContext().getClass().getName(), " enqueueWork СЛУЖБА Service_Notificatios_Для_Чата  "
-                +" время: "
-                +new Date());
+        Log.d(getApplicationContext().getClass().getName(), " enqueueWork СЛУЖБА Service_Notifocations_Для_Чата  "
+                + " время: "
+                + new Date());
         return super.onStopCurrentWork();
     }
 
