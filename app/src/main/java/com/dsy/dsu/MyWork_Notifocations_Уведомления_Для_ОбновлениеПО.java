@@ -506,7 +506,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
                 Log.i(Контекст.getClass().getName(), "      observableПолучаемНовуюВерсиюСервернойВерсииФайлаAPK.subscribe " +
                         "СервернаяВерсияПОВнутри"+"\n"+
                         " СервернаяВерсияПОВнутри  " +СервернаяВерсияПОВнутри +"\n"+
-                        " СервернаяВерсияПОВнутриКонец  " +СервернаяВерсияПОВнутриКонец +"\n"+
+                        " СервернаяВерсияПОВнутриКонец  " + СервернаяВерсияПОВнутриКонец + "\n" +
                         "" + " +Thread.currentThread().getName() " + Thread.currentThread().getName());
             });
 
@@ -515,14 +515,11 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
 
 
             // TODO: 05.01.2022
-       ///   observableПолучаемНовуюВерсиюСервернойВерсииФайлаAPK.toFuture().get();
-
-
-
-
-
-
-
+            ///   observableПолучаемНовуюВерсиюСервернойВерсииФайлаAPK.toFuture().get();
+            Log.i(Контекст.getClass().getName(), "      observableПолучаемНовуюВерсиюСервернойВерсииФайлаAPK.subscribe " +
+                    "СервернаяВерсияПОВнутри" + "\n" +
+                    " СервернаяВерсияПОВнутри  " + СервернаяВерсияПОВнутри + "\n" +
+                    "" + " +Thread.currentThread().getName() " + Thread.currentThread().getName());
 
 
             ///////

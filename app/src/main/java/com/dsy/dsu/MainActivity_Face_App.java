@@ -219,11 +219,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
 
 
-            // TODO: 28.12.2021
-            Log.w(getPackageName().getClass().getName(), "  SRART UPDAET SOFT" );
 
-
-            МЕтодЗапускСЛУЖБЫОбновленияПО();
 
 
             Log.w(getPackageName().getClass().getName(), "  МЕтодЗапускСЛУЖБЫОбновленияПО  protected void onResume()  " +
@@ -244,13 +240,6 @@ public class MainActivity_Face_App extends AppCompatActivity {
             Log.i(this.getClass().getName(), "ПОВТОРНЫЙ ЗАПУСК ONESINGLE КОЛУЧЕНЕИ КЛЮЯА FIREBASE ");
 
 
-            // TODO: 28.12.2021
-
-
-            МетодПовторногоЗапускаУведомленияОБщихДляЧатаиДАнных();
-
-            Log.w(getPackageName().getClass().getName(), "  FAceAPP повторный запуск Уведломления Одноразового  МетодПовторногоЗапускаУведомленияОБщихДляЧатаиДАнных() ");
-
 
             // TODO: 06.06.2021 ЗАПУСК ТРЕХ СЛУЖБ*/
 
@@ -261,8 +250,6 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
             // TODO: 28.12.2021   Метод  ДАННЫЙ МЕТОД ВСЕГДА ПОСЛЕДНИЙ  если пришло Новоое Обновление По табельный УЧЁТ ПО ЗАПУСКАЕМ ЕГО ВСТАВКИ ПОКАЗЫВАЕМ ПОЛЬЗОВАТЕЛЮ
 
-
-            МетодВActivityFaveApp_УстанавливаетПрограммноеОбеспечениеПОТабельныйУчёт();
 
 
         } catch (Exception e) {
@@ -310,6 +297,27 @@ public class MainActivity_Face_App extends AppCompatActivity {
             progressBarChat.setVisibility(View.INVISIBLE);
 
             // TODO: 27.02.2022
+
+
+            // TODO: 28.12.2021
+
+
+            МетодПовторногоЗапускаУведомленияОБщихДляЧатаиДАнных();
+
+            Log.w(getPackageName().getClass().getName(), "  FAceAPP повторный запуск Уведломления Одноразового" +
+                    "" +
+                    "" +
+                    "" +
+                    "  МетодПовторногоЗапускаУведомленияОБщихДляЧатаиДАнных() ");
+
+            // TODO: 28.12.2021
+            Log.w(getPackageName().getClass().getName(), "  SRART UPDAET SOFT");
+
+
+            МЕтодЗапускСЛУЖБЫОбновленияПО();
+
+            МетодВActivityFaveApp_УстанавливаетПрограммноеОбеспечениеПОТабельныйУчёт();
+
 
         } catch (Exception e) {
             //  Block of code to handle errors
