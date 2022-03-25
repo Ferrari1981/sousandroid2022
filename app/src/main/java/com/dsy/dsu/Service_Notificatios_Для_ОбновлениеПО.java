@@ -168,17 +168,22 @@ public class Service_Notificatios_Для_ОбновлениеПО extends JobInt
 
 
             Log.i(getApplicationContext().getClass().getName(), " ЗАГРУЖАЕМ ПО ПОЛЬЗОВАТЕЛЬ НАЖАЛ НА КОНОПКУ ЗАГУРДИТЬ   " +
-                    "Service_Notificatios_Для_Чата (intent.getAction()   СЛУЖБА" +(intent.getAction().toString())+" время запуска  " +new Date()+
-                     "  СервернаяВерсияПОВнутри " +СервернаяВерсияПОВнутри);
+                    "Service_Notificatios_Для_Чата (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date() +
+                    "  СервернаяВерсияПОВнутри " + СервернаяВерсияПОВнутри);
+            String PROCESS_ID_UpdateSoft = "19";
+
+            NotificationManager notificationManager = (NotificationManager)
+                    getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
 
 
+            notificationManager.cancel(Integer.parseInt(PROCESS_ID_UpdateSoft));
 
-            new Class_Update_Download_File_APK_From_SERVER(getApplicationContext(),null).МетодНачалаЗапускаОбновленияПО(СервернаяВерсияПОВнутри);
 
+            new Class_Update_Download_File_APK_From_SERVER(getApplicationContext(), null).МетодНачалаЗапускаОбновленияПО(СервернаяВерсияПОВнутри);
 
 
             Log.i(getApplicationContext().getClass().getName(), " УЖЕ ЗАГРУзили ПО ПОЛЬЗОВАТЕЛЬ НАЖАЛ НА КОНОПКУ ЗАГУРДИТЬ   " +
-                    "Service_Notificatios_Для_Чата (intent.getAction()   СЛУЖБА" +(intent.getAction().toString())+" время запуска  " +new Date());
+                    "Service_Notificatios_Для_Чата (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date());
         }
     } catch (Exception e) {
         e.printStackTrace();
