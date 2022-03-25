@@ -11,6 +11,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -1935,14 +1937,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                                                         // TODO: 22.03.2022  ПОСЛЕ УСПЕШНОГО СОЗДАНЕИ ОВГО ЗАДАНИЯ ЗАПУСКАЕМ СИНХРОНИАЗЦИЮ
 
-                                                        Курсор_ГлавныйКурсорДляЗадач.deactivate();
-                                                        // TODO: 25.03.2022
-                                                        Курсор_ГлавныйКурсорДляЗадач.requery();
 
-                                                        // TODO: 25.03.2022
-                                                        Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.deactivate();
-                                                        // TODO: 25.03.2022
-                                                        Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.requery();
                                                         // TODO: 25.03.2022
 
 
@@ -1957,6 +1952,27 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                                                         Log.d(this.getClass().getName(), "после СОЗДАНИЕЯ НОВОЙ ЗАДАЧИ ..... ПОСЛЕ ЗУПАСУКА СИНХРОНИАЗЦИИ" +
                                                                 "  ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
+
+
+                                                        // TODO: 03.03.2022 update screewn
+                                                        Handler HandlerЗапускаемОтсрочнуюСменуСтатуса = new Handler(Looper.getMainLooper());
+                                                        // TODO: 25.03.2022
+                                                        HandlerЗапускаемОтсрочнуюСменуСтатуса.postDelayed(() -> {
+                                                            // TODO: 04.03.2022
+
+                                                            Курсор_ГлавныйКурсорДляЗадач.deactivate();
+                                                            // TODO: 25.03.2022
+                                                            Курсор_ГлавныйКурсорДляЗадач.requery();
+
+                                                            // TODO: 25.03.2022
+                                                            Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.deactivate();
+                                                            // TODO: 25.03.2022
+                                                            Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.requery();
+
+                                                            // TODO: 13.03.2022
+                                                            notifyDataSetChanged();
+
+                                                        }, 5000);
 
 
                                                     }
