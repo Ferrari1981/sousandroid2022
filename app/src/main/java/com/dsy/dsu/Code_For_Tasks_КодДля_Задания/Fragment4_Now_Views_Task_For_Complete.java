@@ -1618,7 +1618,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                             // TODO: 02.03.2022
                             Log.i(this.getClass().getName(), "  СтатусЗадачиДляСтатусаПримечания  Выполнить  " + СтатусЗадачиДляСтатусаПримечания);
 
-                            holder.textView10ПримечанияОтКлиентаCallsBalck.setHint("Уже имеет статус (Выполнил) ");//IDЗадачиТекущей
+                            holder.textView10ПримечанияОтКлиентаCallsBalck.setHint("Уже имеет статус (Выполнена) ");//IDЗадачиТекущей
                             // TODO: 25.03.2022
                             holder.textView10ПримечанияОтКлиентаCallsBalck.setSelected(false);
                             // TODO: 25.03.2022
@@ -1644,7 +1644,6 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                             // TODO: 25.03.2022
                             holder.textView10ПримечанияОтКлиентаCallsBalck.setClickable(false);
                             // TODO: 25.03.2022
-
 
                             break;
 

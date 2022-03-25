@@ -1100,7 +1100,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 13.03.2022
                     holder.materialCardView.setChecked(true);
                     // TODO: 15.03.2022
-
+                    // TODO: 15.03.2022
+                    holder.materialCardView.setCardBackgroundColor(Color.parseColor("#FFFAFA"));
 
 // TODO: 28.02.2022
 
