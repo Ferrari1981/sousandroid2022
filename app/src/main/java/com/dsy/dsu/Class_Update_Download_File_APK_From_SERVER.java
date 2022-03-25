@@ -527,7 +527,7 @@ Context context;
                             // TODO: 25.03.2022
                             intentДляУстановеПО.setAction("CompletePO");
                             // TODO: 25.03.2022
-                            Bundle bundleУстановитьПО = intentДляУстановеПО.getExtras();
+                            Bundle bundleУстановитьПО = new Bundle();
                             // TODO: 25.03.2022
                             bundleУстановитьПО.putInt("СервернаяВерсияПОВнутри", СервернаяВерсияПОВнутри);
                             // TODO: 25.03.2022
@@ -542,6 +542,7 @@ Context context;
                             LocalBroadcastManager localBroadcastManagerОтправляемНаActivityFaceApp = LocalBroadcastManager.getInstance(context);
                             // TODO: 25.03.2022
                             localBroadcastManagerОтправляемНаActivityFaceApp.sendBroadcast(intentДляУстановеПО);
+                            // TODO: 25.03.2022
 
                             Log.w(this.getClass().getName(), "УниверсальныйБуферAPKФайлаПОсСервераВнутри localBroadcastManagerОтправляемНаActivityFaceApp " + localBroadcastManagerОтправляемНаActivityFaceApp);
 
