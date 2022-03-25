@@ -2,6 +2,7 @@ package com.dsy.dsu.Code_For_Tasks_КодДля_Задания;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DataSetObserver;
@@ -1369,6 +1370,21 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                         @Override
                         public boolean onLongClick(View v) {
                             // TODO: 25.03.2022
+
+                            ProgressDialog progressDialogДляУдаленияСвоегоЗадание;
+                            // TODO: 26.10.2021
+                            // TODO: 26.10.2021
+                            progressDialogДляУдаленияСвоегоЗадание = new ProgressDialog(getActivity());
+                            // TODO: 25.03.2022
+                            progressDialogДляУдаленияСвоегоЗадание.setTitle("Задача");
+                            progressDialogДляУдаленияСвоегоЗадание.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                            progressDialogДляУдаленияСвоегоЗадание.setProgress(0);
+                            progressDialogДляУдаленияСвоегоЗадание.setCanceledOnTouchOutside(false);
+                            progressDialogДляУдаленияСвоегоЗадание.setMessage("удаление ....");
+                            progressDialogДляУдаленияСвоегоЗадание.show();
+
+
+                            // TODO: 25.03.2022
                             Handler.Callback callback = new PUBLIC_CONTENT(getContext()).callback;
                             // TODO: 01.03.2022
                             callback = new Handler.Callback() {
@@ -1380,6 +1396,10 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                             msg + " msg.getWhen() " + msg.getWhen());
                                     // TODO: 25.03.2022
                                     msg.getTarget().removeMessages(1);
+                                    // TODO: 25.03.2022
+                                    progressDialogДляУдаленияСвоегоЗадание.dismiss();
+                                    ////
+                                    progressDialogДляУдаленияСвоегоЗадание.cancel();
                                     // TODO: 25.03.2022
                                     return true;
                                 }
@@ -1426,7 +1446,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                 // TODO: 03.03.2022 update screewn
                                 Handler HandlerЗапускаемОтсрочнуюСменуСтатуса = new Handler(callback);
                                 // TODO: 25.03.2022
-                                HandlerЗапускаемОтсрочнуюСменуСтатуса.sendEmptyMessage(РезультатУдаленияСозданныйЗадач);
+                                HandlerЗапускаемОтсрочнуюСменуСтатуса.sendEmptyMessageDelayed(РезультатУдаленияСозданныйЗадач, 1000);
                                 // TODO: 04.03.2022
                                 HandlerЗапускаемОтсрочнуюСменуСтатуса.postDelayed(() -> {
                                     // TODO: 04.03.2022

@@ -98,6 +98,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
     private ProgressBar progressBarTask, progressBarTabel, progressBarChat;
 
+
     // TODO: 22.12.2021
     String ИмяСлужбыСинхронизацииОдноразовая = "WorkManager Synchronizasiy_Data Disposable";//"WorkManager Synchronizasiy_Data";//  "WorkManager Synchronizasiy_Data"; ///"WorkManager Synchronizasiy_Data";
 
