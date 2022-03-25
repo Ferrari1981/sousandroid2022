@@ -575,6 +575,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
                     // TODO: 25.03.2022
 
                     Bundle bundle = intent.getExtras();
+                    // TODO: 25.03.2022
 
                     Log.d(this.getClass().getName(), " localBroadcastManagerДляФинальнойУстановкиПОТабельныйУчёт  bundle " + bundle);
 
@@ -602,7 +603,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
                         // TODO: 28.12.2021 НЕПОСТРЕДВСТВЕННО ПОДНИМАЕМ ПОЛЬЗОВАТЮ СКАЧАТ ФАЙЛ УСТАНОВКИХ НОВГОЙ ВЕРСИИ по таБЕЛЬНЫЙ уЧЁТ
 
 
-                        МетодУстановкиНовойВерсииПОТабельныйУчётПоднимаетЕгоНаActrivity(ЗагрузиласьНоваяВерисяПОПровремяем);
+            /// МетодУстановкиНовойВерсииПОТабельныйУчётПоднимаетЕгоНаActrivity(ЗагрузиласьНоваяВерисяПОПровремяем);
 
 
 

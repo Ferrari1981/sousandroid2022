@@ -1149,24 +1149,8 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
                         +" Табельный учёт " +"\n"+
                         " версия : (" +СервернаяВерсияПОВнутри+").";
 
-                Log.d(this.getClass().getName()," СервернаяВерсияПОВнутри"+ СервернаяВерсияПОВнутри);
-
-
-
-
-                //TODO ПЕРЕД СОЗДАНИЕМ НОВОГО СООБЕЩНИЯ ОБНУЛЯЕМ ПРДЫДУЩЕЕ
-
-
-
-                notificationManager.cancel(Integer.parseInt(PROCESS_ID_UpdateSoft));
-
-
-
-                onStopped();
-
-
+                Log.d(this.getClass().getName(), " СервернаяВерсияПОВнутри" + СервернаяВерсияПОВнутри);
                 Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-// Vibrate for 500 milliseconds
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
@@ -1175,10 +1159,19 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
                     v2.vibrate(200);
                 }
 
+                //TODO ПЕРЕД СОЗДАНИЕМ НОВОГО СООБЕЩНИЯ ОБНУЛЯЕМ ПРДЫДУЩЕЕ
+
+
+                notificationManager.cancel(Integer.parseInt(PROCESS_ID_UpdateSoft));
+
+
+                onStopped();
+
+
+// Vibrate for 500 milliseconds
+
 
 // TODO: 21.11.2021  само созданеи уведомления
-
-
 
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

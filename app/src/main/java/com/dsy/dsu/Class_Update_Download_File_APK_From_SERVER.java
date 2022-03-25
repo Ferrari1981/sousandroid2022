@@ -5,7 +5,6 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -14,6 +13,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.FileProvider;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
@@ -81,16 +82,26 @@ Context context;
         Log.w(this.getClass().getName(), "   МетодНачалаЗапускаОбновленияПО СервернаяВерсияПОВнутри "+ СервернаяВерсияПОВнутри  );
                 try {
 
-                    СервернаяВерсияПОВнутри=СервернаяВерсияПОВнутриИзСлужбы;
+                    СервернаяВерсияПОВнутри = СервернаяВерсияПОВнутриИзСлужбы;
 
 
-                    Log.i(this.getClass().getName(), "СервернаяВерсияПОВнутри " + СервернаяВерсияПОВнутри+
-                             " СервернаяВерсияПОВнутриИзСлужбы" + СервернаяВерсияПОВнутриИзСлужбы);
+                    /////todo NOtofication
+                    Vibrator v2 = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
 
-                        ////todo сам код
-                        МетодОценкииСетиПередЗагрузкойAPKсСервера();
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+                    } else {
+                        //deprecated in API 26
+                        v2.vibrate(600);
+                    }
 
-                        // TODO: 12.05.2021 вторая часть
+                    Log.i(this.getClass().getName(), "СервернаяВерсияПОВнутри " + СервернаяВерсияПОВнутри +
+                            " СервернаяВерсияПОВнутриИзСлужбы" + СервернаяВерсияПОВнутриИзСлужбы);
+
+                    ////todo сам код
+                    МетодОценкииСетиПередЗагрузкойAPKсСервера();
+
+                    // TODO: 12.05.2021 вторая часть
 
 
 
@@ -486,10 +497,12 @@ Context context;
                     Log.e(this.getClass().getName(), "УниверсальныйБуферAPKФайлаПОсСервераВнутри файл записалься на диск    onError" +
                             "  УниверсальныйБуферAPKФайлаПОсСервераВнутри " +
                             "\n" + "     УниверсальныйБуферAPKФайлаПОсСервераВнутри[0] " + УниверсальныйБуферAPKФайлаПОсСервераВнутри[0] +
-                            "\n"+ " Thread.currentThread().getName() " +Thread.currentThread().getName());
+                            "\n" + " Thread.currentThread().getName() " + Thread.currentThread().getName());
 // TODO: 18.12.2021
 
                 }
+
+                // TODO: 25.03.2022
 
                 @Override
                 public void onComplete() {
@@ -497,7 +510,7 @@ Context context;
                     Log.w(this.getClass().getName(), "УниверсальныйБуферAPKФайлаПОсСервераВнутри файл записалься на диск    onComplete" +
                             "  УниверсальныйБуферAPKФайлаПОсСервераВнутри " +
                             "\n" + "     УниверсальныйБуферAPKФайлаПОсСервераВнутри[0] " + УниверсальныйБуферAPKФайлаПОсСервераВнутри[0] +
-                            "\n"+ " Thread.currentThread().getName() " +Thread.currentThread().getName());
+                            "\n" + " Thread.currentThread().getName() " + Thread.currentThread().getName());
                     //TODO ПЕРЕД СОЗДАНИЕМ НОВОГО СООБЕЩНИЯ ОБНУЛЯЕМ ПРДЫДУЩЕЕ
 
 
@@ -505,74 +518,32 @@ Context context;
 
                         // TODO: 20.12.2021
 
-                        //TODO ПЕРЕД СОЗДАНИЕМ НОВОГО СООБЕЩНИЯ ОБНУЛЯЕМ ПРДЫДУЩЕЕ
-
-                        String PROCESS_ID_UpdateSoft = "19";
-                        NotificationManager notificationManager = (NotificationManager)
-                                context.getSystemService(NOTIFICATION_SERVICE);
-
-                        notificationManager.cancel(Integer.parseInt(PROCESS_ID_UpdateSoft));
-                        /////todo NOtofication
-                        Vibrator v2 = (Vibrator) context.getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            v2.vibrate(VibrationEffect.createOneShot(600, VibrationEffect.DEFAULT_AMPLITUDE));
-                        } else {
-                            //deprecated in API 26
-                            v2.vibrate(600);
-                        }
-                        // TODO: 17.11.2021
-
-                        //////////todo такой файл УЖЕ ЕСТЬ .APK И ПЫТАЕТЬСЯ ЕЩЁ РАЗ ЗАГРУЗИТЬСЯ
-                        Log.i(this.getClass().getName(), " УСПЕШНО ЗАШРУЗИЛОСЬ" +
-                                "УниверсальныйБуферAPKФайлаПОсСервераВнутри файл записалься на диск Телефона onComplete  УниверсальныйБуферAPKФайлаПОсСервераВнутри " + "\n" +
-                                " УниверсальныйБуферAPKФайлаПОсСервераВнутри[0] " + УниверсальныйБуферAPKФайлаПОсСервераВнутри[0].length());
-                        //TODO ПЕРЕД СОЗДАНИЕМ НОВОГО СООБЕЩНИЯ ОБНУЛЯЕМ ПРДЫДУЩЕЕ
-
-
-                        Activity activityДляНепосредственногоЗапускаНАЭкранПользователюФайлаAPK = null;
-
-                        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-
-                        List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
                         try {
 
-                            String namaa = taskInfo.get(0).topActivity.getClassName().toString();
 
-                            Class<?> myClass = Class.forName(namaa);
+// TODO: 25.03.2022 ТУТ МЫ ОТПРВЯЛЕМ ВЕРИСЮ ДАННЫХ И ФАЙЛ ПРИУСТАВНВОЕ по ТАБЕЛЬНЫЙ УЧЁТ
 
-                            activityДляНепосредственногоЗапускаНАЭкранПользователюФайлаAPK = (Activity) myClass.newInstance();
+                            Intent intentДляУстановеПО = new Intent();
+                            // TODO: 25.03.2022
+                            intentДляУстановеПО.setAction("CompletePO");
+                            // TODO: 25.03.2022
+                            Bundle bundleУстановитьПО = intentДляУстановеПО.getExtras();
+                            // TODO: 25.03.2022
+                            bundleУстановитьПО.putInt("СервернаяВерсияПОВнутри", СервернаяВерсияПОВнутри);
+                            // TODO: 25.03.2022
+                            bundleУстановитьПО.putSerializable("СервернаяВерсияПОCамФайлДляПередачи", УниверсальныйБуферAPKФайлаПОсСервераВнутри[0]);
+                            // TODO: 25.03.2022
+                            bundleУстановитьПО.putLong("СервернаяВерсияПОРазмерФайла", УниверсальныйБуферAPKФайлаПОсСервераВнутри[0].length());
+                            // TODO: 25.03.2022
+                            intentДляУстановеПО.putExtras(bundleУстановитьПО);
 
-                                    // TODO: 19.12.2021
+                            Log.w(this.getClass().getName(), "УниверсальныйБуферAPKФайлаПОсСервераВнутри файл записалься на диск   bundleУстановитьПО  " + bundleУстановитьПО);
+                            // TODO: 25.03.2022  локальный бродкастер
+                            LocalBroadcastManager localBroadcastManagerОтправляемНаActivityFaceApp = LocalBroadcastManager.getInstance(context);
+                            // TODO: 25.03.2022
+                            localBroadcastManagerОтправляемНаActivityFaceApp.sendBroadcast(intentДляУстановеПО);
 
-                                    Activity finalActivityДляНепосредственногоЗапускаНАЭкранПользователюФайлаAPK = activityДляНепосредственногоЗапускаНАЭкранПользователюФайлаAPK;
-                            activityДляНепосредственногоЗапускаНАЭкранПользователюФайлаAPK.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-
-                                    // TODO: 20.12.2021
-
-                          /*          Toast.makeText(context, "Успешно загрузилось"
-                                            + "\n"
-                                            + "обновление ПО"
-                                            + "\n" +
-                                            "Табельный учёт "+"\n"+
-                                             " Размер файла  "+УниверсальныйБуферAPKФайлаПОсСервераВнутри[0].length() ,Toast.LENGTH_LONG).show();*/
-                                    
-                                    Log.d(this.getClass().getName(), "Успешно загрузилось  "+УниверсальныйБуферAPKФайлаПОсСервераВнутри[0].length());
-
-
-                                }
-                            });
-
-
-
-                            МетодПослеУспешнойЗагрузкиAPKФайлаОбновлениеПОПоказываемЕЕПользователю(СервернаяВерсияПОВнутри);
-
-
-
-
-
+                            Log.w(this.getClass().getName(), "УниверсальныйБуферAPKФайлаПОсСервераВнутри localBroadcastManagerОтправляемНаActivityFaceApp " + localBroadcastManagerОтправляемНаActivityFaceApp);
 
 
                         } catch (Exception e) {
@@ -625,80 +596,6 @@ Context context;
 
 
     // TODO: 28.12.2021  МЕТОД ПОКАЗЫВАЕМ ПОЛЬЗОВАТЕЛЮ ЗАГРУЖЕННЫЙ файл обновления\
-
-
-    private void МетодПослеУспешнойЗагрузкиAPKФайлаОбновлениеПОПоказываемЕЕПользователю(Integer СервернаяВерсияПОВнутри) {
-
-        // TODO: 28.12.2021
-        try{
-            // TODO: 28.12.2021
-
-            PackageManager pm = context.getPackageManager();
-
-
-            Intent notificationIntentДляУведомленийОбновлениеПоказываемПользователюСкаченныйФайл = new Intent();
-            // TODO: 17.11.2021
-            notificationIntentДляУведомленийОбновлениеПоказываемПользователюСкаченныйФайл =
-                    new Intent(context,
-                            MainActivity_Face_App.class);
-            notificationIntentДляУведомленийОбновлениеПоказываемПользователюСкаченныйФайл
-                    .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            notificationIntentДляУведомленийОбновлениеПоказываемПользователюСкаченныйФайл
-                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-
-            //notificationIntentЗакрыть.addCategory(Intent.CATEGORY_LAUNCHER);
-            notificationIntentДляУведомленийОбновлениеПоказываемПользователюСкаченныйФайл.setAction("ПослеУспешнойЗагрузкиAPKПоказываемПользователю");
-
-            // TODO: 28.12.2021
-
-            Log.i(context.getClass().getName(), "СервернаяВерсияПОВнутри  "+СервернаяВерсияПОВнутри + " Thread.currentThread().getName() " +Thread.currentThread().getName());
-
-            // TODO: 28.12.2021
-            notificationIntentДляУведомленийОбновлениеПоказываемПользователюСкаченныйФайл.putExtra("СервернаяВерсияПОВнутри",СервернаяВерсияПОВнутри);
-            ///////
-            PendingIntent ЗапускаемПоказываемСкаченнойПО_APK = null;
-
-
-            if (notificationIntentДляУведомленийОбновлениеПоказываемПользователюСкаченныйФайл.resolveActivity(pm) != null) {
-
-                ЗапускаемПоказываемСкаченнойПО_APK = PendingIntent.getActivity(context,
-                        54, notificationIntentДляУведомленийОбновлениеПоказываемПользователюСкаченныйФайл,
-                        PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
-                // TODO: 17.11.2021
-                // TODO: 17.11.2021
-                Log.i(context.getClass().getName(), " Загружаем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА");
-            }
-
-
-            // TODO: 28.12.2021
-
-            ЗапускаемПоказываемСкаченнойПО_APK.send();
-
-
-
-
-    } catch (Exception e) {
-        //  Block of code to handle errors
-        e.printStackTrace();
-        ///метод запись ошибок в таблицу
-        Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
-                + Thread.currentThread().getStackTrace()[2].getLineNumber());
-        new Class_Generation_Errors(context).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
-                Thread.currentThread().getStackTrace()[2].getLineNumber());
-    }
-
-
-}
-
-
-
-
-
-
-
-
-
-
 
 
 
