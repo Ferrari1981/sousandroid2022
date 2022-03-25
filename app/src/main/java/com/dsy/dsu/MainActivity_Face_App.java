@@ -1819,10 +1819,14 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
                                     // TODO: 12.11.2021  ПЕРВАЯ ОПЕРАЦИЯ УДАЛЕНИЕ ЛЮБОЙ УЖЕ СУЩЕСТВУЮЩЩИЙ ЛОКАЛЬНОЙ ВЕРИСИЙ ПРОГРАММЫ
 
+                                    // TODO: 28.12.2021   Метод  ДАННЫЙ МЕТОД ВСЕГДА ПОСЛЕДНИЙ  если пришло Новоое Обновление По табельный УЧЁТ ПО ЗАПУСКАЕМ ЕГО ВСТАВКИ ПОКАЗЫВАЕМ ПОЛЬЗОВАТЕЛЮ
 
-                                    МетодЗапускДляАнализаОбновленияПО(activity);
 
-//                                    Toast.makeText(getApplicationContext(), " Запускаем Обновление ПО Табельный учёт", Toast.LENGTH_LONG).show();
+                                    МетодВActivityFaveApp_УстанавливаетПрограммноеОбеспечениеПОТабельныйУчёт();
+
+
+                                    //TODO ФУТУРЕ ЗАВЕРШАЕМ
+                                    Log.d(this.getClass().getName(), "        МетодВActivityFaveApp_УстанавливаетПрограммноеОбеспечениеПОТабельныйУчёт(); ");
 
 
                                 } else {
@@ -1834,6 +1838,9 @@ public class MainActivity_Face_App extends AppCompatActivity {
                                             Toast toast = Toast.makeText(getApplicationContext(), "Нет связи c Cервер !!!", Toast.LENGTH_LONG);
                                             toast.setGravity(Gravity.BOTTOM, 0, 40);
                                             toast.show();
+
+                                            //TODO ФУТУРЕ ЗАВЕРШАЕМ
+                                            Log.d(this.getClass().getName(), "  НЕТ СВЯЗИ С СЕРВЕРОМ  МетодВActivityFaveApp_УстанавливаетПрограммноеОбеспечениеПОТабельныйУчёт();  ");
                                         }
                                     });
 
