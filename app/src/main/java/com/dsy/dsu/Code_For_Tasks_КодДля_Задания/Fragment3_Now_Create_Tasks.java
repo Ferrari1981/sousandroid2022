@@ -1935,6 +1935,16 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                                                         // TODO: 22.03.2022  ПОСЛЕ УСПЕШНОГО СОЗДАНЕИ ОВГО ЗАДАНИЯ ЗАПУСКАЕМ СИНХРОНИАЗЦИЮ
 
+                                                        Курсор_ГлавныйКурсорДляЗадач.deactivate();
+                                                        // TODO: 25.03.2022
+                                                        Курсор_ГлавныйКурсорДляЗадач.requery();
+
+                                                        // TODO: 25.03.2022
+                                                        Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.deactivate();
+                                                        // TODO: 25.03.2022
+                                                        Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.requery();
+                                                        // TODO: 25.03.2022
+
 
                                                         // TODO: 13.01.2022  ЗАПУСК СИХРОНИЗВАЦИИ В ХОЛОСТУЮ ХОД
 
@@ -2380,7 +2390,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                                     // TODO: 22.03.2022
                                     ////
-                                    Long ЛокальныйUUIDДляТолькоДляВторойТаблицы = (Long) new Class_Generation_UUID(getContext()).МетодГенерацииUUID(getContext());
+                                    Long ЛокальныйUUIDДляТолькоДляВторойТаблицы = (Long) new Class_Generation_UUID(getContext()).МетодГенерацииUUID(getContext()) + 1;
                                     ////todo # 2 первой таблицы
                                     contentValuesДляСозданияНовойЗадачиДляДвухТаблиц.put("uuid", ЛокальныйUUIDДляТолькоДляВторойТаблицы);
 
