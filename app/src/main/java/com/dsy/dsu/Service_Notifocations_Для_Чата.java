@@ -81,7 +81,7 @@ public class Service_Notifocations_Для_Чата extends JobIntentService {///
             // TODO: 24.03.2022
             bundleДляПришлиВСлужбу = intent.getExtras();
 
-            Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА bundleДляПришлиВСлужбу  " +
+            Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА Service_Notifocations_Для_Чата  " +
                     bundleДляПришлиВСлужбу);
 
 
@@ -125,9 +125,15 @@ public class Service_Notifocations_Для_Чата extends JobIntentService {///
             }
 
 
-            // TODO: 18.04.2021 запувскает широковещатель
+            // TODO: 18.04.2021 запуск Уведомления Чата
 
-            if (intent.getAction().equals("Закрываем")) {
+
+            Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА Service_Notifocations_Для_Чата  "
+                    + " время: "
+                    + new Date());
+
+
+            if (intent.getAction().equals("ЗакрываемУведомленияЧата")) {
 
 
                 // TODO: 17.11.2021
@@ -228,7 +234,7 @@ public class Service_Notifocations_Для_Чата extends JobIntentService {///
                 // TODO: 07.02.2022 задание КЛИВАЕМ НА СООБЩЕНИЕ ПЕРЕРХОДИМ НА ЧАТ
 
 
-            } else if (intent.getAction().equals("ЗапускИзУведомления")) {
+            } else if (intent.getAction().equals("ЗапускИзУведомленияЧата")) {
 
 
                 Log.i(getApplicationContext().getClass().getName(), " ЗапускИзУведомления ........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date());
