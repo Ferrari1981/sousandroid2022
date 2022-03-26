@@ -136,7 +136,7 @@ public class BroadcastReceiver_Sous_Notificatioons extends BroadcastReceiver {
                     .setInitialDelay(2, TimeUnit.SECONDS)
                     .setBackoffCriteria(
                             BackoffPolicy.LINEAR,
-                            10,
+                            PeriodicWorkRequest.MIN_BACKOFF_MILLIS,
                             TimeUnit.SECONDS)
                     //.setInputData(new Data.Builder().putString("КтоЗапустилWorkmanager","BroadCastRecieve").build())
                     .build();

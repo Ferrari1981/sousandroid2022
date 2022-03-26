@@ -154,7 +154,7 @@ public class BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУ�
                     .setBackoffCriteria(
                             BackoffPolicy.LINEAR,
                             PeriodicWorkRequest.MIN_BACKOFF_MILLIS,
-                            TimeUnit.MILLISECONDS)
+                            TimeUnit.SECONDS)
                     //.setInputData(new Data.Builder().putString("КтоЗапустилWorkmanager","BroadCastRecieve").build())
                     .build();
 
