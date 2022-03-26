@@ -61,9 +61,9 @@ public class MyWork_Notifocations_Уведомления_Для_Задачи ext
 
 
 
-Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
+Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
     ////TODO
-    NotificationCompat.Builder builder=null;
+    NotificationCompat.Builder builder_Для_Задачи = null;
     //// Notification notificationAfterBuild=null;
 
     //TODO
@@ -780,7 +780,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
             Log.d(getApplicationContext().getClass().getName(), " Создание Уведомлеения СЛУЖБА СЛУЖБА Service_Notificatios_Уведомления_ОбновлениеПО ");
 
 
-            builder=null;
+            builder_Для_Задачи = null;
 
 
             // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи
@@ -903,7 +903,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         ///"@mipmap/icon_main_tabel_four" ////.setSmallIcon(R.drawable.ic_notifications_black_24dp)
-                        builder = new NotificationCompat.Builder(getApplicationContext(), PROCESS_ID_УведомленияПлановая)
+                        builder_Для_Задачи = new NotificationCompat.Builder(getApplicationContext(), PROCESS_ID_УведомленияПлановая)
                                 /////
                                 .setContentText(БуферСамиУведомленияЛинкСамиУведомления.toString())                 // .setContentText("http://developer.alexanderklimov.ru/android/")
                                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)////builder.setSmallIcon(R.drawable.ic_launcher_background);//R.mipmap.ic_launcher   ///R.drawable.ic_notifications_black_24dp
@@ -935,14 +935,14 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
 
 
                     } else {
-                        builder =
+                        builder_Для_Задачи =
                                 new NotificationCompat.Builder(getApplicationContext(), PROCESS_ID_УведомленияПлановая)
                                         //
                                         .setContentText(БуферСамиУведомленияЛинкСамиУведомления.toString())                 // .setContentText("http://developer.alexanderklimov.ru/android/")
                                         .setSmallIcon(R.drawable.ic_notifications_black_24dp)////builder.setSmallIcon(R.drawable.ic_launcher_background);//R.mipmap.ic_launcher   ///R.drawable.ic_notifications_black_24dp
                                         .setPriority(NotificationCompat.PRIORITY_MAX)
                                         .setColor(Color.parseColor("#00ACC1"))
-                                      //  .setContentTitle("Задание на выполнение")
+                                        //  .setContentTitle("Задание на выполнение")
                                         .setSmallIcon(R.drawable.icon_dsu1_for_fragment1_chat2)
                                         .setLargeIcon(BitmapFactory.decodeResource(Контекст.getResources(),
                                                 R.drawable.ic_notifications_black_24dp)) // большая картинка
@@ -986,20 +986,20 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
                         "Channel human readable title",
                         NotificationManager.IMPORTANCE_HIGH);
                 mNotificationManagerДляЧАТА.createNotificationChannel(channel);
-                builder.setChannelId(String.valueOf(PROCESS_ID_УведомленияПлановая));
+                builder_Для_Задачи.setChannelId(String.valueOf(PROCESS_ID_УведомленияПлановая));
                 channel.setDescription("Увеомление для версии выше API 25");
                 // TODO: 18.11.2021  дополнительые настройки
 
-                builder.build().flags  |= Notification.FLAG_FOREGROUND_SERVICE;
+                builder_Для_Задачи.build().flags |= Notification.FLAG_FOREGROUND_SERVICE;
                 ///TODO Запускаем увидомления
-                builder.build().flags  |= Notification.FLAG_AUTO_CANCEL;
+                builder_Для_Задачи.build().flags |= Notification.FLAG_AUTO_CANCEL;
                 // startForeground(Integer.parseInt(PROCESS_ID_УведомленияПлановая),builder.build());//builder.build()
                 ///TODO Запускаем увидомления
-                builder.build().flags  |= Notification.FLAG_SHOW_LIGHTS;
+                builder_Для_Задачи.build().flags |= Notification.FLAG_SHOW_LIGHTS;
                 ///TODO Запускаем увидомления
-                builder.build().flags  |= Notification.FLAG_INSISTENT;
+                builder_Для_Задачи.build().flags |= Notification.FLAG_INSISTENT;
                 // TODO: 02.12.2021
-                builder.setNumber(1);
+                builder_Для_Задачи.setNumber(1);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     mNotificationManagerДляЧАТА.getBubblePreference();
@@ -1007,7 +1007,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
 
                 ///TODO Запускаем увидомления
                 // TODO: 02.12.2021  сам запуск уведомления
-                mNotificationManagerДляЧАТА.notify(Integer.parseInt(PROCESS_ID_УведомленияПлановая), builder.build());////   mNotificationManagerДляЧАТА.notify(Integer.parseInt(PROCESS_ID_УведомленияПлановая), builder.build());
+                mNotificationManagerДляЧАТА.notify(Integer.parseInt(PROCESS_ID_УведомленияПлановая), builder_Для_Задачи.build());////   mNotificationManagerДляЧАТА.notify(Integer.parseInt(PROCESS_ID_УведомленияПлановая), builder.build());
                 ///TODO закрытие увидомления
                 //mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
 
@@ -1026,16 +1026,16 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
                 // TODO: 27.11.2021 САМ ЗАПУСК УВЕДОМЛЕНИЯ
 
                 //mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
-                builder.build().flags  |= Notification.FLAG_FOREGROUND_SERVICE;
+                builder_Для_Задачи.build().flags |= Notification.FLAG_FOREGROUND_SERVICE;
                 ///TODO Запускаем увидомления
                 ///TODO Запускаем увидомления
-                builder.build().flags  |= Notification.FLAG_AUTO_CANCEL;
+                builder_Для_Задачи.build().flags |= Notification.FLAG_AUTO_CANCEL;
                 ///TODO Запускаем увидомления
-                builder.build().flags  |= Notification.FLAG_SHOW_LIGHTS;
+                builder_Для_Задачи.build().flags |= Notification.FLAG_SHOW_LIGHTS;
                 ///TODO Запускаем увидомления
-                builder.build().flags  |= Notification.FLAG_INSISTENT;
+                builder_Для_Задачи.build().flags |= Notification.FLAG_INSISTENT;
                 // TODO: 02.12.2021
-                builder.setNumber(1);
+                builder_Для_Задачи.setNumber(1);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     mNotificationManagerДляЧАТА.getBubblePreference();
@@ -1043,7 +1043,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
 
                 // TODO: 02.12.2021  сам запуск уведомления
 
-                mNotificationManagerДляЧАТА.notify(Integer.parseInt(PROCESS_ID_УведомленияПлановая), builder.build());////   mNotificationManagerДляЧАТА.notify(Integer.parseInt(PROCESS_ID_УведомленияПлановая), builder.build());
+                mNotificationManagerДляЧАТА.notify(Integer.parseInt(PROCESS_ID_УведомленияПлановая), builder_Для_Задачи.build());////   mNotificationManagerДляЧАТА.notify(Integer.parseInt(PROCESS_ID_УведомленияПлановая), builder.build());
                 ///TODO закрытие увидомления
 
            //     startForeground(Integer.parseInt(PROCESS_ID_УведомленияПлановая),builder.build());//builder.build()
