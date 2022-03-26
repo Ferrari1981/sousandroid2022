@@ -8,12 +8,18 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 
-public class SubClass_Starting_chahge_status_public_task_Класс_ДляЗадач {
+public class SubClass_Starting_Tasks_ЗапускДЛяЗадач {
     Context context;
 
-    public SubClass_Starting_chahge_status_public_task_Класс_ДляЗадач(Context context) {
+    // TODO: 24.03.2022
+    Bundle bundleДляПередачиВСлужбу;
+
+    public SubClass_Starting_Tasks_ЗапускДЛяЗадач(Context context) {
         // TODO: 03.03.2022
         this.context = context;
+        // TODO: 26.03.2022
+        bundleДляПередачиВСлужбу = new Bundle();
+
     }
 
 
@@ -21,9 +27,9 @@ public class SubClass_Starting_chahge_status_public_task_Класс_ДляЗад
 
     public PendingIntent МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(String PROCESS_ID_УведомленияПлановая,
                                                                           String ИмяСлужбыУведомленияДляЧата
-            , Object UUIDПолучениейЗадачиОбьект, Integer ПередаемСтатусзадачи, String ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу) {
+            , Object UUIDПолучениейЗадачиОбьект, int ПередаемСтатусзадачи, String ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу) {
         ///
-        PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = null;
+        PendingIntent ЗапускКОдаЧтоПОльзовательЗадачаВыполнилОтказ = null;
 
         try {
 
@@ -41,51 +47,47 @@ public class SubClass_Starting_chahge_status_public_task_Класс_ДляЗад
 
 // TODO: 17.11.2021 БЛОК КОДА РЕАЛИЗАЦИЯ БУДУШЕГО ЗАПУСКА ПРИ НАЖАТИИ НА УВЕДОСЛЕНИЕ ИЛИ НА КНОПКИ ЗАПУСКАЕТ С УВЕДОМЛЕНИЯ РАЗЛИЧНЫЕ ДЕЙСТВИЯ
 
-            Intent notificationIntentДляУведомленийЗапускСогласования;
+            Intent notificationIntentДляЗадачи;
             // TODO: 17.11.2021
-            notificationIntentДляУведомленийЗапускСогласования = new Intent(context, Service_Notificatios_Для_Задания.class);
+            notificationIntentДляЗадачи = new Intent(context, Service_Notificatios_Для_Задания.class);
             // TODO: 24.03.2022
+            notificationIntentДляЗадачи.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             // TODO: 03.03.2022
-            notificationIntentДляУведомленийЗапускСогласования.setAction("ЗапускСогласованияПришедшегоЗАДАНИЕ");
+            notificationIntentДляЗадачи.setAction("ЗапускСогласованияПришедшегоЗАДАНИЕ");
             // TODO: 17.11.2021
-            notificationIntentДляУведомленийЗапускСогласования.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            notificationIntentДляЗадачи.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 
 
             // TODO: 24.03.2022
-            Bundle bundleДляПередачиВСлужбу = new Bundle();
+            bundleДляПередачиВСлужбу.putString("PROCESS_ID_Задачи", PROCESS_ID_УведомленияПлановая);
             // TODO: 24.03.2022
-            bundleДляПередачиВСлужбу.putString("PROCESS_ID_УведомленияПлановая", PROCESS_ID_УведомленияПлановая);
-            // TODO: 24.03.2022
-            bundleДляПередачиВСлужбу.putString("ИмяСлужбыУведомленияДляЧата", ИмяСлужбыУведомленияДляЧата);
+            bundleДляПередачиВСлужбу.putString("ИмяСлужбыУведомленияДляЧата_Задачи", ИмяСлужбыУведомленияДляЧата);
             // TODO: 24.03.2022  
             // TODO: 24.03.2022
             bundleДляПередачиВСлужбу.putLong("UUIDПолучениейЗадачи", UUIDПолучениейЗадачи);
             // TODO: 24.03.2022
             bundleДляПередачиВСлужбу.putString("ЗапускСогласованияПришедшегоЗАДАНИЕ", "ЗапускСогласованияПришедшегоЗАДАНИЕ");
 // TODO: 24.03.2022
-            bundleДляПередачиВСлужбу.putInt("ПередаемСтатусзадачи", ПередаемСтатусзадачи);
+            bundleДляПередачиВСлужбу.putInt("ДляЗадачиПередаемФлагВыполненаЗадчаИлиОтказ", ПередаемСтатусзадачи);
 
-            ///////todo
-// TODO: 24.03.2022
-            bundleДляПередачиВСлужбу.putString("ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу", ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу);
             // TODO: 24.03.2022
-            notificationIntentДляУведомленийЗапускСогласования.putExtras(bundleДляПередачиВСлужбу);
+            notificationIntentДляЗадачи.putExtras(bundleДляПередачиВСлужбу);
 
             Log.d(context.getClass().getName(), "ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу "
-                    + ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу);
+                    + ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу + "  bundleДляПередачиВСлужбу " + bundleДляПередачиВСлужбу);
 
 
-            if (notificationIntentДляУведомленийЗапускСогласования.resolveActivity(pm) != null) {
+            if (notificationIntentДляЗадачи.resolveActivity(pm) != null) {
                 // TODO: 24.03.2022
-                ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = PendingIntent.getService(context,
-                        51, notificationIntentДляУведомленийЗапускСогласования,
+                ЗапускКОдаЧтоПОльзовательЗадачаВыполнилОтказ = PendingIntent.getService(context,
+                        93, notificationIntentДляЗадачи,
                         PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускПаузы);
 
                 // TODO: 03.03.2022
 
-               /// ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
+                /// ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
 
             }
 
@@ -104,7 +106,7 @@ public class SubClass_Starting_chahge_status_public_task_Класс_ДляЗад
 
         }
 ///TODO
-        return ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием;
+        return ЗапускКОдаЧтоПОльзовательЗадачаВыполнилОтказ;
     }
 
 // TODO: 26.03.2022 код для ЗАДАНИЯ КОТОРЫЙ СРАБАТЫВАЕТ КОГДАНА САМО УВЕДОМЛЕНИЯ ЗАДАНИЕ НАЖАЛИ

@@ -591,10 +591,6 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
                     Thread.currentThread().getStackTrace()[2].getLineNumber());
             //TODO ПЕРЕД СОЗДАНИЕМ НОВОГО СООБЕЩНИЯ ОБНУЛЯЕМ ПРДЫДУЩЕЕ
 
-            NotificationManager notificationManager = (NotificationManager)
-                    getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
-
-            notificationManager.cancel(Integer.parseInt(PROCESS_ID_УведомленияПлановая));
         }
 
     }
@@ -784,7 +780,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
 
 
             // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи выполнить
-            PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = new SubClass_Starting_chahge_status_public_task_Класс_ДляЗадач(getApplicationContext()).
+            PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = new SubClass_Starting_Tasks_ЗапускДЛяЗадач(getApplicationContext()).
                     МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата,
                             person.build().getUri(),
                             1, "");
@@ -796,7 +792,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
 
 
             // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи  отказ
-            PendingIntent ЗапускКОдаЧтоПОльзовательОтказЗаданием = new SubClass_Starting_chahge_status_public_task_Класс_ДляЗадач(getApplicationContext()).
+            PendingIntent ЗапускКОдаЧтоПОльзовательОтказЗаданием = new SubClass_Starting_Tasks_ЗапускДЛяЗадач(getApplicationContext()).
                     МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата,
                             person.build().getUri(),
                             2, "");
@@ -811,7 +807,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
 
 
             // TODO: 03.03.2022 ВЬТОРОЙ МЕТОД ДЛЯ ЗАДАНИЕ ПЕРЕХОД ИЗ УВЕДОМЛЕНИЯ В ЗАДАНИЕ
-            PendingIntent ЗапускПриКликеКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние = new SubClass_Starting_chahge_status_public_task_Класс_ДляЗадач(getApplicationContext()).
+            PendingIntent ЗапускПриКликеКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние = new SubClass_Starting_Tasks_ЗапускДЛяЗадач(getApplicationContext()).
                     МетодПриКликеЗапускаЗаданияИзСамогоУведомленияПереход(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата,
                             person.build().getUri(),
                             1, "");

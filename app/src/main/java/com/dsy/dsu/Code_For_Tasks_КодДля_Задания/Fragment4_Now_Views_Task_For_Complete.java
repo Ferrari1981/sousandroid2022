@@ -44,7 +44,7 @@ import com.dsy.dsu.Code_For_Firebase_AndOneSignal_Здесь_КодДЛяСлу�
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 import com.dsy.dsu.SubClass_RetryGEtRowInChatsКлассПроверемЕщеРАзПоявилосЛИПуббличныйUUIDМеждуУчасникамиЧата;
-import com.dsy.dsu.SubClass_Starting_chahge_status_public_task_Класс_ДляЗадач;
+import com.dsy.dsu.SubClass_Starting_Tasks_ЗапускДЛяЗадач;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
@@ -2050,8 +2050,8 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
 
                         if (!ПримечанниееОтКлиентаПоЗадаTasks.isEmpty()) {
                             // TODO: 24.03.2022
-                            SubClass_Starting_chahge_status_public_task_Класс_ДляЗадач subClass_starting_chahge_status_public_taskКлассДляЗадач =
-                                    new SubClass_Starting_chahge_status_public_task_Класс_ДляЗадач(getContext());
+                            SubClass_Starting_Tasks_ЗапускДЛяЗадач subClass_starting_chahge_status_public_taskКлассДляЗадач =
+                                    new SubClass_Starting_Tasks_ЗапускДЛяЗадач(getContext());
 
                             // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи
                             PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = subClass_starting_chahge_status_public_taskКлассДляЗадач.

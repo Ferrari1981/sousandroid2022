@@ -28,15 +28,10 @@ import java.util.concurrent.ExecutionException;
 public class Service_Notificatios_Для_Задания extends JobIntentService {////Service
 
 
-    private static final String НазваниеСлужбы = ".Service_Notifocations_Для_Чата";
-    ////
-    //TODO
-
-
     ////////
     private String PROCESS_ID;
 
-    String ИмяСлужбыУведомленияДляЧата;
+    String ИмяСлужбыУведомленияДляЗадача;
     // TODO: 07.02.2022
 
     HashMap<String, String> hashMapХэшДляЗапоминиялUUID = new HashMap();
@@ -92,24 +87,24 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
             bundleДляПришлиВСлужбу = intent.getExtras();
 
             Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА bundleДляПришлиВСлужбу ЗАДАЧА  " +
-                    bundleДляПришлиВСлужбу);
+                    bundleДляПришлиВСлужбу + " ntent.getAction() " + intent.getAction());
 
 
-            if (!bundleДляПришлиВСлужбу.isEmpty()) {
+            if (intent.getAction().equalsIgnoreCase("ЗапускСогласованияПришедшегоЗАДАНИЕ")) {
                 // TODO: 07.02.2022
 
                 // TODO: 24.03.2022
-                PROCESS_ID = bundleДляПришлиВСлужбу.getString("PROCESS_ID_УведомленияПлановая");
+                PROCESS_ID = bundleДляПришлиВСлужбу.getString("PROCESS_ID_Задачи");
 
                 Log.i(getApplicationContext().getClass().getName(), "" + " PROCESS_ID" + PROCESS_ID);
                 // TODO: 24.03.2022
 
 
                 // TODO: 24.03.2022
-                ИмяСлужбыУведомленияДляЧата = bundleДляПришлиВСлужбу.getString("ИмяСлужбыУведомленияДляЧата");
+                ИмяСлужбыУведомленияДляЗадача = bundleДляПришлиВСлужбу.getString("ИмяСлужбыУведомленияДляЧата_Задачи");
 
 
-                Log.i(getApplicationContext().getClass().getName(), "" + " ИмяСлужбыУведомленияДляЧата" + ИмяСлужбыУведомленияДляЧата);
+                Log.i(getApplicationContext().getClass().getName(), "" + " ИмяСлужбыУведомленияДляЧата" + ИмяСлужбыУведомленияДляЗадача);
 
 
                 // TODO: 24.03.2022
@@ -120,7 +115,7 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
 
 
                 // TODO: 24.03.2022
-                ПередаемСтатусзадачи = bundleДляПришлиВСлужбу.getInt("ПередаемСтатусзадачи", 0);  // TODO: 24.03.2022
+                ПередаемСтатусзадачи = bundleДляПришлиВСлужбу.getInt("ДляЗадачиПередаемФлагВыполненаЗадчаИлиОтказ", 0);  // TODO: 24.03.2022
 
 
                 Log.i(getApplicationContext().getClass().getName(), "" + " ПередаемСтатусзадачи " + ПередаемСтатусзадачи);
@@ -132,12 +127,15 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
                 Log.i(getApplicationContext().getClass().getName(), "" + " ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу" + ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу);
 
 
+                bundleДляПришлиВСлужбу.clear();
+
             }
 // TODO: 26.03.2022 запуск
 
             МетодВнутриСлужбаЗадача(intent);
 
             Log.i(getApplicationContext().getClass().getName(), "" + " ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу" + ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу);
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -164,7 +162,7 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
 
             WorkInfo ИнформацияОЗапущенойСлужбе = null;
             try {
-                ИнформацияОЗапущенойСлужбе = WorkManager.getInstance(getApplicationContext().getApplicationContext()).getWorkInfosByTag(ИмяСлужбыУведомленияДляЧата.toString()).get().get(0);
+                ИнформацияОЗапущенойСлужбе = WorkManager.getInstance(getApplicationContext().getApplicationContext()).getWorkInfosByTag(ИмяСлужбыУведомленияДляЗадача.toString()).get().get(0);
             } catch (ExecutionException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
@@ -173,7 +171,7 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
             // TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата         // TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата
 
             Log.w(getApplicationContext().getClass().getName(), " После НАЖАТИЕ НА КНОПКУ ЗАКРЫТЬ  Выкючение в Service_Notifocations_Для_Чата Внутри СЛУЖБЫ " +
-                    " MyWork_Notifocations_Уведомления_Для_Задачи " + ИмяСлужбыУведомленияДляЧата + "\n"
+                    " MyWork_Notifocations_Уведомления_Для_Задачи " + ИмяСлужбыУведомленияДляЗадача + "\n"
                     + " getState  " +
                     ИнформацияОЗапущенойСлужбе.getState().name() + "\n" +
                     " isFinished  " +
