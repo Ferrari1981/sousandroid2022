@@ -783,27 +783,42 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
             builder_Для_Задачи = null;
 
 
-            // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи
+            // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи выполнить
             PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = new SubClass_Starting_chahge_status_public_task_Класс_ДляЗадач(getApplicationContext()).
                     МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата,
                             person.build().getUri(),
-                            0, "");
+                            1, "");
 
 
             ///////TODO запускаем смены стануса задачи черезе PendingIntent
-            Log.d(getApplicationContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая " + PROCESS_ID_УведомленияПлановая +
+            Log.d(getApplicationContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая   ВЫПОЛНИЛ " + PROCESS_ID_УведомленияПлановая +
                     " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата + " person.build().getUri() " + person.build().getUri());
+
+
+            // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи  отказ
+            PendingIntent ЗапускКОдаЧтоПОльзовательОтказЗаданием = new SubClass_Starting_chahge_status_public_task_Класс_ДляЗадач(getApplicationContext()).
+                    МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата,
+                            person.build().getUri(),
+                            2, "");
+
+
+            ///////TODO запускаем смены стануса задачи черезе PendingIntent
+            Log.d(getApplicationContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая   ОТКАЗ  ЗапускКОдаЧтоПОльзовательОтказЗаданием " + PROCESS_ID_УведомленияПлановая +
+                    " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата + " person.build().getUri() " + person.build().getUri());
+
+
+            // TODO: 26.03.2022  закрыть задачу
 
 
             // TODO: 03.03.2022 ВЬТОРОЙ МЕТОД ДЛЯ ЗАДАНИЕ ПЕРЕХОД ИЗ УВЕДОМЛЕНИЯ В ЗАДАНИЕ
             PendingIntent ЗапускПриКликеКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние = new SubClass_Starting_chahge_status_public_task_Класс_ДляЗадач(getApplicationContext()).
                     МетодПриКликеЗапускаЗаданияИзСамогоУведомленияПереход(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата,
                             person.build().getUri(),
-                            0, "");
+                            1, "");
 
 
             ///////TODO запускаем смены стануса задачи черезе PendingIntent
-            Log.d(getApplicationContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая " + PROCESS_ID_УведомленияПлановая +
+            Log.d(getApplicationContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая  ПЕРЕЙТИ " + PROCESS_ID_УведомленияПлановая +
                     " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата + " person.build().getUri() " + person.build().getUri());
 
 
@@ -926,7 +941,8 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
                                 .setStyle(messagingStyleДля_ОбщихУведомлений).setColor(Color.parseColor(("#FAEBD" + new Random().nextInt(1))))
                                 .setGroupSummary(true)
                                 .setColor(Color.GREEN)
-                                .addAction(android.R.drawable.ic_delete, "Ознакомлен/на", ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием)
+                                .addAction(android.R.drawable.ic_delete, "Выполнил/на", ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием)
+                                .addAction(android.R.drawable.ic_delete, "Отказ", ЗапускКОдаЧтоПОльзовательОтказЗаданием)
                                 .setAutoCancel(false)
                                 .setWhen(System.currentTimeMillis()) // автоматически закрыть уведомление после нажатия////.setStyle(new NotificationCompat.BigTextStyle().bigText(bigText) ).setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
                                 .setContentIntent(ЗапускПриКликеКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние);
@@ -959,7 +975,8 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
                                         .setStyle(messagingStyleДля_ОбщихУведомлений).setColor(Color.parseColor(("#FAEBD" + new Random().nextInt(1))))
                                         .setGroupSummary(true)
                                         .setColor(Color.GREEN)
-                                        .addAction(android.R.drawable.ic_delete, "Ознакомлен/на", ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием)
+                                        .addAction(android.R.drawable.ic_delete, "Выполнил/на", ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием)
+                                        .addAction(android.R.drawable.ic_delete, "Отказ", ЗапускКОдаЧтоПОльзовательОтказЗаданием)
                                         .setAutoCancel(false)
                                         .setWhen(System.currentTimeMillis()) // автоматически закрыть уведомление после нажатия////.setStyle(new NotificationCompat.BigTextStyle().bigText(bigText) ).setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
                                         .setContentIntent(ЗапускПриКликеКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние);
