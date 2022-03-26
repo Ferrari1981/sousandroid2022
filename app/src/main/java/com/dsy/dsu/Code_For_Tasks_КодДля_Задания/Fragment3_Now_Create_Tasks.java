@@ -1639,8 +1639,8 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
                                 // TODO: 03.03.2022
 
-                                SubClass_Starting_chahge_status_public_notificaton subClass_starting_chahge_status_public_notificaton =
-                                        new SubClass_Starting_chahge_status_public_notificaton(getContext());
+                                SubClass_Starting_chahge_status_public_task_Класс_ДляЗадач subClass_starting_chahge_status_public_notificaton =
+                                        new SubClass_Starting_chahge_status_public_task_Класс_ДляЗадач(getContext());
 
                                 // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи
                                 PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = subClass_starting_chahge_status_public_notificaton.

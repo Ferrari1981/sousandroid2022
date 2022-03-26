@@ -8,10 +8,10 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 
-public class SubClass_Starting_chahge_status_public_notificaton {
+public class SubClass_Starting_chahge_status_public_task_Класс_ДляЗадач {
     Context context;
 
-    public SubClass_Starting_chahge_status_public_notificaton(Context context) {
+    public SubClass_Starting_chahge_status_public_task_Класс_ДляЗадач(Context context) {
         // TODO: 03.03.2022
         this.context = context;
     }

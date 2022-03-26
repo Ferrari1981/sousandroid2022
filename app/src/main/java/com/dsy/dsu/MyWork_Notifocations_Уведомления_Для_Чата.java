@@ -18,7 +18,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -661,7 +660,7 @@ try{
 
 
 
-        МетодНотификайшен(ФлагКтоЗапустилСлужбу);
+        МетодНотификайшенТолькоДля_ЧАТА(ФлагКтоЗапустилСлужбу);
 
 
         ///
@@ -689,62 +688,8 @@ try{
 /////////TODO запуск нновую нотификашенс устанолвка
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @SuppressLint("NotificationTrampoline")
-    private void МетодНотификайшен(String ФлагКтоЗапустилСлужбу) {
+    private void МетодНотификайшенТолькоДля_ЧАТА(String ФлагКтоЗапустилСлужбу) {
         try {
 
             Log.d(getApplicationContext().getClass().getName(), " Создание Уведомлеения СЛУЖБА СЛУЖБА Service_Notificatios_Уведомления_ОбновлениеПО ");
@@ -752,132 +697,50 @@ try{
 
             PackageManager pm = getApplicationContext().getPackageManager();
 
-            builderДляОдноразвойСлужбыУведомления=null;
+            builderДляОдноразвойСлужбыУведомления = null;
 
 
 // TODO: 17.11.2021 БЛОК КОДА РЕАЛИЗАЦИЯ БУДУШЕГО ЗАПУСКА ПРИ НАЖАТИИ НА УВЕДОСЛЕНИЕ ИЛИ НА КНОПКИ ЗАПУСКАЕТ С УВЕДОМЛЕНИЯ РАЗЛИЧНЫЕ ДЕЙСТВИЯ
 
-            Intent notificationIntentДляУведомленийЗапускПаузы ;
-            // TODO: 17.11.2021
-            notificationIntentДляУведомленийЗапускПаузы = new Intent(getApplicationContext(), Service_Notifocations_Для_Чата.class);
-            notificationIntentДляУведомленийЗапускПаузы.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            //notificationIntentЗакрыть.addCategory(Intent.CATEGORY_LAUNCHER);
-            Uri uri = Uri.parse(PROCESS_ID_УведомленияОдноразовые);
-            notificationIntentДляУведомленийЗапускПаузы.addCategory(ИмяСлужбыУведомленияДляЧатаОдноразовая);
-            notificationIntentДляУведомленийЗапускПаузы.setData(uri);
-            notificationIntentДляУведомленийЗапускПаузы.setAction("ЗапускПаузы");
-            ///////
-            PendingIntent ЗапускПаузы = null;
+
+            // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи
+            PendingIntent ЗапускКОдаЧтоПОльзовательЗАкрытиеЧата = new SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧата(getApplicationContext()).
+                    МетодЗапускаСменыСтатусаСлужбыЧатаЧерезPendingIntent(PROCESS_ID_УведомленияОдноразовые, ИмяСлужбыУведомленияДляЧатаОдноразовая,
+                            0,
+                            0, "");
 
 
-            if (notificationIntentДляУведомленийЗапускПаузы.resolveActivity(pm) != null) {
-                ЗапускПаузы = PendingIntent.getService(getApplicationContext(),
-                        60,notificationIntentДляУведомленийЗапускПаузы,
-                        PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
-                // TODO: 17.11.2021
-                // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускПаузы);
-            }
-///TODO
-            ///////TODO ЗАкрыкть
+            ///////TODO запускаем смены стануса задачи черезе PendingIntent
+            Log.d(getApplicationContext().getClass().getName(), "PROCESS_ID_УведомленияОдноразовые  ДЛЯ Чата " + PROCESS_ID_УведомленияОдноразовые +
+                    " ИмяСлужбыУведомленияДляЧатаОдноразовая " + ИмяСлужбыУведомленияДляЧатаОдноразовая);
 
 
-////TODO
-            Intent notificationIntentДляУведомленийЗакрываем ;
-            // TODO: 17.11.2021
-            notificationIntentДляУведомленийЗакрываем = new Intent(getApplicationContext(), Service_Notifocations_Для_Чата.class);
-            notificationIntentДляУведомленийЗакрываем.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            //notificationIntentЗакрыть.addCategory(Intent.CATEGORY_LAUNCHER);
-            uri = Uri.parse(PROCESS_ID_УведомленияОдноразовые);
-            notificationIntentДляУведомленийЗакрываем.setType(ИмяСлужбыУведомленияДляЧатаОдноразовая);
-            notificationIntentДляУведомленийЗакрываем.addCategory(ИмяСлужбыУведомленияДляЧатаОдноразовая);
-            notificationIntentДляУведомленийЗакрываем.setData(uri);
-            // notificationIntentДляУведомленийЗакрываем.putExtra("PROCESS_ID_УведомленияОдноразовые",16);
-            notificationIntentДляУведомленийЗакрываем.setAction("Закрываем");
-            ///////
-            PendingIntent ЗапускЗакрытия = null;
+            // TODO: 03.03.2022 ВЬТОРОЙ МЕТОД ДЛЯ ЗАДАНИЕ ПЕРЕХОД ИЗ УВЕДОМЛЕНИЯ В ЗАДАНИЕ
+            PendingIntent ЗапускПриКликеКодаИзНадоперейтиСУведомленияВСамЧат = new SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧата(getApplicationContext()).
+                    МетодПриКликеЗапускаЗаданияИзСамогоУведомленияЧатаПереход(PROCESS_ID_УведомленияОдноразовые, ИмяСлужбыУведомленияДляЧатаОдноразовая,
+                            0,
+                            0, "");
 
 
-            if (notificationIntentДляУведомленийЗакрываем.resolveActivity(pm) != null) {
-                ЗапускЗакрытия = PendingIntent.getService(getApplicationContext(),
-                        61, notificationIntentДляУведомленийЗакрываем,
-                        PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
-                // TODO: 17.11.2021
-                Log.i(getApplicationContext().getClass().getName(), " Закрываем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" );
-                // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗакрываем);
-            }
-///TODO
-
-
-            Intent notificationIntentДляУведомленийЗапускИзУведомления ;
-            // TODO: 17.11.2021
-            notificationIntentДляУведомленийЗапускИзУведомления = new Intent(getApplicationContext(), Service_Notifocations_Для_Чата.class);
-            notificationIntentДляУведомленийЗапускИзУведомления.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            //   notificationIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-            uri = Uri.parse(PROCESS_ID_УведомленияОдноразовые);
-            notificationIntentДляУведомленийЗапускИзУведомления.addCategory(ИмяСлужбыУведомленияДляЧатаОдноразовая);
-            notificationIntentДляУведомленийЗапускИзУведомления.setData(uri);
-            /// notificationIntentДляУведомленийЗапускИзУведомления.putExtra("PROCESS_ID_УведомленияОдноразовые",16);
-            notificationIntentДляУведомленийЗапускИзУведомления.setAction("ЗапускИзУведомления");
-            ////////
-            PendingIntent ЗапускИзУведомления = null;
-
-            if (notificationIntentДляУведомленийЗапускИзУведомления.resolveActivity(pm) != null) {
-
-                ЗапускИзУведомления = PendingIntent.getService(getApplicationContext(),
-                        62, notificationIntentДляУведомленийЗапускИзУведомления,
-                        PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
-                // TODO: 17.11.2021
-                //  Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускИзУведомления);
-            }
-
-
-            Log.i(Контекст.getClass().getName(), "ЗАПУСК MyWork_Notifocations_Уведомления_Для_Задачи  СЛУЖБА     " +
-                    "           Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),intentСлужбаУведомленийДЛЯЧата);;");
-
-
-
-
-
-
-/*
-            NotificationManager notificationManager = (NotificationManager)
-                    getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
-
-            StatusBarNotification[] statusBarNotifications= notificationManager.getActiveNotifications();
-
-            for(StatusBarNotification statusBarNotification:statusBarNotifications){
-
-                if(statusBarNotification.getId()!=12)
-
-                    notificationManager.cancel(statusBarNotification.getId());
-            }
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            NotificationManager notificationManager = (NotificationManager)
-                    getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
-
-
-
+            ///////TODO запускаем смены стануса задачи черезе PendingIntent
+            Log.d(getApplicationContext().getClass().getName(), "PROCESS_ID_УведомленияОдноразовые  ДЛЯ Чата " + PROCESS_ID_УведомленияОдноразовые +
+                    " ИмяСлужбыУведомленияДляЧатаОдноразовая " + ИмяСлужбыУведомленияДляЧатаОдноразовая);
 
 
             // TODO: 21.12.2021
+
+            NotificationManager notificationManager = (NotificationManager)
+                    getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
+
+
+
+
+
+
+
+
+
+
 
             // TODO: 21.12.2021
 
@@ -1035,10 +898,10 @@ try{
                                             .setSummaryText("+"+ОбщееКоличествоНЕпрочитанныхСтрок+" еще")*/
                             .setStyle(messagingStyleДляОдноразовыеУведомления).setColor(Color.BLUE)
                             .setBadgeIconType(NotificationCompat.BADGE_ICON_LARGE).setGroupSummary(true)
-                            .addAction(android.R.drawable.ic_delete, "Закрыть", ЗапускЗакрытия)
+                            .addAction(android.R.drawable.ic_delete, "Закрыть", ЗапускКОдаЧтоПОльзовательЗАкрытиеЧата)
                             .setAutoCancel(false)
                             .setWhen(System.currentTimeMillis()) // автоматически закрыть уведомление после нажатия////.setStyle(new NotificationCompat.BigTextStyle().bigText(bigText) ).setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
-                            .setContentIntent(ЗапускИзУведомления)
+                            .setContentIntent(ЗапускПриКликеКодаИзНадоперейтиСУведомленияВСамЧат)
                             .setContentInfo("уведомления");
                     ////TODO три кнопки действия PUSH-сообщений
                     /// .setAutoCancel(true).setDefaults(Notification.DEFAULT_ALL)
@@ -1076,10 +939,10 @@ try{
                                                          .setSummaryText("+"+ОбщееКоличествоНЕпрочитанныхСтрок+" еще")*/
                                     .setStyle(messagingStyleДляОдноразовыеУведомления)
                                     .setBadgeIconType(NotificationCompat.BADGE_ICON_LARGE)
-                                    .addAction(android.R.drawable.ic_delete, "Закрыть", ЗапускЗакрытия)
+                                    .addAction(android.R.drawable.ic_delete, "Закрыть", ЗапускКОдаЧтоПОльзовательЗАкрытиеЧата)
                                     .setAutoCancel(false)
                                     .setWhen(System.currentTimeMillis()) // автоматически закрыть уведомление после нажатия////.setStyle(new NotificationCompat.BigTextStyle().bigText(bigText) ).setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
-                                    .setContentIntent(ЗапускИзУведомления)
+                                    .setContentIntent(ЗапускПриКликеКодаИзНадоперейтиСУведомленияВСамЧат)
                                     .setContentInfo("уведомления");
 
                     // автоматически закрыть уведомление после нажатия
