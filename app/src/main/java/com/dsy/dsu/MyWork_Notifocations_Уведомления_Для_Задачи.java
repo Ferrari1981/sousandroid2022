@@ -796,8 +796,8 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
 
 
             // TODO: 03.03.2022 ВЬТОРОЙ МЕТОД ДЛЯ ЗАДАНИЕ ПЕРЕХОД ИЗ УВЕДОМЛЕНИЯ В ЗАДАНИЕ
-            PendingIntent ЗапускКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние = new SubClass_Starting_chahge_status_public_notificaton(getApplicationContext()).
-                    МетодЗапускаЗаданияИзСамогоУведомленияПереход(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата,
+            PendingIntent ЗапускПриКликеКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние = new SubClass_Starting_chahge_status_public_notificaton(getApplicationContext()).
+                    МетодПриКликеЗапускаЗаданияИзСамогоУведомленияПереход(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата,
                             person.build().getUri(),
                             0, "");
 
@@ -929,7 +929,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
                                 .addAction(android.R.drawable.ic_delete, "Ознакомлен/на", ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием)
                                 .setAutoCancel(false)
                                 .setWhen(System.currentTimeMillis()) // автоматически закрыть уведомление после нажатия////.setStyle(new NotificationCompat.BigTextStyle().bigText(bigText) ).setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
-                                .setContentIntent(ЗапускКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние);
+                                .setContentIntent(ЗапускПриКликеКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние);
                         ////TODO три кнопки действия PUSH-сообщений
                         /// .setAutoCancel(true).setDefaults(Notification.DEFAULT_ALL)
 
@@ -962,7 +962,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
                                         .addAction(android.R.drawable.ic_delete, "Ознакомлен/на", ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием)
                                         .setAutoCancel(false)
                                         .setWhen(System.currentTimeMillis()) // автоматически закрыть уведомление после нажатия////.setStyle(new NotificationCompat.BigTextStyle().bigText(bigText) ).setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
-                                        .setContentIntent(ЗапускКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние);
+                                        .setContentIntent(ЗапускПриКликеКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние);
 
                         // автоматически закрыть уведомление после нажатия
                         // .setContentIntent(ЗапускЗакрытия);

@@ -18,6 +18,8 @@ import androidx.core.app.JobIntentService;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
+import com.dsy.dsu.Code_For_Tasks_КодДля_Задания.MainActivity_Tasks;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
@@ -131,7 +133,7 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
 
 
             }
-
+// TODO: 26.03.2022 запуск
 
             МетодВнутриСлужбаЗадача(intent);
 
@@ -184,6 +186,12 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
                     ИнформацияОЗапущенойСлужбе.getProgress().toString() + "\n" +
                     " время : " + new Date());
 
+
+            // TODO: 26.03.2022
+
+            Log.i(getApplicationContext().getClass().getName(), "ЗапускСогласованияПришедшегоЗАДАНИЕ   " +
+                    "........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date() + "\n" +
+                    "  intent.getAction() " + intent.getAction());
 
             // TODO: 18.04.2021 запувскает широковещатель
 
@@ -261,6 +269,47 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
 
 
                 UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ = 0L;
+
+
+            }
+
+
+            Log.i(getApplicationContext().getClass().getName(), "ЗапускСогласованияПришедшегоЗАДАНИЕ   " +
+                    "........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date() + "\n" +
+                    "  intent.getAction() " + intent.getAction());
+
+            if (intent.getAction().equals("ПереходВЗАДАНИЕИзУведомления")) {
+                // TODO: 07.02.2022
+
+                NotificationManager notificationManager = (NotificationManager)
+                        getSystemService(NOTIFICATION_SERVICE);
+
+
+                // notificationManager.cancelAll();
+                notificationManager.cancel(Integer.parseInt(PROCESS_ID));
+
+                stopForeground(true);
+
+// TODO: 26.03.2022  запуск активти из задания из уведомления
+
+
+                Intent notificationIntentДляЗапускаЗаданияИзУведомленияПослеКлика;
+                // TODO: 17.11.2021
+                notificationIntentДляЗапускаЗаданияИзУведомленияПослеКлика = new Intent(getApplicationContext(), MainActivity_Tasks.class);
+
+
+                // TODO: 26.03.2022
+                notificationIntentДляЗапускаЗаданияИзУведомленияПослеКлика.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                // TODO: 26.03.2022  
+
+
+                getApplicationContext().startActivity(notificationIntentДляЗапускаЗаданияИзУведомленияПослеКлика);
+
+                // TODO: 26.03.2022
+                Log.i(getApplicationContext().getClass().getName(), "ЗапускСогласованияПришедшегоЗАДАНИЕ   " +
+                        "........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date() + "\n" +
+                        "  intent.getAction() " + intent.getAction());
 
 
             }

@@ -8,8 +8,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.dsy.dsu.Code_For_Tasks_КодДля_Задания.MainActivity_Tasks;
-
 public class SubClass_Starting_chahge_status_public_notificaton {
     Context context;
 
@@ -114,8 +112,8 @@ public class SubClass_Starting_chahge_status_public_notificaton {
 
     // TODO: 03.03.2022
 
-    public PendingIntent МетодЗапускаЗаданияИзСамогоУведомленияПереход(String PROCESS_ID_УведомленияПлановая,
-                                                                       String ИмяСлужбыУведомленияДляЧата
+    public PendingIntent МетодПриКликеЗапускаЗаданияИзСамогоУведомленияПереход(String PROCESS_ID_УведомленияПлановая,
+                                                                               String ИмяСлужбыУведомленияДляЧата
             , Object UUIDПолучениейЗадачиОбьект, Integer ПередаемСтатусзадачи, String ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу) {
         ///
         PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = null;
@@ -138,10 +136,10 @@ public class SubClass_Starting_chahge_status_public_notificaton {
 
             Intent notificationIntentДляЗапусказаданияИзУведомленияПереход;
             // TODO: 17.11.2021
-            notificationIntentДляЗапусказаданияИзУведомленияПереход = new Intent(context, MainActivity_Tasks.class);
+            notificationIntentДляЗапусказаданияИзУведомленияПереход = new Intent(context, Service_Notificatios_Для_Задания.class);
             // TODO: 24.03.2022
             // TODO: 03.03.2022
-            notificationIntentДляЗапусказаданияИзУведомленияПереход.setAction("ЗапускСогласованияПришедшегоЗАДАНИЕ");
+            notificationIntentДляЗапусказаданияИзУведомленияПереход.setAction("ПереходВЗАДАНИЕИзУведомления");
             // TODO: 17.11.2021
             notificationIntentДляЗапусказаданияИзУведомленияПереход.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             // TODO: 26.03.2022
