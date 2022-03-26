@@ -18,8 +18,6 @@ import androidx.core.app.JobIntentService;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
-import com.dsy.dsu.Code_For_Chats_КодДля_Чата.MainActivity_List_Chats;
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
@@ -71,7 +69,7 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d(getApplicationContext().getClass().getName(), " onCreate СЛУЖБА Service_Notifocations_Для_Чата  "
+        Log.d(getApplicationContext().getClass().getName(), " onCreate СЛУЖБА Service_Notifocations_Для_заДАЧА "
                 + " время: "
                 + new Date());
 
@@ -83,7 +81,7 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
 
         try {
 
-            Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА Service_Notifocations_Для_Чата  "
+            Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА Service_Notifocations_Для_ЗАДАЧА  "
                     + " время: "
                     + new Date());
 
@@ -91,7 +89,7 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
             // TODO: 24.03.2022
             bundleДляПришлиВСлужбу = intent.getExtras();
 
-            Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА bundleДляПришлиВСлужбу  " +
+            Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА bundleДляПришлиВСлужбу ЗАДАЧА  " +
                     bundleДляПришлиВСлужбу);
 
 
@@ -135,56 +133,33 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
             }
 
 
+            МетодВнутриСлужбаЗадача(intent);
+
+            Log.i(getApplicationContext().getClass().getName(), "" + " ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу" + ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            ///метод запись ошибок в таблицу
+            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+            new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+            Log.e(getApplicationContext().getClass().getName(), " Ошиюбка СЛУЖБА СЛУЖБАService_Notifications_ДЛЯ ЧАТА  ДЛЯ ЧАТА onHandleWork Exception  PROCESS_ID   " + PROCESS_ID);
+
+        }
 
 
+        return super.onStartCommand(intent, flags, startId);
+    }
 
-        // TODO: 18.04.2021 запувскает широковещатель
-
-        if (intent.getAction().equals("Закрываем")) {
-
-
-            // TODO: 17.11.2021
-            /////todo NOtofication
-            Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-            } else {
-                //deprecated in API 26
-                v2.vibrate(200);
-            }
-            // TODO: 17.11.2021
-            ///
+    private void МетодВнутриСлужбаЗадача(@NonNull Intent intent) {
+        // TODO: 11.05.2021 ЗПУСКАЕМ СЛУЖБУ через брдкастер синхронизхации и уведомления
 
 
+        try {
 
-            // TODO: 14.11.2021
-            // TODO: 17.11.2021
-                             /*   WorkManager.getInstance().cancelAllWorkByTag(ИмяСлужбыУведомленияДляЧата);
+            // TODO: 26.03.2022
 
-                                // TODO: 17.11.2021
-                                Log.d(this.getClass().getName(), " после workInfos.get(i).getState().toString()" + workInfos.get(i).getState().toString());*/
-            // TODO: 17.11.2021
-
-                        /*        NotificationCompat.Builder builder = null;
-
-                              startForeground(Integer.parseInt("12"), builder.build());//builder.build()*/
-
-            NotificationManager notificationManager = (NotificationManager)
-                    getSystemService(NOTIFICATION_SERVICE);
-
-
-
-           // notificationManager.cancelAll();
-            notificationManager.cancel(Integer.parseInt(PROCESS_ID));
-
-            stopForeground(true);
-
-
-
-
-
-            // TODO: 11.05.2021 ЗПУСКАЕМ СЛУЖБУ через брдкастер синхронизхации и уведомления
             WorkInfo ИнформацияОЗапущенойСлужбе = null;
             try {
                 ИнформацияОЗапущенойСлужбе = WorkManager.getInstance(getApplicationContext().getApplicationContext()).getWorkInfosByTag(ИмяСлужбыУведомленияДляЧата.toString()).get().get(0);
@@ -210,123 +185,13 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
                     " время : " + new Date());
 
 
+            // TODO: 18.04.2021 запувскает широковещатель
 
-
-
-
-// TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата         // TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата
-
-
-/*
-            String ИмяСлужбыСинхронизации="WorkManager Synchronizasiy_Data";
-
-            try {
-                ИнформацияОЗапущенойСлужбе = WorkManager.getInstance(getApplicationContext().getApplicationContext()).getWorkInfosByTag(ИмяСлужбыСинхронизации).get().get(0);
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            Log.w(getApplicationContext().getClass().getName(), " После НАЖАТИЕ НА КНОПКУ ЗАКРЫТЬ  Выкючение в Service_Notifocations_Для_Чата     Внутри СЛУЖБЫ " + "\n"+
-                    " MyWork_Async_Синхронизация_Общая " + ИмяСлужбыСинхронизации + "\n"
-                    + " getState  " +
-                    ИнформацияОЗапущенойСлужбе.getState().name() + "\n" +
-                     " isFinished  " +
-                    ИнформацияОЗапущенойСлужбе.getState().isFinished() + "\n" +
-                    "getTags " +
-                    ИнформацияОЗапущенойСлужбе.getTags() + "\n" +
-                    "getRunAttemptCount " +
-                    ИнформацияОЗапущенойСлужбе.getRunAttemptCount() + "\n" +
-                    "getProgress " +
-                    ИнформацияОЗапущенойСлужбе.getProgress().toString() + "\n" +
-                    " время : " + new Date());*/
-
-
-            Log.i(getApplicationContext().getClass().getName(), " Закрываем   внутри служы ПОЛЬЗОВАТЛЬ НАДАЛ НАКПОКУ ЗАКРЫТЬ" +
-                    "Service_Notifocations_Для_Чата (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date());
-
-
-
-
-            // TODO: 07.02.2022 задание КЛИВАЕМ НА СООБЩЕНИЕ ПЕРЕРХОДИМ НА ЧАТ
-
-
-
-        }else if (intent.getAction().equals("ЗапускИзУведомления") ){
-
-
-
-            Log.i(getApplicationContext().getClass().getName(), " ЗапускИзУведомления ........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" +(intent.getAction().toString())+" время запуска  " +new Date());
-
-            Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-// Vibrate for 500 milliseconds
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-            } else {
-                //deprecated in API 26
-                v2.vibrate(150);
-            }
-
-            // TODO: 17.11.2021
-            Intent intentЗапускаемИзУведомленияСамЧат = new Intent(getApplicationContext(), MainActivity_List_Chats.class);
-
-            // TODO: 15.11.2021
-            intentЗапускаемИзУведомленияСамЧат.setAction(Intent.ACTION_SCREEN_ON);
-
-            intentЗапускаемИзУведомленияСамЧат.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-            intentЗапускаемИзУведомленияСамЧат.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-
-
-            getApplicationContext(). startActivity(intentЗапускаемИзУведомленияСамЧат);
-            // TODO: 15.11.2021
-
-            Log.i(getApplicationContext().getClass().getName(), " ЗапускИзУведомления ........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" +(intent.getAction().toString())+" время запуска  " +new Date());
-
-
-            // TODO: 07.02.2022 задание НА СОГЛАСОВАНИЕ ЧТО ПОЛЬЗОВАТЕЛЬ ОЗНАКОМЛЕН С ЗАДАНИЕМ
-        }else if (intent.getAction().equals("ЗапускСогласованияПришедшегоЗАДАНИЕ") ) {
-            // TODO: 07.02.2022
-
-
-            Log.i(getApplicationContext().getClass().getName(), "ЗапускСогласованияПришедшегоЗАДАНИЕ   " +
-                    "........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date() + "\n" +
-                    "  intent.getAction() " + intent.getAction());
-
-
-            Log.i(getApplicationContext().getClass().getName(), " ЗапускПаузы ........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date() + "\n" +
-                    "  intent.getAction() " +intent.getAction()+
-                    " \n"+  " UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ " +UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ);
-
-
-            // TODO: 07.02.2022  после выполНЕНИЯ ЗАДАЕНИЕ ОДНУЛЯЕМ uuid ДЛЯ СМЕНЫ СТАТУСА
-
-
-            //TODO метоД СМЕНЫ СТАТУСА ПОЛЬЗОВАТЕЛЕМ КАК ОЗНАКОМЛЕННЫЙ
-            Boolean РезультатСменыСтатусаНаОзнакомленный =
-                    new SubClass_ДляСменыСтатусаНаОзнаколенный().
-                            МетодСменыСтатусаНаОзкомленныйЗадениеСамимПользователем(getApplicationContext(),
-                                    UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ
-                                    , ПередаемСтатусзадачи,
-                                    ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу);
-
-
-            Log.w(getApplicationContext().getClass().getName(), " конец обоработки статсуса ознакомленый  РезультатСменыСтатусаНаОзнакомленный " +
-                    "" + (РезультатСменыСтатусаНаОзнакомленный +
-                    " \n" + " UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ " + UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ + "ПередаемСтатусзадачи " + ПередаемСтатусзадачи +
-                    "  ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу " + ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу));
-
-
-            if (РезультатСменыСтатусаНаОзнакомленный==true) {
-
-
-
+            if (intent.getAction().equals("ЗапускСогласованияПришедшегоЗАДАНИЕ")) {
+                // TODO: 07.02.2022
 
                 NotificationManager notificationManager = (NotificationManager)
                         getSystemService(NOTIFICATION_SERVICE);
-
 
 
                 // notificationManager.cancelAll();
@@ -334,27 +199,74 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
 
                 stopForeground(true);
 
+                // TODO: 17.11.2021
+                /////todo NOtofication
+                Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+                } else {
+                    //deprecated in API 26
+                    v2.vibrate(200);
+                }
 
 
+                Log.i(getApplicationContext().getClass().getName(), "ЗапускСогласованияПришедшегоЗАДАНИЕ   " +
+                        "........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date() + "\n" +
+                        "  intent.getAction() " + intent.getAction());
 
-                Toast.makeText(getApplicationContext(), " Статус изменен  !!!", Toast.LENGTH_LONG).show();
-            }else {
 
-                Toast.makeText(getApplicationContext(), " Статус осталься прежним ? " , Toast.LENGTH_LONG).show();
+                Log.i(getApplicationContext().getClass().getName(), " ЗапускПаузы ........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date() + "\n" +
+                        "  intent.getAction() " + intent.getAction() +
+                        " \n" + " UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ " + UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ);
+
+
+                // TODO: 07.02.2022  после выполНЕНИЯ ЗАДАЕНИЕ ОДНУЛЯЕМ uuid ДЛЯ СМЕНЫ СТАТУСА
+
+
+                //TODO метоД СМЕНЫ СТАТУСА ПОЛЬЗОВАТЕЛЕМ КАК ОЗНАКОМЛЕННЫЙ
+                Boolean РезультатСменыСтатусаНаОзнакомленный =
+                        new SubClass_ДляСменыСтатусаНаОзнаколенный().
+                                МетодСменыСтатусаНаОзкомленныйЗадениеСамимПользователем(getApplicationContext(),
+                                        UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ
+                                        , ПередаемСтатусзадачи,
+                                        ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу);
+
+
+                Log.w(getApplicationContext().getClass().getName(), " конец обоработки статсуса ознакомленый  РезультатСменыСтатусаНаОзнакомленный " +
+                        "" + (РезультатСменыСтатусаНаОзнакомленный +
+                        " \n" + " UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ " + UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ + "ПередаемСтатусзадачи " + ПередаемСтатусзадачи +
+                        "  ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу " + ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу));
+
+
+                if (РезультатСменыСтатусаНаОзнакомленный == true) {
+
+
+                    notificationManager = (NotificationManager)
+                            getSystemService(NOTIFICATION_SERVICE);
+
+
+                    // notificationManager.cancelAll();
+                    notificationManager.cancel(Integer.parseInt(PROCESS_ID));
+
+                    stopForeground(true);
+
+
+                    Toast.makeText(getApplicationContext(), " Статус изменен  !!!", Toast.LENGTH_LONG).show();
+                } else {
+
+                    Toast.makeText(getApplicationContext(), " Статус осталься прежним ? ", Toast.LENGTH_LONG).show();
+
+                }
+
+
+                UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ = 0L;
+
 
             }
 
 
-            UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ=0L;
-
-
-
-
-
-
-        }
-
-    } catch (Exception e) {
+        } catch (Exception e) {
         e.printStackTrace();
         ///метод запись ошибок в таблицу
         Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
@@ -366,7 +278,6 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
     }
 
 
-        return super.onStartCommand(intent, flags, startId);
     }
 
     @Override

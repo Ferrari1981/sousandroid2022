@@ -3,7 +3,6 @@ package com.dsy.dsu;
 import static android.content.Context.ACTIVITY_SERVICE;
 import static android.content.Context.NOTIFICATION_SERVICE;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.Notification;
@@ -775,61 +774,6 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
 /////////TODO запуск нновую нотификашенс устанолвка
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @SuppressLint("NotificationTrampoline")
     private void МетодНотификайшенДЛяОбщейСлужбыУведомления(String ФлагКтоЗапустилСлужбу) {
         try {
 
@@ -1148,16 +1092,6 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
             //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
 
             //TODO ПЕРЕД СОЗДАНИЕМ НОВОГО СООБЕЩНИЯ ОБНУЛЯЕМ ПРДЫДУЩЕЕ
-
-            NotificationManager notificationManager = (NotificationManager)
-                    getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
-
-            notificationManager.cancel(Integer.parseInt(PROCESS_ID_УведомленияПлановая));
-
-
-            // /.cancelAll(); //   mNotificationManagerДляЧАТА.cancelAll();
-            //   mNotificationManagerДляЧАТА=null;
-            //  builder=null;
             Log.d(getApplicationContext().getClass().getName(), " Стоп СЛУЖБА СЛУЖБАService_Notifications ДЛЯ ЧАТА  onDestroy() Exception ");
 
         }

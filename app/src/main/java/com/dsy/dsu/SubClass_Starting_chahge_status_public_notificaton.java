@@ -80,7 +80,7 @@ public class SubClass_Starting_chahge_status_public_notificaton {
             if (notificationIntentДляУведомленийЗапускСогласования.resolveActivity(pm) != null) {
                 // TODO: 24.03.2022
                 ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = PendingIntent.getService(context,
-                        10, notificationIntentДляУведомленийЗапускСогласования,
+                        51, notificationIntentДляУведомленийЗапускСогласования,
                         PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускПаузы);
