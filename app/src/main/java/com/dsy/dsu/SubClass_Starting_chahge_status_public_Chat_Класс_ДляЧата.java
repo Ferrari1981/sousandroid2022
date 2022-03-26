@@ -5,7 +5,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
 import android.util.Log;
 
 public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧата {
@@ -19,8 +18,8 @@ public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧат
 
     // TODO: 03.03.2022
 
-    public PendingIntent МетодЗапускаСменыСтатусаСлужбыЧатаЧерезPendingIntent(String PROCESS_ID_УведомленияПлановая,
-                                                                              String ИмяСлужбыУведомленияДляЧата
+    public PendingIntent МетодЗапускаЧатаЗакваваемВнутриУведомленияPendingIntent(String PROCESS_ID_УведомленияПлановая,
+                                                                                 String ИмяСлужбыУведомленияДляЧата
             , Object UUIDПолучениейЗадачиОбьект, Integer ПередаемСтатусзадачи, String ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу) {
         ///
         PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = null;
@@ -45,13 +44,15 @@ public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧат
             // TODO: 17.11.2021
             notificationIntentДляУведомленийЗапускЧАТА = new Intent(context, Service_Notifocations_Для_Чата.class);
             // TODO: 24.03.2022
+
+            notificationIntentДляУведомленийЗапускЧАТА.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             // TODO: 03.03.2022
             notificationIntentДляУведомленийЗапускЧАТА.setAction("ЗакрываемУведомленияЧата");
             // TODO: 17.11.2021
             notificationIntentДляУведомленийЗапускЧАТА.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 
 
-            // TODO: 24.03.2022
+          /*  // TODO: 24.03.2022
             Bundle bundleДляПередачиВСлужбу = new Bundle();
             // TODO: 24.03.2022
             bundleДляПередачиВСлужбу.putString("PROCESS_ID_УведомленияПлановая", PROCESS_ID_УведомленияПлановая);
@@ -73,7 +74,7 @@ public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧат
 
             Log.d(context.getClass().getName(), "ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу "
                     + ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу);
-
+*/
 
             if (notificationIntentДляУведомленийЗапускЧАТА.resolveActivity(pm) != null) {
                 // TODO: 24.03.2022
@@ -146,7 +147,7 @@ public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧат
             notificationIntentДляЗапусказаданияИзУведомленияПереход.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
 
-            // TODO: 24.03.2022
+          /*  // TODO: 24.03.2022
             Bundle bundleДляПередачиВСлужбу = new Bundle();
             // TODO: 24.03.2022
             bundleДляПередачиВСлужбу.putString("PROCESS_ID_УведомленияПлановая", PROCESS_ID_УведомленияПлановая);
@@ -167,7 +168,7 @@ public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧат
             notificationIntentДляЗапусказаданияИзУведомленияПереход.putExtras(bundleДляПередачиВСлужбу);
 
             Log.d(context.getClass().getName(), "ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу "
-                    + ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу);
+                    + ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу);*/
 
 
             if (notificationIntentДляЗапусказаданияИзУведомленияПереход.resolveActivity(pm) != null) {

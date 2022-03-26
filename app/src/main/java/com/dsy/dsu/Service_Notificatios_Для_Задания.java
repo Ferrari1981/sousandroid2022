@@ -294,7 +294,8 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
                 Intent notificationIntentДляЗапускаЗаданияИзУведомленияПослеКлика;
                 // TODO: 17.11.2021
                 notificationIntentДляЗапускаЗаданияИзУведомленияПослеКлика = new Intent(getApplicationContext(), MainActivity_Tasks.class);
-
+                // TODO: 15.11.2021
+                notificationIntentДляЗапускаЗаданияИзУведомленияПослеКлика.setAction(Intent.ACTION_SCREEN_ON);
 
                 // TODO: 26.03.2022
                 notificationIntentДляЗапускаЗаданияИзУведомленияПослеКлика.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
