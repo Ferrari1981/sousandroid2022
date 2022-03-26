@@ -2299,7 +2299,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
                 if (notificationIntentДляУведомленийОбновлениеПоЗагрузить.resolveActivity(pm) != null) {
                     ЗапускаемОбновлениеПо = PendingIntent.getService(getApplicationContext(),
-                            29,notificationIntentДляУведомленийОбновлениеПоЗагрузить,
+                            3, notificationIntentДляУведомленийОбновлениеПоЗагрузить,
                             PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
                     // TODO: 17.11.2021
                     // TODO: 17.11.2021

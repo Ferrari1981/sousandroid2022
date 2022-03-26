@@ -1073,17 +1073,6 @@ try{
 
             //TODO ПЕРЕД СОЗДАНИЕМ НОВОГО СООБЕЩНИЯ ОБНУЛЯЕМ ПРДЫДУЩЕЕ
 
-            NotificationManager notificationManager = (NotificationManager)
-                    getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
-
-            notificationManager.cancel(Integer.parseInt(PROCESS_ID_УведомленияОдноразовые));
-
-
-            // /.cancelAll(); //   mNotificationManagerДляЧАТА.cancelAll();
-            //   mNotificationManagerДляЧАТА=null;
-            //  builder=null;
-            Log.d(getApplicationContext().getClass().getName(), " Стоп СЛУЖБА СЛУЖБАService_Notifications ДЛЯ ЧАТА  onDestroy() Exception ");
-
         }
 
 

@@ -1,18 +1,19 @@
 package com.dsy.dsu;
 
 import android.app.NotificationManager;
+import android.app.Service;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
+import android.os.IBinder;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.JobIntentService;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
@@ -23,7 +24,7 @@ import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
 
-public class Service_Notifocations_Для_Чата extends JobIntentService {////Service
+public class Service_Notifocations_Для_Чата extends Service {////Service
 
     //TODO
     String ИмяСлужбыУведомленияДляЧата;
@@ -87,6 +88,20 @@ public class Service_Notifocations_Для_Чата extends JobIntentService {///
                         getSystemService(NOTIFICATION_SERVICE);
 
 
+                // TODO: 26.03.2022
+
+
+                // TODO: 26.03.2022
+                PROCESS_ID = intent.getStringExtra("PROCESS_ID_Чата");
+
+                // TODO: 26.03.2022
+                ИмяСлужбыУведомленияДляЧата = intent.getStringExtra("НазваниеСлужбыВСлужбуЧата");
+
+                // TODO: 26.03.2022
+                Log.d(getApplicationContext().getClass().getName(), " onStartCommand СЛУЖБА Service_Notifocations_Для_Чата  "
+                        + " время: "
+                        + new Date() + "intent.getAction().toString() " + intent.getAction().toString() + "bundleЧата " + ИмяСлужбыУведомленияДляЧата);
+
                 // notificationManager.cancelAll();
                 notificationManager.cancel(Integer.parseInt(PROCESS_ID));
 
@@ -143,7 +158,8 @@ public class Service_Notifocations_Для_Чата extends JobIntentService {///
             if (intent.getAction().equals("ЗапускИзУведомленияЧата")) {
 
 
-                Log.i(getApplicationContext().getClass().getName(), " ЗапускИзУведомления ........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date());
+                Log.i(getApplicationContext().getClass().getName(), " ЗапускИзУведомления ........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА"
+                        + (intent.getAction().toString()) + " время запуска  " + new Date());
 
                 Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
 // Vibrate for 500 milliseconds
@@ -169,11 +185,13 @@ public class Service_Notifocations_Для_Чата extends JobIntentService {///
                 getApplicationContext().startActivity(intentЗапускаемИзУведомленияСамЧат);
                 // TODO: 15.11.2021
 
-                Log.i(getApplicationContext().getClass().getName(), " ЗапускИзУведомления ........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date());
+                Log.i(getApplicationContext().getClass().getName(), " ЗапускИзУведомления ........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА"
+                        + (intent.getAction().toString()) + " время запуска  " + new Date());
 
 
                 // TODO: 07.02.2022 задание НА СОГЛАСОВАНИЕ ЧТО ПОЛЬЗОВАТЕЛЬ ОЗНАКОМЛЕН С ЗАДАНИЕМ
             }
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -190,49 +208,7 @@ public class Service_Notifocations_Для_Чата extends JobIntentService {///
         return super.onStartCommand(intent, flags, startId);
     }
 
-    @Override
-    public boolean onStopCurrentWork() {
 
-        Log.d(getApplicationContext().getClass().getName(), " enqueueWork СЛУЖБА Service_Notifocations_Для_Чата  "
-                + " время: "
-                + new Date());
-        return super.onStopCurrentWork();
-    }
-
-    @Override
-    protected void onHandleWork(@NonNull Intent intent) {
-
-        ///TODO запускаем дВУХсЛУЖБ
-
-        try {
-
-///
-/////////////////////////////
-
-            Log.d(this.getClass().getName(), " СЛУЖБА УВЕДОМЛЕНИЯ  ЧАТА onHandleWork ) "
-                    + " время: "
-                    + new Date());
-
-
-/////
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            ///метод запись ошибок в таблицу
-            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-            Log.e(getApplicationContext().getClass().getName(), " Ошиюбка СЛУЖБА СЛУЖБАService_Notifications_ДЛЯ ЧАТА  ДЛЯ ЧАТА onHandleWork Exception ");
-
-        }
-
-
-        // TODO: 08.04.2021 end service thread
-
-
-    }
 
     @Override
     public void onDestroy() {
@@ -256,6 +232,15 @@ public class Service_Notifocations_Для_Чата extends JobIntentService {///
         }
 
 
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+
+        Log.i(getApplicationContext().getClass().getName(), "Стоп Стоп  Стоп !!!!!!!!!!! СЛУЖБА СЛУЖБАService_Notifications  ДЛЯ ЧАТА   ДЛЯ ЧАТА onDestroy() время " + new Date());
+
+        return null;
     }
 
 

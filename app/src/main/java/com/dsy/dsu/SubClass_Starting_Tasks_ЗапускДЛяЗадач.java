@@ -80,7 +80,7 @@ public class SubClass_Starting_Tasks_ЗапускДЛяЗадач {
             if (notificationIntentДляЗадачи.resolveActivity(pm) != null) {
                 // TODO: 24.03.2022
                 ЗапускКОдаЧтоПОльзовательЗадачаВыполнилОтказ = PendingIntent.getService(context,
-                        93, notificationIntentДляЗадачи,
+                        6, notificationIntentДляЗадачи,
                         PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускПаузы);
@@ -175,7 +175,7 @@ public class SubClass_Starting_Tasks_ЗапускДЛяЗадач {
             if (notificationIntentДляЗапусказаданияИзУведомленияПереход.resolveActivity(pm) != null) {
                 // TODO: 24.03.2022
                 ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = PendingIntent.getService(context,
-                        47, notificationIntentДляЗапусказаданияИзУведомленияПереход,
+                        7, notificationIntentДляЗапусказаданияИзУведомленияПереход,
                         PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускПаузы);
