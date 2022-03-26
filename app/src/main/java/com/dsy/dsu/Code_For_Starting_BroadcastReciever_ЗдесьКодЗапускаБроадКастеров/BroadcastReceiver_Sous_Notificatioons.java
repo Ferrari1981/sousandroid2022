@@ -133,7 +133,6 @@ public class BroadcastReceiver_Sous_Notificatioons extends BroadcastReceiver {
                     PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS, TimeUnit.MILLISECONDS)//MIN_PERIODIC_FLEX_MILLIS
                     .setConstraints(constraintsУведомленияДляЧата)
                     .addTag(ИмяСлужбыУведомленияДляЧата)
-                    .setInitialDelay(2, TimeUnit.SECONDS)
                     .setBackoffCriteria(
                             BackoffPolicy.LINEAR,
                             PeriodicWorkRequest.MIN_BACKOFF_MILLIS,

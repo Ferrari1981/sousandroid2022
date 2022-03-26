@@ -846,100 +846,21 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
                             0, "");
 
 
+            ///////TODO запускаем смены стануса задачи черезе PendingIntent
+            Log.d(getApplicationContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая " + PROCESS_ID_УведомленияПлановая +
+                    " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата + " person.build().getUri() " + person.build().getUri());
+
+
+            // TODO: 03.03.2022 ВЬТОРОЙ МЕТОД ДЛЯ ЗАДАНИЕ ПЕРЕХОД ИЗ УВЕДОМЛЕНИЯ В ЗАДАНИЕ
+            PendingIntent ЗапускКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние = new SubClass_Starting_chahge_status_public_notificaton(getApplicationContext()).
+                    МетодЗапускаЗаданияИзСамогоУведомленияПереход(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата,
+                            person.build().getUri(),
+                            0, "");
+
 
             ///////TODO запускаем смены стануса задачи черезе PendingIntent
-            Log.d(getApplicationContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая "+PROCESS_ID_УведомленияПлановая +
-                            " ИмяСлужбыУведомленияДляЧата " +ИмяСлужбыУведомленияДляЧата + " person.build().getUri() " +person.build().getUri());
-
-/*
-////TODO
-            Intent notificationIntentДляУведомленийЗакрываем ;
-            // TODO: 17.11.2021
-            notificationIntentДляУведомленийЗакрываем = new Intent(getApplicationContext(), Service_Notifocations_Для_Чата.class);
-            notificationIntentДляУведомленийЗакрываем.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            //notificationIntentЗакрыть.addCategory(Intent.CATEGORY_LAUNCHER);
-            uri = Uri.parse(PROCESS_ID_УведомленияПлановая);
-            notificationIntentДляУведомленийЗакрываем.setType(ИмяСлужбыУведомленияДляЧата);
-            notificationIntentДляУведомленийЗакрываем.addCategory(ИмяСлужбыУведомленияДляЧата);
-            notificationIntentДляУведомленийЗакрываем.setData(uri);
-            notificationIntentДляУведомленийЗакрываем.setAction("Закрываем");
-            ///////
-            PendingIntent ЗапускЗакрытия = null;
-
-
-
-            if (notificationIntentДляУведомленийЗакрываем.resolveActivity(pm) != null) {
-                ЗапускЗакрытия = PendingIntent.getService(getApplicationContext(),
-                        11, notificationIntentДляУведомленийЗакрываем,
-                        PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
-                // TODO: 17.11.2021
-                Log.i(getApplicationContext().getClass().getName(), " Закрываем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" );
-               // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗакрываем);
-            }
-///TODO
-
-
-            Intent notificationIntentДляУведомленийЗапускИзУведомления ;
-            // TODO: 17.11.2021
-            notificationIntentДляУведомленийЗапускИзУведомления = new Intent(getApplicationContext(), Service_Notifocations_Для_Чата.class);
-            notificationIntentДляУведомленийЗапускИзУведомления.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            //   notificationIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-           // notificationIntentДляУведомленийЗапускИзУведомления.putExtra("PROCESS_ID_УведомленияПлановая",16);
-            uri = Uri.parse(PROCESS_ID_УведомленияПлановая);
-            notificationIntentДляУведомленийЗапускИзУведомления.setData(uri);
-            notificationIntentДляУведомленийЗапускИзУведомления.setAction("ЗапускИзУведомления");
-            ////////
-            PendingIntent ЗапускИзУведомления = null;
-
-            if (notificationIntentДляУведомленийЗапускИзУведомления.resolveActivity(pm) != null) {
-
-                ЗапускИзУведомления = PendingIntent.getService(getApplicationContext(),
-                       12, notificationIntentДляУведомленийЗапускИзУведомления,
-                        PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
-                // TODO: 17.11.2021
-              //  Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускИзУведомления);
-            }
-
-
-
-            Log.i(Контекст.getClass().getName(), "ЗАПУСК MyWork_Notifocations_Уведомления_Для_Задачи  СЛУЖБА     " +
-                    "           Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),intentСлужбаУведомленийДЛЯЧата);;");
-*/
-
-
-
-
-
-
-/*
-            NotificationManager notificationManager = (NotificationManager)
-                    getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
-
-            StatusBarNotification[] statusBarNotifications= notificationManager.getActiveNotifications();
-
-            for(StatusBarNotification statusBarNotification:statusBarNotifications){
-
-                if(statusBarNotification.getId()!=12)
-
-                    notificationManager.cancel(statusBarNotification.getId());
-            }
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            Log.d(getApplicationContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая " + PROCESS_ID_УведомленияПлановая +
+                    " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата + " person.build().getUri() " + person.build().getUri());
 
 
             NotificationManager notificationManager = (NotificationManager)
@@ -1057,14 +978,14 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
                                 .setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE | Notification.FLAG_AUTO_CANCEL)
                                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                                 .setStyle(new NotificationCompat.BigTextStyle().bigText(БуферСамиУведомленияЛинкСамиУведомления
-                                .toString()) ).setBadgeIconType(NotificationCompat.BADGE_ICON_LARGE)
-                                .setStyle(messagingStyleДля_ОбщихУведомлений).setColor(Color.parseColor(("#FAEBD"+new Random().nextInt(1))))
+                                        .toString())).setBadgeIconType(NotificationCompat.BADGE_ICON_LARGE)
+                                .setStyle(messagingStyleДля_ОбщихУведомлений).setColor(Color.parseColor(("#FAEBD" + new Random().nextInt(1))))
                                 .setGroupSummary(true)
                                 .setColor(Color.GREEN)
                                 .addAction(android.R.drawable.ic_delete, "Ознакомлен/на", ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием)
                                 .setAutoCancel(false)
                                 .setWhen(System.currentTimeMillis()) // автоматически закрыть уведомление после нажатия////.setStyle(new NotificationCompat.BigTextStyle().bigText(bigText) ).setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
-                               ;// .setContentIntent(ЗапускИзУведомления)
+                                .setContentIntent(ЗапускКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние);
                         ////TODO три кнопки действия PUSH-сообщений
                         /// .setAutoCancel(true).setDefaults(Notification.DEFAULT_ALL)
 
@@ -1089,15 +1010,15 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
                                         .setCategory(Notification.CATEGORY_MESSAGE)
                                         .setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE | Notification.FLAG_AUTO_CANCEL)
                                         .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                                       /* .setStyle(new NotificationCompat.BigTextStyle().bigText(БуферСамиУведомленияЛинкСамиУведомления.toString())
-                                        ).setBadgeIconType(NotificationCompat.BADGE_ICON_LARGE)*/
-                                        .setStyle(messagingStyleДля_ОбщихУведомлений).setColor(Color.parseColor(("#FAEBD"+new Random().nextInt(1))))
+                                        /* .setStyle(new NotificationCompat.BigTextStyle().bigText(БуферСамиУведомленияЛинкСамиУведомления.toString())
+                                         ).setBadgeIconType(NotificationCompat.BADGE_ICON_LARGE)*/
+                                        .setStyle(messagingStyleДля_ОбщихУведомлений).setColor(Color.parseColor(("#FAEBD" + new Random().nextInt(1))))
                                         .setGroupSummary(true)
                                         .setColor(Color.GREEN)
                                         .addAction(android.R.drawable.ic_delete, "Ознакомлен/на", ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием)
                                         .setAutoCancel(false)
                                         .setWhen(System.currentTimeMillis()) // автоматически закрыть уведомление после нажатия////.setStyle(new NotificationCompat.BigTextStyle().bigText(bigText) ).setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
-                          ;//              .setContentIntent(ЗапускИзУведомления)
+                                        .setContentIntent(ЗапускКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние);
 
                         // автоматически закрыть уведомление после нажатия
                         // .setContentIntent(ЗапускЗакрытия);
