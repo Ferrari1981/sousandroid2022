@@ -1,4 +1,5 @@
 package com.dsy.dsu;
+
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -7,8 +8,6 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Interpolator;
-import android.graphics.Shader;
 import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
 import android.os.Build;
@@ -33,8 +32,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.LinkedTransferQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
@@ -196,7 +193,6 @@ activity=this;
 
     private void МетодФинальноеВизаульноеПрогрессБар() {
         /////TODO присваиваем наверх факсическое значение идущего цикла
-
         try {
         HandlerДляПоказаПользователюЗагрузки = new Handler() {
             public void handleMessage(android.os.Message msg) {
@@ -404,21 +400,13 @@ try{
                                 Log.d(this.getClass().getName(), "РезультатПолученныйПубличныйID " +РезультатПолученныйПубличныйID);
 
 
-
-
-
-
-
-
                                 ///////TODO ПОСЛЕ ОПРЕДЕЛЯ КОГДА СОТРУДНИКА ЗАХОДИЛ ИДЕТ НА ДВА ПУТИ ПОЛЬЗОВАТЛЬ ПОДТРВЕРЖАЕТ СОВЕ ИМЯ И ПАРОЛЬИ ИЛИ МЫ СРРАЗУ ЗАРПУСКАМ ПРОГРАММУ
-                                МетодВизуальногоПодтвержденияКогдаКтоВходит(ФиналПолучаемРазницуМеждуДатами );
+                                МетодВизуальногоПодтвержденияКогдаКтоВходит(ФиналПолучаемРазницуМеждуДатами);
                                 ////
 
 
-
-
-
-
+                                /////
+                                Log.d(this.getClass().getName(), "РезультатПолученныйПубличныйID " + РезультатПолученныйПубличныйID);
 
 
                             } catch (Exception e) {

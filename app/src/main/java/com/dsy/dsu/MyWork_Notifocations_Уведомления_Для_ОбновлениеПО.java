@@ -65,9 +65,9 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
 
 
 
-    Integer ОбщееКоличествоНЕпрочитанныхСтрок=0;
+    Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
     ////TODO
-    NotificationCompat.Builder builder=null;
+    NotificationCompat.Builder builder_СлужбаОбновлениеПо = null;
     //// Notification notificationAfterBuild=null;
 
     //TODO
@@ -988,7 +988,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
 
             PackageManager pm = getApplicationContext().getPackageManager();
 
-            builder=null;
+            builder_СлужбаОбновлениеПо = null;
 
 
 // TODO: 17.11.2021 БЛОК КОДА РЕАЛИЗАЦИЯ БУДУШЕГО ЗАПУСКА ПРИ НАЖАТИИ НА УВЕДОСЛЕНИЕ ИЛИ НА КНОПКИ ЗАПУСКАЕТ С УВЕДОМЛЕНИЯ РАЗЛИЧНЫЕ ДЕЙСТВИЯ
@@ -1170,7 +1170,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     ///"@mipmap/icon_main_tabel_four" ////.setSmallIcon(R.drawable.ic_notifications_black_24dp)
-                    builder = new NotificationCompat.Builder(getApplicationContext(), PROCESS_ID_UpdateSoft)
+                    builder_СлужбаОбновлениеПо = new NotificationCompat.Builder(getApplicationContext(), PROCESS_ID_UpdateSoft)
                             /////
                             .setContentText(СообщениеОтоМЧТоЕчтьНоваяВерсияПоОтСервера)                 // .setContentText("http://developer.alexanderklimov.ru/android/")
                             .setSmallIcon(R.drawable.icon_dsu1_download)////builder.setSmallIcon(R.drawable.ic_launcher_background);//R.mipmap.ic_launcher   ///R.drawable.ic_notifications_black_24dp
@@ -1197,7 +1197,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
 
 
                 } else {
-                    builder =
+                    builder_СлужбаОбновлениеПо =
                             new NotificationCompat.Builder(getApplicationContext(), PROCESS_ID_UpdateSoft)
                                     //
                                     .setContentText(СообщениеОтоМЧТоЕчтьНоваяВерсияПоОтСервера)                 // .setContentText("http://developer.alexanderklimov.ru/android/")
@@ -1242,21 +1242,21 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
                             PROCESS_ID_UpdateSoft,
                             "Channel human readable title",
                             NotificationManager.IMPORTANCE_HIGH);
-                     mNotificationManagerДляОбновлен.createNotificationChannel(channel);
-                    builder.setChannelId(String.valueOf(PROCESS_ID_UpdateSoft));
+                    mNotificationManagerДляОбновлен.createNotificationChannel(channel);
+                    builder_СлужбаОбновлениеПо.setChannelId(String.valueOf(PROCESS_ID_UpdateSoft));
                     channel.setDescription("Увеомление для версии выше API 25");
                     // TODO: 18.11.2021  дополнительые настройки
 
-                    builder.build().flags  |= Notification.FLAG_FOREGROUND_SERVICE;
+                    builder_СлужбаОбновлениеПо.build().flags |= Notification.FLAG_FOREGROUND_SERVICE;
                     ///TODO Запускаем увидомления
-                    builder.build().flags  |= Notification.FLAG_AUTO_CANCEL;
+                    builder_СлужбаОбновлениеПо.build().flags |= Notification.FLAG_AUTO_CANCEL;
                     // startForeground(Integer.parseInt(PROCESS_ID_UpdateSoft),builder.build());//builder.build()
                     ///TODO Запускаем увидомления
-                    builder.build().flags  |= Notification.FLAG_SHOW_LIGHTS;
+                    builder_СлужбаОбновлениеПо.build().flags |= Notification.FLAG_SHOW_LIGHTS;
                     ///TODO Запускаем увидомления
-                    builder.build().flags  |= Notification.FLAG_INSISTENT;
+                    builder_СлужбаОбновлениеПо.build().flags |= Notification.FLAG_INSISTENT;
                     // TODO: 02.12.2021
-                    builder.setNumber(1);
+                    builder_СлужбаОбновлениеПо.setNumber(1);
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                          mNotificationManagerДляОбновлен.getBubblePreference();
@@ -1264,7 +1264,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
 
                     ///TODO Запускаем увидомления
                     // TODO: 02.12.2021  сам запуск уведомления
-                     mNotificationManagerДляОбновлен.notify(Integer.parseInt(PROCESS_ID_UpdateSoft), builder.build());////    mNotificationManagerДляОбновлен.notify(Integer.parseInt(PROCESS_ID_UpdateSoft), builder.build());
+                    mNotificationManagerДляОбновлен.notify(Integer.parseInt(PROCESS_ID_UpdateSoft), builder_СлужбаОбновлениеПо.build());////    mNotificationManagerДляОбновлен.notify(Integer.parseInt(PROCESS_ID_UpdateSoft), builder.build());
                     ///TODO закрытие увидомления
                     // mNotificationManagerДляОбновлен.cancel(1);///.cancelAll();
 
@@ -1283,16 +1283,16 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
                     // TODO: 27.11.2021 САМ ЗАПУСК УВЕДОМЛЕНИЯ
 
                     // mNotificationManagerДляОбновлен.cancel(1);///.cancelAll();
-                    builder.build().flags  |= Notification.FLAG_FOREGROUND_SERVICE;
+                    builder_СлужбаОбновлениеПо.build().flags |= Notification.FLAG_FOREGROUND_SERVICE;
                     ///TODO Запускаем увидомления
                     ///TODO Запускаем увидомления
-                    builder.build().flags  |= Notification.FLAG_AUTO_CANCEL;
+                    builder_СлужбаОбновлениеПо.build().flags |= Notification.FLAG_AUTO_CANCEL;
                     ///TODO Запускаем увидомления
-                    builder.build().flags  |= Notification.FLAG_SHOW_LIGHTS;
+                    builder_СлужбаОбновлениеПо.build().flags |= Notification.FLAG_SHOW_LIGHTS;
                     ///TODO Запускаем увидомления
-                    builder.build().flags  |= Notification.FLAG_INSISTENT;
+                    builder_СлужбаОбновлениеПо.build().flags |= Notification.FLAG_INSISTENT;
                     // TODO: 02.12.2021
-                    builder.setNumber(1);
+                    builder_СлужбаОбновлениеПо.setNumber(1);
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                          mNotificationManagerДляОбновлен.getBubblePreference();
@@ -1300,7 +1300,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
 
                     // TODO: 02.12.2021  сам запуск уведомления
 
-                     mNotificationManagerДляОбновлен.notify(Integer.parseInt(PROCESS_ID_UpdateSoft), builder.build());////    mNotificationManagerДляОбновлен.notify(Integer.parseInt(PROCESS_ID_UpdateSoft), builder.build());
+                    mNotificationManagerДляОбновлен.notify(Integer.parseInt(PROCESS_ID_UpdateSoft), builder_СлужбаОбновлениеПо.build());////    mNotificationManagerДляОбновлен.notify(Integer.parseInt(PROCESS_ID_UpdateSoft), builder.build());
                     ///TODO закрытие увидомления
 
                     //     startForeground(Integer.parseInt(PROCESS_ID_UpdateSoft),builder.build());//builder.build()

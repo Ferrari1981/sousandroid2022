@@ -23,14 +23,13 @@ public class Service_Notificatios_Для_ОбновлениеПО extends JobInt
 
 
 
-    private static final String НазваниеСлужбы=".Service_Notificatios_Для_ОбновлениеПО";
     ////
     //TODO
    Integer СервернаяВерсияПОВнутри=0;
 
-
+    String ИмяСлужбыУведомленияДляОбновление = "WorkManager NOtofocationforUpdateSoft";
     ////////
-    private String PROCESS_IDSoftUpdate="19";
+    private String PROCESS_IDSoftUpdate = "19";
 
 
     // TODO: 12.10.2021  Ссылка Менеджер Потоков
@@ -46,14 +45,7 @@ public class Service_Notificatios_Для_ОбновлениеПО extends JobInt
 
     }
 
-    public static void enqueueWork(Context context, Intent intent) {
-        enqueueWork(context, Service_Notificatios_Для_ОбновлениеПО.class, 41, intent);
 
-        Log.d(context.getClass().getName(), " enqueueWork СЛУЖБА Service_Notifocations_Для_Чата  "
-                + " время: "
-                + new Date());
-
-    }
 // TODO: 16.11.2021
 
     @Override
@@ -67,9 +59,6 @@ public class Service_Notificatios_Для_ОбновлениеПО extends JobInt
                     + " время: "
                 + new Date()+"\n"+
                 "  СервернаяВерсияПОВнутри " +СервернаяВерсияПОВнутри);
-
-
-
 
 
         Log.i(getApplicationContext().getClass().getName(), " ЗАПУСК ........" +
@@ -94,7 +83,7 @@ public class Service_Notificatios_Для_ОбновлениеПО extends JobInt
             }
             // TODO: 17.11.2021
             ///
-            String ИмяСлужбыУведомленияДляОбновление = "WorkManager NOtofocationforUpdateSoft";
+
 
 
             // TODO: 14.11.2021
@@ -113,30 +102,58 @@ public class Service_Notificatios_Для_ОбновлениеПО extends JobInt
                     getSystemService(NOTIFICATION_SERVICE);
 
 
-
            // notificationManager.cancelAll();
             notificationManager.cancel(Integer.parseInt(PROCESS_IDSoftUpdate));
 
             stopForeground(true);
 
 
+// TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата         // TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата
 
 
+            Log.i(getApplicationContext().getClass().getName(), " Закрываем   внутри служы ПОЛЬЗОВАТЛЬ НАДАЛ НАКПОКУ ЗАКРЫТЬ" +
+                    "Service_Notifocations_Для_Чата (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date());
 
-  /*          // TODO: 11.05.2021 ЗПУСКАЕМ СЛУЖБУ через брдкастер синхронизхации и уведомления
-            WorkInfo ИнформацияОЗапущенойСлужбе= null;
-            try {
-                ИнформацияОЗапущенойСлужбе = WorkManager.getInstance(getApplicationContext().getApplicationContext()).getWorkInfosByTag(ИмяСлужбыУведомленияДляОбновление).get().get(0);
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }*/
+
+            // TODO: 28.12.2021 НЕ ПОСРЕДСТВЕНО ЗАГРУЗКА по ПОЛЬЗОВАТЕЛЮ
+
+
+        }
+
+            Log.i(getApplicationContext().getClass().getName(), " ЗАПУСК ........" +
+                    " СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date() + "\n" +
+                    " PROCESS_IDSoftUpdate " + PROCESS_IDSoftUpdate);
+
+
+            if (intent.getAction().equals("ЗагрузитьНовоеПо")) {
+
+
+                Log.i(getApplicationContext().getClass().getName(), " ЗАГРУЖАЕМ ПО ПОЛЬЗОВАТЕЛЬ НАЖАЛ НА КОНОПКУ ЗАГУРДИТЬ   " +
+                        "Service_Notifocations_Для_Чата (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date() +
+                        "  СервернаяВерсияПОВнутри " + СервернаяВерсияПОВнутри);
+                String PROCESS_ID_UpdateSoft = "19";
+
+                NotificationManager notificationManager = (NotificationManager)
+                        getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
+
+
+                notificationManager.cancel(Integer.parseInt(PROCESS_ID_UpdateSoft));
+
+
+                new Class_Update_Download_File_APK_From_SERVER(getApplicationContext(), null).МетодНачалаЗапускаОбновленияПО(СервернаяВерсияПОВнутри);
+
+
+                Log.i(getApplicationContext().getClass().getName(), " УЖЕ ЗАГРУзили ПО ПОЛЬЗОВАТЕЛЬ НАЖАЛ НА КОНОПКУ ЗАГУРДИТЬ   " +
+                        "Service_Notifocations_Для_Чата (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date());
+            }
+
+            // TODO: 26.03.2022
+
             // TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата         // TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата
 
 
-
-            WorkManager.getInstance(getApplicationContext().getApplicationContext()).getWorkInfosByTagLiveData(ИмяСлужбыУведомленияДляОбновление).observeForever(new Observer<List<WorkInfo>>() {
+            WorkManager.getInstance(getApplicationContext().getApplicationContext())
+                    .getWorkInfosByTagLiveData(ИмяСлужбыУведомленияДляОбновление).observeForever(new Observer<List<WorkInfo>>() {
                 @Override
                 public void onChanged(List<WorkInfo> workInfos) {
 
@@ -153,46 +170,13 @@ public class Service_Notificatios_Для_ОбновлениеПО extends JobInt
                             workInfos.get(0).getRunAttemptCount() + "\n" +
                             "getProgress " +
                             workInfos.get(0).getProgress().toString() + "\n" +
-                            " время : " + new Date()+
-                            "\n"+"#######################################################################################"+"\n");
+                            " время : " + new Date() +
+                            "\n" + "#######################################################################################" + "\n");
 
                 }
             });
 
-
-
-// TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата         // TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата
-
-
-            Log.i(getApplicationContext().getClass().getName(), " Закрываем   внутри служы ПОЛЬЗОВАТЛЬ НАДАЛ НАКПОКУ ЗАКРЫТЬ" +
-                    "Service_Notifocations_Для_Чата (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date());
-
-
-            // TODO: 28.12.2021 НЕ ПОСРЕДСТВЕНО ЗАГРУЗКА по ПОЛЬЗОВАТЕЛЮ
-
-
-        }else  if (intent.getAction().equals("ЗагрузитьНовоеПо")) {
-
-
-            Log.i(getApplicationContext().getClass().getName(), " ЗАГРУЖАЕМ ПО ПОЛЬЗОВАТЕЛЬ НАЖАЛ НА КОНОПКУ ЗАГУРДИТЬ   " +
-                    "Service_Notifocations_Для_Чата (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date() +
-                    "  СервернаяВерсияПОВнутри " + СервернаяВерсияПОВнутри);
-            String PROCESS_ID_UpdateSoft = "19";
-
-            NotificationManager notificationManager = (NotificationManager)
-                    getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
-
-
-            notificationManager.cancel(Integer.parseInt(PROCESS_ID_UpdateSoft));
-
-
-            new Class_Update_Download_File_APK_From_SERVER(getApplicationContext(), null).МетодНачалаЗапускаОбновленияПО(СервернаяВерсияПОВнутри);
-
-
-            Log.i(getApplicationContext().getClass().getName(), " УЖЕ ЗАГРУзили ПО ПОЛЬЗОВАТЕЛЬ НАЖАЛ НА КОНОПКУ ЗАГУРДИТЬ   " +
-                    "Service_Notifocations_Для_Чата (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date());
-        }
-    } catch (Exception e) {
+        } catch (Exception e) {
         e.printStackTrace();
         ///метод запись ошибок в таблицу
         Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
