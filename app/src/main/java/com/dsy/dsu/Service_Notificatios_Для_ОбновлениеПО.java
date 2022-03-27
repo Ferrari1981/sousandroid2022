@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
@@ -151,30 +152,45 @@ public class Service_Notificatios_Для_ОбновлениеПО extends JobInt
 
             // TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата         // TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата
 
-
-            WorkManager.getInstance(getApplicationContext().getApplicationContext())
-                    .getWorkInfosByTagLiveData(ИмяСлужбыУведомленияДляОбновление).observeForever(new Observer<List<WorkInfo>>() {
+            Handler.Callback callback = new Handler.Callback() {
                 @Override
-                public void onChanged(List<WorkInfo> workInfos) {
-
-
-                    Log.w(getApplicationContext().getClass().getName(), " После НАЖАТИЕ НА КНОПКУ ЗАКРЫТЬ  Выкючение в Service_Notificatios_Для_Update_Soft Внутри СЛУЖБЫ " +
-                            " MyWork_Notifocations_Уведомления_ДляОбновлениеПо ВНУТРИ Service_Notificatios_Для_ОбновлениеПО " + ИмяСлужбыУведомленияДляОбновление + "\n"
-                            + " getState  " +
-                            workInfos.get(0).getState().name() + "\n" +
-                            " isFinished  " +
-                            workInfos.get(0).getState().isFinished() + "\n" +
-                            "getTags " +
-                            workInfos.get(0).getTags() + "\n" +
-                            "getRunAttemptCount " +
-                            workInfos.get(0).getRunAttemptCount() + "\n" +
-                            "getProgress " +
-                            workInfos.get(0).getProgress().toString() + "\n" +
-                            " время : " + new Date() +
-                            "\n" + "#######################################################################################" + "\n");
-
+                public boolean handleMessage(@NonNull android.os.Message msg) {
+                    return true;
                 }
+            };
+
+
+            Handler handlerЗапускСтатусаWorkManagerДляОбновлениПо = new Handler(callback);
+
+            // TODO: 27.03.2022
+            handlerЗапускСтатусаWorkManagerДляОбновлениПо.post(() -> {
+                // TODO: 27.03.2022
+                WorkManager.getInstance(getApplicationContext().getApplicationContext())
+                        .getWorkInfosByTagLiveData(ИмяСлужбыУведомленияДляОбновление).observeForever(new Observer<List<WorkInfo>>() {
+                    @Override
+                    public void onChanged(List<WorkInfo> workInfos) {
+
+
+                        Log.w(getApplicationContext().getClass().getName(), " После НАЖАТИЕ НА КНОПКУ ЗАКРЫТЬ  Выкючение в Service_Notificatios_Для_Update_Soft Внутри СЛУЖБЫ " +
+                                " MyWork_Notifocations_Уведомления_ДляОбновлениеПо ВНУТРИ Service_Notificatios_Для_ОбновлениеПО " + ИмяСлужбыУведомленияДляОбновление + "\n"
+                                + " getState  " +
+                                workInfos.get(0).getState().name() + "\n" +
+                                " isFinished  " +
+                                workInfos.get(0).getState().isFinished() + "\n" +
+                                "getTags " +
+                                workInfos.get(0).getTags() + "\n" +
+                                "getRunAttemptCount " +
+                                workInfos.get(0).getRunAttemptCount() + "\n" +
+                                "getProgress " +
+                                workInfos.get(0).getProgress().toString() + "\n" +
+                                " время : " + new Date() +
+                                "\n" + "#######################################################################################" + "\n");
+
+                    }
+                });
+
             });
+
 
         } catch (Exception e) {
         e.printStackTrace();

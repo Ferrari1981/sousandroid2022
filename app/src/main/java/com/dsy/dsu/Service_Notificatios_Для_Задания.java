@@ -1,12 +1,14 @@
 package com.dsy.dsu;
 
 import android.app.NotificationManager;
+import android.app.Service;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
@@ -14,7 +16,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.JobIntentService;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
@@ -25,7 +26,7 @@ import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
 
-public class Service_Notificatios_Для_Задания extends JobIntentService {////Service
+public class Service_Notificatios_Для_Задания extends Service {////Service
 
 
     ////////
@@ -54,14 +55,7 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
     // TODO: 24.03.2022
     String ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу;
 
-    public static void enqueueWork(Context context, Intent intent) {
-        enqueueWork(context, Service_Notificatios_Для_Задания.class, 25, intent);
 
-        Log.d(context.getClass().getName(), " enqueueWork СЛУЖБА Service_Notifocations_Для_Чата  "
-                + " время: "
-                + new Date());
-
-    }
 
     @Override
     public void onCreate() {
@@ -328,49 +322,7 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
 
     }
 
-    @Override
-    public boolean onStopCurrentWork() {
 
-        Log.d(getApplicationContext().getClass().getName(), " enqueueWork СЛУЖБА Service_Notifocations_Для_Чата  "
-                + " время: "
-                + new Date());
-        return super.onStopCurrentWork();
-    }
-
-    @Override
-   protected void onHandleWork(@NonNull Intent intent) {
-
-       ///TODO запускаем дВУХсЛУЖБ
-
-       try {
-
-///
-/////////////////////////////
-
-           Log.d(this.getClass().getName(), " СЛУЖБА УВЕДОМЛЕНИЯ  ЧАТА onHandleWork ) "
-                   + " время: "
-                   + new Date());
-
-
-/////
-
-
-       } catch (Exception e) {
-           e.printStackTrace();
-           ///метод запись ошибок в таблицу
-           Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                   " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-           new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                   Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-           Log.e(getApplicationContext().getClass().getName(), " Ошиюбка СЛУЖБА СЛУЖБАService_Notifications_ДЛЯ ЧАТА  ДЛЯ ЧАТА onHandleWork Exception ");
-
-       }
-
-
-       // TODO: 08.04.2021 end service thread
-
-
-   }
 
     @Override
     public void onDestroy() {
@@ -386,14 +338,20 @@ public class Service_Notificatios_Для_Задания extends JobIntentService
         ///метод запись ошибок в таблицу
         Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                 " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            new   Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-        //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
-            Log.e(getApplicationContext().getClass().getName(), "С ОШИБКОЙ  Стоп СЛУЖБА СЛУЖБАService_Notifications  ДЛЯ ЧАТА   ДЛЯ ЧАТА onDestroy() время "+new Date());
+            new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+            //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+            Log.e(getApplicationContext().getClass().getName(), "С ОШИБКОЙ  Стоп СЛУЖБА СЛУЖБАService_Notifications  ДЛЯ ЧАТА   ДЛЯ ЧАТА onDestroy() время " + new Date());
+
+        }
+
 
     }
 
-
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
     }
 
 

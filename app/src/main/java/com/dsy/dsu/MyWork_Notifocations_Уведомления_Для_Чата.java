@@ -1538,18 +1538,15 @@ try{
         }
 
 
-
-
     }
 
+    @SuppressLint("RestrictedApi")
+    public void execute(Runnable command) {
 
+        // TODO: 27.03.2022
 
-
-
-
-
-
-
+        getBackgroundExecutor().execute(command);
+    }
 
 
     // TODO: 17.11.2021  end classs worl manager
