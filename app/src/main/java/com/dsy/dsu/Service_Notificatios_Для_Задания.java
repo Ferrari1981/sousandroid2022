@@ -263,7 +263,6 @@ public class Service_Notificatios_Для_Задания extends Service {////Ser
 
             // TODO: 18.04.2021 запувскает широковещатель
 
-            if (intent.getAction().equals("ЗапускСогласованияПришедшегоЗАДАНИЕ")) {
                 // TODO: 07.02.2022
 
                 NotificationManager notificationManager = (NotificationManager)
@@ -337,12 +336,6 @@ public class Service_Notificatios_Для_Задания extends Service {////Ser
 
 
                 UUIDДляЗапускСогласованияПришедшегоЗАДАНИЕ = 0L;
-
-
-            }
-
-
-
 
 
         } catch (Exception e) {
