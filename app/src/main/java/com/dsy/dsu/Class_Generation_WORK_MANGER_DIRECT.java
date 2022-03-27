@@ -1,6 +1,5 @@
 package com.dsy.dsu;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,23 +10,15 @@ import androidx.work.BackoffPolicy;
 import androidx.work.Constraints;
 import androidx.work.Data;
 import androidx.work.ExistingPeriodicWorkPolicy;
-import androidx.work.ExistingWorkPolicy;
 import androidx.work.NetworkType;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.OutOfQuotaPolicy;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 public class Class_Generation_WORK_MANGER_DIRECT {
@@ -141,15 +132,24 @@ public class Class_Generation_WORK_MANGER_DIRECT {
                             workInfos.get(0).getState().name()+"\n"+
                             " isFinished  " +
                             workInfos.get(0).getState().isFinished() + "\n" +
-                            "getTags "+
-                            workInfos.get(0).getTags()+"\n"+
-                            "getRunAttemptCount "+
-                            workInfos.get(0).getRunAttemptCount()+"\n"+
-                            "getProgress "+
-                            workInfos.get(0).getState().isFinished()+"\n"+
-                            " время : " +new Date()+"\n"+
-                            " ПУБЛИЧНЫЙ ID КТО ЗАПУСТИЛ ОБЩУЮ СИНХРОНИАЗЦИЮ  CallBaskОтWorkManagerОбщейСинхрониазции " +CallBaskОтWorkManagerОбщейСинхрониазции+"\n"+
-                             "  СallBaksPublicAsync РезультатОбщейСинхрониазацииОтветПользователю " +РезультатОбщейСинхрониазацииОтветПользователю);
+                            "getTags " +
+                            workInfos.get(0).getTags() + "\n" +
+                            "getRunAttemptCount " +
+                            workInfos.get(0).getRunAttemptCount() + "\n" +
+                            "getProgress " +
+                            workInfos.get(0).getState().isFinished() + "\n" +
+                            " время : " + new Date() + "\n" +
+                            " ПУБЛИЧНЫЙ ID КТО ЗАПУСТИЛ ОБЩУЮ СИНХРОНИАЗЦИЮ  CallBaskОтWorkManagerОбщейСинхрониазции " + CallBaskОтWorkManagerОбщейСинхрониазции + "\n" +
+                            "  СallBaksPublicAsync РезультатОбщейСинхрониазацииОтветПользователю " + РезультатОбщейСинхрониазацииОтветПользователю);
+
+                    // TODO: 27.03.2022
+
+
+                    if (workInfos.get(0).getState().compareTo(WorkInfo.State.BLOCKED) == 0) {
+                        // TODO: 27.03.2022
+                        WorkManager.getInstance(context.getApplicationContext()).cancelAllWorkByTag(ИмяСлужбыСинхронизации);
+                    }
+
 
                 }
             });

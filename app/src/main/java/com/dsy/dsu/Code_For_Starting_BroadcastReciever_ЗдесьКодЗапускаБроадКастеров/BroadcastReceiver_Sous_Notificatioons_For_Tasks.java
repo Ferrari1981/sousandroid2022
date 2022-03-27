@@ -172,6 +172,12 @@ public class BroadcastReceiver_Sous_Notificatioons_For_Tasks extends BroadcastRe
                                         "getProgress " +
                                         workInfos.get(0).getState().isFinished() + "\n" +
                                         " время : " + new Date());
+                                // TODO: 27.03.2022
+
+                                if (workInfos.get(0).getState().compareTo(WorkInfo.State.BLOCKED) == 0) {
+                                    // TODO: 27.03.2022
+                                    WorkManager.getInstance(context.getApplicationContext()).cancelAllWorkByTag(ИмяСлужбыУведомленияДляЧата);
+                                }
 
                             }
                         });

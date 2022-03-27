@@ -178,6 +178,12 @@ public class BroadcastReceiver_Sous_Notificatioons_For_Chats extends BroadcastRe
                                         workInfos.get(0).getState().isFinished() + "\n" +
                                         " время : " + new Date());
 
+
+                                if (workInfos.get(0).getState().compareTo(WorkInfo.State.BLOCKED) == 0) {
+                                    // TODO: 27.03.2022
+                                    WorkManager.getInstance(context.getApplicationContext()).cancelAllWorkByTag(ИмяСлужбыУведомленияДляЧатаОдноразовая);
+                                }
+
                             }
                         });
 

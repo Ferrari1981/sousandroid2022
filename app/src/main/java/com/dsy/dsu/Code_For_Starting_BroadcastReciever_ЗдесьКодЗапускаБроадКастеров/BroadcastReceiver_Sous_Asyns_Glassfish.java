@@ -46,9 +46,7 @@ public class BroadcastReceiver_Sous_Asyns_Glassfish extends BroadcastReceiver {
                         " Build.BRAND.toString() Название Телефона " +Build.BRAND.toString());
 
 
-                // TODO: 07.10.2021
 
-                PendingResult pendingResult=goAsync();
                 /////
 
                 try {
@@ -91,13 +89,6 @@ public class BroadcastReceiver_Sous_Asyns_Glassfish extends BroadcastReceiver {
 
                     Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_Notificatioons_For_Tasks  СЛУЖБА  public void onReceive  " + " ОШИБКА ::" + e.toString());
 
-
-                } finally {
-
-                    ///   todo
-                    pendingResult.finish();
-/////
-                    Log.i(this.getClass().getName(), " ОТРАБОТАЛ   Внутри Broadcatrecever   pendingResult.finish()  СЛУЖБА   pendingResult.getResultData() "  +  pendingResult.getResultData() );
 
                 }
 

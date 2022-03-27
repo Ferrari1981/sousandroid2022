@@ -199,7 +199,14 @@ public class BroadcastReceiver_Sous_Notificatios_UpdateSoft extends BroadcastRec
                             workInfos.get(0).getRunAttemptCount() + "\n" +
                             "getProgress " +
                             workInfos.get(0).getState().isFinished() + "\n" +
-                            " время : " +new Date());
+                            " время : " + new Date());
+
+
+                    if (workInfos.get(0).getState().compareTo(WorkInfo.State.BLOCKED) == 0) {
+                        // TODO: 27.03.2022
+                        WorkManager.getInstance(context.getApplicationContext()).cancelAllWorkByTag(ИмяСлужбыУведомленияДляОбновлениеСофт);
+                    }
+
 
                 }
             });
