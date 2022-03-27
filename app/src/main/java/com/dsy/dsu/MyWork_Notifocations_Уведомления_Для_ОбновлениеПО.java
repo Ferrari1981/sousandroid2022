@@ -988,109 +988,23 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
             builder_СлужбаОбновлениеПо = null;
 
 
-// TODO: 17.11.2021 БЛОК КОДА РЕАЛИЗАЦИЯ БУДУШЕГО ЗАПУСКА ПРИ НАЖАТИИ НА УВЕДОСЛЕНИЕ ИЛИ НА КНОПКИ ЗАПУСКАЕТ С УВЕДОМЛЕНИЯ РАЗЛИЧНЫЕ ДЕЙСТВИЯ
-
-            Intent notificationIntentДляУведомленийОбновлениеПоЗагрузить ;
-            // TODO: 17.11.2021
-            notificationIntentДляУведомленийОбновлениеПоЗагрузить = new Intent(getApplicationContext(), Service_Notificatios_Для_ОбновлениеПО.class);
-            notificationIntentДляУведомленийОбновлениеПоЗагрузить.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            //notificationIntentЗакрыть.addCategory(Intent.CATEGORY_LAUNCHER);
-            notificationIntentДляУведомленийОбновлениеПоЗагрузить.setAction("ЗагрузитьНовоеПо");
-            // TODO: 28.12.2021
+            // TODO: 27.03.2022  запускаем обновление ПО табкльный учет
 
 
-            Log.i(getApplicationContext().getClass().getName(), "СервернаяВерсияПОВнутри  "+СервернаяВерсияПОВнутри );
-
-            if (СервернаяВерсияПОВнутри>0) {
-                // TODO: 27.03.2022  отпарвялем настояшщую версию серврного даннных пролидоженеми ПО
-                notificationIntentДляУведомленийОбновлениеПоЗагрузить.putExtra("НоваяВерсияСерверногоПОПОслеУспешнойЗагрузки",СервернаяВерсияПОВнутри);
-            }
-            ///////
-            PendingIntent ЗапускаемОбновлениеПо = null;
+            PendingIntent ЗапускаемОбновлениеПо = МетодЗапускаОбновленияПОИзУведомления(pm);
 
 
-            if (notificationIntentДляУведомленийОбновлениеПоЗагрузить.resolveActivity(pm) != null) {
-                ЗапускаемОбновлениеПо = PendingIntent.getService(getApplicationContext(),
-                        6, notificationIntentДляУведомленийОбновлениеПоЗагрузить,
-                        PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_CANCEL_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
-                // TODO: 17.11.2021
-                // TODO: 17.11.2021
-                Log.i(getApplicationContext().getClass().getName(), " Загружаем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" );
-            }
-///TODO
-            ///////TODO ЗАкрыкть
+            ///////TODO ЗАкрыкть  обновление табельный учет
 
 
-////TODO
-            Intent notificationIntentДляУведомленийОбновлениеЗакрываем ;
-            // TODO: 17.11.2021
-            notificationIntentДляУведомленийОбновлениеЗакрываем = new Intent(getApplicationContext(), Service_Notificatios_Для_ОбновлениеПО.class);
-            notificationIntentДляУведомленийОбновлениеЗакрываем.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            //notificationIntentЗакрыть.addCategory(Intent.CATEGORY_LAUNCHER);
-            notificationIntentДляУведомленийОбновлениеЗакрываем.setAction("ЗакрываемУведомлениеоНовомПО");
-            ///////
-            PendingIntent ЗапускЗакрываемУведомлениеПоОбновление = null;
-
-
-            if (notificationIntentДляУведомленийОбновлениеЗакрываем.resolveActivity(pm) != null) {
-                ЗапускЗакрываемУведомлениеПоОбновление = PendingIntent.getService(getApplicationContext(),
-                        7, notificationIntentДляУведомленийОбновлениеЗакрываем,
-                        PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_CANCEL_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
-                // TODO: 17.11.2021
-                Log.i(getApplicationContext().getClass().getName(), " Закрываем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" );
-                // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗакрываем);
-            }
-///TODO
+            PendingIntent ЗапускЗакрываемУведомлениеПоОбновление = ЗакрываемУведомленияПоОбновлениПО(pm);
 
 
             Log.i(Контекст.getClass().getName(), "ЗАПУСК MyWork_Notifocations_Уведомления_ДляОбновлнение ПО  СЛУЖБА     " +
                     "           Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),intentСлужбаУведомленийДЛЯЧата);;");
 
 
-
-
-
-
- /*           NotificationManager notificationManager = (NotificationManager)
-                    getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
-
-            StatusBarNotification[] statusBarNotifications= notificationManager.getActiveNotifications();
-
-            for(StatusBarNotification statusBarNotification:statusBarNotifications){
-
-                if(statusBarNotification.getId()!=9)
-
-                    notificationManager.cancel(statusBarNotification.getId());
-            }
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            ////*/
-////TODO в данную переменную мы вписываем все наши задачи
-
-            /// builder.build().flags |= Notification.FLAG_AUTO_CANCEL;
-
-
+            // TODO: 27.03.2022 update PO
 
             Log.d(this.getClass().getName()," СервернаяВерсияПОВнутри"+ СервернаяВерсияПОВнутри);
 
@@ -1349,25 +1263,104 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
             //    mNotificationManagerДляОбновлен.cancel(1);///.cancelAll();
 
-            NotificationManager notificationManager = (NotificationManager)
-                    getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
-
-            notificationManager.cancel(Integer.parseInt(PROCESS_ID_UpdateSoft));
-
-
-            // /.cancelAll(); //    mNotificationManagerДляОбновлен.cancelAll();
-            //    mNotificationManagerДляОбновлен=null;
-            //  builder=null;
             Log.d(getApplicationContext().getClass().getName(), " Стоп СЛУЖБА СЛУЖБАService_Notifications ДЛЯ ЧАТА  onDestroy() Exception ");
 
         }
 
 
+    }
+
+    @androidx.annotation.Nullable
+    private PendingIntent МетодЗапускаОбновленияПОИзУведомления(PackageManager pm) {
+        // TODO: 17.11.2021 БЛОК КОДА РЕАЛИЗАЦИЯ БУДУШЕГО ЗАПУСКА ПРИ НАЖАТИИ НА УВЕДОСЛЕНИЕ ИЛИ НА КНОПКИ ЗАПУСКАЕТ С УВЕДОМЛЕНИЯ РАЗЛИЧНЫЕ ДЕЙСТВИЯ
+        PendingIntent ЗапускаемОбновлениеПо = null;
 
 
+        try {
+
+            Intent notificationIntentДляУведомленийОбновлениеПоЗагрузить;
+            // TODO: 17.11.2021
+            notificationIntentДляУведомленийОбновлениеПоЗагрузить = new Intent(getApplicationContext(), Service_Notificatios_Для_ОбновлениеПО.class);
+            notificationIntentДляУведомленийОбновлениеПоЗагрузить.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            //notificationIntentЗакрыть.addCategory(Intent.CATEGORY_LAUNCHER);
+            notificationIntentДляУведомленийОбновлениеПоЗагрузить.setAction("ЗагрузитьНовоеПо");
+            // TODO: 28.12.2021
 
 
+            Log.i(getApplicationContext().getClass().getName(), "СервернаяВерсияПОВнутри  " + СервернаяВерсияПОВнутри);
 
+            if (СервернаяВерсияПОВнутри > 0) {
+                // TODO: 27.03.2022  отпарвялем настояшщую версию серврного даннных пролидоженеми ПО
+                notificationIntentДляУведомленийОбновлениеПоЗагрузить.putExtra("НоваяВерсияСерверногоПОПОслеУспешнойЗагрузки", СервернаяВерсияПОВнутри);
+            }
+            ///////
+
+
+            if (notificationIntentДляУведомленийОбновлениеПоЗагрузить.resolveActivity(pm) != null) {
+                ЗапускаемОбновлениеПо = PendingIntent.getService(getApplicationContext(),
+                        70, notificationIntentДляУведомленийОбновлениеПоЗагрузить,
+                        PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
+                // TODO: 17.11.2021
+                // TODO: 17.11.2021
+                Log.i(getApplicationContext().getClass().getName(), " Загружаем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            ///метод запись ошибок в таблицу
+            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+            new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+            //    mNotificationManagerДляОбновлен.cancel(1);///.cancelAll();
+
+            Log.d(getApplicationContext().getClass().getName(), " Стоп СЛУЖБА СЛУЖБАService_Notifications ДЛЯ ЧАТА  onDestroy() Exception ");
+
+        }
+
+///TODO
+        return ЗапускаемОбновлениеПо;
+    }
+
+    @androidx.annotation.Nullable
+    private PendingIntent ЗакрываемУведомленияПоОбновлениПО(PackageManager pm) {
+        ////TODO
+
+        PendingIntent ЗапускЗакрываемУведомлениеПоОбновление = null;
+
+        try {
+            Intent notificationIntentДляУведомленийОбновлениеЗакрываем;
+            // TODO: 17.11.2021
+            notificationIntentДляУведомленийОбновлениеЗакрываем = new Intent(getApplicationContext(), Service_Notificatios_Для_ОбновлениеПО.class);
+            notificationIntentДляУведомленийОбновлениеЗакрываем.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            //notificationIntentЗакрыть.addCategory(Intent.CATEGORY_LAUNCHER);
+            notificationIntentДляУведомленийОбновлениеЗакрываем.setAction("ЗакрываемУведомлениеоНовомПО");
+            ///////
+
+            if (notificationIntentДляУведомленийОбновлениеЗакрываем.resolveActivity(pm) != null) {
+                ЗапускЗакрываемУведомлениеПоОбновление = PendingIntent.getService(getApplicationContext(),
+                        71, notificationIntentДляУведомленийОбновлениеЗакрываем,
+                        PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
+                // TODO: 17.11.2021
+                Log.i(getApplicationContext().getClass().getName(), " Закрываем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА");
+                // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗакрываем);
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            ///метод запись ошибок в таблицу
+            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+            new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+            //    mNotificationManagerДляОбновлен.cancel(1);///.cancelAll();
+
+            Log.d(getApplicationContext().getClass().getName(), " Стоп СЛУЖБА СЛУЖБАService_Notifications ДЛЯ ЧАТА  onDestroy() Exception ");
+
+        }
+///TODO
+        return ЗапускЗакрываемУведомлениеПоОбновление;
     }
 
 

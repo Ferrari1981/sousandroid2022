@@ -1,17 +1,18 @@
 package com.dsy.dsu;
 
 import android.app.NotificationManager;
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.JobIntentService;
 import androidx.lifecycle.Observer;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
@@ -20,13 +21,12 @@ import java.util.Date;
 import java.util.List;
 
 
-public class Service_Notificatios_Для_ОбновлениеПО extends JobIntentService {////Service
-
+public class Service_Notificatios_Для_ОбновлениеПО extends Service {////Service
 
 
     ////
     //TODO
-   Integer СервернаяВерсияПОВнутри=0;
+    Integer СервернаяВерсияПОВнутри = 0;
 
     String ИмяСлужбыУведомленияДляОбновление = "WorkManager NOtofocationforUpdateSoft";
     ////////
@@ -207,49 +207,7 @@ public class Service_Notificatios_Для_ОбновлениеПО extends JobInt
         return super.onStartCommand(intent, flags, startId);
     }
 
-    @Override
-    public boolean onStopCurrentWork() {
 
-        Log.d(getApplicationContext().getClass().getName(), " enqueueWork СЛУЖБА Service_Notifocations_Для_Чата  "
-                + " время: "
-                + new Date());
-        return super.onStopCurrentWork();
-    }
-
-    @Override
-   protected void onHandleWork(@NonNull Intent intent) {
-
-       ///TODO запускаем дВУХсЛУЖБ
-
-       try {
-
-///
-/////////////////////////////
-
-           Log.d(this.getClass().getName(), " СЛУЖБА УВЕДОМЛЕНИЯ  ЧАТА onHandleWork ) "
-                   + " время: "
-                   + new Date());
-
-
-/////
-
-
-       } catch (Exception e) {
-           e.printStackTrace();
-           ///метод запись ошибок в таблицу
-           Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                   " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-           new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                   Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-           Log.e(getApplicationContext().getClass().getName(), " Ошиюбка СЛУЖБА СЛУЖБАService_ДЛя_ОБновлениеПО  ДЛЯ ЧАТА onHandleWork Exception ");
-
-       }
-
-
-       // TODO: 08.04.2021 end service thread
-
-
-   }
 
     @Override
     public void onDestroy() {
@@ -265,25 +223,21 @@ public class Service_Notificatios_Для_ОбновлениеПО extends JobInt
         ///метод запись ошибок в таблицу
         Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                 " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            new   Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-        //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
-            Log.e(getApplicationContext().getClass().getName(), "С ОШИБКОЙ  Стоп СЛУЖБА СЛУЖБАService_Notifications   Обновление ПО  onDestroy() время "+new Date());
+            new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+            //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+            Log.e(getApplicationContext().getClass().getName(), "С ОШИБКОЙ  Стоп СЛУЖБА СЛУЖБАService_Notifications   Обновление ПО  onDestroy() время " + new Date());
+
+        }
+
 
     }
 
-
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
     }
-
-
-
-
-
-
-
-
-
-
 
 
 }
