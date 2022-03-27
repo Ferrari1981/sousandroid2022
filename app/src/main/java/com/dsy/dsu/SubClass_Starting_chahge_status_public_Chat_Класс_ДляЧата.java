@@ -21,8 +21,8 @@ public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧат
 
     // TODO: 03.03.2022
 
-    public PendingIntent МетодЗапускаЧатаЗакваваемВнутриУведомленияPendingIntent(String PROCESS_ID_Чата,
-                                                                                 String ИмяСлужбыУведомленияДляЧата
+    protected PendingIntent МетодЗапускаЧатаЗакваваемВнутриУведомленияPendingIntent(String PROCESS_ID_Чата,
+                                                                                    String ИмяСлужбыУведомленияДляЧата
             , Object UUIDПолучениейЗадачиОбьект, Integer ПередаемСтатусзадачи, String ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу) {
         ///
         PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = null;
@@ -54,7 +54,7 @@ public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧат
             // TODO: 17.11.2021
             notificationIntentДляУведомленийЗапускЧАТА.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             // TODO: 24.03.2022
-            notificationIntentДляУведомленийЗапускЧАТА.putExtra("PROCESS_ID_Чата", 857);// TODO: 26.03.2022  PROCESS_ID_Чата
+            notificationIntentДляУведомленийЗапускЧАТА.putExtra("PROCESS_ID_Чата", "85711111111");// TODO: 26.03.2022  PROCESS_ID_Чата
 
             // TODO: 24.03.2022
             notificationIntentДляУведомленийЗапускЧАТА.putExtra("НазваниеСлужбыВСлужбуЧата", "WorkManager NOtofocationForChat");
@@ -69,7 +69,7 @@ public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧат
                 // TODO: 24.03.2022
                 ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = PendingIntent.getService(context,
                         0, notificationIntentДляУведомленийЗапускЧАТА,
-                        PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
+                        PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 // TODO: 03.03.2022
                 /// ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
@@ -161,7 +161,7 @@ public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧат
                 // TODO: 24.03.2022
                 ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = PendingIntent.getService(context,
                         1, notificationIntentДляЗапусказаданияИзУведомленияПереход,
-                        PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
+                        PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 /// ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
 

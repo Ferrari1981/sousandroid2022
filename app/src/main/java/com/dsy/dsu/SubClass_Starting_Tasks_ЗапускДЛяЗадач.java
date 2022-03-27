@@ -77,17 +77,17 @@ public class SubClass_Starting_Tasks_ЗапускДЛяЗадач {
                     + ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу + "  bundleДляПередачиВСлужбу " + bundleДляПередачиВСлужбу);
 
 
-            if (notificationIntentДляЗадачи.resolveActivity(pm) != null) {
-                // TODO: 24.03.2022
-                ЗапускКОдаЧтоПОльзовательЗадачаВыполнилОтказ = PendingIntent.getService(context,
-                        6, notificationIntentДляЗадачи,
-                        PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
-                // TODO: 17.11.2021
-                // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускПаузы);
+          if (notificationIntentДляЗадачи.resolveActivity(pm) != null) {
+              // TODO: 24.03.2022
+              ЗапускКОдаЧтоПОльзовательЗадачаВыполнилОтказ = PendingIntent.getService(context,
+                      6, notificationIntentДляЗадачи,
+                      PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
+              // TODO: 17.11.2021
+              // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускПаузы);
 
-                // TODO: 03.03.2022
+              // TODO: 03.03.2022
 
-                /// ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
+              /// ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
 
             }
 
@@ -176,7 +176,7 @@ public class SubClass_Starting_Tasks_ЗапускДЛяЗадач {
                 // TODO: 24.03.2022
                 ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = PendingIntent.getService(context,
                         7, notificationIntentДляЗапусказаданияИзУведомленияПереход,
-                        PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
+                        PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускПаузы);
 

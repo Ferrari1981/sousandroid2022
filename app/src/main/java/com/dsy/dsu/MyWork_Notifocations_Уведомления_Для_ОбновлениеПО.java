@@ -1014,7 +1014,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
             if (notificationIntentДляУведомленийОбновлениеПоЗагрузить.resolveActivity(pm) != null) {
                 ЗапускаемОбновлениеПо = PendingIntent.getService(getApplicationContext(),
                         4, notificationIntentДляУведомленийОбновлениеПоЗагрузить,
-                        PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
+                        PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 // TODO: 17.11.2021
                 Log.i(getApplicationContext().getClass().getName(), " Загружаем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" );
@@ -1037,7 +1037,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
             if (notificationIntentДляУведомленийОбновлениеЗакрываем.resolveActivity(pm) != null) {
                 ЗапускЗакрываемУведомлениеПоОбновление = PendingIntent.getService(getApplicationContext(),
                         5, notificationIntentДляУведомленийОбновлениеЗакрываем,
-                        PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
+                        PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 Log.i(getApplicationContext().getClass().getName(), " Закрываем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" );
                 // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗакрываем);

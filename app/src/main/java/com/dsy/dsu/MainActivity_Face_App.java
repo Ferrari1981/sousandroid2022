@@ -2300,7 +2300,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
                 if (notificationIntentДляУведомленийОбновлениеПоЗагрузить.resolveActivity(pm) != null) {
                     ЗапускаемОбновлениеПо = PendingIntent.getService(getApplicationContext(),
                             3, notificationIntentДляУведомленийОбновлениеПоЗагрузить,
-                            PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
+                            PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                     // TODO: 17.11.2021
                     // TODO: 17.11.2021
                     Log.i(getApplicationContext().getClass().getName(), " Загружаем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" );
