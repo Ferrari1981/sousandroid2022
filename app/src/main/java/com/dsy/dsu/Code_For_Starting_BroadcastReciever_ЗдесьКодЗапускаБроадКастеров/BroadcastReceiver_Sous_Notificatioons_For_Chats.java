@@ -31,7 +31,7 @@ public class BroadcastReceiver_Sous_Notificatioons_For_Chats extends BroadcastRe
     //WorkManager workManagerДЛяСлужбПроекта;
 
 
-    String ИмяСлужбыУведомленияДляЧатаОдноразовая = "WorkManager NOtofocationForTasks DISTOY";
+    String ИмяСлужбыУведомленияДляЧатаОдноразовая = "WorkManager NOtofocationForChats";
 
     public BroadcastReceiver_Sous_Notificatioons_For_Chats() {
         super();

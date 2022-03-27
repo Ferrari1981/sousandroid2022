@@ -60,8 +60,8 @@ public class BroadcastReceiver_Sous_Notificatios_UpdateSoft extends BroadcastRec
 
             // TODO: 07.10.2021
 
-            PendingResult pendingResult = goAsync();
-                /////
+
+            /////
 
                 try {
 
@@ -90,15 +90,6 @@ public class BroadcastReceiver_Sous_Notificatios_UpdateSoft extends BroadcastRec
 
                     Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_Notificatios_UpdateSoft  СЛУЖБА  public void onReceive  " + " ОШИБКА ::" + e.toString());
 
-
-                } finally {
-
-                    ///   todo
-                    pendingResult.finish();
-//
-
-
-                    Log.i(this.getClass().getName(), " ОТРАБОТАЛ   Внутри Broadcatrecever   pendingResult.finish()  СЛУЖБА   pendingResult.getResultData() "  +  pendingResult.getResultData() );
 
                 }
                 /////

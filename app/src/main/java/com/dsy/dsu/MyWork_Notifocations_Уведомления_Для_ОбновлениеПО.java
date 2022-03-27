@@ -59,7 +59,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
 
     Integer СервернаяВерсияПОВнутри=0;
 
-
+    String ИмяСлужбыУведомленияДляОбновлениеПО = "WorkManager NOtofocationforUpdateSoft";
 
 
 

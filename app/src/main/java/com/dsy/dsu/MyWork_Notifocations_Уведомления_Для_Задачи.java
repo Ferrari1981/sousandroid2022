@@ -49,7 +49,7 @@ public class MyWork_Notifocations_Уведомления_Для_Задачи ext
     Context Контекст;
     ///
 
-
+    String ИмяСлужбыУведомленияДля_Задачи = "WorkManager NOtofocationForTasks";
 
     WorkerParameters workerParams;
 
@@ -311,10 +311,10 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
                         // TODO: 24.11.2021
 
             // TODO: 11.05.2021 ЗПУСКАЕМ СЛУЖБУ через брдкастер синхронизхации и уведомления
-            ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая= WorkManager.getInstance(Контекст.getApplicationContext()).getWorkInfosByTag(ИмяСлужбыУведомленияДляЧата).get().get(0);
+            ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая = WorkManager.getInstance(Контекст.getApplicationContext()).getWorkInfosByTag(ИмяСлужбыУведомленияДля_Задачи).get().get(0);
                 // TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата         // TODO: 13.11.2021  ПОКАЗЫВАЕМ СТАТУС ПОСЛЕ ОТРАБОТАНГНЙО WORK MANAGER  ПРИ Уведомления для Чата
 
-            Log.w(Контекст.getClass().getName(), " Внутри метода public Result doWork()   MyWork_Notifocations_Уведомления_Для_Задачи  ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая " + ИмяСлужбыУведомленияДляЧата + "\n"
+            Log.w(Контекст.getClass().getName(), " Внутри метода public Result doWork()   MyWork_Notifocations_Уведомления_Для_Задачи  ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая " + ИмяСлужбыУведомленияДля_Задачи + "\n"
                     + " getState  " +
                     ИнформацияОЗапущенойСлужбе_Уведомления_Одноразовая.getState().name() + "\n" +
                     "getTags " +
@@ -781,26 +781,26 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
 
             // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи выполнить
             PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = new SubClass_Starting_Tasks_ЗапускДЛяЗадач(getApplicationContext()).
-                    МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата,
+                    МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДля_Задачи,
                             person.build().getUri(),
                             1, "");
 
 
             ///////TODO запускаем смены стануса задачи черезе PendingIntent
             Log.d(getApplicationContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая   ВЫПОЛНИЛ " + PROCESS_ID_УведомленияПлановая +
-                    " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата + " person.build().getUri() " + person.build().getUri());
+                    " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДля_Задачи + " person.build().getUri() " + person.build().getUri());
 
 
             // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи  отказ
             PendingIntent ЗапускКОдаЧтоПОльзовательОтказЗаданием = new SubClass_Starting_Tasks_ЗапускДЛяЗадач(getApplicationContext()).
-                    МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата,
+                    МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДля_Задачи,
                             person.build().getUri(),
                             2, "");
 
 
             ///////TODO запускаем смены стануса задачи черезе PendingIntent
             Log.d(getApplicationContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая   ОТКАЗ  ЗапускКОдаЧтоПОльзовательОтказЗаданием " + PROCESS_ID_УведомленияПлановая +
-                    " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата + " person.build().getUri() " + person.build().getUri());
+                    " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДля_Задачи + " person.build().getUri() " + person.build().getUri());
 
 
             // TODO: 26.03.2022  закрыть задачу
@@ -808,14 +808,14 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
 
             // TODO: 03.03.2022 ВЬТОРОЙ МЕТОД ДЛЯ ЗАДАНИЕ ПЕРЕХОД ИЗ УВЕДОМЛЕНИЯ В ЗАДАНИЕ
             PendingIntent ЗапускПриКликеКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние = new SubClass_Starting_Tasks_ЗапускДЛяЗадач(getApplicationContext()).
-                    МетодПриКликеЗапускаЗаданияИзСамогоУведомленияПереход(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДляЧата,
+                    МетодПриКликеЗапускаЗаданияИзСамогоУведомленияПереход(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДля_Задачи,
                             person.build().getUri(),
                             1, "");
 
 
             ///////TODO запускаем смены стануса задачи черезе PendingIntent
             Log.d(getApplicationContext().getClass().getName(), "PROCESS_ID_УведомленияПлановая  ПЕРЕЙТИ " + PROCESS_ID_УведомленияПлановая +
-                    " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата + " person.build().getUri() " + person.build().getUri());
+                    " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДля_Задачи + " person.build().getUri() " + person.build().getUri());
 
 
             NotificationManager notificationManager = (NotificationManager)
@@ -1077,9 +1077,9 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
             //////
 
             // TODO: 11.05.2021 ЗПУСКАЕМ СЛУЖБУ через брдкастер синхронизхации и уведомления
-            WorkInfo ИнформацияОЗапущенойСлужбе= WorkManager.getInstance(Контекст.getApplicationContext()).getWorkInfosByTag(ИмяСлужбыУведомленияДляЧата).get().get(0);
+            WorkInfo ИнформацияОЗапущенойСлужбе = WorkManager.getInstance(Контекст.getApplicationContext()).getWorkInfosByTag(ИмяСлужбыУведомленияДля_Задачи).get().get(0);
 
-            Log.w(Контекст.getClass().getName(), " ПОСЛЕ ОТРАБОТКИ МЕТОДА ....Внутри метода public Result doWork() BroadcastReceiver_Sous_Notificatioons_For_Tasks  " + ИмяСлужбыУведомленияДляЧата + "\n"
+            Log.w(Контекст.getClass().getName(), " ПОСЛЕ ОТРАБОТКИ МЕТОДА ....Внутри метода public Result doWork() BroadcastReceiver_Sous_Notificatioons_For_Tasks  " + ИмяСлужбыУведомленияДля_Задачи + "\n"
                     + " getState  " +
                     ИнформацияОЗапущенойСлужбе.getState().name() + "\n" +
                     " isFinished  " +

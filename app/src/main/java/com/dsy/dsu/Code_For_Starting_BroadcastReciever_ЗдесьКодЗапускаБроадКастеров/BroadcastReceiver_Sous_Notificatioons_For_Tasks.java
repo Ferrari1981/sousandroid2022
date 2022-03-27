@@ -28,7 +28,8 @@ import java.util.concurrent.TimeUnit;
 
 public class BroadcastReceiver_Sous_Notificatioons_For_Tasks extends BroadcastReceiver {
 
-    String ИмяСлужбыУведомленияДляЧата;
+    String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForTasks";
+
 
     public BroadcastReceiver_Sous_Notificatioons_For_Tasks() {
         super();
@@ -49,7 +50,7 @@ public class BroadcastReceiver_Sous_Notificatioons_For_Tasks extends BroadcastRe
 
 
         ///
-        ИмяСлужбыУведомленияДляЧата = intent.getStringExtra("НазваниеСлужбы");
+        // ИмяСлужбыУведомленияДляЧата = intent.getStringExtra("НазваниеСлужбы");
         ////
         Log.i(this.getClass().getName(), " ЗАПУСК BroadcastReceiver_Sous_Notificatioons_For_Tasks  " +
                 "  public void onReceive(Context context, Intent intent) ........ СНАРУЖИ  BroadcastReceiver_Sous_Notificatioons_For_Tasks  (intent.getAction()   СЛУЖБА"
