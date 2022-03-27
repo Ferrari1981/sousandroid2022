@@ -67,7 +67,7 @@ public class Service_Notifocations_Для_Чата extends Service {////Service
 
 
 
-            if (intent.getAction().equals("ПереходимИзУведомленияВЧасЧат")) {
+            if (intent.getAction().equals("ЗакрываемУведомленияЧата")) {
 
 
                 // TODO: 17.11.2021

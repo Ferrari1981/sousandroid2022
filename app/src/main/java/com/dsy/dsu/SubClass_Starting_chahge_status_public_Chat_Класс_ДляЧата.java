@@ -126,7 +126,7 @@ public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧат
             notificationIntentДляЗапусказаданияИзУведомленияПереход = new Intent(context, Service_Notifocations_Для_Чата.class);
             // TODO: 24.03.2022
             // TODO: 03.03.2022
-            notificationIntentДляЗапусказаданияИзУведомленияПереход.setAction("ЗапускИзУведомленияЧата");
+            notificationIntentДляЗапусказаданияИзУведомленияПереход.setAction(ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу);
             // TODO: 17.11.2021
             notificationIntentДляЗапусказаданияИзУведомленияПереход.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             // TODO: 26.03.2022
