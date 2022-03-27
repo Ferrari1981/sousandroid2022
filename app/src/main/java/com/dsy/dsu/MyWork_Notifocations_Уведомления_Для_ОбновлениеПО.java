@@ -36,6 +36,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 import java.util.TimeZone;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -1013,7 +1014,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
 
             if (notificationIntentДляУведомленийОбновлениеПоЗагрузить.resolveActivity(pm) != null) {
                 ЗапускаемОбновлениеПо = PendingIntent.getService(getApplicationContext(),
-                        4, notificationIntentДляУведомленийОбновлениеПоЗагрузить,
+                        new Random(3).nextInt(), notificationIntentДляУведомленийОбновлениеПоЗагрузить,
                         PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 // TODO: 17.11.2021
@@ -1036,7 +1037,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
 
             if (notificationIntentДляУведомленийОбновлениеЗакрываем.resolveActivity(pm) != null) {
                 ЗапускЗакрываемУведомлениеПоОбновление = PendingIntent.getService(getApplicationContext(),
-                        5, notificationIntentДляУведомленийОбновлениеЗакрываем,
+                        new Random(3).nextInt(), notificationIntentДляУведомленийОбновлениеЗакрываем,
                         PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 Log.i(getApplicationContext().getClass().getName(), " Закрываем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" );

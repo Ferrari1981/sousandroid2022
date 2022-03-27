@@ -164,17 +164,16 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
         // TODO: 14.11.2021  ПОВТОРЫЙ ЗАПУСК ВОРК МЕНЕДЖЕР уведомления
 
-        public void МетодПовторногоЗапускаУведомленияОбщего() {
+        public void МетодПовторногоЗапускаУведомленияЗадач() {
 
             try {
 
 
-
                 //TODO start broad caset receiver
 
-                BroadcastReceiver_Sous_Notificatioons broadcastReceiver_sous_notificatioons_общая=   new BroadcastReceiver_Sous_Notificatioons();
+                BroadcastReceiver_Sous_Notificatioons broadcastReceiver_sous_notificatioons_общая = new BroadcastReceiver_Sous_Notificatioons();
 //
-                Intent ИнтретПоЗапускуПовторноШироковещательногоДляОбщейСинхрониазции=new Intent(context,BroadcastReceiver_Sous_Notificatioons.class);
+                Intent ИнтретПоЗапускуПовторноШироковещательногоДляОбщейСинхрониазции = new Intent(context, BroadcastReceiver_Sous_Notificatioons.class);
 
 
 
@@ -229,25 +228,24 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
     // TODO: 14.11.2021  ПОВТОРЫЙ ЗАПУСК ВОРК МЕНЕДЖЕР уведомления
 
-    public void МетодПовторногоЗапускаУведомленияДляОдноразовойСинхрониазации() {
+     public void МетодПовторногоЗапускаУведомленияЧата() {
 
-        try {
+         try {
 
 
+             //TODO start broad caset receiver
 
-            //TODO start broad caset receiver
-
-            BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУведомление broadcastReceiver_sous_notificatioons_ONEUSING =   new BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУведомление();
+             BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУведомление broadcastReceiver_sous_notificatioons_ONEUSING =
+                     new BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУведомление();
 //
-            Intent ИнтретПоЗапускуПовторноШироковещательногоДляОбноразвойСинхрониащзции=new Intent(context, BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУведомление.class);
+             Intent ИнтретПоЗапускуПовторноШироковещательногоДляОбноразвойСинхрониащзции = new Intent(context, BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУведомление.class);
 
 
+             // TODO: 10.11.2021
+             ИнтретПоЗапускуПовторноШироковещательногоДляОбноразвойСинхрониащзции.setAction("BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУведомление");
+             ////
 
-            // TODO: 10.11.2021
-            ИнтретПоЗапускуПовторноШироковещательногоДляОбноразвойСинхрониащзции.setAction("BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУведомление");
-            ////
-
-            // TODO: 25.11.2021
+             // TODO: 25.11.2021
 
             ИнтретПоЗапускуПовторноШироковещательногоДляОбноразвойСинхрониащзции.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             //

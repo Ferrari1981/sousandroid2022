@@ -149,7 +149,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
              // TODO: 30.12.2021  запуск уведомелния
 
 
-             new  Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getApplicationContext()).МетодПовторногоЗапускаУведомленияДляОдноразовойСинхрониазации();
+             new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getApplicationContext()).МетодПовторногоЗапускаУведомленияЧата();
 
 
              Log.d(this.getClass().getName(),  "  Запуск уведомления \n" +

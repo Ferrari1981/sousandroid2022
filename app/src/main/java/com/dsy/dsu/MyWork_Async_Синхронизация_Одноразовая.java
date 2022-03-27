@@ -485,7 +485,7 @@ public class MyWork_Async_Синхронизация_Одноразовая exte
 
 
         // TODO: 14.11.2021  ПОВТОРНО ЗАПУСКАЕМ УВЕДОМЛЕНИЯ ТОЛЬКО ДЛЯ ОДНОРАЗОВАЯ СЛУЖБА
-        new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getApplicationContext()). МетодПовторногоЗапускаУведомленияДляОдноразовойСинхрониазации();
+        new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getApplicationContext()).МетодПовторногоЗапускаУведомленияЧата();
 
 
         /////
@@ -500,7 +500,7 @@ public class MyWork_Async_Синхронизация_Одноразовая exte
 
 
             // TODO: 14.11.2021  ПОВТОРНО ЗАПУСКАЕМ УВЕДОМЛЕНИЯ ТОЛЬКО ДЛЯ ОДНОРАЗОВАЯ СЛУЖБА
-            new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getApplicationContext()).МетодПовторногоЗапускаУведомленияОбщего();
+            new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getApplicationContext()).МетодПовторногоЗапускаУведомленияЗадач();
 
 
 

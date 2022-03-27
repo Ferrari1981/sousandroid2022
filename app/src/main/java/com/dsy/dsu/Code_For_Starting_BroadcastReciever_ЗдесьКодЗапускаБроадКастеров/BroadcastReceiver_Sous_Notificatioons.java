@@ -28,8 +28,6 @@ import java.util.concurrent.TimeUnit;
 
 public class BroadcastReceiver_Sous_Notificatioons extends BroadcastReceiver {
 
-    //WorkManager workManagerДЛяСлужбПроекта;
-    PendingResult pendingResult;
 
     public BroadcastReceiver_Sous_Notificatioons() {
         super();
@@ -59,10 +57,6 @@ public class BroadcastReceiver_Sous_Notificatioons extends BroadcastReceiver {
                         " Build.BRAND.toString() Название Телефона " +Build.BRAND.toString());
 
 
-            pendingResult=goAsync();
-                /////
-
-
 
 
 
@@ -90,13 +84,6 @@ public class BroadcastReceiver_Sous_Notificatioons extends BroadcastReceiver {
             Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_Notificatioons  СЛУЖБА  public void onReceive  "+" ОШИБКА ::"+e.toString());
 
 
-        }finally {
-            ///   todo
-            pendingResult.finish();
-//
-
-
-            Log.i(this.getClass().getName(), " ОТРАБОТАЛ   Внутри Broadcatrecever   pendingResult.finish()  СЛУЖБА   pendingResult.getResultData() "  +  pendingResult.getResultData() );
         }
 
 

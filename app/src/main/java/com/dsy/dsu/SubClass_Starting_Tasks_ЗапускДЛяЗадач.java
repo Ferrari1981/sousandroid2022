@@ -8,6 +8,8 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.util.Random;
+
 public class SubClass_Starting_Tasks_ЗапускДЛяЗадач {
     Context context;
 
@@ -80,7 +82,7 @@ public class SubClass_Starting_Tasks_ЗапускДЛяЗадач {
           if (notificationIntentДляЗадачи.resolveActivity(pm) != null) {
               // TODO: 24.03.2022
               ЗапускКОдаЧтоПОльзовательЗадачаВыполнилОтказ = PendingIntent.getService(context,
-                      6, notificationIntentДляЗадачи,
+                      new Random(3).nextInt(), notificationIntentДляЗадачи,
                       PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
               // TODO: 17.11.2021
               // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускПаузы);
@@ -175,7 +177,7 @@ public class SubClass_Starting_Tasks_ЗапускДЛяЗадач {
             if (notificationIntentДляЗапусказаданияИзУведомленияПереход.resolveActivity(pm) != null) {
                 // TODO: 24.03.2022
                 ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = PendingIntent.getService(context,
-                        7, notificationIntentДляЗапусказаданияИзУведомленияПереход,
+                        new Random(3).nextInt(), notificationIntentДляЗапусказаданияИзУведомленияПереход,
                         PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускПаузы);

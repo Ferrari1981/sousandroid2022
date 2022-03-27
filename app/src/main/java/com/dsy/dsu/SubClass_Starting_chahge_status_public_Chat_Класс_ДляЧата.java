@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
+import java.util.Random;
+
 public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧата {
     Context context;
 
@@ -68,7 +70,7 @@ public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧат
             if (notificationIntentДляУведомленийЗапускЧАТА.resolveActivity(pm) != null) {
                 // TODO: 24.03.2022
                 ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = PendingIntent.getService(context,
-                        0, notificationIntentДляУведомленийЗапускЧАТА,
+                        new Random(3).nextInt(), notificationIntentДляУведомленийЗапускЧАТА,
                         PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 // TODO: 03.03.2022
@@ -160,7 +162,7 @@ public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧат
             if (notificationIntentДляЗапусказаданияИзУведомленияПереход.resolveActivity(pm) != null) {
                 // TODO: 24.03.2022
                 ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = PendingIntent.getService(context,
-                        1, notificationIntentДляЗапусказаданияИзУведомленияПереход,
+                        new Random(3).nextInt(), notificationIntentДляЗапусказаданияИзУведомленияПереход,
                         PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 /// ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();

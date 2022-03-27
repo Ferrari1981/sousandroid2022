@@ -57,6 +57,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
@@ -428,14 +429,14 @@ public class MainActivity_Face_App extends AppCompatActivity {
         try{
 
         ////  TODO: 14.11.2021  ПОВТОРЫЙ ЗАПУСК ВОРК МЕНЕДЖЕР
-        new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getApplicationContext()).МетодПовторногоЗапускаУведомленияОбщего();
+            new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getApplicationContext()).МетодПовторногоЗапускаУведомленияЗадач();
 
 
         Log.w(getPackageName().getClass().getName(), "  " +
                 " new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getApplicationContext()).    МетодПовторногоЗапускаУведомленияОбщего() "  );
 
             ////  TODO: 14.11.2021  ПОВТОРЫЙ ЗАПУСК ВОРК МЕНЕДЖЕР
-            new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getApplicationContext()).МетодПовторногоЗапускаУведомленияДляОдноразовойСинхрониазации();
+            new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getApplicationContext()).МетодПовторногоЗапускаУведомленияЧата();
 
 
             Log.w(getPackageName().getClass().getName(), "  " +
@@ -2299,7 +2300,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
                 if (notificationIntentДляУведомленийОбновлениеПоЗагрузить.resolveActivity(pm) != null) {
                     ЗапускаемОбновлениеПо = PendingIntent.getService(getApplicationContext(),
-                            3, notificationIntentДляУведомленийОбновлениеПоЗагрузить,
+                            new Random(3).nextInt(), notificationIntentДляУведомленийОбновлениеПоЗагрузить,
                             PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                     // TODO: 17.11.2021
                     // TODO: 17.11.2021

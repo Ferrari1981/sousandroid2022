@@ -30,8 +30,7 @@ public class BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУ�
 
     //WorkManager workManagerДЛяСлужбПроекта;
 
-    PendingResult pendingResult;
-    ///
+
     String ИмяСлужбыУведомленияДляЧатаОдноразовая="WorkManager NOtofocationForChat DISTOY";
 
     public BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУведомление() {
@@ -57,12 +56,6 @@ public class BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУ�
 
             // TODO: 18.04.2021 запувскает широковещатель
 
-
-
-                // TODO: 07.10.2021
-
-          pendingResult=goAsync();
-                /////
 
 
                     // TODO: 29.09.2021     ЗАПУСК BROADCAST УВЕДОМЕЛНИЯ  ТОЛЬКО ДЛЯ ЧАТА
@@ -94,15 +87,7 @@ public class BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУ�
             Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_Notificatioons_ОДНОРАЗОВАЯ СЛУЖБА  public void onReceive  "+" ОШИБКА ::"+e.toString());
 
 
-        }finally {
-            ///   todo
-            pendingResult.finish();
-//
-
-
-            Log.i(this.getClass().getName(), " ОТРАБОТАЛ   Внутри Broadcatrecever   pendingResult.finish()  СЛУЖБА   pendingResult.getResultData() "  +  pendingResult.getResultData() );
         }
-
 
     }
 
