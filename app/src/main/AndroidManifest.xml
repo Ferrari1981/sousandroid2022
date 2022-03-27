@@ -131,7 +131,7 @@
 
 
         <receiver
-            android:name=".Code_For_Starting_BroadcastReciever_ЗдесьКодЗапускаБроадКастеров.BroadcastReceiver_Sous_Notificatioons"
+            android:name=".Code_For_Starting_BroadcastReciever_ЗдесьКодЗапускаБроадКастеров.BroadcastReceiver_Sous_Notificatioons_For_Tasks"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED"
             android:enabled="true"
             android:exported="false">
@@ -163,7 +163,7 @@
 
 
         <receiver
-            android:name=".Code_For_Starting_BroadcastReciever_ЗдесьКодЗапускаБроадКастеров.BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУведомление"
+            android:name=".Code_For_Starting_BroadcastReciever_ЗдесьКодЗапускаБроадКастеров.BroadcastReceiver_Sous_Notificatioons_For_Chats"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED"
             android:enabled="true"
             android:exported="false">
@@ -176,7 +176,7 @@
         </receiver>
 
         <receiver
-            android:name=".Code_For_Starting_BroadcastReciever_ЗдесьКодЗапускаБроадКастеров.BroadcastReceiver_Sous_UpdateSoft"
+            android:name=".Code_For_Starting_BroadcastReciever_ЗдесьКодЗапускаБроадКастеров.BroadcastReceiver_Sous_Notificatios_UpdateSoft"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED"
             android:enabled="true"
             android:exported="false">

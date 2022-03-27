@@ -1,7 +1,6 @@
 package com.dsy.dsu.Code_For_Starting_BroadcastReciever_ЗдесьКодЗапускаБроадКастеров;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 
@@ -102,7 +101,7 @@ public class Class_StartingOne_Async_winhData_ЗапускОдноразовой
                     this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
                     Thread.currentThread().getStackTrace()[2].getLineNumber());
             ;
-            Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_Notificatioons  СЛУЖБА  public void onReceive  " + " ОШИБКА ::" + e.toString());
+            Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_Notificatioons_For_Tasks  СЛУЖБА  public void onReceive  " + " ОШИБКА ::" + e.toString());
 
 
         }

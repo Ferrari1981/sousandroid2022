@@ -26,19 +26,19 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУведомление extends BroadcastReceiver_Sous_Notificatioons {
+public class BroadcastReceiver_Sous_Notificatioons_For_Chats extends BroadcastReceiver_Sous_Notificatioons_For_Tasks {
 
     //WorkManager workManagerДЛяСлужбПроекта;
 
 
-    String ИмяСлужбыУведомленияДляЧатаОдноразовая="WorkManager NOtofocationForChat DISTOY";
+    String ИмяСлужбыУведомленияДляЧатаОдноразовая = "WorkManager NOtofocationForTasks DISTOY";
 
-    public BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУведомление() {
+    public BroadcastReceiver_Sous_Notificatioons_For_Chats() {
         super();
         Log.i(this.getClass().getName(), " ЗАПУСК  КОНСТРКТОР  BroadcastReceiver_Sous_Notificatioons_ОДНОРАЗОВАЯ  " +
                 " public void onReceive(Context context, Intent intent) ........ СНАРУЖИ  BroadcastReceiver_Sous_Notificatioons_ОДНОРАЗОВАЯ (intent.getAction()   СЛУЖБА" +
-                "" +new Date()+"\n"+
-                " Build.BRAND.toString() Название Телефона " +Build.BRAND.toString());
+                "" + new Date() + "\n" +
+                " Build.BRAND.toString() Название Телефона " + Build.BRAND.toString());
 
     }
 

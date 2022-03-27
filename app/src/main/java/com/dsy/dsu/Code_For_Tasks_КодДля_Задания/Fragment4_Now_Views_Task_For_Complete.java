@@ -1735,7 +1735,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                          *//*   if (Integer.parseInt(String.valueOf(СтатусПрочтеаУжеЗадачаИлиНет)) == 0 && ПолучаемUUIDТекущйПозицииВRecyreView != null) {
 
                                 ///
-                                String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForChat";
+                                String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForTasks";
 
                                 String PROCESS_ID_УведомленияПлановая = "12";
 
@@ -2000,7 +2000,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
 
             protected void МетодСменыСтатусаЗадачиЗавершенияИлиОтмена(View v, Integer ВставляемСтатусКогдаВыВЫполнилиЗадание, MyViewHolder holder) {
                 ///
-                String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForChat";
+                String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForTasks";
 
                 String PROCESS_ID_УведомленияПлановая = "12";
 

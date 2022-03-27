@@ -16,9 +16,9 @@ import com.dsy.dsu.Class_Generation_Data;
 import com.dsy.dsu.Class_Generation_Errors;
 import com.dsy.dsu.Class_Generations_PUBLIC_CURRENT_ID;
 import com.dsy.dsu.Code_For_Starting_BroadcastReciever_ЗдесьКодЗапускаБроадКастеров.BroadcastReceiver_Sous_Asyns_Glassfish;
-import com.dsy.dsu.Code_For_Starting_BroadcastReciever_ЗдесьКодЗапускаБроадКастеров.BroadcastReceiver_Sous_Notificatioons;
-import com.dsy.dsu.Code_For_Starting_BroadcastReciever_ЗдесьКодЗапускаБроадКастеров.BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУведомление;
-import com.dsy.dsu.Code_For_Starting_BroadcastReciever_ЗдесьКодЗапускаБроадКастеров.BroadcastReceiver_Sous_UpdateSoft;
+import com.dsy.dsu.Code_For_Starting_BroadcastReciever_ЗдесьКодЗапускаБроадКастеров.BroadcastReceiver_Sous_Notificatioons_For_Chats;
+import com.dsy.dsu.Code_For_Starting_BroadcastReciever_ЗдесьКодЗапускаБроадКастеров.BroadcastReceiver_Sous_Notificatioons_For_Tasks;
+import com.dsy.dsu.Code_For_Starting_BroadcastReciever_ЗдесьКодЗапускаБроадКастеров.BroadcastReceiver_Sous_Notificatios_UpdateSoft;
 import com.dsy.dsu.Code_For_Starting_BroadcastReciever_ЗдесьКодЗапускаБроадКастеров.Class_StartingOne_Async_winhData_ЗапускОдноразовойСинхронизации;
 import com.dsy.dsu.MyFirebaseMessagingService;
 import com.dsy.dsu.PUBLIC_CONTENT;
@@ -168,19 +168,19 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
             try {
 
-
+                String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForTasks";
                 //TODO start broad caset receiver
 
-                BroadcastReceiver_Sous_Notificatioons broadcastReceiver_sous_notificatioons_общая = new BroadcastReceiver_Sous_Notificatioons();
+                BroadcastReceiver_Sous_Notificatioons_For_Tasks broadcastReceiver_sous_notificatioons_For_Tasks_общая = new BroadcastReceiver_Sous_Notificatioons_For_Tasks();
 //
-                Intent ИнтретПоЗапускуПовторноШироковещательногоДляОбщейСинхрониазции = new Intent(context, BroadcastReceiver_Sous_Notificatioons.class);
+                Intent ИнтретПоЗапускуПовторноШироковещательногоДляОбщейСинхрониазции = new Intent(context, BroadcastReceiver_Sous_Notificatioons_For_Tasks.class);
 
 
 
                 // TODO: 10.11.2021
-                ИнтретПоЗапускуПовторноШироковещательногоДляОбщейСинхрониазции.setAction("BroadcastReceiver_Sous_Notificatioons");
+                ИнтретПоЗапускуПовторноШироковещательногоДляОбщейСинхрониазции.setAction("BroadcastReceiver_Sous_Notificatioons_For_Tasks");
                 ////
-
+                ИнтретПоЗапускуПовторноШироковещательногоДляОбщейСинхрониазции.putExtra("НазваниеСлужбы", ИмяСлужбыУведомленияДляЧата);
 
                 // TODO: 25.11.2021
 
@@ -201,7 +201,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
                 context. sendBroadcast(ИнтретПоЗапускуПовторноШироковещательногоДляОбщейСинхрониазции);
 
                 // TODO: 16.12.2021
-                Log.d(this.getClass().getName(), "  запуск........BroadcastReceiver_Sous_Notificatioons   УВЕДОМЛЕНИЯ ОБШИЕ  " );
+                Log.d(this.getClass().getName(), "  запуск........BroadcastReceiver_Sous_Notificatioons_For_Tasks   УВЕДОМЛЕНИЯ ОБШИЕ  ");
 
 
                 // TODO: 11.01.2022
@@ -235,23 +235,23 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
              //TODO start broad caset receiver
 
-             BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУведомление broadcastReceiver_sous_notificatioons_ONEUSING =
-                     new BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУведомление();
+             BroadcastReceiver_Sous_Notificatioons_For_Chats broadcastReceiver_sous_notificatioons_ONEUSING =
+                     new BroadcastReceiver_Sous_Notificatioons_For_Chats();
 //
-             Intent ИнтретПоЗапускуПовторноШироковещательногоДляОбноразвойСинхрониащзции = new Intent(context, BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУведомление.class);
+             Intent ИнтретПоЗапускуПовторноШироковещательногоЗапускаУведомленияЧата = new Intent(context, BroadcastReceiver_Sous_Notificatioons_For_Chats.class);
 
 
              // TODO: 10.11.2021
-             ИнтретПоЗапускуПовторноШироковещательногоДляОбноразвойСинхрониащзции.setAction("BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУведомление");
+             ИнтретПоЗапускуПовторноШироковещательногоЗапускаУведомленияЧата.setAction("BroadcastReceiver_Sous_Notificatioons_For_Chats");
              ////
 
              // TODO: 25.11.2021
 
-            ИнтретПоЗапускуПовторноШироковещательногоДляОбноразвойСинхрониащзции.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+             ИнтретПоЗапускуПовторноШироковещательногоЗапускаУведомленияЧата.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             //
 
             //
-            ИнтретПоЗапускуПовторноШироковещательногоДляОбноразвойСинхрониащзции.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+             ИнтретПоЗапускуПовторноШироковещательногоЗапускаУведомленияЧата.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
             ///
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -261,10 +261,10 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
             // TODO: 10.11.2021
 
             // TODO: 25.11.2021
-            context. sendBroadcast(ИнтретПоЗапускуПовторноШироковещательногоДляОбноразвойСинхрониащзции);
+             context.sendBroadcast(ИнтретПоЗапускуПовторноШироковещательногоЗапускаУведомленияЧата);
 
             // TODO: 16.12.2021
-            Log.d(this.getClass().getName(), "  запуск........BroadcastReceiver_Sous_Notificatioons_ONE_ОдноразовоеУведомление  УВЕДОМЛНИЯ ОДНОРАЗОВЫЕ   " );
+             Log.d(this.getClass().getName(), "  запуск........BroadcastReceiver_Sous_Notificatioons_For_Chats  УВЕДОМЛНИЯ ОДНОРАЗОВЫЕ   ");
 
 
             // TODO: 11.01.2022
@@ -298,15 +298,14 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
             //TODO start broad caset receiver
 
 
-
-            BroadcastReceiver_Sous_UpdateSoft broadcastReceiver_sous_updateSoft=   new BroadcastReceiver_Sous_UpdateSoft();
+            BroadcastReceiver_Sous_Notificatios_UpdateSoft broadcastReceiver_sous_Notificatios_updateSoft = new BroadcastReceiver_Sous_Notificatios_UpdateSoft();
 //
-            Intent ИнтретПоЗапускуПовторноШироковещательногоОбновлениеПО=new Intent(context,BroadcastReceiver_Sous_UpdateSoft.class);
+            Intent ИнтретПоЗапускуПовторноШироковещательногоОбновлениеПО = new Intent(context, BroadcastReceiver_Sous_Notificatios_UpdateSoft.class);
 
 
 
             // TODO: 10.11.2021
-            ИнтретПоЗапускуПовторноШироковещательногоОбновлениеПО.setAction("BroadcastReceiver_Sous_UpdateSoft");
+            ИнтретПоЗапускуПовторноШироковещательногоОбновлениеПО.setAction("BroadcastReceiver_Sous_Notificatios_UpdateSoft");
             ////
 
 
@@ -323,7 +322,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 //
-              //  context. registerReceiver(broadcastReceiver_sous_updateSoft,new IntentFilter());
+                //  context. registerReceiver(broadcastReceiver_sous_Notificatios_updateSoft,new IntentFilter());
             }
             // TODO: 10.11.2021
 

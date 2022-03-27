@@ -40,7 +40,7 @@ public class SubClass_Connection_BroadcastReceiver_Sous_Asyns_Glassfish extends 
                     this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
                     Thread.currentThread().getStackTrace()[2].getLineNumber());
             ;
-            Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_Notificatioons  СЛУЖБА  public void onReceive  " + " ОШИБКА ::" + e.toString());
+            Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_Notificatioons_For_Tasks  СЛУЖБА  public void onReceive  " + " ОШИБКА ::" + e.toString());
 
 
         }

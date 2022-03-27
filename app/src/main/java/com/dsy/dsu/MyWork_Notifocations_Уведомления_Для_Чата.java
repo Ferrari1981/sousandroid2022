@@ -32,6 +32,7 @@ import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
+import androidx.work.impl.utils.taskexecutor.TaskExecutor;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -48,7 +49,7 @@ import java.util.TimeZone;
 public class MyWork_Notifocations_Уведомления_Для_Чата extends Worker {
     ///
     Context Контекст;
-    String ИмяСлужбыУведомленияДляЧатаОдноразовая = "WorkManager NOtofocationForChat DISTOY";
+
 
 
     WorkerParameters workerParams;
@@ -152,11 +153,6 @@ public class MyWork_Notifocations_Уведомления_Для_Чата extends
     }
 
 
-
-
-
-
-
     @Override
     public void onStopped() {
 
@@ -165,25 +161,21 @@ public class MyWork_Notifocations_Уведомления_Для_Чата extends
         Log.i(this.getClass().getName(), " onStopped ()  ");
     }
 
+    @SuppressLint("RestrictedApi")
+    @NonNull
+    @Override
+    public TaskExecutor getTaskExecutor() {
+        Log.i(this.getClass().getName(), " onStopped ()  ");
+        return super.getTaskExecutor();
+    }
+
 
     // TODO: 17.11.2021  ГЛАВНЫЙ МЕТОД КЛАССА WORK MANEGER  ДЛЯ УВЕЛОДОМЛЕНИЯ ТОЛЬКО ДЛЯ ЧАТА
 
     @NonNull
     @Override
     public Result doWork() {
-
-        // What happens behind the scene?!
-
-     /*   messagingStyleДляОдноразовыеУведомления= new NotificationCompat.MessagingStyle(getApplicationContext().getResources().getString(R.string.action_settings))
-                .setConversationTitle("Уведомления чата");
-
-   *//*     messagingStyleДляОдноразовыеУведомления=   new NotificationCompat.MessagingStyle(getApplicationContext().getResources().getString(R.string.action_settings))
-                .setConversationTitle("Уведомления чата");*/
-        //todo Прпробуем Запустить в Потоке work manager уведомления чата
-
-
-
-
+        // TODO: 27.03.2022
 
         try {
 
@@ -1038,17 +1030,17 @@ try{
             // TODO: 11.05.2021 ЗПУСКАЕМ СЛУЖБУ через брдкастер синхронизхации и уведомления
             WorkInfo ИнформацияОЗапущенойСлужбе= WorkManager.getInstance(Контекст.getApplicationContext()).getWorkInfosByTag(ИмяСлужбыУведомленияДляЧатаОдноразовая).get().get(0);
 
-            Log.w(Контекст.getClass().getName(), " ПОСЛЕ ОТРАБОТКИ МЕТОДА ....Внутри метода public Result doWork() BroadcastReceiver_Sous_Notificatioons  ОДНОРАЗОВАЯ " +ИмяСлужбыУведомленияДляЧатаОдноразовая +"\n"
-                    + " getState  "+
-                    ИнформацияОЗапущенойСлужбе.getState().name()+"\n"+
+            Log.w(Контекст.getClass().getName(), " ПОСЛЕ ОТРАБОТКИ МЕТОДА ....Внутри метода public Result doWork() BroadcastReceiver_Sous_Notificatioons_For_Tasks  ОДНОРАЗОВАЯ " + ИмяСлужбыУведомленияДляЧатаОдноразовая + "\n"
+                    + " getState  " +
+                    ИнформацияОЗапущенойСлужбе.getState().name() + "\n" +
                     " isFinished  " +
                     ИнформацияОЗапущенойСлужбе.getState().isFinished() + "\n" +
-                    "getTags "+
-                    ИнформацияОЗапущенойСлужбе.getTags()+"\n"+
-                    "getRunAttemptCount "+
-                    ИнформацияОЗапущенойСлужбе.getRunAttemptCount()+"\n"+
-                    "getProgress "+
-                    ИнформацияОЗапущенойСлужбе.getState().isFinished()+"\n"+
+                    "getTags " +
+                    ИнформацияОЗапущенойСлужбе.getTags() + "\n" +
+                    "getRunAttemptCount " +
+                    ИнформацияОЗапущенойСлужбе.getRunAttemptCount() + "\n" +
+                    "getProgress " +
+                    ИнформацияОЗапущенойСлужбе.getState().isFinished() + "\n" +
                     " время : " +new Date());
 
 

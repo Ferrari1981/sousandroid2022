@@ -48,7 +48,7 @@ import java.util.concurrent.ExecutionException;
 public class MyWork_Notifocations_Уведомления_Для_Задачи extends Worker {
     Context Контекст;
     ///
-    String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForChat";
+
 
 
     WorkerParameters workerParams;
@@ -1079,17 +1079,17 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
             // TODO: 11.05.2021 ЗПУСКАЕМ СЛУЖБУ через брдкастер синхронизхации и уведомления
             WorkInfo ИнформацияОЗапущенойСлужбе= WorkManager.getInstance(Контекст.getApplicationContext()).getWorkInfosByTag(ИмяСлужбыУведомленияДляЧата).get().get(0);
 
-            Log.w(Контекст.getClass().getName(), " ПОСЛЕ ОТРАБОТКИ МЕТОДА ....Внутри метода public Result doWork() BroadcastReceiver_Sous_Notificatioons  " +ИмяСлужбыУведомленияДляЧата +"\n"
-                    + " getState  "+
-                    ИнформацияОЗапущенойСлужбе.getState().name()+"\n"+
+            Log.w(Контекст.getClass().getName(), " ПОСЛЕ ОТРАБОТКИ МЕТОДА ....Внутри метода public Result doWork() BroadcastReceiver_Sous_Notificatioons_For_Tasks  " + ИмяСлужбыУведомленияДляЧата + "\n"
+                    + " getState  " +
+                    ИнформацияОЗапущенойСлужбе.getState().name() + "\n" +
                     " isFinished  " +
                     ИнформацияОЗапущенойСлужбе.getState().isFinished() + "\n" +
-                    "getTags "+
-                    ИнформацияОЗапущенойСлужбе.getTags()+"\n"+
-                    "getRunAttemptCount "+
-                    ИнформацияОЗапущенойСлужбе.getRunAttemptCount()+"\n"+
-                    "getProgress "+
-                    ИнформацияОЗапущенойСлужбе.getState().isFinished()+"\n"+
+                    "getTags " +
+                    ИнформацияОЗапущенойСлужбе.getTags() + "\n" +
+                    "getRunAttemptCount " +
+                    ИнформацияОЗапущенойСлужбе.getRunAttemptCount() + "\n" +
+                    "getProgress " +
+                    ИнформацияОЗапущенойСлужбе.getState().isFinished() + "\n" +
                     " время : " +new Date());
 
 

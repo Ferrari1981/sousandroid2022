@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 
-
 import com.dsy.dsu.Class_Generation_Errors;
 import com.dsy.dsu.Class_Generation_WORK_MANGER_DIRECT;
 import com.dsy.dsu.SubClass_Connection_BroadcastReceiver_Sous_Asyns_Glassfish;
@@ -90,7 +89,7 @@ public class BroadcastReceiver_Sous_Asyns_Glassfish extends BroadcastReceiver {
                             this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
                             Thread.currentThread().getStackTrace()[2].getLineNumber());;
 
-                    Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_Notificatioons  СЛУЖБА  public void onReceive  "+" ОШИБКА ::"+e.toString());
+                    Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_Notificatioons_For_Tasks  СЛУЖБА  public void onReceive  " + " ОШИБКА ::" + e.toString());
 
 
                 } finally {
@@ -112,7 +111,7 @@ public class BroadcastReceiver_Sous_Asyns_Glassfish extends BroadcastReceiver {
             new   Class_Generation_Errors(context.getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
                     this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
                     Thread.currentThread().getStackTrace()[2].getLineNumber());;
-            Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_Notificatioons  СЛУЖБА  public void onReceive  "+" ОШИБКА ::"+e.toString());
+            Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_Notificatioons_For_Tasks  СЛУЖБА  public void onReceive  " + " ОШИБКА ::" + e.toString());
 
 
         }

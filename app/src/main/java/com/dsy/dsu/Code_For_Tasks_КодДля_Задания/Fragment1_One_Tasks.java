@@ -1536,7 +1536,7 @@ public class Fragment1_One_Tasks extends Fragment {
                             if (Integer.parseInt(String.valueOf(СтатусПрочтеаУжеЗадачаИлиНет)) == 0 && ПолучаемUUIDТекущйПозицииВRecyreView != null) {
 
                                 ///
-                                String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForChat";
+                                String ИмяСлужбыУведомленияДляЧата = "WorkManager NOtofocationForTasks";
 
                                 String PROCESS_ID_УведомленияПлановая = "12";
 

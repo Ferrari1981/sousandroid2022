@@ -26,35 +26,47 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class BroadcastReceiver_Sous_Notificatioons extends BroadcastReceiver {
+public class BroadcastReceiver_Sous_Notificatioons_For_Tasks extends BroadcastReceiver {
 
+    String ИмяСлужбыУведомленияДляЧата;
 
-    public BroadcastReceiver_Sous_Notificatioons() {
+    public BroadcastReceiver_Sous_Notificatioons_For_Tasks() {
         super();
-        Log.i(this.getClass().getName(), " ЗАПУСК  КОНСТРКТОР  BroadcastReceiver_Sous_Notificatioons   " +
-                " public void onReceive(Context context, Intent intent) ........ СНАРУЖИ  BroadcastReceiver_Sous_Notificatioons  (intent.getAction()   СЛУЖБА" +new Date()+"\n"+
-                " Build.BRAND.toString() Название Телефона " +Build.BRAND.toString());
+        Log.i(this.getClass().getName(), " ЗАПУСК  КОНСТРКТОР  BroadcastReceiver_Sous_Notificatioons_For_Tasks   " +
+                " public void onReceive(Context context, Intent intent) ........ СНАРУЖИ  BroadcastReceiver_Sous_Notificatioons_For_Tasks" +
+                "  (intent.getAction()   СЛУЖБА" + new Date() + "\n" +
+                " Build.BRAND.toString() Название Телефона " + Build.BRAND.toString());
 
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
         ////
-        Log.i(this.getClass().getName(), " ЗАПУСК BroadcastReceiver_Sous_Notificatioons  " +
-                "  public void onReceive(Context context, Intent intent) ........ СНАРУЖИ  BroadcastReceiver_Sous_Notificatioons  (intent.getAction()   СЛУЖБА"
-                +(intent.getAction().toString())+" время запуска  " +new Date()+"\n"+
-                " Build.BRAND.toString() Название Телефона " +Build.BRAND.toString());
+        Log.i(this.getClass().getName(), " ЗАПУСК BroadcastReceiver_Sous_Notificatioons_For_Tasks  " +
+                "  public void onReceive(Context context, Intent intent) ........ СНАРУЖИ  BroadcastReceiver_Sous_Notificatioons_For_Tasks  (intent.getAction()   СЛУЖБА"
+                + (intent.getAction().toString()) + " время запуска  " + new Date() + "\n" +
+                " Build.BRAND.toString() Название Телефона " + Build.BRAND.toString());
+
+
+        ///
+        ИмяСлужбыУведомленияДляЧата = intent.getStringExtra("НазваниеСлужбы");
+        ////
+        Log.i(this.getClass().getName(), " ЗАПУСК BroadcastReceiver_Sous_Notificatioons_For_Tasks  " +
+                "  public void onReceive(Context context, Intent intent) ........ СНАРУЖИ  BroadcastReceiver_Sous_Notificatioons_For_Tasks  (intent.getAction()   СЛУЖБА"
+                + (intent.getAction().toString()) + " время запуска  " + new Date() + "\n" +
+                " Build.BRAND.toString() Название Телефона " + Build.BRAND.toString() + "  ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДляЧата);
+
 
         try {
 
-            Log.i(this.getClass().getName(), " ЗАПУСК BroadcastReceiver_Sous_Notificatioons    public void onReceive(Context context, Intent intent) ..." +
-                    "..... СНАРУЖИ  BroadcastReceiver_Sous_Notificatioons  (intent.getAction()   СЛУЖБА" +(intent.getAction().toString())+" время запуска  " +new Date());
+            Log.i(this.getClass().getName(), " ЗАПУСК BroadcastReceiver_Sous_Notificatioons_For_Tasks    public void onReceive(Context context, Intent intent) ..." +
+                    "..... СНАРУЖИ  BroadcastReceiver_Sous_Notificatioons_For_Tasks  (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date());
 
             // TODO: 18.04.2021 запувскает широковещатель
 
-                ///
-                Log.i(this.getClass().getName(), " Внутри Broadcatrecever (intent.getAction()   СЛУЖБА кто ЗАПУСТИЛ САМ bRODCAST ? :::" +(intent.getAction().toString())+"\n"+
-                        " Build.BRAND.toString() Название Телефона " +Build.BRAND.toString());
+            ///
+            Log.i(this.getClass().getName(), " Внутри Broadcatrecever (intent.getAction()   СЛУЖБА кто ЗАПУСТИЛ САМ bRODCAST ? :::" + (intent.getAction().toString()) + "\n" +
+                    " Build.BRAND.toString() Название Телефона " + Build.BRAND.toString());
 
 
 
@@ -81,7 +93,7 @@ public class BroadcastReceiver_Sous_Notificatioons extends BroadcastReceiver {
             new Class_Generation_Errors(context.getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
                     this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
                     Thread.currentThread().getStackTrace()[2].getLineNumber());;
-            Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_Notificatioons  СЛУЖБА  public void onReceive  "+" ОШИБКА ::"+e.toString());
+            Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_Notificatioons_For_Tasks  СЛУЖБА  public void onReceive  " + " ОШИБКА ::" + e.toString());
 
 
         }
@@ -97,8 +109,7 @@ public class BroadcastReceiver_Sous_Notificatioons extends BroadcastReceiver {
     private void МетодЗапускаWorkManager_УведомленияДляЧата(@NotNull Context context ) {
 
 
-        ///
-        String ИмяСлужбыУведомленияДляЧата="WorkManager NOtofocationForChat";
+
 
         try{
 
@@ -148,7 +159,7 @@ public class BroadcastReceiver_Sous_Notificatioons extends BroadcastReceiver {
 
 
                                 Log.w(context.getClass().getName(), " observeForever observeForever \" +\"\\n\"+" +
-                                        " ПОСЛЕ ОТРАБОТКИ МЕТОДА ....Внутри  BroadcastReceiver_Sous_Notificatioons Бродкастер " + ИмяСлужбыУведомленияДляЧата + "\n"
+                                        " ПОСЛЕ ОТРАБОТКИ МЕТОДА ....Внутри  BroadcastReceiver_Sous_Notificatioons_For_Tasks Бродкастер " + ИмяСлужбыУведомленияДляЧата + "\n"
                                         + " getState  " +
                                         workInfos.get(0).getState().name() + "\n" +
                                         " isFinished  " +

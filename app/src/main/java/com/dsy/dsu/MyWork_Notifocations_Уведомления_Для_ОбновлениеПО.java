@@ -51,9 +51,6 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MyWork_Notifocations_Уведомления_Для_ОбновлениеПО extends Worker {
     Context Контекст;
-    ///
-    String ИмяСлужбыУведомленияДляОбновлениеПО="WorkManager NOtofocationforUpdateSoft";
-
 
 
     WorkerParameters workerParams;
@@ -1323,17 +1320,17 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
             // TODO: 11.05.2021 ЗПУСКАЕМ СЛУЖБУ через брдкастер синхронизхации и уведомления
             WorkInfo ИнформацияОЗапущенойСлужбе= WorkManager.getInstance(Контекст.getApplicationContext()).getWorkInfosByTag(ИмяСлужбыУведомленияДляОбновлениеПО).get().get(0);
 
-            Log.w(Контекст.getClass().getName(), " ПОСЛЕ ОТРАБОТКИ МЕТОДА ....Внутри метода public Result doWork() BroadcastReceiver_Sous_UpdateSoft " +ИмяСлужбыУведомленияДляОбновлениеПО +"\n"
-                    + " getState  "+
-                    ИнформацияОЗапущенойСлужбе.getState().name()+"\n"+
+            Log.w(Контекст.getClass().getName(), " ПОСЛЕ ОТРАБОТКИ МЕТОДА ....Внутри метода public Result doWork() BroadcastReceiver_Sous_Notificatios_UpdateSoft " + ИмяСлужбыУведомленияДляОбновлениеПО + "\n"
+                    + " getState  " +
+                    ИнформацияОЗапущенойСлужбе.getState().name() + "\n" +
                     " isFinished  " +
                     ИнформацияОЗапущенойСлужбе.getState().isFinished() + "\n" +
-                    "getTags "+
-                    ИнформацияОЗапущенойСлужбе.getTags()+"\n"+
-                    "getRunAttemptCount "+
-                    ИнформацияОЗапущенойСлужбе.getRunAttemptCount()+"\n"+
-                    "getProgress "+
-                    ИнформацияОЗапущенойСлужбе.getState().isFinished()+"\n"+
+                    "getTags " +
+                    ИнформацияОЗапущенойСлужбе.getTags() + "\n" +
+                    "getRunAttemptCount " +
+                    ИнформацияОЗапущенойСлужбе.getRunAttemptCount() + "\n" +
+                    "getProgress " +
+                    ИнформацияОЗапущенойСлужбе.getState().isFinished() + "\n" +
                     " время : " +new Date());
 
 

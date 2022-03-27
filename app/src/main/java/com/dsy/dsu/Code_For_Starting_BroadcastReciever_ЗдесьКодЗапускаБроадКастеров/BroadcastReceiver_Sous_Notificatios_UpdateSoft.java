@@ -26,41 +26,41 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class BroadcastReceiver_Sous_UpdateSoft extends BroadcastReceiver {
+public class BroadcastReceiver_Sous_Notificatios_UpdateSoft extends BroadcastReceiver {
 
     //WorkManager workManagerДЛяСлужбПроекта;
 
 
-    public BroadcastReceiver_Sous_UpdateSoft() {
+    public BroadcastReceiver_Sous_Notificatios_UpdateSoft() {
         super();
-        Log.i(this.getClass().getName(), " ЗАПУСК  КОНСТРКТОР  BroadcastReceiver_Sous_UpdateSoft   " +
-                " public void onReceive(Context context, Intent intent) ........ СНАРУЖИ  BroadcastReceiver_Sous_UpdateSoft  (intent.getAction()   СЛУЖБА" +new Date()+"\n"+
-                " Build.BRAND.toString() Название Телефона " +Build.BRAND.toString());
+        Log.i(this.getClass().getName(), " ЗАПУСК  КОНСТРКТОР  BroadcastReceiver_Sous_Notificatios_UpdateSoft   " +
+                " public void onReceive(Context context, Intent intent) ........ СНАРУЖИ  BroadcastReceiver_Sous_Notificatios_UpdateSoft  (intent.getAction()   СЛУЖБА" + new Date() + "\n" +
+                " Build.BRAND.toString() Название Телефона " + Build.BRAND.toString());
 
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
         ////
-        Log.i(this.getClass().getName(), " ЗАПУСК BroadcastReceiver_Sous_UpdateSoft  " +
-                "  public void onReceive(Context context, Intent intent) ........ СНАРУЖИ  BroadcastReceiver_Sous_UpdateSoft  (intent.getAction()   СЛУЖБА"
-                +(intent.getAction().toString())+" время запуска  " +new Date()+"\n"+
-                " Build.BRAND.toString() Название Телефона " +Build.BRAND.toString());
+        Log.i(this.getClass().getName(), " ЗАПУСК BroadcastReceiver_Sous_Notificatios_UpdateSoft  " +
+                "  public void onReceive(Context context, Intent intent) ........ СНАРУЖИ  BroadcastReceiver_Sous_Notificatios_UpdateSoft  (intent.getAction()   СЛУЖБА"
+                + (intent.getAction().toString()) + " время запуска  " + new Date() + "\n" +
+                " Build.BRAND.toString() Название Телефона " + Build.BRAND.toString());
 
         try {
 
-            Log.i(this.getClass().getName(), " ЗАПУСК BroadcastReceiver_Sous_UpdateSoft    public void onReceive(Context context, Intent intent) " +
-                    "........ СНАРУЖИ  BroadcastReceiver_Sous_UpdateSoft  (intent.getAction()   СЛУЖБА" +(intent.getAction().toString())+" время запуска  " +new Date());
+            Log.i(this.getClass().getName(), " ЗАПУСК BroadcastReceiver_Sous_Notificatios_UpdateSoft    public void onReceive(Context context, Intent intent) " +
+                    "........ СНАРУЖИ  BroadcastReceiver_Sous_Notificatios_UpdateSoft  (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date());
 
             // TODO: 18.04.2021 запувскает широковещатель
 
-                ///
-                Log.i(this.getClass().getName(), " Внутри Broadcatrecever (intent.getAction()   СЛУЖБА кто ЗАПУСТИЛ САМ bRODCAST ? :::" +(intent.getAction().toString())+"\n"+
-                        " Build.BRAND.toString() Название Телефона " +Build.BRAND.toString());
+            ///
+            Log.i(this.getClass().getName(), " Внутри Broadcatrecever (intent.getAction()   СЛУЖБА кто ЗАПУСТИЛ САМ bRODCAST ? :::" + (intent.getAction().toString()) + "\n" +
+                    " Build.BRAND.toString() Название Телефона " + Build.BRAND.toString());
 
-                // TODO: 07.10.2021
+            // TODO: 07.10.2021
 
-                PendingResult pendingResult=goAsync();
+            PendingResult pendingResult = goAsync();
                 /////
 
                 try {
@@ -88,7 +88,7 @@ public class BroadcastReceiver_Sous_UpdateSoft extends BroadcastReceiver {
                             this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
                             Thread.currentThread().getStackTrace()[2].getLineNumber());;
 
-                    Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_UpdateSoft  СЛУЖБА  public void onReceive  "+" ОШИБКА ::"+e.toString());
+                    Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_Notificatios_UpdateSoft  СЛУЖБА  public void onReceive  " + " ОШИБКА ::" + e.toString());
 
 
                 } finally {
@@ -112,7 +112,7 @@ public class BroadcastReceiver_Sous_UpdateSoft extends BroadcastReceiver {
             new   Class_Generation_Errors(context.getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
                     this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
                     Thread.currentThread().getStackTrace()[2].getLineNumber());;
-            Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_UpdateSoft  СЛУЖБА  public void onReceive  "+" ОШИБКА ::"+e.toString());
+            Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_Notificatios_UpdateSoft  СЛУЖБА  public void onReceive  " + " ОШИБКА ::" + e.toString());
 
 
         }
@@ -196,18 +196,18 @@ public class BroadcastReceiver_Sous_UpdateSoft extends BroadcastReceiver {
                 public void onChanged(List<WorkInfo> workInfos) {
 
 
-                    Log.w(context.getClass().getName(), " observeForever observeForever " +"\n"+
-                            " ПОСЛЕ ОТРАБОТКИ МЕТОДА ....Внутри  BroadcastReceiver_Sous_UpdateSoft  Бродкастер " +ИмяСлужбыУведомленияДляОбновлениеСофт +"\n"
-                            + " getState  "+
-                            workInfos.get(0).getState().name()+"\n"+
+                    Log.w(context.getClass().getName(), " observeForever observeForever " + "\n" +
+                            " ПОСЛЕ ОТРАБОТКИ МЕТОДА ....Внутри  BroadcastReceiver_Sous_Notificatios_UpdateSoft  Бродкастер " + ИмяСлужбыУведомленияДляОбновлениеСофт + "\n"
+                            + " getState  " +
+                            workInfos.get(0).getState().name() + "\n" +
                             " isFinished  " +
                             workInfos.get(0).getState().isFinished() + "\n" +
-                            "getTags "+
-                            workInfos.get(0).getTags()+"\n"+
-                            "getRunAttemptCount "+
-                            workInfos.get(0).getRunAttemptCount()+"\n"+
-                            "getProgress "+
-                            workInfos.get(0).getState().isFinished()+"\n"+
+                            "getTags " +
+                            workInfos.get(0).getTags() + "\n" +
+                            "getRunAttemptCount " +
+                            workInfos.get(0).getRunAttemptCount() + "\n" +
+                            "getProgress " +
+                            workInfos.get(0).getState().isFinished() + "\n" +
                             " время : " +new Date());
 
                 }

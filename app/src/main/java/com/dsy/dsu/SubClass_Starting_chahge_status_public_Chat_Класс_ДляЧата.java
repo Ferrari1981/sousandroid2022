@@ -59,7 +59,7 @@ public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧат
             notificationIntentДляУведомленийЗапускЧАТА.putExtra("PROCESS_ID_Чата", PROCESS_ID_Чата);// TODO: 26.03.2022  PROCESS_ID_Чата
 
             // TODO: 24.03.2022
-            notificationIntentДляУведомленийЗапускЧАТА.putExtra("НазваниеСлужбыВСлужбуЧата", "WorkManager NOtofocationForChat");
+            notificationIntentДляУведомленийЗапускЧАТА.putExtra("НазваниеСлужбыВСлужбуЧата", "WorkManager NOtofocationForTasks");
 
             // TODO: 26.03.20
 
