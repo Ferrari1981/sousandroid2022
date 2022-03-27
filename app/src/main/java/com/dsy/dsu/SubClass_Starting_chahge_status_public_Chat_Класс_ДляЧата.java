@@ -69,7 +69,7 @@ public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧат
                 // TODO: 24.03.2022
                 ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = PendingIntent.getService(context,
                         3, notificationIntentДляУведомленийЗапускЧАТА,
-                        PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_CANCEL_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
+                        PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_CANCEL_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 // TODO: 03.03.2022
                 /// ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
@@ -161,7 +161,7 @@ public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧат
                 // TODO: 24.03.2022
                 ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = PendingIntent.getService(context,
                         4, notificationIntentДляЗапусказаданияИзУведомленияПереход,
-                        PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_CANCEL_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
+                        PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_CANCEL_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 /// ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
 

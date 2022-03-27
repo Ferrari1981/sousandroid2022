@@ -2,7 +2,6 @@ package com.dsy.dsu;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -50,7 +49,6 @@ import com.dsy.dsu.Code_For_Tasks_КодДля_Задания.MainActivity_Tasks
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 
 import java.io.File;
@@ -2146,191 +2144,6 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///// TODO: 10.02.2021 МЕТОД ЗАПУСК СЛУЖБЫ
-
-
-
-    void МетодЗапускДляАнализаОбновленияПО(@NotNull Activity activity) {
-
-
-        try{
-            //////////////////////TODO SERVICE
-
-            //////////////////////TODO SERVICE
-
-            String[] permissions = new String[]{
-                    Manifest.permission.INTERNET,
-                    Manifest.permission.READ_PHONE_STATE,
-                    Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    Manifest.permission.VIBRATE,
-                    Manifest.permission.RECORD_AUDIO,
-                    Manifest.permission.RECORD_AUDIO,
-                    Manifest.permission.REQUEST_INSTALL_PACKAGES,
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS,
-                    Manifest.permission.MANAGE_EXTERNAL_STORAGE,
-                    Manifest.permission.ACCESS_BACKGROUND_LOCATION,
-                    Manifest.permission.ACCESS_NETWORK_STATE,
-                    Manifest.permission.ACCESS_MEDIA_LOCATION,
-                    Manifest.permission.INSTALL_PACKAGES,
-                    Manifest.permission.WRITE_SETTINGS,
-                    Manifest.permission.WRITE_SECURE_SETTINGS
-
-            };
-
-            //  startService(new Intent(КонтекстFaceApp, Service_UpdateSoft.class));
-////TODO УСТАНВЛИВАЕМ РАЗРЕШЕНИЯ НА ВСЕ ПРИЛОЖЕНИЯ НАСТРОЙКИ
-            try {
-                ActivityCompat.requestPermissions(activity, permissions, 1);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            ///TODO запуск службы
-            if (Build.VERSION.SDK_INT >= 23) {
-                if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                }
-                else {
-                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-                }
-            }
-
-
-            ///TODO запускаем службу если несть права на   WRITE_EXTERNAL_STORAGE
-            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-
-                Log.d(this.getClass().getName(), " УСТАНОВКА ПРАВ ДЛЯ ЗАПУСК СЛУЖБА ОБНОВЛЕНИЯ ПО ... " + new Date());
-
-
-                // TODO: 19.12.2021  САМ ЗАПУСК ПРИЛОЖЕНИЯ ОБНОВЛЕНИЕ ПО
-
-                // TODO: 17.11.2021 БЛОК КОДА РЕАЛИЗАЦИЯ БУДУШЕГО ЗАПУСКА ПРИ НАЖАТИИ НА УВЕДОСЛЕНИЕ ИЛИ НА КНОПКИ ЗАПУСКАЕТ С УВЕДОМЛЕНИЯ РАЗЛИЧНЫЕ ДЕЙСТВИЯ
-
-                PackageManager pm = getApplicationContext().getPackageManager();
-
-                Intent notificationIntentДляУведомленийОбновлениеПоЗагрузить ;
-                // TODO: 17.11.2021
-                notificationIntentДляУведомленийОбновлениеПоЗагрузить = new Intent(getApplicationContext(), Service_Notificatios_Для_ОбновлениеПО.class);
-                notificationIntentДляУведомленийОбновлениеПоЗагрузить.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                //notificationIntentЗакрыть.addCategory(Intent.CATEGORY_LAUNCHER);
-                notificationIntentДляУведомленийОбновлениеПоЗагрузить.setAction("ЗагрузитьНовоеПо");
-                ///////
-                PendingIntent ЗапускаемОбновлениеПо = null;
-
-
-                if (notificationIntentДляУведомленийОбновлениеПоЗагрузить.resolveActivity(pm) != null) {
-                    ЗапускаемОбновлениеПо = PendingIntent.getService(getApplicationContext(),
-                            5, notificationIntentДляУведомленийОбновлениеПоЗагрузить,
-                            PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_CANCEL_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
-                    // TODO: 17.11.2021
-                    // TODO: 17.11.2021
-                    Log.i(getApplicationContext().getClass().getName(), " Загружаем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" );
-                }
-
-                ///TODO  ЗАПУСКАЕМ СЛУЖБУ ОБНОВЛЕНИЯ С МЕНЮ НА FACEAPP
-
-                ЗапускаемОбновлениеПо.send();
-
-                ///////TODO ЗАкрыкть
-
-
-
-
-            }else{
-                Log.d(this.getClass().getName(), "НЕТ ПРАВ ДЛЯ ЗАПУСКА СЛУЖБА  ОБВНОВЛЕНИЕ ПО" );
-            }
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            ///метод запись ошибок в таблицу
-            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            new   Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-        }
-
-
-    }
 
 
 }

@@ -89,7 +89,9 @@ public class SubClass_Starting_Tasks_ЗапускДЛяЗадач {
 
                 /// ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
 
-          }
+                bundleДляПередачиВСлужбу.clear();
+
+            }
 
             // TODO: 03.03.2022
 
@@ -175,7 +177,7 @@ public class SubClass_Starting_Tasks_ЗапускДЛяЗадач {
                 // TODO: 03.03.2022
 
                 /// ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
-
+                bundleДляПередачиВСлужбу.clear();
             }
 
             // TODO: 03.03.2022
@@ -261,14 +263,14 @@ public class SubClass_Starting_Tasks_ЗапускДЛяЗадач {
                 // TODO: 24.03.2022
                 ЗапускКОдаПереходИзУведомленияВЗадачу = PendingIntent.getService(context,
                         2, notificationIntentДляЗапусказаданияИзУведомленияПереход,
-                        PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_CANCEL_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
+                        PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_CANCEL_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускПаузы);
 
                 // TODO: 03.03.2022
 
                 /// ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием.send();
-
+                bundleДляПередачиВСлужбу.clear();
             }
 
             // TODO: 03.03.2022
