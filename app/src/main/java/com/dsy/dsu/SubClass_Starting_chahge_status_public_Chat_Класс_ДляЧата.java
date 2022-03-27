@@ -54,7 +54,7 @@ public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧат
             // TODO: 17.11.2021
             notificationIntentДляУведомленийЗапускЧАТА.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             // TODO: 24.03.2022
-            notificationIntentДляУведомленийЗапускЧАТА.putExtra("PROCESS_ID_Чата", "85711111111");// TODO: 26.03.2022  PROCESS_ID_Чата
+            notificationIntentДляУведомленийЗапускЧАТА.putExtra("PROCESS_ID_Чата", PROCESS_ID_Чата);// TODO: 26.03.2022  PROCESS_ID_Чата
 
             // TODO: 24.03.2022
             notificationIntentДляУведомленийЗапускЧАТА.putExtra("НазваниеСлужбыВСлужбуЧата", "WorkManager NOtofocationForChat");
@@ -130,7 +130,7 @@ public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧат
             // TODO: 17.11.2021
             notificationIntentДляЗапусказаданияИзУведомленияПереход.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             // TODO: 26.03.2022
-            ///  notificationIntentДляЗапусказаданияИзУведомленияПереход.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            notificationIntentДляЗапусказаданияИзУведомленияПереход.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
 
           /*  // TODO: 24.03.2022
