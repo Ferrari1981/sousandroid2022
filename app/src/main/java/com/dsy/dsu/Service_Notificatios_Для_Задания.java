@@ -125,7 +125,7 @@ public class Service_Notificatios_Для_Задания extends Service {////Ser
                 bundleДляПришлиВСлужбу.clear();
 
 
-                // TODO: 27.03.2022
+                // TODO: 27.03.2022  задача
 
 
                 МетодВнутриСлужбаЗадача(intent);
@@ -134,7 +134,7 @@ public class Service_Notificatios_Для_Задания extends Service {////Ser
 
 
             }
-// TODO: 26.03.2022 запуск
+// TODO: 26.03.2022 запуск код только при ЗАКРЫТИЕ
 
 
             МетодПереходИзУведолменияЗадачиВСумуЗадачу(intent);
@@ -171,13 +171,10 @@ public class Service_Notificatios_Для_Задания extends Service {////Ser
                 // TODO: 07.02.2022
 
                 NotificationManager notificationManager = (NotificationManager)
-                        getSystemService(NOTIFICATION_SERVICE);
+                        getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
 
 
-                // notificationManager.cancelAll();
-                notificationManager.cancel(Integer.parseInt(PROCESS_ID));
 
-                stopForeground(true);
 
 // TODO: 26.03.2022  запуск активти из задания из уведомления
 
@@ -191,17 +188,23 @@ public class Service_Notificatios_Для_Задания extends Service {////Ser
                 // TODO: 26.03.2022
                 notificationIntentДляЗапускаЗаданияИзУведомленияПослеКлика.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                // TODO: 26.03.2022
+                // TODO: 27.03.2022
+                Bundle bundleДЛяПереходаВСамоЗаданеиИзУведомления = intent.getExtras();
 
+                // TODO: 26.03.2022
+                PROCESS_ID = bundleДЛяПереходаВСамоЗаданеиИзУведомления.getString("PROCESS_ID_УведомленияПлановая");
 
                 getApplicationContext().startActivity(notificationIntentДляЗапускаЗаданияИзУведомленияПослеКлика);
 
                 // TODO: 26.03.2022
                 Log.i(getApplicationContext().getClass().getName(), "ЗапускСогласованияПришедшегоЗАДАНИЕ   " +
-                        "........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date() + "\n" +
-                        "  intent.getAction() " + intent.getAction());
+                        "........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " +
+                        "  PROCESS_ID " + PROCESS_ID);
 
+                // notificationManager.cancelAll();
+                notificationManager.cancel(Integer.parseInt(PROCESS_ID));
 
+                stopForeground(true);
             }
 
 
