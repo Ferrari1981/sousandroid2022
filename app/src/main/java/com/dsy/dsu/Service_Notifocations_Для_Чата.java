@@ -67,7 +67,7 @@ public class Service_Notifocations_Для_Чата extends Service {////Service
 
 
 
-            if (intent.getAction().equals("ЗакрываемУведомленияЧата")) {
+            if (intent.getAction().equals("ПереходимИзУведомленияВЧасЧат")) {
 
 
                 // TODO: 17.11.2021
@@ -155,7 +155,7 @@ public class Service_Notifocations_Для_Чата extends Service {////Service
                     + new Date() + "intent.getAction().toString() " + intent.getAction().toString());
 
 
-            if (intent.getAction().equals("ЗапускИзУведомленияЧата")) {
+            if (intent.getAction().equals("ПереходимИзУведомленияВЧасЧат")) {
 
 
                 Log.i(getApplicationContext().getClass().getName(), " ЗапускИзУведомления ........ СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА"

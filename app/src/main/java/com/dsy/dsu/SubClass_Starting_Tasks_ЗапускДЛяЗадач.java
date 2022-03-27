@@ -80,7 +80,7 @@ public class SubClass_Starting_Tasks_ЗапускДЛяЗадач {
             if (notificationIntentДляЗадачиВыполнили.resolveActivity(pm) != null) {
                 // TODO: 24.03.2022
                 ЗапускКОдаЧтоПОльзовательЗадачаВыполнил = PendingIntent.getService(context,
-                        0, notificationIntentДляЗадачиВыполнили,
+                        10, notificationIntentДляЗадачиВыполнили,
                         PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_CANCEL_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускПаузы);
@@ -169,7 +169,7 @@ public class SubClass_Starting_Tasks_ЗапускДЛяЗадач {
             if (notificationIntentДляЗадачиОтказ.resolveActivity(pm) != null) {
                 // TODO: 24.03.2022
                 ЗапускКОдаЧтоПОльзовательЗадачаВыполнилОтказ = PendingIntent.getService(context,
-                        1, notificationIntentДляЗадачиОтказ,
+                        11, notificationIntentДляЗадачиОтказ,
                         PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_CANCEL_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускПаузы);
@@ -262,8 +262,8 @@ public class SubClass_Starting_Tasks_ЗапускДЛяЗадач {
             if (notificationIntentДляЗапусказаданияИзУведомленияПереход.resolveActivity(pm) != null) {
                 // TODO: 24.03.2022
                 ЗапускКОдаПереходИзУведомленияВЗадачу = PendingIntent.getService(context,
-                        2, notificationIntentДляЗапусказаданияИзУведомленияПереход,
-                        PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_CANCEL_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
+                        12, notificationIntentДляЗапусказаданияИзУведомленияПереход,
+                        PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗапускПаузы);
 

@@ -825,6 +825,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
                     " ИмяСлужбыУведомленияДляЧата " + ИмяСлужбыУведомленияДля_Задачи + " person.build().getUri() " + person.build().getUri());
 
 
+            // TODO: 27.03.2022 ДЛЯ ЗАДАЧА
             NotificationManager notificationManager = (NotificationManager)
                     getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
 

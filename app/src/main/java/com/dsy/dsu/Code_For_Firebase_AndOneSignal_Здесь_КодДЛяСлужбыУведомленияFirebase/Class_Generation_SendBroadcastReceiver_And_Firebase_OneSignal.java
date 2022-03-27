@@ -173,22 +173,22 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
                 BroadcastReceiver_Sous_Notificatioons_For_Tasks broadcastReceiver_sous_notificatioons_For_Tasks_общая = new BroadcastReceiver_Sous_Notificatioons_For_Tasks();
 //
-                Intent ИнтретПоЗапускуПовторноШироковещательногоДляОбщейСинхрониазции = new Intent(context, BroadcastReceiver_Sous_Notificatioons_For_Tasks.class);
+                Intent ИнтретПоЗапускуПовторноШироковещательногоДляЗадачУведомления = new Intent(context, BroadcastReceiver_Sous_Notificatioons_For_Tasks.class);
 
 
 
                 // TODO: 10.11.2021
-                ИнтретПоЗапускуПовторноШироковещательногоДляОбщейСинхрониазции.setAction("BroadcastReceiver_Sous_Notificatioons_For_Tasks");
+                ИнтретПоЗапускуПовторноШироковещательногоДляЗадачУведомления.setAction("BroadcastReceiver_Sous_Notificatioons_For_Tasks");
                 ////
-                ИнтретПоЗапускуПовторноШироковещательногоДляОбщейСинхрониазции.putExtra("НазваниеСлужбы", ИмяСлужбыУведомленияДляЧата);
+                ИнтретПоЗапускуПовторноШироковещательногоДляЗадачУведомления.putExtra("НазваниеСлужбы", ИмяСлужбыУведомленияДляЧата);
 
                 // TODO: 25.11.2021
 
-                ИнтретПоЗапускуПовторноШироковещательногоДляОбщейСинхрониазции.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                ИнтретПоЗапускуПовторноШироковещательногоДляЗадачУведомления.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 //
 
                 //
-                ИнтретПоЗапускуПовторноШироковещательногоДляОбщейСинхрониазции.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+                ИнтретПоЗапускуПовторноШироковещательногоДляЗадачУведомления.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
                 ///
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -198,7 +198,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
                 // TODO: 10.11.2021
 
                 // TODO: 25.11.2021
-                context. sendBroadcast(ИнтретПоЗапускуПовторноШироковещательногоДляОбщейСинхрониазции);
+                context.sendBroadcast(ИнтретПоЗапускуПовторноШироковещательногоДляЗадачУведомления);
 
                 // TODO: 16.12.2021
                 Log.d(this.getClass().getName(), "  запуск........BroadcastReceiver_Sous_Notificatioons_For_Tasks   УВЕДОМЛЕНИЯ ОБШИЕ  ");

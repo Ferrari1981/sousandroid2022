@@ -50,7 +50,7 @@ public class SubClass_Starting_chahge_status_public_Chat_Класс_ДляЧат
 
             notificationIntentДляУведомленийЗапускЧАТА.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             // TODO: 03.03.2022
-            notificationIntentДляУведомленийЗапускЧАТА.setAction("ЗакрываемУведомленияЧата");
+            notificationIntentДляУведомленийЗапускЧАТА.setAction(ПримечаниеВыполнилКлиентИлиНетЗадачуПришлиВСлужбу);
             // TODO: 17.11.2021
             notificationIntentДляУведомленийЗапускЧАТА.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             // TODO: 24.03.2022

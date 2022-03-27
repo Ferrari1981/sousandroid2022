@@ -142,7 +142,7 @@ public class BroadcastReceiver_Sous_Notificatioons_For_Tasks extends BroadcastRe
 
 
 // Queue the work
-            WorkManager.getInstance(context.getApplicationContext()).enqueueUniquePeriodicWork(ИмяСлужбыУведомленияДляЧата, ExistingPeriodicWorkPolicy.REPLACE,
+            WorkManager.getInstance(context.getApplicationContext()).enqueueUniquePeriodicWork(ИмяСлужбыУведомленияДляЧата, ExistingPeriodicWorkPolicy.KEEP,
                     periodicWorkRequestУведомленияДляЧата);
 
 
