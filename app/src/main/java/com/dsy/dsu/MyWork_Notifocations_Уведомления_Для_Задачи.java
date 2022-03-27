@@ -106,6 +106,8 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
 
     Person.Builder person;
 
+    SubClass_Starting_Tasks_ЗапускДЛяЗадач subClassStartingTasksЗапускДЛяЗадач;
+
 
     public MyWork_Notifocations_Уведомления_Для_Задачи(@NonNull Context context, @NonNull WorkerParameters workerParamsвнутри) {
         super(context, workerParamsвнутри);
@@ -120,14 +122,19 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
         class_grud_sql_operationsIDпользоввателяДляСлужб = new Class_GRUD_SQL_Operations(Контекст);
         //TODO
 
-        Create_Database_СсылкаНАБазовыйКласс=new CREATE_DATABASE(Контекст);
+        Create_Database_СсылкаНАБазовыйКласс = new CREATE_DATABASE(Контекст);
 
 
-        messagingStyleДля_ОбщихУведомлений= new NotificationCompat.MessagingStyle(getApplicationContext().getResources().getString(R.string.action_settings))
+        messagingStyleДля_ОбщихУведомлений = new NotificationCompat.MessagingStyle(getApplicationContext().getResources().getString(R.string.action_settings))
                 .setConversationTitle("Задание");
 
         Log.i(Контекст.getClass().getName(),
-                " messagingStyleДля_ОбщихУведомлений "+"\n"+ messagingStyleДля_ОбщихУведомлений.getMessages());
+                " messagingStyleДля_ОбщихУведомлений " + "\n" + messagingStyleДля_ОбщихУведомлений.getMessages());
+
+        // TODO: 27.03.2022
+
+
+        subClassStartingTasksЗапускДЛяЗадач = new SubClass_Starting_Tasks_ЗапускДЛяЗадач(getApplicationContext());
     }
 
 
@@ -780,8 +787,8 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
 
 
             // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи выполнить
-            PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = new SubClass_Starting_Tasks_ЗапускДЛяЗадач(getApplicationContext()).
-                    МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДля_Задачи,
+            PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = subClassStartingTasksЗапускДЛяЗадач.
+                    МетодЗапускаСменыСтатусаВыполнилСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДля_Задачи,
                             person.build().getUri(),
                             1, "");
 
@@ -792,8 +799,8 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
 
 
             // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи  отказ
-            PendingIntent ЗапускКОдаЧтоПОльзовательОтказЗаданием = new SubClass_Starting_Tasks_ЗапускДЛяЗадач(getApplicationContext()).
-                    МетодЗапускаСменыСтатусаСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДля_Задачи,
+            PendingIntent ЗапускКОдаЧтоПОльзовательОтказЗаданием = subClassStartingTasksЗапускДЛяЗадач.
+                    МетодЗапускаСменыСтатусаОтказСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДля_Задачи,
                             person.build().getUri(),
                             2, "");
 
@@ -810,7 +817,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
             PendingIntent ЗапускПриКликеКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние = new SubClass_Starting_Tasks_ЗапускДЛяЗадач(getApplicationContext()).
                     МетодПриКликеЗапускаЗаданияИзСамогоУведомленияПереход(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДля_Задачи,
                             person.build().getUri(),
-                            1, "");
+                            0, "");
 
 
             ///////TODO запускаем смены стануса задачи черезе PendingIntent
