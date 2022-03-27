@@ -36,7 +36,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Random;
 import java.util.TimeZone;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -1012,8 +1011,8 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
 
             if (notificationIntentДляУведомленийОбновлениеПоЗагрузить.resolveActivity(pm) != null) {
                 ЗапускаемОбновлениеПо = PendingIntent.getService(getApplicationContext(),
-                        new Random(3).nextInt(), notificationIntentДляУведомленийОбновлениеПоЗагрузить,
-                        PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
+                        24, notificationIntentДляУведомленийОбновлениеПоЗагрузить,
+                        PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_CANCEL_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 // TODO: 17.11.2021
                 Log.i(getApplicationContext().getClass().getName(), " Загружаем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" );
@@ -1035,8 +1034,8 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
 
             if (notificationIntentДляУведомленийОбновлениеЗакрываем.resolveActivity(pm) != null) {
                 ЗапускЗакрываемУведомлениеПоОбновление = PendingIntent.getService(getApplicationContext(),
-                        new Random(3).nextInt(), notificationIntentДляУведомленийОбновлениеЗакрываем,
-                        PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
+                        25, notificationIntentДляУведомленийОбновлениеЗакрываем,
+                        PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_CANCEL_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 Log.i(getApplicationContext().getClass().getName(), " Закрываем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА" );
                 // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗакрываем);

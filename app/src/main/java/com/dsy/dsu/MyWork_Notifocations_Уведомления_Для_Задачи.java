@@ -787,7 +787,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
 
 
             // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи выполнить
-            PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием = subClassStartingTasksЗапускДЛяЗадач.
+            PendingIntent ЗапускКОдаЧтоПОльзовательВыполнить = subClassStartingTasksЗапускДЛяЗадач.
                     МетодЗапускаСменыСтатусаВыполнилСлужбыЧерезPendingIntent(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДля_Задачи,
                             person.build().getUri(),
                             1, "");
@@ -814,7 +814,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
 
 
             // TODO: 03.03.2022 ВЬТОРОЙ МЕТОД ДЛЯ ЗАДАНИЕ ПЕРЕХОД ИЗ УВЕДОМЛЕНИЯ В ЗАДАНИЕ
-            PendingIntent ЗапускПриКликеКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние = new SubClass_Starting_Tasks_ЗапускДЛяЗадач(getApplicationContext()).
+            PendingIntent ЗапускПриКликеКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние = subClassStartingTasksЗапускДЛяЗадач.
                     МетодПриКликеЗапускаЗаданияИзСамогоУведомленияПереход(PROCESS_ID_УведомленияПлановая, ИмяСлужбыУведомленияДля_Задачи,
                             person.build().getUri(),
                             0, "");
@@ -916,7 +916,7 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
                             new NotificationCompat.MessagingStyle.Message("  zЯЯЯ  Всем привет!", System.currentTimeMillis(), (Person) null);*/
 
 
-
+                    PendingIntent ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданиемss = null;
 
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -944,13 +944,13 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
                                 .setStyle(messagingStyleДля_ОбщихУведомлений).setColor(Color.parseColor(("#FAEBD" + new Random().nextInt(1))))
                                 .setGroupSummary(true)
                                 .setColor(Color.GREEN)
-                                .addAction(android.R.drawable.ic_delete, "Выполнил/на", ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием)
+                                .addAction(android.R.drawable.ic_btn_speak_now, "Выполнить", ЗапускКОдаЧтоПОльзовательОтказЗаданием)
                                 .addAction(android.R.drawable.ic_delete, "Отказ", ЗапускКОдаЧтоПОльзовательОтказЗаданием)
                                 .setAutoCancel(false)
                                 .setWhen(System.currentTimeMillis()) // автоматически закрыть уведомление после нажатия////.setStyle(new NotificationCompat.BigTextStyle().bigText(bigText) ).setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
                                 .setContentIntent(ЗапускПриКликеКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние);
                         ////TODO три кнопки действия PUSH-сообщений
-                        /// .setAutoCancel(true).setDefaults(Notification.DEFAULT_ALL)
+                        /// .setAutoCancel(true).setDefaults(Notification.DEFAULT_ALL)  .addAction(android.R.drawable.ic_delete, "Выполнил/на", ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданиемss)
 
 
                     } else {
@@ -978,11 +978,11 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
                                         .setStyle(messagingStyleДля_ОбщихУведомлений).setColor(Color.parseColor(("#FAEBD" + new Random().nextInt(1))))
                                         .setGroupSummary(true)
                                         .setColor(Color.GREEN)
-                                        .addAction(android.R.drawable.ic_delete, "Выполнил/на", ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданием)
+                                        .addAction(android.R.drawable.ic_btn_speak_now, "Выполнить", ЗапускКОдаЧтоПОльзовательОтказЗаданием)
                                         .addAction(android.R.drawable.ic_delete, "Отказ", ЗапускКОдаЧтоПОльзовательОтказЗаданием)
                                         .setAutoCancel(false)
                                         .setWhen(System.currentTimeMillis()) // автоматически закрыть уведомление после нажатия////.setStyle(new NotificationCompat.BigTextStyle().bigText(bigText) ).setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
-                                        .setContentIntent(ЗапускПриКликеКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние);
+                                        .setContentIntent(ЗапускПриКликеКодаИзЗаданияКогдаНадоПерейтисУведомленияНаЗАдачние);// TODO: 27.03.2022    .addAction(android.R.drawable.ic_delete, "Выполнил/на", ЗапускКОдаЧтоПОльзовательОзнаомленсЗаданиемss)
 
                         // автоматически закрыть уведомление после нажатия
                         // .setContentIntent(ЗапускЗакрытия);
