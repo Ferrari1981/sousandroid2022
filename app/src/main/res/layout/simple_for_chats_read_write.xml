@@ -2,46 +2,58 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:context=".Code_For_Chats_КодДля_Чата.MainActivity_List_Chats">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout_for_chats_readwite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <com.google.android.material.button.MaterialButton
+        android:id="@android:id/text1"
+        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:checkMark="?android:attr/textCheckMark"
+        android:gravity="center_vertical"
+        android:inputType="textMultiLine|textCapSentences"
+        android:maxLines="20"
+        android:padding="10dp"
+        android:singleLine="false"
+        android:textAlignment="gravity"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
+        android:visibility="visible" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@android:id/text1"
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:background="#DC143C"
-            android:checkMark="?android:attr/textCheckMark"
-            android:inputType="textMultiLine|textCapSentences"
-            android:maxLines="20"
-            android:padding="5dp"
-            android:singleLine="false"
-            android:textAlignment="gravity"
-            android:visibility="visible" />
-
-        <com.google.android.material.textview.MaterialTextView
+        <com.google.android.material.button.MaterialButton
             android:id="@android:id/text2"
+            style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
             android:layout_width="100dp"
-            android:layout_height="80dp"
+            android:layout_height="30dp"
             android:checkMark="?android:attr/textCheckMark"
-            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
             android:padding="5dp"
+            android:paddingRight="5dp"
             android:textAlignment="gravity"
             android:textAppearance="?android:attr/textAppearanceListItemSmall"
             android:textColor="#000000"
             android:textSize="11sp"
             android:textStyle="normal"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
             android:visibility="visible" />
 
-        <!-- android:layout_alignParentRight="true"-->
-    </RelativeLayout>
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            tools:srcCompat="@drawable/icon_dsu1_for_chats_exists_publicid2" />
+
+
+    </LinearLayout>
 
 
 </LinearLayout>

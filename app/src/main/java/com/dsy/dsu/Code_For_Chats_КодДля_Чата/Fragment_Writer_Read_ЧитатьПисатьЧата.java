@@ -50,7 +50,6 @@ import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 import com.dsy.dsu.SubClass_RetryGEtRowInChatsКлассПроверемЕщеРАзПоявилосЛИПуббличныйUUIDМеждуУчасникамиЧата;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.textview.MaterialTextView;
 
 import java.security.InvalidKeyException;
 import java.security.KeyManagementException;
@@ -103,7 +102,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
 
 
-            SimpleCursorAdapter АдаптерДляЗаписиЧтенияЧата = null;
+    SimpleCursorAdapter АдаптерДляЗаписиЧтенияЧата = null;
 
 
 
@@ -218,9 +217,6 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
     // TODO: 10.02.2022
     Integer ПолученноеФИОКемБылоНаписаноСообщение = 0;
 
-    // TODO: 28.03.2022
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -279,8 +275,6 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
 
             textViewФрагментЧитатьПисатьДляЧата = (TextView) viewДляСообщений.findViewById(R.id.textViewФрагментЧитатьПисатьДляЧата);
-
-            // TODO: 28.03.2022
 
 
             // TODO: 30.06.2021 даннеы
@@ -391,7 +385,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
             ПолученноеФИОКемБылоНаписаноСообщение=   new Class_Generations_PUBLIC_CURRENT_ID(getContext()).ПолучениеПубличногоТекущегоПользователяID();
 
-        //    МетододеноразовойСлужбыСинхрониазции();
+            //    МетододеноразовойСлужбыСинхрониазции();
 
             Log.d(this.getClass().getName(), "  ПРОШЕЛ ПРОЦЕСС ЗАПУСКА СЛУЖБ И oBSERVER МетодЗапускаСинхрониазцииПоРАсписаниювНезависимостиОтВставкиНовгоСообщения(); "+ПолученноеФИОКемБылоНаписаноСообщение);
             // TODO: 16.12.2021   ПРОВЕРКА И ЗАПУСК ИЗМНЕНИЯ РАБОЧЕГО СТОЛКА КОГДА В ВОРК МЕНЕДЖЕРЕ ИЗМЕНИНИЯ ПРОИЗОЩЛИВ БАЗЕ
@@ -544,8 +538,8 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
         super.onDestroy();
 
 
-try{
-    // TODO: 13.01.2022
+        try {
+            // TODO: 13.01.2022
 
 
 /*    Operation operation=  WorkManager.getInstance(getContext()).cancelAllWorkByTag(ИмяСлужбыСинхронизацииОдноразовая);
@@ -571,29 +565,27 @@ try{
 */
 
 
-    Log.d(this.getClass().getName(), "////МетодЗапускаСинхрониазцииПоРАсписаниювНезависимостиОтВставкиНовгоСообщения onDestroy ");
+            Log.d(this.getClass().getName(), "////МетодЗапускаСинхрониазцииПоРАсписаниювНезависимостиОтВставкиНовгоСообщения onDestroy ");
 
             // TODO: 16.12.2021
 
-      if (dataSetObserverПодпискаНаЛокальныйИспользуетьсяКУРСОРОМ!=null && КурсорДанныеДлязаписиичтнияЧата!=null  ) {
+            if (dataSetObserverПодпискаНаЛокальныйИспользуетьсяКУРСОРОМ != null && КурсорДанныеДлязаписиичтнияЧата != null) {
                 // TODO: 02.02.2022
                 КурсорДанныеДлязаписиичтнияЧата.unregisterDataSetObserver(dataSetObserverПодпискаНаЛокальныйИспользуетьсяКУРСОРОМ);
             }
 
 
-            if (observerОдноразоваяДляWORKMANAGER!=null  && ИмяСлужбыСинхронизацииОдноразовая!=null ) {
+            if (observerОдноразоваяДляWORKMANAGER != null && ИмяСлужбыСинхронизацииОдноразовая != null) {
                 // TODO: 30.12.2021   --ОТПИСЫВАЕМСЯ
                 WorkManager.getInstance(getContext()).getWorkInfosByTagLiveData(ИмяСлужбыСинхронизацииОдноразовая).removeObserver(observerОдноразоваяДляWORKMANAGER);
             }
 
-    // TODO: 04.03.2022
+            // TODO: 04.03.2022
 
-    if (observerОбщейДляWORKMANAGER!=null  && ИмяСлужбыОбщейСинхронизацииДляЗадачи!=null ) {
-        // TODO: 30.12.2021   --ОТПИСЫВАЕМСЯ
-        WorkManager.getInstance(getContext()).getWorkInfosByTagLiveData(ИмяСлужбыОбщейСинхронизацииДляЗадачи).removeObserver(observerОбщейДляWORKMANAGER);
-    }
-
-
+            if (observerОбщейДляWORKMANAGER != null && ИмяСлужбыОбщейСинхронизацииДляЗадачи != null) {
+                // TODO: 30.12.2021   --ОТПИСЫВАЕМСЯ
+                WorkManager.getInstance(getContext()).getWorkInfosByTagLiveData(ИмяСлужбыОбщейСинхронизацииДляЗадачи).removeObserver(observerОбщейДляWORKMANAGER);
+            }
 
 
         } catch (Exception e) {
@@ -630,68 +622,67 @@ try{
                 public void onChanged(List<WorkInfo> workInfosОдноразовая) {
 
 
-
-                        // TODO: 23.12.2021
-                        workInfosОдноразовая.stream()
-                                .filter(СтастусWorkMangerДляФрагментаЧитатьИПисать -> СтастусWorkMangerДляФрагментаЧитатьИПисать!=null)
-                                .filter(СтастусWorkMangerДляФрагментаЧитатьИПисать ->
-                                        СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().compareTo(WorkInfo.State.SUCCEEDED) == 0)
-                                .forEachOrdered((СтастусWorkMangerДляФрагментаЧитатьИПисать) ->{
-                                    // TODO: 18.02.2022
-                                    try {
+                    // TODO: 23.12.2021
+                    workInfosОдноразовая.stream()
+                            .filter(СтастусWorkMangerДляФрагментаЧитатьИПисать -> СтастусWorkMangerДляФрагментаЧитатьИПисать != null)
+                            .filter(СтастусWorkMangerДляФрагментаЧитатьИПисать ->
+                                    СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().compareTo(WorkInfo.State.SUCCEEDED) == 0)
+                            .forEachOrdered((СтастусWorkMangerДляФрагментаЧитатьИПисать) -> {
+                                // TODO: 18.02.2022
+                                try {
 
                                     //
                                     Log.d(this.getClass().getName(), " WorkInfoИнформацияОЗапущенойСлужбеОдноразовая  СтастусWorkMangerЧата " + СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().name());
-                                    CallBaskОтWorkManagerОдноразового=0l;
+                                    CallBaskОтWorkManagerОдноразового = 0l;
 
-                                    CallBaskОтWorkManagerОдноразового=   СтастусWorkMangerДляФрагментаЧитатьИПисать.getOutputData().getLong("ОтветПослеВыполения_MyWork_Async_Синхронизация_Одноразовая",0l);
+                                    CallBaskОтWorkManagerОдноразового = СтастусWorkMangerДляФрагментаЧитатьИПисать.getOutputData().getLong("ОтветПослеВыполения_MyWork_Async_Синхронизация_Одноразовая", 0l);
 
                                     // TODO: 18.02.2022
-                                    if (CallBaskОтWorkManagerОдноразового==null) {
+                                    if (CallBaskОтWorkManagerОдноразового == null) {
                                         // TODO: 18.02.2022
-                                        CallBaskОтWorkManagerОдноразового=0l;
+                                        CallBaskОтWorkManagerОдноразового = 0l;
                                     }
                                     // TODO: 14.01.2022
                                     //
                                     Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового);
 
 
-                    if (CallBaskОтWorkManagerОдноразового>0) {
-                        // TODO: 23.12.2021  ЗАПУСКАЕМ ПОВТРОНУЮ СИНХРОНИАЗУИБЮ
-                        if (КурсорДанныеДлязаписиичтнияЧата!=null) {
+                                    if (CallBaskОтWorkManagerОдноразового > 0) {
+                                        // TODO: 23.12.2021  ЗАПУСКАЕМ ПОВТРОНУЮ СИНХРОНИАЗУИБЮ
+                                        if (КурсорДанныеДлязаписиичтнияЧата != null) {
 
-                            КурсорДанныеДлязаписиичтнияЧата.deactivate();
-                            // TODO: 27.12.2021
+                                            КурсорДанныеДлязаписиичтнияЧата.deactivate();
+                                            // TODO: 27.12.2021
 
-                            КурсорДанныеДлязаписиичтнияЧата.requery();
-                        }
-
-                        ////
-                        if (ЛистВьюДляСообщенийЧата!=null  && АдаптерДляЗаписиЧтенияЧата!=null) {
-                            // TODO: 19.02.2022
-                            ЛистВьюДляСообщенийЧата.setSelection(АдаптерДляЗаписиЧтенияЧата.getCount() - 1);
-                        }
-
-                        // TODO: 18.02.2022
-                        
-                    }
-                                        if (СтастусWorkMangerДляФрагментаЧитатьИПисать!=null ) {
-                                            // TODO: 20.02.2022
-                                            Log.d(this.getClass().getName(), " WorkInfoИнформацияОЗапущенойСлужбеОдноразовая  СтастусWorkMangerЧата " + СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().name()+
-                                                    " CallBaskОтWorkManagerОдноразового " +CallBaskОтWorkManagerОдноразового);
+                                            КурсорДанныеДлязаписиичтнияЧата.requery();
                                         }
+
+                                        ////
+                                        if (ЛистВьюДляСообщенийЧата != null && АдаптерДляЗаписиЧтенияЧата != null) {
+                                            // TODO: 19.02.2022
+                                            ЛистВьюДляСообщенийЧата.setSelection(АдаптерДляЗаписиЧтенияЧата.getCount() - 1);
+                                        }
+
+                                        // TODO: 18.02.2022
+
+                                    }
+                                    if (СтастусWorkMangerДляФрагментаЧитатьИПисать != null) {
+                                        // TODO: 20.02.2022
+                                        Log.d(this.getClass().getName(), " WorkInfoИнформацияОЗапущенойСлужбеОдноразовая  СтастусWorkMangerЧата " + СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().name() +
+                                                " CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового);
+                                    }
 
                                     // TODO: 29.09.2021  конец синхрониазции по раписанию
                                 } catch (Exception e) {
-                            e.printStackTrace();
-                            ///метод запись ошибок в таблицу
-                            Log.e(this.getClass().getName(), "Ошибка  Фрагмент Читать и Писать   observerОдноразоваяДляWORKMANAGER = new Observer<List<WorkInfo>>() {" +
-                                    " МетодЗапускаСинхрониазцииПоРАсписаниювНезависимостиОтВставкиНовгоСообщения  " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                        }
-                                });
+                                    e.printStackTrace();
+                                    ///метод запись ошибок в таблицу
+                                    Log.e(this.getClass().getName(), "Ошибка  Фрагмент Читать и Писать   observerОдноразоваяДляWORKMANAGER = new Observer<List<WorkInfo>>() {" +
+                                            " МетодЗапускаСинхрониазцииПоРАсписаниювНезависимостиОтВставкиНовгоСообщения  " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                }
+                            });
 
 
 
@@ -848,12 +839,450 @@ try{
     }
 
 
-
     // TODO: 19.08.2021 Асинхронно  запуск синхронизации ЧАТА
 
+    // TODO: 22.12.2021 ЗАПИСИ НОВГО СОООБЩЕНИЯ ТОЛЬКО В ДОЧЕРНУЮ ТАБЛИЦУ ДАТА ЧАТ ТАК,  КАК УЖЕ ЕСТЬ ПЕРЕРПИСКА МЕЖДУ НИМИ ПОЛЬЗВАОТЕЛЯМИ И ЕСТЬ UUID
+    @NonNull
+    private Long МетодОперацииВставкиТолькоРодительскуюТаблицу_ЧАТ_КогдаЕщеНЕтПерепискиМеждуПользователями(
+            Integer ПубличныйIDДляФрагмента, Long НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID)
+            throws ExecutionException,
+            InterruptedException,
+            TimeoutException,
+            NoSuchPaddingException,
+            NoSuchAlgorithmException,
+            InvalidKeyException {
 
 
+        // TODO: 22.12.2021
 
+        String ПерваяТаблицыОбработкиТаблицаЧат = "chats";
+
+        final Long[] РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ = {0l};
+        // TODO: 22.12.2021
+
+        // TODO: 21.12.2021
+        try {
+
+
+            //
+            Log.d(this.getClass().getName(), "  ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
+
+
+            Log.d(this.getClass().getName(), "   НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID " + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID +
+                    " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
+
+            // TODO: 08.02.2022 заполяем чтобы два раза записть две строчки
+
+            LinkedBlockingQueue<Integer> linkedBlockingQueueДляЗаписиСразуДвестрокиЧатОДляКого = new LinkedBlockingQueue();
+            // TODO: 08.02.2022
+            linkedBlockingQueueДляЗаписиСразуДвестрокиЧатОДляКого.offer(ПубличныйIDДляФрагмента);  //todo Я ---
+            // TODO: 08.02.2022
+            linkedBlockingQueueДляЗаписиСразуДвестрокиЧатОДляКого.offer(Integer.parseInt(String.valueOf(ПолученыйIDДляЧата)));//TODO КОМУ ПИШЕМ
+
+
+            linkedBlockingQueueДляЗаписиСразуДвестрокиЧатОДляКого.forEach((ТекущееЗначениеДляЗаписиВЦиклеВДваСтлбика) -> {
+
+                try {
+
+
+                    // TODO: 08.02.2022 записи значения в таблицу CHATS
+
+                    /////КОНТЕЙГНЕР
+                    ContentValues contentValuesЗаписьНовогоСообщения_ТаблицаЧат = new ContentValues();
+
+
+                    ////TODO ДАТА
+                    String СгенерированованныйДатаДляФрагмента = new Class_Generation_Data(getContext()).ГлавнаяДатаИВремяОперацийСБазойДанных();
+
+                    Log.d(this.getClass().getName(), "   СгенерированованныйДатаДляФрагмента " + СгенерированованныйДатаДляФрагмента);
+
+
+                    contentValuesЗаписьНовогоСообщения_ТаблицаЧат.put("date_update", СгенерированованныйДатаДляФрагмента);
+                    ///////////////////////////////////////
+
+                    contentValuesЗаписьНовогоСообщения_ТаблицаЧат.put("user_update", ПубличныйIDДляФрагмента);
+                    //////
+
+                    contentValuesЗаписьНовогоСообщения_ТаблицаЧат.put("id_user", (Integer) ТекущееЗначениеДляЗаписиВЦиклеВДваСтлбика);////бышвий user_for     ПолученыйIDДляЧата
+
+                    contentValuesЗаписьНовогоСообщения_ТаблицаЧат.putNull("_id");////бышвий user_for
+
+
+                    Log.d(this.getClass().getName(), "  ПолученыйIDДляЧата  " + ПолученыйIDДляЧата + "  ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента
+                            + "ТекущееЗначениеДляЗаписиВЦиклеВДваСтлбика " + ТекущееЗначениеДляЗаписиВЦиклеВДваСтлбика);
+
+                    // TODO: 22.12.2021  один на две таблицы UUID
+
+
+                    ////
+                    Long ЛокльныйUUIDТОлькоДЛЯОднойТаблицыChats = 0l;
+                    ЛокльныйUUIDТОлькоДЛЯОднойТаблицыChats =
+                            (Long) new Class_Generation_UUID(getContext()).МетодГенерацииUUID(getContext());
+
+                    //
+                    Log.d(this.getClass().getName(), "ЛокльныйUUIDТОлькоДЛЯОднойТаблицыChats "
+                            + ЛокльныйUUIDТОлькоДЛЯОднойТаблицыChats);
+// TODO: 10.02.2022
+
+                    ЛокльныйUUIDТОлькоДЛЯОднойТаблицыChats = ЛокльныйUUIDТОлькоДЛЯОднойТаблицыChats + 1;
+
+                    contentValuesЗаписьНовогоСообщения_ТаблицаЧат.put("uuid", ЛокльныйUUIDТОлькоДЛЯОднойТаблицыChats);
+
+                    // TODO: 08.02.2022
+
+                    //
+                    Log.d(this.getClass().getName(), "НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID "
+                            + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID);
+
+
+                    // TODO: 22.12.2021  один на две таблицы UUID
+
+                    contentValuesЗаписьНовогоСообщения_ТаблицаЧат.put("uuid_parent", НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID);
+
+
+                    Log.d(this.getClass().getName(), "ЛокльныйUUIDТОлькоДЛЯОднойТаблицыChats   "
+                            + ЛокльныйUUIDТОлькоДЛЯОднойТаблицыChats +
+                            " НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID " + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID);
+
+
+                    // TODO: 10.02.2022
+
+                    ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата = НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID;
+
+                    Log.d(this.getClass().getName(), " ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата "
+                            + ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата + " НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID " + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID);
+
+                    //TODO курант чат
+
+                    Class_GRUD_SQL_Operations class_grud_sql_operationsПовышаемВерсиюДанныхВосьмаяЧасть = new Class_GRUD_SQL_Operations(getContext());
+
+
+                    Long РезультатУвеличинаяВерсияДАныхЧата = 0L;
+
+                    РезультатУвеличинаяВерсияДАныхЧата = class_grud_sql_operationsПовышаемВерсиюДанныхВосьмаяЧасть.new ChangesVesionData(getContext()).
+                            МетодПолученияУвеличинойВесрииДанныхДляТекущейВнутренейтаблицы_ПоПолю_current_table_ПоПолю_current_table(ПерваяТаблицыОбработкиТаблицаЧат, "localversionandroid_version", getContext()
+                                    , Create_Database_СсылкаНАБазовыйКласс.getССылкаНаСозданнуюБазу());
+
+
+                    //TODO  конец курант ча
+                    //////
+                    contentValuesЗаписьНовогоСообщения_ТаблицаЧат.put("current_table", РезультатУвеличинаяВерсияДАныхЧата);
+
+
+                    Log.d(this.getClass().getName(), "РезультатУвеличинаяВерсияДАныхЧата   " + РезультатУвеличинаяВерсияДАныхЧата);
+
+
+                    // TODO: 05.07.2021 вставка новго сообщения в деве таблоицы Code_For_Chats_КодДля_Чата and DATA_Chat
+
+
+                    // TODO: 15.08.2021  начало транзакции
+                    ///PUBLIC_CONTENT.ССылкаНаСозданнуюБазу.execSQL(" BEGIN DEFERRED TRANSACTION ");
+
+
+                    РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ[0] = new MODEL_synchronized(getContext())
+                            .ВставкаДанныхЧерезКонтейнерТолькоПриСозданииНСообщенияДЛЯЧата("chats",
+                                    contentValuesЗаписьНовогоСообщения_ТаблицаЧат, ПерваяТаблицыОбработкиТаблицаЧат, "",
+                                    true);
+
+                    Log.d(this.getClass().getName(), " РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ "
+                            + РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ[0]);
+
+
+                    ////////
+
+                    // TODO: 23.07.2021 борьба с гонками потоков
+
+                    ////
+                    if (РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ[0] > 0) {
+
+                        //TODO ДОПОЛНИТЕЛЬНОЕ СОХРАНИЕНИ  ДАННЫХ С ПИМИМИНЕНИЕМ ВЕРСИЙ ДАННЫХ (ВМЕСТО ДАТЫ)
+// TODO: 28.09.2021
+
+                        contentValuesЗаписьНовогоСообщения_ТаблицаЧат.clear();
+                        ////TODO ДАТА  ПОВЫШАЕМ ВЕРИСЮ ДАННЫХ
+
+                        ////TODO УВЕЛИЧИВАЕМ ВЕРИСЮ ДАННЫХ  В ТАБЛИЦЕ MODIFICATION CLIENT
+
+                        Integer Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы =
+                                new Class_Engine_SQL(getContext()).МетодПовышаемВерсиюДанныхПроектавТаблицеMODIFITATION_Client(
+                                        РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ[0]
+                                        , ПерваяТаблицыОбработкиТаблицаЧат,
+                                        "Локальное", РезультатУвеличинаяВерсияДАныхЧата,
+                                        Class_Engine_SQLГдеНаходитьсяМенеджерПотоков.МенеджерПотоков);
+
+
+                        Log.i(this.getClass().getName(), "   РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ" + РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ[0] +
+                                "  Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы " + Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы);
+
+
+                    }
+
+                    // TODO: 22.12.2021
+
+                    Object вЫКИДИВАЕМоТРАБТАННЫЙэЛЕМЕНТ = linkedBlockingQueueДляЗаписиСразуДвестрокиЧатОДляКого.poll();
+
+                    // TODO: 22.12.2021
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    // TODO: 01.09.2021 метод вызова
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
+                            this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    ///
+
+                }
+
+            });
+
+
+            // TODO: 22.12.2021
+        } catch (Exception e) {
+            e.printStackTrace();
+            ///метод запись ошибок в таблицу
+            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+            // TODO: 01.09.2021 метод вызова
+            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
+                    this.getClass().getName(),
+                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+            ///
+
+        }
+
+
+        return РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ[0];
+    }
+
+
+// TODO: 01.07.2021 метод когда нет данных в курсоре и отображаем сообщени что сообщений нет в фрагменте
+
+    // TODO: 22.12.2021 ЗАПИСИ НОВГО СОООБЩЕНИЯ ТОЛЬКО В ДОЧЕРНУЮ ТАБЛИЦУ ДАТА ЧАТ ТАК,  КАК УЖЕ ЕСТЬ ПЕРЕРПИСКА МЕЖДУ НИМИ ПОЛЬЗВАОТЕЛЯМИ И ЕСТЬ UUID
+    @NonNull
+    private Long МетодОперацииВставкиТолькоДочернуюТаблицу_ДАТА_ЧАТ_ПотомуЧтоУжестьМеждуНимиПерписка(
+            Integer ПубличныйIDДляФрагмента, Long НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID)
+            throws ExecutionException,
+            InterruptedException,
+            TimeoutException,
+            NoSuchPaddingException,
+            NoSuchAlgorithmException,
+            InvalidKeyException {
+
+
+        // TODO: 22.12.2021
+        Long РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка = 0l;
+
+        // TODO: 22.12.2021
+
+        // TODO: 28.09.2021  запись в таблицу Data_tabels
+
+        String ТаблицаВторойОбработкиДляТаблицыДата_Табеля = "data_chat";
+        // TODO: 22.12.2021
+        String ДатаПриСоздаенииНовгоСообщениявЧате;
+        // TODO: 21.12.2021
+        try {
+
+
+            //
+            Log.d(this.getClass().getName(), "  ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента + "НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID " + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID);
+
+
+            // TODO: 21.12.2021 сгеенрированный UUID только для таблицы Chat
+
+
+            Log.d(this.getClass().getName(), "  НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID " + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID);
+
+
+            if (НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID > 0) {
+
+                ///         ///TODO --вторая вставка   ТАБЛИЦА  DATA_TABELS   вторая вставка   ТАБЛИЦА  DATA_TABELS   вторая вставка   ТАБЛИЦА  DATA_TABELS  вторая вставка   ТАБЛИЦА  DATA_TABELS
+
+                ///TODO --вторая вставка
+
+                //TODO курант чат
+
+                Class_GRUD_SQL_Operations class_grud_sql_operationsПовышаемВерсиюДанныхДевятаяЧасть = new Class_GRUD_SQL_Operations(getContext());
+
+                // TODO: 20.07.2021
+                //////
+                /////
+                ContentValues contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT = new ContentValues();
+                ////////
+
+
+                //////
+                ////TODO ДАТА
+                String СгенерированованныйДатаДляДаннойОперации = new Class_Generation_Data(getContext()).ГлавнаяДатаИВремяОперацийСБазойДанных();
+
+
+                ///
+
+                Log.d(this.getClass().getName(), "   НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID " + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID +
+                        " ПриСоздаенииНовгоСообщениявЧате " + СгенерированованныйДатаДляДаннойОперации);
+
+
+                /////////
+
+
+                contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT.put("date_update", СгенерированованныйДатаДляДаннойОперации);
+
+                //////
+                contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT.put("user_update", ПубличныйIDДляФрагмента);
+                ///
+
+                Log.d(this.getClass().getName(), "   НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID " + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID +
+                        " ПриСоздаенииНовгоСообщениявЧате " + СгенерированованныйДатаДляДаннойОперации + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
+
+
+                ////     contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT.put("id_user", ПолученыйIDДляЧата);////бышвий user_for
+
+                ////
+
+                Log.d(this.getClass().getName(), "   НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID " + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID +
+                        " ПриСоздаенииНовгоСообщениявЧате " + СгенерированованныйДатаДляДаннойОперации + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента + " ПолученыйIDДляЧата " + ПолученыйIDДляЧата);
+
+
+                Log.d(this.getClass().getName(), "   НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID " + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID +
+                        " ПриСоздаенииНовгоСообщениявЧате " + СгенерированованныйДатаДляДаннойОперации);
+
+
+                Log.d(this.getClass().getName(),
+                        " ПолученныйУжеСуществующийUUIDСТрочкаИСоздаватьНЕНадоИзТаблицыCHATS " + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID);
+                ////
+                contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT.put("chat_uuid", НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID);
+
+
+                Log.d(this.getClass().getName(),
+                        " РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка " + РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка);
+
+                // TODO: 22.12.2021 НовыйUUIDДляТаблицыДатаЧат  для таблицы дата_чат
+                ////
+                Long ЛокальныйUUIDДляТаблицыДатаЧатВтораяТаблица = (Long) new Class_Generation_UUID(getContext()).МетодГенерацииUUID(getContext());
+                //
+
+                Log.d(this.getClass().getName(),
+                        " ЛокальныйUUIDДляТаблицыДатаЧатВтораяТаблица " + ЛокальныйUUIDДляТаблицыДатаЧатВтораяТаблица);
+                ////
+                contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT.put("uuid", ЛокальныйUUIDДляТаблицыДатаЧатВтораяТаблица);
+
+
+                // TODO: 11.08.2021 up current chat vesion
+
+                Long РезультатУвеличинаяВерсияДАныхДатЧата = 0L;
+
+
+                РезультатУвеличинаяВерсияДАныхДатЧата =
+                        class_grud_sql_operationsПовышаемВерсиюДанныхДевятаяЧасть.new ChangesVesionData(getContext()).
+                                МетодПолученияУвеличинойВесрииДанныхДляТекущейВнутренейтаблицы_ПоПолю_current_table_ПоПолю_current_table
+                                        (ТаблицаВторойОбработкиДляТаблицыДата_Табеля, "localversionandroid_version", getContext()
+                                                , Create_Database_СсылкаНАБазовыйКласс.getССылкаНаСозданнуюБазу());
+
+                //TODO  конец курант чат
+                ///
+
+
+                //////
+                contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT.put("current_table", РезультатУвеличинаяВерсияДАныхДатЧата);
+
+
+                Log.d(this.getClass().getName(), "РезультатУвеличинаяВерсияДАныхДатЧата   " + РезультатУвеличинаяВерсияДАныхДатЧата);
+
+
+                // TODO: 05.07.2021 само тело новго сообщения
+                String СамоСообщенияНовоеДляЧата = new String();
+                //////
+                СамоСообщенияНовоеДляЧата = editTextТелоНаписаногоСообщенияДругимСотрудникам.getText().toString().trim();
+
+
+                Log.i(this.getClass().getName(), "   Создано новое сообщение :::" +
+                        " СамоСообщенияНовоеДляЧата " + СамоСообщенияНовоеДляЧата);
+
+
+                ////
+                if (СамоСообщенияНовоеДляЧата.length() > 0) {
+                    ///////
+                    contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT.put("message", СамоСообщенияНовоеДляЧата.trim());
+
+
+                    /////////TODO ЗАМА ЗАПИСЬ НОВГО СООБЩЕНИЯ ЧАТА В ТАБЛИЦУ В ТОРОЙ УЖЕ ЕСТЬ ЗАПИСЬ
+                    ///
+                    РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка = new MODEL_synchronized(getContext()).
+                            ВставкаДанныхЧерезКонтейнерТолькоПриСозданииНСообщенияДЛЯЧата(ТаблицаВторойОбработкиДляТаблицыДата_Табеля,
+                                    contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT, ТаблицаВторойОбработкиДляТаблицыДата_Табеля, "",
+                                    true);
+
+
+                    Log.d(this.getClass().getName(),
+                            " РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка " + РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка);
+
+
+                    //////
+                    contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT.clear();
+
+
+                    ////TODO УВЕЛИЧИВАЕМ ВЕРИСЮ ДАННЫХ  В ТАБЛИЦЕ MODIFICATION CLIENT
+                    if (РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка > 0) {
+
+                             /* //TODO ДОПОЛНИТЕЛЬНОЕ СОХРАНИЕНИ  ДАННЫХ С ПИМИМИНЕНИЕМ ВЕРСИЙ ДАННЫХ (ВМЕСТО ДАТЫ)
+                              int РезультатЗаписиВерсииДанныхвБазе=    new MODEL_synchronized(getContext()).
+                                      МетодЗаписьЧтоОрацияПрошлаЗаписьВБазуСПрименениемВерсииДанных("data_chat", new Date(),null,"localversionandroid_version",Integer.parseInt(String.valueOf(РезультатУвеличинаяВерсияДАныхДатЧата)));
+
+*/
+                        ////TODO ДАТА  ПОВЫШАЕМ ВЕРИСЮ ДАННЫХ
+
+                        Integer Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы =
+                                new Class_Engine_SQL(getContext()).МетодПовышаемВерсиюДанныхПроектавТаблицеMODIFITATION_Client(
+                                        РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка,
+                                        ТаблицаВторойОбработкиДляТаблицыДата_Табеля,
+                                        "Локальное", РезультатУвеличинаяВерсияДАныхДатЧата,
+                                        Class_Engine_SQLГдеНаходитьсяМенеджерПотоков.МенеджерПотоков);
+
+
+                        Log.i(this.getClass().getName(), "   PUBLIC_CONTENT.СколькоСтрочекJSONПоКонкретнойТаблице:" +
+                                " РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка " + РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка +
+                                "  Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы " + Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы);
+
+
+                        // TODO: 26.07.2021  обняем после синхрониазции
+                        if (Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы > 0) {
+
+                            // TODO: 22.12.2021
+
+                            РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка++;
+                            ////
+                            editTextТелоНаписаногоСообщенияДругимСотрудникам.setText("");
+
+                            ///
+
+                        }
+
+                    }
+
+                }
+
+
+            }
+
+
+            // TODO: 22.12.2021
+        } catch (Exception e) {
+            e.printStackTrace();
+            ///метод запись ошибок в таблицу
+            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+            // TODO: 01.09.2021 метод вызова
+            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
+                    this.getClass().getName(),
+                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+            ///
+
+        }
+
+
+        return РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка;
+    }
 
     // TODO: 18.06.2021  класс вью
     private class VIEW {
@@ -958,7 +1387,7 @@ try{
                 if (editTextТелоНаписаногоСообщенияДругимСотрудникам!=null) {
 
                     // TODO: 28.10.2021
-                 //   editTextТелоНаписаногоСообщенияДругимСотрудникам.setHintTextColor(Color.parseColor("#E0FFFF"));
+                    //   editTextТелоНаписаногоСообщенияДругимСотрудникам.setHintTextColor(Color.parseColor("#E0FFFF"));
                     ///////
                     //
 
@@ -976,7 +1405,7 @@ try{
                     });
 
 
-                            EditText finalEditTextТелоНаписаногоСообщенияДругимСотрудникам = editTextТелоНаписаногоСообщенияДругимСотрудникам;
+                    EditText finalEditTextТелоНаписаногоСообщенияДругимСотрудникам = editTextТелоНаписаногоСообщенияДругимСотрудникам;
                     editTextТелоНаписаногоСообщенияДругимСотрудникам.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -1060,7 +1489,7 @@ try{
             try {
                 Class_Engine_SQLДляИзмененияСтатусаЗаписиПрочтитаноИлиНет=new Class_Engine_SQL(getContext());
                 // TODO: 03.01.2022
-               // КурсорДанныеДлязаписиичтнияЧата.requery();
+                // КурсорДанныеДлязаписиичтнияЧата.requery();
 
                 ///TODO ГЛАВНЫЙ АДАПТЕР чата
                 АдаптерДляЗаписиЧтенияЧата = new SimpleCursorAdapter(getContext(), R.layout.simple_for_chats_read_write, КурсорДанныеДлязаписиичтнияЧата,
@@ -1330,7 +1759,7 @@ try{
 
                                     // TODO: 28.03.2022 оформление снизу
 
-                                // TODO: 20.01.2022  положтельный ответ для SimplrCurcor
+                                    // TODO: 20.01.2022  положтельный ответ для SimplrCurcor
                                     return true;
                                 // TODO: 20.01.2022  положтельный ответ для SimplrCurcor
 
@@ -1369,16 +1798,18 @@ try{
                     }
 
                     private void МетодВизуальноОформленияСообщенийВЧате(TextView view) {
-
+                        //return true;
+                        view.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
 
                         // TODO: 06.07.2021 определяем прочитано текущее собщенеи или нет пока
+
 
                         view.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
 
                         // TODO: 06.07.2021 данные выгружем на читать писать сообщения
 
                         view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
-                        ////
+                        ///
 
                         view.setPadding(0, 40, 30, 40);
 
@@ -1404,8 +1835,8 @@ try{
                         view.setText(ПолученноеТелоСообщения);
 
                         //  ((TextView) view).setBackgroundResource(R.drawable.style_for_chat);
-                        Log.d(this.getClass().getName(), " статус нет нет  ID  ОТ СЕРВЕРА  ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента+
-                                  " ПолученноеКтоНаписал " + ПолученноеКтоНаписал);
+                        Log.d(this.getClass().getName(), " статус нет нет  ID  ОТ СЕРВЕРА  ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента +
+                                " ПолученноеКтоНаписал " + ПолученноеКтоНаписал);
 
 
                         // TODO: 30.06.2021 форматирование кто написал
@@ -1438,7 +1869,7 @@ try{
                         ////todo ПОКАЗЫВАЕМ ФЛАГ ЕСЛИ ДАННЫЕ УСПЕШНО ОПРАВИЛИЬС ИЛИ ВРЕНУЛСЬ СС СЕРВРА ТО СООБШЕНИЯ ОКРАШИВАЕМ В СИНИЯ ЦВЕТ
                         МетодИзменяетСтильСтрочкиСообщенияВМоментеЕслиССервераПришелОтветОПолжительнойВставкеСообщения(view, ПолученноеТелоСообщения);
 
-                        // TODO: 04.02.2022  еще один код кторе изменяет СТИЛЬ СТРОЧКИ ЕСЛИ С СЕРВЕРА ПИШЕЛ ID 
+                        // TODO: 04.02.2022  еще один код кторе изменяет СТИЛЬ СТРОЧКИ ЕСЛИ С СЕРВЕРА ПИШЕЛ ID
 
 
 
@@ -1465,73 +1896,71 @@ try{
                     private void МетодКоторыйВычисляемПрочиталЛиДанноеСообщениеТОтКомуЭтоСообщениеПредназначалось (TextView view, Cursor cursor, String ПолученноеТелоСообщения) {
                         // TODO: 30.06.2021 ДАННЫЙ МЕТОД ВЫЧИСЛЯЕТ ПО ПОЛЮ В СООБЩИИ ПРОЧИТАЛ ЛИ ДАННОЕ СООБЩЕНИЕ КОНТАК КОТРОМУ МЫ МЫ И ПИСАЛИ ПИСЬМО
 
-                        try{
+                        try {
 
-                        int ИндексЗначенияПоПолюПрочиталЛИНашеСообщениеТотКомуОноБылоПослано= cursor.getColumnIndex("status_write");//TODO _id status_write
+                            int ИндексЗначенияПоПолюПрочиталЛИНашеСообщениеТотКомуОноБылоПослано = cursor.getColumnIndex("status_write");//TODO _id status_write
 
-                        // TODO: 29.04.2021
-                        Integer наченияПоПолюПрочиталЛИНашеСообщениеТотКомуОноБылоПослано = 0;
-                        /////////////////
-                        наченияПоПолюПрочиталЛИНашеСообщениеТотКомуОноБылоПослано = cursor.getInt(ИндексЗначенияПоПолюПрочиталЛИНашеСообщениеТотКомуОноБылоПослано);
-
-
-                        Log.d(this.getClass().getName(), " наченияПоПолюПрочиталЛИНашеСообщениеТотКомуОноБылоПослано " + наченияПоПолюПрочиталЛИНашеСообщениеТотКомуОноБылоПослано);
+                            // TODO: 29.04.2021
+                            Integer наченияПоПолюПрочиталЛИНашеСообщениеТотКомуОноБылоПослано = 0;
+                            /////////////////
+                            наченияПоПолюПрочиталЛИНашеСообщениеТотКомуОноБылоПослано = cursor.getInt(ИндексЗначенияПоПолюПрочиталЛИНашеСообщениеТотКомуОноБылоПослано);
 
 
-                        ////todo ПОКАЗЫВАЕМ ФЛАГ ЕСЛИ ДАННЫЕ УСПЕШНО ОПРАВИЛИЬС ИЛИ ВРЕНУЛСЬ СС СЕРВРА ТО СООБШЕНИЯ ОКРАШИВАЕМ В СИНИЯ ЦВЕТ
-                        if (наченияПоПолюПрочиталЛИНашеСообщениеТотКомуОноБылоПослано>0) {
-
-                            // TODO: 25.02.2022 форматирование текста
-
-                            //view.setInputType(InputType.TYPE_TEXT_FLAG_IME_MULTI_LINE);
-                            // TODO: 04.11.2021
-                            view.setText(ПолученноеТелоСообщения);
-
-                            ///((TextView) view).setBackgroundResource(R.drawable.style_for_chat_an_servers);///
-                            //view.setBackgroundResource(R.drawable.style_for_chat);
-                            view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
-                            Log.w(this.getClass().getName(), " статус ЕСТЬ ID  ОТ СЕРВЕРА ПолученноеIDСтатусОтпарвкиNULL "
-                                    + наченияПоПолюПрочиталЛИНашеСообщениеТотКомуОноБылоПослано);
+                            Log.d(this.getClass().getName(), " наченияПоПолюПрочиталЛИНашеСообщениеТотКомуОноБылоПослано " + наченияПоПолюПрочиталЛИНашеСообщениеТотКомуОноБылоПослано);
 
 
-                            Drawable icon = null;
-                            icon = getResources().getDrawable(R.drawable.style_for_chat_alien_success_last_send_server);//R.drawable.style_for_chat
-                            icon.setBounds(0, 0, 0, 100);
+                            ////todo ПОКАЗЫВАЕМ ФЛАГ ЕСЛИ ДАННЫЕ УСПЕШНО ОПРАВИЛИЬС ИЛИ ВРЕНУЛСЬ СС СЕРВРА ТО СООБШЕНИЯ ОКРАШИВАЕМ В СИНИЯ ЦВЕТ
+                            if (наченияПоПолюПрочиталЛИНашеСообщениеТотКомуОноБылоПослано > 0) {
 
+                                // TODO: 25.02.2022 форматирование текста
+
+                                //view.setInputType(InputType.TYPE_TEXT_FLAG_IME_MULTI_LINE);
+                                // TODO: 04.11.2021
+                                view.setText(ПолученноеТелоСообщения);
+
+                                ///((TextView) view).setBackgroundResource(R.drawable.style_for_chat_an_servers);///
+                                //view.setBackgroundResource(R.drawable.style_for_chat);
+                                view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
+                                Log.w(this.getClass().getName(), " статус ЕСТЬ ID  ОТ СЕРВЕРА ПолученноеIDСтатусОтпарвкиNULL "
+                                        + наченияПоПолюПрочиталЛИНашеСообщениеТотКомуОноБылоПослано);
+
+
+                                Drawable icon = null;
+                                icon = getResources().getDrawable(R.drawable.style_for_chat_alien_success_last_send_server);//R.drawable.style_for_chat
+                                icon.setBounds(0, 0, 0, 100);
+
+                            }
+
+                            //  ((TextView) view).setBackgroundResource(R.drawable.style_for_chat);
+                            Log.d(this.getClass().getName(), " статус нет нет  ID  ОТ СЕРВЕРА  ПCallBaskОтWorkManagerОдноразового" +
+                                    " " + CallBaskОтWorkManagerОдноразового);
+
+
+                            ////
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            ///метод запись ошибок в таблицу
+                            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                         }
-
-                        //  ((TextView) view).setBackgroundResource(R.drawable.style_for_chat);
-                        Log.d(this.getClass().getName(), " статус нет нет  ID  ОТ СЕРВЕРА  ПCallBaskОтWorkManagerОдноразового" +
-                                " " + CallBaskОтWorkManagerОдноразового);
-
-
-                        ////
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        ///метод запись ошибок в таблицу
-                        Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                                " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                        new   Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                                Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                    }
                     }
 
                     private void МетодИзменяетСтильСтрочкиСообщенияВМоментеЕслиССервераПришелОтветОПолжительнойВставкеСообщения(TextView view, String ПолученноеТелоСообщения) {
 
 
-                        try{
-                        // TODO: 04.02.2022
-                        if ( CallBaskОтWorkManagerОдноразового>0) {
+                        try {
+                            // TODO: 04.02.2022
+                            if (CallBaskОтWorkManagerОдноразового > 0) {
 
 
-                            CallBaskОтWorkManagerОдноразового=0l;
+                                CallBaskОтWorkManagerОдноразового = 0l;
 
 
+                                //todo визальноеотображения хода синхрониазции
 
-
-                            //todo визальноеотображения хода синхрониазции
-
-                            new VIEW(getContext()).   МетодДляЧатаПоказываемВизуальноОтправкуИИлиПолучениеДанных("Успешно !!!",2000);
+                                new VIEW(getContext()).МетодДляЧатаПоказываемВизуальноОтправкуИИлиПолучениеДанных("Успешно !!!", 2000);
 
 /*
 
@@ -1550,26 +1979,23 @@ try{
                             icon.setBounds(0, 0, 0, 100);
 */
 
-                            // TODO: 15.01.2022 после выполения изменения цвета на одной конкретноя строчке обнуляем перменую
+                                // TODO: 15.01.2022 после выполения изменения цвета на одной конкретноя строчке обнуляем перменую
 
 
+                                Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового);
+                            }
 
-
-
-                            Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового);
+                            ////
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            ///метод запись ошибок в таблицу
+                            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                         }
 
-                        ////
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        ///метод запись ошибок в таблицу
-                        Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                                " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                        new   Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                                Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                     }
-
-                }
 
                     private void МетодИзменяетСтильСтрочкиСообщенияЕслиСервераПришелЗаполеныйID(TextView view, Cursor cursor) {
                         int ИндексУзнатьIDКогдаЗаписьВозвращяетьсяССервера = cursor.getColumnIndex("_id");//TODO _id status_write
@@ -1583,7 +2009,7 @@ try{
 
                         if ( ПолучаемID_ДляПроверкиКогдаПриходитССервера>0) {
 
-                            
+
                             ///((TextView) view).setBackgroundResource(R.drawable.style_for_chat_an_servers);///
                             view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
 
@@ -1594,10 +2020,10 @@ try{
 
                             // TODO: 15.01.2022 после выполения изменения цвета на одной конкретноя строчке обнуляем перменую
                             Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового);
-                            // TODO: 18.02.2022  
+                            // TODO: 18.02.2022
 
 
-                            
+
                         }
                     }
 
@@ -1617,7 +2043,7 @@ try{
                         ///TODO ЧУЖИЕ СООБЩЕНИЯ ОКРАШИВАЕМ В РОЗОВАЙ ЦВЕТ
                         // TODO: 25.02.2022 форматирование текста
 
-                       // view.setInputType(InputType.TYPE_TEXT_FLAG_IME_MULTI_LINE );
+                        // view.setInputType(InputType.TYPE_TEXT_FLAG_IME_MULTI_LINE );
 
                         view.setBackgroundResource(R.drawable.style_for_chat_alien); //style_for_chat_alien
 
@@ -1697,55 +2123,151 @@ try{
                     private boolean МетодВФрагментеЧитатьИПисатьДляВторойВторостипеннойTEXT2(TextView view, Cursor cursor) {
 
 
-                        try{
+                        String ФиналДата = null;
+
+                        String ФиналДатаДлиннная = null;
+                        //
+                        // ((TextView) view).setPadding(100,0,0,0);
+                        //   ((TextView) view).setTextColor(Color.parseColor("#F0FFFF"));//olor.parseColor("#00BBC1")
+
+                        ///  ((TextView) view).setBackgroundColor(Color.parseColor("#F5FFFA"));
 
 
-                            String ФиналДата = МетодГенерацияДатыДляНижнегоВторогоText2(view, cursor);
+                        try {
 
-                            Log.d(this.getClass().getName(), "  ФиналДата  " + ФиналДата);
+                            // TODO: 30.06.2021  дата сообщения
+                            Integer ИндексДатаСообщенийВсехСВыбраннымСотрудником = cursor.getColumnIndex("date_update");
+
+
+                            /////////////////даты
+                            String ПолученноеДатыСообщенияСообщения = cursor.getString(ИндексДатаСообщенийВсехСВыбраннымСотрудником).trim();
+
+                            // TODO: 29.04.2021
+                            Log.d(this.getClass().getName(), " ПолученноеДатыСообщенияСообщения" + ПолученноеДатыСообщенияСообщения);
+
+
+                            if (ПолученноеДатыСообщенияСообщения != null) {
+                                // TODO: 28.06.2021 даты обработка
+
+
+                                Log.d(this.getClass().getName(), " ПолученноеДатыСообщенияСообщения" + ПолученноеДатыСообщенияСообщения);
+
+
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", new Locale("ru"));
+                                Date date = null;
+                                try {
+                                    date = dateFormat.parse(ПолученноеДатыСообщенияСообщения);
+                                } catch (ParseException e) {
+
+                                    ////////
+                                    ///todo публикум название таблицы или цифру его
+                                    //  Block of code to handle errors
+                                    e.printStackTrace();
+                                    ///метод запись ошибок в таблицу
+                                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                                            + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
+                                            this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                                            Thread.currentThread().getStackTrace()[2].getLineNumber());
+
+
+                                    dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", new Locale("ru"));
+
+                                    /////////
+
+                                    date = dateFormat.parse(ПолученноеДатыСообщенияСообщения);
+
+
+                                }
+
+                                Log.d(this.getClass().getName(), "  date  " + date.toString() + "  ПолученноеДатыСообщенияСообщения " + ПолученноеДатыСообщенияСообщения);
+                                /////////
+
+
+                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy HH:mm", new Locale("ru"));
+                                //
+                                simpleDateFormat.applyPattern("HH:mm");//dd-MM-yyyy//// EEEE yyyy HH:mm  /////  dd MMMM yyyy HH:mm
+                                // simpleDateFormat.applyPattern(" dd EEEE yyyy HH:mm");//dd-MM-yyyy//// EEEE yyyy HH:mm  /////  dd MMMM yyyy HH:mm
+
+                                simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Europe/Moscow"));
+
+
+                                ФиналДата = simpleDateFormat.format(date);
+
+
+                                Log.d(this.getClass().getName(), "  ФиналДата  " + ФиналДата);
+
+
+                            } else {
+
+
+                                // TODO: 29.04.2021
+                                Log.d(this.getClass().getName(), " ПолученноеДатыСообщенияСообщения" + ПолученноеДатыСообщенияСообщения);
+                            }
 
 
                             // TODO: 18.08.2021 Определяем от кого было написано сообещгия
 
-                        int ИндексКемБылоНаписаноСообщение = cursor.getColumnIndex("user_update");
+                            int ИндексКемБылоНаписаноСообщение = cursor.getColumnIndex("user_update");
 
 
-                        // TODO: 29.04.2021
-                        String ФиоКтоНАписалСообщение = new String();
+                            // TODO: 29.04.2021
+                            String ФиоКтоНАписалСообщение = new String();
 
-                        /////////////////даты
-                   Integer   ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО = cursor.getInt(ИндексКемБылоНаписаноСообщение);
-                        //
-
-
-                        Log.d(this.getClass().getName(), "  ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО  " + ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО);
-                        // TODO: 09.09.2021  ПОЛУЧЕНИЕ ДАННЫХ
-                        // TODO: 09.09.2021  ПОЛУЧЕНИЕ ДАННЫХ
-                        // TODO: 09.09.2021  ПОЛУЧЕНИЕ ДАННЫХ
-
-                        // TODO: 26.08.2021 НОВЫЙ ВЫЗОВ НОВОГО КЛАСС GRUD - ОПЕРАЦИИ
+                            /////////////////даты
+                            Integer ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО = cursor.getInt(ИндексКемБылоНаписаноСообщение);
+                            //
 
 
-                        // TODO: 09.09.2021  resultat
+                            Log.d(this.getClass().getName(), "  ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО  " + ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО);
+                            // TODO: 09.09.2021  ПОЛУЧЕНИЕ ДАННЫХ
+                            // TODO: 09.09.2021  ПОЛУЧЕНИЕ ДАННЫХ
+                            // TODO: 09.09.2021  ПОЛУЧЕНИЕ ДАННЫХ
+
+                            // TODO: 26.08.2021 НОВЫЙ ВЫЗОВ НОВОГО КЛАСС GRUD - ОПЕРАЦИИ
 
 
-                        /////
-                        ФиоКтоНАписалСообщение = modelДляФрагментаЧитатьИлиПисать.МетодКемБЫлоНАписаноСообщение(ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО);
-
-                        //
-
-                        Log.d(this.getClass().getName(), "  ФиоКтоНАписалСообщение  " + ФиоКтоНАписалСообщение
-                                + " Кем написано  ПолученноеФИОКемБылоНаписаноСообщение " +ПолученноеФИОКемБылоНаписаноСообщение+  "Кому  ПолученыйIDДляЧата "
-                                +ПолученыйIDДляЧата+ " ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО " +ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО);
+                            // TODO: 09.09.2021  resultat
 
 
-                        // TODO: 30.06.2021 форматирование кто написал
-                        int ИндексКтоНаписалСообщениеСотрудникомДляtext2 = cursor.getColumnIndex("user_update");
+                            /////
+                            ФиоКтоНАписалСообщение = modelДляФрагментаЧитатьИлиПисать.МетодКемБЫлоНАписаноСообщение(ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО);
 
-                        // TODO: 29.04.2021
-                        /////////////////
-                        int ПолученноеКтоНаписалДляtext2 = cursor.getInt(ИндексКтоНаписалСообщениеСотрудникомДляtext2);
+                            //
 
+                            Log.d(this.getClass().getName(), "  ФиоКтоНАписалСообщение  " + ФиоКтоНАписалСообщение
+                                    + " Кем написано  ПолученноеФИОКемБылоНаписаноСообщение " + ПолученноеФИОКемБылоНаписаноСообщение + "Кому  ПолученыйIDДляЧата "
+                                    + ПолученыйIDДляЧата + " ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО " + ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО);
+
+
+                            view.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
+                               /*     ((TextView) view).setTypeface(Typeface.SANS_SERIF,Typeface.NORMAL);
+
+                                    ((TextView) view).setGravity(Gravity.CENTER_VERTICAL );*/
+/*
+
+                                    ((TextView) view).setText( ФиналДата +"\n"+
+                                            "( " +ФиоКтоНАписалСообщение.trim()+")");///ПолученыйФИОIDДляЧата
+*/
+
+                            //    ((TextView) view).setPadding(250,0,0,0);
+
+
+                            // TODO: 30.06.2021 форматирование кто написал
+                            int ИндексКтоНаписалСообщениеСотрудникомДляtext2 = cursor.getColumnIndex("user_update");
+
+                            // TODO: 29.04.2021
+                            /////////////////
+                            int ПолученноеКтоНаписалДляtext2 = cursor.getInt(ИндексКтоНаписалСообщениеСотрудникомДляtext2);
+
+/*
+
+                                ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
+                                ((TextView) parent.getChildAt(0)).setPaintFlags( ((TextView) parent.getChildAt(0)).getPaintFlags() | Paint.FAKE_BOLD_TEXT_FLAG);
+                                ((TextView) parent.getChildAt(0)).setBackgroundResource(R.drawable.textlines_tabel);
+                                ((TextView) parent.getChildAt(0)).setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+                                ((TextView) parent.getChildAt(0)).setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
+*/
 
                             // TODO: 30.06.2021  выделять жирным или нет в записимости прочитан или нет
 
@@ -1754,27 +2276,17 @@ try{
                             Log.d(this.getClass().getName(), "  ПолученноеКтоНаписалДляtext2  " + ПолученноеКтоНаписалДляtext2 + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
 
 
+
                             // TODO: 07.02.2022   мои сообщения
-
-                            ((MaterialTextView) view).setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
-
-                            // TODO: 28.03.2022
-
-
-                            // TODO: 28.03.2022  мен написли
 
                             //
                             if (ПолученноеКтоНаписалДляtext2 == ПубличныйIDДляФрагмента) {
                                 /////
-                                // TODO: 28.03.2022
-                                ((MaterialTextView) view).setTextColor(Color.GREEN);
-                                // TODO: 28.03.2022
-                                // TODO: 28.03.2022
-                                ((MaterialTextView) view).setGravity(Gravity.LEFT);
-                                // TODO: 28.03.2022
-                                ((MaterialTextView) view).setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server); //style_for_chat_alien
+                                view.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
 
                                 // TODO: 07.02.2022  вЫЧИСЛЕМ оТПРАВЛИ м сООБЗЕНЕИ НА СЕРВРО ИЛИ ПОЛЬЗОВАТЕЛЬ ИЗХ ПРОЧИТАЛ
+
+
                                 int ИндексЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ = cursor.getColumnIndex("_id");//TODO _id status_write
 
                                 Integer СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ = cursor.getInt(ИндексЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ);
@@ -1782,13 +2294,13 @@ try{
 
                                 if (СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ == null) {
 
-                                СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ=0;
-                            }
-                            ////
-                            Log.d(this.getClass().getName(), "  ЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ  " + СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ);
+                                    СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ = 0;
+                                }
+                                ////
+                                Log.d(this.getClass().getName(), "  ЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ  " + СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ);
 
 
-                            // TODO: 07.02.2022 Второе условия ПользоватльКому Было Написно Сообщкенеи его Прочитал ИЛИ НЕТ
+                                // TODO: 07.02.2022 Второе условия ПользоватльКому Было Написно Сообщкенеи его Прочитал ИЛИ НЕТ
                                 int ИндексУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет = cursor.getColumnIndex("status_write");//TODO _id status_write
 
                                 Integer СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет = cursor.getInt(ИндексУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет);
@@ -1797,36 +2309,77 @@ try{
                                         + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет);
 
 
-//TODO " статус: прочитано)
                                 if (СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет > 0) {
 
+//TODO " статус: прочитано)
+                                    //  view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_add_organisazio_success, 0, 0, 0);
+
+
+          /*  view.setCompoundDrawablesWithIntrinsicBounds(
+                    R.drawable.icon_dsu1_add_organisazio_success,
+                    R.drawable.icon_dsu1_add_organisazio_success,
+                    R.drawable.icon_dsu1_add_organisazio_success,
+                    R.drawable.icon_dsu1_add_organisazio_success);*/
+
+
+                                    // TODO: 18.02.2022  " статус: доставлено)
+
+                                    view.setText(ФиналДата);
 
                                     Log.d(this.getClass().getName(), " статус: прочитано СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет  "
                                             + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет);
 
-                                    ((MaterialTextView) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chat_status, 0);
+                                    view.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chat_status, 0);
+
+                                    view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
 
 
                                 } else {
 
-                                    // TODO: 18.02.2022 когда есть ID  от сервера
 
-                                    ((MaterialTextView) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chats_exists_publicid2, 0);
+                                    if (СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ > 0) {
 
 
+                                        Log.d(this.getClass().getName(), " статус: доставлено СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ  "
+                                                + СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ);
+                                        view.setText(ФиналДата);
+                                        // TODO: 18.02.2022 когда есть ID  от сервера
+
+                                        view.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chats_exists_publicid2, 0);
+                                    } else {
+
+                                        // TODO: 18.02.2022    " статус: не доставлено)
+                                        //  view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_message_add_contact_cycrle, 0, 0, 0);
+
+                                        Log.d(this.getClass().getName(), "   статус: не доставлено СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ  "
+                                                + СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ);//R.drawable.icon_dsu1_message_add_toback_fragment
+                                        view.setText(ФиналДата);
+
+                                    }
                                 }
 
 
-                                // TODO: 28.03.2022 мои соощения
-
-                                Log.d(this.getClass().getName(), " статус: доставлено СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ  "
-                                        + СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ);
-                                ((MaterialTextView) view).setText(ФиналДата);
 
 
-                                // TODO: 28.03.2022  НЕ МОИ СООБЕЩНИЯ  мне написали  R.drawable.style_for_chat_alien
+/*
 
-                        } else {
+                            view.setText(ФиналДата + "\n" +
+                                    "(" + ФиоКтоНАписалСообщение.trim() + "\n"
+                                   +" статус: "  + ")");///ПолученыйФИОIDДляЧата
+*/
+
+
+           /*                 // ((TextView) view).setBackgroundResource(R.drawable.style_for_chat);
+                            view.setBackgroundColor(Color.parseColor("#F5FFFA"));
+                            view.setPadding(0, 5, 30, 5);
+
+                            view.setTextColor(Color.GRAY);//olor.parseColor("#00BBC1")
+*/
+
+                                // TODO: 07.02.2022  не мои сообщения
+
+
+                            } else {
 
 
                                 // TODO: 07.02.2022 Второе условия ПользоватльКому Было Написно Сообщкенеи его Прочитал ИЛИ НЕТ
@@ -1834,43 +2387,53 @@ try{
 
                                 Integer СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений = cursor.getInt(ИндексУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений);
                                 ////
+                                Log.d(this.getClass().getName(), "  СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений  " + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений);
+                                /////
+                                view.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
+                                ///
+                                view.setPadding(50, 5, 0, 5);
+
+                                view.setBackgroundColor(Color.parseColor("#F0FFFF"));
+
+
+                                view.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
+                                view.setBackgroundResource(R.drawable.style_for_chat_alien); //style_for_chat_alien
+
+
                                 Log.d(this.getClass().getName(), "  СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений  "
                                         + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений);
-                                // TODO: 28.03.2022
 
-                                // TODO: 28.03.2022
-                                ((MaterialTextView) view).setGravity(Gravity.RIGHT);
-                                // TODO: 28.03.2022
-                                ((MaterialTextView) view).setTextColor(Color.RED);
-                                // TODO: 28.03.2022
-                                ((MaterialTextView) view).setBackgroundResource(R.drawable.style_for_chat_alien); //style_for_chat_alien
+                                if (СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений > 0) {
 
-                                ((MaterialTextView) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-                                // TODO: 28.03.2022
-                                Log.d(this.getClass().getName(), "  СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений  "
-                                        + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений);
-
-                                // TODO: 18.02.2022  сообщение прочитанно другим  КОМУ ПРЕДНАЗНАЧАЛОСЬ
-
-                                ((MaterialTextView) view).setText(ФиоКтоНАписалСообщение.trim() + " " + ФиналДата);///ПолученыйФИОIDДляЧата
+                                    // TODO: 18.02.2022  сообщение прочитанно другим  КОМУ ПРЕДНАЗНАЧАЛОСЬ
+                                    //view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_add_organisazio_success, 0, 0, 0);
+                                    view.setText(ФиоКтоНАписалСообщение.trim() + " " + ФиналДата);///ПолученыйФИОIDДляЧата
 
 
+                                } else {
+                                    //   view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_add_organisazio_error, 0, 0, 0);
+                                    view.setText(ФиоКтоНАписалСообщение.trim() + " " + ФиналДата);///ПолученыйФИОIDДляЧата
+
+                                }
 
 
+                                //iew.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_customers_mnogo, 0, 0, 0);
+                                /// ((TextView) view).setBackgroundResource(R.drawable.style_for_chat_alien);
+                                view.setTextColor(Color.GRAY);//olor.parseColor("#00BBC1")
+
+                            }
+
+
+                            ////
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            ///метод запись ошибок в таблицу
+                            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                         }
-
-
-
-
-                        ////
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        ///метод запись ошибок в таблицу
-                        Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                                " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                        new   Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                                Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                    }
 
 
                         ///////
@@ -1881,101 +2444,6 @@ try{
                     }
 
 
-                    // TODO: 28.03.2022  метод получение времени даты для нижнего вторго TEXT2
-                    @NonNull
-                    private String МетодГенерацияДатыДляНижнегоВторогоText2(TextView view, Cursor cursor) throws ParseException {
-                        String ФиналДата = null;
-
-                        String ФиналДатаДлиннная = null;
-
-                        SimpleDateFormat dateFormat;
-                        Date date;
-                        String ПолученноеДатыСообщенияСообщения = null;
-
-                        try {
-
-                            // TODO: 30.06.2021  дата сообщения
-                            Integer ИндексДатаСообщенийВсехСВыбраннымСотрудником = cursor.getColumnIndex("date_update");
-
-                            /////////////////даты
-                            ПолученноеДатыСообщенияСообщения = cursor.getString(ИндексДатаСообщенийВсехСВыбраннымСотрудником).trim();
-
-                            // TODO: 29.04.2021
-                            Log.d(this.getClass().getName(), " ПолученноеДатыСообщенияСообщения" + ПолученноеДатыСообщенияСообщения);
-
-                            // TODO: 28.06.2021 даты обработка
-
-                            Log.d(this.getClass().getName(), " ПолученноеДатыСообщенияСообщения" + ПолученноеДатыСообщенияСообщения);
-
-
-                            dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", new Locale("ru"));
-
-
-                            date = null;
-
-                            try {
-                                date = dateFormat.parse(ПолученноеДатыСообщенияСообщения);
-
-                            } catch (ParseException e) {
-
-                                ////////
-                                ///todo публикум название таблицы или цифру его
-                                //  Block of code to handle errors
-                                e.printStackTrace();
-                                ///метод запись ошибок в таблицу
-                                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
-                                        + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
-                                        this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
-                                        Thread.currentThread().getStackTrace()[2].getLineNumber());
-
-
-                                dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", new Locale("ru"));
-
-                                /////////
-                                date = dateFormat.parse(ПолученноеДатыСообщенияСообщения);
-
-                            }
-
-                            Log.d(this.getClass().getName(), "  date  " + date.toString() + "  ПолученноеДатыСообщенияСообщения " + ПолученноеДатыСообщенияСообщения);
-                            /////////
-
-                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy HH:mm", new Locale("ru"));
-                            //
-                            simpleDateFormat.applyPattern("HH:mm");//dd-MM-yyyy//// EEEE yyyy HH:mm  /////  dd MMMM yyyy HH:mm
-                            // simpleDateFormat.applyPattern(" dd EEEE yyyy HH:mm");//dd-MM-yyyy//// EEEE yyyy HH:mm  /////  dd MMMM yyyy HH:mm
-
-                            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Europe/Moscow"));
-
-                            ФиналДата = simpleDateFormat.format(date);
-
-                            Log.d(this.getClass().getName(), "  ФиналДата  " + ФиналДата);
-
-                            view.setText(ФиналДата);
-
-                        } catch (ParseException e) {
-
-                            ////////
-                            ///todo публикум название таблицы или цифру его
-                            //  Block of code to handle errors
-                            e.printStackTrace();
-                            ///метод запись ошибок в таблицу
-                            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
-                                    + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
-                                    this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
-                                    Thread.currentThread().getStackTrace()[2].getLineNumber());
-
-                            dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", new Locale("ru"));
-
-                            /////////
-                            date = dateFormat.parse(ПолученноеДатыСообщенияСообщения);
-                        }
-
-                        return ФиналДата;
-                    }
-
-
                 };
 
 
@@ -1983,7 +2451,7 @@ try{
                 АдаптерДляЗаписиЧтенияЧата.setViewBinder(БиндингДляСообщенийЧата);
                 ///
 
-                // TODO: 01.02.2022  
+                // TODO: 01.02.2022
                 ЛистВьюДляСообщенийЧата.setAdapter(АдаптерДляЗаписиЧтенияЧата);
                 // TODO: 01.02.2022
                 ЛистВьюДляСообщенийЧата.requestLayout();
@@ -2147,7 +2615,7 @@ try{
                 ЛистВьюДляСообщенийЧата.setAdapter(АдаптерДляЗаписиЧтенияКогдаНетДанных);
 
                 ////
-               // ЛистВьюДляСообщенийЧата.setSelection(ЛистВьюДляСообщенийЧата.getCount() - 1);
+                // ЛистВьюДляСообщенийЧата.setSelection(ЛистВьюДляСообщенийЧата.getCount() - 1);
 
 
                 Log.d(this.getClass().getName(), "                   ЛистВьюДляСообщенийЧата.setSelection(ЛистВьюДляСообщенийЧата.getCount() - 1); "
@@ -2168,10 +2636,6 @@ try{
             }
         }
     }
-
-
-// TODO: 01.07.2021 метод когда нет данных в курсоре и отображаем сообщени что сообщений нет в фрагменте
-
 
     class CONTROLLER extends com.dsy.dsu.Code_For_Chats_КодДля_Чата.CONTROLLER implements AdapterView.OnItemClickListener {
         /////
@@ -2360,36 +2824,28 @@ try{
                                             " СТАТУС МЕНЕДЖЕРА ОТПАРВКИ ПОДУЧЕНИ ДАННЫХ НА СЕРВЕР МенеджерПОтокПоРАсписанию.isTerminated() ");//TODO сама всатвка НОВОГО СООБЩЕНИЯ
 
 
-                                        // TODO: 11.01.2022 ОСТАНАВЛИВАЕМ СЛУЖБУ ПЕРЕД СОЗДАНИЕ СНОВГО СООБЩЕГИТЯ
+                                    // TODO: 11.01.2022 ОСТАНАВЛИВАЕМ СЛУЖБУ ПЕРЕД СОЗДАНИЕ СНОВГО СООБЩЕГИТЯ
 
 
-                                        //todo визальноеотображения хода синхрониазции
+                                    //todo визальноеотображения хода синхрониазции
 
-                                        new VIEW(getContext()).   МетодДляЧатаПоказываемВизуальноОтправкуИИлиПолучениеДанных("Выполянется...",2000);
-
-
-                                        CallBaskОтWorkManagerОдноразового=0l;
+                                    new VIEW(getContext()).МетодДляЧатаПоказываемВизуальноОтправкуИИлиПолучениеДанных("Выполянется...", 2000);
 
 
+                                    CallBaskОтWorkManagerОдноразового = 0l;
 
 
+                                    // TODO: 18.11.2021 НЕПОСТРЕДСТВЕННО СОЗДАНИЕ НОВОГО СООБЩЕНИЯ  ПРИ НАЛИЧИИ 0 ОЧЕРЕДИ
 
 
-
-                                        // TODO: 18.11.2021 НЕПОСТРЕДСТВЕННО СОЗДАНИЕ НОВОГО СООБЩЕНИЯ  ПРИ НАЛИЧИИ 0 ОЧЕРЕДИ
-
-
-                                        РезультатЗапускаСозданииНовгоСообщения = МетодСозданииНовогоСообщениявЧате(v);
+                                    РезультатЗапускаСозданииНовгоСообщения = МетодСозданииНовогоСообщениявЧате(v);
 
 
-                                        // TODO: 11.08.2021 дейстиве заключительно после синхронизации перерисовываем внешний вид чатат
-                                        Log.d(this.getClass().getName(), "  мЕТОД  созадние чата   РезультатЗапускаСозданииНовгоСообщения = МетодСозданииНовогоСообщениявЧате(v);" +
-                                                " ЧАТ РезультатЗапускаСозданииНовгоСообщения  "
-                                                + РезультатЗапускаСозданииНовгоСообщения+
-                                                "  ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата " +ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата + " КурсорДанныеДлязаписиичтнияЧата " +КурсорДанныеДлязаписиичтнияЧата);
-
-
-
+                                    // TODO: 11.08.2021 дейстиве заключительно после синхронизации перерисовываем внешний вид чатат
+                                    Log.d(this.getClass().getName(), "  мЕТОД  созадние чата   РезультатЗапускаСозданииНовгоСообщения = МетодСозданииНовогоСообщениявЧате(v);" +
+                                            " ЧАТ РезультатЗапускаСозданииНовгоСообщения  "
+                                            + РезультатЗапускаСозданииНовгоСообщения +
+                                            "  ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата " + ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата + " КурсорДанныеДлязаписиичтнияЧата " + КурсорДанныеДлязаписиичтнияЧата);
 
 
                                     // TODO: 02.02.2022  начинает работать когда люди первый раз друг другу ПИШУТ И НАДО ПЕРЕОПРЕДЕЛИТЬ АДПТЕР И КУРСОР
@@ -2402,8 +2858,7 @@ try{
                                             "  ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата " +ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата + " КурсорДанныеДлязаписиичтнияЧата " +КурсорДанныеДлязаписиичтнияЧата);
 
 
-
-                                    // TODO: 10.02.2022 после создание сообщения подписывемся на данные КУРСОРА OBCERVER 
+                                    // TODO: 10.02.2022 после создание сообщения подписывемся на данные КУРСОРА OBCERVER
 
 
                                     ////
@@ -2589,7 +3044,7 @@ try{
 
                                 // TODO: 14.11.2021  ПОВТОРЫЙ ЗАПУСК ВОРК МЕНЕДЖЕР
 
-                                    //todo визальноеотображения хода синхрониазции
+                                //todo визальноеотображения хода синхрониазции
 
                                 //todo визальноеотображения хода синхрониазции
 
@@ -2602,33 +3057,26 @@ try{
                                         WorkManager.getInstance(getContext().getApplicationContext()).getWorkInfosByTag(ИмяСлужбыСинхронизацииОдноразовая).get().get(0);
 
 
-
-
                                 Log.w(getContext().getClass().getName(), " В ОЖИДАНИИ AWAIT.... ПОСЛЕ ОТРАБОТКИ МЕТОДА ..." +
-                                            ".Внутри метода public Result doWork()  MyWork_Async_Синхронизация_ОДНОРАЗОВАЯ " + ИмяСлужбыСинхронизацииОдноразовая + "\n"
-                                            + " getState  " +
-                                            WorkInfoИнформацияОЗапущенойСлужбеОдноразовая.getState().name() + "\n" +
-                                            "getTags " +
-                                            WorkInfoИнформацияОЗапущенойСлужбеОдноразовая.getTags() + "\n" +
-                                            "getRunAttemptCount " +
-                                            WorkInfoИнформацияОЗапущенойСлужбеОдноразовая.getRunAttemptCount() + "\n" +
-                                            "getProgress " +
-                                            WorkInfoИнформацияОЗапущенойСлужбеОдноразовая.getState().isFinished() + "\n" +
-                                            " время : " + new Date());
+                                        ".Внутри метода public Result doWork()  MyWork_Async_Синхронизация_ОДНОРАЗОВАЯ " + ИмяСлужбыСинхронизацииОдноразовая + "\n"
+                                        + " getState  " +
+                                        WorkInfoИнформацияОЗапущенойСлужбеОдноразовая.getState().name() + "\n" +
+                                        "getTags " +
+                                        WorkInfoИнформацияОЗапущенойСлужбеОдноразовая.getTags() + "\n" +
+                                        "getRunAttemptCount " +
+                                        WorkInfoИнформацияОЗапущенойСлужбеОдноразовая.getRunAttemptCount() + "\n" +
+                                        "getProgress " +
+                                        WorkInfoИнформацияОЗапущенойСлужбеОдноразовая.getState().isFinished() + "\n" +
+                                        " время : " + new Date());
 
 
 
 
 
-                             /*       Operation operation= WorkManager.getInstance(getContext()).cancelAllWorkByTag(ИмяСлужбыСинхронизацииОдноразовая);
+                                /*       Operation operation= WorkManager.getInstance(getContext()).cancelAllWorkByTag(ИмяСлужбыСинхронизацииОдноразовая);
 
-*/
-                                    CallBaskОтWorkManagerОдноразового=0l;
-
-
-
-
-
+                                 */
+                                CallBaskОтWorkManagerОдноразового = 0l;
 
 
                                 // TODO: 23.12.2021  ЗАПУСКАЕМ ПОВТРОНУЮ СИНХРОНИАЗУИБЮ
@@ -2650,20 +3098,17 @@ try{
                                 // TODO: 23.12.2021  ЗАПУСКАЕМ ПОВТРОНУЮ СИНХРОНИАЗУИБЮ
 
 
-
-
                                 // TODO: 13.01.2022  ЗАПУСК СИХРОНИЗВАЦИИ В ХОЛОСТУЮ ХОД
 
-                                    new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getContext()).
-                                            МетодПовторногоЗапускаВсехWorkManager__ОДНОРАЗОВОЙСинхрониазцииданных(ПубличныйIDДляФрагмента, getContext());
+                                new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getContext()).
+                                        МетодПовторногоЗапускаВсехWorkManager__ОДНОРАЗОВОЙСинхрониазцииданных(ПубличныйIDДляФрагмента, getContext());
 
 
-                                    // TODO: 24.12.2021
+                                // TODO: 24.12.2021
 
-                                    Log.d(this.getClass().getName(), "Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal " +
-                                            "" + WorkInfoИнформацияОЗапущенойСлужбеОдноразовая.getState().name() +
-                                            "  ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
-
+                                Log.d(this.getClass().getName(), "Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal " +
+                                        "" + WorkInfoИнформацияОЗапущенойСлужбеОдноразовая.getState().name() +
+                                        "  ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
 
 
                                 // TODO: 23.12.2021  ЗАПУСКАЕМ ПОВТРОНУЮ СИНХРОНИАЗУИБЮ
@@ -2702,57 +3147,56 @@ try{
                     private void МетодКогдаДругДругуПервыйРазПишутЛюди(Integer РезультатЗапускаСозданииНовгоСообщения) throws ExecutionException, InterruptedException {
 
 
-                        try{
+                        try {
 
-                        if (ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата == 0
-                                ||  РезультатЗапускаСозданииНовгоСообщения >0 ) {
-
-
-                            // TODO: 02.02.2022
+                            if (ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата == 0
+                                    || РезультатЗапускаСозданииНовгоСообщения > 0) {
 
 
-                            Log.d(this.getClass().getName(), "GetData " + КурсорДанныеДлязаписиичтнияЧата+
-                                    "  РезультатЗапускаСозданииНовгоСообщения " + РезультатЗапускаСозданииНовгоСообщения+ " ПолученыйIDДляЧата " +ПолученыйIDДляЧата);
-
-                            new MODEL(getContext()).МетодПолучениеДанныхдляФрагментаЧитатьиПисатьЧат();
-                            ////
+                                // TODO: 02.02.2022
 
 
+                                Log.d(this.getClass().getName(), "GetData " + КурсорДанныеДлязаписиичтнияЧата +
+                                        "  РезультатЗапускаСозданииНовгоСообщения " + РезультатЗапускаСозданииНовгоСообщения + " ПолученыйIDДляЧата " + ПолученыйIDДляЧата);
 
-                            // TODO: 11.08.2021 дейстиве заключительно после синхронизации перерисовываем внешний вид чатат
-                            Log.d(this.getClass().getName(), "  ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата  "
-                                    +ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата);
-
-
-                            // TODO: 22.12.2021 КОГДА УЖЕ ЕСТЬ ПРЕПИСКА МЕЖДУ ЛЮДИМИ ТО ЗАРГУЖАЕМ ТАК ЧЕРЕЗЩ УЖЕ СУЩЕСТВУЮЩИЙ uuid
-
-                            if (КурсорДанныеДлязаписиичтнияЧата.getCount()>0) {
+                                new MODEL(getContext()).МетодПолучениеДанныхдляФрагментаЧитатьиПисатьЧат();
+                                ////
 
 
-                                Log.d(this.getClass().getName(), "GetData " + КурсорДанныеДлязаписиичтнияЧата);
-                                ///TODO ГЛАВНЫЙ АДАПТЕР чата
-                                new VIEW(getContext()).        МетодЗагрузкиданныхНаФрагментКогдаЕстьДанные();
+                                // TODO: 11.08.2021 дейстиве заключительно после синхронизации перерисовываем внешний вид чатат
+                                Log.d(this.getClass().getName(), "  ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата  "
+                                        + ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата);
 
-                                // TODO: 11.10.2021
 
-                                Log.d(this.getClass().getName(), "GetData " + КурсорДанныеДлязаписиичтнияЧата);
+                                // TODO: 22.12.2021 КОГДА УЖЕ ЕСТЬ ПРЕПИСКА МЕЖДУ ЛЮДИМИ ТО ЗАРГУЖАЕМ ТАК ЧЕРЕЗЩ УЖЕ СУЩЕСТВУЮЩИЙ uuid
+
+                                if (КурсорДанныеДлязаписиичтнияЧата.getCount() > 0) {
+
+
+                                    Log.d(this.getClass().getName(), "GetData " + КурсорДанныеДлязаписиичтнияЧата);
+                                    ///TODO ГЛАВНЫЙ АДАПТЕР чата
+                                    new VIEW(getContext()).МетодЗагрузкиданныхНаФрагментКогдаЕстьДанные();
+
+                                    // TODO: 11.10.2021
+
+                                    Log.d(this.getClass().getName(), "GetData " + КурсорДанныеДлязаписиичтнияЧата);
+                                }
+
+
                             }
 
 
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            ///метод запись ошибок в таблицу
+                            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            // TODO: 01.09.2021 метод вызова
+                            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
+                                    this.getClass().getName(),
+                                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            ///
                         }
-
-
-                    } catch (Exception e) {
-                 e.printStackTrace();
-                 ///метод запись ошибок в таблицу
-                 Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                         " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                 // TODO: 01.09.2021 метод вызова
-                 new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
-                         this.getClass().getName(),
-                         Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                 ///
-                                                                                 }
                     }
 
                     // TODO: 23.07.2021 синхронизация для холостого хода
@@ -2904,7 +3348,7 @@ try{
 
 
                         ///
-                     //   ЛистВьюДляСообщенийЧата.setSelection(ЛистВьюДляСообщенийЧата.getCount() - 1);
+                        //   ЛистВьюДляСообщенийЧата.setSelection(ЛистВьюДляСообщенийЧата.getCount() - 1);
 
                         ЛистВьюДляСообщенийЧата.setSelection(АдаптерДляЗаписиЧтенияЧата.getCount() - 1);
 
@@ -3025,7 +3469,7 @@ try{
 
             // TODO: 25.07.2021  ОБЩИЙ РЕЗУЛЬТАТ РАБОТЫ ВСТАВКИ ДАННЫХ СОЗДАНИЕ НОВОГО СООБЩЕНИЯ
             Integer РезультатВставки_ОбоихОперацийТОлькоДляДочернейТаблицыИлиДЛяОбеихИДочернейИРолдительской = 0;
-      
+
 
             Long РезультатВставкиПервогоСообщения = 0l;
             ////
@@ -3040,15 +3484,13 @@ try{
 
                 ////
                 SQLiteCursor Курсор_ПосикUUIDУжеСозданныйУжеЧатМеждуользователсиИЛНЕТ = null;
-                
-                //TODO УСУСЕТЛВЕМ ПОИСК ЕЛСИ ПРИШЛО ТОЖЕ НЕТ ЧАТА 
+
+                //TODO УСУСЕТЛВЕМ ПОИСК ЕЛСИ ПРИШЛО ТОЖЕ НЕТ ЧАТА
 
                 Log.d(this.getClass().getName(), "ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата " + ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата);
 
 
-
-
-                Log.d(this.getClass().getName(), "ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата " + ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата+"\n" );
+                Log.d(this.getClass().getName(), "ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата " + ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата + "\n");
 
 
                 // TODO: 22.12.2021 СОЗДАЕМ НОВОЕ СООБЩЕНЕИ В ОДИН ХОД ТОЛКО В ВТОРУЮ ТАБЛИЦУ data_chat   -----!!!! МЕЖДУ ПОЛЬЗОВАТЕЛЯМИ УЖЕ ЕСТЬ ПЕРЕПИСКА ,  МЫ ЕЕ ПРОСТО ПРОДОЛЖАЕМ
@@ -3306,14 +3748,13 @@ try{
 */
 
 
+                РезультатУвеличинаяВерсияДАныхЧата = 0L;
 
-          РезультатУвеличинаяВерсияДАныхЧата=0L;
-
-                РезультатУвеличинаяВерсияДАныхЧата=
-                        class_grud_sql_operationsПовышаемВерсиюДанныхВосьмаяЧасть. new ChangesVesionData(getContext()).
-                        МетодПолученияУвеличинойВесрииДанныхДляТекущейВнутренейтаблицы_ПоПолю_current_table_ПоПолю_current_table
-                                (ТаблицаОбработкиВнутриЧтатаПриУвеличсенииВерсииДаннвъКоглаПрочинаноСообещния,"localversionandroid_version", getContext()
-                                , Create_Database_СсылкаНАБазовыйКласс.getССылкаНаСозданнуюБазу());
+                РезультатУвеличинаяВерсияДАныхЧата =
+                        class_grud_sql_operationsПовышаемВерсиюДанныхВосьмаяЧасть.new ChangesVesionData(getContext()).
+                                МетодПолученияУвеличинойВесрииДанныхДляТекущейВнутренейтаблицы_ПоПолю_current_table_ПоПолю_current_table
+                                        (ТаблицаОбработкиВнутриЧтатаПриУвеличсенииВерсииДаннвъКоглаПрочинаноСообещния, "localversionandroid_version", getContext()
+                                                , Create_Database_СсылкаНАБазовыйКласс.getССылкаНаСозданнуюБазу());
 
 
                 //TODO  конец курант ча
@@ -3377,13 +3818,13 @@ try{
 
             }
 
-            Log.d(this.getClass().getName(), "  РезультатОбновленияСтатусЧатаКакПрочитанный " + РезультатОбновленияСтатусЧатаКакПрочитанный+
-                     " РезультатУвеличинаяВерсияДАныхЧата " +РезультатУвеличинаяВерсияДАныхЧата);
+            Log.d(this.getClass().getName(), "  РезультатОбновленияСтатусЧатаКакПрочитанный " + РезультатОбновленияСтатусЧатаКакПрочитанный +
+                    " РезультатУвеличинаяВерсияДАныхЧата " + РезультатУвеличинаяВерсияДАныхЧата);
 
-                   if( РезультатОбновленияСтатусЧатаКакПрочитанный>0){
+            if (РезультатОбновленияСтатусЧатаКакПрочитанный > 0) {
 
-                       РезультатОбновленияСтатусЧатаКакПрочитанный=    Integer.parseInt(String.valueOf(РезультатУвеличинаяВерсияДАныхЧата));
-                   }
+                РезультатОбновленияСтатусЧатаКакПрочитанный = Integer.parseInt(String.valueOf(РезультатУвеличинаяВерсияДАныхЧата));
+            }
 
 
             return РезультатОбновленияСтатусЧатаКакПрочитанный;   // TODO: 05.07.2021 вставка новго сообщения в деве таблоицы Code_For_Chats_КодДля_Чата and DATA_Chat
@@ -3400,498 +3841,7 @@ try{
     }
 
 
-    // TODO: 22.12.2021 ЗАПИСИ НОВГО СОООБЩЕНИЯ ТОЛЬКО В ДОЧЕРНУЮ ТАБЛИЦУ ДАТА ЧАТ ТАК,  КАК УЖЕ ЕСТЬ ПЕРЕРПИСКА МЕЖДУ НИМИ ПОЛЬЗВАОТЕЛЯМИ И ЕСТЬ UUID
-    @NonNull
-    private Long МетодОперацииВставкиТолькоРодительскуюТаблицу_ЧАТ_КогдаЕщеНЕтПерепискиМеждуПользователями(
-            Integer ПубличныйIDДляФрагмента,Long НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID)
-            throws ExecutionException,
-            InterruptedException,
-            TimeoutException,
-            NoSuchPaddingException,
-            NoSuchAlgorithmException,
-            InvalidKeyException {
-
-
-        // TODO: 22.12.2021
-
-        String ПерваяТаблицыОбработкиТаблицаЧат = "chats";
-
-        final Long[] РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ = {0l};
-                // TODO: 22.12.2021
-
-        // TODO: 21.12.2021
-        try {
-
-
-            //
-            Log.d(this.getClass().getName(), "  ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
-
-
-
-
-            Log.d(this.getClass().getName(), "   НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID " + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID +
-                    " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
-
-            // TODO: 08.02.2022 заполяем чтобы два раза записть две строчки
-
-            LinkedBlockingQueue<Integer> linkedBlockingQueueДляЗаписиСразуДвестрокиЧатОДляКого=new LinkedBlockingQueue();
-            // TODO: 08.02.2022
-         linkedBlockingQueueДляЗаписиСразуДвестрокиЧатОДляКого.offer(ПубличныйIDДляФрагмента);  //todo Я ---
-            // TODO: 08.02.2022
-            linkedBlockingQueueДляЗаписиСразуДвестрокиЧатОДляКого.offer(Integer.parseInt(String.valueOf(ПолученыйIDДляЧата)));//TODO КОМУ ПИШЕМ
-
-
-            linkedBlockingQueueДляЗаписиСразуДвестрокиЧатОДляКого.forEach((ТекущееЗначениеДляЗаписиВЦиклеВДваСтлбика)->{
-
-    try{
-
-
-
-                // TODO: 08.02.2022 записи значения в таблицу CHATS
-
-                /////КОНТЕЙГНЕР
-                ContentValues contentValuesЗаписьНовогоСообщения_ТаблицаЧат = new ContentValues();
-
-
-
-        ////TODO ДАТА
-        String СгенерированованныйДатаДляФрагмента = new Class_Generation_Data(getContext()).ГлавнаяДатаИВремяОперацийСБазойДанных();
-
-        Log.d(this.getClass().getName(), "   СгенерированованныйДатаДляФрагмента " + СгенерированованныйДатаДляФрагмента);
-
-
-                contentValuesЗаписьНовогоСообщения_ТаблицаЧат.put("date_update", СгенерированованныйДатаДляФрагмента);
-                ///////////////////////////////////////
-
-                contentValuesЗаписьНовогоСообщения_ТаблицаЧат.put("user_update", ПубличныйIDДляФрагмента);
-                //////
-
-                contentValuesЗаписьНовогоСообщения_ТаблицаЧат.put("id_user", (Integer) ТекущееЗначениеДляЗаписиВЦиклеВДваСтлбика);////бышвий user_for     ПолученыйIDДляЧата
-
-                contentValuesЗаписьНовогоСообщения_ТаблицаЧат.putNull("_id");////бышвий user_for
-
-
-                Log.d(this.getClass().getName(), "  ПолученыйIDДляЧата  " + ПолученыйIDДляЧата + "  ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента
-                        +  "ТекущееЗначениеДляЗаписиВЦиклеВДваСтлбика " +ТекущееЗначениеДляЗаписиВЦиклеВДваСтлбика);
-
-                // TODO: 22.12.2021  один на две таблицы UUID
-
-
-                ////
-        Long ЛокльныйUUIDТОлькоДЛЯОднойТаблицыChats =0l;
-                ЛокльныйUUIDТОлькоДЛЯОднойТаблицыChats =
-                        (Long) new Class_Generation_UUID(getContext()).МетодГенерацииUUID(getContext());
-
-                //
-                Log.d(this.getClass().getName(), "ЛокльныйUUIDТОлькоДЛЯОднойТаблицыChats "
-                        + ЛокльныйUUIDТОлькоДЛЯОднойТаблицыChats);
-// TODO: 10.02.2022
-
-        ЛокльныйUUIDТОлькоДЛЯОднойТаблицыChats=ЛокльныйUUIDТОлькоДЛЯОднойТаблицыChats+1;
-
-                contentValuesЗаписьНовогоСообщения_ТаблицаЧат.put("uuid", ЛокльныйUUIDТОлькоДЛЯОднойТаблицыChats);
-
-                // TODO: 08.02.2022
-
-                //
-                Log.d(this.getClass().getName(), "НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID "
-                        + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID);
-
-
-                // TODO: 22.12.2021  один на две таблицы UUID
-
-                contentValuesЗаписьНовогоСообщения_ТаблицаЧат.put("uuid_parent", НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID);
-
-
-        Log.d(this.getClass().getName(), "ЛокльныйUUIDТОлькоДЛЯОднойТаблицыChats   "
-                + ЛокльныйUUIDТОлькоДЛЯОднойТаблицыChats+
-                " НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID " +НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID);
-
-
-        // TODO: 10.02.2022
-
-        ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата=НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID;
-
-        Log.d(this.getClass().getName(), " ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата "
-                + ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата + " НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID " +НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID);
-
-                //TODO курант чат
-
-                Class_GRUD_SQL_Operations class_grud_sql_operationsПовышаемВерсиюДанныхВосьмаяЧасть = new Class_GRUD_SQL_Operations(getContext());
-
-
-                Long РезультатУвеличинаяВерсияДАныхЧата = 0L;
-
-                РезультатУвеличинаяВерсияДАныхЧата = class_grud_sql_operationsПовышаемВерсиюДанныхВосьмаяЧасть.new ChangesVesionData(getContext()).
-                        МетодПолученияУвеличинойВесрииДанныхДляТекущейВнутренейтаблицы_ПоПолю_current_table_ПоПолю_current_table(ПерваяТаблицыОбработкиТаблицаЧат, "localversionandroid_version", getContext()
-                                , Create_Database_СсылкаНАБазовыйКласс.getССылкаНаСозданнуюБазу());
-
-
-                //TODO  конец курант ча
-                //////
-                contentValuesЗаписьНовогоСообщения_ТаблицаЧат.put("current_table", РезультатУвеличинаяВерсияДАныхЧата);
-
-
-                Log.d(this.getClass().getName(), "РезультатУвеличинаяВерсияДАныхЧата   " + РезультатУвеличинаяВерсияДАныхЧата);
-
-
-                // TODO: 05.07.2021 вставка новго сообщения в деве таблоицы Code_For_Chats_КодДля_Чата and DATA_Chat
-
-
-                // TODO: 15.08.2021  начало транзакции
-                ///PUBLIC_CONTENT.ССылкаНаСозданнуюБазу.execSQL(" BEGIN DEFERRED TRANSACTION ");
-
-
-                РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ[0] = new MODEL_synchronized(getContext())
-                        .ВставкаДанныхЧерезКонтейнерТолькоПриСозданииНСообщенияДЛЯЧата("chats",
-                        contentValuesЗаписьНовогоСообщения_ТаблицаЧат, ПерваяТаблицыОбработкиТаблицаЧат, "",
-                        true);
-
-                Log.d(this.getClass().getName(), " РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ "
-                        + РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ[0]);
-
-
-                ////////
-
-                // TODO: 23.07.2021 борьба с гонками потоков
-
-                ////
-                if (РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ[0] > 0) {
-
-                    //TODO ДОПОЛНИТЕЛЬНОЕ СОХРАНИЕНИ  ДАННЫХ С ПИМИМИНЕНИЕМ ВЕРСИЙ ДАННЫХ (ВМЕСТО ДАТЫ)
-// TODO: 28.09.2021
-
-                    contentValuesЗаписьНовогоСообщения_ТаблицаЧат.clear();
-                    ////TODO ДАТА  ПОВЫШАЕМ ВЕРИСЮ ДАННЫХ
-
-                    ////TODO УВЕЛИЧИВАЕМ ВЕРИСЮ ДАННЫХ  В ТАБЛИЦЕ MODIFICATION CLIENT
-
-                    Integer Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы =
-                            new Class_Engine_SQL(getContext()).МетодПовышаемВерсиюДанныхПроектавТаблицеMODIFITATION_Client(
-                                    РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ[0]
-                                    , ПерваяТаблицыОбработкиТаблицаЧат,
-                                    "Локальное", РезультатУвеличинаяВерсияДАныхЧата,
-                                    Class_Engine_SQLГдеНаходитьсяМенеджерПотоков.МенеджерПотоков);
-
-
-                    Log.i(this.getClass().getName(), "   РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ" + РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ[0] +
-                            "  Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы " + Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы);
-
-
-                }
-
-                // TODO: 22.12.2021
-
-  Object вЫКИДИВАЕМоТРАБТАННЫЙэЛЕМЕНТ =linkedBlockingQueueДляЗаписиСразуДвестрокиЧатОДляКого.poll();
-
-                // TODO: 22.12.2021
-            } catch (Exception e) {
-                e.printStackTrace();
-                ///метод запись ошибок в таблицу
-                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                // TODO: 01.09.2021 метод вызова
-                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
-                        this.getClass().getName(),
-                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                ///
-
-            }
-
-            });
-
-
-
-
-
-            // TODO: 22.12.2021
-        } catch (Exception e) {
-            e.printStackTrace();
-            ///метод запись ошибок в таблицу
-            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            // TODO: 01.09.2021 метод вызова
-            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
-                    this.getClass().getName(),
-                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-            ///
-
-        }
-
-
-        return РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ[0];
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // TODO: 22.12.2021 ЗАПИСИ НОВГО СОООБЩЕНИЯ ТОЛЬКО В ДОЧЕРНУЮ ТАБЛИЦУ ДАТА ЧАТ ТАК,  КАК УЖЕ ЕСТЬ ПЕРЕРПИСКА МЕЖДУ НИМИ ПОЛЬЗВАОТЕЛЯМИ И ЕСТЬ UUID
-    @NonNull
-    private Long МетодОперацииВставкиТолькоДочернуюТаблицу_ДАТА_ЧАТ_ПотомуЧтоУжестьМеждуНимиПерписка(
-            Integer ПубличныйIDДляФрагмента,Long НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID)
-            throws ExecutionException,
-            InterruptedException,
-            TimeoutException,
-            NoSuchPaddingException,
-            NoSuchAlgorithmException,
-            InvalidKeyException {
-
-
-        // TODO: 22.12.2021
-        Long РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка = 0l;
-
-        // TODO: 22.12.2021
-
-        // TODO: 28.09.2021  запись в таблицу Data_tabels
-
-        String ТаблицаВторойОбработкиДляТаблицыДата_Табеля = "data_chat";
-        // TODO: 22.12.2021
-        String ДатаПриСоздаенииНовгоСообщениявЧате;
-        // TODO: 21.12.2021
-        try {
-
-
-            //
-            Log.d(this.getClass().getName(), "  ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента+  "НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID " +НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID);
-
-
-            // TODO: 21.12.2021 сгеенрированный UUID только для таблицы Chat
-
-
-            Log.d(this.getClass().getName(), "  НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID " + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID);
-
-
-            if (НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID > 0) {
-
-                ///         ///TODO --вторая вставка   ТАБЛИЦА  DATA_TABELS   вторая вставка   ТАБЛИЦА  DATA_TABELS   вторая вставка   ТАБЛИЦА  DATA_TABELS  вторая вставка   ТАБЛИЦА  DATA_TABELS
-
-                ///TODO --вторая вставка
-
-                //TODO курант чат
-
-                Class_GRUD_SQL_Operations class_grud_sql_operationsПовышаемВерсиюДанныхДевятаяЧасть = new Class_GRUD_SQL_Operations(getContext());
-
-                // TODO: 20.07.2021
-                //////
-                /////
-                ContentValues contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT = new ContentValues();
-                ////////
-
-
-                //////
-                ////TODO ДАТА
-                String СгенерированованныйДатаДляДаннойОперации = new Class_Generation_Data(getContext()).ГлавнаяДатаИВремяОперацийСБазойДанных();
-
-
-                ///
-
-                Log.d(this.getClass().getName(), "   НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID " + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID +
-                        " ПриСоздаенииНовгоСообщениявЧате " + СгенерированованныйДатаДляДаннойОперации);
-
-
-                /////////
-
-
-                contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT.put("date_update", СгенерированованныйДатаДляДаннойОперации);
-
-                //////
-                contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT.put("user_update", ПубличныйIDДляФрагмента);
-                ///
-
-                Log.d(this.getClass().getName(), "   НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID " + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID +
-                        " ПриСоздаенииНовгоСообщениявЧате " + СгенерированованныйДатаДляДаннойОперации+ " ПубличныйIDДляФрагмента " +ПубличныйIDДляФрагмента);
-
-
-
-           ////     contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT.put("id_user", ПолученыйIDДляЧата);////бышвий user_for
-
-                ////
-
-                Log.d(this.getClass().getName(), "   НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID " + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID +
-                        " ПриСоздаенииНовгоСообщениявЧате " + СгенерированованныйДатаДляДаннойОперации+ " ПубличныйIDДляФрагмента " +ПубличныйIDДляФрагмента+ " ПолученыйIDДляЧата " +ПолученыйIDДляЧата);
-
-
-
-
-
-                Log.d(this.getClass().getName(), "   НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID " + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID +
-                        " ПриСоздаенииНовгоСообщениявЧате " + СгенерированованныйДатаДляДаннойОперации);
-
-
-
-                Log.d(this.getClass().getName(),
-                        " ПолученныйУжеСуществующийUUIDСТрочкаИСоздаватьНЕНадоИзТаблицыCHATS " + НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID);
-                ////
-                contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT.put("chat_uuid", НовыйUUIDДляОбеихТаблицЧАТиДАТАЧАТдляПоляPARENT_UUID);
-
-
-
-                Log.d(this.getClass().getName(),
-                        " РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка " + РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка);
-
-                // TODO: 22.12.2021 НовыйUUIDДляТаблицыДатаЧат  для таблицы дата_чат
-                ////
-                Long ЛокальныйUUIDДляТаблицыДатаЧатВтораяТаблица = (Long) new Class_Generation_UUID(getContext()).МетодГенерацииUUID(getContext());
-                //
-
-                Log.d(this.getClass().getName(),
-                        " ЛокальныйUUIDДляТаблицыДатаЧатВтораяТаблица " + ЛокальныйUUIDДляТаблицыДатаЧатВтораяТаблица);
-                ////
-                contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT.put("uuid", ЛокальныйUUIDДляТаблицыДатаЧатВтораяТаблица);
-
-
-                // TODO: 11.08.2021 up current chat vesion
-
-                Long РезультатУвеличинаяВерсияДАныхДатЧата = 0L;
-
-
-                РезультатУвеличинаяВерсияДАныхДатЧата =
-                        class_grud_sql_operationsПовышаемВерсиюДанныхДевятаяЧасть.new ChangesVesionData(getContext()).
-                        МетодПолученияУвеличинойВесрииДанныхДляТекущейВнутренейтаблицы_ПоПолю_current_table_ПоПолю_current_table
-                                (ТаблицаВторойОбработкиДляТаблицыДата_Табеля, "localversionandroid_version", getContext()
-                                , Create_Database_СсылкаНАБазовыйКласс.getССылкаНаСозданнуюБазу());
-
-                //TODO  конец курант чат
-                ///
-
-
-                //////
-                contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT.put("current_table", РезультатУвеличинаяВерсияДАныхДатЧата);
-
-
-                Log.d(this.getClass().getName(), "РезультатУвеличинаяВерсияДАныхДатЧата   " + РезультатУвеличинаяВерсияДАныхДатЧата);
-
-
-                // TODO: 05.07.2021 само тело новго сообщения
-                String СамоСообщенияНовоеДляЧата = new String();
-                //////
-                СамоСообщенияНовоеДляЧата = editTextТелоНаписаногоСообщенияДругимСотрудникам.getText().toString().trim();
-
-
-
-
-                Log.i(this.getClass().getName(), "   Создано новое сообщение :::"  +
-                        " СамоСообщенияНовоеДляЧата " + СамоСообщенияНовоеДляЧата);
-
-
-                ////
-                if (СамоСообщенияНовоеДляЧата.length() > 0) {
-                    ///////
-                    contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT.put("message", СамоСообщенияНовоеДляЧата.trim());
-
-
-
-
-
-
-
-
-
-
-
-
-                    /////////TODO ЗАМА ЗАПИСЬ НОВГО СООБЩЕНИЯ ЧАТА В ТАБЛИЦУ В ТОРОЙ УЖЕ ЕСТЬ ЗАПИСЬ
-                    ///
-                    РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка = new MODEL_synchronized(getContext()).
-                            ВставкаДанныхЧерезКонтейнерТолькоПриСозданииНСообщенияДЛЯЧата(ТаблицаВторойОбработкиДляТаблицыДата_Табеля,
-                                    contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT, ТаблицаВторойОбработкиДляТаблицыДата_Табеля, "",
-                                    true);
-
-
-                    Log.d(this.getClass().getName(),
-                            " РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка " + РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка);
-
-
-                    //////
-                    contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT.clear();
-
-
-                    ////TODO УВЕЛИЧИВАЕМ ВЕРИСЮ ДАННЫХ  В ТАБЛИЦЕ MODIFICATION CLIENT
-                    if (РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка > 0) {
-
-                             /* //TODO ДОПОЛНИТЕЛЬНОЕ СОХРАНИЕНИ  ДАННЫХ С ПИМИМИНЕНИЕМ ВЕРСИЙ ДАННЫХ (ВМЕСТО ДАТЫ)
-                              int РезультатЗаписиВерсииДанныхвБазе=    new MODEL_synchronized(getContext()).
-                                      МетодЗаписьЧтоОрацияПрошлаЗаписьВБазуСПрименениемВерсииДанных("data_chat", new Date(),null,"localversionandroid_version",Integer.parseInt(String.valueOf(РезультатУвеличинаяВерсияДАныхДатЧата)));
-
-*/
-                        ////TODO ДАТА  ПОВЫШАЕМ ВЕРИСЮ ДАННЫХ
-
-                        Integer Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы =
-                                new Class_Engine_SQL(getContext()).МетодПовышаемВерсиюДанныхПроектавТаблицеMODIFITATION_Client(
-                                        РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка,
-                                        ТаблицаВторойОбработкиДляТаблицыДата_Табеля,
-                                        "Локальное", РезультатУвеличинаяВерсияДАныхДатЧата,
-                                        Class_Engine_SQLГдеНаходитьсяМенеджерПотоков.МенеджерПотоков);
-
-
-                        Log.i(this.getClass().getName(), "   PUBLIC_CONTENT.СколькоСтрочекJSONПоКонкретнойТаблице:" +
-                                " РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка " + РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка +
-                                "  Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы " + Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы);
-
-
-                        // TODO: 26.07.2021  обняем после синхрониазции
-                        if (Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы > 0) {
-
-                            // TODO: 22.12.2021
-
-                            РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка++;
-                            ////
-                            editTextТелоНаписаногоСообщенияДругимСотрудникам.setText("");
-
-                            ///
-
-                        }
-
-                    }
-
-                }
-
-
-            }
-
-
-            // TODO: 22.12.2021
-        } catch (Exception e) {
-            e.printStackTrace();
-            ///метод запись ошибок в таблицу
-            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            // TODO: 01.09.2021 метод вызова
-            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
-                    this.getClass().getName(),
-                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-            ///
-
-        }
-
-
-        return РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка;
-    }
-
-
-    // TODO: 14.01.2022 новый класс модель 
+    // TODO: 14.01.2022 новый класс модель
 
     public  class MODEL {
         /////
@@ -3948,7 +3898,7 @@ try{
                             " ПолученыйIDДляЧата " +ПолученыйIDДляЧата);
 
 
-                     //TODO: 22.12.2021  // TODO: 22.12.2021 КОГДА УЖЕ ЕСТЬ ПРЕПИСКА МЕЖДУ ЛЮДИМИ ТО ЗАРГУЖАЕМ ТАК ЧЕРЕЗЩ УЖЕ СУЩЕСТВУЮЩИЙ uuid //СамFreeSQLКОд
+                    //TODO: 22.12.2021  // TODO: 22.12.2021 КОГДА УЖЕ ЕСТЬ ПРЕПИСКА МЕЖДУ ЛЮДИМИ ТО ЗАРГУЖАЕМ ТАК ЧЕРЕЗЩ УЖЕ СУЩЕСТВУЮЩИЙ uuid //СамFreeSQLКОд
                     class_grud_sql_operationsРабоатемВФрагментечитатьПисатьДляПолученияПУбличногоIDПолучениеГлавныхДанные.
                             concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций.put("ПодЗапросНомер1",
 
@@ -4013,7 +3963,7 @@ try{
 
 
                             ////
-                  new MODEL(getContext()).  МетодПослеСозданиеНовогоСообщенияПодписываемсяНАДанныеИзКурсораObserver();
+                            new MODEL(getContext()).МетодПослеСозданиеНовогоСообщенияПодписываемсяНАДанныеИзКурсораObserver();
 
                             Log.d(this.getClass().getName(), "КурсорДанныеДлязаписиичтнияЧата "  + КурсорДанныеДлязаписиичтнияЧата.getCount());
                         }
@@ -4428,7 +4378,7 @@ try{
 
                             ЛистВьюДляСообщенийЧата.requestLayout();
 
-                           // ЛистВьюДляСообщенийЧата.invalidateViews();
+                            // ЛистВьюДляСообщенийЧата.invalidateViews();
 
                             ЛистВьюДляСообщенийЧата.refreshDrawableState();
 
@@ -4765,75 +4715,74 @@ class ПодКлассФрагментаЧитатьПисатьПоИзенне
     Class_GRUD_SQL_Operations class_grud_sql_operationsПовышаемВерсиюДанныхВосьмаяЧасть=new Class_GRUD_SQL_Operations(getContext());*/
 
     Boolean Метода_ФрагметаПрочитано_НаписаноИзменяемИПроверемСтатусПрочитаногоСТрочкиТекущийВчате(Cursor cursor,
-                                                                                                TextView textViewСамоСообщение,
-                                                                                                Class_GRUD_SQL_Operations class_grud_sql_operationsПовышаемВерсиюДанныхВосьмаяЧасть,
-                                                                                                MODEL modelДляФрагментаЧитатьИлиПисать,
-                                                                                                CONTROLLER controllerДляФрагментаЧитатьИлиПисать,
-                                                                                                Class_Engine_SQL 
-                                                                                                        Class_Engine_SQLДляИзмененияСтатусаЗаписиПрочтитаноИлиНет,
-                                                                                                PUBLIC_CONTENT Class_Engine_SQLГдеНаходитьсяМенеджерПотоков)
+                                                                                                   TextView textViewСамоСообщение,
+                                                                                                   Class_GRUD_SQL_Operations class_grud_sql_operationsПовышаемВерсиюДанныхВосьмаяЧасть,
+                                                                                                   MODEL modelДляФрагментаЧитатьИлиПисать,
+                                                                                                   CONTROLLER controllerДляФрагментаЧитатьИлиПисать,
+                                                                                                   Class_Engine_SQL
+                                                                                                           Class_Engine_SQLДляИзмененияСтатусаЗаписиПрочтитаноИлиНет,
+                                                                                                   PUBLIC_CONTENT Class_Engine_SQLГдеНаходитьсяМенеджерПотоков)
             throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException {
         // TODO: 16.11.2021  МЕНЯЕМ ТЕКУЩЮУ ЗАПИСЬ ДЕЛАЕМ ПРОЧИТАНОЙ
-        
+
         Boolean РезультатСтатусСообщения = false;
-try{
+        try {
 
 
+            // TODO: 30.06.2021 форматирование кто написал
+            int ИндексЗначениеяIDПоляКтоПанисалДанномуПользователю = cursor.getColumnIndex("uuid");///old_chat_uuid"
 
-        // TODO: 30.06.2021 форматирование кто написал
-        int ИндексЗначениеяIDПоляКтоПанисалДанномуПользователю = cursor.getColumnIndex("uuid");///old_chat_uuid"
-
-        // TODO: 29.04.2021
-        Long ЗамоЗначениеТекущегоСообщения = 0l;
-        /////////////////
-        ЗамоЗначениеТекущегоСообщения = cursor.getLong(ИндексЗначениеяIDПоляКтоПанисалДанномуПользователю);
-        // TODO: 27.10.2021
-        // TODO: 09.09.2021  получение данных СТАТУСА ЖИРНЫЙ
-
-
-        Log.d(this.getClass().getName(), " ЧУЖОЙ  UUID ЗамоЗначениеТекущегоСообщения"
-                + ЗамоЗначениеТекущегоСообщения);
+            // TODO: 29.04.2021
+            Long ЗамоЗначениеТекущегоСообщения = 0l;
+            /////////////////
+            ЗамоЗначениеТекущегоСообщения = cursor.getLong(ИндексЗначениеяIDПоляКтоПанисалДанномуПользователю);
+            // TODO: 27.10.2021
+            // TODO: 09.09.2021  получение данных СТАТУСА ЖИРНЫЙ
 
 
-    РезультатСтатусСообщения=  МетодМеняетСтатусЗаписиТекущеКаПрочитаноСтатусПрочитанный(textViewСамоСообщение,
-                ЗамоЗначениеТекущегоСообщения,
-                class_grud_sql_operationsПовышаемВерсиюДанныхВосьмаяЧасть,
-                modelДляФрагментаЧитатьИлиПисать,
-                controllerДляФрагментаЧитатьИлиПисать,
-                Class_Engine_SQLДляИзмененияСтатусаЗаписиПрочтитаноИлиНет,
-                Class_Engine_SQLГдеНаходитьсяМенеджерПотоков);
+            Log.d(this.getClass().getName(), " ЧУЖОЙ  UUID ЗамоЗначениеТекущегоСообщения"
+                    + ЗамоЗначениеТекущегоСообщения);
 
 
-        Log.d(this.getClass().getName(), " ЧУЖОЙ  UUID ЗамоЗначениеТекущегоСообщения"
-                + ЗамоЗначениеТекущегоСообщения);
+            РезультатСтатусСообщения = МетодМеняетСтатусЗаписиТекущеКаПрочитаноСтатусПрочитанный(textViewСамоСообщение,
+                    ЗамоЗначениеТекущегоСообщения,
+                    class_grud_sql_operationsПовышаемВерсиюДанныхВосьмаяЧасть,
+                    modelДляФрагментаЧитатьИлиПисать,
+                    controllerДляФрагментаЧитатьИлиПисать,
+                    Class_Engine_SQLДляИзмененияСтатусаЗаписиПрочтитаноИлиНет,
+                    Class_Engine_SQLГдеНаходитьсяМенеджерПотоков);
 
-        // TODO: 29.04.2021 ПрисваемваемКАЖДОМУ СОТРУДНИКУ ID
+
+            Log.d(this.getClass().getName(), " ЧУЖОЙ  UUID ЗамоЗначениеТекущегоСообщения"
+                    + ЗамоЗначениеТекущегоСообщения);
+
+            // TODO: 29.04.2021 ПрисваемваемКАЖДОМУ СОТРУДНИКУ ID
 
 
-    } catch (Exception e) {
-        e.printStackTrace();
-        ///метод запись ошибок в таблицу
-        Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-        // TODO: 01.09.2021 метод вызова
-        new   Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+        } catch (Exception e) {
+            e.printStackTrace();
+            ///метод запись ошибок в таблицу
+            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+            // TODO: 01.09.2021 метод вызова
+            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+        }
+        return РезультатСтатусСообщения;
     }
-return  РезультатСтатусСообщения;
-}
 
     private Boolean МетодМеняетСтатусЗаписиТекущеКаПрочитаноСтатусПрочитанный(TextView textViewСамоСообщение,
-                                                                           Long ЗамоЗначениеТекущегоСообщения,
-                                                                           Class_GRUD_SQL_Operations class_grud_sql_operationsПовышаемВерсиюДанныхВосьмаяЧасть,
-                                                                           MODEL modelДляФрагментаЧитатьИлиПисать,
-                                                                           CONTROLLER controllerДляФрагментаЧитатьИлиПисать,
-                                                                           Class_Engine_SQL Class_Engine_SQLДляИзмененияСтатусаЗаписиПрочтитаноИлиНет
-    , PUBLIC_CONTENT Class_Engine_SQLГдеНаходитьсяМенеджерПотоков) {
+                                                                              Long ЗамоЗначениеТекущегоСообщения,
+                                                                              Class_GRUD_SQL_Operations class_grud_sql_operationsПовышаемВерсиюДанныхВосьмаяЧасть,
+                                                                              MODEL modelДляФрагментаЧитатьИлиПисать,
+                                                                              CONTROLLER controllerДляФрагментаЧитатьИлиПисать,
+                                                                              Class_Engine_SQL Class_Engine_SQLДляИзмененияСтатусаЗаписиПрочтитаноИлиНет
+            , PUBLIC_CONTENT Class_Engine_SQLГдеНаходитьсяМенеджерПотоков) {
 
         Boolean РезультатИзмененияСтатусаПрочитаногоСообщенияОдинИлиНоль = false;
-        
+
         if (ЗамоЗначениеТекущегоСообщения > 0) {
-        
+
 
             try {
 
@@ -4868,7 +4817,7 @@ return  РезультатСтатусСообщения;
 
             }
         }
-        
+
         return  РезультатИзмененияСтатусаПрочитаногоСообщенияОдинИлиНоль;
     }
 
@@ -4880,7 +4829,7 @@ return  РезультатСтатусСообщения;
                                                                MODEL modelДляФрагментаЧитатьИлиПисать,
                                                                CONTROLLER controllerДляФрагментаЧитатьИлиПисать,
                                                                Class_Engine_SQL Class_Engine_SQLДляИзмененияСтатусаЗаписиПрочтитаноИлиНет
-    , PUBLIC_CONTENT  Class_Engine_SQLГдеНаходитьсяМенеджерПотоков)
+            , PUBLIC_CONTENT Class_Engine_SQLГдеНаходитьсяМенеджерПотоков)
             throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException {
         ///
 
@@ -4926,20 +4875,20 @@ return  РезультатСтатусСообщения;
 
                 if (РезультатВставкиНовогоФлагаЧтоТекущееСообщенеиОтДруговоПользоватлеяБылоПрочитанно > 0) {
 
-                         Integer Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы =
-                                    Class_Engine_SQLДляИзмененияСтатусаЗаписиПрочтитаноИлиНет.
-                                                    МетодПовышаемВерсиюДанныхПроектавТаблицеMODIFITATION_Client(
-                                                            РезультатВставкиНовогоФлагаЧтоТекущееСообщенеиОтДруговоПользоватлеяБылоПрочитанно,
-                                                            ТекущаяТаблицыОбработкиПриИзмененияСтатусаПрочнетие,
-                                                            "Локальное",
-                                                            Long.parseLong(String.valueOf(РезультатВставкиНовогоФлагаЧтоТекущееСообщенеиОтДруговоПользоватлеяБылоПрочитанно)),
-                                                            Class_Engine_SQLГдеНаходитьсяМенеджерПотоков.МенеджерПотоков);
+                    Integer Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы =
+                            Class_Engine_SQLДляИзмененияСтатусаЗаписиПрочтитаноИлиНет.
+                                    МетодПовышаемВерсиюДанныхПроектавТаблицеMODIFITATION_Client(
+                                            РезультатВставкиНовогоФлагаЧтоТекущееСообщенеиОтДруговоПользоватлеяБылоПрочитанно,
+                                            ТекущаяТаблицыОбработкиПриИзмененияСтатусаПрочнетие,
+                                            "Локальное",
+                                            Long.parseLong(String.valueOf(РезультатВставкиНовогоФлагаЧтоТекущееСообщенеиОтДруговоПользоватлеяБылоПрочитанно)),
+                                            Class_Engine_SQLГдеНаходитьсяМенеджерПотоков.МенеджерПотоков);
 
 
-                                    Log.i(this.getClass().getName(), " +РезультатВставкиНовогоФлагаЧтоТекущееСообщенеиОтДруговоПользоватлеяБылоПрочитанно "
-                                            + РезультатВставкиНовогоФлагаЧтоТекущееСообщенеиОтДруговоПользоватлеяБылоПрочитанно +
-                                            "  Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы "
-                                            + Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы);
+                    Log.i(this.getClass().getName(), " +РезультатВставкиНовогоФлагаЧтоТекущееСообщенеиОтДруговоПользоватлеяБылоПрочитанно "
+                            + РезультатВставкиНовогоФлагаЧтоТекущееСообщенеиОтДруговоПользоватлеяБылоПрочитанно +
+                            "  Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы "
+                            + Результат_ПриписиИзменнийВерсииДанныхВФонеПослеОбработкиТекущийТаблицы);
 
                     //
                     view.setTypeface(Typeface.SANS_SERIF, Typeface.NORMAL);
