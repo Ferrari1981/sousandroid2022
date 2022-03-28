@@ -1369,23 +1369,21 @@ try{
                     }
 
                     private void МетодВизуальноОформленияСообщенийВЧате(TextView view) {
-                        //return true;
-                        view.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+
 
                         // TODO: 06.07.2021 определяем прочитано текущее собщенеи или нет пока
-
 
                         view.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
 
                         // TODO: 06.07.2021 данные выгружем на читать писать сообщения
 
                         view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
-                        ///
+                        ////
 
                         view.setPadding(0, 40, 30, 40);
 
                         // TODO: 18.02.2022 оерашиваем в цвет когда просто НАПИСАНО СООБЩЕНИЕ
-                       // view.setBackgroundResource(R.drawable.style_for_chat_an_servers);///
+                        // view.setBackgroundResource(R.drawable.style_for_chat_an_servers);///
                         view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
                         ////////
 
