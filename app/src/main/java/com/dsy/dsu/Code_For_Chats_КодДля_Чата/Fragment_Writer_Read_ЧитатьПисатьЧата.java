@@ -1815,15 +1815,17 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                         // TODO: 18.02.2022 оерашиваем в цвет когда просто НАПИСАНО СООБЩЕНИЕ
                         // view.setBackgroundResource(R.drawable.style_for_chat_an_servers);///
-                        view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
+                        //view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
                         ////////
+                        view.setBackgroundResource(R.drawable.style_for_chat_new_style_read_wtire_empty);
 
-                        view.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
+
+                     /*   view.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
                         /////
 
                         ////////
 
-                        view.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
+                        view.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;*/
                     }
 
                     private void МетодОбрабатываетСвоиСообщенияДляЧата (TextView view, Cursor cursor, String ПолученноеТелоСообщения, int ПолученноеКтоНаписал) {
@@ -2331,7 +2333,10 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                                     view.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chat_status, 0);
 
-                                    view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
+                                    //view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
+
+
+                                    view.setBackgroundResource(R.drawable.style_for_chat_new_style_read_wtire_empty);
 
 
                                 } else {
@@ -2393,12 +2398,15 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                                 ///
                                 view.setPadding(50, 5, 0, 5);
 
-                                view.setBackgroundColor(Color.parseColor("#F0FFFF"));
+                                //view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
+
+
+                                view.setBackgroundResource(R.drawable.style_for_chat_new_style_read_wtire_empty);
 
 
                                 view.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 
-                                view.setBackgroundResource(R.drawable.style_for_chat_alien); //style_for_chat_alien
+                                /// view.setBackgroundResource(R.drawable.style_for_chat_alien); //style_for_chat_alien
 
 
                                 Log.d(this.getClass().getName(), "  СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений  "
