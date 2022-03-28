@@ -2220,17 +2220,9 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                             Integer ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО = cursor.getInt(ИндексКемБылоНаписаноСообщение);
                             //
 
-
                             Log.d(this.getClass().getName(), "  ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО  " + ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО);
                             // TODO: 09.09.2021  ПОЛУЧЕНИЕ ДАННЫХ
                             // TODO: 09.09.2021  ПОЛУЧЕНИЕ ДАННЫХ
-                            // TODO: 09.09.2021  ПОЛУЧЕНИЕ ДАННЫХ
-
-                            // TODO: 26.08.2021 НОВЫЙ ВЫЗОВ НОВОГО КЛАСС GRUD - ОПЕРАЦИИ
-
-
-                            // TODO: 09.09.2021  resultat
-
 
                             /////
                             ФиоКтоНАписалСообщение = modelДляФрагментаЧитатьИлиПисать.МетодКемБЫлоНАписаноСообщение(ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО);
@@ -2243,16 +2235,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
 
                             view.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
-                               /*     ((TextView) view).setTypeface(Typeface.SANS_SERIF,Typeface.NORMAL);
 
-                                    ((TextView) view).setGravity(Gravity.CENTER_VERTICAL );*/
-/*
-
-                                    ((TextView) view).setText( ФиналДата +"\n"+
-                                            "( " +ФиоКтоНАписалСообщение.trim()+")");///ПолученыйФИОIDДляЧата
-*/
-
-                            //    ((TextView) view).setPadding(250,0,0,0);
 
 
                             // TODO: 30.06.2021 форматирование кто написал
@@ -2262,14 +2245,6 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                             /////////////////
                             int ПолученноеКтоНаписалДляtext2 = cursor.getInt(ИндексКтоНаписалСообщениеСотрудникомДляtext2);
 
-/*
-
-                                ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
-                                ((TextView) parent.getChildAt(0)).setPaintFlags( ((TextView) parent.getChildAt(0)).getPaintFlags() | Paint.FAKE_BOLD_TEXT_FLAG);
-                                ((TextView) parent.getChildAt(0)).setBackgroundResource(R.drawable.textlines_tabel);
-                                ((TextView) parent.getChildAt(0)).setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-                                ((TextView) parent.getChildAt(0)).setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
-*/
 
                             // TODO: 30.06.2021  выделять жирным или нет в записимости прочитан или нет
 
@@ -2278,8 +2253,13 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                             Log.d(this.getClass().getName(), "  ПолученноеКтоНаписалДляtext2  " + ПолученноеКтоНаписалДляtext2 + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
 
 
-
                             // TODO: 07.02.2022   мои сообщения
+
+                            // TODO: 28.03.2022  ДЛЯ НИЖНЕГО TEXT2 ДИЗАЙН
+
+
+                            view.setBackgroundResource(R.drawable.style_for_chat_new_style_read_wtire_empty_for_text2);
+
 
                             //
                             if (ПолученноеКтоНаписалДляtext2 == ПубличныйIDДляФрагмента) {
@@ -2313,17 +2293,6 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                                 if (СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет > 0) {
 
-//TODO " статус: прочитано)
-                                    //  view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_add_organisazio_success, 0, 0, 0);
-
-
-          /*  view.setCompoundDrawablesWithIntrinsicBounds(
-                    R.drawable.icon_dsu1_add_organisazio_success,
-                    R.drawable.icon_dsu1_add_organisazio_success,
-                    R.drawable.icon_dsu1_add_organisazio_success,
-                    R.drawable.icon_dsu1_add_organisazio_success);*/
-
-
                                     // TODO: 18.02.2022  " статус: доставлено)
 
                                     view.setText(ФиналДата);
@@ -2336,11 +2305,8 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                                     //view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
 
 
-                                    view.setBackgroundResource(R.drawable.style_for_chat_new_style_read_wtire_empty);
-
 
                                 } else {
-
 
                                     if (СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ > 0) {
 
@@ -2366,21 +2332,6 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
 
 
-/*
-
-                            view.setText(ФиналДата + "\n" +
-                                    "(" + ФиоКтоНАписалСообщение.trim() + "\n"
-                                   +" статус: "  + ")");///ПолученыйФИОIDДляЧата
-*/
-
-
-           /*                 // ((TextView) view).setBackgroundResource(R.drawable.style_for_chat);
-                            view.setBackgroundColor(Color.parseColor("#F5FFFA"));
-                            view.setPadding(0, 5, 30, 5);
-
-                            view.setTextColor(Color.GRAY);//olor.parseColor("#00BBC1")
-*/
-
                                 // TODO: 07.02.2022  не мои сообщения
 
 
@@ -2401,12 +2352,8 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                                 //view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
 
 
-                                view.setBackgroundResource(R.drawable.style_for_chat_new_style_read_wtire_empty);
+                                /// view.setBackgroundResource(R.drawable.style_for_chat_new_style_read_wtire_empty);
 
-
-                                view.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-
-                                /// view.setBackgroundResource(R.drawable.style_for_chat_alien); //style_for_chat_alien
 
 
                                 Log.d(this.getClass().getName(), "  СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений  "
