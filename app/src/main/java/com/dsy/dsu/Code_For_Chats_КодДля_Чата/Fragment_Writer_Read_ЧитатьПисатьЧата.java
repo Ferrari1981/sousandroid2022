@@ -24,7 +24,6 @@ import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -1764,39 +1763,26 @@ try{
                             // TODO: 28.03.2022
 
 
-                            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) view.getLayoutParams();
-
-
                             // TODO: 28.03.2022  мен написли
 
                             //
                             if (ПолученноеКтоНаписалДляtext2 == ПубличныйIDДляФрагмента) {
                                 /////
-                                //  ((MaterialTextView) view).setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
                                 // TODO: 28.03.2022
-                                ((MaterialTextView) view).setTextColor(Color.GRAY);
-
+                                ((MaterialTextView) view).setTextColor(Color.GREEN);
                                 // TODO: 28.03.2022
-
-
-                                params.addRule(RelativeLayout.ALIGN_PARENT_END, view.getId());
-
-                                ((MaterialTextView) view).setLayoutParams(params);
-
-                                /// view.setBackgroundResource(R.drawable.style_for_chat_alien); //style_for_chat_alien
+                                // TODO: 28.03.2022
+                                ((MaterialTextView) view).setGravity(Gravity.LEFT);
+                                // TODO: 28.03.2022
                                 ((MaterialTextView) view).setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server); //style_for_chat_alien
 
-
                                 // TODO: 07.02.2022  вЫЧИСЛЕМ оТПРАВЛИ м сООБЗЕНЕИ НА СЕРВРО ИЛИ ПОЛЬЗОВАТЕЛЬ ИЗХ ПРОЧИТАЛ
-
-
                                 int ИндексЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ = cursor.getColumnIndex("_id");//TODO _id status_write
 
                                 Integer СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ = cursor.getInt(ИндексЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ);
 
 
-
-                            if (СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ==null){
+                                if (СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ == null) {
 
                                 СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ=0;
                             }
@@ -1854,44 +1840,17 @@ try{
                                         + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений);
                                 // TODO: 28.03.2022
 
-
-                             /*   params.addRule(RelativeLayout.ALIGN_PARENT_START ,view.getId());
-
-                                ((MaterialTextView) view).setLayoutParams(params);*/
-                                /////
-                                //   ((MaterialTextView) view).setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
-
                                 // TODO: 28.03.2022
-
-                         /*       params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, R.id.text1);
-                                params.addRule(RelativeLayout.LEFT_OF);
-                                ((MaterialTextView) view).setLayoutParams(params);*/
-                                // TODO: 28.03.2022  мен написли
-
-                                //   params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-
-                                // TODO: 18.02.2022 когда есть ID  от сервера
-
-                                ((MaterialTextView) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-                                ///
-                     /*       view.setPadding(50, 5, 0, 5);
-
-                            view.setBackgroundColor(Color.parseColor("#F0FFFF"));
-
-                            view.setTextColor(Color.GRAY);//olor.parseColor("#00BBC1")
-
-
-                            view.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);*/
-
-                                ((MaterialTextView) view).setTextColor(Color.GRAY);
-
-                                /// view.setBackgroundResource(R.drawable.style_for_chat_alien); //style_for_chat_alien
+                                ((MaterialTextView) view).setGravity(Gravity.RIGHT);
+                                // TODO: 28.03.2022
+                                ((MaterialTextView) view).setTextColor(Color.RED);
+                                // TODO: 28.03.2022
                                 ((MaterialTextView) view).setBackgroundResource(R.drawable.style_for_chat_alien); //style_for_chat_alien
 
-
+                                ((MaterialTextView) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                                // TODO: 28.03.2022
                                 Log.d(this.getClass().getName(), "  СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений  "
                                         + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений);
-
 
                                 // TODO: 18.02.2022  сообщение прочитанно другим  КОМУ ПРЕДНАЗНАЧАЛОСЬ
 
