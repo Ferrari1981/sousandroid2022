@@ -24,6 +24,7 @@ import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -216,7 +217,10 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
     DataSetObserver dataSetObserverПодпискаНаЛокальныйИспользуетьсяКУРСОРОМ;
 
     // TODO: 10.02.2022
-    Integer ПолученноеФИОКемБылоНаписаноСообщение =0;
+    Integer ПолученноеФИОКемБылоНаписаноСообщение = 0;
+
+    // TODO: 28.03.2022
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -276,6 +280,8 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
 
             textViewФрагментЧитатьПисатьДляЧата = (TextView) viewДляСообщений.findViewById(R.id.textViewФрагментЧитатьПисатьДляЧата);
+
+            // TODO: 28.03.2022
 
 
             // TODO: 30.06.2021 даннеы
@@ -1756,12 +1762,23 @@ try{
                             ((MaterialTextView) view).setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
 
 
+
                             //
                             if (ПолученноеКтоНаписалДляtext2 == ПубличныйIDДляФрагмента) {
                                 /////
-                                ((MaterialTextView) view).setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
+                                //  ((MaterialTextView) view).setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
                                 // TODO: 28.03.2022
-                                ((MaterialTextView) view).setTextColor(Color.RED);
+                                ((MaterialTextView) view).setTextColor(Color.GRAY);
+
+                                // TODO: 28.03.2022
+
+
+                                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) view.getLayoutParams();
+
+                                // params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+
+                                params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, R.id.text1);
+
 
                                 /// view.setBackgroundResource(R.drawable.style_for_chat_alien); //style_for_chat_alien
                                 ((MaterialTextView) view).setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server); //style_for_chat_alien
@@ -1832,10 +1849,20 @@ try{
                                 ////
                                 Log.d(this.getClass().getName(), "  СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений  "
                                         + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений);
+                                // TODO: 28.03.2022
+
+
+                                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) view.getLayoutParams();
                                 /////
-                                ((MaterialTextView) view).setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
+                                //   ((MaterialTextView) view).setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
 
                                 // TODO: 28.03.2022
+
+                                // params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+
+                                // TODO: 28.03.2022  мен написли
+
+                                params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, R.id.text1);
 
                                 // TODO: 18.02.2022 когда есть ID  от сервера
 
