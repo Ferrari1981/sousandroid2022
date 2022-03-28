@@ -36,15 +36,15 @@
         <com.google.android.material.button.MaterialButton
             android:id="@android:id/text2"
             style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:checkMark="?android:attr/textCheckMark"
-            android:gravity="center_vertical"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
             android:textAlignment="gravity"
+            android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceListItemSmall"
             android:textColor="#000000"
             android:textSize="11sp"
@@ -62,7 +62,7 @@
             android:layout_marginBottom="5dp"
             android:layout_height="30dp"
             android:visibility="visible"
-            app:srcCompat="@drawable/icon_dsu1_for_chat_status"
+            app:srcCompat="@drawable/icon_dsu1_for_chats_exists_publicid2"
             tools:src="@tools:sample/avatars" />
 
 
