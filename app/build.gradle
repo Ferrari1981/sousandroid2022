@@ -60,7 +60,7 @@ android {
         applicationId "com.dsy.dsu"
         minSdkVersion 26
         targetSdk defaultTargetSdkVersion
-        versionCode 670
+        versionCode 671
         versionName 'Timekeeping 2022'
 
         //TODO настройки уведомлений
