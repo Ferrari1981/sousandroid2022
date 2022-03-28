@@ -1322,9 +1322,7 @@ try{
                                     МетодВФрагментеЧитатьИПисатьДляВторойВторостипеннойTEXT2 ((TextView) view, cursor);
 
 
-
-
-
+                                    // TODO: 28.03.2022 оформление снизу
 
                                 // TODO: 20.01.2022  положтельный ответ для SimplrCurcor
                                     return true;
@@ -1906,7 +1904,11 @@ try{
             Log.d(this.getClass().getName(), " статус: прочитано СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет  "
                     + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет);
 
-        view.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.icon_dsu1_for_chat_status,0);
+            view.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chat_status, 0);
+
+            view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
+
+
         }else {
 
 
@@ -1944,12 +1946,12 @@ try{
 */
 
 
-                            // ((TextView) view).setBackgroundResource(R.drawable.style_for_chat);
+           /*                 // ((TextView) view).setBackgroundResource(R.drawable.style_for_chat);
                             view.setBackgroundColor(Color.parseColor("#F5FFFA"));
                             view.setPadding(0, 5, 30, 5);
 
                             view.setTextColor(Color.GRAY);//olor.parseColor("#00BBC1")
-
+*/
 
                             // TODO: 07.02.2022  не мои сообщения
 
@@ -1974,16 +1976,19 @@ try{
                             view.setBackgroundColor(Color.parseColor("#F0FFFF"));
 
 
-                            view.setCompoundDrawablesWithIntrinsicBounds(0,0,0,0);
+                            view.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
+                            view.setBackgroundResource(R.drawable.style_for_chat_alien); //style_for_chat_alien
+
 
                             Log.d(this.getClass().getName(), "  СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений  "
                                     + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений);
 
-                            if(СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений>0) {
+                            if (СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений > 0) {
 
                                 // TODO: 18.02.2022  сообщение прочитанно другим  КОМУ ПРЕДНАЗНАЧАЛОСЬ
                                 //view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_add_organisazio_success, 0, 0, 0);
-                                view.setText(ФиоКтоНАписалСообщение.trim() +" " +ФиналДата  );///ПолученыйФИОIDДляЧата
+                                view.setText(ФиоКтоНАписалСообщение.trim() + " " + ФиналДата);///ПолученыйФИОIDДляЧата
 
 
                             }else {

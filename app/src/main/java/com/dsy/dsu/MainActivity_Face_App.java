@@ -211,6 +211,8 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
 
             МетодFaceApp_СлушательПриНажатииНаКнопки();
+
+
             // TODO: 06.06.2021 ЗАПУСК ТРЕХ СЛУЖБ
 
             МетодНажатиеЗначекAPP();
@@ -313,6 +315,11 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
 
             МЕтодЗапускСЛУЖБЫОбновленияПО();
+
+
+            // TODO: 28.12.2021
+            Log.w(getPackageName().getClass().getName(), "  SRART UPDAET SOFT");
+
 
             МетодВActivityFaveApp_УстанавливаетПрограммноеОбеспечениеПОТабельныйУчёт();
 

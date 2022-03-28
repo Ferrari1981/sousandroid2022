@@ -139,7 +139,7 @@ public class BroadcastReceiver_Sous_Notificatioons_For_Chats extends BroadcastRe
                     .setBackoffCriteria(
                             BackoffPolicy.LINEAR,
                             PeriodicWorkRequest.MIN_BACKOFF_MILLIS,
-                            TimeUnit.SECONDS)
+                            TimeUnit.MILLISECONDS)
                     //.setInputData(new Data.Builder().putString("КтоЗапустилWorkmanager","BroadCastRecieve").build())
                     .build();
 

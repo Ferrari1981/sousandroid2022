@@ -80,7 +80,7 @@ public class Class_Generation_WORK_MANGER_DIRECT {
                             // Queue the work
 
                             WorkManager.getInstance(context.getApplicationContext()).enqueueUniquePeriodicWork(ИмяСлужбыСинхронизации,
-                                    ExistingPeriodicWorkPolicy.KEEP, periodicWorkRequestСинхронизация);
+                                    ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequestСинхронизация);
 
 
 

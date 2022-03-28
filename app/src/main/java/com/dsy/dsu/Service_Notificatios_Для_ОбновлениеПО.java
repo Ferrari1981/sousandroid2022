@@ -186,6 +186,17 @@ public class Service_Notificatios_Для_ОбновлениеПО extends Servic
                                 " время : " + new Date() +
                                 "\n" + "#######################################################################################" + "\n");
 
+                        // TODO: 28.03.2022
+
+                        // TODO: 27.03.2022
+
+
+                        if (workInfos.get(0).getState().compareTo(WorkInfo.State.BLOCKED) == 0) {
+                            // TODO: 27.03.2022
+                            WorkManager.getInstance(getApplicationContext()).cancelAllWorkByTag(ИмяСлужбыУведомленияДляОбновление);
+                        }
+
+
                     }
                 });
 
