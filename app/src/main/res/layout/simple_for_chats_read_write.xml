@@ -22,10 +22,10 @@
         android:visibility="visible" />
 
 
-    <com.google.android.material.button.MaterialButton
+    <com.google.android.material.textview.MaterialTextView
         android:id="@android:id/text2"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:checkMark="?android:attr/textCheckMark"
         android:gravity="center_vertical"
         android:padding="5dp"

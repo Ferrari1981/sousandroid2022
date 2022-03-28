@@ -50,6 +50,7 @@ import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 import com.dsy.dsu.SubClass_RetryGEtRowInChatsКлассПроверемЕщеРАзПоявилосЛИПуббличныйUUIDМеждуУчасникамиЧата;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textview.MaterialTextView;
 
 import java.security.InvalidKeyException;
 import java.security.KeyManagementException;
@@ -1693,92 +1694,15 @@ try{
                     private boolean МетодВФрагментеЧитатьИПисатьДляВторойВторостипеннойTEXT2(TextView view, Cursor cursor) {
 
 
-                        String ФиналДата = null;
-
-                        String ФиналДатаДлиннная = null;
-                        //
-                        // ((TextView) view).setPadding(100,0,0,0);
-                        //   ((TextView) view).setTextColor(Color.parseColor("#F0FFFF"));//olor.parseColor("#00BBC1")
-
-                        ///  ((TextView) view).setBackgroundColor(Color.parseColor("#F5FFFA"));
-
-
                         try{
 
-                        // TODO: 30.06.2021  дата сообщения
-                        Integer ИндексДатаСообщенийВсехСВыбраннымСотрудником = cursor.getColumnIndex("date_update");
 
-
-                        /////////////////даты
-                        String ПолученноеДатыСообщенияСообщения = cursor.getString(ИндексДатаСообщенийВсехСВыбраннымСотрудником).trim();
-
-                        // TODO: 29.04.2021
-                        Log.d(this.getClass().getName(), " ПолученноеДатыСообщенияСообщения" + ПолученноеДатыСообщенияСообщения);
-
-
-                        if (ПолученноеДатыСообщенияСообщения != null) {
-                            // TODO: 28.06.2021 даты обработка
-
-
-                            Log.d(this.getClass().getName(), " ПолученноеДатыСообщенияСообщения" + ПолученноеДатыСообщенияСообщения);
-
-
-                            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", new Locale("ru"));
-                            Date date = null;
-                            try {
-                                date = dateFormat.parse(ПолученноеДатыСообщенияСообщения);
-                            } catch (ParseException e) {
-
-                                ////////
-                                ///todo публикум название таблицы или цифру его
-                                //  Block of code to handle errors
-                                e.printStackTrace();
-                                ///метод запись ошибок в таблицу
-                                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
-                                        + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
-                                        this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
-                                        Thread.currentThread().getStackTrace()[2].getLineNumber());
-
-
-                                dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", new Locale("ru"));
-
-                                /////////
-
-                                    date = dateFormat.parse(ПолученноеДатыСообщенияСообщения);
-
-
-
-                            }
-
-                            Log.d(this.getClass().getName(), "  date  " + date.toString() + "  ПолученноеДатыСообщенияСообщения " + ПолученноеДатыСообщенияСообщения);
-                            /////////
-
-
-                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy HH:mm", new Locale("ru"));
-                            //
-                            simpleDateFormat.applyPattern("HH:mm");//dd-MM-yyyy//// EEEE yyyy HH:mm  /////  dd MMMM yyyy HH:mm
-                           // simpleDateFormat.applyPattern(" dd EEEE yyyy HH:mm");//dd-MM-yyyy//// EEEE yyyy HH:mm  /////  dd MMMM yyyy HH:mm
-
-                            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Europe/Moscow"));
-
-
-
-                                ФиналДата = simpleDateFormat.format(date);
-
+                            String ФиналДата = МетодГенерацияДатыДляНижнегоВторогоText2(view, cursor);
 
                             Log.d(this.getClass().getName(), "  ФиналДата  " + ФиналДата);
 
 
-                        } else {
-
-
-                            // TODO: 29.04.2021
-                            Log.d(this.getClass().getName(), " ПолученноеДатыСообщенияСообщения" + ПолученноеДатыСообщенияСообщения);
-                        }
-
-
-                        // TODO: 18.08.2021 Определяем от кого было написано сообещгия
+                            // TODO: 18.08.2021 Определяем от кого было написано сообещгия
 
                         int ИндексКемБылоНаписаноСообщение = cursor.getColumnIndex("user_update");
 
@@ -1812,19 +1736,6 @@ try{
                                 +ПолученыйIDДляЧата+ " ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО " +ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО);
 
 
-                        view.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
-                               /*     ((TextView) view).setTypeface(Typeface.SANS_SERIF,Typeface.NORMAL);
-
-                                    ((TextView) view).setGravity(Gravity.CENTER_VERTICAL );*/
-/*
-
-                                    ((TextView) view).setText( ФиналДата +"\n"+
-                                            "( " +ФиоКтоНАписалСообщение.trim()+")");///ПолученыйФИОIDДляЧата
-*/
-
-                        //    ((TextView) view).setPadding(250,0,0,0);
-
-
                         // TODO: 30.06.2021 форматирование кто написал
                         int ИндексКтоНаписалСообщениеСотрудникомДляtext2 = cursor.getColumnIndex("user_update");
 
@@ -1832,36 +1743,36 @@ try{
                         /////////////////
                         int ПолученноеКтоНаписалДляtext2 = cursor.getInt(ИндексКтоНаписалСообщениеСотрудникомДляtext2);
 
-/*
 
-                                ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
-                                ((TextView) parent.getChildAt(0)).setPaintFlags( ((TextView) parent.getChildAt(0)).getPaintFlags() | Paint.FAKE_BOLD_TEXT_FLAG);
-                                ((TextView) parent.getChildAt(0)).setBackgroundResource(R.drawable.textlines_tabel);
-                                ((TextView) parent.getChildAt(0)).setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-                                ((TextView) parent.getChildAt(0)).setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
-*/
-
-                        // TODO: 30.06.2021  выделять жирным или нет в записимости прочитан или нет
+                            // TODO: 30.06.2021  выделять жирным или нет в записимости прочитан или нет
 
 
-                        ////
-                        Log.d(this.getClass().getName(), "  ПолученноеКтоНаписалДляtext2  " + ПолученноеКтоНаписалДляtext2 + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
-
+                            ////
+                            Log.d(this.getClass().getName(), "  ПолученноеКтоНаписалДляtext2  " + ПолученноеКтоНаписалДляtext2 + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
 
 
                             // TODO: 07.02.2022   мои сообщения
 
-                        //
-                        if (ПолученноеКтоНаписалДляtext2 == ПубличныйIDДляФрагмента) {
-                            /////
-                            view.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
-
-                            // TODO: 07.02.2022  вЫЧИСЛЕМ оТПРАВЛИ м сООБЗЕНЕИ НА СЕРВРО ИЛИ ПОЛЬЗОВАТЕЛЬ ИЗХ ПРОЧИТАЛ
+                            ((MaterialTextView) view).setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
 
 
-                            int ИндексЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ = cursor.getColumnIndex("_id");//TODO _id status_write
+                            //
+                            if (ПолученноеКтоНаписалДляtext2 == ПубличныйIDДляФрагмента) {
+                                /////
+                                ((MaterialTextView) view).setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
+                                // TODO: 28.03.2022
+                                ((MaterialTextView) view).setTextColor(Color.RED);
 
-                            Integer СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ = cursor.getInt(ИндексЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ);
+                                /// view.setBackgroundResource(R.drawable.style_for_chat_alien); //style_for_chat_alien
+                                ((MaterialTextView) view).setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server); //style_for_chat_alien
+
+
+                                // TODO: 07.02.2022  вЫЧИСЛЕМ оТПРАВЛИ м сООБЗЕНЕИ НА СЕРВРО ИЛИ ПОЛЬЗОВАТЕЛЬ ИЗХ ПРОЧИТАЛ
+
+
+                                int ИндексЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ = cursor.getColumnIndex("_id");//TODO _id status_write
+
+                                Integer СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ = cursor.getInt(ИндексЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ);
 
 
 
@@ -1874,133 +1785,87 @@ try{
 
 
                             // TODO: 07.02.2022 Второе условия ПользоватльКому Было Написно Сообщкенеи его Прочитал ИЛИ НЕТ
-                            int ИндексУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет = cursor.getColumnIndex("status_write");//TODO _id status_write
+                                int ИндексУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет = cursor.getColumnIndex("status_write");//TODO _id status_write
 
-                            Integer СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет= cursor.getInt(ИндексУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет);
-                            ////
-                            Log.d(this.getClass().getName(), "  СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет  "
-                                    + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет);
+                                Integer СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет = cursor.getInt(ИндексУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет);
+                                ////
+                                Log.d(this.getClass().getName(), "  СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет  "
+                                        + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет);
 
-
-
-
-        if(СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет>0) {
 
 //TODO " статус: прочитано)
-          //  view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_add_organisazio_success, 0, 0, 0);
+                                if (СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет > 0) {
 
 
-          /*  view.setCompoundDrawablesWithIntrinsicBounds(
-                    R.drawable.icon_dsu1_add_organisazio_success,
-                    R.drawable.icon_dsu1_add_organisazio_success,
-                    R.drawable.icon_dsu1_add_organisazio_success,
-                    R.drawable.icon_dsu1_add_organisazio_success);*/
+                                    Log.d(this.getClass().getName(), " статус: прочитано СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет  "
+                                            + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет);
+
+                                    ((MaterialTextView) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chat_status, 0);
 
 
-            // TODO: 18.02.2022  " статус: доставлено)
+                                } else {
 
-            view.setText(ФиналДата);
+                                    // TODO: 18.02.2022 когда есть ID  от сервера
 
-            Log.d(this.getClass().getName(), " статус: прочитано СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет  "
-                    + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет);
-
-            view.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chat_status, 0);
-
-            view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
+                                    ((MaterialTextView) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chats_exists_publicid2, 0);
 
 
-        }else {
+                                }
 
 
+                                // TODO: 28.03.2022 мои соощения
+
+                                Log.d(this.getClass().getName(), " статус: доставлено СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ  "
+                                        + СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ);
+                                ((MaterialTextView) view).setText(ФиналДата);
 
 
-            if(СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ>0) {
-
-
-                Log.d(this.getClass().getName(), " статус: доставлено СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ  "
-                        + СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ);
-                view.setText(ФиналДата );
-                // TODO: 18.02.2022 когда есть ID  от сервера
-
-                view.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.icon_dsu1_for_chats_exists_publicid2,0);
-            }else {
-
-                 // TODO: 18.02.2022    " статус: не доставлено)
-              //  view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_message_add_contact_cycrle, 0, 0, 0);
-
-                Log.d(this.getClass().getName(), "   статус: не доставлено СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ  "
-                        + СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ);//R.drawable.icon_dsu1_message_add_toback_fragment
-                view.setText(ФиналДата );
-
-            }
-        }
-
-
-
-
-/*
-
-                            view.setText(ФиналДата + "\n" +
-                                    "(" + ФиоКтоНАписалСообщение.trim() + "\n"
-                                   +" статус: "  + ")");///ПолученыйФИОIDДляЧата
-*/
-
-
-           /*                 // ((TextView) view).setBackgroundResource(R.drawable.style_for_chat);
-                            view.setBackgroundColor(Color.parseColor("#F5FFFA"));
-                            view.setPadding(0, 5, 30, 5);
-
-                            view.setTextColor(Color.GRAY);//olor.parseColor("#00BBC1")
-*/
-
-                            // TODO: 07.02.2022  не мои сообщения
-
+                                // TODO: 28.03.2022  НЕ МОИ СООБЕЩНИЯ  мне написали  R.drawable.style_for_chat_alien
 
                         } else {
 
 
+                                // TODO: 07.02.2022 Второе условия ПользоватльКому Было Написно Сообщкенеи его Прочитал ИЛИ НЕТ
+                                int ИндексУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений = cursor.getColumnIndex("status_write");//TODO _id status_write
 
+                                Integer СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений = cursor.getInt(ИндексУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений);
+                                ////
+                                Log.d(this.getClass().getName(), "  СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений  "
+                                        + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений);
+                                /////
+                                ((MaterialTextView) view).setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
 
+                                // TODO: 28.03.2022
 
-                            // TODO: 07.02.2022 Второе условия ПользоватльКому Было Написно Сообщкенеи его Прочитал ИЛИ НЕТ
-                            int ИндексУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений = cursor.getColumnIndex("status_write");//TODO _id status_write
+                                // TODO: 18.02.2022 когда есть ID  от сервера
 
-                            Integer СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений= cursor.getInt(ИндексУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений);
-                            ////
-                            Log.d(this.getClass().getName(), "  СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений  " + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений);
-                            /////
-                            view.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
-                            ///
-                            view.setPadding(50, 5, 0, 5);
+                                ((MaterialTextView) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                                ///
+                     /*       view.setPadding(50, 5, 0, 5);
 
                             view.setBackgroundColor(Color.parseColor("#F0FFFF"));
 
-
-                            view.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-
-                            view.setBackgroundResource(R.drawable.style_for_chat_alien); //style_for_chat_alien
+                            view.setTextColor(Color.GRAY);//olor.parseColor("#00BBC1")
 
 
-                            Log.d(this.getClass().getName(), "  СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений  "
-                                    + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений);
+                            view.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);*/
 
-                            if (СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений > 0) {
+                                ((MaterialTextView) view).setTextColor(Color.GRAY);
+
+                                /// view.setBackgroundResource(R.drawable.style_for_chat_alien); //style_for_chat_alien
+                                ((MaterialTextView) view).setBackgroundResource(R.drawable.style_for_chat_alien); //style_for_chat_alien
+
+
+                                Log.d(this.getClass().getName(), "  СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений  "
+                                        + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений);
+
 
                                 // TODO: 18.02.2022  сообщение прочитанно другим  КОМУ ПРЕДНАЗНАЧАЛОСЬ
-                                //view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_add_organisazio_success, 0, 0, 0);
-                                view.setText(ФиоКтоНАписалСообщение.trim() + " " + ФиналДата);///ПолученыйФИОIDДляЧата
+
+                                ((MaterialTextView) view).setText(ФиоКтоНАписалСообщение.trim() + " " + ФиналДата);///ПолученыйФИОIDДляЧата
 
 
-                            }else {
-                             //   view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_add_organisazio_error, 0, 0, 0);
-                                view.setText(ФиоКтоНАписалСообщение.trim() +" " +ФиналДата  );///ПолученыйФИОIDДляЧата
 
-                            }
-
-
-                            //iew.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_customers_mnogo, 0, 0, 0);
-                            /// ((TextView) view).setBackgroundResource(R.drawable.style_for_chat_alien);
-                            view.setTextColor(Color.GRAY);//olor.parseColor("#00BBC1")
 
                         }
 
@@ -2018,14 +1883,106 @@ try{
                     }
 
 
+                        ///////
 
-
-
-                    ///////
-
-                        return  true;
+                        return true;
 
                         // TODO: 29.06.2021 defalut
+                    }
+
+
+                    // TODO: 28.03.2022  метод получение времени даты для нижнего вторго TEXT2
+                    @NonNull
+                    private String МетодГенерацияДатыДляНижнегоВторогоText2(TextView view, Cursor cursor) throws ParseException {
+                        String ФиналДата = null;
+
+                        String ФиналДатаДлиннная = null;
+
+                        SimpleDateFormat dateFormat;
+                        Date date;
+                        String ПолученноеДатыСообщенияСообщения = null;
+
+                        try {
+
+                            // TODO: 30.06.2021  дата сообщения
+                            Integer ИндексДатаСообщенийВсехСВыбраннымСотрудником = cursor.getColumnIndex("date_update");
+
+                            /////////////////даты
+                            ПолученноеДатыСообщенияСообщения = cursor.getString(ИндексДатаСообщенийВсехСВыбраннымСотрудником).trim();
+
+                            // TODO: 29.04.2021
+                            Log.d(this.getClass().getName(), " ПолученноеДатыСообщенияСообщения" + ПолученноеДатыСообщенияСообщения);
+
+                            // TODO: 28.06.2021 даты обработка
+
+                            Log.d(this.getClass().getName(), " ПолученноеДатыСообщенияСообщения" + ПолученноеДатыСообщенияСообщения);
+
+
+                            dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", new Locale("ru"));
+
+
+                            date = null;
+
+                            try {
+                                date = dateFormat.parse(ПолученноеДатыСообщенияСообщения);
+
+                            } catch (ParseException e) {
+
+                                ////////
+                                ///todo публикум название таблицы или цифру его
+                                //  Block of code to handle errors
+                                e.printStackTrace();
+                                ///метод запись ошибок в таблицу
+                                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                                        + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
+                                        this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                                        Thread.currentThread().getStackTrace()[2].getLineNumber());
+
+
+                                dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", new Locale("ru"));
+
+                                /////////
+                                date = dateFormat.parse(ПолученноеДатыСообщенияСообщения);
+
+                            }
+
+                            Log.d(this.getClass().getName(), "  date  " + date.toString() + "  ПолученноеДатыСообщенияСообщения " + ПолученноеДатыСообщенияСообщения);
+                            /////////
+
+                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy HH:mm", new Locale("ru"));
+                            //
+                            simpleDateFormat.applyPattern("HH:mm");//dd-MM-yyyy//// EEEE yyyy HH:mm  /////  dd MMMM yyyy HH:mm
+                            // simpleDateFormat.applyPattern(" dd EEEE yyyy HH:mm");//dd-MM-yyyy//// EEEE yyyy HH:mm  /////  dd MMMM yyyy HH:mm
+
+                            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Europe/Moscow"));
+
+                            ФиналДата = simpleDateFormat.format(date);
+
+                            Log.d(this.getClass().getName(), "  ФиналДата  " + ФиналДата);
+
+                            view.setText(ФиналДата);
+
+                        } catch (ParseException e) {
+
+                            ////////
+                            ///todo публикум название таблицы или цифру его
+                            //  Block of code to handle errors
+                            e.printStackTrace();
+                            ///метод запись ошибок в таблицу
+                            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                                    + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
+                                    this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                                    Thread.currentThread().getStackTrace()[2].getLineNumber());
+
+                            dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", new Locale("ru"));
+
+                            /////////
+                            date = dateFormat.parse(ПолученноеДатыСообщенияСообщения);
+                        }
+
+                        return ФиналДата;
                     }
 
 
