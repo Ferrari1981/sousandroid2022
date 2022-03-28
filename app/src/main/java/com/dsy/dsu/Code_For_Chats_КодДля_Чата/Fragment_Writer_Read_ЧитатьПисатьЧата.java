@@ -1761,7 +1761,13 @@ try{
 
                             ((MaterialTextView) view).setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
 
+                            // TODO: 28.03.2022
 
+
+                            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) view.getLayoutParams();
+
+
+                            // TODO: 28.03.2022  мен написли
 
                             //
                             if (ПолученноеКтоНаписалДляtext2 == ПубличныйIDДляФрагмента) {
@@ -1773,12 +1779,9 @@ try{
                                 // TODO: 28.03.2022
 
 
-                                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) view.getLayoutParams();
+                                params.addRule(RelativeLayout.ALIGN_PARENT_END, view.getId());
 
-                                // params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-
-                                params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, R.id.text1);
-
+                                ((MaterialTextView) view).setLayoutParams(params);
 
                                 /// view.setBackgroundResource(R.drawable.style_for_chat_alien); //style_for_chat_alien
                                 ((MaterialTextView) view).setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server); //style_for_chat_alien
@@ -1852,17 +1855,20 @@ try{
                                 // TODO: 28.03.2022
 
 
-                                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) view.getLayoutParams();
+                             /*   params.addRule(RelativeLayout.ALIGN_PARENT_START ,view.getId());
+
+                                ((MaterialTextView) view).setLayoutParams(params);*/
                                 /////
                                 //   ((MaterialTextView) view).setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
 
                                 // TODO: 28.03.2022
 
-                                // params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-
+                         /*       params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, R.id.text1);
+                                params.addRule(RelativeLayout.LEFT_OF);
+                                ((MaterialTextView) view).setLayoutParams(params);*/
                                 // TODO: 28.03.2022  мен написли
 
-                             //   params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+                                //   params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
 
                                 // TODO: 18.02.2022 когда есть ID  от сервера
 
