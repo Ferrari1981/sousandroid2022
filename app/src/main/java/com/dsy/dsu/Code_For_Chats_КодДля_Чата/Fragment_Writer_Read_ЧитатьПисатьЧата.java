@@ -1862,7 +1862,7 @@ try{
 
                                 // TODO: 28.03.2022  мен написли
 
-                                params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, R.id.text1);
+                             //   params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
 
                                 // TODO: 18.02.2022 когда есть ID  от сервера
 
