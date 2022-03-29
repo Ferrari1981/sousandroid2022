@@ -17,10 +17,12 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +38,7 @@ import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -1370,116 +1373,182 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     holder.materialCardView.setOnLongClickListener(new View.OnLongClickListener() {
                         @Override
                         public boolean onLongClick(View v) {
-                            // TODO: 25.03.2022
-
-                            ProgressDialog progressDialogДляУдаленияСвоегоЗадание;
-                            // TODO: 26.10.2021
-                            // TODO: 26.10.2021
-                            progressDialogДляУдаленияСвоегоЗадание = new ProgressDialog(getActivity());
-                            // TODO: 25.03.2022
-                            progressDialogДляУдаленияСвоегоЗадание.setTitle("Задача");
-                            progressDialogДляУдаленияСвоегоЗадание.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                            progressDialogДляУдаленияСвоегоЗадание.setProgress(0);
-                            progressDialogДляУдаленияСвоегоЗадание.setCanceledOnTouchOutside(false);
-                            progressDialogДляУдаленияСвоегоЗадание.setMessage("удаление ....");
-                            progressDialogДляУдаленияСвоегоЗадание.show();
 
 
                             // TODO: 25.03.2022
-                            Handler.Callback callback = new PUBLIC_CONTENT(getContext()).callback;
-                            // TODO: 01.03.2022
-                            callback = new Handler.Callback() {
-                                // TODO: 01.03.2022
+                            int ФлагЗнака = R.drawable.icon_dsu1_new_customer2;
+
+                            final AlertDialog alertDialog = new MaterialAlertDialogBuilder(getActivity())
+                                    .setTitle("Удаление")
+                                    .setMessage("Удалить созданую задачу")
+                                    .setPositiveButton("Да", null)
+                                    .setNegativeButton("Нет", null)
+                                    .setIcon(ФлагЗнака)
+                                    .show();
+/////////кнопка
+                            final Button MessageBoxUpdateУдалаениеЗаданияДА = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                            MessageBoxUpdateУдалаениеЗаданияДА.setOnClickListener(new View.OnClickListener() {
+                                ///MessageBoxUpdate метод CLICK для DIALOBOX
                                 @Override
-                                public boolean handleMessage(@NonNull Message msg) {
-                                    // TODO: 13.03.2022
-                                    Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  СтатусПрочтеаУжеЗадачаИлиНет " +
-                                            msg + " msg.getWhen() " + msg.getWhen());
-                                    // TODO: 25.03.2022
-                                    msg.getTarget().removeMessages(1);
-                                    // TODO: 25.03.2022
-                                    progressDialogДляУдаленияСвоегоЗадание.dismiss();
-                                    ////
-                                    progressDialogДляУдаленияСвоегоЗадание.cancel();
-                                    // TODO: 25.03.2022
-
-                                    // TODO: 13.01.2022  ЗАПУСК СИХРОНИЗВАЦИИ В ХОЛОСТУЮ ХОД
-
-                                    new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getContext()).
-                                            МетодПовторногоЗапускаВсехWorkManager__ОДНОРАЗОВОЙСинхрониазцииданных(ПубличныйIDДляФрагмента, getContext());
+                                public void onClick(View v) {
+                                    //удаляем с экрана Диалог
+                                    alertDialog.dismiss();
+                                    Log.d(this.getClass().getName(), "  ФИНАЛ создание нового сотрудника ");
+                                    // TODO: 29.03.2022
+                                    try {
+                                        // TODO: 29.03.2022
 
 
-                                    return true;
+                                        // TODO: 29.03.2022
+
+                                        ProgressDialog progressDialogДляУдаленияСвоегоЗадание;
+                                        // TODO: 26.10.2021
+                                        // TODO: 26.10.2021
+                                        progressDialogДляУдаленияСвоегоЗадание = new ProgressDialog(getActivity());
+                                        // TODO: 25.03.2022
+                                        progressDialogДляУдаленияСвоегоЗадание.setTitle("Задача");
+                                        progressDialogДляУдаленияСвоегоЗадание.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                                        progressDialogДляУдаленияСвоегоЗадание.setProgress(0);
+                                        progressDialogДляУдаленияСвоегоЗадание.setCanceledOnTouchOutside(false);
+                                        progressDialogДляУдаленияСвоегоЗадание.setMessage("удаление ....");
+                                        progressDialogДляУдаленияСвоегоЗадание.show();
+
+
+                                        // TODO: 25.03.2022
+                                        Handler.Callback callback = new PUBLIC_CONTENT(getContext()).callback;
+                                        // TODO: 01.03.2022
+                                        callback = new Handler.Callback() {
+                                            // TODO: 01.03.2022
+                                            @Override
+                                            public boolean handleMessage(@NonNull Message msg) {
+                                                // TODO: 13.03.2022
+                                                Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  СтатусПрочтеаУжеЗадачаИлиНет " +
+                                                        msg + " msg.getWhen() " + msg.getWhen());
+                                                // TODO: 25.03.2022
+                                                msg.getTarget().removeMessages(1);
+                                                // TODO: 25.03.2022
+                                                progressDialogДляУдаленияСвоегоЗадание.dismiss();
+                                                ////
+                                                progressDialogДляУдаленияСвоегоЗадание.cancel();
+                                                // TODO: 25.03.2022
+
+                                                // TODO: 13.01.2022  ЗАПУСК СИХРОНИЗВАЦИИ В ХОЛОСТУЮ ХОД
+
+                                                new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getContext()).
+                                                        МетодПовторногоЗапускаВсехWorkManager__ОДНОРАЗОВОЙСинхрониазцииданных(ПубличныйIDДляФрагмента, getContext());
+
+
+                                                return true;
+                                            }
+                                        };
+
+
+                                        // TODO: 13.03.2022
+                                        Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  СтатусПрочтеаУжеЗадачаИлиНет ");
+                                        // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
+
+
+                                        // TODO: 13.03.2022
+                                        Long ПолучаемUUIDТекущйПозицииВRecyreView = BungleДанныеДляViewCard.getLong((String.valueOf(holder.getAdapterPosition())), 0l);
+
+
+                                        Integer РезультатУдаленияСозданныйЗадач = null;
+                                        try {
+                                            РезультатУдаленияСозданныйЗадач = new MODEL_synchronized(getContext())
+                                                    .УдалениеДанныхЧерезКонтейнерУниверсальная("data_notification",
+                                                            "uuid",
+                                                            String.valueOf(ПолучаемUUIDТекущйПозицииВRecyreView), "status_write", "5");
+
+                                            // TODO: 25.03.2022
+                                            // TODO: 13.03.2022
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                            ///метод запись ошибок в таблицу
+                                            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                                                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                            //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                                        }
+
+                                        /////////TODO КОНТЕЙНЕР УДАЛЕНИЕ СОТРУДНИКА ИЗ ТАБЕЛЯ  ДАННЫХ УНИВЕРСАЛЬНЫЙ
+
+                                        // TODO: 13.03.2022
+                                        Log.d(this.getClass().getName(), " РезультатУдаленияСозданныйЗадач МетодБиндингаСлушателейДляViewCard   " + РезультатУдаленияСозданныйЗадач);
+
+
+                                        if (РезультатУдаленияСозданныйЗадач > 0) {
+
+                                            // TODO: 03.03.2022 update screewn
+                                            Handler HandlerЗапускаемОтсрочнуюСменуСтатуса = new Handler(callback);
+                                            // TODO: 25.03.2022
+                                            HandlerЗапускаемОтсрочнуюСменуСтатуса.sendEmptyMessageDelayed(РезультатУдаленияСозданныйЗадач, 500);
+                                            // TODO: 04.03.2022
+                                            HandlerЗапускаемОтсрочнуюСменуСтатуса.postDelayed(() -> {
+                                                // TODO: 04.03.2022
+
+                                                Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.deactivate();
+                                                // TODO: 03.03.2022
+
+                                                Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.requery();
+                                                // TODO: 13.03.2022
+
+                                                Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.deactivate();
+                                                // TODO: 14.03.2022
+                                                Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.requery();
+
+                                                // TODO: 13.03.2022
+                                                notifyDataSetChanged();
+
+                                            }, 2500);
+                                        }
+
+                                        // TODO: 25.03.2022 \
+
+                                        // TODO: 29.03.2022  конец переносимого кода
+                                        // TODO: 29.03.2022
+                                        Log.d(this.getClass().getName(), " MessageBoxUpdateУдалаениеЗаданияНЕТ");
+
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                        ///метод запись ошибок в таблицу
+                                        Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                                " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                        new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                                                Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                    }
                                 }
-                            };
 
+                            });
 
+                            /////////кнопка
+                            final Button MessageBoxUpdateУдалаениеЗаданияНЕТ = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+                            MessageBoxUpdateУдалаениеЗаданияНЕТ.setOnClickListener(new View.OnClickListener() {
+                                ///MessageBoxUpdate метод CLICK для DIALOBOX
+                                @Override
+                                public void onClick(View v) {
+                                    //удаляем с экрана Диалог
+                                    alertDialog.dismiss();
+                                    Log.d(this.getClass().getName(), "  ФИНАЛ создание нового сотрудника ");
+                                    // TODO: 29.03.2022
+                                    try {
+                                        // TODO: 29.03.2022
+                                        Log.d(this.getClass().getName(), " MessageBoxUpdateУдалаениеЗаданияНЕТ");
 
-                            // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  СтатусПрочтеаУжеЗадачаИлиНет ");
-                            // TODO: 04.03.2022  ПОЛУЧЕНИЕ НАЗВАНЕИ ЗАДАЧИ
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                        ///метод запись ошибок в таблицу
+                                        Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                                " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                        new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                                                Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                    }
+                                }
 
+                            });
 
-                            // TODO: 13.03.2022
-                            Long ПолучаемUUIDТекущйПозицииВRecyreView = BungleДанныеДляViewCard.getLong((String.valueOf(holder.getAdapterPosition())), 0l);
-
-
-                            Integer РезультатУдаленияСозданныйЗадач = null;
-                            try {
-                                РезультатУдаленияСозданныйЗадач = new MODEL_synchronized(getContext())
-                                        .УдалениеДанныхЧерезКонтейнерУниверсальная("data_notification",
-                                                "uuid",
-                                                String.valueOf(ПолучаемUUIDТекущйПозицииВRecyreView), "status_write", "5");
-
-                                // TODO: 25.03.2022
-                                // TODO: 13.03.2022
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                                ///метод запись ошибок в таблицу
-                                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-                                //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
-                            }
-
-                            /////////TODO КОНТЕЙНЕР УДАЛЕНИЕ СОТРУДНИКА ИЗ ТАБЕЛЯ  ДАННЫХ УНИВЕРСАЛЬНЫЙ
-
-                            // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), " РезультатУдаленияСозданныйЗадач МетодБиндингаСлушателейДляViewCard   " + РезультатУдаленияСозданныйЗадач);
-
-
-                            if (РезультатУдаленияСозданныйЗадач > 0) {
-
-                                // TODO: 03.03.2022 update screewn
-                                Handler HandlerЗапускаемОтсрочнуюСменуСтатуса = new Handler(callback);
-                                // TODO: 25.03.2022
-                                HandlerЗапускаемОтсрочнуюСменуСтатуса.sendEmptyMessageDelayed(РезультатУдаленияСозданныйЗадач, 500);
-                                // TODO: 04.03.2022
-                                HandlerЗапускаемОтсрочнуюСменуСтатуса.postDelayed(() -> {
-                                    // TODO: 04.03.2022
-
-                                    Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.deactivate();
-                                    // TODO: 03.03.2022
-
-                                    Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.requery();
-                                    // TODO: 13.03.2022
-
-                                    Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.deactivate();
-                                    // TODO: 14.03.2022
-                                    Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.requery();
-
-                                    // TODO: 13.03.2022
-                                    notifyDataSetChanged();
-
-                                }, 2500);
-                            }
-
-                            // TODO: 25.03.2022 \
-
-
+                            // TODO: 29.03.2022 defalult
                             return true;
-
                         }
                     });
                     // TODO: 13.03.2022
