@@ -1071,7 +1071,7 @@ public class Fragment1_One_Tasks extends Fragment {
             // TODO: 13.03.2022
             MaterialCardView materialCardView;
             // TODO: 29.03.2022
-            LocalBroadcastManager localBroadcastManagerПриСменеСтатусаЗадачи;
+            LocalBroadcastManager localBroadcastManagerПриСменеСтатусаЗадачи;//
             // TODO: 13.03.2022
             BroadcastReceiver broadcastReceiverПриСменеСтатуса;
 
