@@ -339,7 +339,7 @@ public class Service_Notificatios_Для_Задания extends Service {////Ser
                     stopForeground(true);
 
 
-                    Toast.makeText(getApplicationContext(), " Статус изменен  !!!", Toast.LENGTH_LONG).show();
+                 ///   Toast.makeText(getApplicationContext(), " Статус изменен  !!!", Toast.LENGTH_LONG).show();
                 } else {
 
                     Toast.makeText(getApplicationContext(), " Статус осталься прежним ? ", Toast.LENGTH_LONG).show();
