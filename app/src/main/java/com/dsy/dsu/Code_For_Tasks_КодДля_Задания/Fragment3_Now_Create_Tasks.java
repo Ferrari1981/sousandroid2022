@@ -982,15 +982,15 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
 
         class MyRecycleViewAdapter extends RecyclerView.Adapter<MyViewHolder> {
             // TODO: 04.03.2022
-            LinkedBlockingQueue ОчередьДаныеДляСозданиеНовойЗадачи;
+            LinkedBlockingQueue ОчередьДаныеДляСозданиеНовойЗадачиВнутри;
 
             // TODO: 15.03.2022 первыЙ КЛАССС ДЛЯ АДАПТЕРА С ДАННЫМИ ПОДНИМАЕМ ДАННЫЕ ДЛЯ РЕДАКТИРОВАНИЯ
             public MyRecycleViewAdapter(@NotNull LinkedBlockingQueue ОчередьДаныеДляСозданиеНовойЗадачи) {
                 // super();
                 // TODO: 04.03.2022
-                this.ОчередьДаныеДляСозданиеНовойЗадачи = ОчередьДаныеДляСозданиеНовойЗадачи;
+                this.ОчередьДаныеДляСозданиеНовойЗадачиВнутри = ОчередьДаныеДляСозданиеНовойЗадачи;
 
-                Log.i(this.getClass().getName(), "     getItemId holder.position " + "  ОчередьДаныеДляСозданиеНовойЗадачи " + ОчередьДаныеДляСозданиеНовойЗадачи);
+                Log.i(this.getClass().getName(), "     getItemId holder.position " + "  ОчередьДаныеДляСозданиеНовойЗадачиВнутри " + ОчередьДаныеДляСозданиеНовойЗадачиВнутри);
             }
 
 
@@ -1039,7 +1039,7 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 02.03.2022 тут РАЗДАЕМ ДАННЫЕ RECYCLERBIEW
                     ;
                     // TODO: 04.03.2022 p==osion
-                    Log.i(this.getClass().getName(), "   ОчередьДаныеДляСозданиеНовойЗадачи.peek() " + ОчередьДаныеДляСозданиеНовойЗадачи.peek());
+                    Log.i(this.getClass().getName(), "   ОчередьДаныеДляСозданиеНовойЗадачиВнутри.peek() " + ОчередьДаныеДляСозданиеНовойЗадачиВнутри.peek());
 
 
                     // TODO: 14.03.2022  метод создания само сообщения
@@ -2122,9 +2122,9 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                 // TODO: 02.03.2022
                 ////////
 
-                Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + ОчередьДаныеДляСозданиеНовойЗадачи);
+                Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + ОчередьДаныеДляСозданиеНовойЗадачиВнутри);
                 // TODO: 28.02.2022
-                return ОчередьДаныеДляСозданиеНовойЗадачи.size();
+                return ОчередьДаныеДляСозданиеНовойЗадачиВнутри.size();
             }
         }//TODO  конец два
 
