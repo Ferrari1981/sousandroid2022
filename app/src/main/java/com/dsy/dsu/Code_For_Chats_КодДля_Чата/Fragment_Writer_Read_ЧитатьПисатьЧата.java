@@ -49,6 +49,7 @@ import com.dsy.dsu.MODEL_synchronized;
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 import com.dsy.dsu.SubClass_RetryGEtRowInChatsКлассПроверемЕщеРАзПоявилосЛИПуббличныйUUIDМеждуУчасникамиЧата;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.security.InvalidKeyException;
@@ -1526,62 +1527,32 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                     @Override
                     public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
                         // TODO: 22.06.2021 выравниваем тексвид
-
-
-                        //  ((TextView) view).setPadding(200,0,0,0);
-
-
-                        ////
+                        ////todo
                         if (cursor.getCount() > 0) {
-                            ///
-
-
                             ///
                             switch (view.getId()) {
 
                                 case android.R.id.text1:
                                     ///////
-
-
-
                                     Log.d(this.getClass().getName(), " ClassActitytyClassActityty  view.getId() " + view.getId());
-
-
-
-
-
                                     //TODO  метод визуального ОФРМЕЛНИЯ ЧАТА
 
-                                    МетодВизуальноОформленияСообщенийВЧате((TextView) view);
+                                    MaterialButton textViewСамоСообщение = view.findViewById(android.R.id.text1);
 
-
-
-
-
-
-
-
+                                    Log.d(this.getClass().getName(), " ClassActitytyClassActityty  textViewСамоСообщение " + textViewСамоСообщение);
 
                                     // TODO: 29.06.2021 сами сообщения для с выбранным сотрудником
 
-
                                     int ИндексТелоСообщенийВсехСВыбраннымСотрудником = cursor.getColumnIndex("message");
 
-
                                     // TODO: 29.04.2021
-
-
                                     /////////////////
                                     String ПолученноеТелоСообщения = cursor.getString(ИндексТелоСообщенийВсехСВыбраннымСотрудником);
-
 
                                     Log.d(this.getClass().getName(), " метод посика уже существующего сотрудника в базе андройжа ПолученныйФИО"
                                             + ПолученноеТелоСообщения);
 
-
-
                                     // TODO: 08.11.2021  new style disian
-
 
                                     // TODO: 30.06.2021 форматирование кто написал
                                     int ИндексКтоНаписалСообщениеСотрудником = cursor.getColumnIndex("user_update");
@@ -1589,8 +1560,6 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                                     // TODO: 29.04.2021
                                     /////////////////
                                     int ПолученноеКтоНаписал = cursor.getInt(ИндексКтоНаписалСообщениеСотрудником);
-
-
 
 
 
@@ -1609,82 +1578,56 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                                     Log.w(this.getClass().getName(), " UUIDЧатаКтоНАписалМнеНаписали " + UUIDЧатаКтоНАписалМнеНаписали);
 
-                                    ((TextView) view).setTag(UUIDЧатаКтоНАписалМнеНаписали);
-
+                                    ((MaterialButton) view).setTag(UUIDЧатаКтоНАписалМнеНаписали);
 
                                     // TODO: 23.11.2021 сам компонет ТЕКС1 само сообщение
-
-                                    TextView textViewСамоСообщение = view.findViewById(android.R.id.text1);
-
 
                                     Log.d(this.getClass().getName(), " ПолученноеКтоНаписал " + ПолученноеКтоНаписал
 
                                             + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента + " textViewСамоСообщение " + textViewСамоСообщение.getText().toString());
 
 
-
-
-
-                                    //TODO сообщения НАПИСАНЫ МНОЙ МОЙИ СООБЕЩЕНИЯ   ПОЛЬЗОВАТЕЛЯ
-
-                                    //TODO сообщения НАПИСАНЫ МНОЙ МОЙИ СООБЕЩЕНИЯ   ПОЛЬЗОВАТЕЛЯ
-                                    //TODO сообщения НАПИСАНЫ МНОЙ МОЙИ СООБЕЩЕНИЯ   ПОЛЬЗОВАТЕЛЯ
-                                    //TODO сообщения НАПИСАНЫ МНОЙ МОЙИ СООБЕЩЕНИЯ   ПОЛЬЗОВАТЕЛЯ
-                                    //TODO сообщения НАПИСАНЫ МНОЙ МОЙИ СООБЕЩЕНИЯ   ПОЛЬЗОВАТЕЛЯ
-                                    // TODO: 23.11.2021  ЛОГИКА ТАКАЯ ЕСЛИ  СВОЙ ТЕЛЕФОННЫЙ
-                                    //
-
                                     /////
                                     Log.d(this.getClass().getName(), " Я ПолученноеКтоНаписал " + ПолученноеКтоНаписал + "\n" +
                                             " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
-                                    //  ТЕКУЩИЙ ID ПУБЛИЧНЫЕ РАВЕН ID В ТЕКУЩЕЙ СТРОЧКЕ ЧАТА ТО ОДНО ДЕЙСТВЕИ (КАК БЫ СВОИ СОВСТВЕННЫЕ СТРОЧКИ ОБРАБАТЫВАЮТЬСЯ СО СВОЕМУ А ЧУЖИЕ ПО ССОВЕМУ)
-                                    //
 
 
+                                    //TODO сообщение написано мной ВНИМАНИЕ !!!!!
 
-                                    //TODO сообщения НАПИСАНЫ МНЕ --СООБЩЕНИЯ ЧУЖИЕ ОТ ДРУГОВО ПОЛЬЗОВАТЕЛЯ
-
-                                    //TODO сообщения НАПИСАНЫ МНЕ --СООБЩЕНИЯ ЧУЖИЕ ОТ ДРУГОВО ПОЛЬЗОВАТЕЛЯ
-                                    //TODO сообщения НАПИСАНЫ МНЕ --СООБЩЕНИЯ ЧУЖИЕ ОТ ДРУГОВО ПОЛЬЗОВАТЕЛЯ
 
                                     if (ПолученноеКтоНаписал == ПубличныйIDДляФрагмента) {
+
                                         /////
                                         Log.d(this.getClass().getName(), " Я ПолученноеКтоНаписал " + ПолученноеКтоНаписал + "\n" +
                                                 " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
 
-                                        //TODO сообщения НАПИСАНЫ МНЕ --СООБЩЕНИЯ ЧУЖИЕ ОТ ДРУГОВО ПОЛЬЗОВАТЕЛЯ
 
                                         //TODO сообщения НАПИСАНЫ МНЕ --СООБЩЕНИЯ ЧУЖИЕ ОТ ДРУГОВО ПОЛЬЗОВАТЕЛЯ
-                                        //TODO сообщения НАПИСАНЫ МНЕ --СООБЩЕНИЯ ЧУЖИЕ ОТ ДРУГОВО ПОЛЬЗОВАТЕЛЯ
+
+                                        МетодОбрабатываетСвоиСообщенияДляЧатаText1((TextView) view, cursor, ПолученноеТелоСообщения, ПолученноеКтоНаписал);
 
 
-                                        МетодОбрабатываетСвоиСообщенияДляЧата((TextView) view, cursor, ПолученноеТелоСообщения, ПолученноеКтоНаписал);
+                                        ////todo ПОКАЗЫВАЕМ ФЛАГ ЕСЛИ ДАННЫЕ УСПЕШНО ОПРАВИЛИЬС ИЛИ ВРЕНУЛСЬ СС СЕРВРА ТО СООБШЕНИЯ ОКРАШИВАЕМ В СИНИЯ ЦВЕТ
+                                        МетодИзменяетСтильСтрочкиСообщенияВМоментеЕслиССервераПришелОтветОПолжительнойВставкеСообщения(view, ПолученноеТелоСообщения);
+
+                                        // TODO: 04.02.2022  еще один код кторе изменяет СТИЛЬ СТРОЧКИ ЕСЛИ С СЕРВЕРА ПИШЕЛ ID
+
+                                        МетодИзменяетСтильСтрочкиСообщенияЕслиСервераПришелЗаполеныйID(view, cursor);
 
 
+                                        // TODO: 30.06.2021 ДАННЫЙ МЕТОД ВЫЧИСЛЯЕТ ПО ПОЛЮ В СООБЩИИ ПРОЧИТАЛ ЛИ ДАННОЕ СООБЩЕНИЕ КОНТАК КОТРОМУ МЫ МЫ И ПИСАЛИ ПИСЬМО
+                                        МетодКоторыйВычисляемПрочиталЛиДанноеСообщениеТОтКомуЭтоСообщениеПредназначалось((TextView) view, cursor, ПолученноеТелоСообщения);
 
 
-                                        //TODO сообщения НАПИСАНЫ МНЕ --СООБЩЕНИЯ ЧУЖИЕ ОТ ДРУГОВО ПОЛЬЗОВАТЕЛЯ
-                                        //TODO сообщения НАПИСАНЫ МНЕ --СООБЩЕНИЯ ЧУЖИЕ ОТ ДРУГОВО ПОЛЬЗОВАТЕЛЯ
-
-
-
-
+                                        // TODO: 29.03.2022  
                                         Log.d(this.getClass().getName(), " ПолученноеКтоНаписал " + ПолученноеКтоНаписал
-
                                                 + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента + " textViewСамоСообщение " + textViewСамоСообщение.getText().toString());
                                         // TODO: 03.01.2022  код не текущего пользователя кто МЕН НАПИСАЛ
 
                                     } else {
 
-                                        //
 
-                                        //TODO сообщения НАПИСАНЫ МНЕ --СООБЩЕНИЯ ЧУЖИЕ ОТ ДРУГОВО ПОЛЬЗОВАТЕЛЯ
-
-                                        //TODO сообщения НАПИСАНЫ МНЕ --СООБЩЕНИЯ ЧУЖИЕ ОТ ДРУГОВО ПОЛЬЗОВАТЕЛЯ
-                                        //TODO сообщения НАПИСАНЫ МНЕ --СООБЩЕНИЯ ЧУЖИЕ ОТ ДРУГОВО ПОЛЬЗОВАТЕЛЯ
-
-                                        //TODO сообщения НАПИСАНЫ МНЕ --СООБЩЕНИЯ ЧУЖИЕ ОТ ДРУГОВО ПОЛЬЗОВАТЕЛЯ
-                                        //TODO сообщения НАПИСАНЫ МНЕ --СООБЩЕНИЯ ЧУЖИЕ ОТ ДРУГОВО ПОЛЬЗОВАТЕЛЯ
+                                        //TODO сообщение написано другим ПОЛЬЗОВАТЕЛЕММ  ВНИМАНИЕ !!!!!
 
                                         Log.d(this.getClass().getName(), " я сам автор ПолученноеКтоНаписал " + ПолученноеКтоНаписал
 
@@ -1723,29 +1666,6 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                                     return true;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                 // TODO: 29.06.2021
 
 
@@ -1754,7 +1674,16 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                                     Log.d(this.getClass().getName(), " ClassActitytyClassActityty  view.getId() МетодВФрагментеЧитатьИПисатьДляВторойВторостипеннойTEXT2  " + view.getId());
 
 
-                                    МетодВФрагментеЧитатьИПисатьДляВторойВторостипеннойTEXT2 ((TextView) view, cursor);
+                                    // TODO: 18.02.2022 когда есть ID  от сервера
+
+                                    // TODO: 23.11.2021 сам компонет ТЕКС1 само сообщение
+
+                                    MaterialButton text2ViewКтоПаисалИВремя = view.findViewById(android.R.id.text2);
+
+                                    ((MaterialButton) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
+
+                                    МетодВФрагментеЧитатьИПисатьДляВторойВторостипеннойTEXT2((TextView) view, cursor);
 
 
                                     // TODO: 28.03.2022 оформление снизу
@@ -1797,103 +1726,26 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                     }
 
-                    private void МетодВизуальноОформленияСообщенийВЧате(TextView view) {
-                        //return true;
-                        view.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
 
-                        // TODO: 06.07.2021 определяем прочитано текущее собщенеи или нет пока
-
-
-                        view.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
-
-                        // TODO: 06.07.2021 данные выгружем на читать писать сообщения
-
-                        view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
-                        ///
-
-                        view.setPadding(0, 40, 30, 40);
-
-                        // TODO: 18.02.2022 оерашиваем в цвет когда просто НАПИСАНО СООБЩЕНИЕ
-                        // view.setBackgroundResource(R.drawable.style_for_chat_an_servers);///
-                        //view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
-                        ////////
-                        view.setBackgroundResource(R.drawable.style_for_chat_new_style_read_wtire_empty);
-
-
-                     /*   view.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-                        /////
-
-                        ////////
-
-                        view.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;*/
-                    }
-
-                    private void МетодОбрабатываетСвоиСообщенияДляЧата (TextView view, Cursor cursor, String ПолученноеТелоСообщения, int ПолученноеКтоНаписал) {
+                    private void МетодОбрабатываетСвоиСообщенияДляЧатаText1(TextView view, Cursor cursor, String ПолученноеТелоСообщения, int ПолученноеКтоНаписал) {
                         // TODO: 29.04.2021 ПрисваемваемКАЖДОМУ СОТРУДНИКУ ID
+                        try {
+                            // TODO: 25.02.2022 форматирование текста
+                            view.setText(ПолученноеТелоСообщения);
 
-                        // TODO: 25.02.2022 форматирование текста
-
-                        // TODO: 04.11.2021
-                        view.setText(ПолученноеТелоСообщения);
-
-                        //  ((TextView) view).setBackgroundResource(R.drawable.style_for_chat);
-                        Log.d(this.getClass().getName(), " статус нет нет  ID  ОТ СЕРВЕРА  ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента +
-                                " ПолученноеКтоНаписал " + ПолученноеКтоНаписал);
-
-
-                        // TODO: 30.06.2021 форматирование кто написал
-                                  /*      int ИндексУзнатьIDПолеNULLИЛИНЕТЭтоЗначитЧтоСообщенеиОтправленонНаСервер = cursor.getColumnIndex("_id");//TODO _id status_write
-
-                                        // TODO: 29.04.2021
-                                        Integer ПолученноеIDСтатусОтпарвкиNULL = 0;
-                                        /////////////////
-                                        ПолученноеIDСтатусОтпарвкиNULL = cursor.getInt(ИндексУзнатьIDПолеNULLИЛИНЕТЭтоЗначитЧтоСообщенеиОтправленонНаСервер);
-
-
-                                        Log.d(this.getClass().getName(), " ПолученноеIDСтатусОтпарвкиNULL " + ПолученноеIDСтатусОтпарвкиNULL);*/
-
-
-                        Log.d(this.getClass().getName(), "Мне Написал Кото то ПолученноеКтоНаписал " + ПолученноеКтоНаписал + "\n" +
-                                " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
-                        //  ((TextView) view).setTypeface(Typeface.SANS_SERIF,Typeface.NORMAL);
-
-
-
-
-
-
-
-
-
-
-
-
-                        ////todo ПОКАЗЫВАЕМ ФЛАГ ЕСЛИ ДАННЫЕ УСПЕШНО ОПРАВИЛИЬС ИЛИ ВРЕНУЛСЬ СС СЕРВРА ТО СООБШЕНИЯ ОКРАШИВАЕМ В СИНИЯ ЦВЕТ
-                        МетодИзменяетСтильСтрочкиСообщенияВМоментеЕслиССервераПришелОтветОПолжительнойВставкеСообщения(view, ПолученноеТелоСообщения);
-
-                        // TODO: 04.02.2022  еще один код кторе изменяет СТИЛЬ СТРОЧКИ ЕСЛИ С СЕРВЕРА ПИШЕЛ ID
-
-
-
-
-
-
-                        // TODO: 30.06.2021 форматирование кто написал
-                        МетодИзменяетСтильСтрочкиСообщенияЕслиСервераПришелЗаполеныйID(view, cursor);
-
-
-
-
-
-                        // TODO: 30.06.2021 ДАННЫЙ МЕТОД ВЫЧИСЛЯЕТ ПО ПОЛЮ В СООБЩИИ ПРОЧИТАЛ ЛИ ДАННОЕ СООБЩЕНИЕ КОНТАК КОТРОМУ МЫ МЫ И ПИСАЛИ ПИСЬМО
-                        МетодКоторыйВычисляемПрочиталЛиДанноеСообщениеТОтКомуЭтоСообщениеПредназначалось( (TextView)  view, cursor, ПолученноеТелоСообщения);
-
-
-
-
-
-
+                            Log.d(this.getClass().getName(), " статус нет нет  ID  ОТ СЕРВЕРА  ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента +
+                                    " ПолученноеКтоНаписал " + ПолученноеКтоНаписал);
+                            ////
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            ///метод запись ошибок в таблицу
+                            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                        }
                     }
+
 
                     private void МетодКоторыйВычисляемПрочиталЛиДанноеСообщениеТОтКомуЭтоСообщениеПредназначалось (TextView view, Cursor cursor, String ПолученноеТелоСообщения) {
                         // TODO: 30.06.2021 ДАННЫЙ МЕТОД ВЫЧИСЛЯЕТ ПО ПОЛЮ В СООБЩИИ ПРОЧИТАЛ ЛИ ДАННОЕ СООБЩЕНИЕ КОНТАК КОТРОМУ МЫ МЫ И ПИСАЛИ ПИСЬМО
@@ -1916,20 +1768,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                                 // TODO: 25.02.2022 форматирование текста
 
-                                //view.setInputType(InputType.TYPE_TEXT_FLAG_IME_MULTI_LINE);
-                                // TODO: 04.11.2021
-                                view.setText(ПолученноеТелоСообщения);
-
-                                ///((TextView) view).setBackgroundResource(R.drawable.style_for_chat_an_servers);///
-                                //view.setBackgroundResource(R.drawable.style_for_chat);
-                                view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
-                                Log.w(this.getClass().getName(), " статус ЕСТЬ ID  ОТ СЕРВЕРА ПолученноеIDСтатусОтпарвкиNULL "
-                                        + наченияПоПолюПрочиталЛИНашеСообщениеТотКомуОноБылоПослано);
-
-
-                                Drawable icon = null;
-                                icon = getResources().getDrawable(R.drawable.style_for_chat_alien_success_last_send_server);//R.drawable.style_for_chat
-                                icon.setBounds(0, 0, 0, 100);
+                                view.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chat_status, 0);
 
                             }
 
@@ -1964,25 +1803,8 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                                 new VIEW(getContext()).МетодДляЧатаПоказываемВизуальноОтправкуИИлиПолучениеДанных("Успешно !!!", 2000);
 
-/*
-
-
-                            // TODO: 04.11.2021
-                            view.setText(ПолученноеТелоСообщения);
-
-                            ///((TextView) view).setBackgroundResource(R.drawable.style_for_chat_an_servers);///
-                            view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
-
-                            Log.w(this.getClass().getName(), " статус ЕСТЬ ID  ОТ СЕРВЕРА CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового);
-
-
-                            Drawable icon = null;
-                            icon = getResources().getDrawable(R.drawable.style_for_chat_alien_success_last_send_server);
-                            icon.setBounds(0, 0, 0, 100);
-*/
 
                                 // TODO: 15.01.2022 после выполения изменения цвета на одной конкретноя строчке обнуляем перменую
-
 
                                 Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового);
                             }
@@ -2011,20 +1833,11 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                         if ( ПолучаемID_ДляПроверкиКогдаПриходитССервера>0) {
 
-
-                            ///((TextView) view).setBackgroundResource(R.drawable.style_for_chat_an_servers);///
-                            view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
-
-                            Log.w(this.getClass().getName(), " статус ЕСТЬ ID  ОТ СЕРВЕРА CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового);
-                            Drawable icon = null;
-                            icon = getResources().getDrawable(R.drawable.style_for_chat_alien_success_last_send_server);
-                            icon.setBounds(0, 0, 0, 100);
+                            view.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chat_status, 0);
 
                             // TODO: 15.01.2022 после выполения изменения цвета на одной конкретноя строчке обнуляем перменую
                             Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового);
                             // TODO: 18.02.2022
-
-
 
                         }
                     }
@@ -2255,10 +2068,6 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                             // TODO: 07.02.2022   мои сообщения
 
-                            // TODO: 28.03.2022  ДЛЯ НИЖНЕГО TEXT2 ДИЗАЙН
-
-
-                            view.setBackgroundResource(R.drawable.style_for_chat_new_style_read_wtire_empty_for_text2);
 
 
                             //

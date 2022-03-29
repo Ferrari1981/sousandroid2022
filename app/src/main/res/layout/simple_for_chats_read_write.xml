@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
         android:checkMark="?android:attr/textCheckMark"
@@ -28,6 +28,7 @@
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
         android:visibility="visible"
         app:backgroundTint="#80D8FF"
+        app:layout_constraintStart_toEndOf="parent"
         app:cornerRadius="12dp" />
 
     <LinearLayout
@@ -39,7 +40,7 @@
             android:id="@android:id/text2"
             style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginStart="260dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
@@ -57,7 +58,7 @@
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
             android:visibility="visible"
             app:backgroundTint="#B9F6CA"
-            app:cornerRadius="14dp"
+            app:cornerRadius="16dp"
             app:iconTintMode="screen"
             app:layout_constraintStart_toEndOf="parent"
             app:strokeColor="#E91E63" />
@@ -65,12 +66,12 @@
 
         <ImageView
             android:id="@+id/imageView_chats_write"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
-            android:layout_height="30dp"
             android:visibility="visible"
             app:srcCompat="@drawable/icon_dsu1_for_chats_exists_publicid2"
             tools:src="@tools:sample/avatars" />
