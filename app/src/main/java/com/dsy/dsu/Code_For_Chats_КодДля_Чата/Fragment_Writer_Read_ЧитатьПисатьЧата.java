@@ -1538,6 +1538,10 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                                     MaterialButton textViewСамоСообщение = view.findViewById(android.R.id.text1);
 
+                                    // TODO: 29.03.2022
+                                    // TODO: 29.03.2022
+                                    ((MaterialButton) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
                                     Log.d(this.getClass().getName(), " ClassActitytyClassActityty  textViewСамоСообщение " + textViewСамоСообщение);
 
                                     // TODO: 29.06.2021 сами сообщения для с выбранным сотрудником
@@ -1610,7 +1614,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
 
                                         ////todo ПОКАЗЫВАЕМ ФЛАГ ЕСЛИ ДАННЫЕ УСПЕШНО ОПРАВИЛИЬС ИЛИ ВРЕНУЛСЬ СС СЕРВРА ТО СООБШЕНИЯ ОКРАШИВАЕМ В СИНИЯ ЦВЕТ
-                                        МетодИзменяетСтильСтрочкиСообщенияВМоментеЕслиССервераПришелОтветОПолжительнойВставкеСообщенияВремяОжидания((MaterialButton) view, ПолученноеТелоСообщения);
+                                        МетодИзменяетСтильСтрочкиСообщенияВМоментеЕслиССервераПришелОтветОПолжительнойВставкеСообщенияВремяОжиданияText1((MaterialButton) view, ПолученноеТелоСообщения);
 
 
                                         // TODO: 29.03.2022  меняем цвет сообещния в засимости я написал его или мне написли
@@ -1639,13 +1643,13 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                                         // TODO: 23.11.2021  данные код МЕНЯТЕТ СТАТУС СООБЩЕНИЕ КОТОРЕ ПРИШЛО НАПИСАНО МНЕ И Я  ЕГО МЕНЯЮ А ПРОЧИТАННОЙ
 
-                                        МетодИзмененияСтатусаСаписиКторуюНапислиМнеДругиеУчастиниЧатаИМЫЕгоПослеПрочтенияМеняемКакПрочитанные(cursor,
+                                        МетодСменаСтатусаНеНашихСообщенийЧатаText2(cursor,
                                                 ПолученноеКтоНаписал, (TextView) textViewСамоСообщение);
 
 
                                         ///////TODO ОТОБРОЖЕНИЯ СООБШЕНИЙ КОТОРЫЕ НЕ МОИ
 
-                                        МетодФормленияСообщениеййНаписаннымиНеНамиАДругимиУчастиникамиЧата((TextView) view, ПолученноеТелоСообщения);
+                                        МетодФормленияСообщениеййНаписаннымиНеНамиАДругимиУчастиникамиЧатаText2((TextView) view, ПолученноеТелоСообщения);
 
 
                                         // TODO: 29.03.2022  меняем цвет сообещния в засимости я написал его или мне написли
@@ -1738,7 +1742,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                         try {
 
-                            view.setBackgroundColor(Color.parseColor(CамЦветУстановочный));
+                            ((MaterialButton) view).setBackgroundColor(Color.parseColor(CамЦветУстановочный));
 
                             // TODO: 29.03.2022
                             Log.d(this.getClass().getName(), " ПолученноеКтоНаписал " + ПолученноеКтоНаписал
@@ -1798,7 +1802,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                                 // TODO: 25.02.2022 форматирование текста
 
-                                view.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chat_status, 0);
+                                ((MaterialButton) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chat_status, 0);
 
                                 //  ((TextView) view).setBackgroundResource(R.drawable.style_for_chat);
                                 Log.d(this.getClass().getName(), " статус нет нет  ID  ОТ СЕРВЕРА  ПCallBaskОтWorkManagerОдноразового" +
@@ -1830,7 +1834,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                         }
                     }
 
-                    private void МетодИзменяетСтильСтрочкиСообщенияВМоментеЕслиССервераПришелОтветОПолжительнойВставкеСообщенияВремяОжидания(MaterialButton view, String ПолученноеТелоСообщения) {
+                    private void МетодИзменяетСтильСтрочкиСообщенияВМоментеЕслиССервераПришелОтветОПолжительнойВставкеСообщенияВремяОжиданияText1(MaterialButton view, String ПолученноеТелоСообщения) {
 
 
                         try {
@@ -1875,14 +1879,14 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                             if (ПолучаемID_ДляПроверкиКогдаПриходитССервера > 0) {
 
-                                view.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chats_exists_publicid2, 0);
+                                ((MaterialButton) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chats_exists_publicid2, 0);
 
                                 // TODO: 15.01.2022 после выполения изменения цвета на одной конкретноя строчке обнуляем перменую
                                 Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового);
                                 // TODO: 18.02.2022
 
                             } else {
-                                view.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                                ((MaterialButton) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 
                                 // TODO: 15.01.2022 после выполения изменения цвета на одной конкретноя строчке обнуляем перменую
                                 Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового);
@@ -1909,7 +1913,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
 
                     // TODO: 29.03.2022  мне написали
-                    private void МетодФормленияСообщениеййНаписаннымиНеНамиАДругимиУчастиникамиЧата(TextView view, String ПолученноеТелоСообщения) {
+                    private void МетодФормленияСообщениеййНаписаннымиНеНамиАДругимиУчастиникамиЧатаText2(TextView view, String ПолученноеТелоСообщения) {
 
                         try {
 
@@ -1933,7 +1937,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                     }
 
-                    private void МетодИзмененияСтатусаСаписиКторуюНапислиМнеДругиеУчастиниЧатаИМЫЕгоПослеПрочтенияМеняемКакПрочитанные(Cursor cursor, int ПолученноеКтоНаписал, TextView textViewСамоСообщение) {
+                    private void МетодСменаСтатусаНеНашихСообщенийЧатаText2(Cursor cursor, int ПолученноеКтоНаписал, TextView textViewСамоСообщение) {
                         Boolean РезультатИзмененияСтатусаПрочитанныйИПолученияСтатусаГотовыхСтрочек = false;
                         //TODO изменяем статус записи
                         try {
@@ -2108,7 +2112,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                                 // TODO: 07.02.2022  вЫЧИСЛЕМ оТПРАВЛИ м сООБЗЕНЕИ НА СЕРВРО ИЛИ ПОЛЬЗОВАТЕЛЬ ИЗХ ПРОЧИТАЛ
 // TODO: 18.02.2022  сообщение прочитанно другим  КОМУ ПРЕДНАЗНАЧАЛОСЬ
                                 //view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_add_organisazio_success, 0, 0, 0);
-                                view.setText(ФиналДата);///ПолученыйФИОIDДляЧата
+                                ((MaterialButton) view).setText(ФиналДата);///ПолученыйФИОIDДляЧата
                                 ////
                                 Log.d(this.getClass().getName(), "  ПолученноеКтоНаписалДляtext2  " + ПолученноеКтоНаписалДляtext2 + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
 
@@ -2116,10 +2120,10 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                             } else {
 
                                 // TODO: 29.03.2022
-                                view.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                                ((MaterialButton) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 
                                 //   view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_add_organisazio_error, 0, 0, 0);
-                                view.setText(ФиоКтоНАписалСообщение.trim() + " " + ФиналДата);///ПолученыйФИОIDДляЧата
+                                ((MaterialButton) view).setText(ФиоКтоНАписалСообщение.trim() + " " + ФиналДата);///ПолученыйФИОIDДляЧата
                                 ////
                                 Log.d(this.getClass().getName(), "  ПолученноеКтоНаписалДляtext2  " + ПолученноеКтоНаписалДляtext2 + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
 
@@ -2215,7 +2219,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                 SimpleAdapter АдаптерДляЗаписиЧтенияКогдаНетДанных = null;
 ///
                 АдаптерДляЗаписиЧтенияКогдаНетДанных = new SimpleAdapter(getContext(), arrayList, R.layout.simple_for_chats_read_write,
-                        new String[]{"Name", "Name"},
+                        new String[]{"name", "date_update"},
                         new int[]{android.R.id.text1, android.R.id.text2});
 
 
