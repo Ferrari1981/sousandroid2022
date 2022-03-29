@@ -32,6 +32,7 @@ public class MainActivity_Tasks extends FragmentActivity {
     private Fragment fragment_дляЗадачиПерваяКнопка;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
@@ -69,7 +70,6 @@ public class MainActivity_Tasks extends FragmentActivity {
 
 
 
-
             Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи);
 
             // TODO: 01.03.2022*/
@@ -84,7 +84,6 @@ public class MainActivity_Tasks extends FragmentActivity {
         }
 
     }
-
 
 
     // TODO: 10.03.2022

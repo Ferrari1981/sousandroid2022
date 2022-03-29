@@ -2,7 +2,10 @@ package com.dsy.dsu.Code_For_Tasks_КодДля_Задания;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteCursor;
@@ -23,6 +26,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.work.WorkInfo;
@@ -1066,6 +1070,10 @@ public class Fragment1_One_Tasks extends Fragment {
             TextView textView1, textView2, textView3, textView4, textView5;
             // TODO: 13.03.2022
             MaterialCardView materialCardView;
+            // TODO: 29.03.2022
+            LocalBroadcastManager localBroadcastManagerПриСменеСтатусаЗадачи;
+            // TODO: 13.03.2022
+            BroadcastReceiver broadcastReceiverПриСменеСтатуса;
 
             // TODO: 02.03.2022
             public MyViewHolder(@NonNull View itemView) {
@@ -1227,6 +1235,11 @@ public class Fragment1_One_Tasks extends Fragment {
                         МетодБиндингаЗаполненияДаннымиBungle(holder, СамСтатусПрочтенияИлиНет);
 
                         Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + BungleДанныеДляViewCard + " СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
+
+
+                        // TODO: 02.03.2022#5 создание слушателья для смены статуса дополнительный через Localbrodcast
+
+                        МетодРелистарцииЛокальногоБродкастераПослеСменыСтатусаЗадачи(holder);
 
 
                         // TODO: 13.03.2022 настройки для carview
@@ -1719,6 +1732,63 @@ public class Fragment1_One_Tasks extends Fragment {
                             Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                     //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
                 }
+            }
+
+
+            // TODO: 29.03.2022  слутаеть смены статуса
+
+
+            // TODO: 29.03.2022  метод регмстарцмии локального брод кастера доля смен задачи
+
+            private void МетодРелистарцииЛокальногоБродкастераПослеСменыСтатусаЗадачи(MyViewHolder holder) {
+
+                try {
+
+                    Log.d(this.getClass().getName(), "  МетодЗапускПослеНажатияНАНовойФормеНАКнопкуУстановитьПослеУспешнойЗагрузкиНовогоПОТабельныйУчётПоказываемЕгоПользователю");
+
+                    // TODO: 25.03.2022 Создание Локального БродКстаера
+
+                    holder.localBroadcastManagerПриСменеСтатусаЗадачи = LocalBroadcastManager.getInstance(getContext());
+                    // TODO: 25.03.2022
+                    holder.broadcastReceiverПриСменеСтатуса = new BroadcastReceiver() {
+                        @Override
+                        public void onReceive(Context context, Intent intent) {
+
+                            // TODO: 29.03.2022
+
+                            recyclerView.requestLayout();
+
+                            recyclerView.requestFocus();
+
+
+                            bottomNavigationViewДляTasks.requestLayout();
+
+
+                            linearLayou.requestLayout();
+
+
+                        }
+                    };
+
+                    // TODO: 25.03.2022 установливаем настройки Фильмо к Локальному БродКсстеру
+                    IntentFilter intentFilterУстановка = new IntentFilter();
+                    // TODO: 25.03.2022
+                    intentFilterУстановка.addAction("LocalBroadcastManagerСменаСтатусаЗадачи");
+
+                    holder.localBroadcastManagerПриСменеСтатусаЗадачи.registerReceiver(holder.broadcastReceiverПриСменеСтатуса, intentFilterУстановка);
+
+
+                    // TODO: 01.03.2022*/
+                    /////////////
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                }
+
             }
 
 

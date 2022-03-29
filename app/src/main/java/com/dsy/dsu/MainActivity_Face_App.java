@@ -251,7 +251,6 @@ public class MainActivity_Face_App extends AppCompatActivity {
             // TODO: 28.12.2021   Метод  ДАННЫЙ МЕТОД ВСЕГДА ПОСЛЕДНИЙ  если пришло Новоое Обновление По табельный УЧЁТ ПО ЗАПУСКАЕМ ЕГО ВСТАВКИ ПОКАЗЫВАЕМ ПОЛЬЗОВАТЕЛЮ
 
 
-
         } catch (Exception e) {
             //  Block of code to handle errors
             e.printStackTrace();

@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
@@ -329,18 +330,22 @@ public class Service_Notificatios_Для_Задания extends Service {////Ser
             if (РезультатСменыСтатусаНаОзнакомленный == true) {
 
 
-                    notificationManager = (NotificationManager)
-                            getSystemService(NOTIFICATION_SERVICE);
+                notificationManager = (NotificationManager)
+                        getSystemService(NOTIFICATION_SERVICE);
 
 
-                    // notificationManager.cancelAll();
-                    notificationManager.cancel(Integer.parseInt(PROCESS_ID));
+                // notificationManager.cancelAll();
+                notificationManager.cancel(Integer.parseInt(PROCESS_ID));
 
-                    stopForeground(true);
+                stopForeground(true);
 
 
-                 ///   Toast.makeText(getApplicationContext(), " Статус изменен  !!!", Toast.LENGTH_LONG).show();
-                } else {
+                // TODO: 29.03.2022 метод первоночальной регистациии слушателья
+
+                МетодПослеСменыСтаусаЗАдачиЧерезЛокльныйБродКастерОтправимИзмениниянаАктивти();
+
+                ///   Toast.makeText(getApplicationContext(), " Статус изменен  !!!", Toast.LENGTH_LONG).show();
+            } else {
 
                     Toast.makeText(getApplicationContext(), " Статус осталься прежним ? ", Toast.LENGTH_LONG).show();
 
@@ -387,6 +392,42 @@ public class Service_Notificatios_Для_Задания extends Service {////Ser
 
         }
 
+
+    }
+
+    ///TODO метод определяем стоит запускать и создвать службу напоминаний или нет
+    void МетодПослеСменыСтаусаЗАдачиЧерезЛокльныйБродКастерОтправимИзмениниянаАктивти() {
+
+        try {
+// TODO: 25.03.2022 ТУТ МЫ ОТПРВЯЛЕМ ВЕРИСЮ ДАННЫХ И ФАЙЛ ПРИУСТАВНВОЕ по ТАБЕЛЬНЫЙ УЧЁТ
+
+            Intent intentДляУстановеПослеСменыСтатусаЗадачи = new Intent();
+            // TODO: 25.03.2022
+            intentДляУстановеПослеСменыСтатусаЗадачи.setAction("LocalBroadcastManagerСменаСтатусаЗадачи");
+            // TODO: 25.03.2022
+            Bundle bundleУСменыСтатусаЗадачи = new Bundle();
+            // TODO: 25.03.2022
+            bundleУСменыСтатусаЗадачи.putString("СменилиСтатусЗадачи", "СменилиСтатусЗадачи");
+            // TODO: 25.03.2022
+            intentДляУстановеПослеСменыСтатусаЗадачи.putExtras(bundleУСменыСтатусаЗадачи);
+
+            Log.w(this.getClass().getName(), "УниверсальныйБуферAPKФайлаПОсСервераВнутри файл записалься на диск   bundleУСменыСтатусаЗадачи  " + bundleУСменыСтатусаЗадачи);
+            // TODO: 25.03.2022  локальный бродкастер
+            LocalBroadcastManager localBroadcastManagerОтправляемНаActivityFaceApp = LocalBroadcastManager.getInstance(getApplicationContext());
+            // TODO: 25.03.2022
+            localBroadcastManagerОтправляемНаActivityFaceApp.sendBroadcast(intentДляУстановеПослеСменыСтатусаЗадачи);
+            // TODO: 25.03.2022
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            ///метод запись ошибок в таблицу
+            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+            new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+
+        }
 
     }
 
