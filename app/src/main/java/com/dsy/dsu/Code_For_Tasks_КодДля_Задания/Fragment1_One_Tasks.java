@@ -520,6 +520,7 @@ public class Fragment1_One_Tasks extends Fragment {
                                 // TODO: 04.03.2022
                                 Курсор_ГлавныйКурсорДляЗадач.moveToFirst();
                             }
+
                         }
 
                         @Override
@@ -1129,14 +1130,17 @@ public class Fragment1_One_Tasks extends Fragment {
 
         class MyRecycleViewAdapter extends RecyclerView.Adapter<MyViewHolder> {
             // TODO: 04.03.2022
-            SQLiteCursor Курсор_ДляПолученияДАнныхДляЗАДАЧTASK;
+            SQLiteCursor Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри;
 
             // TODO: 15.03.2022
 
             public MyRecycleViewAdapter(@NotNull SQLiteCursor Курсор_ДляПолученияДАнныхДляЗАДАЧTASK) {
                 // super();
+
                 // TODO: 04.03.2022
-                this.Курсор_ДляПолученияДАнныхДляЗАДАЧTASK = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK;
+                this.Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK;
+
+                // TODO: 29.03.2022
                 if (Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount() > 0) {
                     // TODO: 04.03.2022
                     Log.i(this.getClass().getName(), "   MyRecycleViewAdapter   Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount()>" + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount());
@@ -1181,13 +1185,13 @@ public class Fragment1_One_Tasks extends Fragment {
                 // TODO: 28.02.2022 привазяваем данные из колекции пряме на наш recycreview
                 try {
                     // TODO: 14.03.2022
-                    if (position <= Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount()) {
+                    if (position <= Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getCount()) {
 
                         // TODO: 02.03.2022 тут РАЗДАЕМ ДАННЫЕ RECYCLERBIEW
 
-                        Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.moveToPosition(position);//todo old  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);
+                        Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToPosition(position);//todo old  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);
                         // TODO: 04.03.2022 p==osion
-                        Log.i(this.getClass().getName(), "  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition() " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition());
+                        Log.i(this.getClass().getName(), "  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition() " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getPosition());
 
 
                         // TODO: 14.03.2022  метод создания само сообщения
@@ -1269,10 +1273,10 @@ public class Fragment1_One_Tasks extends Fragment {
                 // TODO: 03.03.2022
                 try {
 
-                    Integer ИндексUUIDДЛяЗАДАНИЯКотореВыбрали = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("uuid");///"uuid_notifications"
+                    Integer ИндексUUIDДЛяЗАДАНИЯКотореВыбрали = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("uuid");///"uuid_notifications"
                     // TODO: 02.03.2022 получет UUID строчки
 
-                    Long UUIDДЛяЗАДАНИЯКотореВыбрали = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getLong(ИндексUUIDДЛяЗАДАНИЯКотореВыбрали);
+                    Long UUIDДЛяЗАДАНИЯКотореВыбрали = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getLong(ИндексUUIDДЛяЗАДАНИЯКотореВыбрали);
 
                     Log.i(this.getClass().getName(), "  UUIDДЛяЗАДАНИЯКотореВыбрали " + UUIDДЛяЗАДАНИЯКотореВыбрали);
 
@@ -1309,10 +1313,10 @@ public class Fragment1_One_Tasks extends Fragment {
             private void МетодБиндингПолучаемТипЗадания(@NonNull MyViewHolder holder) {
 
                 try {
-                    Integer ИндексСтатусТипаЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("type_tasks");
+                    Integer ИндексСтатусТипаЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("type_tasks");
                     // TODO: 02.03.2022
 
-                    String СамТипЗадания = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getString(ИндексСтатусТипаЗадачи);
+                    String СамТипЗадания = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getString(ИндексСтатусТипаЗадачи);
 
                     Log.i(this.getClass().getName(), "  СамТипЗадания " + СамТипЗадания);
 
@@ -1334,10 +1338,10 @@ public class Fragment1_One_Tasks extends Fragment {
                 Integer СамСтатусПрочтенияИлиНет = 0;
                 try {
 
-                    Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("status_write");
+                    Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("status_write");
                     // TODO: 02.03.2022
 
-                    СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексСтатусПрочтенияИлиНЕт);
+                    СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getInt(ИндексСтатусПрочтенияИлиНЕт);
                     // TODO: 03.03.2022
 
                     holder.textView1.setTag(СамСтатусПрочтенияИлиНет);
@@ -1360,9 +1364,9 @@ public class Fragment1_One_Tasks extends Fragment {
             private void МетодБиндингаФИОДляЗадания(@NonNull MyViewHolder holder) throws ExecutionException, InterruptedException {
                 try {
                     // TODO: 02.03.2022#4  // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4 // TODO: 02.03.2022#4
-                    Integer ИндексКтоНаписалСообщение = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("user_update");
+                    Integer ИндексКтоНаписалСообщение = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("user_update");
                     // TODO: 02.03.2022
-                    Integer КтоНаписалСообщениеФИОдЛПосика = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексКтоНаписалСообщение);
+                    Integer КтоНаписалСообщениеФИОдЛПосика = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getInt(ИндексКтоНаписалСообщение);
                     // TODO: 02.03.2022
                     Log.i(this.getClass().getName(), "  КтоНаписалСообщениеФИОдЛПосика " + КтоНаписалСообщениеФИОдЛПосика);
                     // TODO: 02.03.2022
@@ -1405,9 +1409,9 @@ public class Fragment1_One_Tasks extends Fragment {
             private void МетодБиндингаДатаЗадания(@NonNull MyViewHolder holder) throws ParseException {
                 try {
                     // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3  // TODO: 02.03.2022#3
-                    Integer ИндексПолучаемДатыЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("date_update");
+                    Integer ИндексПолучаемДатыЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("date_update");
                     // TODO: 02.03.2022
-                    String СамаДАтаЗадачиТекущей = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getString(ИндексПолучаемДатыЗадачи);
+                    String СамаДАтаЗадачиТекущей = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getString(ИндексПолучаемДатыЗадачи);
                     // TODO: 03.03.2022 парсинг даты
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", new Locale("ru"));
                     // TODO: 13.03.2022
@@ -1437,9 +1441,9 @@ public class Fragment1_One_Tasks extends Fragment {
             private void МетодБиндингаНомерЗадания(@NonNull MyViewHolder holder) {
                 try {
                     // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2 // TODO: 02.03.2022#2
-                    Integer ИндексПолучаемIDЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("id");
+                    Integer ИндексПолучаемIDЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("id");
                     // TODO: 02.03.2022
-                    Integer IDЗадачиТекущей = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексПолучаемIDЗадачи);
+                    Integer IDЗадачиТекущей = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getInt(ИндексПолучаемIDЗадачи);
                     // TODO: 02.03.2022
                     Log.i(this.getClass().getName(), "  IDЗадачиТекущей " + IDЗадачиТекущей);
 
@@ -1450,17 +1454,25 @@ public class Fragment1_One_Tasks extends Fragment {
 
                     // TODO: 02.03.2022#5
 
-                    Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("status_write");
+                    Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("status_write");
                     // TODO: 02.03.2022
 
-                    Integer СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексСтатусПрочтенияИлиНЕт);
+                    Integer СамСтатусПрочтенияИлиНет = 0;
 
+                    СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getInt(ИндексСтатусПрочтенияИлиНЕт);
 
+                    Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
+
+                    // TODO: 29.03.2022
                     if (СамСтатусПрочтенияИлиНет == 2) {
                         // TODO: 28.02.2022
                         holder.textView2.setError("Отказ от выполения");
-                    }
+                    } else {
 
+                        // TODO: 28.02.2022
+                        holder.textView2.setError(null);
+                    }
+                    holder.textView2.requestFocus();
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -1477,9 +1489,9 @@ public class Fragment1_One_Tasks extends Fragment {
 
                 try {
                     // TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1
-                    Integer ИндексСамогоСообщенияЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("message");
+                    Integer ИндексСамогоСообщенияЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("message");
                     // TODO: 02.03.2022
-                    String СамогоСообщенияЗадачиДляПользователя = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getString(ИндексСамогоСообщенияЗадачи);
+                    String СамогоСообщенияЗадачиДляПользователя = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getString(ИндексСамогоСообщенияЗадачи);
                     // TODO: 02.03.2022
                     Log.i(this.getClass().getName(), "  СамогоСообщенияЗадачиДляПользователя " + СамогоСообщенияЗадачиДляПользователя);
                     // TODO: 28.02.2022
@@ -1810,10 +1822,10 @@ public class Fragment1_One_Tasks extends Fragment {
 
                             // TODO: 02.03.2022#5
 
-                            Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getColumnIndex("status_write");
+                            Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("status_write");
                             // TODO: 02.03.2022
 
-                            Integer СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getInt(ИндексСтатусПрочтенияИлиНЕт);
+                            Integer СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getInt(ИндексСтатусПрочтенияИлиНЕт);
 
 
                             // TODO: 13.03.2022 прочитано
@@ -1939,9 +1951,9 @@ public class Fragment1_One_Tasks extends Fragment {
                 // TODO: 02.03.2022
                 ////////
 
-                Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASK);
+                Log.d(this.getClass().getName(), "Курсор_ДляПолученияДАнныхДляЗАДАЧTASK " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри);
                 // TODO: 28.02.2022
-                return Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getCount();
+                return Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getCount();
             }
         }//TODO  конец два
 
