@@ -59,7 +59,7 @@ public class SubClass_Starting_Tasks_ЗапускДЛяЗадач {
 
 
             // TODO: 24.03.2022
-            bundleДляПередачиВСлужбу.putString("PROCESS_ID_Задачи", PROCESS_ID_УведомленияПлановая + 8888);
+            bundleДляПередачиВСлужбу.putString("PROCESS_ID_Задачи", PROCESS_ID_УведомленияПлановая);
             // TODO: 24.03.2022
             bundleДляПередачиВСлужбу.putString("ИмяСлужбыУведомленияДляЧата_Задачи", ИмяСлужбыУведомленияДляЧата);
             // TODO: 24.03.2022  
