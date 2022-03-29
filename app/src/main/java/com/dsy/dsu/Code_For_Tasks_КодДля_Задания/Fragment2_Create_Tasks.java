@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteCursor;
@@ -17,12 +18,10 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -1378,7 +1377,11 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                             // TODO: 25.03.2022
                             int ФлагЗнака = R.drawable.icon_dsu1_new_customer2;
 
-                            final AlertDialog alertDialog = new MaterialAlertDialogBuilder(getActivity())
+                            MaterialAlertDialogBuilder alertDialogУдалениеЗадачи = new MaterialAlertDialogBuilder(getActivity());
+
+                            // TODO: 29.03.2022
+
+                            alertDialogУдалениеЗадачи
                                     .setTitle("Удаление")
                                     .setMessage("Удалить созданую задачу")
                                     .setPositiveButton("Да", null)
@@ -1386,13 +1389,11 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                     .setIcon(ФлагЗнака)
                                     .show();
 /////////кнопка
-                            final Button MessageBoxUpdateУдалаениеЗаданияДА = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
-                            MessageBoxUpdateУдалаениеЗаданияДА.setOnClickListener(new View.OnClickListener() {
-                                ///MessageBoxUpdate метод CLICK для DIALOBOX
+                            MaterialAlertDialogBuilder MessageBoxUpdateУдалаениеЗаданияДА = alertDialogУдалениеЗадачи.setPositiveButton("Да", new DialogInterface.OnClickListener() {
                                 @Override
-                                public void onClick(View v) {
-                                    //удаляем с экрана Диалог
-                                    alertDialog.dismiss();
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // TODO: 29.03.2022
+                                    dialog.dismiss();
                                     Log.d(this.getClass().getName(), "  ФИНАЛ создание нового сотрудника ");
                                     // TODO: 29.03.2022
                                     try {
@@ -1518,19 +1519,16 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                                 Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                                     }
                                 }
-
                             });
 
+
                             /////////кнопка
-                            final Button MessageBoxUpdateУдалаениеЗаданияНЕТ = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
-                            MessageBoxUpdateУдалаениеЗаданияНЕТ.setOnClickListener(new View.OnClickListener() {
-                                ///MessageBoxUpdate метод CLICK для DIALOBOX
+                            MaterialAlertDialogBuilder MessageBoxUpdateУдалаениеЗаданияНЕТ = alertDialogУдалениеЗадачи.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
                                 @Override
-                                public void onClick(View v) {
-                                    //удаляем с экрана Диалог
-                                    alertDialog.dismiss();
-                                    Log.d(this.getClass().getName(), "  ФИНАЛ создание нового сотрудника ");
+                                public void onClick(DialogInterface dialog, int which) {
                                     // TODO: 29.03.2022
+                                    dialog.dismiss();
+
                                     try {
                                         // TODO: 29.03.2022
                                         Log.d(this.getClass().getName(), " MessageBoxUpdateУдалаениеЗаданияНЕТ");
@@ -1543,9 +1541,13 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                         new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
                                                 Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                                     }
-                                }
 
+                                }
                             });
+// TODO: 29.03.2022
+                            alertDialogУдалениеЗадачи.show();
+                            // TODO: 29.03.2022
+                            Log.d(this.getClass().getName(), " MessageBoxUpdateУдалаениеЗаданияНЕТ");
 
                             // TODO: 29.03.2022 defalult
                             return true;
