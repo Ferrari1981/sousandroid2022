@@ -1904,14 +1904,18 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                                 Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового);
                                 // TODO: 18.02.2022
 
-                            } else {
+                            }
 
+
+                            if (ПолученноеКтоНаписалДляtext2 != ПубличныйIDДляФрагмента) {
+                                // TODO: 29.03.2022
                                 ((MaterialButton) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_message_owher_users, 0);
 
                                 // TODO: 15.01.2022 после выполения изменения цвета на одной конкретноя строчке обнуляем перменую
                                 Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового);
                                 // TODO: 18.02.2022
                             }
+
 
                             ////
                         } catch (Exception e) {
