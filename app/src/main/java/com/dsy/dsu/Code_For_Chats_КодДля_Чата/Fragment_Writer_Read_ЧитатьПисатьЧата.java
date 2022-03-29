@@ -11,7 +11,6 @@ import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteCursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
@@ -1578,6 +1577,9 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                                     Log.w(this.getClass().getName(), " UUIDЧатаКтоНАписалМнеНаписали " + UUIDЧатаКтоНАписалМнеНаписали);
 
+
+                                    // TODO: 29.03.2022  заполняем важной информацией инфификатор для всех и свои х СООБЩЕНИЙ И ЧУЖИХ
+
                                     ((MaterialButton) view).setTag(UUIDЧатаКтоНАписалМнеНаписали);
 
                                     // TODO: 23.11.2021 сам компонет ТЕКС1 само сообщение
@@ -1604,25 +1606,34 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                                         //TODO сообщения НАПИСАНЫ МНЕ --СООБЩЕНИЯ ЧУЖИЕ ОТ ДРУГОВО ПОЛЬЗОВАТЕЛЯ
 
-                                        МетодОбрабатываетСвоиСообщенияДляЧатаText1((TextView) view, cursor, ПолученноеТелоСообщения, ПолученноеКтоНаписал);
+                                        МетодОбрабатываетСвоиСообщенияДляЧатаText1((MaterialButton) view, cursor, ПолученноеТелоСообщения, ПолученноеКтоНаписал);
 
 
                                         ////todo ПОКАЗЫВАЕМ ФЛАГ ЕСЛИ ДАННЫЕ УСПЕШНО ОПРАВИЛИЬС ИЛИ ВРЕНУЛСЬ СС СЕРВРА ТО СООБШЕНИЯ ОКРАШИВАЕМ В СИНИЯ ЦВЕТ
-                                        МетодИзменяетСтильСтрочкиСообщенияВМоментеЕслиССервераПришелОтветОПолжительнойВставкеСообщения(view, ПолученноеТелоСообщения);
+                                        МетодИзменяетСтильСтрочкиСообщенияВМоментеЕслиССервераПришелОтветОПолжительнойВставкеСообщенияВремяОжидания((MaterialButton) view, ПолученноеТелоСообщения);
 
                                         // TODO: 04.02.2022  еще один код кторе изменяет СТИЛЬ СТРОЧКИ ЕСЛИ С СЕРВЕРА ПИШЕЛ ID
 
-                                        МетодИзменяетСтильСтрочкиСообщенияЕслиСервераПришелЗаполеныйID(view, cursor);
+                                        МетодИзменяетСтильСтрочкиСообщенияЕслиСервераПришелЗаполеныйID((MaterialButton) view, cursor);
 
 
                                         // TODO: 30.06.2021 ДАННЫЙ МЕТОД ВЫЧИСЛЯЕТ ПО ПОЛЮ В СООБЩИИ ПРОЧИТАЛ ЛИ ДАННОЕ СООБЩЕНИЕ КОНТАК КОТРОМУ МЫ МЫ И ПИСАЛИ ПИСЬМО
-                                        МетодКоторыйВычисляемПрочиталЛиДанноеСообщениеТОтКомуЭтоСообщениеПредназначалось((TextView) view, cursor, ПолученноеТелоСообщения);
+                                        МетодКоторыйВычисляемПрочиталЛиДанноеСообщениеКомуПисали((MaterialButton) view, cursor, ПолученноеТелоСообщения);
+
+                                        // TODO: 29.03.2022  меняем цвет сообещния в засимости я написал его или мне написли
+
+
+                                        МетодМеняемЦветСообщениявЗависимостиЯНаписалЕгоИлиМне((MaterialButton) view,
+                                                textViewСамоСообщение,
+                                                ПолученноеКтоНаписал,
+                                                "#80D8FF");
 
 
                                         // TODO: 29.03.2022  
                                         Log.d(this.getClass().getName(), " ПолученноеКтоНаписал " + ПолученноеКтоНаписал
                                                 + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента + " textViewСамоСообщение " + textViewСамоСообщение.getText().toString());
                                         // TODO: 03.01.2022  код не текущего пользователя кто МЕН НАПИСАЛ
+
 
                                     } else {
 
@@ -1639,9 +1650,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
 
                                         МетодИзмененияСтатусаСаписиКторуюНапислиМнеДругиеУчастиниЧатаИМЫЕгоПослеПрочтенияМеняемКакПрочитанные(cursor,
-                                                ПолученноеКтоНаписал, (TextView) textViewСамоСообщение);
-
-
+                                                ПолученноеКтоНаписал, (MaterialButton) textViewСамоСообщение);
 
 
                                         ///////TODO ОТОБРОЖЕНИЯ СООБШЕНИЙ КОТОРЫЕ НЕ МОИ
@@ -1652,10 +1661,18 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                                         // TODO: 07.02.2022
 
 
+                                        // TODO: 29.03.2022  меняем цвет сообещния в засимости я написал его или мне написли
+
+
+                                        МетодМеняемЦветСообщениявЗависимостиЯНаписалЕгоИлиМне((MaterialButton) view,
+                                                textViewСамоСообщение,
+                                                ПолученноеКтоНаписал,
+                                                "#FFFF9E80");
+
+
                                         Log.d(this.getClass().getName(), " Кому написано  ПолученноеКтоНаписал " + ПолученноеКтоНаписал
 
                                                 + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента + " textViewСамоСообщение " + textViewСамоСообщение.getText().toString());
-
 
 
                                     }
@@ -1726,8 +1743,32 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                     }
 
+                    private void МетодМеняемЦветСообщениявЗависимостиЯНаписалЕгоИлиМне(MaterialButton view, MaterialButton textViewСамоСообщение, int ПолученноеКтоНаписал
+                            , String CамЦветУстановочный) {
+                        // TODO: 29.03.2022   изменяем дизайн  сообщения мне НАПИСАЛИ И ЛИ Я
 
-                    private void МетодОбрабатываетСвоиСообщенияДляЧатаText1(TextView view, Cursor cursor, String ПолученноеТелоСообщения, int ПолученноеКтоНаписал) {
+                        try {
+
+                            view.setBackgroundColor(Color.parseColor(CамЦветУстановочный));
+
+                            // TODO: 29.03.2022
+                            Log.d(this.getClass().getName(), " ПолученноеКтоНаписал " + ПолученноеКтоНаписал
+                                    + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента + " textViewСамоСообщение " + textViewСамоСообщение.getText().toString());
+                            // TODO: 03.01.2022  код не текущего пользователя кто МЕН НАПИСАЛ
+
+                            ////
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            ///метод запись ошибок в таблицу
+                            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                        }
+                    }
+
+
+                    private void МетодОбрабатываетСвоиСообщенияДляЧатаText1(MaterialButton view, Cursor cursor, String ПолученноеТелоСообщения, int ПолученноеКтоНаписал) {
                         // TODO: 29.04.2021 ПрисваемваемКАЖДОМУ СОТРУДНИКУ ID
                         try {
                             // TODO: 25.02.2022 форматирование текста
@@ -1747,7 +1788,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                     }
 
 
-                    private void МетодКоторыйВычисляемПрочиталЛиДанноеСообщениеТОтКомуЭтоСообщениеПредназначалось (TextView view, Cursor cursor, String ПолученноеТелоСообщения) {
+                    private void МетодКоторыйВычисляемПрочиталЛиДанноеСообщениеКомуПисали(MaterialButton view, Cursor cursor, String ПолученноеТелоСообщения) {
                         // TODO: 30.06.2021 ДАННЫЙ МЕТОД ВЫЧИСЛЯЕТ ПО ПОЛЮ В СООБЩИИ ПРОЧИТАЛ ЛИ ДАННОЕ СООБЩЕНИЕ КОНТАК КОТРОМУ МЫ МЫ И ПИСАЛИ ПИСЬМО
 
                         try {
@@ -1770,7 +1811,19 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                                 view.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chat_status, 0);
 
-                            }
+                                //  ((TextView) view).setBackgroundResource(R.drawable.style_for_chat);
+                                Log.d(this.getClass().getName(), " статус нет нет  ID  ОТ СЕРВЕРА  ПCallBaskОтWorkManagerОдноразового" +
+                                        " " + CallBaskОтWorkManagerОдноразового);
+
+                            }/*else{
+
+                                view.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chats_exists_publicid2, 0);
+
+                                //  ((TextView) view).setBackgroundResource(R.drawable.style_for_chat);
+                                Log.d(this.getClass().getName(), " статус нет нет  ID  ОТ СЕРВЕРА  ПCallBaskОтWorkManagerОдноразового" +
+                                        " " + CallBaskОтWorkManagerОдноразового);
+
+                            }*/
 
                             //  ((TextView) view).setBackgroundResource(R.drawable.style_for_chat);
                             Log.d(this.getClass().getName(), " статус нет нет  ID  ОТ СЕРВЕРА  ПCallBaskОтWorkManagerОдноразового" +
@@ -1788,7 +1841,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                         }
                     }
 
-                    private void МетодИзменяетСтильСтрочкиСообщенияВМоментеЕслиССервераПришелОтветОПолжительнойВставкеСообщения(TextView view, String ПолученноеТелоСообщения) {
+                    private void МетодИзменяетСтильСтрочкиСообщенияВМоментеЕслиССервераПришелОтветОПолжительнойВставкеСообщенияВремяОжидания(MaterialButton view, String ПолученноеТелоСообщения) {
 
 
                         try {
@@ -1798,11 +1851,9 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                                 CallBaskОтWorkManagerОдноразового = 0l;
 
-
                                 //todo визальноеотображения хода синхрониазции
 
                                 new VIEW(getContext()).МетодДляЧатаПоказываемВизуальноОтправкуИИлиПолучениеДанных("Успешно !!!", 2000);
-
 
                                 // TODO: 15.01.2022 после выполения изменения цвета на одной конкретноя строчке обнуляем перменую
 
@@ -1821,69 +1872,86 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                     }
 
-                    private void МетодИзменяетСтильСтрочкиСообщенияЕслиСервераПришелЗаполеныйID(TextView view, Cursor cursor) {
-                        int ИндексУзнатьIDКогдаЗаписьВозвращяетьсяССервера = cursor.getColumnIndex("_id");//TODO _id status_write
+                    private void МетодИзменяетСтильСтрочкиСообщенияЕслиСервераПришелЗаполеныйID(MaterialButton view, Cursor cursor) {
 
-                        // TODO: 29.04.2021
-                        /////////////////
-                        Integer ПолучаемID_ДляПроверкиКогдаПриходитССервера= cursor.getInt(ИндексУзнатьIDКогдаЗаписьВозвращяетьсяССервера);
-                        // TODO: 04.02.2022
+                        try {
+                            int ИндексУзнатьIDКогдаЗаписьВозвращяетьсяССервера = cursor.getColumnIndex("_id");//TODO _id status_write
 
-                        Log.d(this.getClass().getName(), " ПолучаемID_ДляПроверкиКогдаПриходитССервера " + ПолучаемID_ДляПроверкиКогдаПриходитССервера);
+                            // TODO: 29.04.2021
+                            /////////////////
+                            Integer ПолучаемID_ДляПроверкиКогдаПриходитССервера = cursor.getInt(ИндексУзнатьIDКогдаЗаписьВозвращяетьсяССервера);
+                            // TODO: 04.02.2022
 
-                        if ( ПолучаемID_ДляПроверкиКогдаПриходитССервера>0) {
+                            Log.d(this.getClass().getName(), " ПолучаемID_ДляПроверкиКогдаПриходитССервера " + ПолучаемID_ДляПроверкиКогдаПриходитССервера);
 
-                            view.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chat_status, 0);
+                            if (ПолучаемID_ДляПроверкиКогдаПриходитССервера > 0) {
 
-                            // TODO: 15.01.2022 после выполения изменения цвета на одной конкретноя строчке обнуляем перменую
-                            Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового);
-                            // TODO: 18.02.2022
+                                view.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chats_exists_publicid2, 0);
 
+                                // TODO: 15.01.2022 после выполения изменения цвета на одной конкретноя строчке обнуляем перменую
+                                Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового);
+                                // TODO: 18.02.2022
+
+                            } else {
+                                view.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
+                                // TODO: 15.01.2022 после выполения изменения цвета на одной конкретноя строчке обнуляем перменую
+                                Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового);
+                                // TODO: 18.02.2022
+
+                            }
+
+
+                            // TODO: 29.03.2022
+
+
+                            ////
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            ///метод запись ошибок в таблицу
+                            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                         }
+
+
                     }
 
+
+                    // TODO: 29.03.2022  мне написали
                     private void МетодФормленияСообщениеййНаписаннымиНеНамиАДругимиУчастиникамиЧата(TextView view, String ПолученноеТелоСообщения) {
-                        view.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
-                        ///
 
-                        Drawable icon = null;
-                        icon = getResources().getDrawable(R.drawable.style_for_chat_alien);
-                        icon.setBounds(0, 0, 100, 0);
+                        try {
 
+                            // TODO: 04.11.2021
+                            view.setText(" " + ПолученноеТелоСообщения);
 
 
+                            Log.d(this.getClass().getName(), " метод посика уже существующего сотрудника в базе андройжа ПолученныйФИО"
+                                    + ПолученноеТелоСообщения);
 
 
+                            ////
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            ///метод запись ошибок в таблицу
+                            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                        }
 
-                        ///TODO ЧУЖИЕ СООБЩЕНИЯ ОКРАШИВАЕМ В РОЗОВАЙ ЦВЕТ
-                        // TODO: 25.02.2022 форматирование текста
-
-                        // view.setInputType(InputType.TYPE_TEXT_FLAG_IME_MULTI_LINE );
-
-                        view.setBackgroundResource(R.drawable.style_for_chat_alien); //style_for_chat_alien
-
-
-                        // TODO: 04.11.2021
-                        view.setText(" "+ ПолученноеТелоСообщения);
-
-                                /*        Drawable icon = null;
-                                        icon = getResources().getDrawable(R.drawable.style_for_chat_alien);
-                                        icon.setBounds(0, 0, 40, 40);*/
-                        //
-                        /*    ((TextView) view).setCompoundDrawables(null, null, icon, null);*/
-
-                        Log.d(this.getClass().getName(), " метод посика уже существующего сотрудника в базе андройжа ПолученныйФИО"
-                                + ПолученноеТелоСообщения);
                     }
 
-                    private void МетодИзмененияСтатусаСаписиКторуюНапислиМнеДругиеУчастиниЧатаИМЫЕгоПослеПрочтенияМеняемКакПрочитанные(Cursor cursor, int ПолученноеКтоНаписал, TextView textViewСамоСообщение) {
-                        Boolean РезультатИзмененияСтатусаПрочитанныйИПолученияСтатусаГотовыхСтрочек=false;
+                    private void МетодИзмененияСтатусаСаписиКторуюНапислиМнеДругиеУчастиниЧатаИМЫЕгоПослеПрочтенияМеняемКакПрочитанные(Cursor cursor, int ПолученноеКтоНаписал, MaterialButton textViewСамоСообщение) {
+                        Boolean РезультатИзмененияСтатусаПрочитанныйИПолученияСтатусаГотовыхСтрочек = false;
                         //TODO изменяем статус записи
                         try {
 
 
                             //todo САСИСЬ СТАТУСА
-                            РезультатИзмененияСтатусаПрочитанныйИПолученияСтатусаГотовыхСтрочек=
+                            РезультатИзмененияСтатусаПрочитанныйИПолученияСтатусаГотовыхСтрочек =
                                     new ПодКлассФрагментаЧитатьПисатьПоИзеннениюСтатусаЗАписивЧатеПрочитаноИлиНет().
                                             Метода_ФрагметаПрочитано_НаписаноИзменяемИПроверемСтатусПрочитаногоСТрочкиТекущийВчате(cursor,
                                                     textViewСамоСообщение,
@@ -1892,6 +1960,12 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                                                     controllerДляФрагментаЧитатьИлиПисать,
                                                     finalClass_Engine_SQLДляИзмененияСтатусаЗаписиПрочтитаноИлиНет,
                                                     Class_Engine_SQLГдеНаходитьсяМенеджерПотоков);
+
+                            // TODO: 29.03.2022
+
+
+                            Log.d(this.getClass().getName(), " метод посика уже существующего сотрудника РезультатИзмененияСтатусаПрочитанныйИПолученияСтатусаГотовыхСтрочек"
+                                    + РезультатИзмененияСтатусаПрочитанныйИПолученияСтатусаГотовыхСтрочек);
                         } catch (Exception e) {
                             e.printStackTrace();
                             ///метод запись ошибок в таблицу
@@ -4479,7 +4553,7 @@ class ПодКлассФрагментаЧитатьПисатьПоИзенне
     Class_GRUD_SQL_Operations class_grud_sql_operationsПовышаемВерсиюДанныхВосьмаяЧасть=new Class_GRUD_SQL_Operations(getContext());*/
 
     Boolean Метода_ФрагметаПрочитано_НаписаноИзменяемИПроверемСтатусПрочитаногоСТрочкиТекущийВчате(Cursor cursor,
-                                                                                                   TextView textViewСамоСообщение,
+                                                                                                   MaterialButton textViewСамоСообщение,
                                                                                                    Class_GRUD_SQL_Operations class_grud_sql_operationsПовышаемВерсиюДанныхВосьмаяЧасть,
                                                                                                    MODEL modelДляФрагментаЧитатьИлиПисать,
                                                                                                    CONTROLLER controllerДляФрагментаЧитатьИлиПисать,
