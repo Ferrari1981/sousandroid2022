@@ -1612,13 +1612,6 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                                         ////todo ПОКАЗЫВАЕМ ФЛАГ ЕСЛИ ДАННЫЕ УСПЕШНО ОПРАВИЛИЬС ИЛИ ВРЕНУЛСЬ СС СЕРВРА ТО СООБШЕНИЯ ОКРАШИВАЕМ В СИНИЯ ЦВЕТ
                                         МетодИзменяетСтильСтрочкиСообщенияВМоментеЕслиССервераПришелОтветОПолжительнойВставкеСообщенияВремяОжидания((MaterialButton) view, ПолученноеТелоСообщения);
 
-                                        // TODO: 04.02.2022  еще один код кторе изменяет СТИЛЬ СТРОЧКИ ЕСЛИ С СЕРВЕРА ПИШЕЛ ID
-
-                                        МетодИзменяетСтильСтрочкиСообщенияЕслиСервераПришелЗаполеныйID((MaterialButton) view, cursor);
-
-
-                                        // TODO: 30.06.2021 ДАННЫЙ МЕТОД ВЫЧИСЛЯЕТ ПО ПОЛЮ В СООБЩИИ ПРОЧИТАЛ ЛИ ДАННОЕ СООБЩЕНИЕ КОНТАК КОТРОМУ МЫ МЫ И ПИСАЛИ ПИСЬМО
-                                        МетодКоторыйВычисляемПрочиталЛиДанноеСообщениеКомуПисали((MaterialButton) view, cursor, ПолученноеТелоСообщения);
 
                                         // TODO: 29.03.2022  меняем цвет сообещния в засимости я написал его или мне написли
 
@@ -1644,10 +1637,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                                                 + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента + " textViewСамоСообщение " + textViewСамоСообщение.getText().toString());
 
-
-
                                         // TODO: 23.11.2021  данные код МЕНЯТЕТ СТАТУС СООБЩЕНИЕ КОТОРЕ ПРИШЛО НАПИСАНО МНЕ И Я  ЕГО МЕНЯЮ А ПРОЧИТАННОЙ
-
 
                                         МетодИзмененияСтатусаСаписиКторуюНапислиМнеДругиеУчастиниЧатаИМЫЕгоПослеПрочтенияМеняемКакПрочитанные(cursor,
                                                 ПолученноеКтоНаписал, (MaterialButton) textViewСамоСообщение);
@@ -1656,9 +1646,6 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                                         ///////TODO ОТОБРОЖЕНИЯ СООБШЕНИЙ КОТОРЫЕ НЕ МОИ
 
                                         МетодФормленияСообщениеййНаписаннымиНеНамиАДругимиУчастиникамиЧата((TextView) view, ПолученноеТелоСообщения);
-
-
-                                        // TODO: 07.02.2022
 
 
                                         // TODO: 29.03.2022  меняем цвет сообещния в засимости я написал его или мне написли
@@ -1693,22 +1680,24 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                                     // TODO: 18.02.2022 когда есть ID  от сервера
 
-                                    // TODO: 23.11.2021 сам компонет ТЕКС1 само сообщение
-
                                     MaterialButton text2ViewКтоПаисалИВремя = view.findViewById(android.R.id.text2);
 
-                                    ((MaterialButton) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-
-
-                                    МетодВФрагментеЧитатьИПисатьДляВторойВторостипеннойTEXT2((TextView) view, cursor);
-
-
-                                    // TODO: 28.03.2022 оформление снизу
+                                    МетодВФрагментеЧитатьИПисатьДляВторойВторостипеннойTEXT2((MaterialButton) view, cursor);
 
                                     // TODO: 20.01.2022  положтельный ответ для SimplrCurcor
+
+
+                                    // TODO: 04.02.2022  еще один код кторе изменяет СТИЛЬ СТРОЧКИ ЕСЛИ С СЕРВЕРА ПИШЕЛ ID
+
+                                    МетодИзменяетСтильСтрочкиСообщенияЕслиСервераПришелЗаполеныйID((MaterialButton) view, cursor);
+
+
+                                    // TODO: 30.06.2021 ДАННЫЙ МЕТОД ВЫЧИСЛЯЕТ ПО ПОЛЮ В СООБЩИИ ПРОЧИТАЛ ЛИ ДАННОЕ СООБЩЕНИЕ КОНТАК КОТРОМУ МЫ МЫ И ПИСАЛИ ПИСЬМО
+                                    МетодКоторыйВычисляемПрочиталЛиДанноеСообщениеКомуПисали((MaterialButton) view, cursor);
+
+
                                     return true;
                                 // TODO: 20.01.2022  положтельный ответ для SimplrCurcor
-
 
 
                                 default:
@@ -1788,7 +1777,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                     }
 
 
-                    private void МетодКоторыйВычисляемПрочиталЛиДанноеСообщениеКомуПисали(MaterialButton view, Cursor cursor, String ПолученноеТелоСообщения) {
+                    private void МетодКоторыйВычисляемПрочиталЛиДанноеСообщениеКомуПисали(MaterialButton view, Cursor cursor) {
                         // TODO: 30.06.2021 ДАННЫЙ МЕТОД ВЫЧИСЛЯЕТ ПО ПОЛЮ В СООБЩИИ ПРОЧИТАЛ ЛИ ДАННОЕ СООБЩЕНИЕ КОНТАК КОТРОМУ МЫ МЫ И ПИСАЛИ ПИСЬМО
 
                         try {
@@ -2016,17 +2005,10 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                         String ФиналДатаДлиннная = null;
                         //
-                        // ((TextView) view).setPadding(100,0,0,0);
-                        //   ((TextView) view).setTextColor(Color.parseColor("#F0FFFF"));//olor.parseColor("#00BBC1")
-
-                        ///  ((TextView) view).setBackgroundColor(Color.parseColor("#F5FFFA"));
-
-
                         try {
 
                             // TODO: 30.06.2021  дата сообщения
                             Integer ИндексДатаСообщенийВсехСВыбраннымСотрудником = cursor.getColumnIndex("date_update");
-
 
                             /////////////////даты
                             String ПолученноеДатыСообщенияСообщения = cursor.getString(ИндексДатаСообщенийВсехСВыбраннымСотрудником).trim();
@@ -2034,10 +2016,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                             // TODO: 29.04.2021
                             Log.d(this.getClass().getName(), " ПолученноеДатыСообщенияСообщения" + ПолученноеДатыСообщенияСообщения);
 
-
-                            if (ПолученноеДатыСообщенияСообщения != null) {
                                 // TODO: 28.06.2021 даты обработка
-
 
                                 Log.d(this.getClass().getName(), " ПолученноеДатыСообщенияСообщения" + ПолученноеДатыСообщенияСообщения);
 
@@ -2087,12 +2066,6 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                                 Log.d(this.getClass().getName(), "  ФиналДата  " + ФиналДата);
 
 
-                            } else {
-
-
-                                // TODO: 29.04.2021
-                                Log.d(this.getClass().getName(), " ПолученноеДатыСообщенияСообщения" + ПолученноеДатыСообщенияСообщения);
-                            }
 
 
                             // TODO: 18.08.2021 Определяем от кого было написано сообещгия
@@ -2114,14 +2087,9 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                             /////
                             ФиоКтоНАписалСообщение = modelДляФрагментаЧитатьИлиПисать.МетодКемБЫлоНАписаноСообщение(ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО);
 
-                            //
-
                             Log.d(this.getClass().getName(), "  ФиоКтоНАписалСообщение  " + ФиоКтоНАписалСообщение
                                     + " Кем написано  ПолученноеФИОКемБылоНаписаноСообщение " + ПолученноеФИОКемБылоНаписаноСообщение + "Кому  ПолученыйIDДляЧата "
                                     + ПолученыйIDДляЧата + " ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО " + ПолученноеФИОКемБылоНаписаноСообщениеДляПосикаФИО);
-
-
-                            view.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
 
 
 
@@ -2133,132 +2101,27 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                             int ПолученноеКтоНаписалДляtext2 = cursor.getInt(ИндексКтоНаписалСообщениеСотрудникомДляtext2);
 
 
-                            // TODO: 30.06.2021  выделять жирным или нет в записимости прочитан или нет
+                            // TODO: 07.02.2022   мои сообщения  ОБРАБОТКА TEXT2
 
-
-                            ////
-                            Log.d(this.getClass().getName(), "  ПолученноеКтоНаписалДляtext2  " + ПолученноеКтоНаписалДляtext2 + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
-
-
-                            // TODO: 07.02.2022   мои сообщения
-
-
-
-                            //
                             if (ПолученноеКтоНаписалДляtext2 == ПубличныйIDДляФрагмента) {
-                                /////
-                                view.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
 
                                 // TODO: 07.02.2022  вЫЧИСЛЕМ оТПРАВЛИ м сООБЗЕНЕИ НА СЕРВРО ИЛИ ПОЛЬЗОВАТЕЛЬ ИЗХ ПРОЧИТАЛ
-
-
-                                int ИндексЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ = cursor.getColumnIndex("_id");//TODO _id status_write
-
-                                Integer СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ = cursor.getInt(ИндексЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ);
-
-
-                                if (СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ == null) {
-
-                                    СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ = 0;
-                                }
+// TODO: 18.02.2022  сообщение прочитанно другим  КОМУ ПРЕДНАЗНАЧАЛОСЬ
+                                //view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_add_organisazio_success, 0, 0, 0);
+                                view.setText(ФиналДата);///ПолученыйФИОIDДляЧата
                                 ////
-                                Log.d(this.getClass().getName(), "  ЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ  " + СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ);
-
-
-                                // TODO: 07.02.2022 Второе условия ПользоватльКому Было Написно Сообщкенеи его Прочитал ИЛИ НЕТ
-                                int ИндексУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет = cursor.getColumnIndex("status_write");//TODO _id status_write
-
-                                Integer СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет = cursor.getInt(ИндексУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет);
-                                ////
-                                Log.d(this.getClass().getName(), "  СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет  "
-                                        + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет);
-
-
-                                if (СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет > 0) {
-
-                                    // TODO: 18.02.2022  " статус: доставлено)
-
-                                    view.setText(ФиналДата);
-
-                                    Log.d(this.getClass().getName(), " статус: прочитано СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет  "
-                                            + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНет);
-
-                                    view.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chat_status, 0);
-
-                                    //view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
-
-
-
-                                } else {
-
-                                    if (СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ > 0) {
-
-
-                                        Log.d(this.getClass().getName(), " статус: доставлено СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ  "
-                                                + СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ);
-                                        view.setText(ФиналДата);
-                                        // TODO: 18.02.2022 когда есть ID  от сервера
-
-                                        view.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_dsu1_for_chats_exists_publicid2, 0);
-                                    } else {
-
-                                        // TODO: 18.02.2022    " статус: не доставлено)
-                                        //  view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_message_add_contact_cycrle, 0, 0, 0);
-
-                                        Log.d(this.getClass().getName(), "   статус: не доставлено СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ  "
-                                                + СамоЗначенияНашегоСообщениеНаСеререЕстьИлиНЕТ);//R.drawable.icon_dsu1_message_add_toback_fragment
-                                        view.setText(ФиналДата);
-
-                                    }
-                                }
-
-
-
-
-                                // TODO: 07.02.2022  не мои сообщения
+                                Log.d(this.getClass().getName(), "  ПолученноеКтоНаписалДляtext2  " + ПолученноеКтоНаписалДляtext2 + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
 
 
                             } else {
 
+                                // TODO: 29.03.2022
+                                view.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 
-                                // TODO: 07.02.2022 Второе условия ПользоватльКому Было Написно Сообщкенеи его Прочитал ИЛИ НЕТ
-                                int ИндексУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений = cursor.getColumnIndex("status_write");//TODO _id status_write
-
-                                Integer СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений = cursor.getInt(ИндексУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений);
+                                //   view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_add_organisazio_error, 0, 0, 0);
+                                view.setText(ФиоКтоНАписалСообщение.trim() + " " + ФиналДата);///ПолученыйФИОIDДляЧата
                                 ////
-                                Log.d(this.getClass().getName(), "  СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений  " + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений);
-                                /////
-                                view.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
-                                ///
-                                view.setPadding(50, 5, 0, 5);
-
-                                //view.setBackgroundResource(R.drawable.style_for_chat_alien_success_last_send_server);
-
-
-                                /// view.setBackgroundResource(R.drawable.style_for_chat_new_style_read_wtire_empty);
-
-
-
-                                Log.d(this.getClass().getName(), "  СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений  "
-                                        + СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений);
-
-                                if (СамоУзнатьСтатусСообщенияКотроеМыНаписалиПользоватлюУжеПрочитиалЕгоИлиНетНЕДляМоихСообщений > 0) {
-
-                                    // TODO: 18.02.2022  сообщение прочитанно другим  КОМУ ПРЕДНАЗНАЧАЛОСЬ
-                                    //view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_add_organisazio_success, 0, 0, 0);
-                                    view.setText(ФиоКтоНАписалСообщение.trim() + " " + ФиналДата);///ПолученыйФИОIDДляЧата
-
-
-                                } else {
-                                    //   view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_add_organisazio_error, 0, 0, 0);
-                                    view.setText(ФиоКтоНАписалСообщение.trim() + " " + ФиналДата);///ПолученыйФИОIDДляЧата
-
-                                }
-
-
-                                //iew.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_customers_mnogo, 0, 0, 0);
-                                /// ((TextView) view).setBackgroundResource(R.drawable.style_for_chat_alien);
-                                view.setTextColor(Color.GRAY);//olor.parseColor("#00BBC1")
+                                Log.d(this.getClass().getName(), "  ПолученноеКтоНаписалДляtext2  " + ПолученноеКтоНаписалДляtext2 + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
 
                             }
 
