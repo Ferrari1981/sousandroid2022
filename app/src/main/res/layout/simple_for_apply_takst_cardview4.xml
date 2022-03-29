@@ -25,7 +25,7 @@
         android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
         android:translationZ="10dp"
         app:cardBackgroundColor="#F0FFF0"
-        app:cardCornerRadius="16dp"
+        app:cardCornerRadius="14dp"
         app:cardElevation="3dp"
         app:cardMaxElevation="4dp"
         app:strokeColor="#FFFAFA"
