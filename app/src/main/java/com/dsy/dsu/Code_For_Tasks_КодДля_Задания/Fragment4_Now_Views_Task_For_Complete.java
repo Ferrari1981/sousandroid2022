@@ -2134,7 +2134,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                                         МетодПовторногоЗапускаВсехWorkManager__ОДНОРАЗОВОЙСинхрониазцииданных(ПубличныйIDДляФрагмента, getContext());
 
 
-                            }, 25000);
+                            }, 2000);
 
 
 
