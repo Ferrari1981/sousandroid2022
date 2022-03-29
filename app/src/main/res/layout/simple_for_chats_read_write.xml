@@ -30,7 +30,7 @@
         app:cornerRadius="12dp"
         app:layout_constraintStart_toEndOf="parent" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -39,10 +39,11 @@
             android:id="@android:id/text2"
             style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginStart="260dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
             android:checkMark="?android:attr/textCheckMark"
             android:gravity="center_vertical"
@@ -52,7 +53,7 @@
             android:textColorHighlight="#E91E63"
             android:textColorHint="#03A9F4"
             android:textColorLink="#9C27B0"
-            android:textSize="11sp"
+            android:textSize="10sp"
             android:textStyle="normal"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
             android:visibility="visible"
@@ -62,7 +63,7 @@
             app:layout_constraintStart_toEndOf="parent"
             app:strokeColor="#E91E63" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </LinearLayout>

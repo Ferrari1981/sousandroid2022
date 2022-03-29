@@ -1691,15 +1691,31 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                                     // TODO: 20.01.2022  положтельный ответ для SimplrCurcor
 
 
-                                    // TODO: 04.02.2022  еще один код кторе изменяет СТИЛЬ СТРОЧКИ ЕСЛИ С СЕРВЕРА ПИШЕЛ ID
+                                    //TODO сообщение написано мной ВНИМАНИЕ !!!!!
 
-                                    МетодИзменяетСтильСтрочкиСообщенияЕслиСервераПришелЗаполеныйID((MaterialButton) view, cursor);
+                                    // TODO: 30.06.2021 форматирование кто написал
+                                    int ИндексКтоНаписалСообщениеСотрудникомДляtext2 = cursor.getColumnIndex("user_update");
+
+                                    // TODO: 29.04.2021
+                                    /////////////////
+                                    int ПолученноеКтоНаписалДляtext2 = cursor.getInt(ИндексКтоНаписалСообщениеСотрудникомДляtext2);
+
+                                    // TODO: 29.03.2022
+
+                                    Log.d(this.getClass().getName(), " ClassActitytyClassActityty  view.getId() ПолученноеКтоНаписалДляtext2  " + ПолученноеКтоНаписалДляtext2 +
+                                            " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
+
+                                    if (ПолученноеКтоНаписалДляtext2 == ПубличныйIDДляФрагмента) {
+
+                                        // TODO: 04.02.2022  еще один код кторе изменяет СТИЛЬ СТРОЧКИ ЕСЛИ С СЕРВЕРА ПИШЕЛ ID
+
+                                        МетодИзменяетСтильСтрочкиСообщенияЕслиСервераПришелЗаполеныйID((MaterialButton) view, cursor);
 
 
-                                    // TODO: 30.06.2021 ДАННЫЙ МЕТОД ВЫЧИСЛЯЕТ ПО ПОЛЮ В СООБЩИИ ПРОЧИТАЛ ЛИ ДАННОЕ СООБЩЕНИЕ КОНТАК КОТРОМУ МЫ МЫ И ПИСАЛИ ПИСЬМО
-                                    МетодКоторыйВычисляемПрочиталЛиДанноеСообщениеКомуПисали((MaterialButton) view, cursor);
+                                        // TODO: 30.06.2021 ДАННЫЙ МЕТОД ВЫЧИСЛЯЕТ ПО ПОЛЮ В СООБЩИИ ПРОЧИТАЛ ЛИ ДАННОЕ СООБЩЕНИЕ КОНТАК КОТРОМУ МЫ МЫ И ПИСАЛИ ПИСЬМО
+                                        МетодКоторыйВычисляемПрочиталЛиДанноеСообщениеКомуПисали((MaterialButton) view, cursor);
 
-
+                                    }
                                     return true;
                                 // TODO: 20.01.2022  положтельный ответ для SimplrCurcor
 
@@ -2110,8 +2126,6 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                             if (ПолученноеКтоНаписалДляtext2 == ПубличныйIDДляФрагмента) {
 
                                 // TODO: 07.02.2022  вЫЧИСЛЕМ оТПРАВЛИ м сООБЗЕНЕИ НА СЕРВРО ИЛИ ПОЛЬЗОВАТЕЛЬ ИЗХ ПРОЧИТАЛ
-// TODO: 18.02.2022  сообщение прочитанно другим  КОМУ ПРЕДНАЗНАЧАЛОСЬ
-                                //view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_add_organisazio_success, 0, 0, 0);
                                 ((MaterialButton) view).setText(ФиналДата);///ПолученыйФИОIDДляЧата
                                 ////
                                 Log.d(this.getClass().getName(), "  ПолученноеКтоНаписалДляtext2  " + ПолученноеКтоНаписалДляtext2 + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
@@ -2119,11 +2133,12 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                             } else {
 
+                                StringBuffer stringBufferTExt2 = new StringBuffer();
                                 // TODO: 29.03.2022
-                                ((MaterialButton) view).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                                stringBufferTExt2.append(ФиоКтоНАписалСообщение.trim()).append(" ").append(ФиналДата);
 
-                                //   view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_dsu1_add_organisazio_error, 0, 0, 0);
-                                ((MaterialButton) view).setText(ФиоКтоНАписалСообщение.trim() + " " + ФиналДата);///ПолученыйФИОIDДляЧата
+                                // TODO: 29.03.2022
+                                ((MaterialButton) view).setText(stringBufferTExt2.toString());///ПолученыйФИОIDДляЧата
                                 ////
                                 Log.d(this.getClass().getName(), "  ПолученноеКтоНаписалДляtext2  " + ПолученноеКтоНаписалДляtext2 + " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
 
