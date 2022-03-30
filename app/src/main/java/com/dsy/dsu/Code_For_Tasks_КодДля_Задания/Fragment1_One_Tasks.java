@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteCursor;
@@ -1961,13 +1962,14 @@ public class Fragment1_One_Tasks extends Fragment {
                                     // TODO: 30.03.2022
                                     ИндексдляНепрочитанный = R.drawable.icon_dsu1_for_tasks_new1;// TODO: 30.03.2022   old 1
                                     // TODO: 30.03.2022
-
+                                    card.setCheckedIconTint(ColorStateList.valueOf(Color.BLACK));
                                     break;
 
                                 case 1:
                                     // TODO: 30.03.2022  
                                     ИндексдляНепрочитанный = R.drawable.icon_dsu1_fortasks_cardview_color_geeeey;// TODO: 30.03.2022   old 1
-
+                                    // TODO: 30.03.2022
+                                    card.setCheckedIconTint(ColorStateList.valueOf(Color.parseColor("#00CED1")));
                                     // TODO: 30.03.2022  
                                     break;
 
@@ -1975,7 +1977,9 @@ public class Fragment1_One_Tasks extends Fragment {
 
                                     // TODO: 25.03.2022
                                     ИндексдляНепрочитанный = R.drawable.icon_dsu1_fragment1_deseble_tasks;  // TODO: 30.03.2022  for 2
-
+                                    // TODO: 30.03.2022
+                                    // TODO: 30.03.2022
+                                    card.setCheckedIconTint(ColorStateList.valueOf(Color.RED));
                                     break;
 
                                 // TODO: 30.03.2022  
