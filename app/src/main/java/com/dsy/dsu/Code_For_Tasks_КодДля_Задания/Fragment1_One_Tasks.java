@@ -478,12 +478,13 @@ public class Fragment1_One_Tasks extends Fragment {
                         new GetData(getContext()).getdata(class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций,
                         new PUBLIC_CONTENT(context).МенеджерПотоков, new CREATE_DATABASE(context).getССылкаНаСозданнуюБазу());
                 // TODO: 02.03.2022
-                if (Курсор_ГлавныйКурсорДляЗадач.getCount() > 0) {
+             /*   if (Курсор_ГлавныйКурсорДляЗадач.getCount() > 0) {
                     // TODO: 03.03.2022
                     Log.d(this.getClass().getName(), "Курсор_ГлавныйКурсорДляЗадач " + Курсор_ГлавныйКурсорДляЗадач);
                     // TODO: 03.03.2022
                     Курсор_ГлавныйКурсорДляЗадач.moveToFirst();
-                }
+                }*/
+
                 ////////
                 Log.d(this.getClass().getName(), "Курсор_ГлавныйКурсорДляЗадач " + Курсор_ГлавныйКурсорДляЗадач);
 
@@ -515,11 +516,11 @@ public class Fragment1_One_Tasks extends Fragment {
                             Log.d(this.getClass().getName(), "onChanged ");
                             // TODO: 02.03.2022
                             /// subClassBuccessLoginГлавныйКласс_бизнесЛогики.МетодПолучениеДанныхДляЗАДАЧ();
-                            // TODO: 04.03.2022
+                     /*       // TODO: 04.03.2022
                             if (Курсор_ГлавныйКурсорДляЗадач.getCount() > 0) {
                                 // TODO: 04.03.2022
                                 Курсор_ГлавныйКурсорДляЗадач.moveToFirst();
-                            }
+                            }*/
 
                         }
 
@@ -1148,11 +1149,73 @@ public class Fragment1_One_Tasks extends Fragment {
                 Log.i(this.getClass().getName(), "     getItemId holder.position ");
             }
 
+
+            @Override
+            public void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull List<Object> payloads) {
+                super.onBindViewHolder(holder, position, payloads);
+            }
+
+            @Override
+            public void setHasStableIds(boolean hasStableIds) {
+                super.setHasStableIds(hasStableIds);
+            }
+
+            @Override
+            public void onViewRecycled(@NonNull MyViewHolder holder) {
+                super.onViewRecycled(holder);
+            }
+
+            @Override
+            public boolean onFailedToRecycleView(@NonNull MyViewHolder holder) {
+                return super.onFailedToRecycleView(holder);
+            }
+
+            @Override
+            public void onViewAttachedToWindow(@NonNull MyViewHolder holder) {
+                super.onViewAttachedToWindow(holder);
+            }
+
+            @Override
+            public void onViewDetachedFromWindow(@NonNull MyViewHolder holder) {
+                super.onViewDetachedFromWindow(holder);
+            }
+
+            @Override
+            public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+                super.onAttachedToRecyclerView(recyclerView);
+            }
+
+            @Override
+            public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
+                super.onDetachedFromRecyclerView(recyclerView);
+            }
+
+            @Override
+            public int getItemViewType(int position) {
+                Log.i(this.getClass().getName(), "      holder.textView1  position " + position);
+                try {
+                    // TODO: 30.03.2022
+                    Курсор_ГлавныйКурсорДляЗадач.moveToNext();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+
+                return super.getItemViewType(position);
+            }
+
+
             @NonNull
             @Override
             public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 // TODO: 10.03.2022
-                View viewГлавныйВидДляRecyclleViewДляЗаданий=null ;
+                View viewГлавныйВидДляRecyclleViewДляЗаданий = null;
                 try {
 
                     // TODO: 28.02.2022
@@ -1189,7 +1252,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
                         // TODO: 02.03.2022 тут РАЗДАЕМ ДАННЫЕ RECYCLERBIEW
 
-                        Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToPosition(position);//todo old  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);
+                        // Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToPosition(position);//todo old  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);
                         // TODO: 04.03.2022 p==osion
                         Log.i(this.getClass().getName(), "  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition() " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getPosition());
 
@@ -1268,6 +1331,7 @@ public class Fragment1_One_Tasks extends Fragment {
                     //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
                 }
             }
+
 
             private void МетодБиндингаЗаполненияДаннымиBungle(@NonNull MyViewHolder holder, Integer СамСтатусПрочтенияИлиНет) {
                 // TODO: 03.03.2022
@@ -1477,7 +1541,7 @@ public class Fragment1_One_Tasks extends Fragment {
                         // TODO: 28.02.2022
                         holder.textView2.setError(null);
                     }
-                    holder.textView2.requestFocus();
+                    holder.textView2.requestLayout();
 
                 } catch (Exception e) {
                     e.printStackTrace();
