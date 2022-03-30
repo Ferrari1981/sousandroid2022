@@ -1111,7 +1111,7 @@ public class Fragment1_One_Tasks extends Fragment {
                     // TODO: 13.03.2022
                     textView6 = (TextView) itemView.findViewById(R.id.text9_innercardview_callsbaks);
                     // TODO: 30.03.2022
-                    textView6.setVisibility(View.INVISIBLE);
+                    textView6.setVisibility(View.GONE);
 
 
                     // TODO: 30.03.2022
@@ -1653,10 +1653,12 @@ public class Fragment1_One_Tasks extends Fragment {
                     if (!СамогоПримечанияЗАДАНИЯ.isEmpty()) {
                         // TODO: 30.03.2022
                         holder.textView6.setVisibility(View.VISIBLE);
-                        // TODO: 30.03.2022
-                        holder.textView6.setText("Примечание: " + Optional.ofNullable(СамогоПримечанияЗАДАНИЯ).orElse(""));
-
                     }
+
+                    // TODO: 30.03.2022
+                    holder.textView6.setText("Примечание: " + Optional.ofNullable(СамогоПримечанияЗАДАНИЯ).orElse(""));
+
+
                     // TODO: 28.02.2022
                 } catch (Exception e) {
                     e.printStackTrace();
