@@ -1654,7 +1654,7 @@ public class Fragment1_One_Tasks extends Fragment {
                         // TODO: 30.03.2022
                         holder.textView6.setVisibility(View.VISIBLE);
                         // TODO: 30.03.2022
-                        holder.textView6.setText("Примечание: " + Optional.ofNullable(СамогоПримечанияЗАДАНИЯ).orElse(""));
+                        holder.textView6.setText("примечание: " + Optional.ofNullable(СамогоПримечанияЗАДАНИЯ).orElse(""));
 
                     } else {
                         // TODO: 30.03.2022
@@ -1827,78 +1827,89 @@ public class Fragment1_One_Tasks extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO: 01.03.2022
-                            Bundle bundleПередачаПараметровФрагментов = new Bundle();
+                            Integer ИндексСамогоПримечаниезадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("callsback_note_task");
+                            // TODO: 02.03.2022
+                            String СамогоПримечанияЗАДАНИЯ = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getString(ИндексСамогоПримечаниезадачи);
+// TODO: 13.03.2022
+                            Log.d(this.getClass().getName(), "  СамогоПримечанияЗАДАНИЯ " + СамогоПримечанияЗАДАНИЯ);
 
-                            // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "   Fragment4_Now_Views_Task_For_Complete SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  " +
-                                    " holder.getAdapterPosition() " + holder.getAdapterPosition() + " v.getTag() " + v.getTag(holder.materialCardView.getId()));
-                            // TODO: 09.03.2022
-                            fragmentTransactionляЗадачи = fragmentManagerДляЗадачи.beginTransaction();
+                            if (СамогоПримечанияЗАДАНИЯ.isEmpty()) {
+                                // TODO: 30.03.2022
+                                Bundle bundleПередачаПараметровФрагментов = new Bundle();
 
-                            // TODO: 23.03.2022  переходим на фрагмент для редактирования Fragment4_Now_Views_Task_For_Complete
+                                // TODO: 13.03.2022
+                                Log.d(this.getClass().getName(), "   Fragment4_Now_Views_Task_For_Complete SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  " +
+                                        " holder.getAdapterPosition() " + holder.getAdapterPosition() + " v.getTag() " + v.getTag(holder.materialCardView.getId()));
+                                // TODO: 09.03.2022
+                                fragmentTransactionляЗадачи = fragmentManagerДляЗадачи.beginTransaction();
 
-                            fragment_ТекущийФрагмент = new Fragment4_Now_Views_Task_For_Complete();
-                            // TODO: 11.03.2022
-                            fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
-                            // TODO: 10.03.2022
-                            fragmentTransactionляЗадачи.show(fragment_ТекущийФрагмент);
+                                // TODO: 23.03.2022  переходим на фрагмент для редактирования Fragment4_Now_Views_Task_For_Complete
 
-
-                            // TODO: 10.03.2022
-                            Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи +
-                                    " bundleПередачаПараметровФрагментов " + bundleПередачаПараметровФрагментов);
-
-
-                            // TODO: 13.03.2022
-                            Long ПолучаемUUIDТекущйПозицииВRecyreViewДляПередачиВЧетвртыйФрагмент
-                                    = BungleДанныеДляViewCard.getLong((String.valueOf(holder.getAdapterPosition())), 0l);
-
-                            // TODO: 24.03.2022
-
-                            bundleПередачаПараметровФрагментов.putLong("ПередаемВЧетвертыйФрагмендляСменыСтатуса", ПолучаемUUIDТекущйПозицииВRecyreViewДляПередачиВЧетвртыйФрагмент);
+                                fragment_ТекущийФрагмент = new Fragment4_Now_Views_Task_For_Complete();
+                                // TODO: 11.03.2022
+                                fragmentTransactionляЗадачи.replace(R.id.activity_main_fisrt_for_tasks, fragment_ТекущийФрагмент).commit();//.layout.activity_for_fragemtb_history_tasks
+                                // TODO: 10.03.2022
+                                fragmentTransactionляЗадачи.show(fragment_ТекущийФрагмент);
 
 
-                            // TODO: 13.03.2022  статус прочтения ли уде или нет адание
-
-                            Object СтатусПрочтеаУжеЗадачаИлиНет = v.getTag(holder.materialCardView.getId());//TODO holder.materialCardView.getId()
-                            // TODO: 24.03.2022
-                            Integer СтатусПрочтеаУжеЗадачаИлиНетФинал = Integer.parseInt(String.valueOf(СтатусПрочтеаУжеЗадачаИлиНет));
-
-                            // TODO: 24.03.2022
-                            Log.d(this.getClass().getName(), " СтатусПрочтеаУжеЗадачаИлиНетФинал " + СтатусПрочтеаУжеЗадачаИлиНетФинал);
-                            // TODO: 24.03.2022
-
-                            bundleПередачаПараметровФрагментов.putInt("СтатусПрочтеаУжеЗадачаИлиНет", СтатусПрочтеаУжеЗадачаИлиНетФинал);
-
-                            // TODO: 24.03.2022
-                            Integer НомерзадчиДЛяПередачи = Integer.parseInt(String.valueOf(holder.textView2.getText().toString().replaceAll("[^0-9]", "").trim()));
-
-                            // TODO: 24.03.2022
-                            bundleПередачаПараметровФрагментов.putInt("НомерЗадачиДляПередачи", НомерзадчиДЛяПередачи);
-
-                            // TODO: 10.03.2022
-                            Log.d(this.getClass().getName(), " bundleПередачаПараметровФрагментов " + bundleПередачаПараметровФрагментов +
-                                    "   ПолучаемUUIDТекущйПозицииВRecyreViewДляПередачиВЧетвртыйФрагмент " + ПолучаемUUIDТекущйПозицииВRecyreViewДляПередачиВЧетвртыйФрагмент +
-                                    "  НомерзадчиДЛяПередачи " + НомерзадчиДЛяПередачи);
+                                // TODO: 10.03.2022
+                                Log.d(this.getClass().getName(), " fragmentTransactionляЗадачи " + fragmentTransactionляЗадачи +
+                                        " bundleПередачаПараметровФрагментов " + bundleПередачаПараметровФрагментов);
 
 
-                            // TODO: 24.03.2022   передча данных друговвова фрагмента
-                            fragment_ТекущийФрагмент.setArguments(bundleПередачаПараметровФрагментов);
-                            // TODO: 10.03.2022
+                                // TODO: 13.03.2022
+                                Long ПолучаемUUIDТекущйПозицииВRecyreViewДляПередачиВЧетвртыйФрагмент
+                                        = BungleДанныеДляViewCard.getLong((String.valueOf(holder.getAdapterPosition())), 0l);
 
-                            // TODO: 15.03.2022
-                            // TODO: 14.03.2022
-                            //bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.GONE);
-                            // TODO: 09.03.2022
-                            bottomNavigationViewДляTasks.requestLayout();
-                            // TODO: 24.03.2022
-                            recyclerView.requestLayout();
-                            // TODO: 30.03.2022
-                            recyclerView.invalidate();
-                            // TODO: 14.03.2022
-                            linearLayou.requestLayout();
+                                // TODO: 24.03.2022
 
-                            // TODO: 03.03.2022 update screewn
+                                bundleПередачаПараметровФрагментов.putLong("ПередаемВЧетвертыйФрагмендляСменыСтатуса", ПолучаемUUIDТекущйПозицииВRecyreViewДляПередачиВЧетвртыйФрагмент);
+
+
+                                // TODO: 13.03.2022  статус прочтения ли уде или нет адание
+
+                                Object СтатусПрочтеаУжеЗадачаИлиНет = v.getTag(holder.materialCardView.getId());//TODO holder.materialCardView.getId()
+                                // TODO: 24.03.2022
+                                Integer СтатусПрочтеаУжеЗадачаИлиНетФинал = Integer.parseInt(String.valueOf(СтатусПрочтеаУжеЗадачаИлиНет));
+
+                                // TODO: 24.03.2022
+                                Log.d(this.getClass().getName(), " СтатусПрочтеаУжеЗадачаИлиНетФинал " + СтатусПрочтеаУжеЗадачаИлиНетФинал);
+                                // TODO: 24.03.2022
+
+                                bundleПередачаПараметровФрагментов.putInt("СтатусПрочтеаУжеЗадачаИлиНет", СтатусПрочтеаУжеЗадачаИлиНетФинал);
+
+                                // TODO: 24.03.2022
+                                Integer НомерзадчиДЛяПередачи = Integer.parseInt(String.valueOf(holder.textView2.getText().toString().replaceAll("[^0-9]", "").trim()));
+
+                                // TODO: 24.03.2022
+                                bundleПередачаПараметровФрагментов.putInt("НомерЗадачиДляПередачи", НомерзадчиДЛяПередачи);
+
+                                // TODO: 10.03.2022
+                                Log.d(this.getClass().getName(), " bundleПередачаПараметровФрагментов " + bundleПередачаПараметровФрагментов +
+                                        "   ПолучаемUUIDТекущйПозицииВRecyreViewДляПередачиВЧетвртыйФрагмент " + ПолучаемUUIDТекущйПозицииВRecyreViewДляПередачиВЧетвртыйФрагмент +
+                                        "  НомерзадчиДЛяПередачи " + НомерзадчиДЛяПередачи);
+
+
+                                // TODO: 24.03.2022   передча данных друговвова фрагмента
+                                fragment_ТекущийФрагмент.setArguments(bundleПередачаПараметровФрагментов);
+                                // TODO: 10.03.2022
+
+                                // TODO: 15.03.2022
+                                // TODO: 14.03.2022
+                                //bottomNavigationКонкретноКнопкаСоздатьСейчас.setVisibility(View.GONE);
+                                // TODO: 09.03.2022
+                                bottomNavigationViewДляTasks.requestLayout();
+                                // TODO: 24.03.2022
+                                recyclerView.requestLayout();
+                                // TODO: 30.03.2022
+                                recyclerView.invalidate();
+                                // TODO: 30.03.2022
+                                recyclerView.requestFocus();
+                                // TODO: 14.03.2022
+                                linearLayou.requestLayout();
+
+                                // TODO: 03.03.2022 update screewn
+                            }
 
 
                         }

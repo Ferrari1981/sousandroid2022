@@ -1257,7 +1257,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                         // TODO: 30.03.2022
                         holder.textView6.setVisibility(View.VISIBLE);
                         // TODO: 30.03.2022
-                        holder.textView6.setText("Примечание: " + Optional.ofNullable(СамогоПримечанияЗАДАНИЯ).orElse(""));
+                        holder.textView6.setText("примечание: " + Optional.ofNullable(СамогоПримечанияЗАДАНИЯ).orElse(""));
 
                     } else {
                         // TODO: 30.03.2022
