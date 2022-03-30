@@ -1664,104 +1664,86 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                         @Override
                         public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
                             // TODO: 13.03.2022
-                            //int ИндексдляНепрочитанный = R.drawable.icon_dsu1_fortasks_cardview_color_geeeey;
-                            // TODO: 13.03.2022
-                            // int ИндексПпрочитанные = R.drawable.icon_dsu1_fortasks_cardview_color_geen;
-                            // TODO: 16.03.2022
-                            int ИндексПпрочитанные;
+                            int ИндексПпрочитанные = 0;
                             // TODO: 13.03.2022
                             Drawable drawableПпрочитанные;
-                            // TODO: 13.03.2022
-                          /*  Drawable drawableИндексдляНепрочитанный
-                                    = getContext().getDrawable(ИндексдляНепрочитанный);*/
                             // TODO: 13.03.2022
                             Log.d(this.getClass().getName(), " card  " + card +
                                     "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " isChecked " + isChecked);
 
                             // TODO: 13.03.2022
-
-                            // TODO: 02.03.2022#5
 
                             Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("status_write");
                             // TODO: 02.03.2022
 
-                            Integer СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getInt(ИндексСтатусПрочтенияИлиНЕт);
+                            Integer СамСтатусПрочтенияИлиНет = 0;
 
+                            СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getInt(ИндексСтатусПрочтенияИлиНЕт);
 
-                            // TODO: 13.03.2022  СТАТУС КОГДА ЗАДАЧА ВЫПОЛНЕНА  ЗАДАЧА
-                            if (isChecked && СамСтатусПрочтенияИлиНет == 1) {
+                            // TODO: 30.03.2022
 
-                                // TODO: 16.03.2022
-                                ИндексПпрочитанные = R.drawable.icon_dsu1_message_add_contact;
-
-                                // TODO: 13.03.2022
-
-                                drawableПпрочитанные
-                                        = getContext().getDrawable(ИндексПпрочитанные);
-
-
-                                // TODO: 13.03.2022
-                                card.setCheckedIcon(drawableПпрочитанные);
-                                // TODO: 13.03.2022
-                                card.setCheckedIconResource(ИндексПпрочитанные);
-
-                                // TODO: 13.03.2022
-                                // TODO: 13.03.2022
-                                card.setSelected(true);
-                                // TODO: 13.03.2022
-                                Log.d(this.getClass().getName(), "  holder.materialCardView.setOnCheckedChangeListener  isChecked   " + isChecked);
-
-
-                            }
-
-                            // TODO: 13.03.2022  СТАТУС КОГДА НЕ ОЗНАКОМЛЕННА ЗАДАЧА
                             Log.d(this.getClass().getName(), " card  " + card +
-                                    "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " isChecked " + isChecked);
-                            if (isChecked && СамСтатусПрочтенияИлиНет == 0) {
-                                // TODO: 14.03.2022
+                                    "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
 
-                                ИндексПпрочитанные = R.drawable.icon_dsu1_create_new_tasks;
-                                // TODO: 16.03.2022
 
-                                // TODO: 13.03.2022
+                            // TODO: 30.03.2022 делаем дизай про значению какойе прочтиатное или отказаноо
+                            switch (СамСтатусПрочтенияИлиНет) {
+                                // TODO: 30.03.2022
+                                case 0:
+                                    // TODO: 30.03.2022
+                                    ИндексПпрочитанные = R.drawable.icon_dsu1_create_new_tasks;
+                                    // TODO: 30.03.2022
 
-                                drawableПпрочитанные
-                                        = getContext().getDrawable(ИндексПпрочитанные);
+                                    break;
 
-                                // TODO: 13.03.2022
-                                card.setCheckedIcon(drawableПпрочитанные);
-                                // TODO: 13.03.2022
-                                card.setCheckedIconResource(ИндексПпрочитанные);
-                                // TODO: 16.03.2022
-                                // TODO: 13.03.2022
-                                Log.d(this.getClass().getName(), "   holder.materialCardView.setOnCheckedChangeListener  isChecked    " + isChecked);
+                                case 1:
+                                    // TODO: 30.03.2022
+                                    ИндексПпрочитанные = R.drawable.icon_dsu1_message_add_contact;
+
+                                    // TODO: 30.03.2022
+                                    break;
+
+                                case 2:
+
+                                    // TODO: 25.03.2022
+                                    ИндексПпрочитанные = R.drawable.icon_dsu1_for_tasks_desible_task;
+
+                                    break;
+
+                                // TODO: 30.03.2022
+
+                                default:
+                                    // TODO: 30.03.2022
+
+                                    Log.d(this.getClass().getName(), " card  " + card +
+                                            "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " isChecked " + isChecked);
+
+                                    break;
+
                             }
+                            // TODO: 30.03.2022
+                            drawableПпрочитанные
+                                    = getContext().getDrawable(ИндексПпрочитанные);
+                            // TODO: 13.03.2022
+                            card.setCheckedIcon(drawableПпрочитанные);
+                            // TODO: 13.03.2022
+                            card.setCheckedIconResource(ИндексПпрочитанные);
 
-                            // TODO: 13.03.2022  СТАТУС  ТРЕТИЙ  КОГДА ЗАДАЧА ОТКАЗ
-                            Log.d(this.getClass().getName(), " card  " + card +
-                                    "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " isChecked " + isChecked);
-                            if (isChecked && СамСтатусПрочтенияИлиНет == 2) {
-                                // TODO: 14.03.2022
+                            // TODO: 13.03.2022
+                            card.setSelected(true);
+                            // TODO: 30.03.2022
+                            card.requestFocus();
+                            // TODO: 30.03.2022
+                            card.requestLayout();
+                            // TODO: 30.03.2022
+                            card.invalidate();
+                            // TODO: 30.03.2022
+                            // TODO: 30.03.2022
+                            recyclerView.requestLayout();
+                            // TODO: 30.03.2022
+                            recyclerView.invalidate();
 
-                                ИндексПпрочитанные = R.drawable.icon_dsu1_for_tasks_desible_task;
-                                // TODO: 16.03.2022
-
-                                // TODO: 13.03.2022
-
-                                drawableПпрочитанные
-                                        = getContext().getDrawable(ИндексПпрочитанные);
-
-                                // TODO: 23.03.2022 error generater
-
-
-                                // TODO: 13.03.2022
-                                card.setCheckedIcon(drawableПпрочитанные);
-                                // TODO: 13.03.2022
-                                card.setCheckedIconResource(ИндексПпрочитанные);
-                                // TODO: 16.03.2022
-                                // TODO: 13.03.2022
-                                Log.d(this.getClass().getName(), "   holder.materialCardView.setOnCheckedChangeListener  isChecked    " + isChecked);
-                            }
+                            // TODO: 13.03.2022
 
 
                             // TODO: 13.03.2022

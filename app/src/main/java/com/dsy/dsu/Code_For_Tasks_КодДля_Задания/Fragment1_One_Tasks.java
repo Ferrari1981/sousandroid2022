@@ -1959,7 +1959,7 @@ public class Fragment1_One_Tasks extends Fragment {
                                 // TODO: 30.03.2022  
                                 case 0:
                                     // TODO: 30.03.2022
-                                    ИндексдляНепрочитанный = R.drawable.icon_dsu1_for_tasks_desible_task;// TODO: 30.03.2022   old 1
+                                    ИндексдляНепрочитанный = R.drawable.icon_dsu1_for_tasks_new1;// TODO: 30.03.2022   old 1
                                     // TODO: 30.03.2022
 
                                     break;
