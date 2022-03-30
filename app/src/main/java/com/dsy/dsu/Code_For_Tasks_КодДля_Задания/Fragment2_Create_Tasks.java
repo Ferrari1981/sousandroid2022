@@ -1336,6 +1336,9 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
 
 
+                    // TODO: 29.03.2022
+                    holder.textView1.requestFocus();
+
                     if (СамСтатусПрочтенияИлиНет == 2) {
 
                         // TODO: 23.03.2022

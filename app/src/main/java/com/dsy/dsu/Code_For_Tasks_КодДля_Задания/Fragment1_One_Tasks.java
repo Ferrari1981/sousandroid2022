@@ -1464,6 +1464,11 @@ public class Fragment1_One_Tasks extends Fragment {
                     Log.i(this.getClass().getName(), "  СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
 
                     // TODO: 29.03.2022
+
+                    // TODO: 29.03.2022
+                    holder.textView1.requestFocus();
+
+                    // TODO: 29.03.2022
                     if (СамСтатусПрочтенияИлиНет == 2) {
                         // TODO: 28.02.2022
                         holder.textView2.setError("Отказ от выполения");
