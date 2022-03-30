@@ -478,12 +478,12 @@ public class Fragment1_One_Tasks extends Fragment {
                         new GetData(getContext()).getdata(class_grud_sql_operationsIDпользоввателяДляСлужб.concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_Операций,
                         new PUBLIC_CONTENT(context).МенеджерПотоков, new CREATE_DATABASE(context).getССылкаНаСозданнуюБазу());
                 // TODO: 02.03.2022
-             /*   if (Курсор_ГлавныйКурсорДляЗадач.getCount() > 0) {
-                    // TODO: 03.03.2022
-                    Log.d(this.getClass().getName(), "Курсор_ГлавныйКурсорДляЗадач " + Курсор_ГлавныйКурсорДляЗадач);
-                    // TODO: 03.03.2022
-                    Курсор_ГлавныйКурсорДляЗадач.moveToFirst();
-                }*/
+              if (Курсор_ГлавныйКурсорДляЗадач.getCount() > 0) {
+                  // TODO: 03.03.2022
+                  Log.d(this.getClass().getName(), "Курсор_ГлавныйКурсорДляЗадач " + Курсор_ГлавныйКурсорДляЗадач);
+                  // TODO: 03.03.2022
+                  Курсор_ГлавныйКурсорДляЗадач.moveToFirst();
+              }
 
                 ////////
                 Log.d(this.getClass().getName(), "Курсор_ГлавныйКурсорДляЗадач " + Курсор_ГлавныйКурсорДляЗадач);
@@ -1129,6 +1129,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
         // TODO: 28.02.2022 ViewHolder
 
+
         class MyRecycleViewAdapter extends RecyclerView.Adapter<MyViewHolder> {
             // TODO: 04.03.2022
             SQLiteCursor Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри;
@@ -1152,6 +1153,23 @@ public class Fragment1_One_Tasks extends Fragment {
 
             @Override
             public void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull List<Object> payloads) {
+                // TODO: 30.03.2022
+                Log.i(this.getClass().getName(), "   onBindViewHolder  position" + position);
+                // TODO: 02.03.2022 тут РАЗДАЕМ ДАННЫЕ RECYCLERBIEW
+
+                try {
+                    //   Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToNext();
+                    Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToPosition(position);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
                 super.onBindViewHolder(holder, position, payloads);
             }
 
@@ -1195,7 +1213,11 @@ public class Fragment1_One_Tasks extends Fragment {
                 Log.i(this.getClass().getName(), "      holder.textView1  position " + position);
                 try {
                     // TODO: 30.03.2022
-                    Курсор_ГлавныйКурсорДляЗадач.moveToNext();
+                    Log.i(this.getClass().getName(), "   getItemViewType  position" + position);
+                    // TODO: 30.03.2022
+                    /// Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToNext();
+/*
+                    Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToPosition(position);//todo old  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);*/
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -1247,22 +1269,24 @@ public class Fragment1_One_Tasks extends Fragment {
             public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
                 // TODO: 28.02.2022 привазяваем данные из колекции пряме на наш recycreview
                 try {
-                    // TODO: 14.03.2022
-                    if (position <= Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getCount()) {
+                    // TODO: 14.03.2022 метод офорленя recycreview
 
-                        // TODO: 02.03.2022 тут РАЗДАЕМ ДАННЫЕ RECYCLERBIEW
-
-                        // Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToPosition(position);//todo old  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);
-                        // TODO: 04.03.2022 p==osion
-                        Log.i(this.getClass().getName(), "  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition() " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getPosition());
+                      /*  // TODO: 02.03.2022 тут РАЗДАЕМ ДАННЫЕ RECYCLERBIEW
 
 
-                        // TODO: 14.03.2022  метод создания само сообщения
-                        МетодБиндингаСозданиеСамоСообщения(holder);
+                        Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToNext();*/
+
+                    /*   Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.move(position);//todo old  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);*/
+                    // TODO: 04.03.2022 p==osion
+                    Log.i(this.getClass().getName(), "  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.getPosition() " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getPosition());
 
 
-                        // TODO: 14.03.2022  метод создания номер задания
-                        МетодБиндингаНомерЗадания(holder);
+                    // TODO: 14.03.2022  метод создания само сообщения
+                    МетодБиндингаСозданиеСамоСообщения(holder);
+
+
+                    // TODO: 14.03.2022  метод создания номер задания
+                    МетодБиндингаНомерЗадания(holder);
 
 
                         // TODO: 14.03.2022  метод создания дата задания
@@ -1318,7 +1342,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
 
 // TODO: 28.02.2022
-                    }
+
                     // TODO: 09.03.2022
 
                 } catch (Exception e) {
@@ -1896,6 +1920,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
                             Integer СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getInt(ИндексСтатусПрочтенияИлиНЕт);
 
+                            // TODO: 30.03.2022
 
                             // TODO: 13.03.2022 прочитано
                             if (isChecked && СамСтатусПрочтенияИлиНет == 1) {
@@ -1911,33 +1936,40 @@ public class Fragment1_One_Tasks extends Fragment {
                                 card.setCheckedIconResource(ИндексдляНепрочитанный);
                                 // TODO: 13.03.2022
                                 // TODO: 13.03.2022
-                                card.setSelected(true);
                                 // TODO: 13.03.2022
                                 Log.d(this.getClass().getName(), "  holder.materialCardView.setOnCheckedChangeListener  СамСтатусПрочтенияИлиНет ==1   " + isChecked);
+
+                                // TODO: 30.03.2022  
+                            } else {
+
+
+                                // TODO: 13.03.2022 прочитано
+                                if (isChecked && СамСтатусПрочтенияИлиНет == 2) {
+                                    // TODO: 25.03.2022
+                                    ИндексдляНепрочитанный = R.drawable.icon_dsu1_fragment1_deseble_tasks;
+                                    // TODO: 13.03.2022
+                                    // TODO: 13.03.2022
+                                    drawableИндексдляНепрочитанный
+                                            = getContext().getDrawable(ИндексдляНепрочитанный);
+                                    // TODO: 13.03.2022
+                                    card.setCheckedIcon(drawableИндексдляНепрочитанный);
+                                    // TODO: 13.03.2022
+                                    card.setCheckedIconResource(ИндексдляНепрочитанный);
+                                    // TODO: 13.03.2022
+                                    // TODO: 13.03.2022
+                                    Log.d(this.getClass().getName(), "  holder.materialCardView.setOnCheckedChangeListener  СамСтатусПрочтенияИлиНет ==2   " + isChecked);
+                                }
+
                             }
                             // TODO: 13.03.2022
 
 
-                            // TODO: 13.03.2022 прочитано
-                            if (isChecked && СамСтатусПрочтенияИлиНет == 2) {
-                                // TODO: 25.03.2022
-                                ИндексдляНепрочитанный = R.drawable.icon_dsu1_fragment1_deseble_tasks;
-                                // TODO: 13.03.2022
-                                // TODO: 13.03.2022
-                                drawableИндексдляНепрочитанный
-                                        = getContext().getDrawable(ИндексдляНепрочитанный);
-                                // TODO: 13.03.2022
-                                card.setCheckedIcon(drawableИндексдляНепрочитанный);
-                                // TODO: 13.03.2022
-                                card.setCheckedIconResource(ИндексдляНепрочитанный);
-                                // TODO: 13.03.2022
-                                // TODO: 13.03.2022
-                                card.setSelected(true);
-                                // TODO: 13.03.2022
-                                Log.d(this.getClass().getName(), "  holder.materialCardView.setOnCheckedChangeListener  СамСтатусПрочтенияИлиНет ==2   " + isChecked);
-                            }
                             // TODO: 13.03.2022
-
+                            card.setSelected(true);
+                            // TODO: 30.03.2022
+                            card.requestFocus();
+                            // TODO: 30.03.2022
+                            card.requestLayout();
 
                             // TODO: 13.03.2022
                         }
