@@ -29,6 +29,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -186,43 +187,41 @@ Context context;
             File  ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = null;
 
 
-            if (  Build.VERSION.SDK_INT >= 30)   {
+            if (Build.VERSION.SDK_INT >= 30) {
                 ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS + "/" + "*.apk");
-            }else{
+            } else {
 
                 ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = Environment.getExternalStoragePublicDirectory(
                         Environment.DIRECTORY_DOWNLOADS + "/" + "*.apk");
 
             }
-            File[] Files = ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles();
+
+            // TODO: 30.03.2022
+            FilenameFilter filter = new FilenameFilter() {
+                public boolean accept(File directory, String fileName) {
+                    return fileName.matches("(.*)dsu1(.*)");
+                }
+            };
 
 
-            /////TODO  УДАЛЕНИЕ apk файла
-               /* File  ФайлыДляОбновлениеПОУдаление = Environment.getExternalStoragePublicDirectory(
-                        Environment.DIRECTORY_DOWNLOADS + "/" + "*.json");*/
+            File[] Files = ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(filter);
 
-            if(Files != null) {
-                int j;
-                for(j = 0; j < Files.length; j++) {
-                    String ИмяФайла=Files[j].getName();
-                    boolean ПосикПоНазваниюФайла = ИмяФайла.matches("(.*)apk(.*)");//    boolean ПосикПоНазваниюФайла=Files[j].getName().matches("(.*).json(.*)");
-                    boolean ПосикПоНазваниюФайлаРасширенная = ИмяФайла.matches("(.*)update_dsu1(.*)");//    boolean ПосикПоНазваниюФайла=Files[j].getName().matches("(.*).json(.*)");
 
-                    if(ПосикПоНазваниюФайла==true || ПосикПоНазваниюФайлаРасширенная==true) {
-                        Files[j].delete();
-                        //
-                        /////
-                        if (!Files[j].isFile()) {
-                            Log.d(this.getClass().getName(), " СЛУЖБА  ТАКОГО ФАЙЛА БОЛЬШЕ НЕТ  .APK АНАЛИЗ " + Files[j].length()
-                                    + "   путь файла " +  Files[j].getAbsolutePath() + "   --- "  +new Date() + " ИмяФайла "+ИмяФайла);
-                        }
-                    }
-                    ////    ФайлыДляОбновлениеПОУдаление.delete();
+            Log.i(context.getClass().getName(), " Количество Файлов ДляУдаления  " +
+                    "Service_Notifocations_Для_Чата (intent.getAction()   СЛУЖБА  Files.length " + Files.length);
 
-                }//ещыыщ
+            // TODO: 30.03.2022
+            if (Files[0].exists()) {
+
+
+                Files[0].delete();
             }
 
+            // TODO: 30.03.2022
+            if (Files[1].exists()) {
 
+                Files[1].delete();
+            }
 
 
         } catch (Exception e) {
