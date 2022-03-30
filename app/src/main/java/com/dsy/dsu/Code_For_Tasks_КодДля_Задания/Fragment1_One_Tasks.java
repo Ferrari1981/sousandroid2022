@@ -275,6 +275,8 @@ public class Fragment1_One_Tasks extends Fragment {
             bottomNavigationViewДляTasks.requestLayout();
             // TODO: 22.03.2022
             recyclerView.requestLayout();
+            // TODO: 30.03.2022
+            recyclerView.invalidate();
             // TODO: 14.03.2022
             linearLayou.requestLayout();
 
@@ -516,12 +518,6 @@ public class Fragment1_One_Tasks extends Fragment {
                             Log.d(this.getClass().getName(), "onChanged ");
                             // TODO: 02.03.2022
                             /// subClassBuccessLoginГлавныйКласс_бизнесЛогики.МетодПолучениеДанныхДляЗАДАЧ();
-                     /*       // TODO: 04.03.2022
-                            if (Курсор_ГлавныйКурсорДляЗадач.getCount() > 0) {
-                                // TODO: 04.03.2022
-                                Курсор_ГлавныйКурсорДляЗадач.moveToFirst();
-                            }*/
-
                         }
 
                         @Override
@@ -678,6 +674,8 @@ public class Fragment1_One_Tasks extends Fragment {
 
                                 // TODO: 04.03.2022
                                 recyclerView.requestLayout();
+                                // TODO: 30.03.2022
+                                recyclerView.invalidate();
 
                                 Log.d(this.getClass().getName(), "onItemRangeMoved  Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе " + Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе);
 
@@ -922,6 +920,8 @@ public class Fragment1_One_Tasks extends Fragment {
                     bottomNavigationViewДляTasks.requestLayout();
 
                     recyclerView.requestLayout();
+                    // TODO: 30.03.2022  r
+                    recyclerView.invalidate();
 
                     // TODO: 28.02.2022
                     linearLayou.requestLayout();
@@ -1158,8 +1158,30 @@ public class Fragment1_One_Tasks extends Fragment {
                 // TODO: 02.03.2022 тут РАЗДАЕМ ДАННЫЕ RECYCLERBIEW
 
                 try {
-                    //   Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToNext();
-                    Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToPosition(position);
+
+
+                    if (Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getCount() > 0) {
+                        // TODO: 30.03.2022
+                        Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToFirst();
+
+     /*  recyclerView.removeAllViews();
+
+       recyclerView.getRecycledViewPool().clear();*/
+                        // TODO: 30.03.2022
+                        //   Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToNext();
+                        Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToPosition(position);
+
+                    }
+
+
+                    recyclerView.requestLayout();
+
+                    // TODO: 30.03.2022
+                    recyclerView.requestFocus();
+
+                    recyclerView.invalidate();
+
+                    recyclerView.dispatchWindowVisibilityChanged(View.VISIBLE);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -1200,6 +1222,10 @@ public class Fragment1_One_Tasks extends Fragment {
 
             @Override
             public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+
+                recyclerView.removeAllViews();
+
+                recyclerView.getRecycledViewPool().clear();
                 super.onAttachedToRecyclerView(recyclerView);
             }
 
@@ -1215,9 +1241,6 @@ public class Fragment1_One_Tasks extends Fragment {
                     // TODO: 30.03.2022
                     Log.i(this.getClass().getName(), "   getItemViewType  position" + position);
                     // TODO: 30.03.2022
-                    /// Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToNext();
-/*
-                    Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToPosition(position);//todo old  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);*/
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -1330,15 +1353,17 @@ public class Fragment1_One_Tasks extends Fragment {
 
                         // TODO: 02.03.2022#5 создание слушателья для смены статуса дополнительный через Localbrodcast
 
-                        МетодРелистарцииЛокальногоБродкастераПослеСменыСтатусаЗадачи(holder);
+                    МетодРелистарцииЛокальногоБродкастераПослеСменыСтатусаЗадачи(holder);
 
 
-                        // TODO: 13.03.2022 настройки для carview
+                    // TODO: 13.03.2022 настройки для carview
 
-                        holder.materialCardView.toggle();
+                    holder.materialCardView.toggle();
 
-                        // TODO: 13.03.2022
-                        holder.materialCardView.setChecked(true);
+                    // TODO: 13.03.2022
+                    holder.materialCardView.setChecked(true);
+
+                    // TODO: 30.03.2022
 
 
 // TODO: 28.02.2022
@@ -1819,6 +1844,8 @@ public class Fragment1_One_Tasks extends Fragment {
                             bottomNavigationViewДляTasks.requestLayout();
                             // TODO: 24.03.2022
                             recyclerView.requestLayout();
+                            // TODO: 30.03.2022
+                            recyclerView.invalidate();
                             // TODO: 14.03.2022
                             linearLayou.requestLayout();
 
@@ -1863,7 +1890,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
                             recyclerView.requestLayout();
 
-                            recyclerView.requestFocus();
+                            recyclerView.invalidate();
 
 
                             bottomNavigationViewДляTasks.requestLayout();
@@ -1970,6 +1997,13 @@ public class Fragment1_One_Tasks extends Fragment {
                             card.requestFocus();
                             // TODO: 30.03.2022
                             card.requestLayout();
+                            // TODO: 30.03.2022
+                            card.invalidate();
+                            // TODO: 30.03.2022
+                            // TODO: 30.03.2022
+                            recyclerView.requestLayout();
+                            // TODO: 30.03.2022
+                            recyclerView.invalidate();
 
                             // TODO: 13.03.2022
                         }
