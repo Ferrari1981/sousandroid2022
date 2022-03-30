@@ -1071,7 +1071,7 @@ public class Fragment1_One_Tasks extends Fragment {
         // TODO: 28.02.2022 начало  MyViewHolder
         protected class MyViewHolder extends RecyclerView.ViewHolder {// TODO: 28.02.2022 начало  MyViewHolder
             // TODO: 28.02.2022
-            TextView textView1, textView2, textView3, textView4, textView5;
+            TextView textView1, textView2, textView3, textView4, textView5, textView6;
             // TODO: 13.03.2022
             MaterialCardView materialCardView;
             // TODO: 29.03.2022
@@ -1109,6 +1109,12 @@ public class Fragment1_One_Tasks extends Fragment {
                     // TODO: 01.03.2022
                     materialCardView = (MaterialCardView) itemView.findViewById(R.id.cardviewmatirealtask);
                     // TODO: 13.03.2022
+                    textView6 = (TextView) itemView.findViewById(R.id.text9_innercardview_callsbaks);
+                    // TODO: 30.03.2022
+                    textView6.setVisibility(View.INVISIBLE);
+
+
+                    // TODO: 30.03.2022
                     Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 materialCardView   " + materialCardView);
                     // TODO: 01.03.2022*/
                     ///////
@@ -1346,16 +1352,21 @@ public class Fragment1_One_Tasks extends Fragment {
                         МетодБиндингПолучаемТипЗадания(holder);
 
 
-                        // TODO: 02.03.2022#5  заполем ДАННЫМИ BUNGLE САМОЙ ЗАДАЧИ//
+                    // TODO: 02.03.2022#5  заполем ДАННЫМИ BUNGLE САМОЙ ЗАДАЧИ//
 
-                        МетодБиндингаЗаполненияДаннымиBungle(holder, СамСтатусПрочтенияИлиНет);
+                    МетодБиндингаЗаполненияДаннымиBungle(holder, СамСтатусПрочтенияИлиНет);
 
-                        Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + BungleДанныеДляViewCard + " СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
+                    Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + BungleДанныеДляViewCard + " СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
 
 
-                        // TODO: 02.03.2022#5 создание слушателья для смены статуса дополнительный через Localbrodcast
+                    // TODO: 02.03.2022#5 создание слушателья для смены статуса дополнительный через Localbrodcast
 
                     МетодРелистарцииЛокальногоБродкастераПослеСменыСтатусаЗадачи(holder);
+
+
+                    // TODO: 02.03.2022#5 создание Для заполнения Примечание
+
+                    МетодБиндингаПримечаниеСамогоСообщенияCallBask(holder);
 
 
                     // TODO: 13.03.2022 настройки для carview
@@ -1639,7 +1650,13 @@ public class Fragment1_One_Tasks extends Fragment {
                     // TODO: 02.03.2022
                     Log.i(this.getClass().getName(), "  СамогоСообщенияЗадачиДляПользователя " + СамогоПримечанияЗАДАНИЯ);
                     // TODO: 28.02.2022
-                    holder.textView1.setText(Optional.ofNullable(СамогоПримечанияЗАДАНИЯ).orElse(""));
+                    if (!СамогоПримечанияЗАДАНИЯ.isEmpty()) {
+                        // TODO: 30.03.2022
+                        holder.textView6.setVisibility(View.VISIBLE);
+                        // TODO: 30.03.2022
+                        holder.textView6.setText(Optional.ofNullable(СамогоПримечанияЗАДАНИЯ).orElse(""));
+
+                    }
                     // TODO: 28.02.2022
                 } catch (Exception e) {
                     e.printStackTrace();
