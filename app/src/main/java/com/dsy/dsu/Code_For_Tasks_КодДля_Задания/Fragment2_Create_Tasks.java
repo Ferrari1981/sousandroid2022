@@ -47,6 +47,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
 
@@ -918,7 +919,8 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         // TODO: 28.02.2022 начало  MyViewHolder
         protected class MyViewHolder extends RecyclerView.ViewHolder {// TODO: 28.02.2022 начало  MyViewHolder
             // TODO: 28.02.2022
-            TextView textView1, textView2, textView3, textView4, textView5;
+            TextView textView1, textView2, textView3, textView4, textView5, textView6;
+            ;
             // TODO: 13.03.2022
             MaterialCardView materialCardView;
 
@@ -951,6 +953,11 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     textView5 = (TextView) itemView.findViewById(R.id.text5_innercardviewtype_tasks);
                     // TODO: 13.03.2022
                     Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 materialCardView  textView2 " + textView4);
+                    // TODO: 30.03.2022
+                    // TODO: 13.03.2022
+                    textView6 = (TextView) itemView.findViewById(R.id.text10_innercardview2_callsbaks);
+                    // TODO: 30.03.2022
+                    textView6.setVisibility(View.GONE);
                     // TODO: 01.03.2022
                     materialCardView = (MaterialCardView) itemView.findViewById(R.id.cardviewmatirealtask);
                     // TODO: 13.03.2022
@@ -1082,26 +1089,31 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
                         // TODO: 03.03.2022 ПОЛУЧАЕМ СТАТУС ЗАДАНИЯ ПРОЧИТАН ИЛИ НЕТ
 
-                        Integer СамСтатусПрочтенияИлиНет = МетодБиндингаПолученияСтатусаЗадачи(holder);
+                    Integer СамСтатусПрочтенияИлиНет = МетодБиндингаПолученияСтатусаЗадачи(holder);
 
 
-                        // TODO: 02.03.2022#5  получаем ТИП ЗАДАЧИ
-                        МетодБиндингПолучаемТипЗадания(holder);
+                    // TODO: 02.03.2022#5  получаем ТИП ЗАДАЧИ
+                    МетодБиндингПолучаемТипЗадания(holder);
 
 
-                        // TODO: 02.03.2022#5  заполем ДАННЫМИ BUNGLE САМОЙ ЗАДАЧИ//
+                    // TODO: 02.03.2022#5  заполем ДАННЫМИ BUNGLE САМОЙ ЗАДАЧИ//
 
-                        МетодБиндингаЗаполненияДаннымиBungle(holder, СамСтатусПрочтенияИлиНет);
-
-                        Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + BungleДанныеДляViewCard + " СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
+                    МетодБиндингаЗаполненияДаннымиBungle(holder, СамСтатусПрочтенияИлиНет);
 
 
-                        // TODO: 13.03.2022 настройки для carview
+                    // TODO: 02.03.2022#5 создание Для заполнения Примечание
 
-                        holder.materialCardView.toggle();
+                    МетодБиндингаПримечаниеСамогоСообщенияCallBask(holder);
 
-                        // TODO: 13.03.2022
-                        holder.materialCardView.setChecked(true);
+                    Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + BungleДанныеДляViewCard + " СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
+
+
+                    // TODO: 13.03.2022 настройки для carview
+
+                    holder.materialCardView.toggle();
+
+                    // TODO: 13.03.2022
+                    holder.materialCardView.setChecked(true);
                         // TODO: 15.03.2022
 
 // TODO: 28.02.2022
@@ -1205,6 +1217,8 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 // TODO: 03.03.2022 передаем помер позиции position
             }
 
+            // TODO: 30.03.2022
+
             private void МетодБиндингПолучаемТипЗадания(@NonNull MyViewHolder holder) {
 
                 try {
@@ -1225,6 +1239,44 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                             Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                     //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
                 }
+            }
+
+            // TODO: 30.03.2022
+
+            private void МетодБиндингаПримечаниеСамогоСообщенияCallBask(@NonNull SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент2.MyViewHolder holder) {
+
+                try {
+                    // TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1
+                    Integer ИндексСамогоПримечаниезадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("callsback_note_task");
+                    // TODO: 02.03.2022
+                    String СамогоПримечанияЗАДАНИЯ = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getString(ИндексСамогоПримечаниезадачи);
+                    // TODO: 02.03.2022
+                    Log.i(this.getClass().getName(), "  СамогоСообщенияЗадачиДляПользователя " + СамогоПримечанияЗАДАНИЯ);
+                    // TODO: 28.02.2022
+                    if (!СамогоПримечанияЗАДАНИЯ.isEmpty()) {
+                        // TODO: 30.03.2022
+                        holder.textView6.setVisibility(View.VISIBLE);
+                        // TODO: 30.03.2022
+                        holder.textView6.setText("Примечание: " + Optional.ofNullable(СамогоПримечанияЗАДАНИЯ).orElse(""));
+
+                    } else {
+                        // TODO: 30.03.2022
+                        holder.textView6.setVisibility(View.GONE);
+
+                    }
+
+
+                    // TODO: 28.02.2022
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+
             }
 
             @NonNull

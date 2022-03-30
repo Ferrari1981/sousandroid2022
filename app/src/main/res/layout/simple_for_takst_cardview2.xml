@@ -139,11 +139,34 @@
                 android:textStyle="normal"
                 android:visibility="visible" />
 
+
+            <TextView
+                android:id="@+id/text10_innercardview2_callsbaks"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_below="@+id/text5_innercardviewtype_tasks"
+                android:layout_centerHorizontal="true"
+                android:checkMark="?android:attr/textCheckMark"
+                android:gravity="center_vertical|center_horizontal"
+                android:hint="само примечание моей задачи  !!! "
+                android:padding="1dp"
+                android:paddingStart="2dp"
+                android:paddingLeft="0dp"
+                android:paddingBottom="3dp"
+                android:text=""
+                android:textAlignment="gravity"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:textColor="#000000"
+                android:textSize="13sp"
+                android:textStyle="normal"
+                android:visibility="visible" />
+
+
             <TextView
                 android:id="@+id/text2_innercardviewtwo"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
-                android:layout_below="@+id/text5_innercardviewtype_tasks"
+                android:layout_below="@+id/text10_innercardview2_callsbaks"
                 android:checkMark="?android:attr/textCheckMark"
                 android:gravity="center_vertical|center_horizontal"
                 android:padding="1dp"
