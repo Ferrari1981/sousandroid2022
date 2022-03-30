@@ -12,6 +12,8 @@ import android.database.sqlite.SQLiteCursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -1705,6 +1707,23 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                                     Log.d(this.getClass().getName(), " ClassActitytyClassActityty  view.getId() ПолученноеКтоНаписалДляtext2  " +
                                             " ПубличныйIDДляФрагмента " + ПубличныйIDДляФрагмента);
 
+
+                                    // TODO: 30.03.2022  ИЗМЕНИТЬ ДИЗАЙЦНЕР ЦВЕТА ТЕКСТ text2
+
+
+                                    // TODO: 30.06.2021 форматирование кто написал
+                                    int ИндексКтоНаписалСообщения = cursor.getColumnIndex("user_update");
+
+                                    // TODO: 29.04.2021
+                                    /////////////////
+                                    Integer ПолученноеКтоНаписалДляTEXT2 = cursor.getInt(ИндексКтоНаписалСообщения);
+
+
+                                    МетодДляText2ИзмененияДизайнаЧат((MaterialButton) view, ПолученноеКтоНаписалДляTEXT2);
+
+
+                                    // TODO: 30.03.2022
+
                                     return true;
                                 // TODO: 20.01.2022  положтельный ответ для SimplrCurcor
 
@@ -1740,6 +1759,46 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                         //////////////////
 
                     }
+
+                    // TODO: 30.03.2022  метод изменения дизайна TEXT2
+                    private void МетодДляText2ИзмененияДизайнаЧат(MaterialButton view, Integer ПолученноеКтоНаписалДляTEXT2) {
+
+                        try {
+
+                            ///////TODO фрагмент читать и писать  когда нет данных курсор 0
+                            Log.d(this.getClass().getName(), " МетодДляText2ИзмененияДизайнаЧат()  "
+                                    + " ПолученноеКтоНаписалДляTEXT2 " + ПолученноеКтоНаписалДляTEXT2);
+
+
+                            //TODO сообщение написано мной ВНИМАНИЕ !!!!!
+
+
+                            if (ПолученноеКтоНаписалДляTEXT2 == ПубличныйIDДляФрагмента) {
+
+
+                                ((MaterialButton) view).setBackgroundColor(Color.parseColor("#80D8FF"));
+
+
+                            } else {
+
+
+                                ((MaterialButton) view).setBackgroundColor(Color.parseColor("#FFFF9E80"));
+
+
+                            }
+
+
+                            ////
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            ///метод запись ошибок в таблицу
+                            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                        }
+                    }
+
 
                     private void МетодМеняемЦветСообщениявЗависимостиЯНаписалЕгоИлиМне(MaterialButton view, MaterialButton textViewСамоСообщение, int ПолученноеКтоНаписал
                             , String CамЦветУстановочный) {
@@ -2490,7 +2549,9 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                     public void onClick(View v) {
                         // TODO: 24.07.2021
 
-
+                        Vibrator v2 = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+                        // Vibrate for 500 milliseconds
+                        v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.EFFECT_HEAVY_CLICK));
                         //
                         ////////////////////
                         Log.d(this.getClass().getName(), " Нажатие на кнопку floatingActionButtonВФагментеReadandWrite");
