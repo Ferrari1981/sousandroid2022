@@ -3689,7 +3689,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                             " SELECT   * FROM data_chat  WHERE  chat_uuid  =" + ПолученыйУжеСуществующийUUIDИзПерепискиДляЧата +
                                     "  AND   message IS NOT NULL    " +
                                     "AND   date_update IS NOT NULL   " +
-                                    " ORDER BY  current_table    ASC   ");// current_table    ///   date_update
+                                    " ORDER BY    date_update    ASC   ");// current_table    ///   date_update
 
 
                     // TODO: 05.03.2022 old_code
