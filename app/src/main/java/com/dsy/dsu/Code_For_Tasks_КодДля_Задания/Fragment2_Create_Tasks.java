@@ -1029,7 +1029,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 // TODO: 28.02.2022 привазяваем данные из колекции пряме на наш recycreview
                 try {
                     // TODO: 14.03.2022
-                    if (position <= Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getCount()) {
+
 
                         // TODO: 16.03.2022
                       /*  int   ИндексПпрочитанные = R.drawable.icon_dsu1_create_new_tasks; //R.drawable.icon_dsu1_create_new_tasks;
@@ -1042,7 +1042,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
 
                         // TODO: 22.03.2022
-                        Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToPosition(position);//todo old  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);
+                       /* Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToPosition(position);//todo old  Курсор_ДляПолученияДАнныхДляЗАДАЧTASK.move(position);*/
 
                         // TODO: 04.03.2022 p==osion
                         Log.i(this.getClass().getName(), "  Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getPosition() " + Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getPosition());
@@ -1104,7 +1104,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                         // TODO: 15.03.2022
 
 // TODO: 28.02.2022
-                    }
+
                     // TODO: 09.03.2022
 
                 } catch (Exception e) {
@@ -1116,6 +1116,50 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                             Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                     //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
                 }
+            }
+
+            @Override
+            public void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull List<Object> payloads) {
+
+
+                if (Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getCount() > 0) {
+                    // TODO: 30.03.2022
+                    Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToFirst();
+
+     /*  recyclerView.removeAllViews();
+
+       recyclerView.getRecycledViewPool().clear();*/
+                    // TODO: 30.03.2022
+                    //   Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToNext();
+                    Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.moveToPosition(position);
+
+                }
+
+
+                recyclerView.requestLayout();
+
+                // TODO: 30.03.2022
+                recyclerView.requestFocus();
+
+                recyclerView.invalidate();
+
+                recyclerView.dispatchWindowVisibilityChanged(View.VISIBLE);
+                super.onBindViewHolder(holder, position, payloads);
+            }
+
+            @Override
+            public int getItemViewType(int position) {
+                return super.getItemViewType(position);
+            }
+
+            @Override
+            public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+
+
+                recyclerView.removeAllViews();
+
+                recyclerView.getRecycledViewPool().clear();
+                super.onAttachedToRecyclerView(recyclerView);
             }
 
 
@@ -1806,6 +1850,8 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 // TODO: 28.02.2022
                 return Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getCount();
             }
+
+
         }//TODO  конец два
 
     }   // TODO: 28.02.2022 конец класса бизнес логики   // TODO: 28.02.2022 конец класса бизнес логики

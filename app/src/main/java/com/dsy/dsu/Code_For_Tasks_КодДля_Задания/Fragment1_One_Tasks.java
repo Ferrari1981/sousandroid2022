@@ -1174,14 +1174,14 @@ public class Fragment1_One_Tasks extends Fragment {
                     }
 
 
+                    // TODO: 30.03.2022
+
                     recyclerView.requestLayout();
 
                     // TODO: 30.03.2022
                     recyclerView.requestFocus();
 
                     recyclerView.invalidate();
-
-                    recyclerView.dispatchWindowVisibilityChanged(View.VISIBLE);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -1932,7 +1932,7 @@ public class Fragment1_One_Tasks extends Fragment {
                         @Override
                         public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
                             // TODO: 13.03.2022
-                            int ИндексдляНепрочитанный;
+                            int ИндексдляНепрочитанный = 0;
                             // TODO: 13.03.2022
                             // TODO: 13.03.2022
                             Drawable drawableИндексдляНепрочитанный;
@@ -1944,52 +1944,58 @@ public class Fragment1_One_Tasks extends Fragment {
 
                             Integer ИндексСтатусПрочтенияИлиНЕт = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("status_write");
                             // TODO: 02.03.2022
+                            Integer СамСтатусПрочтенияИлиНет = 0;
 
-                            Integer СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getInt(ИндексСтатусПрочтенияИлиНЕт);
+
+                            СамСтатусПрочтенияИлиНет = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getInt(ИндексСтатусПрочтенияИлиНЕт);
 
                             // TODO: 30.03.2022
 
-                            // TODO: 13.03.2022 прочитано
-                            if (isChecked && СамСтатусПрочтенияИлиНет == 1) {
-                                // TODO: 25.03.2022
-                                ИндексдляНепрочитанный = R.drawable.icon_dsu1_fortasks_cardview_color_geeeey;
-                                // TODO: 13.03.2022
-                                // TODO: 13.03.2022
-                                drawableИндексдляНепрочитанный
-                                        = getContext().getDrawable(ИндексдляНепрочитанный);
-                                // TODO: 13.03.2022
-                                card.setCheckedIcon(drawableИндексдляНепрочитанный);
-                                // TODO: 13.03.2022
-                                card.setCheckedIconResource(ИндексдляНепрочитанный);
-                                // TODO: 13.03.2022
-                                // TODO: 13.03.2022
-                                // TODO: 13.03.2022
-                                Log.d(this.getClass().getName(), "  holder.materialCardView.setOnCheckedChangeListener  СамСтатусПрочтенияИлиНет ==1   " + isChecked);
+                            Log.d(this.getClass().getName(), " card  " + card +
+                                    "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
+
+                            // TODO: 30.03.2022 делаем дизай про значению какойе прочтиатное или отказаноо
+                            switch (СамСтатусПрочтенияИлиНет) {
+                                // TODO: 30.03.2022  
+                                case 0:
+                                    // TODO: 30.03.2022
+                                    ИндексдляНепрочитанный = R.drawable.icon_dsu1_for_tasks_desible_task;// TODO: 30.03.2022   old 1
+                                    // TODO: 30.03.2022
+
+                                    break;
+
+                                case 1:
+                                    // TODO: 30.03.2022  
+                                    ИндексдляНепрочитанный = R.drawable.icon_dsu1_fortasks_cardview_color_geeeey;// TODO: 30.03.2022   old 1
+
+                                    // TODO: 30.03.2022  
+                                    break;
+
+                                case 2:
+
+                                    // TODO: 25.03.2022
+                                    ИндексдляНепрочитанный = R.drawable.icon_dsu1_fragment1_deseble_tasks;  // TODO: 30.03.2022  for 2
+
+                                    break;
 
                                 // TODO: 30.03.2022  
-                            } else {
 
+                                default:
+                                    // TODO: 30.03.2022
 
-                                // TODO: 13.03.2022 прочитано
-                                if (isChecked && СамСтатусПрочтенияИлиНет == 2) {
-                                    // TODO: 25.03.2022
-                                    ИндексдляНепрочитанный = R.drawable.icon_dsu1_fragment1_deseble_tasks;
-                                    // TODO: 13.03.2022
-                                    // TODO: 13.03.2022
-                                    drawableИндексдляНепрочитанный
-                                            = getContext().getDrawable(ИндексдляНепрочитанный);
-                                    // TODO: 13.03.2022
-                                    card.setCheckedIcon(drawableИндексдляНепрочитанный);
-                                    // TODO: 13.03.2022
-                                    card.setCheckedIconResource(ИндексдляНепрочитанный);
-                                    // TODO: 13.03.2022
-                                    // TODO: 13.03.2022
-                                    Log.d(this.getClass().getName(), "  holder.materialCardView.setOnCheckedChangeListener  СамСтатусПрочтенияИлиНет ==2   " + isChecked);
-                                }
+                                    Log.d(this.getClass().getName(), " card  " + card +
+                                            "  holder.getAdapterPosition() " + holder.getAdapterPosition() + " isChecked " + isChecked);
+
+                                    break;
 
                             }
+                            // TODO: 30.03.2022  
+                            drawableИндексдляНепрочитанный
+                                    = getContext().getDrawable(ИндексдляНепрочитанный);
                             // TODO: 13.03.2022
-
+                            card.setCheckedIcon(drawableИндексдляНепрочитанный);
+                            // TODO: 13.03.2022
+                            card.setCheckedIconResource(ИндексдляНепрочитанный);
 
                             // TODO: 13.03.2022
                             card.setSelected(true);

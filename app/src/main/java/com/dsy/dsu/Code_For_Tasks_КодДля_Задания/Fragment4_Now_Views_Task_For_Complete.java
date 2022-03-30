@@ -2223,6 +2223,15 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                 // TODO: 28.02.2022
                 return ОчередьДаныеДляСозданиеНовойЗадачиВнутри.size();
             }
+
+            @Override
+            public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+
+                recyclerView.removeAllViews();
+
+                recyclerView.getRecycledViewPool().clear();
+                super.onAttachedToRecyclerView(recyclerView);
+            }
         }//TODO  конец два
 
 

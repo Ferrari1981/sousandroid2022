@@ -2126,6 +2126,15 @@ public class Fragment3_Now_Create_Tasks extends Fragment1_One_Tasks {
                 // TODO: 28.02.2022
                 return ОчередьДаныеДляСозданиеНовойЗадачиВнутри.size();
             }
+
+            @Override
+            public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+
+                recyclerView.removeAllViews();
+
+                recyclerView.getRecycledViewPool().clear();
+                super.onAttachedToRecyclerView(recyclerView);
+            }
         }//TODO  конец два
 
 
