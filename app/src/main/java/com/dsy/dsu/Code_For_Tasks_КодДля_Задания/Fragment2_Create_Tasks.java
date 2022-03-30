@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteCursor;
@@ -1693,13 +1694,14 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                     // TODO: 30.03.2022
                                     ИндексПпрочитанные = R.drawable.icon_dsu1_create_new_tasks;
                                     // TODO: 30.03.2022
-
+                                    card.setCheckedIconTint(ColorStateList.valueOf(Color.BLACK));
                                     break;
 
                                 case 1:
                                     // TODO: 30.03.2022
                                     ИндексПпрочитанные = R.drawable.icon_dsu1_message_add_contact;
-
+                                    // TODO: 30.03.2022
+                                    card.setCheckedIconTint(ColorStateList.valueOf(Color.parseColor("#00CED1")));
                                     // TODO: 30.03.2022
                                     break;
 
@@ -1707,7 +1709,8 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
                                     // TODO: 25.03.2022
                                     ИндексПпрочитанные = R.drawable.icon_dsu1_for_tasks_desible_task;
-
+                                    // TODO: 30.03.2022
+                                    card.setCheckedIconTint(ColorStateList.valueOf(Color.RED));
                                     break;
 
                                 // TODO: 30.03.2022
