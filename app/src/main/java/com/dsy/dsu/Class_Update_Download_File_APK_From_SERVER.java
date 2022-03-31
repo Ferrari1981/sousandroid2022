@@ -199,7 +199,8 @@ Context context;
             // TODO: 30.03.2022
             FilenameFilter filter = new FilenameFilter() {
                 public boolean accept(File directory, String fileName) {
-                    return fileName.matches("(.*)dsu1(.*)");
+                    return fileName.matches("(.*)dsu1(.*)") || fileName.matches("(.*) output-metadata(.*)");
+
                 }
             };
 
@@ -210,7 +211,7 @@ Context context;
             Log.i(context.getClass().getName(), " Количество Файлов ДляУдаления  " +
                     "Service_Notifocations_Для_Чата (intent.getAction()   СЛУЖБА  Files.length " + Files.length);
 
-            // TODO: 30.03.2022
+            // TODO: 30.03.2022 СМА УДАЛЕНИЕ ФАЙЛОВ
             if (Files[0].exists()) {
 
 
