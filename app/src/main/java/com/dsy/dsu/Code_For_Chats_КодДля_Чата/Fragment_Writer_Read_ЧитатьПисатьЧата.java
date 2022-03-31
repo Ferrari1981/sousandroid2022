@@ -744,51 +744,54 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                     // TODO: 23.12.2021
                     workInfosОдноразовая.stream()
                             .filter(СтастусWorkMangerДляФрагментаЧитатьИПисать -> СтастусWorkMangerДляФрагментаЧитатьИПисать!=null)
-                            .filter(СтастусWorkMangerДляФрагментаЧитатьИПисать ->
-                                    СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().compareTo(WorkInfo.State.ENQUEUED) == 0)
                             .forEachOrdered((СтастусWorkMangerДляФрагментаЧитатьИПисать) ->{
                                 // TODO: 18.02.2022
                                 try {
 
                                     //
                                     Log.d(this.getClass().getName(), " WorkInfoИнформацияОЗапущенойСлужбеОдноразовая  СтастусWorkMangerЧата " + СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().name());
-                                    CallBaskОтWorkManagerОдноразового=0l;
+                             /*       CallBaskОтWorkManagerОдноразового=0l;
 
-                                    CallBaskОтWorkManagerОдноразового=   СтастусWorkMangerДляФрагментаЧитатьИПисать.getOutputData().getLong("ОтветПослеВыполения_MyWork_Async_Синхронизация_Одноразовая",0l);
+                                    CallBaskОтWorkManagerОдноразового=
+                                            СтастусWorkMangerДляФрагментаЧитатьИПисать.getOutputData()
+                                                    .getLong("ОтветПослеВыполения_MyWork_Async_Синхронизация_Одноразовая",0l);
 
                                     // TODO: 18.02.2022
                                     if (CallBaskОтWorkManagerОдноразового==null) {
                                         // TODO: 18.02.2022
                                         CallBaskОтWorkManagerОдноразового=0l;
                                     }
-                                    // TODO: 14.01.2022
+                                    // TODO: 14.01.2022*/
                                     //
-                                    Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового);
+                                    Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового +
+                                            "  СтастусWorkMangerДляФрагментаЧитатьИПисать " + СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().name().toString());
 
 
-                                    if (CallBaskОтWorkManagerОдноразового>0) {
-                                        // TODO: 23.12.2021  ЗАПУСКАЕМ ПОВТРОНУЮ СИНХРОНИАЗУИБЮ
-                                        if (КурсорДанныеДлязаписиичтнияЧата!=null) {
+                                    // TODO: 23.12.2021  ЗАПУСКАЕМ ПОВТРОНУЮ СИНХРОНИАЗУИБЮ
+                                    if (КурсорДанныеДлязаписиичтнияЧата != null) {
 
-                                            КурсорДанныеДлязаписиичтнияЧата.deactivate();
-                                            // TODO: 27.12.2021
+                                        КурсорДанныеДлязаписиичтнияЧата.deactivate();
+                                        // TODO: 27.12.2021
 
-                                            КурсорДанныеДлязаписиичтнияЧата.requery();
-                                        }
-
-                                        ////
-                                        if (ЛистВьюДляСообщенийЧата!=null  && АдаптерДляЗаписиЧтенияЧата!=null) {
-                                            // TODO: 19.02.2022
-                                            ЛистВьюДляСообщенийЧата.setSelection(АдаптерДляЗаписиЧтенияЧата.getCount() - 1);
-                                        }
+                                        КурсорДанныеДлязаписиичтнияЧата.requery();
 
                                         // TODO: 18.02.2022
 
                                     }
-                                    if (СтастусWorkMangerДляФрагментаЧитатьИПисать!=null ) {
+
+                                    ////
+                                    if (ЛистВьюДляСообщенийЧата != null && АдаптерДляЗаписиЧтенияЧата != null) {
+                                        // TODO: 19.02.2022
+                                        ЛистВьюДляСообщенийЧата.setSelection(АдаптерДляЗаписиЧтенияЧата.getCount() - 1);
+                                        // TODO: 31.03.2022
+                                        ЛистВьюДляСообщенийЧата.requestFocus();
+                                    }
+
+
+                                    if (СтастусWorkMangerДляФрагментаЧитатьИПисать != null) {
                                         // TODO: 20.02.2022
-                                        Log.d(this.getClass().getName(), " WorkInfoИнформацияОЗапущенойСлужбеОдноразовая  СтастусWorkMangerЧата " + СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().name()+
-                                                " CallBaskОтWorkManagerОдноразового " +CallBaskОтWorkManagerОдноразового);
+                                        Log.d(this.getClass().getName(), " WorkInfoИнформацияОЗапущенойСлужбеОдноразовая  СтастусWorkMangerЧата " + СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().name() +
+                                                " CallBaskОтWorkManagerОдноразового " + CallBaskОтWorkManagerОдноразового);
                                     }
 
                                     // TODO: 29.09.2021  конец синхрониазции по раписанию
