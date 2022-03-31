@@ -94,7 +94,6 @@
                 android:hint="Напишите примечание !!! "
                 android:inputType="textMultiLine|textCapSentences"
                 android:maxLength="200"
-                android:minLines="10"
                 android:layout_centerHorizontal="true"
                 android:singleLine="false"
                 android:textColor="#000000"
