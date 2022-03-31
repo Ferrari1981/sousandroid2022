@@ -34,22 +34,12 @@ public class BroadcastReceiver_Sous_Asyns_Glassfish extends BroadcastReceiver {
 
         try {
 
-
-
-            Log.i(this.getClass().getName(), " ЗАПУСК BroadcastReceiver_Sous_Asyns_Glassfish    public void onReceive(Context context, Intent intent)" +
-                    " ........ СНАРУЖИ BroadcastReceiver_Sous_Asyns_Glassfish   (intent.getAction()   СЛУЖБА" +" время запуска  " +new Date()+"\n");
-
             // TODO: 18.04.2021 запувскает широковещатель
 
                 ///
                 Log.i(this.getClass().getName(), " Внутри Broadcatrecever (intent.getAction()   СЛУЖБА кто ЗАПУСТИЛ САМ bRODCAST ? :::" +(intent.getAction().toString())+"\n"+
                         " Build.BRAND.toString() Название Телефона " +Build.BRAND.toString());
 
-
-
-                /////
-
-                try {
 
 
                     Integer ПубличныйIDДляФрагмента = new SubClass_Connection_BroadcastReceiver_Sous_Asyns_Glassfish().МетодПолучениеяПубличногоID(context);
@@ -78,19 +68,7 @@ public class BroadcastReceiver_Sous_Asyns_Glassfish extends BroadcastReceiver {
 
 
 
-                    // TODO: 07.07.2021
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                    new Class_Generation_Errors(context.getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
-                            this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
-                            Thread.currentThread().getStackTrace()[2].getLineNumber());;
 
-                    Log.e(context.getClass().getName(), " ОШИБКА В BroadcastReceiver_Sous_Notificatioons_For_Tasks  СЛУЖБА  public void onReceive  " + " ОШИБКА ::" + e.toString());
-
-
-                }
 
 
 

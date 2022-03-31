@@ -145,11 +145,11 @@ public class Class_Generation_WORK_MANGER_DIRECT {
                     // TODO: 27.03.2022
 
 
-                    if (workInfos.get(0).getState().compareTo(WorkInfo.State.BLOCKED) == 0) {
+              /*      if (workInfos.get(0).getState().compareTo(WorkInfo.State.BLOCKED) == 0) {
                         // TODO: 27.03.2022
                         WorkManager.getInstance(context.getApplicationContext()).cancelAllWorkByTag(ИмяСлужбыСинхронизации);
                     }
-
+*/
 
                 }
             });
