@@ -199,6 +199,14 @@ Context context;
             // TODO: 30.03.2022
             FilenameFilter filter = new FilenameFilter() {
                 public boolean accept(File directory, String fileName) {
+                    // TODO: 31.03.2022  
+                    if (!fileName.isEmpty()) {
+                        Boolean ЕслиТАкойФайл = fileName.matches("(.*)dsu1(.*)") || fileName.matches("(.*) output-metadata(.*)");
+                        // TODO: 31.03.2022
+                        if (ЕслиТАкойФайл) {
+                            directory.delete();
+                        }
+                    }
                     return fileName.matches("(.*)dsu1(.*)") || fileName.matches("(.*) output-metadata(.*)");
 
                 }
@@ -212,17 +220,6 @@ Context context;
                     "Service_Notifocations_Для_Чата (intent.getAction()   СЛУЖБА  Files.length " + Files.length);
 
             // TODO: 30.03.2022 СМА УДАЛЕНИЕ ФАЙЛОВ
-            if (Files[0].exists()) {
-
-
-                Files[0].delete();
-            }
-
-            // TODO: 30.03.2022
-            if (Files[1].exists()) {
-
-                Files[1].delete();
-            }
 
 
         } catch (Exception e) {
