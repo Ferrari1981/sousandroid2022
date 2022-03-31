@@ -928,7 +928,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
         // TODO: 28.02.2022 начало  MyViewHolder
         protected class MyViewHolder extends RecyclerView.ViewHolder {// TODO: 28.02.2022 начало  MyViewHolder
             // TODO: 28.02.2022
-            TextView textView1, textView2, textView3, textView4, textView5, textView6;
+            TextView textView1, textView2, textView3, textView4, textView5, textView6, textView7;
             ;
             // TODO: 13.03.2022
             MaterialCardView materialCardView;
@@ -967,6 +967,12 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     textView6 = (TextView) itemView.findViewById(R.id.text10_innercardview2_callsbaks);
                     // TODO: 30.03.2022
                     textView6.setVisibility(View.GONE);
+
+                    // TODO: 31.03.2022
+                    textView7 = (TextView) itemView.findViewById(R.id.text0_innercardview_headmessage_create_task);
+                    // TODO: 31.03.2022
+                    // TODO: 30.03.2022
+                    textView7.setVisibility(View.GONE);
                     // TODO: 01.03.2022
                     materialCardView = (MaterialCardView) itemView.findViewById(R.id.cardviewmatirealtask);
                     // TODO: 13.03.2022
@@ -1117,13 +1123,18 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     Log.i(this.getClass().getName(), "      holder.textView1  accessibilityNodeInfo " + BungleДанныеДляViewCard + " СамСтатусПрочтенияИлиНет " + СамСтатусПрочтенияИлиНет);
 
 
+                    // TODO: 31.03.2022  метод для создание Шабка Задачи
+
+                    МетодБиндингаШабкаЗадачи(holder);
+
+
                     // TODO: 13.03.2022 настройки для carview
 
                     holder.materialCardView.toggle();
 
                     // TODO: 13.03.2022
                     holder.materialCardView.setChecked(true);
-                        // TODO: 15.03.2022
+                    // TODO: 15.03.2022
 
 // TODO: 28.02.2022
 
@@ -1287,6 +1298,41 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                 }
 
             }
+
+
+            // TODO: 31.03.2022  метод  примечаение задачи
+            private void МетодБиндингаШабкаЗадачи(@NonNull MyViewHolder holder) {
+
+                try {
+                    // TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1
+                    Integer ИндексСамогоШабкаЗАдачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("head_message");
+                    // TODO: 02.03.2022
+                    String СамогоШабкаЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getString(ИндексСамогоШабкаЗАдачи);
+                    // TODO: 02.03.2022
+                    Log.i(this.getClass().getName(), "  МетодБиндингаШабкаЗадачи  СамогоШабкаЗадачи " + СамогоШабкаЗадачи);
+                    // TODO: 28.02.2022
+                    if (!СамогоШабкаЗадачи.isEmpty()) {
+                        // TODO: 30.03.2022
+                        holder.textView7.setVisibility(View.VISIBLE);
+                        // TODO: 30.03.2022
+                        holder.textView7.setText("описание: " + Optional.ofNullable(СамогоШабкаЗадачи).orElse(""));
+
+                    } else {
+                        // TODO: 30.03.2022
+                        holder.textView7.setVisibility(View.GONE);
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+            }
+
 
             @NonNull
 
@@ -1508,7 +1554,6 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     // TODO: 29.03.2022
-                                    dialog.dismiss();
                                     Log.d(this.getClass().getName(), "  ФИНАЛ создание нового сотрудника ");
                                     // TODO: 29.03.2022
                                     try {
@@ -1614,7 +1659,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                                 Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.requery();
 
                                                 // TODO: 13.03.2022
-                                                notifyDataSetChanged();
+                                                ///  notifyDataSetChanged();
 
                                             }, 2500);
                                         }
@@ -1622,6 +1667,10 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                         // TODO: 25.03.2022 \
 
                                         // TODO: 29.03.2022  конец переносимого кода
+
+                                        dialog.dismiss();
+                                        // TODO: 25.03.2022 \
+                                        dialog.cancel();
                                         // TODO: 29.03.2022
                                         Log.d(this.getClass().getName(), " MessageBoxUpdateУдалаениеЗаданияНЕТ");
 
@@ -1642,11 +1691,13 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     // TODO: 29.03.2022
-                                    dialog.dismiss();
-
                                     try {
                                         // TODO: 29.03.2022
                                         Log.d(this.getClass().getName(), " MessageBoxUpdateУдалаениеЗаданияНЕТ");
+
+                                        dialog.dismiss();
+                                        // TODO: 25.03.2022 \
+                                        dialog.cancel();
 
                                     } catch (Exception e) {
                                         e.printStackTrace();
