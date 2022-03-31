@@ -1079,7 +1079,7 @@ public class Fragment1_One_Tasks extends Fragment {
         // TODO: 28.02.2022 начало  MyViewHolder
         protected class MyViewHolder extends RecyclerView.ViewHolder {// TODO: 28.02.2022 начало  MyViewHolder
             // TODO: 28.02.2022
-            TextView textView1, textView2, textView3, textView4, textView5, textView6;
+            TextView textView1, textView2, textView3, textView4, textView5, textView6, textView7;
             // TODO: 13.03.2022
             MaterialCardView materialCardView;
             // TODO: 29.03.2022
@@ -1120,6 +1120,11 @@ public class Fragment1_One_Tasks extends Fragment {
                     textView6 = (TextView) itemView.findViewById(R.id.text9_innercardview_callsbaks);
                     // TODO: 30.03.2022
                     textView6.setVisibility(View.GONE);
+                    // TODO: 31.03.2022
+                    textView7 = (TextView) itemView.findViewById(R.id.text0_innercardview_headmessage);
+                    // TODO: 31.03.2022
+                    // TODO: 30.03.2022
+                    textView7.setVisibility(View.GONE);
 
 
                     // TODO: 30.03.2022
@@ -1375,6 +1380,10 @@ public class Fragment1_One_Tasks extends Fragment {
                     // TODO: 02.03.2022#5 создание Для заполнения Примечание
 
                     МетодБиндингаПримечаниеСамогоСообщенияCallBask(holder);
+
+                    // TODO: 31.03.2022  метод для создание Шабка Задачи
+
+                    МетодБиндингаШабкаЗадачи(holder);
 
 
                     // TODO: 13.03.2022 настройки для carview
@@ -1684,6 +1693,42 @@ public class Fragment1_One_Tasks extends Fragment {
 
             }
 
+            // TODO: 31.03.2022  метод  примечаение задачи
+            private void МетодБиндингаШабкаЗадачи(@NonNull MyViewHolder holder) {
+
+                try {
+                    // TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1// TODO: 02.03.2022#1
+                    Integer ИндексСамогоШабкаЗАдачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("head_message");
+                    // TODO: 02.03.2022
+                    String СамогоШабкаЗадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getString(ИндексСамогоШабкаЗАдачи);
+                    // TODO: 02.03.2022
+                    Log.i(this.getClass().getName(), "  МетодБиндингаШабкаЗадачи  СамогоШабкаЗадачи " + СамогоШабкаЗадачи);
+                    // TODO: 28.02.2022
+                    if (!СамогоШабкаЗадачи.isEmpty()) {
+                        // TODO: 30.03.2022
+                        holder.textView7.setVisibility(View.VISIBLE);
+                        // TODO: 30.03.2022
+                        holder.textView7.setText("примечание: " + Optional.ofNullable(СамогоШабкаЗадачи).orElse(""));
+
+                    } else {
+                        // TODO: 30.03.2022
+                        holder.textView7.setVisibility(View.GONE);
+
+                    }
+
+
+                    // TODO: 28.02.2022
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ///метод запись ошибок в таблицу
+                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                }
+
+            }
 
             // TODO: 13.03.2022
 
