@@ -197,7 +197,7 @@ Context context;
             }
 
             // TODO: 30.03.2022
-            FilenameFilter filter = new FilenameFilter() {
+            FilenameFilter filterДляУдаления = new FilenameFilter() {
                 public boolean accept(File directory, String fileName) {
                     // TODO: 31.03.2022  
                     if (!fileName.isEmpty()) {
@@ -213,7 +213,7 @@ Context context;
             };
 
 
-            File[] Files = ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(filter);
+            File[] Files = ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(filterДляУдаления);
 
 
             Log.i(context.getClass().getName(), " Количество Файлов ДляУдаления  " +
