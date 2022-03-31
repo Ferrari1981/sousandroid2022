@@ -1547,8 +1547,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                     .setMessage("Удалить созданую задачу")
                                     .setPositiveButton("Да", null)
                                     .setNegativeButton("Нет", null)
-                                    .setIcon(ФлагЗнака)
-                                    .show();
+                                    .setIcon(ФлагЗнака);
 /////////кнопка
                             MaterialAlertDialogBuilder MessageBoxUpdateУдалаениеЗаданияДА = alertDialogУдалениеЗадачи.setPositiveButton("Да", new DialogInterface.OnClickListener() {
                                 @Override
@@ -1585,19 +1584,32 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                                 // TODO: 13.03.2022
                                                 Log.d(this.getClass().getName(), "  SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1   ПозицияЭлментаVIewCardДополнительно  СтатусПрочтеаУжеЗадачаИлиНет " +
                                                         msg + " msg.getWhen() " + msg.getWhen());
-                                                // TODO: 25.03.2022
-                                                msg.getTarget().removeMessages(1);
-                                                // TODO: 25.03.2022
-                                                progressDialogДляУдаленияСвоегоЗадание.dismiss();
-                                                ////
-                                                progressDialogДляУдаленияСвоегоЗадание.cancel();
-                                                // TODO: 25.03.2022
 
-                                                // TODO: 13.01.2022  ЗАПУСК СИХРОНИЗВАЦИИ В ХОЛОСТУЮ ХОД
+                                                try {
+                                                    // TODO: 25.03.2022
+                                                    msg.getTarget().removeMessages(1);
+                                                    // TODO: 25.03.2022
+                                                    progressDialogДляУдаленияСвоегоЗадание.dismiss();
+                                                    ////
+                                                    progressDialogДляУдаленияСвоегоЗадание.cancel();
+                                                    // TODO: 25.03.2022
 
-                                                new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getContext()).
-                                                        МетодПовторногоЗапускаВсехWorkManager__ОДНОРАЗОВОЙСинхрониазцииданных(ПубличныйIDДляФрагмента, getContext());
+                                                    // TODO: 13.01.2022  ЗАПУСК СИХРОНИЗВАЦИИ В ХОЛОСТУЮ ХОД
 
+                                                    new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getContext()).
+                                                            МетодПовторногоЗапускаВсехWorkManager__ОДНОРАЗОВОЙСинхрониазцииданных(ПубличныйIDДляФрагмента, getContext());
+
+
+                                                    // TODO: 28.02.2022
+                                                } catch (Exception e) {
+                                                    e.printStackTrace();
+                                                    ///метод запись ошибок в таблицу
+                                                    Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                                    new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                                                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                                    //   mNotificationManagerДляЧАТА.cancel(1);///.cancelAll();
+                                                }
 
                                                 return true;
                                             }
@@ -1638,6 +1650,13 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                         Log.d(this.getClass().getName(), " РезультатУдаленияСозданныйЗадач МетодБиндингаСлушателейДляViewCard   " + РезультатУдаленияСозданныйЗадач);
 
 
+                                        // TODO: 29.03.2022  конец переносимого кода
+
+                                        dialog.dismiss();
+                                        // TODO: 25.03.2022 \
+                                        dialog.cancel();
+
+
                                         if (РезультатУдаленияСозданныйЗадач > 0) {
 
                                             // TODO: 03.03.2022 update screewn
@@ -1659,13 +1678,6 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                                 Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.requery();
 
                                                 // TODO: 13.03.2022
-
-                                                // TODO: 29.03.2022  конец переносимого кода
-
-                                                dialog.dismiss();
-                                                // TODO: 25.03.2022 \
-                                                dialog.cancel();
-
                                                 ///  notifyDataSetChanged();
 
                                             }, 2500);
@@ -1714,9 +1726,10 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                 }
                             });
 // TODO: 29.03.2022
-                            alertDialogУдалениеЗадачи.show();
                             // TODO: 29.03.2022
                             Log.d(this.getClass().getName(), " MessageBoxUpdateУдалаениеЗаданияНЕТ");
+
+                            alertDialogУдалениеЗадачи.show();
 
                             // TODO: 29.03.2022 defalult
                             return true;
