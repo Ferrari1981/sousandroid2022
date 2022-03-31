@@ -108,9 +108,12 @@ public class Fragment_Messages_СообщенияЧата extends Fragment {
     DataSetObserver dataSetObserverФрагментСообшенияДЛяКУРСОРА;
 
     Observer observerОдноразоваяДляФрагментаСообщенияЧата;
+    // TODO: 31.03.2022
+    Observer observerОбщейДляWORKMANAGER;
 
     // TODO: 10.02.2022
-
+    // TODO: 04.03.2022
+    String ИмяСлужбыОбщейСинхронизацииДляЗадачи = "WorkManager Synchronizasiy_Data";
 
     // TODO: 22.12.2021
     String ИмяСлужбыСинхронизацииОдноразовая = "WorkManager Synchronizasiy_Data Disposable";
@@ -221,9 +224,9 @@ public class Fragment_Messages_СообщенияЧата extends Fragment {
 
             Log.d(this.getClass().getName(), "  ПубличноеIDПолученныйИзСервлетаДляUUID   " +ПубличноеIDПолученныйИзСервлетаДляUUID);
 
+            modelФрагментСообщениия.МетодЗапускаВторогоСлушателяОбщегоWorkManager();
 
-
-
+            Log.d(this.getClass().getName(), "  ПубличноеIDПолученныйИзСервлетаДляUUID   " + ПубличноеIDПолученныйИзСервлетаДляUUID);
 
 
 
@@ -301,16 +304,21 @@ public class Fragment_Messages_СообщенияЧата extends Fragment {
         }
 
 
-        if (observerОдноразоваяДляФрагментаСообщенияЧата!=null) {
-            // TODO: 30.12.2021   --ОТПИСЫВАЕМСЯ
-            WorkManager.getInstance(getContext()).getWorkInfosByTagLiveData(ИмяСлужбыСинхронизацииОдноразовая).removeObserver(observerОдноразоваяДляФрагментаСообщенияЧата);
-        }
+            if (observerОдноразоваяДляФрагментаСообщенияЧата != null) {
+                // TODO: 30.12.2021   --ОТПИСЫВАЕМСЯ
+                WorkManager.getInstance(getContext()).getWorkInfosByTagLiveData(ИмяСлужбыСинхронизацииОдноразовая).removeObserver(observerОдноразоваяДляФрагментаСообщенияЧата);
+            }
 
 
+            // TODO: 04.03.2022
+
+            if (observerОбщейДляWORKMANAGER != null && ИмяСлужбыОбщейСинхронизацииДляЗадачи != null) {
+                // TODO: 30.12.2021   --ОТПИСЫВАЕМСЯ
+                WorkManager.getInstance(getContext()).getWorkInfosByTagLiveData(ИмяСлужбыОбщейСинхронизацииДляЗадачи).removeObserver(observerОбщейДляWORKMANAGER);
+            }
 
 
-
-    } catch (Exception e) {
+        } catch (Exception e) {
         e.printStackTrace();
         ///метод запись ошибок в таблицу
         Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
@@ -2168,21 +2176,140 @@ try {
                                 });
 
 
-
-
-
-
-
-
                 }
             };
 
             // TODO: 18.02.2022
 
-            if (observerОдноразоваяДляФрагментаСообщенияЧата!=null) {
+            if (observerОдноразоваяДляФрагментаСообщенияЧата != null) {
                 // TODO: 20.02.2022
                 WorkManager.getInstance(getContext()).getWorkInfosByTagLiveData(ИмяСлужбыСинхронизацииОдноразовая).observeForever(observerОдноразоваяДляФрагментаСообщенияЧата);
             }
+        }
+
+        // TODO: 31.03.2022  ВТОРОЙ СЛУШАТЕЛЬ  ОБШЕЙ СИНХРОНИАЗАЦИИ
+
+
+        // TODO: 18.10.2021  СИНХРОНИАЗЦИЯ ЧАТА ПО РАСПИСАНИЮ ЧАТ
+        private void МетодЗапускаВторогоСлушателяОбщегоWorkManager() throws ExecutionException, InterruptedException {
+            ///
+// TODO: 11.05.2021 ЗПУСКАЕМ СЛУЖБУ через брдкастер синхронизхации и уведомления
+
+            try {
+
+                // TODO: 27.10.2021
+
+
+                // TODO: 16.12.2021  --ОДНОРАЗОВАЯ СИНХРОНИАЗЦИЯ СЛУШАТЕЛЬ
+
+                observerОбщейДляWORKMANAGER = new Observer<List<WorkInfo>>() {
+                    @Override
+                    public void onChanged(List<WorkInfo> workInfosОдноразовая) {
+
+
+                        // TODO: 23.12.2021
+                        workInfosОдноразовая.stream()
+                                .filter(СтастусWorkMangerДляФрагментаЧитатьИПисать -> СтастусWorkMangerДляФрагментаЧитатьИПисать != null)
+                                .forEachOrdered((СтастусWorkMangerДляФрагментаЧитатьИПисать) -> {
+                                    // TODO: 18.02.2022
+                                    try {
+
+                                        //
+                                        Log.d(this.getClass().getName(), " WorkInfoИнформацияОЗапущенойСлужбеОдноразовая  СтастусWorkMangerЧата " + СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().name());
+                             /*       CallBaskОтWorkManagerОдноразового=0l;
+
+                                    CallBaskОтWorkManagerОдноразового=
+                                            СтастусWorkMangerДляФрагментаЧитатьИПисать.getOutputData()
+                                                    .getLong("ОтветПослеВыполения_MyWork_Async_Синхронизация_Одноразовая",0l);
+
+                                    // TODO: 18.02.2022
+                                    if (CallBaskОтWorkManagerОдноразового==null) {
+                                        // TODO: 18.02.2022
+                                        CallBaskОтWorkManagerОдноразового=0l;
+                                    }
+                                    // TODO: 14.01.2022*/
+                                        //
+                                        Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового " +
+                                                "  СтастусWorkMangerДляФрагментаЧитатьИПисать " + СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().name().toString());
+
+
+                                        // TODO: 23.12.2021  ЗАПУСКАЕМ ПОВТРОНУЮ СИНХРОНИАЗУИБЮ
+                                        // TODO: 23.12.2021  ЗАПУСКАЕМ ПОВТРОНУЮ СИНХРОНИАЗУИБЮ
+
+                                        if (КурсорДанныеДляСообщенийЧата != null) {
+                                            // TODO: 10.02.2022
+                                            КурсорДанныеДляСообщенийЧата.deactivate();
+                                            // TODO: 27.12.2021
+
+                                            КурсорДанныеДляСообщенийЧата.requery();
+                                        }
+
+
+                                        if (ЛистВьюДляСообщенийЧата != null) {
+
+                                            ЛистВьюДляСообщенийЧата.requestLayout();
+
+                                            ЛистВьюДляСообщенийЧата.deferNotifyDataSetChanged();
+
+
+                                            ////
+                                            if (АдаптерДляСообщенийДляФрагментаСообщенияОтРазныхЛюдей != null && ЛистВьюДляСообщенийЧата != null) {
+                                                // TODO: 19.02.2022
+                                                ЛистВьюДляСообщенийЧата.setSelection(АдаптерДляСообщенийДляФрагментаСообщенияОтРазныхЛюдей.getCount() - 1);
+
+                                                АдаптерДляСообщенийДляФрагментаСообщенияОтРазныхЛюдей.notifyDataSetChanged();
+                                            }
+                                        }
+
+
+                                        if (СтастусWorkMangerДляФрагментаЧитатьИПисать != null) {
+                                            // TODO: 20.02.2022
+                                            Log.d(this.getClass().getName(), " WorkInfoИнформацияОЗапущенойСлужбеОдноразовая  СтастусWorkMangerЧата "
+                                                    + СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().name());
+                                        }
+
+                                        // TODO: 29.09.2021  конец синхрониазции по раписанию
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                        ///метод запись ошибок в таблицу
+                                        Log.e(this.getClass().getName(), "Ошибка  Фрагмент Читать и Писать   observerОдноразоваяДляWORKMANAGER = new Observer<List<WorkInfo>>() {" +
+                                                " МетодЗапускаСинхрониазцииПоРАсписаниювНезависимостиОтВставкиНовгоСообщения  " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                                " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                        new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                                                Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                    }
+                                });
+
+
+                    }
+                };
+
+
+// TODO: 18.02.2022
+
+                if (observerОбщейДляWORKMANAGER != null) {
+                    // TODO: 20.02.2022
+                    // TODO: 20.02.2022
+                    WorkManager.getInstance(getContext()).getWorkInfosByTagLiveData(ИмяСлужбыОбщейСинхронизацииДляЗадачи).observeForever(observerОбщейДляWORKMANAGER);
+                }
+
+
+                // TODO: 29.09.2021  конец синхрониазции по раписанию
+
+
+                Log.d(this.getClass().getName(), " WorkInfoИнформацияОЗапущенойСлужбеОдноразовая  СтастусWorkMangerЧата " + " CallBaskОтWorkManagerОдноразового ");
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                ///метод запись ошибок в таблицу
+                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                new Class_Generation_Errors(getContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+            }
+
+
         }
 
 
