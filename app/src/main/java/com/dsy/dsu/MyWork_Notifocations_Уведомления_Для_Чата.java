@@ -838,13 +838,19 @@ try{
 */
 
 
-                Log.d(this.getClass().getName(), "ОбщееКоличествоНЕпрочитанныхСтрок " + ОбщееКоличествоНЕпрочитанныхСтрок+
-                        " PROCESS_ID_УведомленияОдноразовые " +PROCESS_ID_УведомленияОдноразовые);
+                Log.d(this.getClass().getName(), "ОбщееКоличествоНЕпрочитанныхСтрок " + ОбщееКоличествоНЕпрочитанныхСтрок +
+                        " PROCESS_ID_УведомленияОдноразовые " + PROCESS_ID_УведомленияОдноразовые);
 
                 Drawable icon = null;
                 icon = getApplicationContext().getResources().getDrawable(R.drawable.icon_dsu1_for_fragment1_chat2);
                 icon.setBounds(10, 0, 90, 85);
 
+                // TODO: 31.03.2022
+
+                // Get the layouts to use in the custom notification
+            /*    @SuppressLint("RemoteViewLayout")
+                RemoteViews notificationLayout = new RemoteViews(getApplicationContext().getPackageName(), R.layout.activity_main__authentication);
+              //  RemoteViews notificationLayoutExpanded = new RemoteViews(getApplicationContext(), R.layout.notification_large);*/
 
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -853,7 +859,8 @@ try{
                             /////
                             .setSmallIcon(R.drawable.ic_notifications_black_24dp)////builder.setSmallIcon(R.drawable.ic_launcher_background);//R.mipmap.ic_launcher   ///R.drawable.ic_notifications_black_24dp
                             .setPriority(NotificationCompat.PRIORITY_MAX)
-                            .setColor(Color.parseColor("#00ACC1"))
+                            .setColor(Color.GRAY)
+                            .setColorized(true)
                             .setGroup("SousAndroid")
                             .setContentTitle("Уведомления чата")
                          /*   .setSmallIcon(R.drawable.icon_dsu1_for_fragment1_chat2)*/
@@ -894,6 +901,8 @@ try{
                                     .setSmallIcon(R.drawable.ic_notifications_black_24dp)////builder.setSmallIcon(R.drawable.ic_launcher_background);//R.mipmap.ic_launcher   ///R.drawable.ic_notifications_black_24dp
                                     .setPriority(NotificationCompat.PRIORITY_MAX)
                                     .setColor(Color.parseColor("#00ACC1"))
+                                    .setColorized(true)
+                                    .setColor(Color.GRAY)
                                    /* .setSmallIcon(R.drawable.icon_dsu1_for_fragment1_chat2)*/
                                     .setLargeIcon(BitmapFactory.decodeResource(Контекст.getResources(),
                                             R.drawable.ic_notifications_black_24dp)) // большая картинка

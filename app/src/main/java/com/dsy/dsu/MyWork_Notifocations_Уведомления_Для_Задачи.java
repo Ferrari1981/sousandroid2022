@@ -922,7 +922,8 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
                                 .setContentText(БуферСамиУведомленияЛинкСамиУведомления.toString())                 // .setContentText("http://developer.alexanderklimov.ru/android/")
                                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)////builder.setSmallIcon(R.drawable.ic_launcher_background);//R.mipmap.ic_launcher   ///R.drawable.ic_notifications_black_24dp
                                 .setPriority(NotificationCompat.PRIORITY_MAX)
-                                .setColor(Color.parseColor("#00ACC1"))
+                                .setColor(Color.BLUE)
+                                .setColorized(true)
                                 //.setContentTitle("Задание на выполнение")
                                 .setSmallIcon(R.drawable.icon_dsu1_for_fragment1_chat2)
                                 .setGroup("SousAndroid")
@@ -956,7 +957,8 @@ Integer ОбщееКоличествоНЕпрочитанныхСтрок = 0;
                                         .setContentText(БуферСамиУведомленияЛинкСамиУведомления.toString())                 // .setContentText("http://developer.alexanderklimov.ru/android/")
                                         .setSmallIcon(R.drawable.ic_notifications_black_24dp)////builder.setSmallIcon(R.drawable.ic_launcher_background);//R.mipmap.ic_launcher   ///R.drawable.ic_notifications_black_24dp
                                         .setPriority(NotificationCompat.PRIORITY_MAX)
-                                        .setColor(Color.parseColor("#00ACC1"))
+                                        .setColor(Color.BLUE)
+                                        .setColorized(true)
                                         //  .setContentTitle("Задание на выполнение")
                                         .setSmallIcon(R.drawable.icon_dsu1_for_fragment1_chat2)
                                         .setLargeIcon(BitmapFactory.decodeResource(Контекст.getResources(),
