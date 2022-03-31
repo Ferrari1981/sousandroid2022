@@ -1659,6 +1659,13 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                                 Курсор_ДляПолученияДАнныхТОлькоДляЗадачВработе.requery();
 
                                                 // TODO: 13.03.2022
+
+                                                // TODO: 29.03.2022  конец переносимого кода
+
+                                                dialog.dismiss();
+                                                // TODO: 25.03.2022 \
+                                                dialog.cancel();
+
                                                 ///  notifyDataSetChanged();
 
                                             }, 2500);
@@ -1666,11 +1673,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
                                         // TODO: 25.03.2022 \
 
-                                        // TODO: 29.03.2022  конец переносимого кода
 
-                                        dialog.dismiss();
-                                        // TODO: 25.03.2022 \
-                                        dialog.cancel();
                                         // TODO: 29.03.2022
                                         Log.d(this.getClass().getName(), " MessageBoxUpdateУдалаениеЗаданияНЕТ");
 

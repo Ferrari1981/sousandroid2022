@@ -42,7 +42,7 @@
             <TextView
                 android:id="@+id/text0_innercardview_headmessage_create_task"
                 android:layout_width="370dp"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:checkMark="?android:attr/textCheckMark"
@@ -66,7 +66,7 @@
             <TextView
                 android:id="@+id/text1_innercardview"
                 android:layout_width="370dp"
-                android:layout_height="90dp"
+                android:layout_height="70dp"
                 android:checkMark="?android:attr/textCheckMark"
                 android:foregroundGravity="center"
                 android:gravity="center_horizontal|center_vertical"
