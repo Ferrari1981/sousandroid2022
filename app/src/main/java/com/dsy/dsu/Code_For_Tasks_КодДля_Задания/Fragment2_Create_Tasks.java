@@ -544,18 +544,22 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                         // TODO: 23.2.2021
                         workInfoОБШАЯ.stream()
                                 .filter(СтастусWorkMangerДляФрагментаЧитатьИПисать -> СтастусWorkMangerДляФрагментаЧитатьИПисать != null)
-                                .filter(СтастусWorkMangerДляФрагментаЧитатьИПисать ->
-                                        СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().compareTo(WorkInfo.State.ENQUEUED) == 0)
                                 .forEachOrdered((СтастусWorkMangerДляФрагментаЧитатьИПисать) -> {
                                     // TODO: 18.02.2022
                                     try {
                                         // TODO: 14.01.2022
                                         Log.d(this.getClass().getName(), " workInfoОБШАЯ  CallBaskОтWorkManagerОдноразового observerОдноразоваяДляWORKMANAGERДляРасписания/ " +
                                                 СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().name());
-                                        // TODO: 04.03.2022
-                                        Курсор_ГлавныйКурсорДляЗадач.deactivate();
-                                        // TODO: 04.03.2022 перезапускаем курсор
-                                        Курсор_ГлавныйКурсорДляЗадач.requery();
+
+
+                                        // TODO: 04.03.2022 задачи второй фрагмент
+                                        if (Курсор_ГлавныйКурсорДляЗадач != null) {
+
+
+                                            Курсор_ГлавныйКурсорДляЗадач.deactivate();
+                                            // TODO: 04.03.2022 перезапускаем курсор
+                                            Курсор_ГлавныйКурсорДляЗадач.requery();
+                                        }
                                         // TODO: 29.09.2021  конец синхрониазции по раписанию
                                     } catch (Exception e) {
                                         e.printStackTrace();
@@ -608,10 +612,15 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                                         // TODO: 14.01.2022
                                         Log.d(this.getClass().getName(), " CallBaskОтWorkManagerОдноразового observerОдноразоваяДляWORKMANAGERДляРасписанияДполнительнаяОтЧата " +
                                                 СтастусWorkMangerДляФрагментаЧитатьИПисать.getState().name());
-                                        // TODO: 04.03.2022
-                                        Курсор_ГлавныйКурсорДляЗадач.deactivate();
-                                        // TODO: 04.03.2022 перезапускаем курсор
-                                        Курсор_ГлавныйКурсорДляЗадач.requery();
+
+
+                                        // TODO: 04.03.2022 втрой фрвагмент задачи
+                                        if (Курсор_ГлавныйКурсорДляЗадач != null) {
+
+                                            Курсор_ГлавныйКурсорДляЗадач.deactivate();
+                                            // TODO: 04.03.2022 перезапускаем курсор
+                                            Курсор_ГлавныйКурсорДляЗадач.requery();
+                                        }
                                         // TODO: 29.09.2021  конец синхрониазции по раписанию
                                     } catch (Exception e) {
                                         e.printStackTrace();
