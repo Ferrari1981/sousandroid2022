@@ -317,6 +317,7 @@ Context context;
                     // TODO: 01.04.2022
                     FilesФайлыУдаления[i].delete();
                     // TODO: 01.04.2022
+                    // TODO: 01.04.2022
                     FilesФайлыУдаления[i].deleteOnExit();
                     // TODO: 01.04.2022
                     Log.i(this.getClass().getName(), " Files1[i] " + "  УДЛАЕНИЕ ...  ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.length() " + ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.length());
