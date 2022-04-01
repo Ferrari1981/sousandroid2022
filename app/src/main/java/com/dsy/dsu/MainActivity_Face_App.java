@@ -789,8 +789,8 @@ public class MainActivity_Face_App extends AppCompatActivity {
                     //удаляем с экрана Диалог
                     alertDialog.dismiss();
                     Log.d(this.getClass().getName(), "MessageBoxUpdateНеуСтанавливатьПО  ОТМЕНА УСТАНВОКИ НОВГО ПО   dismiss ");
-
-                    activity.finishAndRemoveTask(); //// ((Activity) MainActivity_Face_App.КонтекстFaceApp).finish();
+                    alertDialog.cancel();
+                    // activity.finishAndRemoveTask(); //// ((Activity) MainActivity_Face_App.КонтекстFaceApp).finish();
 
 
                     ///////////

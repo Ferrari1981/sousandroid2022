@@ -548,6 +548,10 @@ Context context;
                     List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
                     try {
 
+
+                        Log.w(this.getClass().getName(), "УниверсальныйБуферAPKФайлаПОсСервераВнутри localBroadcastManagerОтправляемНаActivityFaceApp "
+                                + " СервернаяВерсияПОВнутри " + СервернаяВерсияПОВнутри);
+
                         String namaa = taskInfo.get(0).topActivity.getClassName().toString();
 
                         Class<?> myClass = Class.forName(namaa);
@@ -556,9 +560,8 @@ Context context;
                         activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(context, "Загрузка... обновление"
-                                        + "\n" + "ПО Табельный учёт в." + "\n" +
-                                        +СервернаяВерсияПОВнутри, Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, "Загрузка..."
+                                        + "\n" + "ПО Табельный учёт" + "\n", Toast.LENGTH_LONG).show();
                             }
                         });
                     } catch (Exception e) {
@@ -638,7 +641,38 @@ Context context;
                             localBroadcastManagerОтправляемНаActivityFaceApp.sendBroadcast(intentДляУстановеПО);
                             // TODO: 25.03.2022
 
-                            Log.w(this.getClass().getName(), "УниверсальныйБуферAPKФайлаПОсСервераВнутри localBroadcastManagerОтправляемНаActivityFaceApp " + localBroadcastManagerОтправляемНаActivityFaceApp);
+                            Log.w(this.getClass().getName(), "УниверсальныйБуферAPKФайлаПОсСервераВнутри localBroadcastManagerОтправляемНаActivityFaceApp " + localBroadcastManagerОтправляемНаActivityFaceApp
+                                    + " СервернаяВерсияПОВнутри " + СервернаяВерсияПОВнутри);
+
+
+                            Activity activity = null;
+                            ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+                            List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
+                            try {
+
+                                String namaa = taskInfo.get(0).topActivity.getClassName().toString();
+
+                                Class<?> myClass = Class.forName(namaa);
+                                activity = (Activity) myClass.newInstance();
+                                // TODO: 19.12.2021
+                                activity.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(context, "Успешно загрузилась"
+                                                + "\n" + "ПО Табельный учёт в." + "\n" +
+                                                +СервернаяВерсияПОВнутри, Toast.LENGTH_LONG).show();
+                                    }
+                                });
+                            } catch (Exception e) {
+                                //  Block of code to handle errors
+                                e.printStackTrace();
+                                ///метод запись ошибок в таблицу
+                                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                                        + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                new Class_Generation_Errors(context).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                                        Thread.currentThread().getStackTrace()[2].getLineNumber());
+
+                            }
 
 
                         } catch (Exception e) {
