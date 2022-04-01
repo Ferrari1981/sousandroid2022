@@ -1544,7 +1544,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
                             alertDialogУдалениеЗадачи
                                     .setTitle("Удаление")
-                                    .setMessage("Удалить созданую задачу")
+                                    .setMessage("Удалить созданую задачу" + "\n" + "(" + holder.textView1.getText().toString() + ")" + ".")
                                     .setPositiveButton("Да", null)
                                     .setNegativeButton("Нет", null)
                                     .setIcon(ФлагЗнака);

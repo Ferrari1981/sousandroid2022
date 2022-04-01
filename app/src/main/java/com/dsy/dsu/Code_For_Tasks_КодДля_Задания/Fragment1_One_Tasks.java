@@ -63,6 +63,8 @@ public class Fragment1_One_Tasks extends Fragment {
     protected Bundle BungleДанныеДляViewCard;
     // TODO: 01.04.2022
     protected Bundle BungleДанныеДляViewCardBungle;
+    // TODO: 01.04.2022
+    protected Bundle BungleДанныеДляViewCardBungleID;
     // TODO: 28.02.2022
     protected RecyclerView recyclerView;
 
@@ -165,7 +167,8 @@ public class Fragment1_One_Tasks extends Fragment {
             // TODO: 01.04.2022
             BungleДанныеДляViewCardBungle = new Bundle();
 
-
+            // TODO: 01.04.2022
+            BungleДанныеДляViewCardBungleID = new Bundle();
             Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 imageView  onViewCreated ");
 
         } catch (Exception e) {
@@ -1464,6 +1467,19 @@ public class Fragment1_One_Tasks extends Fragment {
                     Log.i(this.getClass().getName(), "  accessibilityNodeInfoBundle   " + accessibilityNodeInfoBundle + " holder.getLayoutPosition() " + holder.getLayoutPosition());
 
 
+                    // TODO: 01.04.2022  допОЛНИТЕЛЬНЫЙ BUNGLE  ДЛЯ  ID
+
+                    // TODO: 01.04.2022
+                    Integer ИндексСамогоПримечаниезадачиID = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("status_write");
+                    // TODO: 02.03.2022
+                    Integer СамогоПримечанияЗАДАНИЯID = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getInt(ИндексСамогоПримечаниезадачиID);
+
+
+                    BungleДанныеДляViewCardBungleID.putInt(String.valueOf(holder.getLayoutPosition()), СамогоПримечанияЗАДАНИЯID);
+
+                    Log.i(this.getClass().getName(), "  accessibilityNodeInfoBundle   " + BungleДанныеДляViewCardBungleID + " holder.getLayoutPosition() " + holder.getLayoutPosition());
+
+
                 } catch (Exception e) {
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
@@ -1916,7 +1932,21 @@ public class Fragment1_One_Tasks extends Fragment {
                             // TODO: 01.04.2022
                             СамогоПримечанияЗАДАНИЯ = Optional.ofNullable(СамогоПримечанияЗАДАНИЯ).orElse("");
 
-                            if (СамогоПримечанияЗАДАНИЯ.isEmpty()) {
+
+                            // TODO: 01.04.2022  дополнительный Bungle для ID
+
+                            Integer СамогоПримечанияЗАДАНИЯ_ID = BungleДанныеДляViewCardBungleID.getInt(String.valueOf(holder.getLayoutPosition()));
+
+                            // TODO: 01.04.2022
+                            СамогоПримечанияЗАДАНИЯ_ID = Optional.ofNullable(СамогоПримечанияЗАДАНИЯ_ID).orElse(0);
+
+
+                            // TODO: 13.03.2022
+                            Log.d(this.getClass().getName(), "  СамогоПримечанияЗАДАНИЯ " + СамогоПримечанияЗАДАНИЯ_ID + " holder.getLayoutPosition() " + holder.getLayoutPosition() +
+                                    " BungleДанныеДляViewCardBungleID " + BungleДанныеДляViewCardBungleID);
+
+
+                            if (СамогоПримечанияЗАДАНИЯ.isEmpty() && СамогоПримечанияЗАДАНИЯ_ID == 0) {
                                 // TODO: 30.03.2022
                                 Bundle bundleПередачаПараметровФрагментов = new Bundle();
 
