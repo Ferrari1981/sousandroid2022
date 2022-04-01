@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -107,6 +108,8 @@ public class Fragment1_One_Tasks extends Fragment {
     // TODO: 09.03.2022
     protected BottomNavigationItemView bottomNavigationКонкретноКнопкаКонтролируемыеЗадачи;
     // TODO: 15.03.2022
+    AccessibilityNodeInfo accessibilityNodeInfoBundle;
+    // TODO: 01.04.2022
 
 
     @SuppressLint("RestrictedApi")
@@ -1441,6 +1444,25 @@ public class Fragment1_One_Tasks extends Fragment {
                     // TODO: 03.03.2022 передаем помер позиции position
                     holder.materialCardView.setTag(holder.materialCardView.getId(), СамСтатусПрочтенияИлиНет);
 
+
+                    // TODO: 01.04.2022  дополнительнео создани  данных по текущей строчке
+
+                    Integer ИндексСамогоПримечаниезадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("callsback_note_task");
+                    // TODO: 02.03.2022
+                    String СамогоПримечанияЗАДАНИЯ = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getString(ИндексСамогоПримечаниезадачи);
+
+
+                    // TODO: 01.04.2022 дополнительные данные сощдаем на строчке
+
+
+                    accessibilityNodeInfoBundle = holder.materialCardView.createAccessibilityNodeInfo();
+
+                    accessibilityNodeInfoBundle.getExtras().putString(String.valueOf(holder.getLayoutPosition()), СамогоПримечанияЗАДАНИЯ);
+                    ;
+
+                    Log.i(this.getClass().getName(), "  accessibilityNodeInfoBundle   " + accessibilityNodeInfoBundle + " holder.getLayoutPosition() " + holder.getLayoutPosition());
+
+
                 } catch (Exception e) {
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
@@ -1880,11 +1902,14 @@ public class Fragment1_One_Tasks extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO: 01.03.2022
-                            Integer ИндексСамогоПримечаниезадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("callsback_note_task");
+              /*              Integer ИндексСамогоПримечаниезадачи = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getColumnIndex("callsback_note_task");
                             // TODO: 02.03.2022
-                            String СамогоПримечанияЗАДАНИЯ = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getString(ИндексСамогоПримечаниезадачи);
+                            String СамогоПримечанияЗАДАНИЯ = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getString(ИндексСамогоПримечаниезадачи);*/
+
+                            String СамогоПримечанияЗАДАНИЯ = accessibilityNodeInfoBundle.getExtras().getString(String.valueOf(holder.getLayoutPosition()));
+
 // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  СамогоПримечанияЗАДАНИЯ " + СамогоПримечанияЗАДАНИЯ);
+                            Log.d(this.getClass().getName(), "  СамогоПримечанияЗАДАНИЯ " + СамогоПримечанияЗАДАНИЯ + " holder.getLayoutPosition() " + holder.getLayoutPosition());
 
                             if (СамогоПримечанияЗАДАНИЯ.isEmpty()) {
                                 // TODO: 30.03.2022
