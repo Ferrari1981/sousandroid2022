@@ -224,6 +224,19 @@ Context context;
             // TODO: 01.04.2022
             Log.i(this.getClass().getName(), " Files1[i] " + " ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии " + ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии);
 
+
+            // TODO: 01.04.2022 two
+
+
+            if (Build.VERSION.SDK_INT >= 30) {
+                ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
+            } else {
+
+                ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = Environment.getExternalStoragePublicDirectory(
+                        Environment.DIRECTORY_DOWNLOADS);
+
+            }
+
             FilenameFilter filenameFilter2 = new FilenameFilter() {
                 @Override
                 public boolean accept(File dir, String name) {
@@ -253,6 +266,19 @@ Context context;
             ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.deleteOnExit();
             // TODO: 01.04.2022
             Log.i(this.getClass().getName(), " Files1[i] " + " ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии " + ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии);
+
+
+            // TODO: 01.04.2022  tree
+
+
+            if (Build.VERSION.SDK_INT >= 30) {
+                ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
+            } else {
+
+                ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = Environment.getExternalStoragePublicDirectory(
+                        Environment.DIRECTORY_DOWNLOADS);
+
+            }
 
 
             FilenameFilter filenameFilter3 = new FilenameFilter() {
