@@ -131,10 +131,7 @@ public class Fragment1_One_Tasks extends Fragment {
             // TODO: 14.03.2022
             textViewТекущаяЗадача.setText("Задания".toUpperCase());
 
-            // TODO: 14.03.2022  данные на carvview
-            BungleДанныеДляViewCard = new Bundle();
-
-            // TODO: 10.03.2022 выбратор
+            // TODO: 10.03.2022 выбрат
 
 
             // TODO: 10.03.2022 manager fragmenot
@@ -1132,6 +1129,10 @@ public class Fragment1_One_Tasks extends Fragment {
                     // TODO: 31.03.2022
                     // TODO: 30.03.2022
                     textView7.setVisibility(View.GONE);
+
+
+                    // TODO: 14.03.2022  данные на carvview
+                    BungleДанныеДляViewCard = new Bundle();
 
                     // TODO: 30.03.2022
                     Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 materialCardView   " + materialCardView);
