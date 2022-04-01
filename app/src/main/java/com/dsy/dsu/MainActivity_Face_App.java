@@ -655,12 +655,16 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
         try {
 
+            final Object ТекущаяВерсияПрограммы = BuildConfig.VERSION_CODE;
 
+            ///
+            Integer ЛокальнаяВерсияПОСравнение = Integer.parseInt(ТекущаяВерсияПрограммы.toString());
 //////сам вид
             final AlertDialog alertDialog = new MaterialAlertDialogBuilder(activity)///       final AlertDialog alertDialog =new AlertDialog.Builder( MainActivity_Face_App.КонтекстFaceApp)
                     .setTitle("Установщик")
                     .setMessage("Пришло Обновление,"
                             + "\n" + "ПО Табельный учёт ,"
+                            + "\n" + "локальная версия. " + ЛокальнаяВерсияПОСравнение + ","
                             + "\n" + "новая версия. " + СервернаяВерсияПОВнутри + ","
                             + "\n" + "реализовано:"
                             + "\n" + "Задачи" + "\n"

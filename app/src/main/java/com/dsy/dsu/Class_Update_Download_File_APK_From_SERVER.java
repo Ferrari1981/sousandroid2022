@@ -556,8 +556,8 @@ Context context;
                         activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(context, "Загрузка... обновление "
-                                        + "\n" + "ПО Табельный учёт", Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, "Загрузка... обновление ПО "
+                                        + "\n" + "ПО Табельный учёт в." + СервернаяВерсияПОВнутри, Toast.LENGTH_LONG).show();
                             }
                         });
                     } catch (Exception e) {
@@ -788,13 +788,21 @@ Context context;
 
     private void МетодВизуалиацииПОлученогоОбновлениеПО(Activity контексСлужбыОбновления) {
         try {
+
+            // TODO: 01.04.2022
+
+            final Object ТекущаяВерсияПрограммы = BuildConfig.VERSION_CODE;
+
+            ///
+            Integer ЛокальнаяВерсияПОСравнение = Integer.parseInt(ТекущаяВерсияПрограммы.toString());
 //////сам вид
-            final AlertDialog alertDialog =new MaterialAlertDialogBuilder(контексСлужбыОбновления)///       final AlertDialog alertDialog =new AlertDialog.Builder( MainActivity_Face_App.КонтекстFaceApp)
+            AlertDialog alertDialog = new MaterialAlertDialogBuilder(контексСлужбыОбновления)///       final AlertDialog alertDialog =new AlertDialog.Builder( MainActivity_Face_App.КонтекстFaceApp)
                     .setTitle("Установщик")
                     .setMessage("Пришло Обновление,"
-                            +"\n"+"ПО Табельный учёт ,"
-                            +"\n" +"новая версия. "+ СервернаяВерсияПОВнутри+","
-                            +"\n"+"реализовано: Новая версия"+"\n")
+                            + "\n" + "ПО Табельный учёт ,"
+                            + "\n" + "локальная версия. " + ЛокальнаяВерсияПОСравнение + ","
+                            + "\n" + "новая версия. " + СервернаяВерсияПОВнутри + ","
+                            + "\n" + "реализовано: Новая версия" + "\n")
                     .setPositiveButton("Установить", null)
                     .setNegativeButton("Позже", null)
                     .setIcon(R.drawable.icon_dsu1_updates_po_success)
