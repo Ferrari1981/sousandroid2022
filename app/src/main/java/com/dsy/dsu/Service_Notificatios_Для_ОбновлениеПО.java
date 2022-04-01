@@ -80,7 +80,7 @@ public class Service_Notificatios_Для_ОбновлениеПО extends Servic
                 v2.vibrate(VibrationEffect.createOneShot(600, VibrationEffect.DEFAULT_AMPLITUDE));
             } else {
                 //deprecated in API 26
-                v2.vibrate(600);
+                v2.vibrate(200);
             }
             // TODO: 17.11.2021
             ///
@@ -132,6 +132,18 @@ public class Service_Notificatios_Для_ОбновлениеПО extends Servic
                 Log.i(getApplicationContext().getClass().getName(), " ЗАГРУЖАЕМ ПО ПОЛЬЗОВАТЕЛЬ НАЖАЛ НА КОНОПКУ ЗАГУРДИТЬ   " +
                         "Service_Notifocations_Для_Чата (intent.getAction()   СЛУЖБА" + (intent.getAction().toString()) + " время запуска  " + new Date() +
                         "  СервернаяВерсияПОВнутри " + СервернаяВерсияПОВнутри);
+
+
+                Vibrator v2 = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    v2.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+                } else {
+                    //deprecated in API 26
+                    v2.vibrate(200);
+                }
+
+
                 String PROCESS_ID_UpdateSoft = "19";
 
                 NotificationManager notificationManager = (NotificationManager)

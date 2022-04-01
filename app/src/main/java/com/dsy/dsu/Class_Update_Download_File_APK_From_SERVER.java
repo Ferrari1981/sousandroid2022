@@ -188,32 +188,44 @@ Context context;
 
 
             if (Build.VERSION.SDK_INT >= 30) {
-                ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS + "/" + "*.apk");
+                ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
             } else {
 
                 ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = Environment.getExternalStoragePublicDirectory(
-                        Environment.DIRECTORY_DOWNLOADS + "/" + "*.apk");
+                        Environment.DIRECTORY_DOWNLOADS);
 
             }
 
-            // TODO: 30.03.2022
-            FilenameFilter filterДляУдаления = new FilenameFilter() {
-                public boolean accept(File directory, String fileName) {
-                    // TODO: 31.03.2022  
-                    if (!fileName.isEmpty()) {
-                        Boolean ЕслиТАкойФайл = fileName.matches("(.*)dsu1(.*)") || fileName.matches("(.*) output-metadata(.*)");
+
+            // TODO: 01.04.2022 удалепние файлов
+            File[] Files = ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(new FilenameFilter() {
+                @Override
+                public boolean accept(File dir, String name) {
+                    // TODO: 31.03.2022
+                    if (!name.isEmpty()) {
+                        Boolean ЕслиТАкойФайл = name.matches("(.*)dsu1(.*)") || name.matches("(.*) output-metadata(.*)")
+                                || name.matches("(.*)  app-release(.*)");
+                        // TODO: 31.03.2022
+                        Log.i(this.getClass().getName(), " fileName" + name);
                         // TODO: 31.03.2022
                         if (ЕслиТАкойФайл) {
-                            directory.delete();
+                            // TODO: 31.03.2022
+                            if (dir.exists()) {
+                                // TODO: 31.03.2022
+                                dir.delete();
+
+                                // TODO: 01.04.2022
+                                // TODO: 31.03.2022
+                                Log.i(this.getClass().getName(), " удалание " + name.toString());
+                            }
+                            return true;
                         }
+
+
                     }
-                    return fileName.matches("(.*)dsu1(.*)") || fileName.matches("(.*) output-metadata(.*)");
-
+                    return false;
                 }
-            };
-
-
-            File[] Files = ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(filterДляУдаления);
+            });
 
 
             Log.i(context.getClass().getName(), " Количество Файлов ДляУдаления  " +
