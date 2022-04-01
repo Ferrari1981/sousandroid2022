@@ -61,6 +61,8 @@ public class Fragment1_One_Tasks extends Fragment {
     protected View viewДляПервойКнопкиHome_Задания = null;
     // TODO: 01.03.2022
     protected Bundle BungleДанныеДляViewCard;
+    // TODO: 01.04.2022
+    protected Bundle BungleДанныеДляViewCardBungle;
     // TODO: 28.02.2022
     protected RecyclerView recyclerView;
 
@@ -163,6 +165,8 @@ public class Fragment1_One_Tasks extends Fragment {
 
             // TODO: 15.03.2022 НЕ ПОКАЗЫВАЕМ
             bottomNavigationКонкретноКнопкаДобавить.setVisibility(View.GONE);
+            // TODO: 01.04.2022
+            BungleДанныеДляViewCardBungle = new Bundle();
 
 
             Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 imageView  onViewCreated ");
@@ -1129,7 +1133,6 @@ public class Fragment1_One_Tasks extends Fragment {
                     // TODO: 30.03.2022
                     textView7.setVisibility(View.GONE);
 
-
                     // TODO: 30.03.2022
                     Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 materialCardView   " + materialCardView);
                     // TODO: 01.03.2022*/
@@ -1453,12 +1456,9 @@ public class Fragment1_One_Tasks extends Fragment {
 
 
                     // TODO: 01.04.2022 дополнительные данные сощдаем на строчке
+                    // TODO: 01.04.2022
 
-
-                    accessibilityNodeInfoBundle = holder.materialCardView.createAccessibilityNodeInfo();
-
-                    accessibilityNodeInfoBundle.getExtras().putString(String.valueOf(holder.getLayoutPosition()), СамогоПримечанияЗАДАНИЯ);
-                    ;
+                    BungleДанныеДляViewCardBungle.putString(String.valueOf(holder.getLayoutPosition()), СамогоПримечанияЗАДАНИЯ);
 
                     Log.i(this.getClass().getName(), "  accessibilityNodeInfoBundle   " + accessibilityNodeInfoBundle + " holder.getLayoutPosition() " + holder.getLayoutPosition());
 
@@ -1906,10 +1906,14 @@ public class Fragment1_One_Tasks extends Fragment {
                             // TODO: 02.03.2022
                             String СамогоПримечанияЗАДАНИЯ = Курсор_ДляПолученияДАнныхДляЗАДАЧTASKВнутри.getString(ИндексСамогоПримечаниезадачи);*/
 
-                            String СамогоПримечанияЗАДАНИЯ = accessibilityNodeInfoBundle.getExtras().getString(String.valueOf(holder.getLayoutPosition()));
+                            String СамогоПримечанияЗАДАНИЯ = BungleДанныеДляViewCardBungle.getString(String.valueOf(holder.getLayoutPosition()));
 
 // TODO: 13.03.2022
-                            Log.d(this.getClass().getName(), "  СамогоПримечанияЗАДАНИЯ " + СамогоПримечанияЗАДАНИЯ + " holder.getLayoutPosition() " + holder.getLayoutPosition());
+                            Log.d(this.getClass().getName(), "  СамогоПримечанияЗАДАНИЯ " + СамогоПримечанияЗАДАНИЯ + " holder.getLayoutPosition() " + holder.getLayoutPosition() +
+                                    " BungleДанныеДляViewCardBungle " + BungleДанныеДляViewCardBungle);
+
+                            // TODO: 01.04.2022
+                            СамогоПримечанияЗАДАНИЯ = Optional.ofNullable(СамогоПримечанияЗАДАНИЯ).orElse("");
 
                             if (СамогоПримечанияЗАДАНИЯ.isEmpty()) {
                                 // TODO: 30.03.2022
