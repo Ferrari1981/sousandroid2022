@@ -660,17 +660,17 @@ public class MainActivity_Face_App extends AppCompatActivity {
             ///
             Integer ЛокальнаяВерсияПОСравнение = Integer.parseInt(ТекущаяВерсияПрограммы.toString());
 //////сам вид
-            final AlertDialog alertDialog = new MaterialAlertDialogBuilder(activity)///       final AlertDialog alertDialog =new AlertDialog.Builder( MainActivity_Face_App.КонтекстFaceApp)
-                    .setTitle("Установщик")
-                    .setMessage("Пришло Обновление,"
-                            + "\n" + "ПО Табельный учёт ,"
-                            + "\n" + "локальная версия. " + ЛокальнаяВерсияПОСравнение + ","
-                            + "\n" + "новая версия. " + СервернаяВерсияПОВнутри + ","
-                            + "\n" + "реализовано:"
-                            + "\n" + "Задачи" + "\n"
-                            + "\n")
-                    .setPositiveButton("Установить", null)
-                    .setNegativeButton("Позже", null)
+           AlertDialog alertDialog = new MaterialAlertDialogBuilder(this)///       final AlertDialog alertDialog =new AlertDialog.Builder( MainActivity_Face_App.КонтекстFaceApp)
+                   .setTitle("Установщик")
+                   .setMessage("Пришло Обновление,"
+                           + "\n" + "ПО Табельный учёт ,"
+                           + "\n" + "локальная версия. " + ЛокальнаяВерсияПОСравнение + ","
+                           + "\n" + "новая версия. " + СервернаяВерсияПОВнутри + ","
+                           + "\n" + "реализовано:"
+                           + "\n" + "Задачи" + "\n"
+                           + "\n")
+                   .setPositiveButton("Установить", null)
+                   .setNegativeButton("Позже", null)
                     .setIcon(R.drawable.icon_dsu1_updates_po_success)
                     .show();
 /////////кнопка
@@ -759,9 +759,9 @@ public class MainActivity_Face_App extends AppCompatActivity {
                         //////todo Удаляем все зайдгний план установкика .apk
 
 
-                        activity.startActivity(intentОбновлениеПО);
+                        startActivity(intentОбновлениеПО);
 
-                        activity.finishAndRemoveTask(); //// ((Activity) MainActivity_Face_App.КонтекстFaceApp).finish();
+                        finishAndRemoveTask(); //// ((Activity) MainActivity_Face_App.КонтекстFaceApp).finish();
 
 
                         Log.w(this.getClass().getName(), " ура !!!! УРА !!!!  уСПЕШНАЫЙ ЗАПУСК СКАЧЕННОГО ОБНОВЛЕНЕИ ПО " +

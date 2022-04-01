@@ -33,7 +33,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletionService;
@@ -5595,66 +5594,6 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
 
                     ////TODO И ЕСЛИ ПРИШЕЛ ОТ СЕРВЕРА ОТВЕТ ПОЛОЖИТЕЛЬНО ТО ТОГДА ЗАПУСКАМ ПРОЧТЕНИЯ ПОТОКА ПРИШЕДШЕГО С СЕРВЕРА
                     if (ПодключениеИнтернетДляJSONВерсииФайлаAPK.getResponseCode() == 200 && ДлинаФайлаJSONВерсииДанныхЧисло>0) {
-
-
-
-
-
-
-
-
-                        // TODO: 19.12.2021  дополнительнеый код удаление если есть  JSON файлаа
-
-                        File  ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = null;
-
-
-                        if (  Build.VERSION.SDK_INT >= 30)   {
-                            ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS + "/" + "*.json");
-                        }else{
-
-                            ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = Environment.getExternalStoragePublicDirectory(
-                                    Environment.DIRECTORY_DOWNLOADS + "/" + "*.json");
-
-                        }
-                        File[] Files = ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles();
-
-
-// TODO: 19.12.2021  удаение json файла
-                        if(Files != null) {
-                            int j;
-                            for(j = 0; j < Files.length; j++) {
-                                String ИмяФайла=Files[j].getName();
-                                boolean ПосикПоНазваниюФайла=ИмяФайла.matches("(.*)json(.*)");//    boolean ПосикПоНазваниюФайла=Files[j].getName().matches("(.*).json(.*)");
-                                boolean ПосикПоНазваниюФайлаРасширенная=ИмяФайла.matches("(.*)analysis_version(.*)");//    boolean ПосикПоНазваниюФайла=Files[j].getName().matches("(.*).json(.*)");
-
-                                if(ПосикПоНазваниюФайла==true || ПосикПоНазваниюФайлаРасширенная==true) {
-                                    Files[j].delete();
-                                    //
-                                    /////
-                                    if (!Files[j].isFile()) {
-                                        Log.d(this.getClass().getName(), " СЛУЖБА  ТАКОГО ФАЙЛА БОЛЬШЕ НЕТ  .JSON АНАЛИЗ " + Files[j].length()
-                                                + "   путь файла " +  Files[j].getAbsolutePath() + "   --- "  +new Date() + " ИмяФайла "+ИмяФайла);
-                                    }
-                                }
-                                ////    ФайлыДляОбновлениеПОУдаление.delete();
-
-                            }//ещыыщ
-                        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

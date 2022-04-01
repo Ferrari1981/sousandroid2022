@@ -17,6 +17,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.os.Build;
+import android.os.Environment;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.service.notification.StatusBarNotification;
@@ -31,6 +32,8 @@ import androidx.work.WorkerParameters;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.io.File;
+import java.io.FilenameFilter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -356,35 +359,195 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
 
     private void МетодЗапукаВоркМенеджераБезАктивити() throws ExecutionException, InterruptedException {
         ///////todo код запуска уведомлений для чата
-  try{
+  try {
 
-        // TODO: 11.05.2021 ЗПУСКАЕМ СЛУЖБУ ОБНОВЛЕНИЕ ПО
-
-        // СервернаяВерсияПОВнутри=   new Class_Update_Find_Server_And_Client_VersionSOFT(getApplicationContext()).МетодНачалаЗапускаОбновленияПО();
-
-        СервернаяВерсияПОВнутри=  МетодАнализаВерсииПОJSON();
+      // TODO: 11.05.2021 ЗПУСКАЕМ СЛУЖБУ ОБНОВЛЕНИЕ ПО
 
 
-        Log.w(Контекст.getClass().getName(), "              " +
-                "new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getApplicationContext()).МетодПовторногоЗапускаВсехWorkManagerДляОбновленияПО();" +
-                "\n"+  "СервернаяВерсияПОВнутри " +СервернаяВерсияПОВнутри);
+      // TODO: 19.12.2021  дополнительнеый код удаление если есть  JSON файлаа
+
+      МетодДополнительногоУдалениеJSONФайлов();
+
+      Log.i(this.getClass().getName(), "       МетодДополнительногоУдалениеJSONФайлов();   удалаение JSON файла АНАЛИЗ ВЕРСИИЯ КАКАЯ ВЕРСИЯ ы");
+
+
+      // СервернаяВерсияПОВнутри=   new Class_Update_Find_Server_And_Client_VersionSOFT(getApplicationContext()).МетодНачалаЗапускаОбновленияПО();
+
+      СервернаяВерсияПОВнутри = МетодАнализаВерсииПОJSON();
+
+
+      Log.w(Контекст.getClass().getName(), "              " +
+              "new Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal(getApplicationContext()).МетодПовторногоЗапускаВсехWorkManagerДляОбновленияПО();" +
+              "\n" + "СервернаяВерсияПОВнутри " + СервернаяВерсияПОВнутри);
 
         //TODO когда запускам уведомления чата  КОГДА НЕТ АКТИВИТИ И ПРОСТО ЗАПУСКАЕМ
         ///////
     } catch (Exception e ) {
         //  Block of code to handle errors
         e.printStackTrace();
-        ///метод запись ошибок в таблицу
-        Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
-                + Thread.currentThread().getStackTrace()[2].getLineNumber());
-        new   Class_Generation_Errors(Контекст).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
-                Thread.currentThread().getStackTrace()[2].getLineNumber());
+      ///метод запись ошибок в таблицу
+      Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+              + Thread.currentThread().getStackTrace()[2].getLineNumber());
+      new Class_Generation_Errors(Контекст).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+              Thread.currentThread().getStackTrace()[2].getLineNumber());
+  }
+
+
     }
 
+    void МетодДополнительногоУдалениеJSONФайлов() {
 
-}
+        try {
 
 
+/////TODO  УДАЛЕНИЕ .JSON ФАЙЛА
+
+
+            File ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = null;
+
+            File[] FilesФайлыУдаленияДляФайлаJSONАнализаВерсии;
+
+
+            if (Build.VERSION.SDK_INT >= 30) {
+                ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = getApplicationContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
+            } else {
+
+                ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = Environment.getExternalStoragePublicDirectory(
+                        Environment.DIRECTORY_DOWNLOADS);
+
+            }
+            FilenameFilter filenameFilter1 = new FilenameFilter() {
+                @Override
+                public boolean accept(File dir, String name) {
+                    // TODO: 31.03.2022
+                    if (!name.isEmpty()) {
+                        Boolean ЕслиТАкойФайл = name.matches("(.*)json(.*)");
+                        // TODO: 31.03.2022
+                        Log.i(this.getClass().getName(), " fileName" + name);
+                        // TODO: 31.03.2022
+                        if (ЕслиТАкойФайл) {
+                            // TODO: 31.03.2022
+                            // TODO: 31.03.2022
+                            Log.i(this.getClass().getName(), " fileName" + name + "ЕслиТАкойФайл " + ЕслиТАкойФайл);
+                            return true;
+                        }
+
+                    }
+                    return false;
+                }
+            };
+
+            // TODO: 01.04.2022
+            Log.i(this.getClass().getName(), " Files1[i] " + " ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии " + ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии);
+
+
+            // TODO: 01.04.2022 two
+
+
+            if (Build.VERSION.SDK_INT >= 30) {
+                ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = getApplicationContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
+            } else {
+
+                ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = Environment.getExternalStoragePublicDirectory(
+                        Environment.DIRECTORY_DOWNLOADS);
+
+            }
+
+            FilenameFilter filenameFilter2 = new FilenameFilter() {
+                @Override
+                public boolean accept(File dir, String name) {
+                    // TODO: 31.03.2022
+                    if (!name.isEmpty()) {
+                        Boolean ЕслиТАкойФайл = name.matches("(.*)analysis_version(.*)");
+                        // TODO: 31.03.2022
+                        Log.i(this.getClass().getName(), " fileName" + name);
+                        // TODO: 31.03.2022
+                        if (ЕслиТАкойФайл) {
+                            // TODO: 31.03.2022
+                            // TODO: 31.03.2022
+                            Log.i(this.getClass().getName(), " fileName" + name + "ЕслиТАкойФайл " + ЕслиТАкойФайл);
+                            return true;
+                        }
+
+                    }
+                    return false;
+                }
+            };
+            // TODO: 01.04.2022 удалепние файлов
+            // TODO: 01.04.2022
+            Log.i(this.getClass().getName(), " Files1[i] " + " ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии " + ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии);
+
+
+            // TODO: 01.04.2022  tree
+
+
+            if (Build.VERSION.SDK_INT >= 30) {
+                ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = getApplicationContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
+            } else {
+
+                ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = Environment.getExternalStoragePublicDirectory(
+                        Environment.DIRECTORY_DOWNLOADS);
+
+            }
+
+
+            // TODO: 01.04.2022 удалепние файлов
+            // TODO: 01.04.2022 удалепние файлов
+            FilesФайлыУдаленияДляФайлаJSONАнализаВерсии = ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(filenameFilter1);
+            // TODO: 01.04.2022 удалепние файлов
+            FilesФайлыУдаленияДляФайлаJSONАнализаВерсии = ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(filenameFilter2);
+            // TODO: 01.04.2022 удалепние файлов
+            // TODO: 01.04.2022 удалепние файлов
+            if (ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.exists() == true) {
+                // TODO: 01.04.2022
+                // TODO: 01.04.2022
+                Log.i(this.getClass().getName(), " Files1[i] " + "  УДЛАЕНИЕ ...  ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.length() " + ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.length());
+                // TODO: 01.04.2022 удалепние файлов
+                ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.delete();
+                // TODO: 01.04.2022 удалепние файлов
+                ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.deleteOnExit();
+            }
+            // TODO: 01.04.2022
+            for (int i = 0; i < FilesФайлыУдаленияДляФайлаJSONАнализаВерсии.length; i++) {
+
+                // TODO: 01.04.2022
+                if (FilesФайлыУдаленияДляФайлаJSONАнализаВерсии[i].exists()) {
+                    // TODO: 01.04.2022
+                    FilesФайлыУдаленияДляФайлаJSONАнализаВерсии[i].delete();
+                    // TODO: 01.04.2022
+                    // TODO: 01.04.2022
+                    FilesФайлыУдаленияДляФайлаJSONАнализаВерсии[i].deleteOnExit();
+                    // TODO: 01.04.2022
+                    Log.i(this.getClass().getName(), " Files1[i] " + "  УДЛАЕНИЕ ...  ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.length() " + ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.length());
+
+                }
+
+            }
+
+
+            // TODO: 01.04.2022
+            Log.i(this.getClass().getName(), " Files1[i] " + " ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии " + ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии);
+
+
+            Log.i(getApplicationContext().getClass().getName(), " Количество Файлов ДляУдаления  ");
+
+
+            // TODO: 30.03.2022 СМА УДАЛЕНИЕ ФАЙЛОВ
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            ///метод запись ошибок в таблицу
+            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+            new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
+                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+
+            Log.d(this.getClass().getName(), " ОШИБКА work manager Обновление ПО onDestroy() Exception ");
+
+
+        }
+    }
 
 
 
@@ -403,15 +566,15 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
             // TODO: 17.12.2021 RXJAVA
 
 
-            Observable observableПолучаемНовуюВерсиюСервернойВерсииФайлаAPK=  Observable.interval(20,TimeUnit.SECONDS)
-                    .take(2,TimeUnit.MINUTES)
-                    .delay(3,TimeUnit.SECONDS)
+            Observable observableПолучаемНовуюВерсиюСервернойВерсииФайлаAPK = Observable.interval(10, TimeUnit.SECONDS)
+                    .take(2, TimeUnit.MINUTES)
+                    .delay(3, TimeUnit.SECONDS)
                     .subscribeOn(Schedulers.computation())
-                    .flatMap((string)-> {
+                    .flatMap((string) -> {
 
                         // TODO: 08.01.2022
-                        СервернаяВерсияПОВнутри=      new MODEL_synchronized(Контекст).
-                                УниверсальныйБуферJSONВерсииПОсСервера("dsu1.glassfish/update_android_dsu1/output-metadata.json",Контекст,"tabel.dsu1.ru", 8888);
+                        СервернаяВерсияПОВнутри = new MODEL_synchronized(Контекст).
+                                УниверсальныйБуферJSONВерсииПОсСервера("dsu1.glassfish/update_android_dsu1/output-metadata.json", Контекст, "tabel.dsu1.ru", 8888);
                         // TODO: 08.01.2022
 
                         // TODO: 17.12.2021
@@ -1299,7 +1462,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
             if (notificationIntentДляУведомленийОбновлениеПоЗагрузить.resolveActivity(pm) != null) {
                 ЗапускаемОбновлениеПо = PendingIntent.getService(getApplicationContext(),
                         70, notificationIntentДляУведомленийОбновлениеПоЗагрузить,
-                        PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
+                        PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 // TODO: 17.11.2021
                 Log.i(getApplicationContext().getClass().getName(), " Загружаем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА");
@@ -1340,7 +1503,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
             if (notificationIntentДляУведомленийОбновлениеЗакрываем.resolveActivity(pm) != null) {
                 ЗапускЗакрываемУведомлениеПоОбновление = PendingIntent.getService(getApplicationContext(),
                         71, notificationIntentДляУведомленийОбновлениеЗакрываем,
-                        PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
+                        PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT); //PendingIntent.FLAG_UPDATE_CURRENT
                 // TODO: 17.11.2021
                 Log.i(getApplicationContext().getClass().getName(), " Закрываем   СНАРУЖИ Broadcatrecever (intent.getAction()   СЛУЖБА");
                 // Service_Notifocations_Для_Чата.enqueueWork(getApplicationContext(),notificationIntentДляУведомленийЗакрываем);

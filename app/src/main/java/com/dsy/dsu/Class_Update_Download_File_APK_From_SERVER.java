@@ -184,7 +184,9 @@ Context context;
             /*   File  ФайлыДляОбновлениеПОУдаление = Environment.getExternalStoragePublicDirectory(
                         Environment.DIRECTORY_DOWNLOADS + "/" + "*.apk");
 */
-            File  ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = null;
+            File ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = null;
+
+            File[] FilesФайлыУдаления;
 
 
             if (Build.VERSION.SDK_INT >= 30) {
@@ -292,11 +294,11 @@ Context context;
             };
             // TODO: 01.04.2022 удалепние файлов
             // TODO: 01.04.2022 удалепние файлов
-            ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(filenameFilter1);
+            FilesФайлыУдаления = ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(filenameFilter1);
             // TODO: 01.04.2022 удалепние файлов
-            ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(filenameFilter2);
+            FilesФайлыУдаления = ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(filenameFilter2);
             // TODO: 01.04.2022 удалепние файлов
-            ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(filenameFilter3);
+            FilesФайлыУдаления = ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(filenameFilter3);
             // TODO: 01.04.2022 удалепние файлов
             if (ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.exists() == true) {
                 // TODO: 01.04.2022
@@ -307,6 +309,22 @@ Context context;
                 // TODO: 01.04.2022 удалепние файлов
                 ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.deleteOnExit();
             }
+            // TODO: 01.04.2022
+            for (int i = 0; i < FilesФайлыУдаления.length; i++) {
+
+                // TODO: 01.04.2022
+                if (FilesФайлыУдаления[i].exists()) {
+                    // TODO: 01.04.2022
+                    FilesФайлыУдаления[i].delete();
+                    // TODO: 01.04.2022
+                    FilesФайлыУдаления[i].deleteOnExit();
+                    // TODO: 01.04.2022
+                    Log.i(this.getClass().getName(), " Files1[i] " + "  УДЛАЕНИЕ ...  ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.length() " + ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.length());
+
+                }
+
+            }
+
 
             // TODO: 01.04.2022
             Log.i(this.getClass().getName(), " Files1[i] " + " ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии " + ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии);
