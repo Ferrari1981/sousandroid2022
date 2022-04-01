@@ -216,25 +216,14 @@ Context context;
                 }
             };
             // TODO: 01.04.2022 удалепние файлов
-            File[] Files1 = ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(filenameFilter1);
-
+            ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(filenameFilter1);
+            // TODO: 01.04.2022 удалепние файлов
+            ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.delete();
+            // TODO: 01.04.2022 удалепние файлов
+            ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.deleteOnExit();
             // TODO: 01.04.2022
+            Log.i(this.getClass().getName(), " Files1[i] " + " ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии " + ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии);
 
-            for (int i = 0; i < Files1.length; i++) {
-                // TODO: 01.04.2022
-                // TODO: 31.03.2022
-                Log.i(this.getClass().getName(), " Files1.length " + Files1.length);
-                // TODO: 01.04.2022
-                if (Files1[i].exists()) {
-                    // TODO: 01.04.2022
-                    Boolean УдаалиФайлИлиНет = Files1[i].delete();
-                    // TODO: 01.04.2022
-                    Files1[i].deleteOnExit();
-                    // TODO: 31.03.2022
-                    Log.i(this.getClass().getName(), " Files1[i] " + Files1[i] + " УдаалиФайлИлиНет " + УдаалиФайлИлиНет);
-
-                }
-            }
             FilenameFilter filenameFilter2 = new FilenameFilter() {
                 @Override
                 public boolean accept(File dir, String name) {
@@ -256,25 +245,14 @@ Context context;
                 }
             };
             // TODO: 01.04.2022 удалепние файлов
-            File[] Files2 = ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(filenameFilter2);
-
+            // TODO: 01.04.2022 удалепние файлов
+            ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(filenameFilter2);
+            // TODO: 01.04.2022 удалепние файлов
+            ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.delete();
+            // TODO: 01.04.2022 удалепние файлов
+            ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.deleteOnExit();
             // TODO: 01.04.2022
-
-            for (int i = 0; i < Files2.length; i++) {
-                // TODO: 01.04.2022
-                // TODO: 31.03.2022
-                Log.i(this.getClass().getName(), " Files2.length " + Files2.length);
-                // TODO: 01.04.2022
-                if (Files2[i].exists()) {
-                    // TODO: 01.04.2022
-                    Boolean УдаалиФайлИлиНет = Files2[i].delete();
-                    // TODO: 01.04.2022
-                    Files2[i].deleteOnExit();
-                    // TODO: 31.03.2022
-                    Log.i(this.getClass().getName(), " Files2[i] " + Files2[i] + " УдаалиФайлИлиНет " + УдаалиФайлИлиНет);
-
-                }
-            }
+            Log.i(this.getClass().getName(), " Files1[i] " + " ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии " + ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии);
 
 
             FilenameFilter filenameFilter3 = new FilenameFilter() {
@@ -298,25 +276,14 @@ Context context;
                 }
             };
             // TODO: 01.04.2022 удалепние файлов
-            File[] Files3 = ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(filenameFilter3);
-
+            // TODO: 01.04.2022 удалепние файлов
+            ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles(filenameFilter3);
+            // TODO: 01.04.2022 удалепние файлов
+            ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.delete();
+            // TODO: 01.04.2022 удалепние файлов
+            ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.deleteOnExit();
             // TODO: 01.04.2022
-
-            for (int i = 0; i < Files3.length; i++) {
-                // TODO: 01.04.2022
-                // TODO: 31.03.2022
-                Log.i(this.getClass().getName(), " Files3.length " + Files3.length);
-                // TODO: 01.04.2022
-                if (Files3[i].exists()) {
-                    // TODO: 01.04.2022
-                    Boolean УдаалиФайлИлиНет = Files3[i].delete();
-                    // TODO: 01.04.2022
-                    Files3[i].deleteOnExit();
-                    // TODO: 31.03.2022
-                    Log.i(this.getClass().getName(), " Files[i] " + Files3[i] + " УдаалиФайлИлиНет " + УдаалиФайлИлиНет);
-
-                }
-            }
+            Log.i(this.getClass().getName(), " Files1[i] " + " ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии " + ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии);
 
 
             Log.i(context.getClass().getName(), " Количество Файлов ДляУдаления  ");
