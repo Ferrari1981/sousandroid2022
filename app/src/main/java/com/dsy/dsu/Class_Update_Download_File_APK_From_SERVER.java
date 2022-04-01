@@ -556,8 +556,9 @@ Context context;
                         activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(context, "Загрузка... обновление ПО "
-                                        + "\n" + "ПО Табельный учёт в." + СервернаяВерсияПОВнутри, Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, "Загрузка... обновление"
+                                        + "\n" + "ПО Табельный учёт в." + "\n" +
+                                        +СервернаяВерсияПОВнутри, Toast.LENGTH_LONG).show();
                             }
                         });
                     } catch (Exception e) {
