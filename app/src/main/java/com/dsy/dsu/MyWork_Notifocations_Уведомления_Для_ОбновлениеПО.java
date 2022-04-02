@@ -785,7 +785,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
             NotificationManager notificationManager = (NotificationManager)
                     getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
 
-            notificationManager.cancel(Integer.parseInt(PROCESS_ID_UpdateSoft));
+
         }
 
     }
@@ -911,11 +911,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
             //    mNotificationManagerДляОбновлен.cancel(1);///.cancelAll();
 
-            NotificationManager notificationManager = (NotificationManager)
-                    getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
 
-            notificationManager.cancel(Integer.parseInt(PROCESS_ID_UpdateSoft));
-            // /.cancelAll(); //    mNotificationManagerДляОбновлен.cancelAll();
             //    mNotificationManagerДляОбновлен=null;
             //  builder=null;
             Log.d(getApplicationContext().getClass().getName(), " Стоп СЛУЖБА СЛУЖБАService_Notifications  ДЛЯ ЧАТА onDestroy() Exception ");
@@ -1710,7 +1706,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
             NotificationManager notificationManager = (NotificationManager)
                     getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
 
-            notificationManager.cancel(Integer.parseInt(PROCESS_ID_UpdateSoft));
+
         }
 
         // TODO: 20.05.2021  результат
@@ -1894,7 +1890,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
             NotificationManager notificationManager = (NotificationManager)
                     getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
 
-            notificationManager.cancel(Integer.parseInt(PROCESS_ID_UpdateSoft));
+
         }
 
 

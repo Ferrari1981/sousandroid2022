@@ -1,32 +1,21 @@
 package com.dsy.dsu;
 
-import static android.content.Context.NOTIFICATION_SERVICE;
-
 import android.app.Activity;
 import android.app.ActivityManager;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.FileProvider;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -840,188 +829,7 @@ Context context;
 
 
 
-    private void МетодВизуалиацииПОлученогоОбновлениеПО(Activity контексСлужбыОбновления) {
-        try {
 
-            // TODO: 01.04.2022
-
-            final Object ТекущаяВерсияПрограммы = BuildConfig.VERSION_CODE;
-
-            ///
-            Integer ЛокальнаяВерсияПОСравнение = Integer.parseInt(ТекущаяВерсияПрограммы.toString());
-//////сам вид
-            AlertDialog alertDialog = new MaterialAlertDialogBuilder(контексСлужбыОбновления)///       final AlertDialog alertDialog =new AlertDialog.Builder( MainActivity_Face_App.КонтекстFaceApp)
-                    .setTitle("Установщик")
-                    .setMessage("Пришло Обновление,"
-                            + "\n" + "ПО Табельный учёт ,"
-                            + "\n" + "локальная версия. " + ЛокальнаяВерсияПОСравнение + ","
-                            + "\n" + "новая версия. " + СервернаяВерсияПОВнутри + ","
-                            + "\n" + "реализовано: Новая версия" + "\n")
-                    .setPositiveButton("Установить", null)
-                    .setNegativeButton("Позже", null)
-                    .setIcon(R.drawable.icon_dsu1_updates_po_success)
-                    .show();
-/////////кнопка
-            final Button MessageBoxUpdateОбновитьПО = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
-
-            Activity finalКонтексСлужбыОбновления = контексСлужбыОбновления;
-
-            MessageBoxUpdateОбновитьПО.setOnClickListener(new View.OnClickListener() {
-                ///MessageBoxUpdate метод CLICK для DIALOBOX
-                @Override
-                public void onClick(View v) {
-                    //удаляем с экрана Диалог
-
-
-                    Log.d(this.getClass().getName(), "Установка Обновления .APK СЛУЖБА");
-
-
-                    //////
-                    String ФинальныйПутьДляЗагрузкиФайлаОбновения = null;
-                    ////
-                    if (  Build.VERSION.SDK_INT >= 30)   {
-                        ФинальныйПутьДляЗагрузкиФайлаОбновения = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS) + "/";
-                    }else{
-
-                        ФинальныйПутьДляЗагрузкиФайлаОбновения = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/";
-
-                    }
-
-
-                    String НазваниеФайлаОбновления = "update_dsu1.apk";
-
-                    ////
-                    ФинальныйПутьДляЗагрузкиФайлаОбновения += НазваниеФайлаОбновления;
-
-
-
-
-
-
-
-
-
-
-                    Uri URIПутиДляЗагрузкиФайловЧерезПровайдер = FileProvider.getUriForFile(context,
-                            context.getPackageName() + ".provider",
-                            new File(ФинальныйПутьДляЗагрузкиФайлаОбновения));
-
-
-
-
-
-
-
-                    Intent intentОбновлениеПО = new Intent(Intent.ACTION_INSTALL_PACKAGE);
-                    ////////
-                    intentОбновлениеПО.setDataAndType(URIПутиДляЗагрузкиФайловЧерезПровайдер, "application/vnd.android.package-archive");
-
-                    intentОбновлениеПО.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION |
-
-                            Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION| Intent.FLAG_GRANT_PREFIX_URI_PERMISSION
-                            | Intent.FLAG_ACTIVITY_NEW_TASK  );
-
-                    intentОбновлениеПО.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
-
-                    intentОбновлениеПО.putExtra( Intent.EXTRA_STREAM, URIПутиДляЗагрузкиФайловЧерезПровайдер);
-                    // intent.addCategory("android.intent.category.APP_MARKET");
-
-                    // TODO: 18.05.2021 PackegeManger проверка может ли с указаными выше условиями загрузиться файл
-
-// подтвердите, что устройство может открыть этот файл!
-                    PackageManager МеханизмПроверкиЗапуститьсяНашИнтентИлиНЕт = context.getPackageManager();
-
-                    ///
-                    if (intentОбновлениеПО.resolveActivity(МеханизмПроверкиЗапуститьсяНашИнтентИлиНЕт) != null) {
-                        //////todo запуск установкика .apk
-                ///     context. startActivity(intent); ////   ((Activity) MainActivity_Face_App.КонтекстFaceApp). startActivity(intent);//  MainActivity_Face_App.КонтекстFaceApp. startActivity(intent);
-
-                        Log.d(this.getClass().getName(), " СЛУЖБА УСТАНОВКА... ОБНОВЛЕНИЯ НА ТЕЛЕФОН (.APK файл)  МеханизмПроверкиЗапуститьсяНашИнтентИлиНЕт "  + МеханизмПроверкиЗапуститьсяНашИнтентИлиНЕт);
-
-
-
-
-
-                        ////TODO непосрдствено сам запуск новго .apk файла
-
-
-
-                        //////todo Удаляем все зайдгний план установкика .apk
-
-
-
-
-                            finalКонтексСлужбыОбновления. startActivity(intentОбновлениеПО);
-
-                            ((Activity) finalКонтексСлужбыОбновления).finishAndRemoveTask(); //// ((Activity) MainActivity_Face_App.КонтекстFaceApp).finish();
-
-
-
-
-                        // TODO: 20.12.2021
-
-
-                        NotificationManager notificationManager = (NotificationManager)
-                                context.getSystemService(NOTIFICATION_SERVICE);
-
-                        notificationManager.cancel(Integer.parseInt(PROCESS_ID_UpdateSoft));
-
-                 ///  МетодДополнительногоУдалениеФайлов();
-
-                        /////
-
-                        // stopService(new Intent(КонтекстFaceApp, Service_Update_ОбновлениеПО.class));
-                        // stopSelf();
-
-
-
-                        ///TODO УСТАНАВЛИВАЕМ ФЛАГ ЧТО МУ УЖЕ СКАЧИВАЛИ ЭТО ПРИЛОЖЕНИЕ
-
-
-
-                    }else{
-                        ///////TODO ОСТАНАВЛИВАЕМ СЛУЖБУ ЧЕРЕЗ 20 СЕКУНД
-                        Log.d(this.getClass().getName(), "Ошибка файл .APK не устнаовлен ОШИБКА СЛУЖБА ОБНОВЛЕНИЯ ...  " + new Date() + " МеханизмПроверкиЗапуститьсяНашИнтентИлиНЕт " +МеханизмПроверкиЗапуститьсяНашИнтентИлиНЕт );
-                    }
-
-
-                    ///////////
-
-                }
-            });
-
-            final Button MessageBoxUpdateНеуСтанавливатьПО= alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
-            MessageBoxUpdateНеуСтанавливатьПО.setOnClickListener(new View.OnClickListener() {
-                ///MessageBoxUpdate метод CLICK для DIALOBOX
-                @Override
-                public void onClick(View v) {
-                    //удаляем с экрана Диалог
-                    alertDialog.dismiss();
-                    Log.d(this.getClass().getName(), " создание нового сотрудника ");
-
-
-
-                    ///////////
-
-                }
-            });
-
-
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            ///метод запись ошибок в таблицу
-            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
-                    + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            // TODO: 01.09.2021 метод вызова
-            new   Class_Generation_Errors(context).МетодЗаписиВЖурналНовойОшибки(e.toString(),
-                    this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
-                    Thread.currentThread().getStackTrace()[2].getLineNumber());
-        }
-
-    }
 
 
 }
