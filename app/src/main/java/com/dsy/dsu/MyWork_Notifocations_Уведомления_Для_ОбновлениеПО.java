@@ -400,11 +400,24 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
             Log.d(this.getClass().getName(), " СЛУЖБА ... МЕТОД АНАЛИЗА ДАННЫХ РАБОТАЕТ......" + new Date());
 
             //TODO УДАЛЕНИЕ ФАЙЛОВ ПОЛЕ АНАЛИЗА
-            Log.w(Контекст.getClass().getName(), " СервернаяВерсияПОВнутри  ОБНОВЛЕНИЕ ПО  НазваниеТекущего Потока " +Thread.currentThread().getName());
+            Log.w(Контекст.getClass().getName(), " СервернаяВерсияПОВнутри  ОБНОВЛЕНИЕ ПО  НазваниеТекущего Потока " + Thread.currentThread().getName());
+            // TODO: 02.04.2022 передполучаем веприсю ПО  удаляем файцл
 
 
-            СервернаяВерсияПОВнутри=0;
-            // TODO: 17.12.2021 RXJAVA
+            // TODO: 02.04.2022 зпускаем работут по анализу  СКАЧКИ ПРОГРАММЫ ТАБЕЛТНЫЙ УЧЁТ С СЕРВЕРА
+
+
+            // TODO: 02.04.2022  #1
+            new Class_Update_Download_File_APK_From_SERVER(getApplicationContext(), null).МетодУдалениеИнформационогоТекстовогоФайлаJSONДляПО();
+            // TODO: 02.04.2022
+
+            //TODO УДАЛЕНИЕ ФАЙЛОВ ПОЛЕ АНАЛИЗА
+            Log.w(Контекст.getClass().getName(), " СервернаяВерсияПОВнутри  ОБНОВЛЕНИЕ ПО  НазваниеТекущего Потока " + Thread.currentThread().getName());
+            // TODO: 02.04.2022 передполучаем веприсю ПО  удаляем файцл
+
+
+            СервернаяВерсияПОВнутри = 0;
+            // TODO: 17.12.2021 RXJAVA ПОЛУЧАЕМ JSON  ФАЙЛ ВЕРСИИ ПОРГРАМНОГО ПО ТАБЕЛЬНЫЙ УЧЁТ
 
 
             Observable observableПолучаемНовуюВерсиюСервернойВерсииФайлаAPK = Observable.interval(10, TimeUnit.SECONDS)
