@@ -311,7 +311,7 @@ Context context;
                 public boolean accept(File dir, String name) {
                     // TODO: 31.03.2022
                     if (!name.isEmpty()) {
-                        Boolean ЕслиТАкойФайл = name.matches("(.*)json(.*)");
+                        Boolean ЕслиТАкойФайл = name.matches("(.*)output-metadata.json(.*)");
                         // TODO: 31.03.2022
                         Log.i(this.getClass().getName(), " fileName" + name);
                         // TODO: 31.03.2022
