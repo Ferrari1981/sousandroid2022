@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
@@ -654,15 +655,42 @@ public class MainActivity_Face_App extends AppCompatActivity {
                                                                                  @NonNull File ЗагрузкиФайлаОбновенияПОДополнительный) {
 
         try {
+            File ФайлыДляОбновлениеВычисляемНомерВерсииПО = null;
+
+
+            final PackageManager pm = getPackageManager();
+            String apkName = "update_dsu1.apk";
+
+
+            String fullPath = Environment.getExternalStorageDirectory() + "/" + apkName;
+            if (Build.VERSION.SDK_INT >= 30) {
+
+                fullPath = Environment.getExternalStorageState() + "/" + apkName;
+            } else {
+
+                fullPath = Environment.getExternalStorageDirectory() + "/" + apkName;
+
+            }
+
+
+            PackageInfo info = pm.getPackageArchiveInfo(fullPath, 0);
+
+            Log.d(this.getClass().getName(), "VersionCode : " + info.versionCode + ", VersionName : " + info.versionName);
+
+
+            Toast.makeText(this, "VersionCode : " + info.versionCode + ", VersionName : " + info.versionName, Toast.LENGTH_LONG).show();
+
+            // TODO: 02.04.2022
+
 
             final Object ТекущаяВерсияПрограммы = BuildConfig.VERSION_CODE;
 
             ///
             Integer ЛокальнаяВерсияПОСравнение = Integer.parseInt(ТекущаяВерсияПрограммы.toString());
 //////сам вид
-           AlertDialog alertDialog = new MaterialAlertDialogBuilder(this)///       final AlertDialog alertDialog =new AlertDialog.Builder( MainActivity_Face_App.КонтекстFaceApp)
-                   .setTitle("Установщик")
-                   .setMessage("Пришло Обновление,"
+            AlertDialog alertDialog = new MaterialAlertDialogBuilder(this)///       final AlertDialog alertDialog =new AlertDialog.Builder( MainActivity_Face_App.КонтекстFaceApp)
+                    .setTitle("Установщик")
+                    .setMessage("Пришло Обновление,"
                            + "\n" + "ПО Табельный учёт ,"
                            + "\n" + "локальная версия. " + ЛокальнаяВерсияПОСравнение + ","
                            + "\n" + "новая версия. " + СервернаяВерсияПОВнутри + ","
