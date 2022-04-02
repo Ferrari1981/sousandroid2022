@@ -714,6 +714,7 @@ Context context;
                                     + " СервернаяВерсияПОВнутри " + СервернаяВерсияПОВнутри);
 
 
+
                             Activity activity = null;
                             ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
                             List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
@@ -724,14 +725,14 @@ Context context;
                                 Class<?> myClass = Class.forName(namaa);
                                 activity = (Activity) myClass.newInstance();
                                 // TODO: 19.12.2021
-                                activity.runOnUiThread(new Runnable() {
+                         /*       activity.runOnUiThread(new Runnable() {
                                     @Override
-                                    public void run() {
+                                    public void run*//*() {
                                         Toast.makeText(context, "Успешно загрузилась"
                                                 + "\n" + "ПО Табельный учёт в." + "\n" +
-                                                +СервернаяВерсияПОВнутри, Toast.LENGTH_LONG).show();
-                                    }
-                                });
+                                                +СервернаяВерсияПОВнутри, Toast.LENGTH_LONG).show();*//*
+                                    }*/
+                                //   });
                             } catch (Exception e) {
                                 //  Block of code to handle errors
                                 e.printStackTrace();
