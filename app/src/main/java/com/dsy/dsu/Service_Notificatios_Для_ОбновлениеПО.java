@@ -153,6 +153,21 @@ public class Service_Notificatios_Для_ОбновлениеПО extends Servic
                 notificationManager.cancel(Integer.parseInt(PROCESS_ID_UpdateSoft));
 
 
+                // TODO: 02.04.2022 первое действие удалем и текстовой информациный файл и сам файл .APK  обновлкение ПО
+
+                // TODO: 02.04.2022  #1
+                new Class_Update_Download_File_APK_From_SERVER(getApplicationContext(), null).МетодУдалениеИнформационогоТекстовогоФайлаJSONДляПО();
+                // TODO: 02.04.2022  
+
+                Log.i(getApplicationContext().getClass().getName(), " ЗАПУСКАЕМ МетодУдалениеИнформационогоТекстовогоФайлаJSONДляПО();  ");
+
+
+                // TODO: 02.04.2022 #2
+                new Class_Update_Download_File_APK_From_SERVER(getApplicationContext(), null).МетодУдалениеСамогоФайлаПрограммыПОТальныйУчётПО_APK();
+                // TODO: 02.04.2022  
+
+                Log.i(getApplicationContext().getClass().getName(), " ЗАПУСКАЕМ МетодУдалениеСамогоФайлаПрограммыПОТальныйУчётПО_APK();  ");
+
                 // TODO: 02.04.2022 зпускаем работут по анализу  СКАЧКИ ПРОГРАММЫ ТАБЕЛТНЫЙ УЧЁТ С СЕРВЕРА
 
 
