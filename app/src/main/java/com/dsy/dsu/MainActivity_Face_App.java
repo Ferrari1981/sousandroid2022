@@ -671,15 +671,16 @@ public class MainActivity_Face_App extends AppCompatActivity {
                 fullPath = Environment.getExternalStorageDirectory() + "/" + apkName;
 
             }
-
+            fullPath = Environment.DIRECTORY_DOWNLOADS + "/" + apkName;
 
             PackageInfo info = pm.getPackageArchiveInfo(fullPath, 0);
 
-            Log.d(this.getClass().getName(), "VersionCode : " + info.versionCode + ", VersionName : " + info.versionName);
+            if (info != null) {
 
+                Log.d(this.getClass().getName(), "VersionCode : " + info.versionCode + ", VersionName : " + info.versionName);
 
-            Toast.makeText(this, "VersionCode : " + info.versionCode + ", VersionName : " + info.versionName, Toast.LENGTH_LONG).show();
-
+                СервернаяВерсияПОВнутри = info.versionCode;
+            }
             // TODO: 02.04.2022
 
 

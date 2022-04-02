@@ -859,6 +859,8 @@
 
 
             <intent-filter>
+                <action android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+                <action android:name="android.permission.READ_EXTERNAL_STORAGE" />
                 <action android:name="android.intent.action.EDIT" />
                 <action android:name="android.intent.action.INSERT" />
                 <action android:name="android.intent.action.DELETE" />
