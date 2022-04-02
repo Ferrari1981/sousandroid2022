@@ -153,6 +153,9 @@ public class Service_Notificatios_Для_ОбновлениеПО extends Servic
                 notificationManager.cancel(Integer.parseInt(PROCESS_ID_UpdateSoft));
 
 
+                // TODO: 02.04.2022 зпускаем работут по анализу  СКАЧКИ ПРОГРАММЫ ТАБЕЛТНЫЙ УЧЁТ С СЕРВЕРА 
+
+
                 new Class_Update_Download_File_APK_From_SERVER(getApplicationContext(), null).МетодНачалаЗапускаОбновленияПО(СервернаяВерсияПОВнутри);
 
 
