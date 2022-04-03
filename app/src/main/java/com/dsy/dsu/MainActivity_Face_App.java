@@ -35,6 +35,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.UiThread;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -217,6 +218,11 @@ public class MainActivity_Face_App extends AppCompatActivity {
             drawerLayoutFaceApp = (DrawerLayout) findViewById(R.id.DrawerLayout_faceapp_menu); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
             // TODO: 03.04.2022
             navigationViewFaceApp = (NavigationView) findViewById(R.id.NavigationView_faceapp); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
+
+            // TODO: 03.04.2022
+            ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayoutFaceApp, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            // TODO: 03.04.2022
+            drawerLayoutFaceApp.addDrawerListener(actionBarDrawerToggle);
 
 
             Log.w(getPackageName().getClass().getName(), "progressBarChat    " + progressBarChat);
