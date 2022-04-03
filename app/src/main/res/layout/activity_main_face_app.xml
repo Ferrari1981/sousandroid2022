@@ -11,48 +11,35 @@
 
     <ImageView
         android:id="@+id/imageView_ЗначекApp"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="1dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="1dp"
-        android:foregroundGravity="center"
+        android:foregroundGravity="center_vertical"
         android:scaleType="centerCrop"
         android:stateListAnimator="@android:animator/fade_in"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/icon_main_tabel_four"
+        app:srcCompat="@mipmap/icon_dsu1_for_mains_menu_faceapp111"
         tools:src="@tools:sample/avatars" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_marginTop="3dp"
-        android:background="#00ACC1"
-        android:foregroundGravity="center"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_ЗначекApp"
-        tools:visibility="visible" />
+
 
     <ScrollView
         android:id="@+id/ScrollFaceApp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/view">
+        app:layout_constraintTop_toBottomOf="@id/imageView_ЗначекApp">
 
         <LinearLayout
             android:id="@+id/LineLayFaceApp"
@@ -65,9 +52,10 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardview1_For_MainActivity"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="2"
+                android:minHeight="200dp"
                 android:animateLayoutChanges="true"
                 android:checkable="true"
                 android:clickable="true"
@@ -78,9 +66,9 @@
                 app:cardCornerRadius="10dp"
                 app:cardElevation="3dp"
                 app:cardMaxElevation="4dp"
-                app:strokeColor="#F5FFFA"
+                app:strokeColor="#00ACC1"
                 android:translationZ="10dp"
-                app:strokeWidth="3dp">
+                app:strokeWidth="1dp">
 
                 <RelativeLayout
                     android:id="@+id/relativelayoutcardviewmatirealMainActityt1"
@@ -145,9 +133,10 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardview2_For_MainActivity"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="2"
+                android:minHeight="200dp"
                 android:animateLayoutChanges="true"
                 android:checkable="true"
                 android:clickable="true"
@@ -158,9 +147,9 @@
                 app:cardCornerRadius="10dp"
                 app:cardElevation="3dp"
                 app:cardMaxElevation="4dp"
-                app:strokeColor="#F5FFFA"
+                app:strokeColor="#00ACC1"
                 android:translationZ="10dp"
-                app:strokeWidth="3dp">
+                app:strokeWidth="1dp">
 
                 <RelativeLayout
                     android:id="@+id/relativelayoutcardviewmatirealMainActityt2"
@@ -223,12 +212,13 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardview3_For_MainActivity"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="2"
                 android:animateLayoutChanges="true"
                 android:checkable="true"
                 android:clickable="true"
+                android:minHeight="200dp"
                 android:focusable="true"
                 android:singleLine="false"
                 android:textSize="10sp"
@@ -236,9 +226,9 @@
                 app:cardCornerRadius="10dp"
                 app:cardElevation="3dp"
                 app:cardMaxElevation="4dp"
-                app:strokeColor="#F5FFFA"
+                app:strokeColor="#00ACC1"
                 android:translationZ="10dp"
-                app:strokeWidth="3dp">
+                app:strokeWidth="1dp">
 
                 <RelativeLayout
                     android:id="@+id/relativelayoutcardviewmatirealMainActityt3"
