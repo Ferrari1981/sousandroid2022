@@ -300,6 +300,13 @@
         </LinearLayout>
     </ScrollView>
 
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/NavigationView_faceapp"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity_Face_App"
+            tools:ignore="MissingConstraints"></ com.google.android.material.navigation.NavigationView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -39,6 +39,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.Observer;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.work.WorkInfo;
@@ -49,6 +50,7 @@ import com.dsy.dsu.Code_For_Firebase_AndOneSignal_Здесь_КодДЛяСлу�
 import com.dsy.dsu.Code_For_Tasks_КодДля_Задания.MainActivity_Tasks;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONException;
 
@@ -113,6 +115,10 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
 
     private BroadcastReceiver broadcastReceiverУстановкаПО;
+    // TODO: 03.04.2022
+    private DrawerLayout drawerLayoutFaceApp;
+    // TODO: 03.04.2022
+    private NavigationView navigationViewFaceApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -203,6 +209,14 @@ public class MainActivity_Face_App extends AppCompatActivity {
             progressBarTabel = (ProgressBar) findViewById(R.id.prograessbarTabel_inner_ardview_forMainActivity); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
             // TODO: 23.03.2022
             progressBarChat = (ProgressBar) findViewById(R.id.prograessbarChats_inner_ardview_forMainActivity); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
+
+            // TODO: 03.04.2022
+
+
+            // TODO: 03.04.2022
+            drawerLayoutFaceApp = (DrawerLayout) findViewById(R.id.DrawerLayout_faceapp_menu); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
+            // TODO: 03.04.2022
+            navigationViewFaceApp = (NavigationView) findViewById(R.id.NavigationView_faceapp); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
 
 
             Log.w(getPackageName().getClass().getName(), "progressBarChat    " + progressBarChat);
