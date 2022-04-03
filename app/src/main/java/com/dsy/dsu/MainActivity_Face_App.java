@@ -70,7 +70,7 @@ import io.reactivex.rxjava3.functions.Predicate;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 /////////////////////////////////////////////////////////////////////////
-public class MainActivity_Face_App extends AppCompatActivity {
+public class MainActivity_Face_App extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //////////todo
 
     // TODO: 23.03.2022
@@ -223,6 +223,10 @@ public class MainActivity_Face_App extends AppCompatActivity {
             ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayoutFaceApp, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
             // TODO: 03.04.2022
             drawerLayoutFaceApp.addDrawerListener(actionBarDrawerToggle);
+            // TODO: 03.04.2022
+            actionBarDrawerToggle.syncState();
+            // TODO: 03.04.2022
+            navigationViewFaceApp.setNavigationItemSelectedListener(this);
 
 
             Log.w(getPackageName().getClass().getName(), "progressBarChat    " + progressBarChat);
@@ -289,6 +293,18 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
         }
 
+    }
+// TODO: 03.04.2022
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+        super.onPointerCaptureChanged(hasCapture);
     }
 
 
@@ -2184,8 +2200,6 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
 
     }
-
-
 
 
 
