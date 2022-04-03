@@ -68,7 +68,7 @@
                 app:cardMaxElevation="4dp"
                 app:strokeColor="#00ACC1"
                 android:translationZ="10dp"
-                app:strokeWidth="1dp">
+                app:strokeWidth="2dp">
 
                 <RelativeLayout
                     android:id="@+id/relativelayoutcardviewmatirealMainActityt1"
@@ -149,7 +149,7 @@
                 app:cardMaxElevation="4dp"
                 app:strokeColor="#00ACC1"
                 android:translationZ="10dp"
-                app:strokeWidth="1dp">
+                app:strokeWidth="2dp">
 
                 <RelativeLayout
                     android:id="@+id/relativelayoutcardviewmatirealMainActityt2"
@@ -228,7 +228,7 @@
                 app:cardMaxElevation="4dp"
                 app:strokeColor="#00ACC1"
                 android:translationZ="10dp"
-                app:strokeWidth="1dp">
+                app:strokeWidth="2dp">
 
                 <RelativeLayout
                     android:id="@+id/relativelayoutcardviewmatirealMainActityt3"
