@@ -187,6 +187,10 @@ Context context;
                         // TODO: 31.03.2022
                         if (ЕслиТАкойФайл) {
                             // TODO: 31.03.2022
+                            if (dir.exists()) {
+                                // TODO: 03.04.2022
+                                dir.delete();
+                            }
                             // TODO: 31.03.2022
                             Log.i(this.getClass().getName(), " fileName" + name + "ЕслиТАкойФайл " + ЕслиТАкойФайл);
                             return true;
@@ -215,6 +219,10 @@ Context context;
                         // TODO: 31.03.2022
                         if (ЕслиТАкойФайл) {
                             // TODO: 31.03.2022
+                            if (dir.exists()) {
+                                // TODO: 03.04.2022
+                                dir.delete();
+                            }
                             // TODO: 31.03.2022
                             Log.i(this.getClass().getName(), " fileName" + name + "ЕслиТАкойФайл " + ЕслиТАкойФайл);
                             return true;
@@ -317,6 +325,10 @@ Context context;
                         // TODO: 31.03.2022
                         if (ЕслиТАкойФайл) {
                             // TODO: 31.03.2022
+                            if (dir.exists()) {
+                                // TODO: 03.04.2022
+                                dir.delete();
+                            }
                             // TODO: 31.03.2022
                             Log.i(this.getClass().getName(), " fileName" + name + "ЕслиТАкойФайл " + ЕслиТАкойФайл);
                             return true;
@@ -345,6 +357,10 @@ Context context;
                         // TODO: 31.03.2022
                         if (ЕслиТАкойФайл) {
                             // TODO: 31.03.2022
+                            if (dir.exists()) {
+                                // TODO: 03.04.2022
+                                dir.delete();
+                            }
                             // TODO: 31.03.2022
                             Log.i(this.getClass().getName(), " fileName" + name + "ЕслиТАкойФайл " + ЕслиТАкойФайл);
                             return true;

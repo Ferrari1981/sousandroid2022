@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="#F5FFFA"
     android:foregroundGravity="center"
+    android:id="@+id/ConstraintLayout_ЗначекApp"
     android:scrollbars="vertical">
 
     <ImageView
