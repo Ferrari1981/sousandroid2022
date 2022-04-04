@@ -319,13 +319,25 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
             Log.d(this.getClass().getName(), "  Полусаем Ошибку e.toString() " + e.toString());
 
         }
+        // TODO: 04.04.2022  
+
 
     }
 // TODO: 03.04.2022
 
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // TODO: 04.04.2022  
+
+        Log.d(this.getClass().getName(), "  item" + item);
+        // TODO: 04.04.2022
+        switch (item.getItemId()) {
+
+
+            default:
+                // TODO: 04.04.2022  
+                break;
+        }
         return false;
     }
 
@@ -333,6 +345,7 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
     public void onPointerCaptureChanged(boolean hasCapture) {
         super.onPointerCaptureChanged(hasCapture);
     }
+
 
 
     @Override
@@ -1044,44 +1057,27 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
 
         //todo метод возврата к предыдущему активт
 
-        imageView_ЗначекApp.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
+        try {
 
+            imageView_ЗначекApp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // TODO: 04.04.2022
 
-
-                /////
-
-
-                Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии  ");
-                ///todo код которыц возврящет предыдущий актвитики кнопка back
-                Log.d(this.getClass().getName(), "Во весь экран ");
-                if (РежимыПросмотраДанныхЭкрана==false) {
-                    try {
-                        TimeUnit.MILLISECONDS.sleep(30);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    getSupportActionBar().show();
-                    РежимыПросмотраДанныхЭкрана = true;
-                    //  РежимыПросмотраДанныхЭкрана = false;
-                }else{
-                    try {
-                        TimeUnit.MILLISECONDS.sleep(30);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    getSupportActionBar().hide();
-                    РежимыПросмотраДанныхЭкрана = false;
-                    ////
-                    //////todo настрока экрана
-
+                    Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии v " + v);
                 }
+            });
+        } catch (Exception e) {
+            //  Block of code to handle errors
+            e.printStackTrace();
+            ///метод запись ошибок в таблицу
+            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                    + Thread.currentThread().getStackTrace()[2].getLineNumber());
+            new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                    Thread.currentThread().getStackTrace()[2].getLineNumber());
 
-                return false;
-            }
-        });
 
+        }
 
 
     }

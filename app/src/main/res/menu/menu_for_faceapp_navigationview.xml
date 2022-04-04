@@ -5,22 +5,27 @@
         <item
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Отчёт ошибок" />
+            android:title="Import" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Шаблоны" />
+            android:title="Gallery" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Обмен данными" />
+            android:title="Slideshow" />
         <item
             android:id="@+id/nav_manage"
-            android:title="Пользователи" />
+            android:icon="@drawable/icon_dsu1_sucesss_fro_menus"
+            android:title="Tools" />
     </group>
 
     <item android:title="ООО Союз Автодор ПО">
         <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/icon_dsu1_cycle_button_tabel2"
+                android:title="Версия" />
 
         </menu>
     </item>
