@@ -228,7 +228,7 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
             navigationViewFaceApp.setNavigationItemSelectedListener(this);*/
 
 
-            Log.w(getPackageName().getClass().getName(), "progressBarChat    " + progressBarChat);
+            Log.w(getPackageName().getClass().getName(), "progressBarChat    " + progressBarChat);////
 
 
 // TODO: 06.06.2021 ЗАПУСК ТРЕХ СЛУЖБ
