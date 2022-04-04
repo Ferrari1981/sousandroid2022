@@ -31,10 +31,12 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.UiThread;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -119,6 +121,8 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
     private DrawerLayout drawerLayoutFaceApp;
     // TODO: 03.04.2022
     private NavigationView navigationViewFaceApp;
+    // TODO: 04.04.2022
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,7 +166,7 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
             /////todo данная настрока запрещает при запуке активти подскаваать клавиатуре вверх на компонеты eedittext
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-            getSupportActionBar().hide(); ///скрывать тул бар
+            //  getSupportActionBar().hide(); ///скрывать тул бар
 
 // TODO: 28.04.2021 Убиваем все службы
 
@@ -194,7 +198,6 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
             LinearLayoutFaceApp = (LinearLayout) findViewById(R.id.LineLayFaceApp); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
 
 
-// TODO: 23.02.2022
 
             //todo тест код
 
@@ -213,20 +216,45 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
             // TODO: 03.04.2022
 
 
-     /*       // TODO: 03.04.2022
+            // TODO: 03.04.2022
             drawerLayoutFaceApp = (DrawerLayout) findViewById(R.id.drawerLayout_faceapp_menu); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
             // TODO: 03.04.2022
-            navigationViewFaceApp = (NavigationView) findViewById(R.id.navigationview_faceapp); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
+            navigationViewFaceApp = (NavigationView) findViewById(R.id.navigation_dashboard_faceapp); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
+
+            // TODO: 04.04.2022
+
 
             // TODO: 03.04.2022
-            ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayoutFaceApp, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayoutFaceApp,
+                    R.string.navigation_drawer_open, R.string.navigation_drawer_close);
             // TODO: 03.04.2022
             drawerLayoutFaceApp.addDrawerListener(actionBarDrawerToggle);
             // TODO: 03.04.2022
             actionBarDrawerToggle.syncState();
-            // TODO: 03.04.2022
-            navigationViewFaceApp.setNavigationItemSelectedListener(this);*/
 
+            // TODO: 04.04.2022
+
+            actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
+            // TODO: 04.04.2022
+            actionBarDrawerToggle.setDrawerSlideAnimationEnabled(true);
+
+
+            // TODO: 03.04.2022
+            navigationViewFaceApp.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Log.w(getPackageName().getClass().getName(), "progressBarChat    " + progressBarChat);//////
+                    return false;
+                }
+            });
+
+// TODO: 04.04.2022
+            actionBarDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.w(getPackageName().getClass().getName(), "progressBarChat    " + progressBarChat);//////
+                }
+            });
 
             Log.w(getPackageName().getClass().getName(), "progressBarChat    " + progressBarChat);//////
 
