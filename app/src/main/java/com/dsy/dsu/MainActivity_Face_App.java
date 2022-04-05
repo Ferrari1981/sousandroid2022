@@ -71,7 +71,7 @@ import io.reactivex.rxjava3.functions.Predicate;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 /////////////////////////////////////////////////////////////////////////
-public class MainActivity_Face_App extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity_Face_App extends AppCompatActivity {
     //////////todo
 
     // TODO: 23.03.2022
@@ -238,27 +238,27 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
             // TODO: 04.04.2022
             actionBarDrawerToggle.setDrawerSlideAnimationEnabled(true);
 
+            Log.w(getPackageName().getClass().getName(), "drawerLayoutFaceApp    " + drawerLayoutFaceApp +
+                    "  navigationViewFaceApp " + navigationViewFaceApp);//////
 
-            // TODO: 03.04.2022
-            navigationViewFaceApp.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Log.w(getPackageName().getClass().getName(), "progressBarChat    " + progressBarChat);//////
-                    return false;
-                }
-            });
-
-// TODO: 04.04.2022
-            actionBarDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+            navigationViewFaceApp.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.w(getPackageName().getClass().getName(), "progressBarChat    " + progressBarChat);//////
+                    MenuItem menu = (MenuItem) v;
+
+                    switch (menu.getItemId()) {
+                        case R.id.one:
+                            ///
+                            Log.d(this.getClass().getName(), "КнопкаЧат " + КнопкаЧат + " КнопкаЗадачи " + КнопкаЗадачи + " КнопкаТабель " + КнопкаТабель);
+                            break;
+
+                        default:
+                            ///
+                            Log.d(this.getClass().getName(), "КнопкаЧат " + КнопкаЧат + " КнопкаЗадачи " + КнопкаЗадачи + " КнопкаТабель " + КнопкаТабель);
+                            break;
+                    }
                 }
             });
-
-            Log.w(getPackageName().getClass().getName(), "progressBarChat    " + progressBarChat);//////
-
-
 // TODO: 06.06.2021 ЗАПУСК ТРЕХ СЛУЖБ
 
 
@@ -325,33 +325,7 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
     }
 // TODO: 03.04.2022
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        // TODO: 04.04.2022  
 
-        Log.d(this.getClass().getName(), "  item" + item);
-        // TODO: 04.04.2022
-        switch (item.getItemId()) {
-            case R.id.one:
-                // TODO: 05.04.2022
-                Toast.makeText(getApplicationContext(), "  Выбрали One ", Toast.LENGTH_LONG).show();
-                break;
-            case R.id.two:
-                // TODO: 05.04.2022
-                Toast.makeText(getApplicationContext(), "  Выбрали TWO ", Toast.LENGTH_LONG).show();
-                break;
-
-            default:
-                // TODO: 04.04.2022  
-                break;
-        }
-        return false;
-    }
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-        super.onPointerCaptureChanged(hasCapture);
-    }
 
 
 
