@@ -259,6 +259,26 @@ public class MainActivity_Face_App extends AppCompatActivity {
                     }
                 }
             });
+            // TODO: 05.04.2022
+
+            drawerLayoutFaceApp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MenuItem menu = (MenuItem) v;
+
+                    switch (menu.getItemId()) {
+                        case R.id.one:
+                            ///
+                            Log.d(this.getClass().getName(), "КнопкаЧат " + КнопкаЧат + " КнопкаЗадачи " + КнопкаЗадачи + " КнопкаТабель " + КнопкаТабель);
+                            break;
+
+                        default:
+                            ///
+                            Log.d(this.getClass().getName(), "КнопкаЧат " + КнопкаЧат + " КнопкаЗадачи " + КнопкаЗадачи + " КнопкаТабель " + КнопкаТабель);
+                            break;
+                    }
+                }
+            });
 // TODO: 06.06.2021 ЗАПУСК ТРЕХ СЛУЖБ
 
 
