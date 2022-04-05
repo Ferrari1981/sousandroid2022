@@ -41,7 +41,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.Observer;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -1075,19 +1074,55 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
                     Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии v " + v);
 
                     // TODO: 05.04.2022
-                    if (drawerLayoutFaceApp.isDrawerOpen(GravityCompat.START)) {
+                    if (drawerLayoutFaceApp.isDrawerOpen(navigationViewFaceApp)) {
                         // TODO: 05.04.2022
-                        Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии v " + v);
+                        Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии v " + v +
+                                " " + drawerLayoutFaceApp.getStatusBarBackgroundDrawable() + " " + navigationViewFaceApp.isActivated());
 
-                        drawerLayoutFaceApp.closeDrawer(GravityCompat.START);
+                        drawerLayoutFaceApp.closeDrawer(navigationViewFaceApp);
 
                     } else {
-                        // TODO: 05.04.2022
-                        drawerLayoutFaceApp.isDrawerOpen(GravityCompat.START);
+                        // TODO: 05.04.2022END
+                        drawerLayoutFaceApp.closeDrawer(navigationViewFaceApp);
 
                         Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии v " + v);
 
                     }
+                }
+            });
+            // TODO: 05.04.2022
+            Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии  drawerLayoutFaceApp.getForegroundGravity() " + drawerLayoutFaceApp.getForegroundGravity());
+
+            drawerLayoutFaceApp.addDrawerListener(new DrawerLayout.DrawerListener() {
+                @Override
+                public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+                    // TODO: 05.04.2022
+                    Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии  drawerLayoutFaceApp.getForegroundGravity() " + drawerLayoutFaceApp.getForegroundGravity());
+
+                }
+
+                @Override
+                public void onDrawerOpened(@NonNull View drawerView) {
+                    // TODO: 05.04.2022
+                    Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии  drawerLayoutFaceApp.getForegroundGravity() "
+                            + drawerLayoutFaceApp.getForegroundGravity());
+
+                }
+
+                @Override
+                public void onDrawerClosed(@NonNull View drawerView) {
+                    // TODO: 05.04.2022
+                    Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии  drawerLayoutFaceApp.getForegroundGravity() "
+                            + drawerLayoutFaceApp.getForegroundGravity());
+
+                }
+
+                @Override
+                public void onDrawerStateChanged(int newState) {
+                    // TODO: 05.04.2022
+                    Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии  drawerLayoutFaceApp.getForegroundGravity() "
+                            + drawerLayoutFaceApp.getForegroundGravity());
+
                 }
             });
         } catch (Exception e) {
