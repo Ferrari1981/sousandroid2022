@@ -1074,20 +1074,11 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
                     Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии v " + v);
 
                     // TODO: 05.04.2022
-                    if (drawerLayoutFaceApp.isDrawerOpen(navigationViewFaceApp)) {
-                        // TODO: 05.04.2022
-                        Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии v " + v +
-                                " " + drawerLayoutFaceApp.getStatusBarBackgroundDrawable() + " " + navigationViewFaceApp.isActivated());
+                    //drawerLayoutFaceApp.open();
 
-                        drawerLayoutFaceApp.closeDrawer(navigationViewFaceApp);
+                    drawerLayoutFaceApp.closeDrawers();
 
-                    } else {
-                        // TODO: 05.04.2022END
-                        drawerLayoutFaceApp.closeDrawer(navigationViewFaceApp);
 
-                        Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии v " + v);
-
-                    }
                 }
             });
             // TODO: 05.04.2022
