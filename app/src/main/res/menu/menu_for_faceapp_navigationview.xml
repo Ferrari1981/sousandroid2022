@@ -3,19 +3,19 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/one"
             android:icon="@drawable/ic_menu_camera"
             android:title="Import" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/two"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Gallery" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/tree"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Slideshow" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/four"
             android:icon="@drawable/icon_dsu1_sucesss_fro_menus"
             android:title="Tools" />
     </group>
@@ -23,7 +23,7 @@
     <item android:title="ООО Союз Автодор ПО">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/faur_abount"
                 android:icon="@drawable/icon_dsu1_cycle_button_tabel2"
                 android:title="Версия" />
 

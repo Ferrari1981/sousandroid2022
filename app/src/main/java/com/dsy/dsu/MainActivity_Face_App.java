@@ -41,6 +41,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.Observer;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -332,7 +333,14 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
         Log.d(this.getClass().getName(), "  item" + item);
         // TODO: 04.04.2022
         switch (item.getItemId()) {
-
+            case R.id.one:
+                // TODO: 05.04.2022
+                Toast.makeText(getApplicationContext(), "  Выбрали One ", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.two:
+                // TODO: 05.04.2022
+                Toast.makeText(getApplicationContext(), "  Выбрали TWO ", Toast.LENGTH_LONG).show();
+                break;
 
             default:
                 // TODO: 04.04.2022  
@@ -1065,6 +1073,21 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
                     // TODO: 04.04.2022
 
                     Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии v " + v);
+
+                    // TODO: 05.04.2022
+                    if (drawerLayoutFaceApp.isDrawerOpen(GravityCompat.START)) {
+                        // TODO: 05.04.2022
+                        Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии v " + v);
+
+                        drawerLayoutFaceApp.closeDrawer(GravityCompat.START);
+
+                    } else {
+                        // TODO: 05.04.2022
+                        drawerLayoutFaceApp.isDrawerOpen(GravityCompat.START);
+
+                        Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии v " + v);
+
+                    }
                 }
             });
         } catch (Exception e) {
