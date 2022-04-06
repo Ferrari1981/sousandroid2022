@@ -34,10 +34,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.UiThread;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 import androidx.core.view.GravityCompat;
@@ -166,7 +164,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
             /////todo данная настрока запрещает при запуке активти подскаваать клавиатуре вверх на компонеты eedittext
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-            //  getSupportActionBar().hide(); ///скрывать тул бар
+            getSupportActionBar().hide(); ///скрывать тул бар
 
 // TODO: 28.04.2021 Убиваем все службы
 
@@ -242,8 +240,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
                     "  navigationViewFaceApp " + navigationViewFaceApp);/////////
 
 
-            // TODO: 06.04.2022   мтод для БОКОВОЙ ПАНЕЛИ
-            МетодДляБоковойПанелиFaceApp();
+
 
 
 // TODO: 06.06.2021 ЗАПУСК ТРЕХ СЛУЖБ
@@ -289,7 +286,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
             // TODO: 28.12.2021   Метод  ДАННЫЙ МЕТОД ВСЕГДА ПОСЛЕДНИЙ  если пришло Новоое Обновление По табельный УЧЁТ ПО ЗАПУСКАЕМ ЕГО ВСТАВКИ ПОКАЗЫВАЕМ ПОЛЬЗОВАТЕЛЮ
 
-
+            navigationViewFaceApp.setVisibility(View.GONE);
         } catch (Exception e) {
             //  Block of code to handle errors
             e.printStackTrace();
@@ -320,14 +317,35 @@ public class MainActivity_Face_App extends AppCompatActivity {
         // TODO: 06.04.2022
         try {
 // TODO: 06.04.2022
+            if (drawerLayoutFaceApp.isDrawerVisible(Gravity.LEFT)) {
+                drawerLayoutFaceApp.closeDrawer(Gravity.LEFT);
+            }
 
+            if (drawerLayoutFaceApp.isDrawerOpen(Gravity.LEFT)) {
+                drawerLayoutFaceApp.closeDrawer(Gravity.LEFT);
+            }
+// TODO: 06.04.2022
 
-            mDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+            Log.w(getPackageName().getClass().getName(), "drawerLayoutFaceApp    " + drawerLayoutFaceApp +
+                    "  drawerLayoutFaceApp.isDrawerVisible(Gravity.LEFT " + drawerLayoutFaceApp.isDrawerVisible(Gravity.LEFT) + "\n"
+                    + "  drawerLayoutFaceApp.isDrawerVisible(Gravity.RIGHT " + drawerLayoutFaceApp.isDrawerVisible(Gravity.RIGHT) + "\n" +
+                    "  drawerLayoutFaceApp.isDrawerVisible(GravityCompat.START " + drawerLayoutFaceApp.isDrawerVisible(GravityCompat.START) + "\n"
+                    + "\n" +
+                    "  drawerLayoutFaceApp.isDrawerVisible(GravityCompat.END" + drawerLayoutFaceApp.isDrawerVisible(GravityCompat.END) + "\n");/////////
+// TODO: 06.04.2022
+
+            imageView_ЗначекApp.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // TODO: 06.04.2022
-                    Log.w(getPackageName().getClass().getName(), "drawerLayoutFaceApp    " + drawerLayoutFaceApp +
-                            "  navigationViewFaceApp " + navigationViewFaceApp);/////////
+                    if (navigationViewFaceApp.isActivated()) {
+                        navigationViewFaceApp.setVisibility(View.GONE);
+
+                    } else {
+
+                        navigationViewFaceApp.setVisibility(View.VISIBLE);
+                    }
+
+
                 }
             });
 /*    drawerLayoutFaceApp 
@@ -352,8 +370,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
                     "  navigationViewFaceApp " + navigationViewFaceApp);/////////
 
 
-// TODO: 06.04.2022
-            navigationViewFaceApp.setVisibility(View.VISIBLE);
+
         } catch (Exception e) {
             //  Block of code to handle errors
             e.printStackTrace();
@@ -419,6 +436,10 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
 
             МетодВActivityFaveApp_УстанавливаетПрограммноеОбеспечениеПОТабельныйУчёт();
+
+
+            // TODO: 06.04.2022   мтод для БОКОВОЙ ПАНЕЛИ
+            МетодДляБоковойПанелиFaceApp();
 
 
         } catch (Exception e) {
