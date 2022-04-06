@@ -240,9 +240,6 @@ public class MainActivity_Face_App extends AppCompatActivity {
                     "  navigationViewFaceApp " + navigationViewFaceApp);/////////
 
 
-
-
-
 // TODO: 06.06.2021 ЗАПУСК ТРЕХ СЛУЖБ
 
 
@@ -286,7 +283,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
             // TODO: 28.12.2021   Метод  ДАННЫЙ МЕТОД ВСЕГДА ПОСЛЕДНИЙ  если пришло Новоое Обновление По табельный УЧЁТ ПО ЗАПУСКАЕМ ЕГО ВСТАВКИ ПОКАЗЫВАЕМ ПОЛЬЗОВАТЕЛЮ
 
-            navigationViewFaceApp.setVisibility(View.GONE);
+            //     navigationViewFaceApp.setVisibility(View.GONE);
         } catch (Exception e) {
             //  Block of code to handle errors
             e.printStackTrace();
@@ -325,6 +322,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
                 drawerLayoutFaceApp.closeDrawer(Gravity.LEFT);
             }
 // TODO: 06.04.2022
+            drawerLayoutFaceApp.openDrawer(Gravity.LEFT);
 
             Log.w(getPackageName().getClass().getName(), "drawerLayoutFaceApp    " + drawerLayoutFaceApp +
                     "  drawerLayoutFaceApp.isDrawerVisible(Gravity.LEFT " + drawerLayoutFaceApp.isDrawerVisible(Gravity.LEFT) + "\n"
@@ -337,17 +335,21 @@ public class MainActivity_Face_App extends AppCompatActivity {
             imageView_ЗначекApp.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (navigationViewFaceApp.isActivated()) {
+                    if (navigationViewFaceApp.isShown()) {
                         navigationViewFaceApp.setVisibility(View.GONE);
 
                     } else {
 
                         navigationViewFaceApp.setVisibility(View.VISIBLE);
+
+
                     }
 
 
                 }
             });
+
+
 /*    drawerLayoutFaceApp 
     // TODO: 05.04.2022
     navigationViewFaceApp ;*/
