@@ -311,6 +311,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
     // TODO: 06.04.2022  метол который инициализикурю бокковую панель
 
+
     private void МетодДляБоковойПанелиFaceApp() {
 
 
@@ -321,11 +322,26 @@ public class MainActivity_Face_App extends AppCompatActivity {
     // TODO: 05.04.2022
     navigationViewFaceApp ;*/
 
+            navigationViewFaceApp.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()) {
 
+                        default:
+                            // TODO: 06.04.2022
+                            Log.w(getPackageName().getClass().getName(), "drawerLayoutFaceApp    " + drawerLayoutFaceApp +
+                                    "  navigationViewFaceApp " + navigationViewFaceApp + " item.getItemId() " + item.getItemId());/////////
+                            break;
+                    }
+                    return false;
+                }
+            });
             Log.w(getPackageName().getClass().getName(), "drawerLayoutFaceApp    " + drawerLayoutFaceApp +
                     "  navigationViewFaceApp " + navigationViewFaceApp);/////////
 
 
+// TODO: 06.04.2022
+            navigationViewFaceApp.setVisibility(View.VISIBLE);
         } catch (Exception e) {
             //  Block of code to handle errors
             e.printStackTrace();
