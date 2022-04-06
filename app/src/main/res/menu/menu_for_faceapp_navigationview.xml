@@ -4,6 +4,7 @@
     tools:showIn="navigator_faceapp_main">
 
     <group android:checkableBehavior="single">
+
         <item
             android:id="@+id/one"
             android:icon="@drawable/ic_menu_camera"
@@ -25,6 +26,7 @@
     <item android:title="ООО Союз Автодор">
         <menu>
             <item
+                android:checked="true"
                 android:id="@+id/faur_abount"
                 android:icon="@drawable/icon_dsu1_for_navigator_view_11"
                 android:title="" />

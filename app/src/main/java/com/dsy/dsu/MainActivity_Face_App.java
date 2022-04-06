@@ -392,6 +392,8 @@ public class MainActivity_Face_App extends AppCompatActivity {
                     Drawable drawable = getResources().getDrawable(R.mipmap.icon_dsu1_for_mains_menu_faceapp_close222);///
                     // TODO: 06.04.2022
                     imageView_ЗначекApp.setImageDrawable(drawable);
+                    // TODO: 06.04.2022
+                    navigationViewFaceApp.setVisibility(View.VISIBLE);
                     super.onDrawerOpened(drawerView);
                 }
 
@@ -401,6 +403,8 @@ public class MainActivity_Face_App extends AppCompatActivity {
                     Drawable drawable = getResources().getDrawable(R.mipmap.icon_dsu1_for_mains_menu_faceapp111);///
                     // TODO: 06.04.2022
                     imageView_ЗначекApp.setImageDrawable(drawable);
+                    // TODO: 06.04.2022
+                    navigationViewFaceApp.setVisibility(View.GONE);
                     super.onDrawerClosed(drawerView);
                 }
             });
@@ -415,24 +419,28 @@ public class MainActivity_Face_App extends AppCompatActivity {
                         // TODO: 06.04.2022
                         case R.id.one:
                             // TODO: 06.04.2022
+                            item.setChecked(true);
                             Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");/////////
                             // TODO: 06.04.2022
                             break;
                         // TODO: 06.04.2022
                         case R.id.two:
                             // TODO: 06.04.2022
+                            item.setChecked(true);
                             // TODO: 06.04.2022
                             Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");/////////
                             break;
                         // TODO: 06.04.2022
                         case R.id.tree:
                             // TODO: 06.04.2022
+                            item.setChecked(true);
                             // TODO: 06.04.2022
                             Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");/////////
                             break;
                         // TODO: 06.04.2022
                         case R.id.four:
                             // TODO: 06.04.2022
+                            item.setChecked(true);
                             // TODO: 06.04.2022
                             Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");/////////
                             break;
@@ -442,6 +450,13 @@ public class MainActivity_Face_App extends AppCompatActivity {
                             return false;
                     }
 
+
+                    if (drawerLayoutFaceApp.isDrawerOpen(Gravity.LEFT)) {
+
+                        // TODO: 06.04.2022
+                        drawerLayoutFaceApp.closeDrawer(Gravity.LEFT);
+
+                    }
 // TODO: 06.04.2022
                     return true;
 
