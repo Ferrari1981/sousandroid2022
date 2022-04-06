@@ -22,7 +22,6 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -31,7 +30,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -241,44 +239,11 @@ public class MainActivity_Face_App extends AppCompatActivity {
             Log.w(getPackageName().getClass().getName(), "drawerLayoutFaceApp    " + drawerLayoutFaceApp +
                     "  navigationViewFaceApp " + navigationViewFaceApp);/////////
 
-            navigationViewFaceApp.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    MenuItem menu = (MenuItem) v;
 
-                    switch (menu.getItemId()) {
-                        case R.id.one:
-                            ///
-                            Log.d(this.getClass().getName(), "КнопкаЧат " + КнопкаЧат + " КнопкаЗадачи " + КнопкаЗадачи + " КнопкаТабель " + КнопкаТабель);
-                            break;
+            // TODO: 06.04.2022   мтод для БОКОВОЙ ПАНЕЛИ
+            МетодДляБоковойПанелиFaceApp();
 
-                        default:
-                            ///
-                            Log.d(this.getClass().getName(), "КнопкаЧат " + КнопкаЧат + " КнопкаЗадачи " + КнопкаЗадачи + " КнопкаТабель " + КнопкаТабель);
-                            break;
-                    }
-                }
-            });
-            // TODO: 05.04.2022
 
-            drawerLayoutFaceApp.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    MenuItem menu = (MenuItem) v;
-
-                    switch (menu.getItemId()) {
-                        case R.id.one:
-                            ///
-                            Log.d(this.getClass().getName(), "КнопкаЧат " + КнопкаЧат + " КнопкаЗадачи " + КнопкаЗадачи + " КнопкаТабель " + КнопкаТабель);
-                            break;
-
-                        default:
-                            ///
-                            Log.d(this.getClass().getName(), "КнопкаЧат " + КнопкаЧат + " КнопкаЗадачи " + КнопкаЗадачи + " КнопкаТабель " + КнопкаТабель);
-                            break;
-                    }
-                }
-            });
 // TODO: 06.06.2021 ЗАПУСК ТРЕХ СЛУЖБ
 
 
@@ -343,10 +308,37 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
 
     }
+
+    // TODO: 06.04.2022  метол который инициализикурю бокковую панель
+
+    private void МетодДляБоковойПанелиFaceApp() {
+
+
+        // TODO: 06.04.2022
+        try {
+
+/*    drawerLayoutFaceApp 
+    // TODO: 05.04.2022
+    navigationViewFaceApp ;*/
+
+
+            Log.w(getPackageName().getClass().getName(), "drawerLayoutFaceApp    " + drawerLayoutFaceApp +
+                    "  navigationViewFaceApp " + navigationViewFaceApp);/////////
+
+
+        } catch (Exception e) {
+            //  Block of code to handle errors
+            e.printStackTrace();
+            ///метод запись ошибок в таблицу
+            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                    + Thread.currentThread().getStackTrace()[2].getLineNumber());
+            new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                    Thread.currentThread().getStackTrace()[2].getLineNumber());
+
+        }
+        // TODO: 04.04.2022
+    }
 // TODO: 03.04.2022
-
-
-
 
 
     @Override
