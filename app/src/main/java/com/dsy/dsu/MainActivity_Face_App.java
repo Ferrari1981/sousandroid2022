@@ -239,7 +239,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
             actionBarDrawerToggle.setDrawerSlideAnimationEnabled(true);
 
             Log.w(getPackageName().getClass().getName(), "drawerLayoutFaceApp    " + drawerLayoutFaceApp +
-                    "  navigationViewFaceApp " + navigationViewFaceApp);///////
+                    "  navigationViewFaceApp " + navigationViewFaceApp);/////////
 
             navigationViewFaceApp.setOnClickListener(new View.OnClickListener() {
                 @Override
