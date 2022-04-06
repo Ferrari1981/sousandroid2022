@@ -11,6 +11,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -188,6 +189,11 @@ public class MainActivity_Face_App extends AppCompatActivity {
             Log.d(this.getClass().getName(), "КнопкаЧат " + КнопкаЧат + " КнопкаЗадачи " + КнопкаЗадачи + " КнопкаТабель " + КнопкаТабель);
             ////
             imageView_ЗначекApp = (ImageView) findViewById(R.id.imageView_ЗначекApp); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
+            // TODO: 06.04.2022  
+
+            Drawable drawable = getResources().getDrawable(R.mipmap.icon_dsu1_for_mains_menu_faceapp111);///
+            // TODO: 06.04.2022
+            imageView_ЗначекApp.setImageDrawable(drawable);
 
             //   ScrollFaceAppСкорол = (ScrollView) findViewById(R.id.ScrollFaceApp); /////КНОПКА ТАБЕЛЬНОГО УЧЕТА
 
@@ -359,6 +365,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
                             // TODO: 06.04.2022
                             drawerLayoutFaceApp.closeDrawer(Gravity.LEFT);
+
                         }
 
                     } else {
@@ -368,6 +375,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
                         if (!drawerLayoutFaceApp.isDrawerOpen(Gravity.LEFT)) {
                             // TODO: 06.04.2022
                             drawerLayoutFaceApp.openDrawer(Gravity.LEFT);
+
                         }
 
                     }
@@ -375,6 +383,28 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
                 }
             });
+            // TODO: 06.04.2022
+            drawerLayoutFaceApp.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+                @Override
+                public void onDrawerOpened(View drawerView) {
+
+                    // TODO: 06.04.2022
+                    Drawable drawable = getResources().getDrawable(R.mipmap.icon_dsu1_for_mains_menu_faceapp_close222);///
+                    // TODO: 06.04.2022
+                    imageView_ЗначекApp.setImageDrawable(drawable);
+                    super.onDrawerOpened(drawerView);
+                }
+
+                @Override
+                public void onDrawerClosed(View drawerView) {
+                    // TODO: 06.04.2022
+                    Drawable drawable = getResources().getDrawable(R.mipmap.icon_dsu1_for_mains_menu_faceapp111);///
+                    // TODO: 06.04.2022
+                    imageView_ЗначекApp.setImageDrawable(drawable);
+                    super.onDrawerClosed(drawerView);
+                }
+            });
+
             // TODO: 06.04.2022
             navigationViewFaceApp.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -386,6 +416,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
                         case R.id.one:
                             // TODO: 06.04.2022
                             Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");/////////
+                            // TODO: 06.04.2022
                             break;
                         // TODO: 06.04.2022
                         case R.id.two:
@@ -412,7 +443,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
                     }
 
 // TODO: 06.04.2022
-                    return false;
+                    return true;
 
                 }
             });
