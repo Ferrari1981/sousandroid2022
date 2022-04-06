@@ -304,7 +304,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
             Log.d(this.getClass().getName(), "  Полусаем Ошибку e.toString() " + e.toString());
 
         }
-        // TODO: 04.04.2022  
+        // TODO: 04.04.2022
 
 
     }
@@ -317,7 +317,17 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
         // TODO: 06.04.2022
         try {
+// TODO: 06.04.2022
 
+
+            mDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // TODO: 06.04.2022
+                    Log.w(getPackageName().getClass().getName(), "drawerLayoutFaceApp    " + drawerLayoutFaceApp +
+                            "  navigationViewFaceApp " + navigationViewFaceApp);/////////
+                }
+            });
 /*    drawerLayoutFaceApp 
     // TODO: 05.04.2022
     navigationViewFaceApp ;*/
