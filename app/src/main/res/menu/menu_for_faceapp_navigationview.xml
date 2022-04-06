@@ -22,12 +22,12 @@
             android:title="Tools" />
     </group>
 
-    <item android:title="ООО Союз Автодор ПО">
+    <item android:title="ООО Союз Автодор 2022 г.">
         <menu>
             <item
                 android:id="@+id/faur_abount"
-                android:icon="@drawable/icon_dsu1_cycle_button_tabel2"
-                android:title="Версия" />
+                android:icon="@drawable/icon_dsu1_for_navigator_view_11"
+                android:title="" />
 
         </menu>
     </item>

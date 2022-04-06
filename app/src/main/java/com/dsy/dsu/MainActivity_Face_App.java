@@ -307,8 +307,9 @@ public class MainActivity_Face_App extends AppCompatActivity {
         // TODO: 06.04.2022
         try {
 // TODO: 06.04.2022
-            if (!drawerLayoutFaceApp.isDrawerOpen(Gravity.LEFT)) {
-                drawerLayoutFaceApp.openDrawer(Gravity.LEFT);
+            if (drawerLayoutFaceApp.isDrawerOpen(Gravity.LEFT)) {
+                // TODO: 06.04.2022  закрываем  
+                drawerLayoutFaceApp.closeDrawer(Gravity.LEFT);
             }
 
             Log.w(getPackageName().getClass().getName(), "drawerLayoutFaceApp    " + drawerLayoutFaceApp +
@@ -351,9 +352,12 @@ public class MainActivity_Face_App extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if (navigationViewFaceApp.isShown()) {
+                        // TODO: 06.04.2022
                         navigationViewFaceApp.setVisibility(View.GONE);
 
                         if (drawerLayoutFaceApp.isDrawerOpen(Gravity.LEFT)) {
+
+                            // TODO: 06.04.2022
                             drawerLayoutFaceApp.closeDrawer(Gravity.LEFT);
                         }
 
@@ -362,6 +366,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
                         navigationViewFaceApp.setVisibility(View.VISIBLE);
 
                         if (!drawerLayoutFaceApp.isDrawerOpen(Gravity.LEFT)) {
+                            // TODO: 06.04.2022
                             drawerLayoutFaceApp.openDrawer(Gravity.LEFT);
                         }
 
@@ -374,7 +379,41 @@ public class MainActivity_Face_App extends AppCompatActivity {
             navigationViewFaceApp.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                    switch (item.getItemId()) {
+
+                        // TODO: 06.04.2022
+                        case R.id.one:
+                            // TODO: 06.04.2022
+                            Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");/////////
+                            break;
+                        // TODO: 06.04.2022
+                        case R.id.two:
+                            // TODO: 06.04.2022
+                            // TODO: 06.04.2022
+                            Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");/////////
+                            break;
+                        // TODO: 06.04.2022
+                        case R.id.tree:
+                            // TODO: 06.04.2022
+                            // TODO: 06.04.2022
+                            Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");/////////
+                            break;
+                        // TODO: 06.04.2022
+                        case R.id.four:
+                            // TODO: 06.04.2022
+                            // TODO: 06.04.2022
+                            Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");/////////
+                            break;
+
+                        default:
+                            // TODO: 06.04.2022
+                            return false;
+                    }
+
+// TODO: 06.04.2022
                     return false;
+
                 }
             });
 
