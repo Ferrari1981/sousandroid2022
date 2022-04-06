@@ -69,7 +69,7 @@ import io.reactivex.rxjava3.functions.Predicate;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 /////////////////////////////////////////////////////////////////////////
-public class MainActivity_Face_App extends AppCompatActivity {
+public class MainActivity_Face_App extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //////////todo
 
     // TODO: 23.03.2022
@@ -248,11 +248,6 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
             // TODO: 06.06.2021 ЗАПУСК ТРЕХ СЛУЖБ
 
-            МетодНажатиеЗначекAPP();
-
-
-
-
 
 
             Log.w(getPackageName().getClass().getName(), "  МЕтодЗапускСЛУЖБЫОбновленияПО  protected void onResume()  " +
@@ -314,15 +309,37 @@ public class MainActivity_Face_App extends AppCompatActivity {
         // TODO: 06.04.2022
         try {
 // TODO: 06.04.2022
-            if (drawerLayoutFaceApp.isDrawerVisible(Gravity.LEFT)) {
-                drawerLayoutFaceApp.closeDrawer(Gravity.LEFT);
+            if (!drawerLayoutFaceApp.isDrawerOpen(Gravity.LEFT)) {
+                drawerLayoutFaceApp.openDrawer(Gravity.LEFT);
             }
 
-            if (drawerLayoutFaceApp.isDrawerOpen(Gravity.LEFT)) {
-                drawerLayoutFaceApp.closeDrawer(Gravity.LEFT);
-            }
+            Log.w(getPackageName().getClass().getName(), "drawerLayoutFaceApp    " + drawerLayoutFaceApp +
+                    "  drawerLayoutFaceApp.isDrawerVisible(Gravity.LEFT " + drawerLayoutFaceApp.isDrawerVisible(Gravity.LEFT) + "\n"
+                    + "  drawerLayoutFaceApp.isDrawerVisible(Gravity.RIGHT " + drawerLayoutFaceApp.isDrawerVisible(Gravity.RIGHT) + "\n" +
+                    "  drawerLayoutFaceApp.isDrawerVisible(GravityCompat.START " + drawerLayoutFaceApp.isDrawerVisible(GravityCompat.START) + "\n"
+                    + "\n" +
+                    "  drawerLayoutFaceApp.isDrawerVisible(GravityCompat.END" + drawerLayoutFaceApp.isDrawerVisible(GravityCompat.END) + "\n");/////////
+
+        } catch (Exception e) {
+            //  Block of code to handle errors
+            e.printStackTrace();
+            ///метод запись ошибок в таблицу
+            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                    + Thread.currentThread().getStackTrace()[2].getLineNumber());
+            new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                    Thread.currentThread().getStackTrace()[2].getLineNumber());
+
+        }
+        // TODO: 04.04.2022
+    }
+
+    // TODO: 03.04.2022
+    private void МетодДляСлушательБоковойПанелиFaceApp() {
+
+
+        // TODO: 06.04.2022
+        try {
 // TODO: 06.04.2022
-            drawerLayoutFaceApp.openDrawer(Gravity.LEFT);
 
             Log.w(getPackageName().getClass().getName(), "drawerLayoutFaceApp    " + drawerLayoutFaceApp +
                     "  drawerLayoutFaceApp.isDrawerVisible(Gravity.LEFT " + drawerLayoutFaceApp.isDrawerVisible(Gravity.LEFT) + "\n"
@@ -338,39 +355,23 @@ public class MainActivity_Face_App extends AppCompatActivity {
                     if (navigationViewFaceApp.isShown()) {
                         navigationViewFaceApp.setVisibility(View.GONE);
 
+                        if (drawerLayoutFaceApp.isDrawerOpen(Gravity.LEFT)) {
+                            drawerLayoutFaceApp.closeDrawer(Gravity.LEFT);
+                        }
+
                     } else {
 
                         navigationViewFaceApp.setVisibility(View.VISIBLE);
 
+                        if (!drawerLayoutFaceApp.isDrawerOpen(Gravity.LEFT)) {
+                            drawerLayoutFaceApp.openDrawer(Gravity.LEFT);
+                        }
 
                     }
 
 
                 }
             });
-
-
-/*    drawerLayoutFaceApp 
-    // TODO: 05.04.2022
-    navigationViewFaceApp ;*/
-
-            navigationViewFaceApp.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    switch (item.getItemId()) {
-
-                        default:
-                            // TODO: 06.04.2022
-                            Log.w(getPackageName().getClass().getName(), "drawerLayoutFaceApp    " + drawerLayoutFaceApp +
-                                    "  navigationViewFaceApp " + navigationViewFaceApp + " item.getItemId() " + item.getItemId());/////////
-                            break;
-                    }
-                    return false;
-                }
-            });
-            Log.w(getPackageName().getClass().getName(), "drawerLayoutFaceApp    " + drawerLayoutFaceApp +
-                    "  navigationViewFaceApp " + navigationViewFaceApp);/////////
-
 
 
         } catch (Exception e) {
@@ -386,7 +387,6 @@ public class MainActivity_Face_App extends AppCompatActivity {
         // TODO: 04.04.2022
     }
 // TODO: 03.04.2022
-
 
     @Override
     protected void onStart() {
@@ -443,6 +443,9 @@ public class MainActivity_Face_App extends AppCompatActivity {
             // TODO: 06.04.2022   мтод для БОКОВОЙ ПАНЕЛИ
             МетодДляБоковойПанелиFaceApp();
 
+            // TODO: 06.04.2022
+
+            МетодДляСлушательБоковойПанелиFaceApp();
 
         } catch (Exception e) {
             //  Block of code to handle errors
@@ -1097,76 +1100,8 @@ public class MainActivity_Face_App extends AppCompatActivity {
     }
 
 
-    private void МетодНажатиеЗначекAPP() {
-
-        //todo метод возврата к предыдущему активт
-
-        try {
-
-            imageView_ЗначекApp.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // TODO: 04.04.2022
-
-                    Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии v " + v);
-
-                    // TODO: 05.04.2022
-                    //drawerLayoutFaceApp.open();
-
-                    drawerLayoutFaceApp.closeDrawers();
 
 
-                }
-            });
-            // TODO: 05.04.2022
-            Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии  drawerLayoutFaceApp.getForegroundGravity() " + drawerLayoutFaceApp.getForegroundGravity());
-
-            drawerLayoutFaceApp.addDrawerListener(new DrawerLayout.DrawerListener() {
-                @Override
-                public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
-                    // TODO: 05.04.2022
-                    Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии  drawerLayoutFaceApp.getForegroundGravity() " + drawerLayoutFaceApp.getForegroundGravity());
-
-                }
-
-                @Override
-                public void onDrawerOpened(@NonNull View drawerView) {
-                    // TODO: 05.04.2022
-                    Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии  drawerLayoutFaceApp.getForegroundGravity() "
-                            + drawerLayoutFaceApp.getForegroundGravity());
-
-                }
-
-                @Override
-                public void onDrawerClosed(@NonNull View drawerView) {
-                    // TODO: 05.04.2022
-                    Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии  drawerLayoutFaceApp.getForegroundGravity() "
-                            + drawerLayoutFaceApp.getForegroundGravity());
-
-                }
-
-                @Override
-                public void onDrawerStateChanged(int newState) {
-                    // TODO: 05.04.2022
-                    Log.d(this.getClass().getName(), " кликнем для созданни новго сотрдника при нажатии  drawerLayoutFaceApp.getForegroundGravity() "
-                            + drawerLayoutFaceApp.getForegroundGravity());
-
-                }
-            });
-        } catch (Exception e) {
-            //  Block of code to handle errors
-            e.printStackTrace();
-            ///метод запись ошибок в таблицу
-            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
-                    + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
-                    Thread.currentThread().getStackTrace()[2].getLineNumber());
-
-
-        }
-
-
-    }
 
 
     //todo  ТАБЕЛЬНЫЙ УЧЁТ
@@ -2305,13 +2240,13 @@ public class MainActivity_Face_App extends AppCompatActivity {
         }
 
 
-
-
-
     }
 
 
-
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
+    }
 }
 
 
