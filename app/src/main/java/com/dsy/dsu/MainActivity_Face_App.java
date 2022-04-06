@@ -19,8 +19,6 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -69,7 +67,7 @@ import io.reactivex.rxjava3.functions.Predicate;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 /////////////////////////////////////////////////////////////////////////
-public class MainActivity_Face_App extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity_Face_App extends AppCompatActivity {
     //////////todo
 
     // TODO: 23.03.2022
@@ -370,6 +368,13 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
                     }
 
 
+                }
+            });
+            // TODO: 06.04.2022
+            navigationViewFaceApp.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    return false;
                 }
             });
 
@@ -1265,7 +1270,7 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
 
     /// TODO МЕНЮ ГЛАВНОЕ НА АКТИВИТИ ПРОСМОТР ДАННЫХ/// МЕНЮ ГЛАВНОЕ НА АКТИВИТИ ПРОСМОТР ДАННЫХ/// МЕНЮ ГЛАВНОЕ НА АКТИВИТИ ПРОСМОТР ДАННЫХ/// МЕНЮ ГЛАВНОЕ НА АКТИВИТИ ПРОСМОТР ДАННЫХ/// МЕНЮ ГЛАВНОЕ НА АКТИВИТИ ПРОСМОТР ДАННЫХ
 //#1
-    @Override
+  /*  @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         Log.d(this.getClass().getName(), "  Меню  запустилось на Активити FACE_APP");
         try{
@@ -1302,11 +1307,11 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
                     Thread.currentThread().getStackTrace()[2].getLineNumber());
         }
         return true;
-    }
+    }*/
 
     //#2
 
-    @Override
+/*    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.d(this.getClass().getName(), "  Меню  запустилось на Активити FACE_APP");
         try{
@@ -1320,8 +1325,8 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
                     Log.e(this.getClass().getName(), "Хотите посмотреть ошибки ?");
 
 
-                /*    if (PUBLIC_CONTENT.Отладка==true) {
-                        МетодДиалогаДляМеню("Ошибки системы", "Посмотреть ошибки ?");*/
+                *//*    if (PUBLIC_CONTENT.Отладка==true) {
+                        МетодДиалогаДляМеню("Ошибки системы", "Посмотреть ошибки ?");*//*
 
 
 
@@ -1365,9 +1370,9 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
                 case 2:
                     Log.w(this.getClass().getName(), "Хотите перерйти в натройки");
 
-                /*    if (PUBLIC_CONTENT.Отладка==true) {
+                *//*    if (PUBLIC_CONTENT.Отладка==true) {
                         МетодДиалогаДляМеню("Настройка системы", "Перейти к настройкам системы ?");
-                */
+                *//*
 
 
             bisnesslogicaForActivityFaceApp.     new   SubClassВызоваАктивтиИзМеню().МетодЗапускаИзМенюНастроек();
@@ -1541,7 +1546,7 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
         }
         return super.onOptionsItemSelected(item);
 
-    }
+    }*/
 
     private void МетодПодключениеObserverДляБазы() {
 
@@ -2243,10 +2248,6 @@ public class MainActivity_Face_App extends AppCompatActivity implements Navigati
     }
 
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
-    }
 }
 
 
