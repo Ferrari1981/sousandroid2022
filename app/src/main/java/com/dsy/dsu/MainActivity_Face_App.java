@@ -420,7 +420,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
                         case R.id.one:
                             // TODO: 06.04.2022
                             item.setChecked(true);
-                            Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");/////////
+                            Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");//////////
                             // TODO: 06.04.2022
                             break;
                         // TODO: 06.04.2022
