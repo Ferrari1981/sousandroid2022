@@ -409,7 +409,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
                 }
             });
 
-            // TODO: 06.04.2022
+            // TODO: 06.04.2022 МЕНЮ ДЛЯ БОКОВОЙ ПАНЕЛИ
             navigationViewFaceApp.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -444,6 +444,22 @@ public class MainActivity_Face_App extends AppCompatActivity {
                             // TODO: 06.04.2022
                             Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");/////////
                             break;
+
+                        // TODO: 06.04.2022
+                        case R.id.shestoy:
+                            // TODO: 06.04.2022
+                            item.setChecked(true);
+                            // TODO: 06.04.2022
+                            Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");/////////
+                            break;
+                        // TODO: 06.04.2022
+                        case R.id.sedmoy:
+                            // TODO: 06.04.2022
+                            item.setChecked(true);
+                            // TODO: 06.04.2022
+                            Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");/////////
+                            break;
+
 
                         default:
                             // TODO: 06.04.2022
