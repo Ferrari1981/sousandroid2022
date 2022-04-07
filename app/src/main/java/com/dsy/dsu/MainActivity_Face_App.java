@@ -420,7 +420,32 @@ public class MainActivity_Face_App extends AppCompatActivity {
                         case R.id.one:
                             // TODO: 06.04.2022
                             item.setChecked(true);
-                            Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");//////////
+                            Log.w(getPackageName().getClass().getName(), "item.getItemId() Посмотреть ошибки   " + item.getItemId() + "\n");//////////
+                            try {
+                                /////
+                                Intent Интент_Меню = new Intent(getApplication(), MainActivity_Errors.class);
+
+                                Интент_Меню.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//////FLAG_ACTIVITY_SINGLE_TOP
+
+
+                                ///////TODO ОСТАНАВЛИВАЕМ СЛУЖБУ ЧЕРЕЗ 20 СЕКУНД
+                                Log.d(this.getClass().getName(), "" +
+                                        "                     case R.id.ПунктМенюПервый:");
+
+                                startActivity(Интент_Меню);
+
+                                ///TODO запуск службы
+                                ///////
+                            } catch (Exception e) {
+                                //  Block of code to handle errors
+                                e.printStackTrace();
+                                ///метод запись ошибок в таблицу
+                                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                                        + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                                        Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            }
+
                             // TODO: 06.04.2022
                             break;
                         // TODO: 06.04.2022
@@ -428,14 +453,78 @@ public class MainActivity_Face_App extends AppCompatActivity {
                             // TODO: 06.04.2022
                             item.setChecked(true);
                             // TODO: 06.04.2022
-                            Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");/////////
+                            Log.w(getPackageName().getClass().getName(), "item.getItemId() Хотите перерйти в натройки    " + item.getItemId() + "\n");/////////
+                            try {
+
+                                bisnesslogicaForActivityFaceApp.new SubClassВызоваАктивтиИзМеню().МетодЗапускаИзМенюНастроек();
+                                ///////
+                            } catch (Exception e) {
+                                //  Block of code to handle errors
+                                e.printStackTrace();
+                                ///метод запись ошибок в таблицу
+                                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                                        + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                                        Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            }
                             break;
                         // TODO: 06.04.2022
                         case R.id.tree:
                             // TODO: 06.04.2022
                             item.setChecked(true);
                             // TODO: 06.04.2022
-                            Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");/////////
+                            Log.w(getPackageName().getClass().getName(), "item.getItemId() Сменить пользователя и смена данных    " + item.getItemId() + "\n");/////////
+                            try {
+                                ////////////
+                                Boolean РезультатЕслиСвязьСерверомПередНачаломВизуальнойСинхронизцииПередСменыДанных = new Class_Connections_Server(getApplicationContext()).
+                                        МетодПингаСервераРаботаетИлиНетТОлькоДЛяACTIVITYFACEAPP(getApplicationContext());
+
+
+                                Log.d(this.getClass().getName(), "  Completable.fromAction  " +
+                                        "РезультатЕслиСвязьСерверомПередНачаломВизуальнойСинхронизцииПередСменыДанных " +
+                                        РезультатЕслиСвязьСерверомПередНачаломВизуальнойСинхронизцииПередСменыДанных);
+
+
+                                String ПолученыйТекущееИмяПользователя = null;
+
+
+                                if (РезультатЕслиСвязьСерверомПередНачаломВизуальнойСинхронизцииПередСменыДанных == true) {
+                                    // TODO: 06.07.2021  пользователь СМЕНИТЬ
+
+                                    ПолученыйТекущееИмяПользователя = new MODEL_synchronized(getApplicationContext()).МетодПолучениеИмяСистемыДляСменыПользователя(getApplicationContext());
+                                    // TODO: 23.02.2022
+                                    Log.d(this.getClass().getName(), "  ПолученыйТекущееИмяПользователя " +
+                                            ПолученыйТекущееИмяПользователя);
+
+
+                                    //////
+                                    bisnesslogicaForActivityFaceApp.МетодДиалогаДляМеню("Пользователи Системы", "При смене пользователя,"
+                                            + "\n" + " поменяються и данные системы." + "\n"
+                                            + "Поменять пользователя ?" + "\n"
+                                            + " (текущий пользователь : ) " + ПолученыйТекущееИмяПользователя.toUpperCase());
+
+
+                                    // TODO: 23.02.2022
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Для смены данных, нужно подключение к серверу !!! "
+                                            + "\n", Toast.LENGTH_LONG).show();
+
+
+                                }
+
+                                ///////
+                            } catch (Exception e) {
+                                //  Block of code to handle errors
+                                e.printStackTrace();
+                                ///метод запись ошибок в таблицу
+                                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                                        + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                                        Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            }
+                            ////////////////
+
+
                             break;
                         // TODO: 06.04.2022
                         case R.id.four:
