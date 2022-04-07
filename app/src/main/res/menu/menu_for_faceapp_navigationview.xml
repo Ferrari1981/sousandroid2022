@@ -4,32 +4,37 @@
     tools:showIn="navigator_faceapp_main">
 
     <group android:checkableBehavior="single">
-
+        <item android:title="" />
         <item
             android:id="@+id/one"
+
             android:icon="@drawable/ic_menu_camera"
             android:title="Import" />
+        <item android:title="" />
         <item
             android:id="@+id/two"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Gallery" />
+        <item android:title="" />
         <item
             android:id="@+id/tree"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Slideshow" />
+        <item android:title="" />
         <item
             android:id="@+id/four"
             android:icon="@drawable/icon_dsu1_sucesss_fro_menus"
             android:title="Tools" />
+        <item android:title="" />
     </group>
 
-    <item android:title="ООО Союз Автодор">
+    <item android:title="">
         <menu>
             <item
                 android:checked="true"
                 android:id="@+id/faur_abount"
                 android:icon="@drawable/icon_dsu1_for_navigator_view_11"
-                android:title="" />
+                android:title="ООО Союз Автодор" />
 
         </menu>
     </item>
