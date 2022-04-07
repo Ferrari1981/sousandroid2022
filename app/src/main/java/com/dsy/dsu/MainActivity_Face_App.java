@@ -531,7 +531,28 @@ public class MainActivity_Face_App extends AppCompatActivity {
                             // TODO: 06.04.2022
                             item.setChecked(true);
                             // TODO: 06.04.2022
-                            Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");/////////
+                            Log.w(getPackageName().getClass().getName(), "item.getItemId()  Синхронизация Данных с Web-сервера ДСУ-1  " + item.getItemId() + "\n");/////////
+                            // TODO: 17.03.2021 метд дополнительного удаления  И ПЛЮС ОБНОВЛЕНЕИ ПО
+                            try {
+                                МетодПодключениеObserverДляБазы();
+
+                                // TODO: 17.03.2021 метд дополнительного удаления  И ПЛЮС ОБНОВЛЕНЕИ ПО
+                                МетодЗапускаСинихрниазцииИзМенюНаАктивтиFACEAPP();
+
+
+                                Log.d(this.getClass().getName(), "Отработала синх.. Из Меню Активти FACEAPP Синхронизация Данных с Web-сервера ДСУ-1 ?");
+
+                                ///////
+                            } catch (Exception e) {
+                                //  Block of code to handle errors
+                                e.printStackTrace();
+                                ///метод запись ошибок в таблицу
+                                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                                        + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                                        Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            }
+                            ////////////////
                             break;
 
                         // TODO: 06.04.2022
@@ -539,14 +560,53 @@ public class MainActivity_Face_App extends AppCompatActivity {
                             // TODO: 06.04.2022
                             item.setChecked(true);
                             // TODO: 06.04.2022
-                            Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");/////////
+                            Log.w(getPackageName().getClass().getName(), "item.getItemId()  Шаблоны из меню  " + item.getItemId() + "\n");/////////
+
+                            try {
+                                Intent Интент_BackВозвращаемАктивти = new Intent();
+                                Интент_BackВозвращаемАктивти.setClass(getApplicationContext(), MainActivity_New_Templates_Tabels.class); // Т
+
+                                ////todo запускаем активти
+                                Интент_BackВозвращаемАктивти.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                                Интент_BackВозвращаемАктивти.putExtra("ЗапускШаблоновFaceAppБлокировкаКнопкиДа", true);
+
+                                ////
+
+                                startActivity(Интент_BackВозвращаемАктивти);
+                                ///////
+                            } catch (Exception e) {
+                                //  Block of code to handle errors
+                                e.printStackTrace();
+                                ///метод запись ошибок в таблицу
+                                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                                        + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                                        Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            }
                             break;
                         // TODO: 06.04.2022
                         case R.id.sedmoy:
                             // TODO: 06.04.2022
                             item.setChecked(true);
                             // TODO: 06.04.2022
-                            Log.w(getPackageName().getClass().getName(), "item.getItemId()    " + item.getItemId() + "\n");/////////
+                            Log.w(getPackageName().getClass().getName(), "item.getItemId() МЕНЮ ОБНОВЛЕНИЕ ПО    " + item.getItemId() + "\n");/////////
+                            try {
+
+                                МетодОбновленияПОИзДвухДействийСначалоУдалениеЛюбойВерсииИЗатемСкачиваемЗановоИОбновляемПО();
+
+
+                                // TODO: 17.03.2021 метд дополнительного удаления  И ПЛЮС ОБНОВЛЕНЕИ ПО
+                                ///////
+                            } catch (Exception e) {
+                                //  Block of code to handle errors
+                                e.printStackTrace();
+                                ///метод запись ошибок в таблицу
+                                Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
+                                        + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                                new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                                        Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            }
                             break;
 
 
