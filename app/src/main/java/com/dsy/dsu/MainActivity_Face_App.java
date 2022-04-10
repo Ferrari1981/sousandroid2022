@@ -34,6 +34,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.UiThread;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 import androidx.core.view.GravityCompat;
@@ -64,7 +65,7 @@ import io.reactivex.rxjava3.functions.Predicate;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 /////////////////////////////////////////////////////////////////////////
-public class MainActivity_Face_App extends MainActivity_Face_App_Delete_File {
+public class MainActivity_Face_App extends AppCompatActivity {
     //////////todo
 
     // TODO: 23.03.2022
@@ -239,15 +240,27 @@ public class MainActivity_Face_App extends MainActivity_Face_App_Delete_File {
             Log.w(getPackageName().getClass().getName(), "drawerLayoutFaceApp    " + drawerLayoutFaceApp +
                     "  navigationViewFaceApp " + navigationViewFaceApp);/////////
 
+            // TODO: 10.04.2022
+
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
+
+            // TODO: 10.04.2022 удаление файлов
+
+
+            new SubClass_Delete_File_FOr_MainActivity_Face_App().МетодДополнительногоУдалениеФайлов(getApplicationContext());
+
 
 // TODO: 06.06.2021 ЗАПУСК ТРЕХ СЛУЖБ
+
+            Log.w(getPackageName().getClass().getName(), "drawerLayoutFaceApp    " + drawerLayoutFaceApp +
+                    "  navigationViewFaceApp " + navigationViewFaceApp);/////////
 
 
             МетодFaceApp_СлушательПриНажатииНаКнопки();
 
 
             // TODO: 06.06.2021 ЗАПУСК ТРЕХ СЛУЖБ
-
 
 
             Log.w(getPackageName().getClass().getName(), "  МЕтодЗапускСЛУЖБЫОбновленияПО  protected void onResume()  " +
