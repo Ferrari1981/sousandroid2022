@@ -2052,7 +2052,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                                 new SubClass_Starting_Tasks_ЗапускДЛяЗадач(getContext());
                         // TODO: 27.03.2022
 
-                        // TODO: 27.03.2022
+                        // TODO: 27.03.2022 статус выполнил 
 
 
                         if (ВставляемСтатусКогдаВыВЫполнилиЗадание == 1) {
@@ -2068,7 +2068,7 @@ public class Fragment4_Now_Views_Task_For_Complete extends Fragment1_One_Tasks {
                             ЗапускКОдаЧтоПОльзовательВыполнена.send();
                         } else {
 
-
+// TODO: 10.04.2022  статус отказ 
                             if (ВставляемСтатусКогдаВыВЫполнилиЗадание == 2) {
                                 // TODO: 03.03.2022 определяем кода для отложеного запуска службы смены статсу условия задачи
                                 PendingIntent ЗапускКОдаЧтоПОльзовательОтказ = subClass_starting_chahge_status_public_taskКлассДляЗадач.

@@ -169,6 +169,9 @@ public class Fragment1_One_Tasks extends Fragment {
 
             // TODO: 01.04.2022
             BungleДанныеДляViewCardBungleID = new Bundle();
+            // TODO: 10.04.2022
+            // TODO: 14.03.2022  данные на carvview
+            BungleДанныеДляViewCard = new Bundle();
             Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 imageView  onViewCreated ");
 
         } catch (Exception e) {
@@ -1134,8 +1137,7 @@ public class Fragment1_One_Tasks extends Fragment {
                     textView7.setVisibility(View.GONE);
 
 
-                    // TODO: 14.03.2022  данные на carvview
-                    BungleДанныеДляViewCard = new Bundle();
+
 
                     // TODO: 30.03.2022
                     Log.d(this.getClass().getName(), " отработоатл new SubClassBuccessLogin_ГлавныйКлассБизнесЛогикиФрагмент1 materialCardView   " + materialCardView);
@@ -1435,12 +1437,11 @@ public class Fragment1_One_Tasks extends Fragment {
 
                     // TODO: 13.03.2022
 
-                    Integer позиция = holder.getAdapterPosition();
 
-                    Log.i(this.getClass().getName(), "  позиция " + позиция);
+                    Log.i(this.getClass().getName(), "  holder.getAdapterPosition() " + holder.getAdapterPosition());
 
                     // TODO: 14.03.2022  заполем данными для получение  UUID вышке
-                    BungleДанныеДляViewCard.putLong(String.valueOf(позиция), UUIDДЛяЗАДАНИЯКотореВыбрали);
+                    BungleДанныеДляViewCard.putLong(String.valueOf(holder.getAdapterPosition()), UUIDДЛяЗАДАНИЯКотореВыбрали);
 
 
                     Log.i(this.getClass().getName(), "  BungleДанныеДляViewCard   " + BungleДанныеДляViewCard.getBundle(String.valueOf(holder.materialCardView.getId())));
