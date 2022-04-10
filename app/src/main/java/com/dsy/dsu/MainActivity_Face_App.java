@@ -34,7 +34,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.UiThread;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 import androidx.core.view.GravityCompat;
@@ -51,10 +50,7 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
 
-import org.json.JSONException;
-
 import java.io.File;
-import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -68,7 +64,7 @@ import io.reactivex.rxjava3.functions.Predicate;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 /////////////////////////////////////////////////////////////////////////
-public class MainActivity_Face_App extends AppCompatActivity {
+public class MainActivity_Face_App extends MainActivity_Face_App_Delete_File {
     //////////todo
 
     // TODO: 23.03.2022
@@ -108,7 +104,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
 //////////////// TODO FACE APP
 
-    SUBClassBISNESSLOGICA_ForActivityFaceApp bisnesslogicaForActivityFaceApp;
+    SUBClassBISNESSLOGICA_ForActivityFaceApp_КлассБизнесЛогикаFaceApp bisnesslogicaForActivityFaceApp;
 
     private LocalBroadcastManager localBroadcastManagerДляФинальнойУстановкиПОТабельныйУчёт;
 
@@ -203,7 +199,7 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
             //todo тест код
 
-            bisnesslogicaForActivityFaceApp = new SUBClassBISNESSLOGICA_ForActivityFaceApp(getApplicationContext(), activity);
+            bisnesslogicaForActivityFaceApp = new SUBClassBISNESSLOGICA_ForActivityFaceApp_КлассБизнесЛогикаFaceApp(getApplicationContext(), activity);
 
 
             // TODO: 23.03.2022
@@ -1515,289 +1511,6 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
 
 
-
-
-
-    /// TODO МЕНЮ ГЛАВНОЕ НА АКТИВИТИ ПРОСМОТР ДАННЫХ/// МЕНЮ ГЛАВНОЕ НА АКТИВИТИ ПРОСМОТР ДАННЫХ/// МЕНЮ ГЛАВНОЕ НА АКТИВИТИ ПРОСМОТР ДАННЫХ/// МЕНЮ ГЛАВНОЕ НА АКТИВИТИ ПРОСМОТР ДАННЫХ/// МЕНЮ ГЛАВНОЕ НА АКТИВИТИ ПРОСМОТР ДАННЫХ
-//#1
-  /*  @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        Log.d(this.getClass().getName(), "  Меню  запустилось на Активити FACE_APP");
-        try{
-
-            if (  Build.VERSION.SDK_INT >23) {
-
-                MenuInflater inflater = getMenuInflater();
-                inflater.inflate(R.menu.viewsdata_menu, menu);
-
-            }else{
-// добавляем пункты меню
-                menu.add(0, 1, 0, "■ Отчёт Ошибок");
-                menu.add(0, 2, 0, "■ Настройка");
-                menu.add(0, 3, 3, "■ Пользователи");
-                menu.add(1, 4, 1, "■ Обмен с данными");
-                menu.add(1, 5, 2, "■ Шаблоны");
-                menu.add(1, 6, 4, "■ Обновление ПО");
-                menu.add(1, 7, 5, "■ Чат");
-
-                ///////TODO ОСТАНАВЛИВАЕМ СЛУЖБУ ЧЕРЕЗ 20 СЕКУНД
-                Log.d(this.getClass().getName(), "" +
-                        "    public boolean onCreateOptionsMenu(Menu menu) {");
-
-                return super.onCreateOptionsMenu(menu);
-            }
-            ///////
-        } catch (Exception e) {
-            //  Block of code to handle errors
-            e.printStackTrace();
-            ///метод запись ошибок в таблицу
-            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
-                    + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            new   Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
-                    Thread.currentThread().getStackTrace()[2].getLineNumber());
-        }
-        return true;
-    }*/
-
-    //#2
-
-/*    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Log.d(this.getClass().getName(), "  Меню  запустилось на Активити FACE_APP");
-        try{
-            ///////
-            switch (item.getItemId()) {
-                ////
-
-//////ПЕРВЫЙ ПРОСМОТР ОШИБОК//////ПЕРВЫЙ ПРОСМОТР ОШИБОК//////ПЕРВЫЙ ПРОСМОТР ОШИБОК//////ПЕРВЫЙ ПРОСМОТР ОШИБОК//////ПЕРВЫЙ ПРОСМОТР ОШИБОК
-                case R.id.ПунктМенюПервый:
-                case 1:
-                    Log.e(this.getClass().getName(), "Хотите посмотреть ошибки ?");
-
-
-                *//*    if (PUBLIC_CONTENT.Отладка==true) {
-                        МетодДиалогаДляМеню("Ошибки системы", "Посмотреть ошибки ?");*//*
-
-
-
-                        try{
-                            ///TODO тестовый код
-                            ////   МетодТестовыйЗапускВизуальноФайлаApK();
-
-                            /////
-                            Intent  Интент_Меню = new Intent(getApplication(), MainActivity_Errors.class);
-
-                            Интент_Меню.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//////FLAG_ACTIVITY_SINGLE_TOP
-
-
-                            ///////TODO ОСТАНАВЛИВАЕМ СЛУЖБУ ЧЕРЕЗ 20 СЕКУНД
-                            Log.d(this.getClass().getName(), "" +
-                                    "                     case R.id.ПунктМенюПервый:");
-
-                            startActivity(Интент_Меню);
-
-                            ///TODO запуск службы
-                            ///////
-                        } catch (Exception e) {
-                            //  Block of code to handle errors
-                            e.printStackTrace();
-                            ///метод запись ошибок в таблицу
-                            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
-                                    + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                            new   Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
-                                    Thread.currentThread().getStackTrace()[2].getLineNumber());
-                        }
-
-
-
-
-                    return true;
-
-//////ПЕРВЫЙ ОБНОВЛЕНИЕ ДАННЫХ//////ПЕРВЫЙ ОБНОВЛЕНИЕ ДАННЫХ//////ПЕРВЫЙ ОБНОВЛЕНИЕ ДАННЫХ//////ПЕРВЫЙ ОБНОВЛЕНИЕ ДАННЫХ//////ПЕРВЫЙ ОБНОВЛЕНИЕ ДАННЫХ
-
-                case R.id.ПунктМенюВторой:
-                    ///
-                case 2:
-                    Log.w(this.getClass().getName(), "Хотите перерйти в натройки");
-
-                *//*    if (PUBLIC_CONTENT.Отладка==true) {
-                        МетодДиалогаДляМеню("Настройка системы", "Перейти к настройкам системы ?");
-                *//*
-
-
-            bisnesslogicaForActivityFaceApp.     new   SubClassВызоваАктивтиИзМеню().МетодЗапускаИзМенюНастроек();
-
-
-                    return true;
-
-
-
-
-
-
-
-////ТРЕТИЙ ПУНКТ ДОБАВЛЕНИЕ ДАННЫХ////ТРЕТИЙ ПУНКТ ДОБАВЛЕНИЕ ДАННЫХ////ТРЕТИЙ ПУНКТ ДОБАВЛЕНИЕ ДАННЫХ////ТРЕТИЙ ПУНКТ ДОБАВЛЕНИЕ ДАННЫХ////ТРЕТИЙ ПУНКТ ДОБАВЛЕНИЕ ДАННЫХ
-                case R.id.ПунктМенюТретий:
-                    ///
-                case 3:
-                    Log.d(this.getClass().getName(), "Сменить пользователя и смена данных  ?");
-
-
-
-                    ////////////
-              Boolean РезультатЕслиСвязьСерверомПередНачаломВизуальнойСинхронизцииПередСменыДанных= new Class_Connections_Server(getApplicationContext()).
-                            МетодПингаСервераРаботаетИлиНетТОлькоДЛяACTIVITYFACEAPP(getApplicationContext());
-
-
-                    Log.d(this.getClass().getName(), "  Completable.fromAction  " +
-                            "РезультатЕслиСвязьСерверомПередНачаломВизуальнойСинхронизцииПередСменыДанных "+
-                            РезультатЕслиСвязьСерверомПередНачаломВизуальнойСинхронизцииПередСменыДанных);
-
-
-                    String ПолученыйТекущееИмяПользователя= null;
-
-
-                    if (РезультатЕслиСвязьСерверомПередНачаломВизуальнойСинхронизцииПередСменыДанных==true) {
-                        // TODO: 06.07.2021  пользователь СМЕНИТЬ
-
-                        ПолученыйТекущееИмяПользователя = new MODEL_synchronized(getApplicationContext()).МетодПолучениеИмяСистемыДляСменыПользователя(getApplicationContext());
-                        // TODO: 23.02.2022
-                        Log.d(this.getClass().getName(), "  ПолученыйТекущееИмяПользователя " +
-                                ПолученыйТекущееИмяПользователя);
-
-
-                        //////
-                        bisnesslogicaForActivityFaceApp. МетодДиалогаДляМеню("Пользователи Системы", "При смене пользователя,"
-                                 +"\n"+" поменяються и данные системы." +"\n"
-                                 + "Поменять пользователя ?" + "\n"
-                                 + " (текущий пользователь : ) " + ПолученыйТекущееИмяПользователя.toUpperCase());
-
-
-                        // TODO: 23.02.2022
-                    }else{
-                        Toast.makeText(getApplicationContext(), "Для смены данных, нужно подключение к серверу !!! "
-                                + "\n" , Toast.LENGTH_LONG).show();
-
-
-                    }
-
-
-                    ////////////////
-
-
-                    ///////TODO ОСТАНАВЛИВАЕМ СЛУЖБУ ЧЕРЕЗ 20 СЕКУНД
-                    Log.d(this.getClass().getName(), "" +
-                            "            МетодДиалогаДляМеню(\"Пользователи Системы\", \"При смене пользователя,\"" +ПолученыйТекущееИмяПользователя );
-
-
-
-
-
-                    return true;
-
-
-// TODO СИНХРОНИЗАЦИЯ ДАННЫХ ПУКТО МЕНЮ
-                case R.id.ПунктМенюЧетвертый:
-                    ///
-                case 4:
-                    Log.d(this.getClass().getName(), "Запуск... Из Меню Активти FACEAPP  Синхронизация Данных с Web-сервера ДСУ-1 ?");
-
-
-                    // TODO: 17.03.2021 метд дополнительного удаления  И ПЛЮС ОБНОВЛЕНЕИ ПО
-                    МетодПодключениеObserverДляБазы();
-
-                    // TODO: 17.03.2021 метд дополнительного удаления  И ПЛЮС ОБНОВЛЕНЕИ ПО
-                    МетодЗапускаСинихрниазцииИзМенюНаАктивтиFACEAPP();
-
-
-                    Log.d(this.getClass().getName(), "Отработала синх.. Из Меню Активти FACEAPP Синхронизация Данных с Web-сервера ДСУ-1 ?");
-
-
-                    Log.d(this.getClass().getName(), "Отработала синх.. Из Меню Активти FACEAPP Синхронизация Данных с Web-сервера ДСУ-1 ?");
-
-
-                    return true;
-
-
-//todo конец синхрониазции ПРИНАДАТИИ Н АКПОНКУ
-
-                //шаблоны
-                case R.id.ПунктМенюШестрой:
-                    ///
-                case 5:
-
-                    if (РежимыПросмотраДанныхЭкрана==true) {
-
-
-                        Log.d(this.getClass().getName(), "Шаблоны из меню?");
-
-                        Intent Интент_BackВозвращаемАктивти = new Intent();
-                        Интент_BackВозвращаемАктивти.setClass(getApplicationContext(), MainActivity_New_Templates_Tabels.class); // Т
-
-                        ////todo запускаем активти
-                        Интент_BackВозвращаемАктивти.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
-                        Интент_BackВозвращаемАктивти.putExtra("ЗапускШаблоновFaceAppБлокировкаКнопкиДа",true);
-
-                        ////
-
-                        startActivity( Интент_BackВозвращаемАктивти);
-
-                    }
-                    /// МетодДиалогаДляМеню(" Вид Просмотра Данных", "Просмотр во весь экран ?");
-                    return true;
-
-                // TODO: 17.03.2021 обновление ПО
-                case R.id.ПунктМенюСедьмой:
-                    ///
-                case 6:
-
-
-
-
-                    Log.d(getApplicationContext().getClass().getName(), " ЗАПУСК ИЗ МЕНЮ ОБНОВЛЕНИЕ ПО С ДВУМЯ ДЕЙСТИЯ УДАЛЕНИЕ ЛЮБОЙ УЖЕ СКАЧЕННОЙ ВЕРСИИ И ПОЛУЧЕНИЕ НОВОЙ " + "--" + new Date());/////
-                    ////
-
-
-                    МетодОбновленияПОИзДвухДействийСначалоУдалениеЛюбойВерсииИЗатемСкачиваемЗановоИОбновляемПО();
-
-
-                    // TODO: 17.03.2021 метд дополнительного удаления  И ПЛЮС ОБНОВЛЕНЕИ ПО
-
-                    Log.d(getApplicationContext().getClass().getName(), " ЗАПУСК ИЗ МЕНЮ ОБНОВЛЕНИЕ ПО ПРОШЛО " + "--" + new Date());/////
-
-                    /// МетодДиалогаДляМеню(" Вид Просмотра Данных", "Просмотр во весь экран ?");
-                    return true;
-
-
-
-////ПРОСТО ТАК НЕ ВЫБРАЛИ НИЧЕГО////ПРОСТО ТАК НЕ ВЫБРАЛИ НИЧЕГО////ПРОСТО ТАК НЕ ВЫБРАЛИ НИЧЕГО////ПРОСТО ТАК НЕ ВЫБРАЛИ НИЧЕГО////ПРОСТО ТАК НЕ ВЫБРАЛИ НИЧЕГО
-                default:
-                    Log.d(this.getClass().getName(), " МЕНЮ default:" + item.getItemId());
-
-                    return super.onOptionsItemSelected(item);
-                // break;
-
-            } // конец switch (item.getItemId())
-
-
-
-
-
-            ///////
-        } catch (Exception e) {
-            //  Block of code to handle errors
-            e.printStackTrace();
-            ///метод запись ошибок в таблицу
-            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
-                    + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            new   Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
-                    Thread.currentThread().getStackTrace()[2].getLineNumber());
-        }
-        return super.onOptionsItemSelected(item);
-
-    }*/
-
     private void МетодПодключениеObserverДляБазы() {
 
 
@@ -2237,265 +1950,10 @@ public class MainActivity_Face_App extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private Integer МетодДополнительногоУдалениеФайлов() {
-
-
-        Integer РезультатУдаления=0;
-        try{
-
-
-/////TODO  УДАЛЕНИЕ .JSON ФАЙЛА
-               /* File  ФайлыДляОбновлениеПОУдаление = Environment.getExternalStoragePublicDirectory(
-                        Environment.DIRECTORY_DOWNLOADS + "/" + "*.json");*/
-
-            File  ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_DOWNLOADS );
-
-            File[] Files = ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии.listFiles();
-
-            if(Files != null) {
-                int j;
-                for(j = 0; j < Files.length; j++) {
-                    String ИмяФайла=Files[j].getName();
-                    boolean ПосикПоНазваниюФайла=ИмяФайла.matches("(.*)json(.*)");//    boolean ПосикПоНазваниюФайла=Files[j].getName().matches("(.*).json(.*)");
-                    boolean ПосикПоНазваниюФайлаРасширенная=ИмяФайла.matches("(.*)analysis_version(.*)");//    boolean ПосикПоНазваниюФайла=Files[j].getName().matches("(.*).json(.*)");
-
-                    if(ПосикПоНазваниюФайла==true || ПосикПоНазваниюФайлаРасширенная==true) {
-                        Files[j].delete();
-                        //
-                        /////
-                        if (!Files[j].isFile()) {
-                            Log.d(this.getClass().getName(), " СЛУЖБА  ТАКОГО ФАЙЛА БОЛЬШЕ НЕТ  .JSON АНАЛИЗ " + Files[j].length()
-                                    + "   путь файла " +  Files[j].getAbsolutePath() + "   --- "  +new Date() + " ИмяФайла "+ИмяФайла);
-                        }
-                    }
-                    ////    ФайлыДляОбновлениеПОУдаление.delete();
-
-                }//ещыыщ
-            }
-
-
-
-
-
-            /////TODO  УДАЛЕНИЕ .JSON ФАЙЛА
-               /* File  ФайлыДляОбновлениеПОУдаление = Environment.getExternalStoragePublicDirectory(
-                        Environment.DIRECTORY_DOWNLOADS + "/" + "*.json");*/
-
-            if(Files != null) {
-                int j;
-                for(j = 0; j < Files.length; j++) {
-                    String ИмяФайла=Files[j].getName();
-                    boolean ПосикПоНазваниюФайла = ИмяФайла.matches("(.*)apk(.*)");//    boolean ПосикПоНазваниюФайла=Files[j].getName().matches("(.*).json(.*)");
-                    boolean ПосикПоНазваниюФайлаРасширенная = ИмяФайла.matches("(.*)update_dsu1(.*)");//    boolean ПосикПоНазваниюФайла=Files[j].getName().matches("(.*).json(.*)");
-
-                    if(ПосикПоНазваниюФайла==true || ПосикПоНазваниюФайлаРасширенная==true) {
-                        Files[j].delete();
-                        //
-                        /////
-                        if (!Files[j].isFile()) {
-                            Log.d(this.getClass().getName(), " СЛУЖБА  ТАКОГО ФАЙЛА БОЛЬШЕ НЕТ  .JSON АНАЛИЗ " + Files[j].length()
-                                    + "   путь файла " +  Files[j].getAbsolutePath() + "   --- "  +new Date() + " ИмяФайла "+ИмяФайла);
-                        }
-                    }
-                    ////    ФайлыДляОбновлениеПОУдаление.delete();
-
-                }//ещыыщ
-            }
-
-
-
-
-
-
-
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            ///метод запись ошибок в таблицу
-            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            new   Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-
-            Log.d(this.getClass().getName(), " ошибка  faceapp из меню МетодДополнительногоУдалениеФайлов Обновление ПО ");
-
-            РезультатУдаления=null;
-
-        }
-        return РезультатУдаления;
-    }
-
-
     /////////TODO ЗАУСК APK
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private void МетодТестовыйЗапускВизуальноФайлаApK() throws IOException, JSONException {
 
-        try{
 
-
-
-
-   /*     String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/";
-        String fileName = "update_dsu1.apk";
-        destination += fileName;
-        Uri uri = Uri.parse("file://" + destination);*/
-
-            File ФайлыДляОбновлениеПО = Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_DOWNLOADS + "/" + "update_dsu1.apk");
-
-
-            Log.d(this.getClass().getName(), "    ПУТИ В ФАЙЛУ   " + "\n"
-                    + ФайлыДляОбновлениеПО);
-
-
-            if (ФайлыДляОбновлениеПО.isFile()) {
-
-                Log.d(this.getClass().getName(), "  storageDir.getAbsolutePath()  " + ФайлыДляОбновлениеПО.getAbsolutePath() + "\n" +
-                        "  storageDir.getCanonicalPath()   " + ФайлыДляОбновлениеПО.getCanonicalPath() + "\n" +
-                        " storageDir.getName() " + ФайлыДляОбновлениеПО.getName() + "\n" +
-                        "  storageDir.exists() " + ФайлыДляОбновлениеПО.exists() + "\n" +
-                        "+storageDir.length() " + ФайлыДляОбновлениеПО.length());
-
-
-
-
-
-                ///TODO  ЗАПУСКА APK ФАЙЛОВ
-
-           /* Uri uri = Uri.parse("file:///sdcard/xxx/log.txt");
-            Intent viewTestLogFileIntent = new Intent(Intent.ACTION_EDIT);
-            viewTestLogFileIntent.setData(uri);
-            viewTestLogFileIntent.setType("text/plain");
-            code3: который я пробовал и работал нормально
-
-            Uri uri = Uri.parse("file:///sdcard/xxx/log.txt");
-            Intent viewTestLogFileIntent = new Intent(Intent.ACTION_EDIT);
-            viewTestLogFileIntent.setDataAndType(uri,"text/plain");*/
-
-
-
-                File ФайлыДляОбновлен = Environment.getExternalStoragePublicDirectory(
-                        Environment.DIRECTORY_DOWNLOADS + "/" + "analysis_version.txt");///analysis_version.json //analysis_version.txt  //update_dsu1.apk
-
-
-                if (ФайлыДляОбновлен.isFile()) {
-                    Uri uri = Uri.parse("file://" + "analysis_version.txt");
-
-       /*         Uri videoUri = FileProvider.getUriForFile(this,
-                        getApplicationContext().getPackageName() + ".provider",
-                        new File(destination));
-
-// устанавливаем флаг для того, чтобы дать внешнему приложению пользоваться нашим FileProvider
-                String destination2 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/";
-                String fileName2 = "analysis_version.txt";
-                destination2 += fileName2;
-                Uri textUri = FileProvider.getUriForFile(this,
-                        getApplicationContext().getPackageName() + ".provider",
-                        new File(destination));*/
-
-                }
-
-
-
-
-                String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/";
-                String fileName = "update_dsu1.apk";
-                destination += fileName;
-
-
-
-
-
-                Uri textUri3 = FileProvider.getUriForFile(this,
-                        getApplicationContext().getPackageName() + ".provider",
-                        new File(destination));
-
-                Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
-                intent.setDataAndType(textUri3, "application/vnd.android.package-archive");
-                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION |
-                        Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION| Intent.FLAG_GRANT_PREFIX_URI_PERMISSION
-                        | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
-
-
-
-// подтвердите, что устройство может открыть этот файл!
-                PackageManager pm = getApplicationContext().getPackageManager();
-                if (intent.resolveActivity(pm) != null) {
-                    startActivity(intent);
-                    finishAndRemoveTask();
-                }
-
-
-
-
-
-
-
-                Log.d(this.getClass().getName(), "  ФайлыДляОбновлениеПО " + ФайлыДляОбновлен.exists() + " ФайлыДляОбновлен.length() " +ФайлыДляОбновлен.length());
-
-
-
-
-
-
-
-            } else {
-                Log.d(this.getClass().getName(), "  ОШИБКА НЕТ КАКОГО ФАЙЛА  . APK" + ФайлыДляОбновлениеПО.length());
-            }
-
-
-
-
-
-
-
-
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            ///метод запись ошибок в таблицу
-            Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            new   Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(),
-                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
-        }
-
-
-    }
 
 
 }
@@ -2504,17 +1962,17 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
 // TODO: 23.02.2022 ВТОРОЙ SUB СЛАСС
 
-class SUBClassBISNESSLOGICA_ForActivityFaceApp extends  MainActivity_Face_App{
+class SUBClassBISNESSLOGICA_ForActivityFaceApp_КлассБизнесЛогикаFaceApp extends MainActivity_Face_App {
 
     Context context;
     // TODO: 23.02.2022
     Activity activity;
 
 
-    public SUBClassBISNESSLOGICA_ForActivityFaceApp(Context context , Activity activity) {
+    public SUBClassBISNESSLOGICA_ForActivityFaceApp_КлассБизнесЛогикаFaceApp(Context context, Activity activity) {
         this.context = context;
         // TODO: 23.02.2022
-        this.activity=activity;
+        this.activity = activity;
     }
 
     ///MESSGABOX ДЛЯ ГЛАВНОГО МЕНЮ    ///MESSGABOX ДЛЯ ГЛАВНОГО МЕНЮ    ///MESSGABOX ДЛЯ ГЛАВНОГО МЕНЮ    ///MESSGABOX ДЛЯ ГЛАВНОГО МЕНЮ    ///MESSGABOX ДЛЯ ГЛАВНОГО МЕНЮ    ///MESSGABOX ДЛЯ ГЛАВНОГО МЕНЮ    ///MESSGABOX ДЛЯ ГЛАВНОГО МЕНЮ
