@@ -85,7 +85,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleviewActiviTask"
             android:layout_width="match_parent"
-            android:layout_height="600dp"
+            android:layout_height="605dp"
             android:layout_alignParentBottom="@+id/bottomnavigationActiviTask8"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="1dp"
