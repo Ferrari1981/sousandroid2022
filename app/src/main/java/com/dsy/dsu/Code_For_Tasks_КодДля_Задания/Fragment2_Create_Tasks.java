@@ -1491,7 +1491,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
                     // TODO: 29.03.2022
                     holder.textView1.requestFocus();
 
-                    if (СамСтатусПрочтенияИлиНет == 2) {
+           /*         if (СамСтатусПрочтенияИлиНет == 2) {
 
                         // TODO: 23.03.2022
                         holder.textView1.setError("Задача пришел Отказ !!!");
@@ -1501,7 +1501,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
                         // TODO: 23.03.2022
                         holder.textView1.setError(null);
-                    }
+                    }*/
 // TODO: 29.03.2022
                     holder.textView1.requestLayout();
 

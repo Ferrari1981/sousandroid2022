@@ -1651,14 +1651,14 @@ public class Fragment1_One_Tasks extends Fragment {
                     holder.textView1.requestFocus();
 
                     // TODO: 29.03.2022
-                    if (СамСтатусПрочтенияИлиНет == 2) {
+                /*    if (СамСтатусПрочтенияИлиНет == 2) {
                         // TODO: 28.02.2022
                         holder.textView2.setError("Отказ от выполения");
                     } else {
 
                         // TODO: 28.02.2022
                         holder.textView2.setError(null);
-                    }
+                    }*/
                     holder.textView2.requestLayout();
 
                 } catch (Exception e) {
