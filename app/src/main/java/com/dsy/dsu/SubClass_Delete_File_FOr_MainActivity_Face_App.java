@@ -1,6 +1,7 @@
 package com.dsy.dsu;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 
@@ -18,8 +19,20 @@ public class SubClass_Delete_File_FOr_MainActivity_Face_App {
 
 
 /////TODO  УДАЛЕНИЕ .JSON ФАЙЛА
-            File ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_DOWNLOADS);
+            File ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии;
+
+            if (Build.VERSION.SDK_INT >= 30) {
+                // TODO: 10.04.2022
+                ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
+            } else {
+
+                ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии = Environment.getExternalStoragePublicDirectory(
+                        Environment.DIRECTORY_DOWNLOADS);
+
+            }
+            Log.d(this.getClass().getName(), "ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии" + ФайлыДляОбновлениеПОУдалениеПриАнализеJSONВерсии);
+
+
             // TODO: 10.04.2022
             Boolean[] ФайлУдаления = new Boolean[10];
 
@@ -29,21 +42,18 @@ public class SubClass_Delete_File_FOr_MainActivity_Face_App {
                 int j;
                 for (j = 0; j < Files.length; j++) {
                     String ИмяФайла = Files[j].getName();
-                    // TODO: 10.04.2022
-                    ФайлУдаления[0] = ИмяФайла.matches("(.*)json(.*)");//    boolean ПосикПоНазваниюФайла=Files[j].getName().matches("(.*).json(.*)");
-                    ФайлУдаления[1] = ИмяФайла.matches("(.*)analysis_version(.*)");//    boolean ПосикПоНазваниюФайла=Files[j].getName().matches("(.*).json(.*)");
-                    ФайлУдаления[2] = ИмяФайла.matches("(.*)output-metadata.json(.*)");
-                    ФайлУдаления[3] = ИмяФайла.matches("(.*)apk(.*)");//    boolean ПосикПоНазваниюФайла=Files[j].getName().matches("(.*).json(.*)");
-                    ФайлУдаления[4] = ИмяФайла.matches("(.*)update_dsu1(.*)");//    boolean ПосикПоНазваниюФайла=Files[j].getName().matches("(.*).json(.*)");
-                    ФайлУдаления[5] = ИмяФайла.matches("(.*)update_dsu1.apk(.*)");//    boolean ПосикПоНазваниюФайла=Files[j].getName().matches("(.*).json(.*)");
+                    // TODO: 10.04.2022//    boolean ПосикПоНазваниюФайла=Files[j].getName().matches("(.*).json(.*)");
+                    ФайлУдаления[0] = ИмяФайла.matches("(.*)analysis_version(.*)");//    boolean ПосикПоНазваниюФайла=Files[j].getName().matches("(.*).json(.*)");
+                    ФайлУдаления[1] = ИмяФайла.matches("(.*)output-metadata.json(.*)");
+                    ФайлУдаления[2] = ИмяФайла.matches("(.*)update_dsu1(.*)");//    boolean ПосикПоНазваниюФайла=Files[j].getName().matches("(.*).json(.*)");
+                    ФайлУдаления[3] = ИмяФайла.equalsIgnoreCase("update_dsu1.apk");//    boolean ПосикПоНазваниюФайла=Files[j].getName().matches("(.*).json(.*)");
 
                     // TODO: 10.04.2022
                     Log.d(this.getClass().getName(), " СЛУЖБА  ТАКОГО ФАЙЛА БОЛЬШЕ НЕТ  .JSON АНАЛИЗ " + Files[j].length()
                             + "   путь файла " + Files[j].getAbsolutePath() + "   --- " + new Date() + " ИмяФайла " + ИмяФайла);
 
                     if (ФайлУдаления[0] = true || ФайлУдаления[1] == true ||
-                            ФайлУдаления[2] == true || ФайлУдаления[3] == true ||
-                            ФайлУдаления[4] == true || ФайлУдаления[5] == true) {
+                            ФайлУдаления[2] == true || ФайлУдаления[3] == true) {
                         // TODO: 10.04.2022
                         if (Files[j].exists()) {
                             // TODO: 10.04.2022
