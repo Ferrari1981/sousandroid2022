@@ -37,7 +37,7 @@
 
         <item
             android:id="@+id/sedmoy"
-            android:icon="@drawable/icon_dsu1_download_po"
+            android:icon="@drawable/icon_dsu1_download_formenu"
             android:title="Обновление ПО" />
     </group>
 
