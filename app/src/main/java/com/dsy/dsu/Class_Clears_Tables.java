@@ -6,19 +6,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.SQLException;
-import android.os.Build;
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.Objects;
 import java.util.concurrent.CompletionService;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -32,7 +26,7 @@ public class Class_Clears_Tables {
       Handler handlerУдалениеТаблицПринудительно;
 
 
-    Class_Engine_SQL Class_Engine_SQLГдеНаходитьсяМенеджерПотоков=null;
+    Class_Engine_SQL Class_Engine_SQLГдеНаходитьсяМенеджерПотоков = null;//
 
     CREATE_DATABASE Create_Database_СсылкаНАБазовыйКласс;
 
