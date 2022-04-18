@@ -37,7 +37,7 @@
         android:layout_marginTop="1dp"
         android:layout_marginBottom="55dp"
         android:fontFamily="sans-serif-condensed-light"
-        android:text="Табельный учёт \n 2021 г. "
+        android:text="Табельный учёт \n 2022 г. "
         android:textAlignment="center"
         android:textSize="12sp"
         android:textStyle="bold"

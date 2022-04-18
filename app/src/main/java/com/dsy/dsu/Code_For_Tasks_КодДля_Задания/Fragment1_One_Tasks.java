@@ -1948,7 +1948,7 @@ public class Fragment1_One_Tasks extends Fragment {
 
 
                             if (СамогоПримечанияЗАДАНИЯ.isEmpty() && СамогоПримечанияЗАДАНИЯ_ID == 0) {
-                                // TODO: 30.03.2022
+                                // TODO: 30.03.2022 ЗАПУСКАЕМ ЕЩЕ НЕТ СТАТУСА ЗАДАЧИ
                                 Bundle bundleПередачаПараметровФрагментов = new Bundle();
 
                                 // TODO: 13.03.2022
