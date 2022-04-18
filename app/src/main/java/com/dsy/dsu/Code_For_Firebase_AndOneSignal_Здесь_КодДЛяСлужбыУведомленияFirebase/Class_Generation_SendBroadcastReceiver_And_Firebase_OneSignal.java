@@ -1,4 +1,4 @@
- package com.dsy.dsu.Code_For_Firebase_AndOneSignal_Здесь_КодДЛяСлужбыУведомленияFirebase;
+package com.dsy.dsu.Code_For_Firebase_AndOneSignal_Здесь_КодДЛяСлужбыУведомленияFirebase;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,12 +9,12 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.dsy.dsu.Business_logic_Only_Class.Class_Engine_SQL;
+import com.dsy.dsu.Business_logic_Only_Class.Class_GRUD_SQL_Operations;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Data;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generations_PUBLIC_CURRENT_ID;
 import com.dsy.dsu.CREATE_DATABASE;
-import com.dsy.dsu.Class_Engine_SQL;
-import com.dsy.dsu.Class_GRUD_SQL_Operations;
-import com.dsy.dsu.Class_Generation_Data;
-import com.dsy.dsu.Class_Generation_Errors;
-import com.dsy.dsu.Class_Generations_PUBLIC_CURRENT_ID;
 import com.dsy.dsu.Code_For_Starting_BroadcastReciever_ЗдесьКодЗапускаБроадКастеров.BroadcastReceiver_Sous_Asyns_Glassfish;
 import com.dsy.dsu.Code_For_Starting_BroadcastReciever_ЗдесьКодЗапускаБроадКастеров.BroadcastReceiver_Sous_Notificatioons_For_Chats;
 import com.dsy.dsu.Code_For_Starting_BroadcastReciever_ЗдесьКодЗапускаБроадКастеров.BroadcastReceiver_Sous_Notificatioons_For_Tasks;

@@ -44,6 +44,16 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
+import com.dsy.dsu.Business_logic_Only_Class.Class_Clears_Tables;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Connections_Server;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Find_Setting_User_Network;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_WORK_MANGER_DIRECT;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generations_PUBLIC_CURRENT_ID;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Send_Generation_Errors;
+import com.dsy.dsu.Business_logic_Only_Class.Class__Generation_Genetal_Tables;
+import com.dsy.dsu.Business_logic_Only_Class.SubClass_Connection_BroadcastReceiver_Sous_Asyns_Glassfish;
+import com.dsy.dsu.Business_logic_Only_Class.SubClass_Delete_File_FOr_MainActivity_Face_App;
 import com.dsy.dsu.Code_For_Chats_КодДля_Чата.MainActivity_List_Chats;
 import com.dsy.dsu.Code_For_Firebase_AndOneSignal_Здесь_КодДЛяСлужбыУведомленияFirebase.Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal;
 import com.dsy.dsu.Code_For_Tasks_КодДля_Задания.MainActivity_Tasks;
@@ -1642,8 +1652,8 @@ public class MainActivity_Face_App extends AppCompatActivity {
 
 
                 // TODO: 09.04.2021 запуск синхронизации фоновой по расписанию
-                boolean РезультатПроВеркиУстановкиПользователяРежимРаботыСетиСтоитЛиЗапускатьСсинхронизацию=
-                        new  Class_Find_Setting_User_Network(getApplicationContext()).МетодПроветяетКакуюУстановкуВыбралПользовательСети();
+            boolean РезультатПроВеркиУстановкиПользователяРежимРаботыСетиСтоитЛиЗапускатьСсинхронизацию =
+                    new Class_Find_Setting_User_Network(getApplicationContext()).МетодПроветяетКакуюУстановкуВыбралПользовательСети();
 
 
 

@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
@@ -20,7 +22,7 @@ public class CREATE_DATABASE extends SQLiteOpenHelper{ ///SQLiteOpenHelper
     private static final int VERSION = 780;//ПРИ ЛЮБОМ ИЗМЕНЕНИЕ В СТРУКТУРЕ БАЗЫ ДАННЫХ НУЖНО ДОБАВИТЬ ПЛЮС ОДНУ ЦИФРУ К ВЕРСИИ 1=1+1=2 ИТД.1
 
 
-    Context contextСозданиеБАзы;
+    public Context contextСозданиеБАзы;
 
  // 'ЭТА СССЫЛКА ДЛЯ ВСЕХ НА ПОДКЛЮЧЕНИ ДАННЫХ // static   SQLiteDatabase ССылкаНаСозданнуюБазу=null;// 'ЭТА СССЫЛКА ДЛЯ ВСЕХ НА ПОДКЛЮЧЕНИ ДАННЫХ
 
@@ -91,8 +93,8 @@ public class CREATE_DATABASE extends SQLiteOpenHelper{ ///SQLiteOpenHelper
             Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                     " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
            // TODO: 01.09.2021 метод вызова
-            new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(),
-          this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+            new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(),
+                    this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
                     Thread.currentThread().getStackTrace()[2].getLineNumber());
 
         }

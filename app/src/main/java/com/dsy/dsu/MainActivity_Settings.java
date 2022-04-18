@@ -26,6 +26,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.dsy.dsu.Business_logic_Only_Class.Class_GRUD_SQL_Operations;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Data;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -218,7 +222,7 @@ TextView textViewТекущийПользователь;
                         ///метод запись ошибок в таблицу
                         Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() + " Линия  :"
                                 + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                        new   Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
+                        new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(), this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
                                 Thread.currentThread().getStackTrace()[2].getLineNumber());
                     }
 

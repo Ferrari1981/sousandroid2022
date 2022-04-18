@@ -29,14 +29,14 @@ import androidx.lifecycle.Observer;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
+import com.dsy.dsu.Business_logic_Only_Class.Class_GRUD_SQL_Operations;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generations_PUBLIC_CURRENT_ID;
+import com.dsy.dsu.Business_logic_Only_Class.SubClassGET_FIO;
 import com.dsy.dsu.CREATE_DATABASE;
-import com.dsy.dsu.Class_GRUD_SQL_Operations;
-import com.dsy.dsu.Class_Generation_Errors;
-import com.dsy.dsu.Class_Generations_PUBLIC_CURRENT_ID;
 import com.dsy.dsu.Code_For_Firebase_AndOneSignal_Здесь_КодДЛяСлужбыУведомленияFirebase.Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal;
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
-import com.dsy.dsu.SubClassGET_FIO;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;

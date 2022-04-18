@@ -6,9 +6,9 @@ import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 
-import com.dsy.dsu.Class_Generation_Errors;
-import com.dsy.dsu.Class_Generation_WORK_MANGER_DIRECT;
-import com.dsy.dsu.SubClass_Connection_BroadcastReceiver_Sous_Asyns_Glassfish;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_WORK_MANGER_DIRECT;
+import com.dsy.dsu.Business_logic_Only_Class.SubClass_Connection_BroadcastReceiver_Sous_Asyns_Glassfish;
 
 import java.util.Date;
 

@@ -4,9 +4,9 @@ import android.content.Context;
 import android.os.Build;
 import android.util.Log;
 
-import com.dsy.dsu.Class_Generation_Errors;
-import com.dsy.dsu.Class_Generations_PUBLIC_CURRENT_ID;
-import com.dsy.dsu.Class_Generator_One_WORK_MANAGER;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generations_PUBLIC_CURRENT_ID;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generator_One_WORK_MANAGER;
 
 import java.util.Date;
 

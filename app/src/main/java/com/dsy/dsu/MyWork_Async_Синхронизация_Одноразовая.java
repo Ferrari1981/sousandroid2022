@@ -17,6 +17,11 @@ import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+import com.dsy.dsu.Business_logic_Only_Class.Class_Engine_SQL;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Find_Setting_User_Network;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generations_PUBLIC_CURRENT_ID;
+import com.dsy.dsu.Business_logic_Only_Class.Class__Generation_Genetal_Tables;
 import com.dsy.dsu.Code_For_Firebase_AndOneSignal_Здесь_КодДЛяСлужбыУведомленияFirebase.Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal;
 
 import java.util.Date;
@@ -712,8 +717,8 @@ return  РезультатЗапускаФоновойСинхронизации
 
      // TODO: 24.11.2021
 
-     boolean РезультатПроВеркиУстановкиПользователяРежимРаботыСетиСтоитЛиЗапускатьСсинхронизацию=
-             new  Class_Find_Setting_User_Network(КонтекстОдноразовая).МетодПроветяетКакуюУстановкуВыбралПользовательСети();
+        boolean РезультатПроВеркиУстановкиПользователяРежимРаботыСетиСтоитЛиЗапускатьСсинхронизацию =
+                new Class_Find_Setting_User_Network(КонтекстОдноразовая).МетодПроветяетКакуюУстановкуВыбралПользовательСети();
 
      //TODO ФУТУРЕ ЗАВЕРШАЕМ
      Log.d(this.getClass().getName(), "  РезультатПроВеркиУстановкиПользователяРежимРаботыСети " + РезультатПроВеркиУстановкиПользователяРежимРаботыСетиСтоитЛиЗапускатьСсинхронизацию);

@@ -24,9 +24,9 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.dsy.dsu.Business_logic_Only_Class.Class_GRUD_SQL_Operations;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
 import com.dsy.dsu.CREATE_DATABASE;
-import com.dsy.dsu.Class_GRUD_SQL_Operations;
-import com.dsy.dsu.Class_Generation_Errors;
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 

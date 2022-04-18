@@ -29,6 +29,10 @@ import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+import com.dsy.dsu.Business_logic_Only_Class.Class_GRUD_SQL_Operations;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Update_Download_File_APK_From_SERVER;
+
 import org.jetbrains.annotations.Nullable;
 
 import java.text.ParseException;
@@ -71,7 +75,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
 
     CREATE_DATABASE Create_Database_СсылкаНАБазовыйКласс;
 
-    Class_GRUD_SQL_Operations       class_grud_sql_operationsIDпользоввателяДляСлужб;
+    Class_GRUD_SQL_Operations class_grud_sql_operationsIDпользоввателяДляСлужб;
 
     SimpleDateFormat ФоорматДат ;
 
@@ -291,7 +295,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
             Log.e(this.getClass().getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                     " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
             // TODO: 01.09.2021 метод вызова
-            new   Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
+            new Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
                     this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
                     Thread.currentThread().getStackTrace()[2].getLineNumber());
 

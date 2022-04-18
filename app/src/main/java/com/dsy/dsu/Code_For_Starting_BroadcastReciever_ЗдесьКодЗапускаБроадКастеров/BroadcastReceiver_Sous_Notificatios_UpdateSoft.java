@@ -17,7 +17,7 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
-import com.dsy.dsu.Class_Generation_Errors;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
 import com.dsy.dsu.MyWork_Notifocations_Уведомления_Для_ОбновлениеПО;
 
 import org.jetbrains.annotations.NotNull;

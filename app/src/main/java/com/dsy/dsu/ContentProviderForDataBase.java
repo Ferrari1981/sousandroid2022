@@ -1,32 +1,20 @@
 package com.dsy.dsu;
 
-import android.app.Activity;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
-import android.os.CancellationSignal;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Locale;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
+
 import java.util.concurrent.ExecutionException;
-import java.util.function.ToDoubleBiFunction;
 import java.util.stream.Stream;
 
 public class ContentProviderForDataBase extends ContentProvider {

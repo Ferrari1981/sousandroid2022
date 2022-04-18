@@ -1,10 +1,11 @@
 package com.dsy.dsu.Code_For_Chats_КодДля_Чата;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteCursor;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,13 +15,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
-import android.view.View;
-import android.view.WindowManager;
-
+import com.dsy.dsu.Business_logic_Only_Class.Class_GRUD_SQL_Operations;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
 import com.dsy.dsu.CREATE_DATABASE;
-import com.dsy.dsu.Class_GRUD_SQL_Operations;
-import com.dsy.dsu.Class_Generation_Errors;
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 

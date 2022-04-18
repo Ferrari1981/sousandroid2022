@@ -36,14 +36,14 @@ public  class PUBLIC_CONTENT extends CREATE_DATABASE {
 
                 ScheduledFuture scheduledFuture;
 
-                LinkedBlockingQueue<String> ИменаТаблицыОтАндройда=new LinkedBlockingQueue<String>();
+                public LinkedBlockingQueue<String> ИменаТаблицыОтАндройда = new LinkedBlockingQueue<String>();
 
-                ///////////
-                ArrayList <String> ИменаПроектовОтСервера= new ArrayList <String>(); ////список проектов
+    ///////////
+    public ArrayList<String> ИменаПроектовОтСервера = new ArrayList<String>(); ////список проектов
 
 
-                ////ГЛАВНЫЙ СПИСОК ТАБЛИЦ ДЛЯ  ОБМЕНАМИ ДАННЫМИ ИЗ НЕГО БУДЕТ БРАТЬСЯ СПИСКО ТАБЛИЦ
-                Map<String, Long> ДатыТаблицыВерсииДанныхОтСервера=Collections.synchronizedMap(new LinkedHashMap<String, Long>());
+    ////ГЛАВНЫЙ СПИСОК ТАБЛИЦ ДЛЯ  ОБМЕНАМИ ДАННЫМИ ИЗ НЕГО БУДЕТ БРАТЬСЯ СПИСКО ТАБЛИЦ
+    public Map<String, Long> ДатыТаблицыВерсииДанныхОтСервера = Collections.synchronizedMap(new LinkedHashMap<String, Long>());
 
 
                 // TODO: 26.08.2021  конструктор

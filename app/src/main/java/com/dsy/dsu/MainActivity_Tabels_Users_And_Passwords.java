@@ -27,6 +27,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.loader.content.AsyncTaskLoader;
 
+import com.dsy.dsu.Business_logic_Only_Class.Class_Begin_Update_End_Insert_Data_Project;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Encryption_Decryption_Login_Password;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Find_Setting_User_Network;
+import com.dsy.dsu.Business_logic_Only_Class.Class_GRUD_SQL_Operations;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Data;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Send_Generation_Errors;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Sendiing_Errors;
+import com.dsy.dsu.Business_logic_Only_Class.Class_Type_Connenction_Tel;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.BufferedReader;
@@ -354,8 +363,8 @@ public class MainActivity_Tabels_Users_And_Passwords extends AppCompatActivity {
 
                         // TODO: 29.09.2021  перед началом СИНХРОНИЗАЦИИ ПРОВЕРЯЕМ УСТАНОВКИ СЕТИ ПОЛЬЗОВАТЕЛЯ НА АКТИВТИ НАСТРОЙКИ
 
-                        boolean РезультатПроВеркиУстановкиПользователяРежимРаботыСетиСтоитЛиЗапускатьСсинхронизацию=
-                                new  Class_Find_Setting_User_Network(getApplicationContext()).МетодПроветяетКакуюУстановкуВыбралПользовательСети();
+                        boolean РезультатПроВеркиУстановкиПользователяРежимРаботыСетиСтоитЛиЗапускатьСсинхронизацию =
+                                new Class_Find_Setting_User_Network(getApplicationContext()).МетодПроветяетКакуюУстановкуВыбралПользовательСети();
 
                         //TODO ФУТУРЕ ЗАВЕРШАЕМ
                         Log.d(this.getClass().getName(), "  РезультатПроВеркиУстановкиПользователяРежимРаботыСети "
