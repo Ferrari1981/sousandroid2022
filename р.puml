@@ -647,7 +647,7 @@ class com.dsy.dsu.MainActivity_Single_Tabely {
 - void МетодСвайпВпередПоДАнным()
 - void МетодСвайпНазаПоДанным()
 }
-class com.dsy.dsu.MODEL_synchronized {
+class com.dsy.dsu.Business_logic_Only_Class.Class_MODEL_synchronized {
 ~ {static} Context КонтекстСинхроДляМодели
 ~ MODEL_synchronized ссылка_MODELsynchronized
 ~ StringBuffer УниверсальныйБуферПолучениеДанныхсСервера(String,String,String,String,String,String,String,int,String,Long)
@@ -1290,7 +1290,7 @@ com.dsy.dsu.BaseAdapter <|-- com.dsy.dsu.MainActivity_Status_Value_Tabels.Соз
 android.app.Service <|-- com.dsy.dsu.Service_Синхронизация
 android.app.Service <|-- com.dsy.dsu.Service_Уведомления
 com.dsy.dsu.CREATE_DATABASE <|-- com.dsy.dsu.PUBLIC_CONTENT
-com.dsy.dsu.MODEL_synchronized <|-- com.dsy.dsu.КлассВставкиОшибок
+com.dsy.dsu.Business_logic_Only_Class.Class_MODEL_synchronized <|-- com.dsy.dsu.КлассВставкиОшибок
 androidx.appcompat.app.AppCompatActivity <|-- com.dsy.dsu.MainActivity_Settings
 androidx.work.Worker <|-- com.dsy.dsu.MyWork_Синхронизация_Локального
 androidx.appcompat.app.AppCompatActivity <|-- com.dsy.dsu.MainActivity_Find_Customers
@@ -1315,7 +1315,7 @@ com.dsy.dsu.MainActivity_history_chat_test +.. com.dsy.dsu.MainActivity_history_
 com.dsy.dsu.MainActivity_history_chat_test +.. com.dsy.dsu.MainActivity_history_chat_test.CONTROLLER_CHAT
 com.dsy.dsu.MainActivity_history_chat_test +.. com.dsy.dsu.MainActivity_history_chat_test.MODEL_CHAT
 androidx.appcompat.app.AppCompatActivity <|-- com.dsy.dsu.MainActivity_Single_Tabely
-com.dsy.dsu.CREATE_DATABASE <|-- com.dsy.dsu.MODEL_synchronized
+com.dsy.dsu.CREATE_DATABASE <|-- com.dsy.dsu.Business_logic_Only_Class.Class_MODEL_synchronized
 androidx.appcompat.app.AppCompatActivity <|-- com.dsy.dsu.MainActivity_Employees_Tabely
 androidx.appcompat.app.AppCompatActivity <|-- com.dsy.dsu.MainActivity_Tabels_Users_And_Passwords
 androidx.appcompat.app.AppCompatActivity <|-- com.dsy.dsu.MainActivity_Face_Start
@@ -1336,8 +1336,8 @@ com.dsy.dsu.Fragment_ЧитатьПисатьЧата +.. com.dsy.dsu.Fragment_�
 com.dsy.dsu.OnDateSetListener <|.. com.dsy.dsu.MainActivity_History_Tabels
 androidx.appcompat.app.AppCompatActivity <|-- com.dsy.dsu.MainActivity_History_Tabels
 com.dsy.dsu.dummy.DummyContent +.. com.dsy.dsu.dummy.DummyContent.DummyItem
-com.dsy.dsu.MODEL_synchronized <|-- com.dsy.dsu.GetClassNumberAllRowsJSON
-com.dsy.dsu.MODEL_synchronized <|-- com.dsy.dsu.CONTROLLER_synchronized_LAUNCH_IN_BACKGROUND
+com.dsy.dsu.Business_logic_Only_Class.Class_MODEL_synchronized <|-- com.dsy.dsu.GetClassNumberAllRowsJSON
+com.dsy.dsu.Business_logic_Only_Class.Class_MODEL_synchronized <|-- com.dsy.dsu.CONTROLLER_synchronized_LAUNCH_IN_BACKGROUND
 com.dsy.dsu.CONTROLLER_synchronized_LAUNCH_IN_BACKGROUND +.. com.dsy.dsu.CONTROLLER_synchronized_LAUNCH_IN_BACKGROUND.ClassCalculateInFieldIDNULLMeanDataValueNotyetsent
 com.dsy.dsu.CONTROLLER_synchronized_LAUNCH_IN_BACKGROUND +.. com.dsy.dsu.CONTROLLER_synchronized_LAUNCH_IN_BACKGROUND.ClassGettingPublicUserID
 com.dsy.dsu.CONTROLLER_synchronized_LAUNCH_IN_BACKGROUND <|-- com.dsy.dsu.CONTROLLER_synchronized_LAUNCH_IN_BACKGROUND.ClassGettingPublicUserID

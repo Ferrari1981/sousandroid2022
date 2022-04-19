@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteCursor;
 import android.util.Log;
 
 import com.dsy.dsu.CREATE_DATABASE;
-import com.dsy.dsu.MODEL_synchronized;
 import com.dsy.dsu.PUBLIC_CONTENT;
 
 public class Class_Generation_Weekend_For_Tabels {
@@ -36,7 +35,7 @@ public class Class_Generation_Weekend_For_Tabels {
         try {
 
 
-      /*      String РезультатКакойРежимЗаписанвБазеВЫходныеДни =  new MODEL_synchronized(getApplicationContext()).
+      /*      String РезультатКакойРежимЗаписанвБазеВЫходныеДни =  new Class_MODEL_synchronized(getApplicationContext()).
                     МетодПолучениеЗначенияРежимаРаботыИнтернетаWifiИлиInternet(getApplicationContext() ,"SuccessLogin","mode_weekend");
 */
 
@@ -96,7 +95,7 @@ public class Class_Generation_Weekend_For_Tabels {
             if (РезультатКакойРежимЗаписанвБазеВЫходныеДни.contentEquals("Включить")) {
                 ////
                 // TODO: 24.05.2021 вычисляем дни
-                ContentValues КонтрейнерДляВставкиВВыходныеДниМЕткиВыходные = new MODEL_synchronized(contextДляКлассагенерацииВыходныхДней).МетодВычисляемВыходныеДниПриСозданииНовогоТабеляАвтоРЕжим(contextДляКлассагенерацииВыходныхДней,
+                ContentValues КонтрейнерДляВставкиВВыходныеДниМЕткиВыходные = new Class_MODEL_synchronized(contextДляКлассагенерацииВыходныхДней).МетодВычисляемВыходныеДниПриСозданииНовогоТабеляАвтоРЕжим(contextДляКлассагенерацииВыходныхДней,
                         ГодПриВставкеНовогоСотрудника, МЕсяцПриВставкеНовогоСотрудника);
 
 
@@ -110,7 +109,7 @@ public class Class_Generation_Weekend_For_Tabels {
 
 
                     // TODO: 25.03.2021 вставка табель
-                    РезультатВставкиВЫходнихДнейЧерезКонтрейнерТаблицыТабель = new MODEL_synchronized(contextДляКлассагенерацииВыходныхДней).ЛокальногоОбновлениеДанныхЧерезКонтейнерУниверсальная("data_tabels",
+                    РезультатВставкиВЫходнихДнейЧерезКонтрейнерТаблицыТабель = new Class_MODEL_synchronized(contextДляКлассагенерацииВыходныхДней).ЛокальногоОбновлениеДанныхЧерезКонтейнерУниверсальная("data_tabels",
                             КонтрейнерДляВставкиВВыходныеДниМЕткиВыходные,
                             UUIDДанныйПришелПослеВЫбораУжеСуществующегоСотрудника,
                             "uuid");
@@ -128,7 +127,7 @@ public class Class_Generation_Weekend_For_Tabels {
                 } catch (Exception e) {///////ошибки
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
-                    Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                    Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                             " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
                     // TODO: 01.09.2021 метод вызова
                     new   Class_Generation_Errors(contextДляКлассагенерацииВыходныхДней).МетодЗаписиВЖурналНовойОшибки(e.toString(),
@@ -157,7 +156,7 @@ public class Class_Generation_Weekend_For_Tabels {
         } catch (Exception e) {///////ошибки
             e.printStackTrace();
             ///метод запись ошибок в таблицу
-            Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+            Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                     " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
             // TODO: 01.09.2021 метод вызова
             new   Class_Generation_Errors(contextДляКлассагенерацииВыходныхДней).МетодЗаписиВЖурналНовойОшибки(e.toString(),

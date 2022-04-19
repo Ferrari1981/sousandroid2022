@@ -17,8 +17,6 @@ import android.widget.Toast;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import com.dsy.dsu.MODEL_synchronized;
-
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -602,7 +600,7 @@ Context context;
 
                     // TODO: 19.12.2021  загрузка файда  .apk
 
-                    УниверсальныйБуферAPKФайлаПОсСервераВнутри[0] = new MODEL_synchronized(context).
+                    УниверсальныйБуферAPKФайлаПОсСервераВнутри[0] = new Class_MODEL_synchronized(context).
                             УниверсальныйБуферAPKФайлаПОсСервера("dsu1.glassfish/update_android_dsu1/app-release.apk", "update_dsu1.apk", context, "tabel.dsu1.ru", 8888);
 
 
@@ -847,7 +845,7 @@ Context context;
 
         if ( wifiInfo.isConnected()) {
 
-            Log.d(MODEL_synchronized.class.getName(), " подключние к интренту через wifi");
+            Log.d(Class_MODEL_synchronized.class.getName(), " подключние к интренту через wifi");
 
             return "WIFI";
         }else{
@@ -859,7 +857,7 @@ Context context;
 
             if (wifiInfoMObile.isConnected()) {
 
-                Log.d(MODEL_synchronized.class.getName(), " подключние к интренту через mobile");
+                Log.d(Class_MODEL_synchronized.class.getName(), " подключние к интренту через mobile");
 
                 return "Mobile";
             }

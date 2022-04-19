@@ -296,7 +296,7 @@ public class MainActivity_New_Cusomers extends AppCompatActivity implements Date
 
 // TODO: 07.09.2021    _old
                 Курсор_ИщемВсеОрганизации =
-                        new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("organization",
+                        new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("organization",
                                 new String[]{"*"}, " name IS NOT NULL", null, null, null, null, null);//
 
 
@@ -1350,7 +1350,7 @@ private void МетодВозврещениеНаПредыдущуюАктив�
 
             // TODO: 07.09.2021   _old
  Курсор_КоторыйПроверяетЭтоПустаяЯчейкаUUIDЕслиПустоеНоЭтоНовыйТабельБезСотрудниковиМыНеВставляемАОбновлем =
-                new MODEL_synchronized(this).КурсорУниверсальныйДляБазыДанных("tabels",
+                new Class_MODEL_synchronized(this).КурсорУниверсальныйДляБазыДанных("tabels",
                         new String[]{"fio"}, "uuid=?", new String[]{УниверсальныйUUIDДляСОзданиеНовогоСотрудникаНаКонкретныйТабель}, null, null, null, null);//"SuccessLogin", "date_update","id=","1",null,null,null,null
         ///TODO УДАЛЕМ ПАМЯТЬ*/
 
@@ -1945,7 +1945,7 @@ private void МетодВозврещениеНаПредыдущуюАктив�
                         // TODO: 07.09.2021      _old вариант
 
                         Курсор_ИщемПУбличныйIDКогдаегоНетВстатике =
-                                new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("SuccessLogin",
+                                new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("SuccessLogin",
                                         new String[]{"id"}, " id IS NOT NULL", null, null, null, null, null);//
 */
 
@@ -2416,7 +2416,7 @@ private void МетодВозврещениеНаПредыдущуюАктив�
                         // TODO: 07.09.2021      _old вариант
 
                         Курсор_ИщемПУбличныйIDКогдаегоНетВстатике =
-                                new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("SuccessLogin",
+                                new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("SuccessLogin",
                                         new String[]{"id"}, " id IS NOT NULL", null, null, null, null, null);//
 */
 

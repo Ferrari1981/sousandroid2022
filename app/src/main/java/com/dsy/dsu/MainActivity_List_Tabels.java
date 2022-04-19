@@ -38,6 +38,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dsy.dsu.Business_logic_Only_Class.Class_GRUD_SQL_Operations;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
+import com.dsy.dsu.Business_logic_Only_Class.Class_MODEL_synchronized;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -1580,7 +1581,7 @@ TextView textViewКоличествоТабелей;
 
                                     //TODO ГЛАВНЫЙ КУРСОР ЗАГРУЗКИ САМИХ ТАБЕЛЕЙ НА АКТИВТИИ"nametabel"
                         
-                                /*        Курсор_КоторыйЗагружаетГотовыеТабеля = new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("tabels", new String[]{"*"},
+                                /*        Курсор_КоторыйЗагружаетГотовыеТабеля = new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("tabels", new String[]{"*"},
                                                 " month_tabels=? AND year_tabels=? AND status_send!=? " +
                                                         "AND month_tabels IS NOT NULL  AND year_tabels IS NOT NULL",
                                                 new String[]{String.valueOf(finalМЕсяцВвидеЦифрыДляКурсора),
@@ -1755,7 +1756,7 @@ TextView textViewКоличествоТабелей;
 
 
             /*    ///TODO ГЛАВНЫЙ КУРСОР ЗАГРУЗКИ САМИХ ТАБЕЛЕЙ НА АКТИВТИИ
-                Курсор_КоторыйЗагружаетГотовыеТабеля = new MODEL_synchronized(this).КурсорУниверсальныйДляБазыДанных("viewtabel", new String[]{"*"},
+                Курсор_КоторыйЗагружаетГотовыеТабеля = new Class_MODEL_synchronized(this).КурсорУниверсальныйДляБазыДанных("viewtabel", new String[]{"*"},
                         "user_update= ? AND  month_tabels=? AND year_tabels=? AND name IS NOT NULL",
                         new String[]{ПубличноеIDПолученныйИзСервлетаДляUUID, String.valueOf(МЕсяцВвидеЦифрыДляКурсора),
                                 String.valueOf(ГОДВвидеЦифрыДляКурсора)}, "nametabel", null, "date_update desc", null);///"SELECT name  FROM MODIFITATION_Client WHERE name=?",НазваниеТаблицНаСервере*/
@@ -1855,9 +1856,10 @@ TextView textViewКоличествоТабелей;
 
 
                         try {
-                            НазваниеТабеля[0] =        new  MODEL_synchronized(КонтекстИсторииВсехТабелейВыбранных).     МетодПолучениеНазваниеТабеляНаОснованииСФО(КонтекстИсторииВсехТабелейВыбранных,ПолучеаемЦифруСФО);
+                            НазваниеТабеля[0] = new Class_MODEL_synchronized(КонтекстИсторииВсехТабелейВыбранных).
+                                    МетодПолучениеНазваниеТабеляНаОснованииСФО(КонтекстИсторииВсехТабелейВыбранных, ПолучеаемЦифруСФО);
                             ////////
-                            Log.d(КонтекстИсторииВсехТабелейВыбранных.getClass().getName(), "    НазваниеТабеля[0] " +   НазваниеТабеля[0]);
+                            Log.d(КонтекстИсторииВсехТабелейВыбранных.getClass().getName(), "    НазваниеТабеля[0] " + НазваниеТабеля[0]);
 
 
                         } catch (InterruptedException e) {
@@ -1870,8 +1872,8 @@ TextView textViewКоличествоТабелей;
 
 
                         try {
-                            МесяцМаскимальнаяДатавТабеляхПоМесецям =     new  MODEL_synchronized(КонтекстИсторииВсехТабелейВыбранных).
-                                    МетодПолучениеНазваниеТабеляНаОснованииСФО(КонтекстИсторииВсехТабелейВыбранных,ПолучеаемЦифруСФО);
+                            МесяцМаскимальнаяДатавТабеляхПоМесецям = new Class_MODEL_synchronized(КонтекстИсторииВсехТабелейВыбранных).
+                                    МетодПолучениеНазваниеТабеляНаОснованииСФО(КонтекстИсторииВсехТабелейВыбранных, ПолучеаемЦифруСФО);
 
                             ////////
                             Log.d(КонтекстИсторииВсехТабелейВыбранных.getClass().getName(), "   МесяцМаскимальнаяДатавТабеляхПоМесецям " +     ////////
@@ -2313,7 +2315,7 @@ if (СамСтатусАтбеля>0){ ///"пр"
 
                /////////////TODO вычислем по новому значение
    /*            /////////////
-       Курсор_КоторыйЗагружаетСтатусТабеля = new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("viewtabel", new String[]{"status_carried_out"},
+       Курсор_КоторыйЗагружаетСтатусТабеля = new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("viewtabel", new String[]{"status_carried_out"},
                " month_tabels=? AND year_tabels=?  AND cfo=?  AND status_send!=? " +
                        "AND status_carried_out IS NOT NULL",
                new String[]{String.valueOf(finalМЕсяцВвидеЦифрыДляКурсора),
@@ -2429,7 +2431,7 @@ if (СамСтатусАтбеля>0){ ///"пр"
 
                 try{
 
-            /*        Курсор_КоторыйЗагружаетГотовыеТабеляМаксимальнаяДата = new MODEL_synchronized(КонтекстИсторииВсехТабелейВыбранных).КурсорУниверсальныйДляБазыДанных("tabels",
+            /*        Курсор_КоторыйЗагружаетГотовыеТабеляМаксимальнаяДата = new Class_MODEL_synchronized(КонтекстИсторииВсехТабелейВыбранных).КурсорУниверсальныйДляБазыДанных("tabels",
                             new String[]{"date_update"},
                             " month_tabels=? AND year_tabels=? AND status_send!=?  AND date_update = (SELECT MAX(date_update) FROM tabels)",
                             new String[]{ String.valueOf(МЕсяцВвидеЦифрыДляКурсора),
@@ -2525,7 +2527,7 @@ if (СамСтатусАтбеля>0){ ///"пр"
 
                 try{
 /*
-                    Курсор_КоторыйЗагружаетГотовыеТабеляМаксимальнаяДатаДляСпинера = new MODEL_synchronized(КонтекстИсторииВсехТабелейВыбранных).КурсорУниверсальныйДляБазыДанных("tabels", new String[]
+                    Курсор_КоторыйЗагружаетГотовыеТабеляМаксимальнаяДатаДляСпинера = new Class_MODEL_synchronized(КонтекстИсторииВсехТабелейВыбранных).КурсорУниверсальныйДляБазыДанных("tabels", new String[]
                                     {"month_tabels,year_tabels"},
                             "status_send!=?  AND date_update = (SELECT MAX(date_update) FROM tabels)",
                             new String[]{ "Удаленная"}, null, null, "date_update DESC", null);
@@ -3078,7 +3080,7 @@ if (СамСтатусАтбеля>0){ ///"пр"
                 //////
                 long РезультатВставкиНовогоМесяцаСозданогоИзКалендаря= 0;
                 try {
-                  РезультатВставкиНовогоМесяцаСозданогоИзКалендаря = new MODEL_synchronized(getApplication()).ВставкаДанныхЧерезКонтейнерУниверсальная("tabels",
+                  РезультатВставкиНовогоМесяцаСозданогоИзКалендаря = new Class_MODEL_synchronized(getApplication()).ВставкаДанныхЧерезКонтейнерУниверсальная("tabels",
                             АдаптерВставкаНовогоМЕсяцаИзКалендаря,"tabels","",true);
 
                    ///ОЧИСТКА ПАМЯТИ
@@ -3356,8 +3358,8 @@ Cursor Курсор_ЗагружаетАрайдистЗначенийНовог
 
 
 //////////TODO
-            Курсор_ЗагружаетАрайдистЗначенийНовогоТИабеля = new MODEL_synchronized(КонтекстИсторииВсехТабелейВыбранных).
-                            МетодЗагружаетЗначенияНовгоСотрудника( КонтекстИсторииВсехТабелейВыбранных);
+            Курсор_ЗагружаетАрайдистЗначенийНовогоТИабеля = new Class_MODEL_synchronized(КонтекстИсторииВсехТабелейВыбранных).
+                    МетодЗагружаетЗначенияНовгоСотрудника(КонтекстИсторииВсехТабелейВыбранных);
 
 //
                     //// МесяцМаскимальнаяДатавТабеляхПоМесецям
@@ -3530,7 +3532,7 @@ Cursor Курсор_ЗагружаетАрайдистЗначенийНовог
 
    /*  // TODO: 06.09.2021 _old
 
-     Курсор_ВычисляемНазваниеТАбеляПоIDсфо = new MODEL_synchronized(КонтекстИсторииВсехТабелейВыбранных).
+     Курсор_ВычисляемНазваниеТАбеляПоIDсфо = new Class_MODEL_synchronized(КонтекстИсторииВсехТабелейВыбранных).
                КурсорУниверсальныйБазыДанных("SELECT name FROM cfo WHERE id='"+ЗнаениеИзБазыНовыеТабеляIDСфо+"' LIMIT 1");
 
 
@@ -3561,8 +3563,8 @@ Cursor Курсор_ЗагружаетАрайдистЗначенийНовог
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
 
-                    Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+     Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+             " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
      // TODO: 01.09.2021 метод вызова
      new   Class_Generation_Errors(getApplicationContext()).МетодЗаписиВЖурналНовойОшибки(e.toString(),
              this.getClass().getName(), Thread.currentThread().getStackTrace()[2].getMethodName(),
@@ -4374,7 +4376,7 @@ Cursor Курсор_ЗагружаетАрайдистЗначенийНовог
                         ///
 // TODO: 26.10.2021 DELETE TABLE TABEL
                         /////
-                        РезультатУдалениеСамогоТАбеля = new MODEL_synchronized(getApplicationContext()).УдалениеТолькоПустогоТабеляЧерезКонтейнерУниверсальная("tabel", "uuid",
+                        РезультатУдалениеСамогоТАбеля = new Class_MODEL_synchronized(getApplicationContext()).УдалениеТолькоПустогоТабеляЧерезКонтейнерУниверсальная("tabel", "uuid",
                                 ПолученныйUUIDДляУдалениесотрудникаИЗТабеля);
 
                         /////
@@ -4445,7 +4447,7 @@ Cursor Курсор_ЗагружаетАрайдистЗначенийНовог
 
                             // TODO: 01.11.2021  само удаление табеля
                             РезультатУдалениеСамогоТАбеля =
-                                    new MODEL_synchronized(getApplicationContext()).УдалениеТолькоПустогоТабеляЧерезКонтейнерУниверсальная("data_tabels", "uuid_tabel",
+                                    new Class_MODEL_synchronized(getApplicationContext()).УдалениеТолькоПустогоТабеляЧерезКонтейнерУниверсальная("data_tabels", "uuid_tabel",
                                             ПолученныйUUIDДляУдалениесотрудникаИЗТабеля);
 
 

@@ -20,7 +20,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.dsy.dsu.CREATE_DATABASE;
-import com.dsy.dsu.MODEL_synchronized;
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 
@@ -70,17 +69,17 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 ///TODO------------------------------------------------------ ЭТО  ВТОРОЙ КОНТРОЛЛЕР КОТОРЫЙ ЗАПУСКАЕТ СИНХРОНИЗАЦИЮ В ФОНЕ  (ВНУТРИ ПРИЛОЖЕНИЕ)---------------------------------------------------
 
 
- public class Class_Engine_SQL extends MODEL_synchronized {
+ public class Class_Engine_SQL extends Class_MODEL_synchronized {
 
-    Context КонтекстСинхроДляКонтроллераВФоне;
+     Context КонтекстСинхроДляКонтроллераВФоне;
 
-    Activity ActivityДляСинхронизацииОбмена;
+     Activity ActivityДляСинхронизацииОбмена;
 
-    Integer ПубличныйРезультатОтветаОтСерврераУспешно=0;
+     Integer ПубличныйРезультатОтветаОтСерврераУспешно = 0;
 
-    Class_GRUD_SQL_Operations class_grud_sql_operationsАнализаUUIDСинхрониазциявФонеДЛяАнализаID;
+     Class_GRUD_SQL_Operations class_grud_sql_operationsАнализаUUIDСинхрониазциявФонеДЛяАнализаID;
 
-    Class_GRUD_SQL_Operations class_grud_sql_operationsАнализаUUIDСинхрониазциявФонеДЛяАнализаUUIDобваID;
+     Class_GRUD_SQL_Operations class_grud_sql_operationsАнализаUUIDСинхрониазциявФонеДЛяАнализаUUIDобваID;
 
     Integer ГлавноеКоличестовТаблицОбрабатываемВГлавномЦиклеОбмена;
 
@@ -6669,7 +6668,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 
          try {
-             Cursor Курсор_ЗагружаемТабеляДляПодсчетаЧасов = new MODEL_synchronized(КонтекстДляЧасов).
+             Cursor Курсор_ЗагружаемТабеляДляПодсчетаЧасов = new Class_MODEL_synchronized(КонтекстДляЧасов).
                      МетодЗагружетУжеготовыеТабеля(КонтекстДляЧасов, UUIDТабеляПослеУспешногоСозданиеСотрудникаВсехСотридников, месяцДляПермещенияПоТабелю, годДляПермещенияПоТабелю);
 
 
@@ -6759,7 +6758,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
         String ПолученыеСуммаЧасовСотрудникаВнутри = null;
         try {
             //TODO вытастиваем непостредственный табель для которго и нужно посчитать часы
-            Cursor Курсор_ЗагружаемТабеляДляПодсчетаЧасовПовсемТАбелям = new MODEL_synchronized(КонтекстДЛляПодсчетаЧасовПоВсемТабелям).
+            Cursor Курсор_ЗагружаемТабеляДляПодсчетаЧасовПовсемТАбелям = new Class_MODEL_synchronized(КонтекстДЛляПодсчетаЧасовПоВсемТабелям).
                     МетодЗагружетУжеготовыеТабеля(КонтекстДЛляПодсчетаЧасовПоВсемТабелям, finalПолученныйUUID, месяцДляПермещенияПоТабелю, годДляПермещенияПоТабелю);
 
 

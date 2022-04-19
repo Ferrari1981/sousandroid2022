@@ -33,6 +33,7 @@ import com.dsy.dsu.Business_logic_Only_Class.Class_Find_Setting_User_Network;
 import com.dsy.dsu.Business_logic_Only_Class.Class_GRUD_SQL_Operations;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Data;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
+import com.dsy.dsu.Business_logic_Only_Class.Class_MODEL_synchronized;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Send_Generation_Errors;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Sendiing_Errors;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Type_Connenction_Tel;
@@ -1117,7 +1118,7 @@ public class MainActivity_Tabels_Users_And_Passwords extends AppCompatActivity {
                         /// TODO: 22.02.2022
 
                         Long РезультатЗаписиНовгоIDБАзуВТаблицеНАСТРОЕКПОЛЬЗОВТЕЛЯ_ДЛяЗАПИСИВТаблицу_settings_tabels=
-                                new MODEL_synchronized(getApplicationContext()).  МетодЗАписиПолученогоОтСервреаIDПубличногоВТАблицу_settings_tabels(
+                                new Class_MODEL_synchronized(getApplicationContext()).МетодЗАписиПолученогоОтСервреаIDПубличногоВТАблицу_settings_tabels(
                                         ПолученинныйПубличныйIDДлчЗаписиВБАзу);
 
 

@@ -31,9 +31,9 @@ import androidx.work.WorkManager;
 
 import com.dsy.dsu.Business_logic_Only_Class.Class_GRUD_SQL_Operations;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
+import com.dsy.dsu.Business_logic_Only_Class.Class_MODEL_synchronized;
 import com.dsy.dsu.CREATE_DATABASE;
 import com.dsy.dsu.Code_For_Firebase_AndOneSignal_Здесь_КодДЛяСлужбыУведомленияFirebase.Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal;
-import com.dsy.dsu.MODEL_synchronized;
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -1627,7 +1627,7 @@ public class Fragment2_Create_Tasks extends Fragment1_One_Tasks {
 
                                         Integer РезультатУдаленияСозданныйЗадач = null;
                                         try {
-                                            РезультатУдаленияСозданныйЗадач = new MODEL_synchronized(getContext())
+                                            РезультатУдаленияСозданныйЗадач = new Class_MODEL_synchronized(getContext())
                                                     .УдалениеДанныхЧерезКонтейнерУниверсальная("data_notification",
                                                             "uuid",
                                                             String.valueOf(ПолучаемUUIDТекущйПозицииВRecyreView), "status_write", "5");

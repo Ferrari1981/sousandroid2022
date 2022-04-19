@@ -1,4 +1,4 @@
-package com.dsy.dsu;
+package com.dsy.dsu.Business_logic_Only_Class;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -12,11 +12,9 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.dsy.dsu.Business_logic_Only_Class.Class_Encryption_Decryption_Login_Password;
-import com.dsy.dsu.Business_logic_Only_Class.Class_Engine_SQL;
-import com.dsy.dsu.Business_logic_Only_Class.Class_GRUD_SQL_Operations;
-import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Data;
-import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
+import com.dsy.dsu.BuildConfig;
+import com.dsy.dsu.CREATE_DATABASE;
+import com.dsy.dsu.PUBLIC_CONTENT;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
@@ -55,20 +53,19 @@ import javax.crypto.SecretKey;
 
 
 ///////Универсальный Класс Обмена Данными  Два Стачичных Метода и Плюс Сттичный Курсор
-public class MODEL_synchronized extends CREATE_DATABASE {
+public class Class_MODEL_synchronized extends CREATE_DATABASE {
 
     ///////
 
     /////TODO ОБЬЕДИНЕННЫЙ КОНТЕ
 
-     Context КонтекстСинхроДляМодели;
+    Context КонтекстСинхроДляМодели;
 
 
+    PUBLIC_CONTENT Class_Engine_SQLГдеНаходитьсяМенеджерПотоков = null;
 
-    PUBLIC_CONTENT Class_Engine_SQLГдеНаходитьсяМенеджерПотоков =null;
 
-
-    MODEL_synchronized ссылка_MODELsynchronized = null;
+    Class_MODEL_synchronized ссылка_MODELsynchronized = null;
 
 
     String  ПубличноеИмяПользовательДлСервлета=      new String();
@@ -88,17 +85,17 @@ public class MODEL_synchronized extends CREATE_DATABASE {
 
     public CREATE_DATABASE Create_Database_СсылкаНАБазовыйКласс;
 
-    public MODEL_synchronized(Context context) {
+    public Class_MODEL_synchronized(Context context) {
         super(context);
 
 
-        КонтекстСинхроДляМодели=context;
+        КонтекстСинхроДляМодели = context;
 
         //TODO контроль потоков
-        Class_Engine_SQLГдеНаходитьсяМенеджерПотоков =new PUBLIC_CONTENT(КонтекстСинхроДляМодели);
+        Class_Engine_SQLГдеНаходитьсяМенеджерПотоков = new PUBLIC_CONTENT(КонтекстСинхроДляМодели);
 
 
-      Create_Database_СсылкаНАБазовыйКласс=new CREATE_DATABASE(КонтекстСинхроДляМодели);
+        Create_Database_СсылкаНАБазовыйКласс = new CREATE_DATABASE(КонтекстСинхроДляМодели);
 
     }
 
@@ -423,7 +420,7 @@ public class MODEL_synchronized extends CREATE_DATABASE {
                             // Log.d(this.getClass().getName(), "  ПолитикаРасшифровки  " +PUBLIC_CONTENT. ПолитикаРасшифровки);
 
 
-                            Log.d(MODEL_synchronized.class.getName(), "  СЛУЖБА СИНХРОНИЗАЦИИ РАЗМЕР ПОТОКА КОТОРЫЙ ПРИШЁЛ ... " + "\n" +
+                            Log.d(Class_MODEL_synchronized.class.getName(), "  СЛУЖБА СИНХРОНИЗАЦИИ РАЗМЕР ПОТОКА КОТОРЫЙ ПРИШЁЛ ... " + "\n" +
                                     " ПУбличныйИмяТаблицыОтАндройдаВнутриПотока  ::::::  " + ПУбличныйИмяТаблицыОтАндройдаВнутриПотока + "\n" +
                                     " ПодключениеИнтернетДляОтправкиНаСервер.getContentLength()  " + ПодключениеПолученияДанныхсСервер.getHeaderField("stream_size"));//  "   ПодключениеИнтернетДляОтправкиНаСервер.getHeaderField(Content-Length "+
 
@@ -594,9 +591,9 @@ public class MODEL_synchronized extends CREATE_DATABASE {
 
             if (!ex.toString().trim().equals("java.io.EOFException") && !ex.toString().trim().equals("java.net.SocketTimeoutException: timeout")) {
 
-                Log.e(MODEL_synchronized.class.getName(), "Ошибка " + ОшибкаТекущегоМетода + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + ОшибкаТекущегоМетода + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                         " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber() + " ОшибкаТекущегоМетода " + ОшибкаТекущегоМетода.toString());
-                new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(ex.toString(), MODEL_synchronized.class.getName(),
+                new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(ex.toString(), Class_MODEL_synchronized.class.getName(),
                         Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
 
             }
@@ -927,9 +924,9 @@ public class MODEL_synchronized extends CREATE_DATABASE {
 
             if (!ex.toString().trim().equals("java.io.EOFException") && !ex.toString().trim().equals("java.net.SocketTimeoutException: timeout")) {
 
-                Log.e(MODEL_synchronized.class.getName(), "Ошибка " + ОшибкаТекущегоМетода + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + ОшибкаТекущегоМетода + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                         " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber() + " ОшибкаТекущегоМетода " + ОшибкаТекущегоМетода.toString());
-                new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(ex.toString(), MODEL_synchronized.class.getName(),
+                new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(ex.toString(), Class_MODEL_synchronized.class.getName(),
                         Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
 
             }
@@ -1012,7 +1009,7 @@ public class MODEL_synchronized extends CREATE_DATABASE {
 ///
 
         ///
-        Log.d(MODEL_synchronized.class.getName(), " СгенерированыйФайлJSONДляОтправкиНаСервер.length() " + СгенерированыйФайлJSONДляОтправкиНаСервер.toString().length());
+        Log.d(Class_MODEL_synchronized.class.getName(), " СгенерированыйФайлJSONДляОтправкиНаСервер.length() " + СгенерированыйФайлJSONДляОтправкиНаСервер.toString().length());
 
         StringBuffer БуферПолученнниеДанныхОтМетодаPOST = new StringBuffer();
 
@@ -1326,9 +1323,9 @@ public class MODEL_synchronized extends CREATE_DATABASE {
                         } catch (IOException ex) {
                             ex.printStackTrace();
                             ///метод запись ошибок в таблицу
-                            Log.e(MODEL_synchronized.class.getName(), "Ошибка " + ex + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                            Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + ex + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                                     " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                            new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(ex.toString(), MODEL_synchronized.class.getName(),
+                            new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(ex.toString(), Class_MODEL_synchronized.class.getName(),
                                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                         } finally {
 
@@ -1374,10 +1371,10 @@ public class MODEL_synchronized extends CREATE_DATABASE {
                     } catch (IOException ex) {
                         ex.printStackTrace();
                         ///метод запись ошибок в таблицу
-                        Log.e(MODEL_synchronized.class.getName(), "Ошибка " + ex + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                                " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                        new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(ex.toString(), MODEL_synchronized.class.getName(),
-                                Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + ex + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                    " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                            new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(ex.toString(), Class_MODEL_synchronized.class.getName(),
+                                    Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                     }
 
                     }
@@ -1484,7 +1481,7 @@ public class MODEL_synchronized extends CREATE_DATABASE {
 
                                 ex.printStackTrace();
                                 ///метод запись ошибок в таблицу
-                                Log.e(MODEL_synchronized.class.getName(), "Ошибка " + ex + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                                Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + ex + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                                         " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
                                   // TODO: 01.09.2021 метод вызова
             new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(ex.toString(),
@@ -1520,9 +1517,9 @@ public class MODEL_synchronized extends CREATE_DATABASE {
                 } catch (IOException ex) {
                     ex.printStackTrace();
                     ///метод запись ошибок в таблицу
-                    Log.e(MODEL_synchronized.class.getName(), "Ошибка " + ex + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                    Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + ex + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                             " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                    new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(ex.toString(), MODEL_synchronized.class.getName(),
+                    new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(ex.toString(), Class_MODEL_synchronized.class.getName(),
                             Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                 }
         // TODO: 04.08.2021
@@ -1598,9 +1595,9 @@ public class MODEL_synchronized extends CREATE_DATABASE {
         } catch (Exception e) {///////ошибки
             e.printStackTrace();
             ///метод запись ошибок в таблицу
-            Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+            Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                     " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), MODEL_synchronized.class.getName(),
+            new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), Class_MODEL_synchronized.class.getName(),
                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
         }
 
@@ -1664,9 +1661,9 @@ public class MODEL_synchronized extends CREATE_DATABASE {
             e.printStackTrace();
             ///метод запись ошибок в таблицу
             ОшибкаТекущегоМетода = e.toString();
-            Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+            Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                     " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), MODEL_synchronized.class.getName(),
+            new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), Class_MODEL_synchronized.class.getName(),
                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
         }
 
@@ -1819,9 +1816,9 @@ public class MODEL_synchronized extends CREATE_DATABASE {
         } catch (Exception e) {///////ошибки
             e.printStackTrace();
             ///метод запись ошибок в таблицу
-            Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+            Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                     " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), MODEL_synchronized.class.getName(),
+            new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), Class_MODEL_synchronized.class.getName(),
                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
             ////// начало запись в файл
 
@@ -1944,9 +1941,9 @@ public class MODEL_synchronized extends CREATE_DATABASE {
         } catch (Exception e) {///////ошибки
             e.printStackTrace();
             ///метод запись ошибок в таблицу
-            Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+            Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                     " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), MODEL_synchronized.class.getName(),
+            new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), Class_MODEL_synchronized.class.getName(),
                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
             ////// начало запись в файл
 
@@ -2069,9 +2066,9 @@ public class MODEL_synchronized extends CREATE_DATABASE {
         } catch (Exception e) {///////ошибки
             e.printStackTrace();
             ///метод запись ошибок в таблицу
-            Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+            Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                     " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), MODEL_synchronized.class.getName(),
+            new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), Class_MODEL_synchronized.class.getName(),
                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
 
         }
@@ -2184,9 +2181,9 @@ public class MODEL_synchronized extends CREATE_DATABASE {
                 e.printStackTrace();
                 ///метод запись ошибок в таблицу
                 ОшибкаТекущегоМетода = e.toString();
-                Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                         " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), MODEL_synchronized.class.getName(),
+                new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), Class_MODEL_synchronized.class.getName(),
                         Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
 
             }
@@ -2368,9 +2365,9 @@ public class MODEL_synchronized extends CREATE_DATABASE {
             } catch (Exception e) {///////ошибки
                 e.printStackTrace();
                 ///метод запись ошибок в таблицу
-                Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                         " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), MODEL_synchronized.class.getName(),
+                new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), Class_MODEL_synchronized.class.getName(),
                         Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                 ///
 
@@ -2477,9 +2474,9 @@ public class MODEL_synchronized extends CREATE_DATABASE {
                 } catch (Exception e) {///////ошибки
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
-                    Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                    Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                             " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                    new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), MODEL_synchronized.class.getName(),
+                    new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), Class_MODEL_synchronized.class.getName(),
                             Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
 
                 }
@@ -2540,9 +2537,9 @@ public class MODEL_synchronized extends CREATE_DATABASE {
             } catch (Exception e) {///////ошибки
                 e.printStackTrace();
                 ///метод запись ошибок в таблицу
-                Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                         " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), MODEL_synchronized.class.getName(),
+                new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), Class_MODEL_synchronized.class.getName(),
                         Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                 ///
 
@@ -2566,16 +2563,16 @@ public class MODEL_synchronized extends CREATE_DATABASE {
 
 
     /////////КОНТЕЙНЕР ВСТВКИ ДАННЫХ УНИВЕРСАЛЬНЫЙ
-    Long ВставкаДанныхЧерезКонтейнерОрганизацияДляТекущегоСотрудникаУниверсальная(String ТаблицаКудаВставляем, ContentValues КонтейнерДляВставкиОрганизацияДляТекущегоСотрудника,
-                                                                                  String ИмяТаблицыОтАндройда_Локальноая,
-                                                                                  String ПолученнаяДатаДляПониманияДатуСейчасВставляетьИлиНет,
-                                                                                  boolean ФлагОбновлятьДатуВерсииДанных, int ПубличныйIDДляорганизацции,
-                                                                                  String ДатаДляОбновлениеОргназации) throws ExecutionException,
+    public Long ВставкаДанныхЧерезКонтейнерОрганизацияДляТекущегоСотрудникаУниверсальная(String ТаблицаКудаВставляем, ContentValues КонтейнерДляВставкиОрганизацияДляТекущегоСотрудника,
+                                                                                         String ИмяТаблицыОтАндройда_Локальноая,
+                                                                                         String ПолученнаяДатаДляПониманияДатуСейчасВставляетьИлиНет,
+                                                                                         boolean ФлагОбновлятьДатуВерсииДанных, int ПубличныйIDДляорганизацции,
+                                                                                         String ДатаДляОбновлениеОргназации) throws ExecutionException,
             InterruptedException, TimeoutException {
         ///////////////////////////////////////////////////////////////////////////
         ///////ПОПЫТКА ПОДКЛЮЧЧЕНИЕ К ИНТРЕНТУ
 
-          Long Результат_ОбновленияДанныхОрганизация = 0l;
+        Long Результат_ОбновленияДанныхОрганизация = 0l;
         ///
         Long Результат_ВставкиДанныхОрганизация = 0l;
         ///
@@ -2703,9 +2700,9 @@ public class MODEL_synchronized extends CREATE_DATABASE {
                 e.printStackTrace();
                 ///метод запись ошибок в таблицу
 
-                Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                         " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), MODEL_synchronized.class.getName(),
+                new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), Class_MODEL_synchronized.class.getName(),
                         Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                 //////
 
@@ -2814,9 +2811,9 @@ public class MODEL_synchronized extends CREATE_DATABASE {
             e.printStackTrace();
             ///метод запись ошибок в таблицу
 
-            Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+            Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                     " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), MODEL_synchronized.class.getName(),
+            new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), Class_MODEL_synchronized.class.getName(),
                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
             //////
         }
@@ -2944,9 +2941,9 @@ Class_GRUD_SQL_Operations class_grud_sql_operationsОбвовлениеСозд�
             } catch (Exception e) {///////ошибки
                 e.printStackTrace();
                 ///метод запись ошибок в таблицу
-                Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                         " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), MODEL_synchronized.class.getName(),
+                new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), Class_MODEL_synchronized.class.getName(),
                         Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
             }
             ////
@@ -3047,9 +3044,9 @@ Class_GRUD_SQL_Operations class_grud_sql_operationsОбвовлениеСозд�
             } catch (Exception e) {///////ошибки
                 e.printStackTrace();
                 ///метод запись ошибок в таблицу
-                Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                         " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), MODEL_synchronized.class.getName(),
+                new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), Class_MODEL_synchronized.class.getName(),
                         Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
             }
 
@@ -3119,9 +3116,9 @@ Class_GRUD_SQL_Operations class_grud_sql_operationsОбвовлениеСозд�
             } catch (Exception e) {///////ошибки
                 e.printStackTrace();
                 ///метод запись ошибок в таблицу
-                Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                         " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), MODEL_synchronized.class.getName(),
+                new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), Class_MODEL_synchronized.class.getName(),
                         Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
             }
 
@@ -3265,10 +3262,10 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
                 } catch (Exception e) {///////ошибки
                     e.printStackTrace();
                     ///метод запись ошибок в таблицу
-                    Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
-                            " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                    new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), MODEL_synchronized.class.getName(),
-                            Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
+                Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                        " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
+                new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), Class_MODEL_synchronized.class.getName(),
+                        Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
 
                 }
 
@@ -3277,23 +3274,10 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     /////////TODO КОНТЕЙНЕР УДАЛЕНИЕ СОТРУДНИКА ИЗ ТАБЕЛЯ  ДАННЫХ УНИВЕРСАЛЬНЫЙ
-    Integer УдалениеТолькоПустогоТабеляЧерезКонтейнерУниверсальная(String ТаблицаОткудаУдлаяемЗапись,
-                                                                String ЧерезКакоеПолеУдлаяемФлаг,
-                                                                Long UUIDДляСостыковПриОбновления)
+    public Integer УдалениеТолькоПустогоТабеляЧерезКонтейнерУниверсальная(String ТаблицаОткудаУдлаяемЗапись,
+                                                                          String ЧерезКакоеПолеУдлаяемФлаг,
+                                                                          Long UUIDДляСостыковПриОбновления)
             throws ExecutionException,
             InterruptedException, TimeoutException {
         /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3479,9 +3463,9 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
             } catch (Exception e) {///////ошибки
                 e.printStackTrace();
                 ///метод запись ошибок в таблицу
-                Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e.toString() + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e.toString() + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                         " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), MODEL_synchronized.class.getName(),
+                new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), Class_MODEL_synchronized.class.getName(),
                         Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
                 //
 
@@ -3491,32 +3475,10 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /////////TODO КОНТЕЙНЕР УДАЛЕНИЕ СОТРУДНИКА ИЗ ТАБЕЛЯ  ДАННЫХ УНИВЕРСАЛЬНЫЙ
-    Integer УдалениеТолькоШАблонЧерезКонтейнерУниверсальная(String ТаблицаОткудаУдлаяемЗапись,
-                                                         String ЧерезКакоеПолеУдлаяемФлаг,
-                                                         String UUIDДляСостыковПриОбновления) throws ExecutionException,
+    public Integer УдалениеТолькоШАблонЧерезКонтейнерУниверсальная(String ТаблицаОткудаУдлаяемЗапись,
+                                                                   String ЧерезКакоеПолеУдлаяемФлаг,
+                                                                   String UUIDДляСостыковПриОбновления) throws ExecutionException,
             InterruptedException, TimeoutException {
         /////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////ПОПЫТКА ПОДКЛЮЧЧЕНИЕ К ИНТРЕНТУ
@@ -3698,9 +3660,9 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
                 } catch (Exception e) {///////ошибки
                 e.printStackTrace();
                 ///метод запись ошибок в таблицу
-                Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e.toString() + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e.toString() + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                         " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-                new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), MODEL_synchronized.class.getName(),
+                new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(e.toString(), Class_MODEL_synchronized.class.getName(),
                         Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
             }
 
@@ -3709,26 +3671,22 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
     }
 
 
-
-
-
-
 ///todo записываем выбраную  ОРГАНИЗАЦИЮ В БАЗУ
 
-    Integer МетодКоторыйЗаписываемВыбранныйРежимИнтрернетаWifiИлиMobile(String ПередаваемыйРежимИнтрентета,
-                                                                        Context КонтекстWIFI,
-                                                                        String Таблица,
-                                                                        String Поля) {
+    public Integer МетодКоторыйЗаписываемВыбранныйРежимИнтрернетаWifiИлиMobile(String ПередаваемыйРежимИнтрентета,
+                                                                               Context КонтекстWIFI,
+                                                                               String Таблица,
+                                                                               String Поля) {
 /////todo КОД ЗАПОЛЕНЕИЯ ДАННЫМИ В СПИНЕР ЦФО ДЕПАРТАМЕНТ МЕСЯЦ
         Integer РезультатОбновлениеЧерезКонтрейнер = 0;
 //
         Class_GRUD_SQL_Operations class_grud_sql_operationsЗаписываемВыбранныйРежимИнтрернетаWifiИлиMobil;
 
-                try {
+        try {
 
-                    Log.d(this.getClass().getName(), " ПередаваемыйРежимИнтрентета  " + ПередаваемыйРежимИнтрентета);
+            Log.d(this.getClass().getName(), " ПередаваемыйРежимИнтрентета  " + ПередаваемыйРежимИнтрентета);
 
-                    ////TODO ОБНУЛЯЕМ КАКУЮ ОРГАНИЗАЦИЮ ВЫБРАЛИ ОЧИЩАЕМ ВСТАВЛЕМ ППАРАМЕТР WIF-FI
+            ////TODO ОБНУЛЯЕМ КАКУЮ ОРГАНИЗАЦИЮ ВЫБРАЛИ ОЧИЩАЕМ ВСТАВЛЕМ ППАРАМЕТР WIF-FI
 
 
                     ///////
@@ -3841,30 +3799,8 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     ////TODO КОТОТРЫЙ УЗНАЕТ ИЗ БАЗЫ КАКОЙ РЕЖИМ РАБОТЫ ИНТРЕНТА WIFI AND MOBILE
-    String МетодПолучениеИмяСистемыДляСменыПользователя(Context КонтекстДляРежимаИнтрента) {
+    public String МетодПолучениеИмяСистемыДляСменыПользователя(Context КонтекстДляРежимаИнтрента) {
         //
         String ИмяУспешноВошедегоПользователья = new String();
         ///
@@ -3920,7 +3856,7 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
 
 /*
 
-            Cursor Курсор_ЗагружаетДанныеПриСозданииТабеля = new MODEL_synchronized(contextСозданиеБАзы).КурсорУниверсальныйДляБазыДанных("SuccessLogin", new String[]
+            Cursor Курсор_ЗагружаетДанныеПриСозданииТабеля = new Class_MODEL_synchronized(contextСозданиеБАзы).КурсорУниверсальныйДляБазыДанных("SuccessLogin", new String[]
                             {"success_users"}, null,
                     null, null, null, "date_update", null);///"SELECT name  FROM MODIFITATION_Client WHERE name=?",НазваниеТаблицНаСервере
 */
@@ -4032,7 +3968,7 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
 
 
 /*
-            Курсор_ДляЗагрузкиСотрудниковНепостредственнов = new MODEL_synchronized(контекстLIstView).КурсорУниверсальныйДляБазыДанных("viewtabel",
+            Курсор_ДляЗагрузкиСотрудниковНепостредственнов = new Class_MODEL_synchronized(контекстLIstView).КурсорУниверсальныйДляБазыДанных("viewtabel",
                     new String[]{"name,uuid,BirthDate,snils,_id,status_carried_out"},//     new String[]{"name,id,uuid,BirthDate,snils},
                     " user_update= ?  AND  month_tabels=?  AND year_tabels=? AND nametabel=? AND organizations=? AND status_send!=?  AND nametabel_typename=? AND name IS NOT NULL",//AND status_send IS NULL//"Удаленная" //AND status_send!=?" /AND status_send IS NULL AND  name IS NOT NULL AND fio IS NOT NULL
                     new String[]{String.valueOf(IDЧьиДанныеДляСотрудников), String.valueOf(МЕсяцДляКурсораТабелей), String.valueOf(ГодДляКурсораТабелей),
@@ -4095,7 +4031,7 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
 
         Cursor Курсор_ДляЗагрузкиСотрудниковНепостредственновИзШаблона = null;
         try {
-            Курсор_ДляЗагрузкиСотрудниковНепостредственновИзШаблона = new MODEL_synchronized(контекстLIstView).КурсорУниверсальныйДляБазыДанных("viewtabel",
+            Курсор_ДляЗагрузкиСотрудниковНепостредственновИзШаблона = new Class_MODEL_synchronized(контекстLIstView).КурсорУниверсальныйДляБазыДанных("viewtabel",
                     new String[]{"*"},//     new String[]{"name,id,uuid,BirthDate,snils},
                     "status_send!=?  AND cfo=? AND fio !=?  AND month_tabels=? AND  year_tabels =?  AND fio IS NOT NULL AND name IS NOT NULL",//  nametabel_typename  AND nametabel IS NOT NULL",//AND status_send IS NULL//"Удаленная" //AND status_send!=?" /AND status_send IS NULL AND  name IS NOT NULL AND fio IS NOT NULL
                     new String[]{"Удаленная", String.valueOf(ЦифровоеИмяНовгоТабеля), "", String.valueOf(месяцДляПермещенияПоТабелю), String.valueOf(годДляПермещенияПоТабелю)},
@@ -4103,7 +4039,7 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
 
             // TODO: 07.05.2021  данный курсор с датой показывает какой сотрудника изменили такой и сверху
 *//*
-            Курсор_ДляЗагрузкиСотрудниковНепостредственновИзШаблона = new MODEL_synchronized(контекстLIstView).КурсорУниверсальныйДляБазыДанных("viewtabel",
+            Курсор_ДляЗагрузкиСотрудниковНепостредственновИзШаблона = new Class_MODEL_synchronized(контекстLIstView).КурсорУниверсальныйДляБазыДанных("viewtabel",
                     new String[]{"*"},//     new String[]{"name,id,uuid,BirthDate,snils},
                     "status_send!=?  AND nametabel_typename=? AND uuid !=? AND uuid IS NOT NULL AND name IS NOT NULL",// AND nametabel IS NOT NULL",//AND status_send IS NULL//"Удаленная" //AND status_send!=?" /AND status_send IS NULL AND  name IS NOT NULL AND fio IS NOT NULL
                     new String[]{ "Удаленная",String.valueOf(ЦифровоеИмяНовгоТабеля),""},
@@ -4162,7 +4098,7 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
 
 //TODO МЕТОД ЗАГРУЗНИ НОВОГО СОТРУДНИКА
 
-    Cursor МетодЗагружаетЗначенияНовгоСотрудника(Context КонтекстДЛяСотрудника) {
+    public Cursor МетодЗагружаетЗначенияНовгоСотрудника(Context КонтекстДЛяСотрудника) {
      /*   Cursor asyncTaskLoader= (Cursor) new AsyncTaskLoader(КонтекстДЛяСотрудника) {
             @Override
             public Object loadInBackground() {*/
@@ -4176,7 +4112,7 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
             class_grud_sql_operationsЗначенияНовгоСотрудник=new Class_GRUD_SQL_Operations(contextСозданиеБАзы);
 
 
-                /*    Курсор_ЗагружаетНазваниеТабеляНАОснованииСФО = new MODEL_synchronized(КонтекстДляРежимаИнтрента).КурсорУниверсальныйДляБазыДанных("cfo", new String[]
+                /*    Курсор_ЗагружаетНазваниеТабеляНАОснованииСФО = new Class_MODEL_synchronized(КонтекстДляРежимаИнтрента).КурсорУниверсальныйДляБазыДанных("cfo", new String[]
                                     {"name"}, "id=?",
                             new String[]{String.valueOf(ТекущееСФО)}, null, null, "date_update DESC", "1");///"SELECT name  FROM MODIFITATION_Client WHERE name=?",НазваниеТаблицНаСервере
                     // TODO: 02.09.2021
@@ -4228,7 +4164,7 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
 
 
 /*
-            Курсор_ЗагружаетАрайдистЗначенийНовогоТИабеляВнутри = new MODEL_synchronized(КонтекстДЛяСотрудника).КурсорУниверсальныйДляБазыДанных("tabels", new String[]
+            Курсор_ЗагружаетАрайдистЗначенийНовогоТИабеляВнутри = new Class_MODEL_synchronized(КонтекстДЛяСотрудника).КурсорУниверсальныйДляБазыДанных("tabels", new String[]
                             {"month_tabels,year_tabels,cfo"}, "status_send!=?   AND month_tabels IS NOT NULL  AND year_tabels IS NOT NULL ", new String[]{"Удаленная"},
                     "month_tabels,year_tabels",
                     null, "date_update DESC", null);
@@ -4272,7 +4208,7 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
 
 //TODO МЕТОД ЗАГРУЗНИ НОВОГО шаблона
 
-    Cursor МетодЗагружаетЗначенияШаблонов(int полученнаяUUIDОрганизациидДляКурсораСпинераДаты, Context КонтекстДЛяСотрудника) {
+    public Cursor МетодЗагружаетЗначенияШаблонов(int полученнаяUUIDОрганизациидДляКурсораСпинераДаты, Context КонтекстДЛяСотрудника) {
      /*   Cursor asyncTaskLoader= (Cursor) new AsyncTaskLoader(КонтекстДЛяСотрудника) {
             @Override
             public Object loadInBackground() {*/
@@ -4326,7 +4262,7 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
 
 
         /*    // TODO: 06.09.2021  old
-            Курсор_ЗагружаетАрайдистЗначенийНовогоШаблонаВнутри = new MODEL_synchronized(КонтекстДЛяСотрудника).КурсорУниверсальныйДляБазыДанных("Templates", new String[]
+            Курсор_ЗагружаетАрайдистЗначенийНовогоШаблонаВнутри = new Class_MODEL_synchronized(КонтекстДЛяСотрудника).КурсорУниверсальныйДляБазыДанных("Templates", new String[]
                             {"*"}, "user_update=?",
                     new String[]{String.valueOf(полученнаяUUIDОрганизациидДляКурсораСпинераДаты)},
                     null, null, "date_update DESC", null);
@@ -4361,7 +4297,7 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
             class_grud_sql_operationsУжеготовыеТабеля = new Class_GRUD_SQL_Operations(contextСозданиеБАзы);
 
 
-                /*    Курсор_ЗагружаетНазваниеТабеляНАОснованииСФО = new MODEL_synchronized(КонтекстДляРежимаИнтрента).КурсорУниверсальныйДляБазыДанных("cfo", new String[]
+                /*    Курсор_ЗагружаетНазваниеТабеляНАОснованииСФО = new Class_MODEL_synchronized(КонтекстДляРежимаИнтрента).КурсорУниверсальныйДляБазыДанных("cfo", new String[]
                                     {"name"}, "id=?",
                             new String[]{String.valueOf(ТекущееСФО)}, null, null, "date_update DESC", "1");///"SELECT name  FROM MODIFITATION_Client WHERE name=?",НазваниеТаблицНаСервере
                     // TODO: 02.09.2021
@@ -4446,19 +4382,11 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
     }
 
 
-
-
-
-
-
-
-
-
     //todo загружет уже готовые созданные табеля
-    SQLiteCursor МетодЗагружетУжеготовыеТабеляПриСмещенииДанныхСкроллПоДАнным(Context КонтекстДляЗагружемыхТАбелей,
-                                                                              int ЦифровоеИмяНовгоТабеля,
-                                                                              int месяцДляПермещенияПоТабелю,
-                                                                              int годДляПермещенияПоТабелю) {
+    public SQLiteCursor МетодЗагружетУжеготовыеТабеляПриСмещенииДанныхСкроллПоДАнным(Context КонтекстДляЗагружемыхТАбелей,
+                                                                                     int ЦифровоеИмяНовгоТабеля,
+                                                                                     int месяцДляПермещенияПоТабелю,
+                                                                                     int годДляПермещенияПоТабелю) {
         /*Cursor asyncTaskLoaderЗагружаемТабеляСозданный = (Cursor) new AsyncTaskLoader(КонтекстДляЗагружемыхТАбелей) {
             @Override
             public Object loadInBackground() {*/
@@ -4556,20 +4484,8 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     //todo загружет уже готовые созданные табеля
-    SQLiteCursor МетодЗагружетУжеготовыеТабеляДляСкролаПОТабелюТолькоКоличествоСТорочек(Context КонтекстДляЗагружемыхТАбелей, int ЦифровоеИмяНовгоТабеля, int месяцДляПермещенияПоТабелю, int годДляПермещенияПоТабелю) {
+    public SQLiteCursor МетодЗагружетУжеготовыеТабеляДляСкролаПОТабелюТолькоКоличествоСТорочек(Context КонтекстДляЗагружемыхТАбелей, int ЦифровоеИмяНовгоТабеля, int месяцДляПермещенияПоТабелю, int годДляПермещенияПоТабелю) {
         /*Cursor asyncTaskLoaderЗагружаемТабеляСозданный = (Cursor) new AsyncTaskLoader(КонтекстДляЗагружемыхТАбелей) {
             @Override
             public Object loadInBackground() {*/
@@ -4669,34 +4585,17 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
     }
 
 
+    public Long МетодЗАписиПолученогоОтСервреаIDПубличногоВТАблицу_settings_tabels(@NonNull Integer ПолученныйотСервреаПубличныйID) throws ExecutionException, InterruptedException {
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    Long МетодЗАписиПолученогоОтСервреаIDПубличногоВТАблицу_settings_tabels(@NonNull Integer ПолученныйотСервреаПубличныйID) throws ExecutionException, InterruptedException {
-
-
-    long РезультатИзмененияВерсииДанныхПриЗаписиОрганизации = 0l;
+        long РезультатИзмененияВерсииДанныхПриЗаписиОрганизации = 0l;
 
         ///////
         // TODO: 20.04.2021 определяем ели UUID или нет
         SQLiteCursor Курсор_УзнаемЕслиUUIDВТАблицеОрганизация = null;
 
         ///
-                try {
+        try {
                     String ТаблицаКоторуюнадоИзменитьВерсиюДанных="settings_tabels";
 
 
@@ -5304,9 +5203,9 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
                     if (!ex.toString().equals("java.io.EOFException")) {
 
 
-                        Log.e(MODEL_synchronized.class.getName(), "Ошибка " + ОшибкаТекущегоМетода + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                        Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + ОшибкаТекущегоМетода + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                                 " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber() + " ОшибкаТекущегоМетода " + ОшибкаТекущегоМетода.toString());
-                        new   Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(ex.toString(), MODEL_synchronized.class.getName(),
+                        new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(ex.toString(), Class_MODEL_synchronized.class.getName(),
                                 Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
 
                     }
@@ -5342,26 +5241,8 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // TODO: 09.04.2021 метод получение УниверсальныйБуферAPKФайловсСервера обнвоения
-    int УниверсальныйБуферJSONВерсииПОсСервера(String АдресЗагрузки, Context context, String ИмяСервера  , Integer ИмяПорта) throws IOException, ExecutionException, InterruptedException,
+    public int УниверсальныйБуферJSONВерсииПОсСервера(String АдресЗагрузки, Context context, String ИмяСервера, Integer ИмяПорта) throws IOException, ExecutionException, InterruptedException,
             TimeoutException, NoSuchAlgorithmException, KeyManagementException, InvalidKeyException, NoSuchPaddingException {
 
         ///////ПОПЫТКА ПОДКЛЮЧЧЕНИЕ К ИНТРЕНТУ
@@ -5370,7 +5251,7 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
 //Class_GRUD_SQL_Operations class_grud_sql_operationsJSON=new Class_GRUD_SQL_Operations(context);
 
 
-                int ПолученнаяВерсияПОДЛяОбновления = 0;
+        int ПолученнаяВерсияПОДЛяОбновления = 0;
 
 
                 HttpURLConnection ПодключениеИнтернетДляJSONВерсииФайлаAPK = null;
@@ -5636,9 +5517,9 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
                     if (!ex.toString().equals("java.io.EOFException")) {
 
 
-                        Log.e(MODEL_synchronized.class.getName(), "Ошибка " + ОшибкаТекущегоМетода + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+                        Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + ОшибкаТекущегоМетода + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                                 " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber() + " ОшибкаТекущегоМетода " + ОшибкаТекущегоМетода.toString());
-                        new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(ex.toString(), MODEL_synchronized.class.getName(),
+                        new Class_Generation_Errors(contextСозданиеБАзы).МетодЗаписиВЖурналНовойОшибки(ex.toString(), Class_MODEL_synchronized.class.getName(),
                                 Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
 
                     }
@@ -5720,33 +5601,22 @@ Class_GRUD_SQL_Operations classGrudSqlOperationsУдалениеДанныхЧе
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
     ////TODO КОТОТРЫЙ УЗНАЕТ ИЗ БАЗЫ КАКОЙ РЕЖИМ РАБОТЫ ИНТРЕНТА WIFI AND MOBILE
-    String МетодПолучениеНазваниеТабеляНаОснованииСФО(Context КонтекстДляРежимаИнтрента, Integer ТекущееСФО) throws InterruptedException {
+    public String МетодПолучениеНазваниеТабеляНаОснованииСФО(Context КонтекстДляРежимаИнтрента, Integer ТекущееСФО) throws InterruptedException {
         //
-                String ПолученоеНазваниеТабеляНаОснованииСФО = null;
+        String ПолученоеНазваниеТабеляНаОснованииСФО = null;
 
-                SQLiteCursor Курсор_ЗагружаетНазваниеТабеляНАОснованииСФО = null;
-                ///
-                Class_GRUD_SQL_Operations concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_ОперацийпОЛУЧЕНИЯнАЗВАНИЕСФО;
-                try {
+        SQLiteCursor Курсор_ЗагружаетНазваниеТабеляНАОснованииСФО = null;
+        ///
+        Class_GRUD_SQL_Operations concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_ОперацийпОЛУЧЕНИЯнАЗВАНИЕСФО;
+        try {
 
-                    // TODO: 02.09.2021 ress new
+            // TODO: 02.09.2021 ress new
 
                     concurrentHashMapНаборПараментовSQLBuilder_Для_GRUD_ОперацийпОЛУЧЕНИЯнАЗВАНИЕСФО=new Class_GRUD_SQL_Operations(КонтекстДляРежимаИнтрента);
 
 
-                /*    Курсор_ЗагружаетНазваниеТабеляНАОснованииСФО = new MODEL_synchronized(КонтекстДляРежимаИнтрента).КурсорУниверсальныйДляБазыДанных("cfo", new String[]
+                /*    Курсор_ЗагружаетНазваниеТабеляНАОснованииСФО = new Class_MODEL_synchronized(КонтекстДляРежимаИнтрента).КурсорУниверсальныйДляБазыДанных("cfo", new String[]
                                     {"name"}, "id=?",
                             new String[]{String.valueOf(ТекущееСФО)}, null, null, "date_update DESC", "1");///"SELECT name  FROM MODIFITATION_Client WHERE name=?",НазваниеТаблицНаСервере
                     // TODO: 02.09.2021

@@ -5,7 +5,6 @@ import android.database.sqlite.SQLiteCursor;
 import android.util.Log;
 
 import com.dsy.dsu.CREATE_DATABASE;
-import com.dsy.dsu.MODEL_synchronized;
 import com.dsy.dsu.PUBLIC_CONTENT;
 
 import java.io.IOException;
@@ -232,9 +231,9 @@ public class Class_Get_Vesion_Data_From_SERVER {
         } catch (IOException ex) {
             ex.printStackTrace();
             ///метод запись ошибок в таблицу
-            Log.e(MODEL_synchronized.class.getName(), "Ошибка " + ОшибкаТекущегоМетода + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+            Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + ОшибкаТекущегоМетода + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                     " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber() + " ОшибкаТекущегоМетода " + ОшибкаТекущегоМетода.toString());
-            new   Class_Generation_Errors(contextДляПолучениеВерсииДанных).МетодЗаписиВЖурналНовойОшибки(ex.toString(), MODEL_synchronized.class.getName(),
+            new Class_Generation_Errors(contextДляПолучениеВерсииДанных).МетодЗаписиВЖурналНовойОшибки(ex.toString(), Class_MODEL_synchronized.class.getName(),
                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
 
         }

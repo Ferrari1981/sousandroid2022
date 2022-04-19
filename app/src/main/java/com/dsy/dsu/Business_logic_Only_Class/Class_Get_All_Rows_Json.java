@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteCursor;
 import android.util.Log;
 
-import com.dsy.dsu.MODEL_synchronized;
 import com.dsy.dsu.PUBLIC_CONTENT;
 
 import java.io.IOException;
@@ -29,16 +28,16 @@ import javax.crypto.spec.SecretKeySpec;
 
 ///////////--------------------------TODO ЭТО ТРЕТИЙ  КОНТРОЛЛЕР ТОЛЬКО ДЛЯ ПОЛУЧЕНИЯ  ТОЛЬКО JSON ПОЛЕЙ  И СКОЛЬКО ТАБЛИЦ НУЖНО БЕЗ  СИНХРОНИЗАЦИИИ---
 
-class Class_Get_All_Rows_Json extends MODEL_synchronized {
+class Class_Get_All_Rows_Json extends Class_MODEL_synchronized {
 
     Context contextGetClassNumberAllRowsJSON;
 
     ////шифрование
-  SecretKey ГлавныйКлючДляШифрованиеИРасшифровки;
+    SecretKey ГлавныйКлючДляШифрованиеИРасшифровки;
     ////
     Cipher ПолитикаШифрование;
     ///////
-  Cipher ПолитикаРасшифровки;
+    Cipher ПолитикаРасшифровки;
 
 
 

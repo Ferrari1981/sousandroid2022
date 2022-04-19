@@ -29,6 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.dsy.dsu.Business_logic_Only_Class.Class_GRUD_SQL_Operations;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Data;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
+import com.dsy.dsu.Business_logic_Only_Class.Class_MODEL_synchronized;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -167,8 +168,7 @@ TextView textViewТекущийПользователь;
             textViewТекущийПользователь  =(TextView) findViewById(R.id.textViewТекущийПользователь);
 
 
-
-            String ПолученыйТекущееИмяПользователя=new MODEL_synchronized(getApplicationContext()).МетодПолучениеИмяСистемыДляСменыПользователя(getApplicationContext());
+            String ПолученыйТекущееИмяПользователя = new Class_MODEL_synchronized(getApplicationContext()).МетодПолучениеИмяСистемыДляСменыПользователя(getApplicationContext());
 
 
             Log.d(this.getClass().getName(), "  ПолученыйТекущееИмяПользователя  "+ПолученыйТекущееИмяПользователя);
@@ -314,7 +314,7 @@ Class_GRUD_SQL_Operations class_grud_sql_operationsВычисляетПосле�
                      // TODO: 07.09.2021  ___________old
                   ///
                    Курсор_ВытаскиваемПоследнуюДатуСинхрониазииССерором=
-                             new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("MODIFITATION_Client",
+                             new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("MODIFITATION_Client",
                                      new String[]{"versionserveraandroid"}, "versionserveraandroid  = (SELECT MAX(versionserveraandroid) FROM MODIFITATION_Client)  AND versionserveraandroid IS NOT NULL", null, null, null, null, null);//
                 */
 
@@ -447,7 +447,7 @@ Class_GRUD_SQL_Operations class_grud_sql_operationsВычисляетПосле�
 
 
 
-                   /* РезультатКакойРежимРаботыИнтренета[0] =  new MODEL_synchronized(getApplicationContext()).
+                   /* РезультатКакойРежимРаботыИнтренета[0] =  new Class_MODEL_synchronized(getApplicationContext()).
                             МетодПолучениеЗначенияРежимаРаботыИнтернетаWifiИлиInternet(getApplicationContext(),"SuccessLogin","mode_connection");*/
 
 
@@ -567,11 +567,12 @@ Class_GRUD_SQL_Operations class_grud_sql_operationsВычисляетПосле�
                 //////TODO ЕСЛИ РЕЖИМ TRUE  MOBILE ВПИСЫВАЕМ КАК В БАЗУ MOBILE
                 if (isChecked) {
                     // The toggle is enabled mobile
-         Integer РезультатЗаписиНовогоРЕжима=    new MODEL_synchronized(getApplicationContext()).МетодКоторыйЗаписываемВыбранныйРежимИнтрернетаWifiИлиMobile("Mobile", getApplicationContext()
-                     ,"SuccessLogin","mode_connection" );
+                    Integer РезультатЗаписиНовогоРЕжима = new Class_MODEL_synchronized(getApplicationContext())
+                            .МетодКоторыйЗаписываемВыбранныйРежимИнтрернетаWifiИлиMobile("Mobile", getApplicationContext()
+                                    , "SuccessLogin", "mode_connection");
 
                     //
-                    Log.d(this.getClass().getName(), "РезультатЗаписиНовогоРЕжима " +РезультатЗаписиНовогоРЕжима );
+                    Log.d(this.getClass().getName(), "РезультатЗаписиНовогоРЕжима " + РезультатЗаписиНовогоРЕжима);
 
                     ///TODO принудительно устанвливаем редим работы синхронизации
                     MainActivity_Settings.this.runOnUiThread(new Runnable() {
@@ -590,8 +591,8 @@ Class_GRUD_SQL_Operations class_grud_sql_operationsВычисляетПосле�
                     //////TODO ЕСЛИ РЕЖИМ TRUE  MOBILE ВПИСЫВАЕМ КАК В БАЗУ ТОЛЬКО WIFI
                 } else {
                     // The toggle is disabled
-                    Integer РезультатЗаписиНовогоРЕжима=            new MODEL_synchronized(getApplicationContext()).МетодКоторыйЗаписываемВыбранныйРежимИнтрернетаWifiИлиMobile("WIFI", getApplicationContext()
-                            ,"SuccessLogin","mode_connection" );
+                    Integer РезультатЗаписиНовогоРЕжима = new Class_MODEL_synchronized(getApplicationContext()).МетодКоторыйЗаписываемВыбранныйРежимИнтрернетаWifiИлиMobile("WIFI", getApplicationContext()
+                            , "SuccessLogin", "mode_connection");
                     //
                     Log.d(this.getClass().getName(), "РезультатЗаписиНовогоРЕжима " +РезультатЗаписиНовогоРЕжима );
 
@@ -634,7 +635,7 @@ Class_GRUD_SQL_Operations class_grud_sql_operationsВычисляетПосле�
           String РезультатКакойРежимЗаписанвБазеВЫходныеДни = new String();
 
 
-        /*    РезультатКакойРежимЗаписанвБазеВЫходныеДни =  new MODEL_synchronized(getApplicationContext()).
+        /*    РезультатКакойРежимЗаписанвБазеВЫходныеДни =  new Class_MODEL_synchronized(getApplicationContext()).
                     МетодПолучениеЗначенияРежимаРаботыИнтернетаWifiИлиInternet(getApplicationContext() ,"SuccessLogin","mode_weekend");*/
 
 
@@ -734,8 +735,8 @@ Class_GRUD_SQL_Operations class_grud_sql_operationsВычисляетПосле�
                     //////TODO ЕСЛИ РЕЖИМ TRUE  MOBILE ВПИСЫВАЕМ КАК В БАЗУ MOBILE
                     if (isChecked) {
                         // The toggle is enabled mobile
-                        new MODEL_synchronized(getApplicationContext()).МетодКоторыйЗаписываемВыбранныйРежимИнтрернетаWifiИлиMobile("Включить", getApplicationContext()
-                                ,"SuccessLogin","mode_weekend");
+                        new Class_MODEL_synchronized(getApplicationContext()).МетодКоторыйЗаписываемВыбранныйРежимИнтрернетаWifiИлиMobile("Включить", getApplicationContext()
+                                , "SuccessLogin", "mode_weekend");
 
                         ///TODO принудительно устанвливаем редим работы синхронизации
                         MainActivity_Settings.this.runOnUiThread(new Runnable() {
@@ -754,8 +755,8 @@ Class_GRUD_SQL_Operations class_grud_sql_operationsВычисляетПосле�
                         //////TODO ЕСЛИ РЕЖИМ TRUE  MOBILE ВПИСЫВАЕМ КАК В БАЗУ ТОЛЬКО WIFI
                     } else {
                         // The toggle is disabled
-                        new MODEL_synchronized(getApplicationContext()).МетодКоторыйЗаписываемВыбранныйРежимИнтрернетаWifiИлиMobile("Выключить", getApplicationContext()
-                                ,"SuccessLogin","mode_weekend");
+                        new Class_MODEL_synchronized(getApplicationContext()).МетодКоторыйЗаписываемВыбранныйРежимИнтрернетаWifiИлиMobile("Выключить", getApplicationContext()
+                                , "SuccessLogin", "mode_weekend");
 
                         ///TODO принудительно устанвливаем редим работы синхронизации
                         MainActivity_Settings.this.runOnUiThread(new Runnable() {
@@ -835,12 +836,12 @@ Class_GRUD_SQL_Operations class_grud_sql_operationsВычисляетПосле�
 
 ///TODO ВСТАВКА НОВГО ТАБЕЛЯ В ТАБЛИЦУ
 
-                        РезультатВставкиНовогоСотрудникарезКонтрейнер[0] = new MODEL_synchronized(getApplicationContext()).
+                        РезультатВставкиНовогоСотрудникарезКонтрейнер[0] = new Class_MODEL_synchronized(getApplicationContext()).
                                 ВставкаДанныхЧерезКонтейнерОрганизацияДляТекущегоСотрудникаУниверсальная("settings_tabels",
                                         АдаптерВставкиВыбраноеОрганизации[0], "settings_tabels",
                                         "",
                                         true,
-                                        ПубличныйIDДляорганизацции,ДатаДляОбновлениеОргназации);
+                                        ПубличныйIDДляорганизацции, ДатаДляОбновлениеОргназации);
 
                         Log.d(this.getClass().getName(), " РезультатВставкиНовогоСотрудникарезКонтрейнер " + РезультатВставкиНовогоСотрудникарезКонтрейнер[0]);
 
@@ -984,7 +985,7 @@ return (int) РезультатВставкиНовогоСотрудникар�
 
             // TODO: 07.09.2021  _______________old
             Курсор_ИщемПУбличныйIDКогдаегоНетВстатике =
-                    new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("SuccessLogin",
+                    new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("SuccessLogin",
                             new String[]{"id"}, " id IS NOT NULL", null, null, null, "date_update", "1");//
 */
 
@@ -1073,7 +1074,7 @@ return (int) РезультатВставкиНовогоСотрудникар�
             Курсор_УзнаемЕслиUUIDВТАблицеОрганизация=null;
 
                  Курсор_УзнаемЕслиUUIDВТАблицеОрганизация =
-                         new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("settings_tabels",
+                         new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("settings_tabels",
                                  new String[]{"uuid"}, "user_update=?", new String[]{String.valueOf(ПубличныйIDДляорганизацции)}, null, null, "date_update", "1");//
 
 
@@ -1401,7 +1402,7 @@ return (int) РезультатВставкиНовогоСотрудникар�
 
 
                            /* ///todo устанвливаем организацию КОТОРУЮ ВЫБРАЛ ПОЛЬЗОВАТЕЛЬ
-                            РезультатВставкиГотовойОрганизации[0] =      new MODEL_synchronized(getApplicationContext()).
+                            РезультатВставкиГотовойОрганизации[0] =      new Class_MODEL_synchronized(getApplicationContext()).
                                     МетодКоторыйЗаписываемВыбраннуюОргназациювБазуЧтобыПотомЕеНеБывырать(((TextView) parent.getChildAt(0)),getApplicationContext());
 
 */
@@ -1526,7 +1527,7 @@ return (int) РезультатВставкиНовогоСотрудникар�
 
     /*        // TODO: 07.09.2021       _______________old
 
-            Курсор_ЗагружаетДанныеПриСозданииТабеля =  new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных(ИмяТаблицыДляСпинера, new String[]
+            Курсор_ЗагружаетДанныеПриСозданииТабеля =  new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных(ИмяТаблицыДляСпинера, new String[]
                                         {СтолбикДляЗагурзкиВСпинер}, null,
                                 null, null, null,null, null);///"SELECT name  FROM MODIFITATION_Client WHERE name=?",НазваниеТаблицНаСервере
 
@@ -1733,7 +1734,7 @@ return (int) РезультатВставкиНовогоСотрудникар�
             // TODO: 07.09.2021     _______________old
 
                         ////TODO ИЩЕМ ОРГАНИЗАЦИЮ КОТРОУЮ ВЫБРАЛ СОТРУДНИК УЖЕ ЗАХОДИЛ И ВЫБРАЛ НА АКТИВТИ цифра один ставитсья всегда каторую выбрали
-            Курсор_ИщемВыбраннуюОрганизацию =  new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("organization", new String[]
+            Курсор_ИщемВыбраннуюОрганизацию =  new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("organization", new String[]
                                 {"name","chosen_organization"}, "chosen_organization=?",new String[] {"1"}, null, null,null, null);///"SELECT name  FROM MODIFITATION_Client WHERE name=?",НазваниеТаблицНаСервере
 
 */

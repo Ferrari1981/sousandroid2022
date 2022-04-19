@@ -44,10 +44,10 @@ import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Data;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_UUID;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generations_PUBLIC_CURRENT_ID;
+import com.dsy.dsu.Business_logic_Only_Class.Class_MODEL_synchronized;
 import com.dsy.dsu.Business_logic_Only_Class.SubClass_RetryGEtRowInChatsКлассПроверемЕщеРАзПоявилосЛИПуббличныйUUIDМеждуУчасникамиЧата;
 import com.dsy.dsu.CREATE_DATABASE;
 import com.dsy.dsu.Code_For_Firebase_AndOneSignal_Здесь_КодДЛяСлужбыУведомленияFirebase.Class_Generation_SendBroadcastReceiver_And_Firebase_OneSignal;
-import com.dsy.dsu.MODEL_synchronized;
 import com.dsy.dsu.PUBLIC_CONTENT;
 import com.dsy.dsu.R;
 import com.google.android.material.button.MaterialButton;
@@ -155,8 +155,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
     PUBLIC_CONTENT public_contentМенеджерПотоковПоРасписанию = null;
 
 
-
-    MODEL_synchronized modelДляФрагментаДляОперацииЗаписиНовгоСтатусаПрочитанного;
+    Class_MODEL_synchronized modelДляФрагментаДляОперацииЗаписиНовгоСтатусаПрочитанного;
 
 
 
@@ -984,7 +983,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                     ///PUBLIC_CONTENT.ССылкаНаСозданнуюБазу.execSQL(" BEGIN DEFERRED TRANSACTION ");
 
 
-                    РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ[0] = new MODEL_synchronized(getContext())
+                    РезультатВставки_НовойЗаписиРодительскуюТаблицыЧАТ[0] = new Class_MODEL_synchronized(getContext())
                             .ВставкаДанныхЧерезКонтейнерТолькоПриСозданииНСообщенияДЛЯЧата("chats",
                                     contentValuesЗаписьНовогоСообщения_ТаблицаЧат, ПерваяТаблицыОбработкиТаблицаЧат, "",
                                     true);
@@ -1213,7 +1212,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
 
                     /////////TODO ЗАМА ЗАПИСЬ НОВГО СООБЩЕНИЯ ЧАТА В ТАБЛИЦУ В ТОРОЙ УЖЕ ЕСТЬ ЗАПИСЬ
                     ///
-                    РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка = new MODEL_synchronized(getContext()).
+                    РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка = new Class_MODEL_synchronized(getContext()).
                             ВставкаДанныхЧерезКонтейнерТолькоПриСозданииНСообщенияДЛЯЧата(ТаблицаВторойОбработкиДляТаблицыДата_Табеля,
                                     contentValuesЗаписьНовогоСообщения_ТаблицыDATA_CHAT, ТаблицаВторойОбработкиДляТаблицыДата_Табеля, "",
                                     true);
@@ -1231,7 +1230,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
                     if (РезультатВставки_ТолькоВДочернуюТаблицуТакаКакВСтрашойТАблицуУжеЕстьПереписка > 0) {
 
                              /* //TODO ДОПОЛНИТЕЛЬНОЕ СОХРАНИЕНИ  ДАННЫХ С ПИМИМИНЕНИЕМ ВЕРСИЙ ДАННЫХ (ВМЕСТО ДАТЫ)
-                              int РезультатЗаписиВерсииДанныхвБазе=    new MODEL_synchronized(getContext()).
+                              int РезультатЗаписиВерсииДанныхвБазе=    new Class_MODEL_synchronized(getContext()).
                                       МетодЗаписьЧтоОрацияПрошлаЗаписьВБазуСПрименениемВерсииДанных("data_chat", new Date(),null,"localversionandroid_version",Integer.parseInt(String.valueOf(РезультатУвеличинаяВерсияДАныхДатЧата)));
 
 */
@@ -1485,7 +1484,7 @@ public class Fragment_Writer_Read_ЧитатьПисатьЧата extends Fragm
             Class_GRUD_SQL_Operations class_grud_sql_operationsПовышаемВерсиюДанныхВосьмаяЧасть = new Class_GRUD_SQL_Operations(getContext());
 
 
-            modelДляФрагментаДляОперацииЗаписиНовгоСтатусаПрочитанного = new MODEL_synchronized(getContext());
+            modelДляФрагментаДляОперацииЗаписиНовгоСтатусаПрочитанного = new Class_MODEL_synchronized(getContext());
 
             Class_Engine_SQL Class_Engine_SQLДляИзмененияСтатусаЗаписиПрочтитаноИлиНет = null;
 

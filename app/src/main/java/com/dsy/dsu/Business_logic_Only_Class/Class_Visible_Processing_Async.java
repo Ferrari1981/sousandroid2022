@@ -5,7 +5,6 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.dsy.dsu.MODEL_synchronized;
 import com.dsy.dsu.R;
 
 import java.text.DecimalFormat;
@@ -45,7 +44,7 @@ public class Class_Visible_Processing_Async {
 
 
                 ///=
-                Log.d(MODEL_synchronized.class.getName(), " ДляСинхронизацииОбщееКоличествоСколькоСтрочекJSON " + ДляСинхронизацииОбщееКоличествоСколькоСтрочекJSON +
+                Log.d(Class_MODEL_synchronized.class.getName(), " ДляСинхронизацииОбщееКоличествоСколькоСтрочекJSON " + ДляСинхронизацииОбщееКоличествоСколькоСтрочекJSON +
                         " Результат_Обновление_ИлиВставкиДанных  " + Результат_Обновление_ИлиВставкиДанных);
 /////
 
@@ -212,9 +211,9 @@ public class Class_Visible_Processing_Async {
         } catch (Exception e) {///////ошибки
             e.printStackTrace();
             ///метод запись ошибок в таблицу
-            Log.e(MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
+            Log.e(Class_MODEL_synchronized.class.getName(), "Ошибка " + e + " Метод :" + Thread.currentThread().getStackTrace()[2].getMethodName() +
                     " Линия  :" + Thread.currentThread().getStackTrace()[2].getLineNumber());
-            new   Class_Generation_Errors(contextДляКлассавизуальнойСинхронизации).МетодЗаписиВЖурналНовойОшибки(e.toString(), MODEL_synchronized.class.getName(),
+            new Class_Generation_Errors(contextДляКлассавизуальнойСинхронизации).МетодЗаписиВЖурналНовойОшибки(e.toString(), Class_MODEL_synchronized.class.getName(),
                     Thread.currentThread().getStackTrace()[2].getMethodName(), Thread.currentThread().getStackTrace()[2].getLineNumber());
 
         }

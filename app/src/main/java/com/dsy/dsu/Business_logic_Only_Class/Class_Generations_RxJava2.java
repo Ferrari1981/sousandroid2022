@@ -18,7 +18,7 @@ public class Class_Generations_RxJava2 {
                             @Override
                             public void onSubscribe(Disposable d) {
                                 // TODO: 02.09.2021
-                                Log.d(MODEL_synchronized.class.getName(), " PUBLIC_CONTENT.БуферРезуоотатРаботыБазыВсестеССервером " );
+                                Log.d(Class_MODEL_synchronized.class.getName(), " PUBLIC_CONTENT.БуферРезуоотатРаботыБазыВсестеССервером " );
                             }
 
                             @Override
@@ -29,17 +29,17 @@ public class Class_Generations_RxJava2 {
                             @Override
                             public void onError(Throwable e) {
                                 // TODO: 02.09.2021
-                                Log.d(MODEL_synchronized.class.getName(), " PUBLIC_CONTENT.БуферРезуоотатРаботыБазыВсестеССервером " );
+                                Log.d(Class_MODEL_synchronized.class.getName(), " PUBLIC_CONTENT.БуферРезуоотатРаботыБазыВсестеССервером " );
                             }
 
                             @Override
                             public void onComplete() {
                                 // TODO: 02.09.2021
-                                Log.d(MODEL_synchronized.class.getName(), " PUBLIC_CONTENT.БуферРезуоотатРаботыБазыВсестеССервером " );
+                                Log.d(Class_MODEL_synchronized.class.getName(), " PUBLIC_CONTENT.БуферРезуоотатРаботыБазыВсестеССервером " );
 
                                 observable.subscribeOn(AndroidSchedulers.mainThread())
                                         .subscribe ((ddd)->{
-                                            Log.d(MODEL_synchronized.class.getName(), " PUBLIC_CONTENT.БуферРезуоотатРаботыБазыВсестеССервером " );
+                                            Log.d(Class_MODEL_synchronized.class.getName(), " PUBLIC_CONTENT.БуферРезуоотатРаботыБазыВсестеССервером " );
 
                                             // TODO: 24.09.2021
 

@@ -3,7 +3,6 @@ package com.dsy.dsu.Business_logic_Only_Class;
 import android.content.Context;
 import android.util.Log;
 
-import com.dsy.dsu.MODEL_synchronized;
 import com.dsy.dsu.PUBLIC_CONTENT;
 
 import org.jetbrains.annotations.NotNull;
@@ -273,7 +272,7 @@ public class Class_Connections_Server  extends  Class_GRUD_SQL_Operations {
                 ИмяПорта=     СодержимоеHashMapАдресаПодключенияКСерверу.getValue();
 
 
-                Log.d(MODEL_synchronized.class.getName()," ИмяСервера"+ ИмяСервера+" ИмяПорта "+ИмяПорта);
+                Log.d(Class_MODEL_synchronized.class.getName(), " ИмяСервера" + ИмяСервера + " ИмяПорта " + ИмяПорта);
 
                 /////todo код ping ip второйвариант
 
@@ -282,15 +281,14 @@ public class Class_Connections_Server  extends  Class_GRUD_SQL_Operations {
 
 ////////////////
               Integer  БуферПолучениеДанныхРЕальныйСтатусРАботыSQLServer =
-                      new MODEL_synchronized(contextДляКлассаКоннеткСервер).
+                      new Class_MODEL_synchronized(contextДляКлассаКоннеткСервер).
                               УниверсальныйБуферПолучениеДанныхсСервераТОлькоДляПинга(null, "",
                         "", "application/gzip", "Хотим Получить Статус Реальной Работы SQL SERVER",
                                       0l, "",10000,"",
                         0l,ИмяСервера, ИмяПорта);//application/gzip
 
 
-
-                Log.d(MODEL_synchronized.class.getName(), "  БуферПолучениеДанныхРЕальныйСтатусРАботыSQLServer" + БуферПолучениеДанныхРЕальныйСтатусРАботыSQLServer);
+                Log.d(Class_MODEL_synchronized.class.getName(), "  БуферПолучениеДанныхРЕальныйСтатусРАботыSQLServer" + БуферПолучениеДанныхРЕальныйСтатусРАботыSQLServer);
                 ///TODO определяем какой вид подкобченеи mobile and wifi
 
 
@@ -321,7 +319,7 @@ public class Class_Connections_Server  extends  Class_GRUD_SQL_Operations {
 
 
                         // TODO: 16.12.2021  
-                        Log.w(MODEL_synchronized.class.getName(), "  УСПЕХ ЕСТЬ СВЗЬ С СЕРВЕРОММ результатПрозвонаСокетом[0] " + результатПрозвонаСокетом);
+                        Log.w(Class_MODEL_synchronized.class.getName(), "  УСПЕХ ЕСТЬ СВЗЬ С СЕРВЕРОММ результатПрозвонаСокетом[0] " + результатПрозвонаСокетом);
                         
                     }else{
 
@@ -329,13 +327,13 @@ public class Class_Connections_Server  extends  Class_GRUD_SQL_Operations {
                         результатПрозвонаСокетом = false;
 
                         // TODO: 16.12.2021
-                        Log.e(MODEL_synchronized.class.getName(), " ОШИБКА НЕТ СВЯЗИ С СЕВРЕРОМ  результатПрозвонаСокетом[0] " + результатПрозвонаСокетом);
+                        Log.e(Class_MODEL_synchronized.class.getName(), " ОШИБКА НЕТ СВЯЗИ С СЕВРЕРОМ  результатПрозвонаСокетом[0] " + результатПрозвонаСокетом);
                     }
                     ////////////////////////////
 
                     // TODO: 24.07.2021  ДОПОЛНИТЕЛЬНАЯ ПРОВЕРКА РАБОТАЕ ЛИ СЕРВЕР В МЕСТЕ С ДАННЫМИ
 
-                    Log.d(MODEL_synchronized.class.getName(), "  результатПрозвонаСокетом[0] " + результатПрозвонаСокетом);
+                Log.d(Class_MODEL_synchronized.class.getName(), "  результатПрозвонаСокетом[0] " + результатПрозвонаСокетом);
                     ///TODO определяем какой вид подкобченеи mobile and wifi
 
 
@@ -373,7 +371,7 @@ public class Class_Connections_Server  extends  Class_GRUD_SQL_Operations {
         // TODO: 02.09.2021  EXE ПОСЫЛАЕМ НА ВЫПОЛЕНИЯ
 
 
-        Log.d(MODEL_synchronized.class.getName(), "  результатПрозвонаСокетом[0] " + результатПрозвонаСокетом);
+        Log.d(Class_MODEL_synchronized.class.getName(), "  результатПрозвонаСокетом[0] " + результатПрозвонаСокетом);
 
         return результатПрозвонаСокетом;
     }

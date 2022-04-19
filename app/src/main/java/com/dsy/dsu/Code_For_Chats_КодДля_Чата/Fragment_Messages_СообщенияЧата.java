@@ -1697,7 +1697,7 @@ try {
 
 
        /*         // TODO: 08.09.2021  _old
-                Курсор_ВычисляемПУбличныйID=new MODEL_synchronized(getContext()).КурсорУниверсальныйБазыДанных("SELECT id FROM SuccessLogin LIMIT 1 ");
+                Курсор_ВычисляемПУбличныйID=new Class_MODEL_synchronized(getContext()).КурсорУниверсальныйБазыДанных("SELECT id FROM SuccessLogin LIMIT 1 ");
                 /////
 */
                 // TODO: 08.09.2021 resultat

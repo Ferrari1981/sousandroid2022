@@ -50,6 +50,7 @@ import com.dsy.dsu.Business_logic_Only_Class.Class_Find_Setting_User_Network;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_WORK_MANGER_DIRECT;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generations_PUBLIC_CURRENT_ID;
+import com.dsy.dsu.Business_logic_Only_Class.Class_MODEL_synchronized;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Send_Generation_Errors;
 import com.dsy.dsu.Business_logic_Only_Class.Class__Generation_Genetal_Tables;
 import com.dsy.dsu.Business_logic_Only_Class.SubClass_Connection_BroadcastReceiver_Sous_Asyns_Glassfish;
@@ -510,7 +511,8 @@ public class MainActivity_Face_App extends AppCompatActivity {
                                 if (РезультатЕслиСвязьСерверомПередНачаломВизуальнойСинхронизцииПередСменыДанных == true) {
                                     // TODO: 06.07.2021  пользователь СМЕНИТЬ
 
-                                    ПолученыйТекущееИмяПользователя = new MODEL_synchronized(getApplicationContext()).МетодПолучениеИмяСистемыДляСменыПользователя(getApplicationContext());
+                                    ПолученыйТекущееИмяПользователя = new Class_MODEL_synchronized(getApplicationContext())
+                                            .МетодПолучениеИмяСистемыДляСменыПользователя(getApplicationContext());
                                     // TODO: 23.02.2022
                                     Log.d(this.getClass().getName(), "  ПолученыйТекущееИмяПользователя " +
                                             ПолученыйТекущееИмяПользователя);

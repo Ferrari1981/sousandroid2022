@@ -39,6 +39,7 @@ import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Data;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_UUID;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Weekend_For_Tabels;
+import com.dsy.dsu.Business_logic_Only_Class.Class_MODEL_synchronized;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -718,7 +719,7 @@ public class MainActivity_New_Templates_Tabels extends AppCompatActivity impleme
         Integer РезультатУдалениеСамогоТАбеля = 0;
 
         try {
-        MODEL_synchronized  model_synchronizedСсылкаДляУдаленияШаблона =new MODEL_synchronized(getApplicationContext());
+            Class_MODEL_synchronized classModel_synchronizedСсылкаДляУдаленияШаблона = new Class_MODEL_synchronized(getApplicationContext());
 
             String СодержимоеКурсора = null;
 
@@ -736,10 +737,10 @@ public class MainActivity_New_Templates_Tabels extends AppCompatActivity impleme
 // TODO: 28.01.2022 удаление  ВО В ВЕРХНЕЙ ТАБЛИЦЕ
 
                 /////TODO КОД ПРИ ОБНОВЛЯЕМ ПРИ ТАБЕЛЯ (ВАРИАНТ ВАРИАНТ УДЯЛЯЕМ А НИЖЕ ПРОСТО ОБНОВЛЯЕМ КОЛОКУ И ВПИСЫВАЕМ уДАЛЕННЫЕ)
-                РезультатУдалениеСамогоТАбеля = model_synchronizedСсылкаДляУдаленияШаблона.
-                        УдалениеТолькоШАблонЧерезКонтейнерУниверсальная(НазваниеТаблицыГдеУдалитьШАБЛОН,
-                        "uuid",
-                        String.valueOf(СамоЗначениеUUID));
+            РезультатУдалениеСамогоТАбеля = classModel_synchronizedСсылкаДляУдаленияШаблона.
+                    УдалениеТолькоШАблонЧерезКонтейнерУниверсальная(НазваниеТаблицыГдеУдалитьШАБЛОН,
+                            "uuid",
+                            String.valueOf(СамоЗначениеUUID));
                 //todo очищаем память
 
 
@@ -770,7 +771,7 @@ public class MainActivity_New_Templates_Tabels extends AppCompatActivity impleme
 
 
                     /////TODO КОД ПРИ ОБНОВЛЯЕМ ПРИ ТАБЕЛЯ (ВАРИАНТ ВАРИАНТ УДЯЛЯЕМ А НИЖЕ ПРОСТО ОБНОВЛЯЕМ КОЛОКУ И ВПИСЫВАЕМ уДАЛЕННЫЕ)
-                    РезультатУдалениеСамогоФИО_Шаблон = model_synchronizedСсылкаДляУдаленияШаблона.УдалениеТолькоШАблонЧерезКонтейнерУниверсальная("fio_template",
+                    РезультатУдалениеСамогоФИО_Шаблон = classModel_synchronizedСсылкаДляУдаленияШаблона.УдалениеТолькоШАблонЧерезКонтейнерУниверсальная("fio_template",
                             "fio_template",
                             String.valueOf(СамоЗначениеUUID));
                     //todo очищаем память
@@ -950,7 +951,7 @@ public class MainActivity_New_Templates_Tabels extends AppCompatActivity impleme
 
             ///////
 
-            РезультатУдалениеВсехСотрудниковСамогоТАбеля[0] = new MODEL_synchronized(getApplication()).
+            РезультатУдалениеВсехСотрудниковСамогоТАбеля[0] = new Class_MODEL_synchronized(getApplication()).
                     УдалениеТолькоПустогоТабеляЧерезКонтейнерУниверсальная("tabels", "cfo",
                             Long.parseLong(String.valueOf(НазваниеУдаляемогоТАбеляВЦифровомФормате)));
 
@@ -1307,7 +1308,7 @@ public class MainActivity_New_Templates_Tabels extends AppCompatActivity impleme
             // TODO: 07.09.2021     __old
                         
                         
-                                        Курсор_КоторыйЗагружаетГотовыеШаблоны = new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("Templates",
+                                        Курсор_КоторыйЗагружаетГотовыеШаблоны = new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("Templates",
                                                 new String[]{"*"},
                                                 "status_send !=? AND user_update=? ",
                                                 new String[]{"Удаленная",PUBLIC_CONTENT.ПубличноеIDПолученныйИзСервлетаДляUUID}, "name_templates", null, "date_update DESC", null);///  Удаленная  //  IS NOT NULL AND name_templates!=?  AND
@@ -1733,7 +1734,7 @@ public class MainActivity_New_Templates_Tabels extends AppCompatActivity impleme
 
                          /*           // TODO: 07.09.2021    _old
                                                 Курсор_СДаннымиИзШаблонаДАнныхСозданныйПользовательм =
-                                                        new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("Fio_Template",
+                                                        new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("Fio_Template",
                                                                 new String[]{"fio_uuid"},//     new String[]{"name,id,uuid,BirthDate,snils},
                                                                 "fio_template=? ",//AND status_send IS NULL//"Удаленная" //AND status_send!=?" /AND status_send IS NULL AND  name IS NOT NULL AND fio IS NOT NULL
                                                                 new String[]{ПередаваемыйИзКнопкиПолучаемUUIDТабеля.toString()},
@@ -1868,7 +1869,7 @@ public class MainActivity_New_Templates_Tabels extends AppCompatActivity impleme
 
 
                                    /*         // TODO: 07.09.2021    ___old
-                                           Курсор_ТаблицаФИО = new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("fio",
+                                           Курсор_ТаблицаФИО = new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("fio",
                                         new String[]{"name,uuid"},//     new String[]{"name,id,uuid,BirthDate,snils},
                                         "uuid=?",//AND status_send IS NULL//"Удаленная" //AND status_send!=?" /AND status_send IS NULL AND  name IS NOT NULL AND fio IS NOT NULL
                                         new String[]{String.valueOf(ПолученныйUUIDДЛЯПолучениеДанных)},
@@ -2162,7 +2163,7 @@ public class MainActivity_New_Templates_Tabels extends AppCompatActivity impleme
 
 /*
         ///TODO __old
-                    Курсор_КоторыйЗагружаетГотовыеШаблоныМаксимальнаяДата = new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("Templates",
+                    Курсор_КоторыйЗагружаетГотовыеШаблоныМаксимальнаяДата = new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("Templates",
                             new String[]{"date_update," + "name_templates"},
                             "date_update = (SELECT MAX(date_update) FROM Templates)",
                            null, "name_templates", null, null, "1");
@@ -2241,7 +2242,7 @@ public class MainActivity_New_Templates_Tabels extends AppCompatActivity impleme
 
            // TODO: 07.09.2021   __old
 
-                    Курсор_КоторыйЗагружаетГотовыеШАблоныМаксимальнаяДатаДляСпинера = new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("Templates", new String[]
+                    Курсор_КоторыйЗагружаетГотовыеШАблоныМаксимальнаяДатаДляСпинера = new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("Templates", new String[]
                                     {"name_templates"},
                             "date_update = (SELECT MAX(date_update) FROM Templates)",
                          null, "name_templates", null, "date_update DESC", "1");
@@ -2458,7 +2459,7 @@ public class MainActivity_New_Templates_Tabels extends AppCompatActivity impleme
                 //////
                 long РезультатВставкиНовогоМесяцаСозданогоИзКалендаря= 0;
                 try {
-                  РезультатВставкиНовогоМесяцаСозданогоИзКалендаря = new MODEL_synchronized(getApplication()).ВставкаДанныхЧерезКонтейнерУниверсальная("tabels",
+                  РезультатВставкиНовогоМесяцаСозданогоИзКалендаря = new Class_MODEL_synchronized(getApplication()).ВставкаДанныхЧерезКонтейнерУниверсальная("tabels",
                             АдаптерВставкаНовогоМЕсяцаИзКалендаря,"tabels","",true);
 
                    ///ОЧИСТКА ПАМЯТИ
@@ -2708,7 +2709,7 @@ public class MainActivity_New_Templates_Tabels extends AppCompatActivity impleme
 
 
 //////////TODO
-            Курсор_ЗагружаетАрайдистЗначенийНовогоШАБЛОНА = new MODEL_synchronized(getApplicationContext()).
+            Курсор_ЗагружаетАрайдистЗначенийНовогоШАБЛОНА = new Class_MODEL_synchronized(getApplicationContext()).
                     МетодЗагружаетЗначенияШаблонов(ПолученнаяUUIDОрганизациидДляКурсораСпинераДаты, getApplicationContext());
 
 //
@@ -3027,7 +3028,7 @@ public class MainActivity_New_Templates_Tabels extends AppCompatActivity impleme
             // TODO: 07.09.2021  _old
 
                         Курсор_КоторыйВЫгружемНазваниеОрганизацииДляЭтогоСотркдникаТекущего =
-                                new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("SuccessLogin",
+                                new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("SuccessLogin",
                                         new String[]{"id"}, "id IS NOT NULL", null,
                                         null, null, "date_update DESC", "1");//"settings_tabels", "date_update","id=","1",null,null,null,null
 
@@ -3349,7 +3350,7 @@ public class MainActivity_New_Templates_Tabels extends AppCompatActivity impleme
 
                                         if (АдаптерДляВставкиИзГотоваШаблонаВТаблицуТабель.size() > 0) {
                                             ///////////////////////////////
-                                            finalРезультатВставкиСотрудниковИзШаблона1 = new MODEL_synchronized(getApplicationContext()).
+                                            finalРезультатВставкиСотрудниковИзШаблона1 = new Class_MODEL_synchronized(getApplicationContext()).
                                                     ВставкаДанныхЧерезКонтейнерТолькоПриСозданииНовогоСотрудникаУниверсальная(ТаблицаОбработкиДорбалвенИзШаблона,
                                                             АдаптерДляВставкиИзГотоваШаблонаВТаблицуТабель, ТаблицаОбработкиДорбалвенИзШаблона, "");//////TODO когда true -это значет применяеться только не вобмене  и говорит что плюс записываем изменению версии джанных
                                         }
@@ -3703,7 +3704,7 @@ public class MainActivity_New_Templates_Tabels extends AppCompatActivity impleme
 
                     // TODO: 07.09.2021   ____  old
                         Курсор_ИщемПУбличныйIDКогдаегоНетВстатике =
-                                new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("SuccessLogin",
+                                new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("SuccessLogin",
                                         new String[]{"id"}, " id IS NOT NULL", null, null, null, "date_update DESC","1");//
 
 

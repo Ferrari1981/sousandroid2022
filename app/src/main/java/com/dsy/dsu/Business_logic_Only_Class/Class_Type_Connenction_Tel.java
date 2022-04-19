@@ -6,8 +6,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
-import com.dsy.dsu.MODEL_synchronized;
-
 public class Class_Type_Connenction_Tel extends Class_GRUD_SQL_Operations {
 
     Context contextДляОпределенияКакойТИмПодключения=null;
@@ -45,7 +43,7 @@ public class Class_Type_Connenction_Tel extends Class_GRUD_SQL_Operations {
 
                 КакойТипПодключения="WIFI";
 
-                Log.d(MODEL_synchronized.class.getName()," КакойТипПодключения"+ КакойТипПодключения);
+                Log.d(Class_MODEL_synchronized.class.getName(), " КакойТипПодключения" + КакойТипПодключения);
             }else{
                 // TODO: 29.09.2021
 
@@ -56,7 +54,7 @@ public class Class_Type_Connenction_Tel extends Class_GRUD_SQL_Operations {
 
                     КакойТипПодключения="Mobile";
 
-                    Log.d(MODEL_synchronized.class.getName()," КакойТипПодключения"+ КакойТипПодключения);
+                    Log.d(Class_MODEL_synchronized.class.getName(), " КакойТипПодключения" + КакойТипПодключения);
                 }
 
             }

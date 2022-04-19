@@ -31,6 +31,7 @@ import androidx.work.WorkerParameters;
 
 import com.dsy.dsu.Business_logic_Only_Class.Class_GRUD_SQL_Operations;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
+import com.dsy.dsu.Business_logic_Only_Class.Class_MODEL_synchronized;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Update_Download_File_APK_From_SERVER;
 
 import org.jetbrains.annotations.Nullable;
@@ -431,7 +432,7 @@ public class MyWork_Notifocations_Уведомления_Для_Обновлен
                     .flatMap((string) -> {
 
                         // TODO: 08.01.2022
-                        СервернаяВерсияПОВнутри = new MODEL_synchronized(Контекст).
+                        СервернаяВерсияПОВнутри = new Class_MODEL_synchronized(Контекст).
                                 УниверсальныйБуферJSONВерсииПОсСервера("dsu1.glassfish/update_android_dsu1/output-metadata.json", Контекст, "tabel.dsu1.ru", 8888);
                         // TODO: 08.01.2022
 

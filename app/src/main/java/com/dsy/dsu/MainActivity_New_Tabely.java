@@ -31,6 +31,7 @@ import com.dsy.dsu.Business_logic_Only_Class.Class_GRUD_SQL_Operations;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Data;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_Errors;
 import com.dsy.dsu.Business_logic_Only_Class.Class_Generation_UUID;
+import com.dsy.dsu.Business_logic_Only_Class.Class_MODEL_synchronized;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.jetbrains.annotations.NotNull;
@@ -490,7 +491,7 @@ protected         int ПУБЛИЧНЫЙIDИЗТАБЛИЦЫСпинераЦФО
        /*     // TODO: 07.09.2021   _old
                         //TODO данный курсор работает КОГДА СОЗДАЛИ НОВЫЙ ТАБЕЛЬ И ПРИШЛИ ОТ ДРУГОВО АКТИВТИ И ЗАПРОС ПОКАЗЫВАЕТ ТАБЕЛЬ ВСПИНЕР ДАТУ НОВУЮ ДАТУ
                         Курсор_ПроверяемЕслиТакоеНазваниеТабеляУжеЕстьИлиНет=
-                                new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("tabels",
+                                new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("tabels",
                                 new String[]{"cfo", "month_tabels", "year_tabels"}, "cfo= ? AND month_tabels=? AND year_tabels=? AND status_send!=? ",
                                         new String[]{ПолученноеТекущееЗначениеСпинераЦФОфинал,
                                         String.valueOf(МесяцДляОпределениееслиТакойНазваниеАбель),
@@ -923,7 +924,7 @@ protected         int ПУБЛИЧНЫЙIDИЗТАБЛИЦЫСпинераЦФО
          /*       // TODO: 07.09.2021    _old
 
                 ////TODO ИЩЕМ ОРГАНИЗАЦИЮ КОТРОУЮ ВЫБРАЛ СОТРУДНИК УЖЕ ЗАХОДИЛ И ВЫБРАЛ НА АКТИВТИ цифра один ставитсья всегда каторую выбрали
-                КурсорВытаскиваетЗначениеОргниазцииТекущейКороруюВыбраКлиент =  new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("organization", new String[]
+                КурсорВытаскиваетЗначениеОргниазцииТекущейКороруюВыбраКлиент =  new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("organization", new String[]
                         {"id"}, "chosen_organization=?",new String[] {"1"}, null, null,null, null);///"SELECT name  FROM MODIFITATION_Client WHERE name=?",НазваниеТаблицНаСервере
                 //
 */
@@ -991,7 +992,7 @@ protected         int ПУБЛИЧНЫЙIDИЗТАБЛИЦЫСпинераЦФО
 
     /*                // TODO: 07.09.2021  _old
                             ///// КОД ЗАПОЛЕНЕИЯ ДАННЫМИ В СПИНЕР ЦФО ДЕПАРТАМЕНТ МЕСЯЦ
-                            Курсор_ЗагружаетДанныеПриСозданииТабеля=  new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных(ИмяТаблицыДляСпинера, new String[]
+                            Курсор_ЗагружаетДанныеПриСозданииТабеля=  new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных(ИмяТаблицыДляСпинера, new String[]
                                             {СтолбикДляЗагурзкиВСпинер}, "organization=?",
                                     new String[]{String.valueOf(ВЫбранаяОрганизациСотрудников)}, null, null,null, null);///"SELECT name  FROM MODIFITATION_Client WHERE name=?",НазваниеТаблицНаСервере
                             ////
@@ -1060,7 +1061,7 @@ protected         int ПУБЛИЧНЫЙIDИЗТАБЛИЦЫСпинераЦФО
    /*             // TODO: 07.09.2021    _old
 
                         ///// КОД ЗАПОЛЕНЕИЯ ДАННЫМИ В СПИНЕР ЦФО ДЕПАРТАМЕНТ МЕСЯЦ
-                        Курсор_ЗагружаетДанныеПриСозданииТабеля=  new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных(ИмяТаблицыДляСпинера, new String[]
+                        Курсор_ЗагружаетДанныеПриСозданииТабеля=  new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных(ИмяТаблицыДляСпинера, new String[]
                                         {СтолбикДляЗагурзкиВСпинер}, "closed=?",
                                 new String[]{"0"}, null, null,"name", null);///"SELECT name  FROM MODIFITATION_Client WHERE name=?",НазваниеТаблицНаСервере
 
@@ -1515,7 +1516,7 @@ while(iterator.hasNext()){
 
             // TODO: 07.09.2021   _old
             Курсор_КоторыйВЫгружемНазваниеОрганизацииДляЭтогоСотркдникаТекущего =
-                                new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("SuccessLogin",
+                                new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("SuccessLogin",
                                         new String[]{"id"}, " id IS NOT NULL", null, null, null, "date_update", "1");//
 
             //////TODO результат
@@ -1904,7 +1905,7 @@ while(iterator.hasNext()){
 
       /*      // TODO: 07.09.2021  _old
                 Курсор_ИщемПУбличныйIDКогдаегоНетВстатике =
-                        new MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("SuccessLogin",
+                        new Class_MODEL_synchronized(getApplicationContext()).КурсорУниверсальныйДляБазыДанных("SuccessLogin",
                                 new String[]{"id"}, " id IS NOT NULL", null, null, null, "date_update", "1");//
 
 */
@@ -2087,7 +2088,7 @@ while(iterator.hasNext()){
                      *
                      *
                      */
-                    РезультатВставкиНовогоТабеляЧерезКонтрейнер[0] = new MODEL_synchronized(Контекст).
+                    РезультатВставкиНовогоТабеляЧерезКонтрейнер[0] = new Class_MODEL_synchronized(Контекст).
                             ВставкаДанныхЧерезКонтейнерТолькоПриСозданииНовогоСотрудникаУниверсальная("tabel",
                                     АдаптерВставкиНовгоТабеля, "tabel", "");
                 }
